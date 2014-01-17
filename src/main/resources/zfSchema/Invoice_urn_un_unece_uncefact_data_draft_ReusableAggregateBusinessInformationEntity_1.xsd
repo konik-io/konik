@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+(c) AWV e.V. 2013 
+
+Rechtliche Hinweise
+===============
+
+Haftungsausschluss 
+
+Die Dokumentation des ZUGFeRD Datenformats wurde nach bestem Wissen und Gewissen vorgenommen; es  wurden alle notwendigen Maßnahmen getroffen, um sicherzustellen, dass die im ZUGFeRD Format zusammengestellten Informationen fehlerfrei sind. Die AWV e.V. prüft und aktualisiert die Informationen zum ZUGFeRD Format ständig. Trotz aller Sorgfalt können sich die Informationen verändern. Die AWV e.V. behält sich das Recht vor, Änderungen oder Ergänzungen der bereitgestellten Dokumentation zum ZUGFeRD Datenformat vorzunehmen. 
+Die AWV e.V. übernimmt keine Haftung oder Garantie für die Aktualität, Richtigkeit und Vollständigkeit der zur Verfügung gestellten Dokumentation zum ZUGFeRD Datenformat. Installation und Nutzung des ZUGFeRD Datenformats geschieht auf eigene Gefahr. Außer im Falle vorsätzlichen Verschuldens oder grober Fahrlässigkeit haftet die AWV e.V. weder für Nutzungsausfall, entgangenen Gewinn, Datenverlust, Kommunikationsverlust, Einnahmeausfall, Vertragseinbußen, Geschäftsausfall oder für Kosten, Schäden, Verluste oder Haftpflichten im Zusammenhang mit einer Unterbrechung der Geschäftstätigkeit, noch für konkrete, beiläufig entstandene, mittelbare Schäden, Straf- oder Folgeschäden und zwar auch dann nicht, wenn die Möglichkeit der Kosten, Verluste bzw. Schäden hätte normalerweise vorhergesehen werden können.
+
+Urheberrecht ZUGFeRD Format
+
+Inhalt und Struktur des ZUGFeRD Datenformats sind urheberrechtlich geschützt. Die Vervielfältigung von Informationen oder Daten, insbesondere die Verwendung von Texten, Textteilen oder Bildmaterial, bedarf der vorherigen Zustimmung durch die AWV e.V.
+
+Nutzung des "FeRD" und "ZUGFeRD" Logos
+
+Die beiden Logos "FeRD" und "ZUGFeRD" sind urheberrechtlich geschützt. Die Verwendung des FeRD- und ZUGFeRD-Logos muss von der AWV e.V. vor einer Nutzung gestattet werden.
+-->
+
+<xs:schema xmlns:ram="urn:un:unece:uncefact:data:draft:ReusableAggregateBusinessInformationEntity:1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:2" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:9" targetNamespace="urn:un:unece:uncefact:data:draft:ReusableAggregateBusinessInformationEntity:1" version="1.0">
+	<xs:import namespace="urn:un:unece:uncefact:data:standard:QualifiedDataType:2" schemaLocation="Invoice_urn_un_unece_uncefact_data_standard_QualifiedDataType_2.xsd"/>
+	<xs:import namespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:9" schemaLocation="Invoice_urn_un_unece_uncefact_data_standard_UnqualifiedDataType_9.xsd"/>
+	<xs:complexType name="CreditorFinancialAccountType">
+		<xs:sequence>
+			<xs:element name="IBANID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="ProprietaryID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CreditorFinancialInstitutionType">
+		<xs:sequence>
+			<xs:element name="BICID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="GermanBankleitzahlID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="Name" type="udt:TextType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DebtorFinancialAccountType">
+		<xs:sequence>
+			<xs:element name="IBANID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="ProprietaryID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DebtorFinancialInstitutionType">
+		<xs:sequence>
+			<xs:element name="BICID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="GermanBankleitzahlID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="Name" type="udt:TextType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DocumentContextParameterType">
+		<xs:sequence>
+			<xs:element name="ID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DocumentLineDocumentType">
+		<xs:sequence>
+			<xs:element name="LineID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="IncludedNote" type="ram:NoteType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ExchangedDocumentContextType">
+		<xs:sequence>
+			<xs:element name="TestIndicator" type="udt:IndicatorType" form="unqualified" minOccurs="0"/>
+			<xs:element name="GuidelineSpecifiedDocumentContextParameter" type="ram:DocumentContextParameterType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ExchangedDocumentType">
+		<xs:sequence>
+			<xs:element name="ID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="Name" type="udt:TextType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="TypeCode" type="qdt:DocumentCodeType" form="unqualified" minOccurs="0"/>
+			<xs:element name="IssueDateTime" type="qdt:FormattedDateTimeType" form="unqualified" minOccurs="0"/>
+			<xs:element name="IncludedNote" type="ram:NoteType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LogisticsServiceChargeType">
+		<xs:sequence>
+			<xs:element name="Description" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="AppliedAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="AppliedTradeTax" type="ram:TradeTaxType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NoteType">
+		<xs:sequence>
+			<xs:element name="Content" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="SubjectCode" type="udt:CodeType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferencedDocumentType">
+		<xs:sequence>
+			<xs:element name="IssueDateTime" type="qdt:FormattedDateTimeType" form="unqualified" minOccurs="0"/>
+			<xs:element name="ID" type="udt:IDType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SpecifiedPeriodType">
+		<xs:sequence>
+			<xs:element name="StartDateTime" type="qdt:FormattedDateTimeType" form="unqualified" minOccurs="0"/>
+			<xs:element name="EndDateTime" type="qdt:FormattedDateTimeType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SupplyChainEventType">
+		<xs:sequence>
+			<xs:element name="OccurrenceDateTime" type="qdt:FormattedDateTimeType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SupplyChainTradeAgreementType">
+		<xs:sequence>
+			<xs:element name="BuyerReference" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="SellerTradeParty" type="ram:TradePartyType" form="unqualified" minOccurs="0"/>
+			<xs:element name="BuyerTradeParty" type="ram:TradePartyType" form="unqualified" minOccurs="0"/>
+			<xs:element name="BuyerOrderReferencedDocument" type="ram:ReferencedDocumentType" form="unqualified" minOccurs="0"/>
+			<xs:element name="ContractReferencedDocument" type="ram:ReferencedDocumentType" form="unqualified" minOccurs="0"/>
+			<xs:element name="GrossPriceProductTradePrice" type="ram:TradePriceType" form="unqualified" minOccurs="0"/>
+			<xs:element name="NetPriceProductTradePrice" type="ram:TradePriceType" form="unqualified" minOccurs="0"/>
+			<xs:element name="CustomerOrderReferencedDocument" type="ram:ReferencedDocumentType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SupplyChainTradeDeliveryType">
+		<xs:sequence>
+			<xs:element name="BilledQuantity" type="udt:QuantityType" form="unqualified" minOccurs="0"/>
+			<xs:element name="ActualDeliverySupplyChainEvent" type="ram:SupplyChainEventType" form="unqualified" minOccurs="0"/>
+			<xs:element name="DeliveryNoteReferencedDocument" type="ram:ReferencedDocumentType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SupplyChainTradeLineItemType">
+		<xs:sequence>
+			<xs:element name="AssociatedDocumentLineDocument" type="ram:DocumentLineDocumentType" form="unqualified" minOccurs="0"/>
+			<xs:element name="SpecifiedSupplyChainTradeAgreement" type="ram:SupplyChainTradeAgreementType" form="unqualified" minOccurs="0"/>
+			<xs:element name="SpecifiedSupplyChainTradeDelivery" type="ram:SupplyChainTradeDeliveryType" form="unqualified" minOccurs="0"/>
+			<xs:element name="SpecifiedSupplyChainTradeSettlement" type="ram:SupplyChainTradeSettlementType" form="unqualified" minOccurs="0"/>
+			<xs:element name="SpecifiedTradeProduct" type="ram:TradeProductType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SupplyChainTradeSettlementType">
+		<xs:sequence>
+			<xs:element name="PaymentReference" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="InvoiceCurrencyCode" type="qdt:CurrencyCodeType" form="unqualified" minOccurs="0"/>
+			<xs:element name="InvoiceeTradeParty" type="ram:TradePartyType" form="unqualified" minOccurs="0"/>
+			<xs:element name="SpecifiedTradeSettlementPaymentMeans" type="ram:TradeSettlementPaymentMeansType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ApplicableTradeTax" type="ram:TradeTaxType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BillingSpecifiedPeriod" type="ram:SpecifiedPeriodType" form="unqualified" minOccurs="0"/>
+			<xs:element name="SpecifiedTradeAllowanceCharge" type="ram:TradeAllowanceChargeType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="SpecifiedLogisticsServiceCharge" type="ram:LogisticsServiceChargeType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="SpecifiedTradePaymentTerms" type="ram:TradePaymentTermsType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="SpecifiedTradeSettlementMonetarySummation" type="ram:TradeSettlementMonetarySummationType" form="unqualified" minOccurs="0"/>
+			<xs:element name="ReceivableSpecifiedTradeAccountingAccount" type="ram:TradeAccountingAccountType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SupplyChainTradeTransactionType">
+		<xs:sequence>
+			<xs:element name="ApplicableSupplyChainTradeAgreement" type="ram:SupplyChainTradeAgreementType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ApplicableSupplyChainTradeDelivery" type="ram:SupplyChainTradeDeliveryType" form="unqualified" minOccurs="0"/>
+			<xs:element name="ApplicableSupplyChainTradeSettlement" type="ram:SupplyChainTradeSettlementType" form="unqualified" minOccurs="0"/>
+			<xs:element name="IncludedSupplyChainTradeLineItem" type="ram:SupplyChainTradeLineItemType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TaxRegistrationType">
+		<xs:sequence>
+			<xs:element name="ID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TradeAccountingAccountType">
+		<xs:sequence>
+			<xs:element name="ID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TradeAddressType">
+		<xs:sequence>
+			<xs:element name="PostcodeCode" type="udt:CodeType" form="unqualified" minOccurs="0"/>
+			<xs:element name="LineOne" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="LineTwo" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="CityName" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="CountryID" type="qdt:CountryIDType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TradeAllowanceChargeType">
+		<xs:sequence>
+			<xs:element name="ChargeIndicator" type="udt:IndicatorType" form="unqualified" minOccurs="0"/>
+			<xs:element name="BasisAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="ActualAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="Reason" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="CategoryTradeTax" type="ram:TradeTaxType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TradeContactType">
+		<xs:sequence>
+			<xs:element name="PersonName" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="DepartmentName" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="TelephoneUniversalCommunication" type="ram:UniversalCommunicationType" form="unqualified" minOccurs="0"/>
+			<xs:element name="FaxUniversalCommunication" type="ram:UniversalCommunicationType" form="unqualified" minOccurs="0"/>
+			<xs:element name="EmailURIUniversalCommunication" type="ram:UniversalCommunicationType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TradeCountryType">
+		<xs:sequence>
+			<xs:element name="ID" type="qdt:CountryIDType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TradePartyType">
+		<xs:sequence>
+			<xs:element name="ID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="GlobalID" type="udt:IDType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Name" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="DefinedTradeContact" type="ram:TradeContactType" form="unqualified" minOccurs="0"/>
+			<xs:element name="PostalTradeAddress" type="ram:TradeAddressType" form="unqualified" minOccurs="0"/>
+			<xs:element name="SpecifiedTaxRegistration" type="ram:TaxRegistrationType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TradePaymentTermsType">
+		<xs:sequence>
+			<xs:element name="Description" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="DueDateDateTime" type="qdt:FormattedDateTimeType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TradePriceType">
+		<xs:sequence>
+			<xs:element name="ChargeAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="BasisQuantity" type="udt:QuantityType" form="unqualified" minOccurs="0"/>
+			<xs:element name="AppliedTradeAllowanceCharge" type="ram:TradeAllowanceChargeType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TradeProductType">
+		<xs:sequence>
+			<xs:element name="GlobalID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="SellerAssignedID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="BuyerAssignedID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="Name" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="Description" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="OriginTradeCountry" type="ram:TradeCountryType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TradeSettlementMonetarySummationType">
+		<xs:sequence>
+			<xs:element name="LineTotalAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="ChargeTotalAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="AllowanceTotalAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="TaxBasisTotalAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="TaxTotalAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="GrandTotalAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="TotalPrepaidAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="DuePayableAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TradeSettlementPaymentMeansType">
+		<xs:sequence>
+			<xs:element name="TypeCode" type="qdt:PaymentMeansCodeType" form="unqualified" minOccurs="0"/>
+			<xs:element name="Information" type="udt:TextType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="PayerPartyDebtorFinancialAccount" type="ram:DebtorFinancialAccountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="PayeePartyCreditorFinancialAccount" type="ram:CreditorFinancialAccountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="PayerSpecifiedDebtorFinancialInstitution" type="ram:DebtorFinancialInstitutionType" form="unqualified" minOccurs="0"/>
+			<xs:element name="PayeeSpecifiedCreditorFinancialInstitution" type="ram:CreditorFinancialInstitutionType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TradeTaxType">
+		<xs:sequence>
+			<xs:element name="CalculatedAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="TypeCode" type="qdt:TaxTypeCodeType" form="unqualified" minOccurs="0"/>
+			<xs:element name="ExemptionReason" type="udt:TextType" form="unqualified" minOccurs="0"/>
+			<xs:element name="BasisAmount" type="udt:AmountType" form="unqualified" minOccurs="0"/>
+			<xs:element name="CategoryCode" type="qdt:TaxCategoryCodeType" form="unqualified" minOccurs="0"/>
+			<xs:element name="ApplicablePercent" type="udt:PercentType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UniversalCommunicationType">
+		<xs:sequence>
+			<xs:element name="URIID" type="udt:IDType" form="unqualified" minOccurs="0"/>
+			<xs:element name="CompleteNumber" type="udt:TextType" form="unqualified" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

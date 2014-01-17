@@ -1,0 +1,117 @@
+/* Copyright (C) 2014 konik.io
+ *
+ * This file is part of the Konik library.
+ *
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * The Konik library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package io.konik.zugferd.entity;
+
+import io.konik.zugferd.datatype.unqualified.Amount;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+
+/**
+ * The Class LogisticsServiceCharge. Represents the transport and packaging costs.
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "LogisticsServiceChargeType", propOrder = { "description", "amount", "tradeTax" })
+public class LogisticsServiceCharge {
+
+	/** The description. */
+	@XmlElement(name = "Description")
+	private String description;
+
+	/** The applied amount. */
+	@Valid
+	@XmlElement(name = "AppliedAmount")
+	private Amount amount;
+
+	/** The applied trade tax. */
+	@Valid
+	@XmlElement(name = "AppliedTradeTax")
+	private List<TradeTax> tradeTax;
+
+	/**
+	 * Gets the description.
+	 * 
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * Sets the description.
+	 * 
+	 * @param description the new description
+	 * @return the logistics service charge
+	 */
+	public LogisticsServiceCharge setDescription(String description) {
+		this.description = description;
+		return this;
+	}
+
+	/**
+	 * Gets the applied amount.
+	 * 
+	 * @return the applied amount
+	 */
+	public Amount getAmount() {
+		return amount;
+	}
+
+	/**
+	 * Sets the applied amount.
+	 * 
+	 * @param amount the new applied amount
+	 */
+	public void setAmount(Amount amount) {
+		this.amount = amount;
+	}
+
+	/**
+	 * Gets the applied trade tax.
+	 * 
+	 * @return the applied trade tax
+	 */
+	public List<TradeTax> getTradeTax() {
+		if (tradeTax == null) {
+			tradeTax = new ArrayList<TradeTax>();
+		}
+		return this.tradeTax;
+	}
+
+	/**
+	 * Adds the trade tax.
+	 * 
+	 * @param tradeTax the trade tax
+	 * @return the logistics service charge
+	 */
+	public LogisticsServiceCharge addTradeTax(TradeTax tradeTax) {
+		getTradeTax().add(tradeTax);
+		return this;
+	}
+
+}

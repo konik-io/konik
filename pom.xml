@@ -72,38 +72,6 @@
 					<additionalJOption>-J-Xmx1024m</additionalJOption> <!-- Apple's JVM sometimes requires more memory -->
 				</configuration>
 			</plugin>
-
-			<!-- generate code from xsd used for testing against our output. -->
-			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<generatePackage>io.konik.zf.generated</generatePackage>
-					<schemaDirectory>src/main/resources/zfSchema</schemaDirectory>
-					<schemaIncludes>
-						<include>Invoice.xsd</include>
-					</schemaIncludes>
-					<forceRegenerate>true</forceRegenerate>
-					<extension>true</extension>
-					<args>
-						<arg>-XJsr303Annotations</arg>
-					</args>
-					<plugins>
-						<plugin>
-							<groupId>com.github.krasa</groupId>
-							<artifactId>krasa-jaxb-tools</artifactId>
-							<version>1.0</version>
-						</plugin>
-					</plugins>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 

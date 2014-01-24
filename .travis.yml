@@ -1,0 +1,16 @@
+language: java
+
+jdk:
+  - oraclejdk7
+  - openjdk6
+
+script:
+  - mvn -q clean install
+#  - mvn deploy
+
+env:
+	global:
+		- secure: bQkAdCXe8nFe/btTAjcCRgCg+9QOmO/nUc7GmCjltKinLnx7azFg4vWTeUEvUiSeMw3lAXp0WlVuxSG35ZSUIjnFNgMMcue3YceTIxOikKaFeQL9C/aJLe+EY0DUuK4cHMO1EvV4TJwOUNsk4IZxEYSXhsxHTIIyyWhL2+HtZYo=
+
+#after_success:
+#  - mvn jacoco:report coveralls:jacoco

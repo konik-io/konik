@@ -18,9 +18,9 @@
 package io.konik.examples;
 
 import static io.konik.invoice.profiles.InvoiceProfiles.BASIC;
-import static io.konik.utils.SampleInvoiceUtils.getSchemaValidator;
+import static io.konik.utils.InvoiceTestingUtils.getSchemaValidator;
 import static io.konik.zugferd.datatype.qualified.DateTimeFormat.F102;
-import io.konik.utils.SampleInvoiceUtils;
+import io.konik.utils.InvoiceTestingUtils;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.datatype.qualified.DateTime;
 import io.konik.zugferd.datatype.unqualified.Amount;
@@ -88,12 +88,12 @@ public class MinimalInvoice {
    public void creatBasicInvoice() throws JAXBException, SAXException, IOException {
       //setup
       Invoice invoice = createMinimalValidInvoice();
-      Marshaller marshaller = SampleInvoiceUtils.createZfMarshaller();
+      Marshaller marshaller = InvoiceTestingUtils.createZfMarshaller();
 
       ByteArrayOutputStream os = new ByteArrayOutputStream();
       marshaller.marshal(invoice, os);
 
-      //		System.out.println(os.toString());
+      		System.out.println(os.toString());
 
       //validate
       getSchemaValidator().validate(new StreamSource(new StringReader(os.toString())));

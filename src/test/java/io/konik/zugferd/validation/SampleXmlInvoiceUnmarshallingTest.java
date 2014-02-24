@@ -19,7 +19,7 @@ package io.konik.zugferd.validation;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import io.konik.utils.SampleInvoiceUtils;
+import io.konik.utils.InvoiceTestingUtils;
 import io.konik.zugferd.Invoice;
 
 import javax.xml.bind.JAXBException;
@@ -33,7 +33,7 @@ public class SampleXmlInvoiceUnmarshallingTest {
 
    @Test
    public void unmarshalSampleInvoice() throws JAXBException {
-      Unmarshaller unmarshaller = SampleInvoiceUtils.createZfUnmarshaller();
+      Unmarshaller unmarshaller = InvoiceTestingUtils.createZfUnmarshaller();
       Source source = new StreamSource(getClass().getResourceAsStream("/ZUGFeRD-invoice.xml"));
       
       Invoice invoice = unmarshaller.unmarshal(source, Invoice.class).getValue();

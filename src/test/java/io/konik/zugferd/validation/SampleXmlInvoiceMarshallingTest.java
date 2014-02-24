@@ -18,7 +18,7 @@
 package io.konik.zugferd.validation;
 
 import static org.junit.Assert.assertTrue;
-import io.konik.utils.SampleInvoiceUtils;
+import io.konik.utils.InvoiceTestingUtils;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.ObjectFactory;
 
@@ -34,9 +34,9 @@ public class SampleXmlInvoiceMarshallingTest {
 	@Test
 	public void marshalSampleInvoice() throws JAXBException {
 	   //prep
-		Invoice invoice = SampleInvoiceUtils.loadInvoice();
+		Invoice invoice = InvoiceTestingUtils.loadInvoice();
 
-		Marshaller marshaller = SampleInvoiceUtils.createZfMarshaller();
+		Marshaller marshaller = InvoiceTestingUtils.createZfMarshaller();
 
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		marshaller.marshal(new ObjectFactory().createInvoice(invoice), os);

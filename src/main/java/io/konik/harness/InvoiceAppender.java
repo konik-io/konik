@@ -22,29 +22,30 @@ import io.konik.zugferd.Invoice;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-
 /**
  * The Invoice Appender interface. A PDF Carriage implement this interface to append the invoice model to a PDF.
  * 
+ * @author Vadim Bauer
  */
 public interface InvoiceAppender {
 
 	/**
-	 * Append invoice to a PDF.
-	 * 
-	 * @param invoice the invoice
-	 * @param PDF 
-	 * @return the resulting PDF.
-	 */
-	public byte[] appendInvoice(Invoice invoice, byte[] pdf);
+    * Append invoice to a PDF.
+    * 
+    * @param invoice the invoice
+    * @param inputPdf the input pdf.
+    * @return the resulting PDF.
+    */
+	public byte[] append(Invoice invoice, byte[] inputPdf);
 
 	/**
-	 * Append invoice to a PDF.
-	 * 
-	 * @param invoice 
-	 * @param PDF 
-	 * @return the resulting PDF.
-	 */
-	public OutputStream appendInvoice(Invoice invoice, InputStream pdf);
+    * Append invoice to a PDF.
+    * 
+    * @param invoice the invoice
+    * @param inputPdf the input pdf
+    * @param resultingPdf the resulting pdf
+    * @return the resulting PDF output stream
+    */
+	public void append(Invoice invoice, InputStream inputPdf, OutputStream resultingPdf);
 
 }

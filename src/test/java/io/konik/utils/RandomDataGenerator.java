@@ -17,6 +17,21 @@ import net._01001111.text.LoremIpsum;
 public class RandomDataGenerator {
    LoremIpsum jlorem = new LoremIpsum();
 
+   
+   public void populteDataQuite(Object obj) {
+      try {
+         populteData(obj);
+      } catch (InstantiationException e) {
+         e.printStackTrace();
+      } catch (IllegalAccessException e) {
+         e.printStackTrace();
+      } catch (NoSuchMethodException e) {
+         e.printStackTrace();
+      } catch (InvocationTargetException e) {
+         e.printStackTrace();
+      }
+      
+   }
    public void populteData(Object obj) throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
       
       Method[] declaredMethods = obj.getClass().getDeclaredMethods();

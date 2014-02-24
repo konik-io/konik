@@ -17,10 +17,10 @@
  */
 package io.konik.zugferd.validation;
 
-import static io.konik.utils.SampleInvoiceUtils.getSchemaValidator;
+import static io.konik.utils.InvoiceTestingUtils.getSchemaValidator;
 import static javax.xml.bind.JAXBContext.newInstance;
 import static org.apache.commons.lang3.Validate.notNull;
-import io.konik.utils.SampleInvoiceUtils;
+import io.konik.utils.InvoiceTestingUtils;
 import io.konik.zugferd.Invoice;
 
 import java.io.IOException;
@@ -52,8 +52,8 @@ public class SampleInvoiceValidationRoundtripTest {
 	 */
 	@Test
 	public void validateExistingInvoiceAginstSchema() throws SAXException, IOException, JAXBException {
-		Source xmlSource = SampleInvoiceUtils.loadSampleXmlContent();
-		Validator validator = SampleInvoiceUtils.getSchemaValidator();
+		Source xmlSource = InvoiceTestingUtils.loadSampleXmlContent();
+		Validator validator = InvoiceTestingUtils.getSchemaValidator();
 		validator.validate(xmlSource);
 	}
 	
@@ -63,8 +63,8 @@ public class SampleInvoiceValidationRoundtripTest {
    @Test
    public void unmarshallExistingInvoiceAndValidateOutput() throws SAXException, IOException, JAXBException {
       //setup
-      Marshaller marshaller = SampleInvoiceUtils.createZfMarshaller();
-      Invoice invoice = SampleInvoiceUtils.loadInvoice();
+      Marshaller marshaller = InvoiceTestingUtils.createZfMarshaller();
+      Invoice invoice = InvoiceTestingUtils.loadInvoice();
 
       //exec
       StringWriter stringWriter = new StringWriter(10000);

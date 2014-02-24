@@ -22,8 +22,13 @@ import javax.xml.validation.Validator;
 
 import org.xml.sax.SAXException;
 
-public class SampleInvoiceUtils {
+public class InvoiceTestingUtils {
 
+   public static Invoice generateRandomDateInvoice() {
+      Invoice invoice = new Invoice();
+      new RandomDataGenerator().populteDataQuite(invoice); 
+      return invoice;
+   }
    public static Invoice loadInvoice() throws JAXBException{
       Unmarshaller unmarshaller = newInstance("io.konik.zugferd").createUnmarshaller();
       JAXBElement<Invoice> invoice = unmarshaller.unmarshal(loadSampleXmlContent(), Invoice.class);
@@ -33,7 +38,7 @@ public class SampleInvoiceUtils {
    }
    
    public static Source loadSampleXmlContent() {
-      Source source = new StreamSource(SampleInvoiceUtils.class.getResourceAsStream("/ZUGFeRD-invoice.xml"));
+      Source source = new StreamSource(InvoiceTestingUtils.class.getResourceAsStream("/ZUGFeRD-invoice.xml"));
       assertNotNull(source);
       return source;
    }
@@ -41,7 +46,7 @@ public class SampleInvoiceUtils {
    
    public static Validator getSchemaValidator() throws SAXException {
       SchemaFactory sf = SchemaFactory.newInstance(W3C_XML_SCHEMA_NS_URI);
-      URL schemaInvoice = notNull(SampleInvoiceUtils.class.getResource("/zfSchema/Invoice.xsd"));
+      URL schemaInvoice = notNull(InvoiceTestingUtils.class.getResource("/zfSchema/Invoice.xsd"));
       Schema invoiceSchema = sf.newSchema(schemaInvoice);
       return invoiceSchema.newValidator();
    }

@@ -25,12 +25,10 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-	private final static QName QNAME = new QName("urn:un:unece:uncefact:data:standard:CBFBUY:5",
-			"Invoice");
+	private final static QName QNAME = new QName("urn:un:unece:uncefact:data:standard:CBFBUY:5","Invoice","rsm");
 
 	public ObjectFactory() {
 	}
-
 	public Invoice createInvoice() {
 		return new Invoice();
 	}

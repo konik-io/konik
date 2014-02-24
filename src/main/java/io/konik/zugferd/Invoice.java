@@ -33,9 +33,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * The Invoice.
+ * The ZUGFeRD Invoice Model.
  * 
- * 
+ * @author Vadim Bauer
  */
 @XmlRootElement(name = "Invoice")
 @XmlAccessorType(XmlAccessType.FIELD)

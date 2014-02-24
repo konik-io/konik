@@ -1,6 +1,6 @@
 /**
  *
- * The Harness Interfaces allow a PDF provider to consume konik ZUGFeRD invoices to embed them into a PDF or extract Invoices from a PDF.
+ * The Harness is a collection of interfaces  for PDF providers to extract konik ZUGFeRD invoices or embed ZUGFeRD invoices into a PDF.
  *
  */
 package io.konik.harness;

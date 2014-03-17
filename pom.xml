@@ -1,77 +1,84 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>konik</artifactId>
-	<name>konik</name>
-	<description>Konik the ZUGFeRD processing framework</description>
-	<url>http://konik.io</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <artifactId>konik</artifactId>
+   <name>konik</name>
+   <description>Konik the ZUGFeRD processing framework</description>
+   <url>http://konik.io</url>
 
-	<parent>
-		<groupId>io.konik</groupId>
-		<artifactId>parent</artifactId>
-		<version>0.2.0-SNAPSHOT</version>
-	</parent>
+   <parent>
+      <groupId>io.konik</groupId>
+      <artifactId>parent</artifactId>
+      <version>0.2.0-SNAPSHOT</version>
+   </parent>
 
-	<organization>
-		<name>konik.io</name>
-		<url>http://konik.io</url>
-	</organization>
+   <organization>
+      <name>konik.io</name>
+      <url>http://konik.io</url>
+   </organization>
 
-	<licenses>
-		<license>
-			<name>AGPL</name>
-			<url>https://www.gnu.org/licenses/agpl-3.0.html</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+   <licenses>
+      <license>
+         <name>AGPL</name>
+         <url>https://www.gnu.org/licenses/agpl-3.0.html</url>
+         <distribution>repo</distribution>
+      </license>
+   </licenses>
 
-	<developers>
-		<developer>
-			<id>Vad1mo</id>
-			<name>Vadim Bauer</name>
-			<email>vb@konik.io</email>
-		</developer>
-	</developers>
+   <developers>
+      <developer>
+         <id>Vad1mo</id>
+         <name>Vadim Bauer</name>
+         <email>vb@konik.io</email>
+      </developer>
+   </developers>
 
-	<dependencies>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.1.0.Final</version>
-		</dependency>
+   <dependencies>
+      <dependency>
+         <groupId>javax.validation</groupId>
+         <artifactId>validation-api</artifactId>
+         <version>1.1.0.Final</version>
+         <optional>true</optional>
+      </dependency>
+      <dependency>
+         <groupId>javax.inject</groupId>
+         <artifactId>javax.inject</artifactId>
+         <optional>true</optional>
+      </dependency>
 
-		<!-- TEST dependencies -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>net._01001111</groupId>
-			<artifactId>jlorem</artifactId>
-			<version>1.3</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.1</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+      <!-- TEST dependencies -->
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>net._01001111</groupId>
+         <artifactId>jlorem</artifactId>
+         <version>1.3</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.commons</groupId>
+         <artifactId>commons-lang3</artifactId>
+         <version>3.1</version>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<configuration>
-					<bootclasspath>${sun.boot.class.path}</bootclasspath><!-- bootclasspath
-						required by Sun's JVM -->
-					<useStandardDocletOptions>false</useStandardDocletOptions>
-					<additionalJOption>-J-Xmx1024m</additionalJOption> <!-- Apple's JVM sometimes requires more memory -->
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <configuration>
+               <bootclasspath>${sun.boot.class.path}</bootclasspath><!-- bootclasspath
+                  required by Sun's JVM -->
+               <useStandardDocletOptions>false</useStandardDocletOptions>
+               <additionalJOption>-J-Xmx1024m</additionalJOption> <!-- Apple's JVM sometimes requires more memory -->
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
 
 </project>

@@ -22,12 +22,15 @@ package io.konik.exception;
  * The Konik Invoice Handling Exception is thrown whenever something goes wrong when handling the model.
  * 
  */
-public class KonikInvoiceHandlingException extends RuntimeException {
+public class TransformationException extends RuntimeException {
 
    private static final long serialVersionUID = -249661599608287823L;
    
-   
-   public KonikInvoiceHandlingException(String message, Throwable throwable) {
+   public TransformationException(String message){
+      super(message);
+      
+   }
+   public TransformationException(String message, Throwable throwable) {
      super(message,throwable);
    }
 

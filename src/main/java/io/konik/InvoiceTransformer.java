@@ -19,7 +19,7 @@ package io.konik;
 
 import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
 import static javax.xml.bind.JAXBContext.newInstance;
-import io.konik.exception.KonikInvoiceHandlingException;
+import io.konik.exception.TransformationException;
 import io.konik.zugferd.Invoice;
 
 import java.io.ByteArrayOutputStream;
@@ -27,6 +27,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 
+import javax.inject.Named;
+import javax.inject.Singleton;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
@@ -41,7 +43,11 @@ import org.xml.sax.SAXException;
  * The Invoice Handler manages the invoice marshaling and unmarshalling.
  * 
  */
-public class InvoiceHandler {
+@Named
+@Singleton
+public class InvoiceTransformer {
+
+   private static final String KONIK_CONTEXT = "io.konik.zugferd";
 
    /**
     * Unmarshall xml input stream to object model.
@@ -49,18 +55,29 @@ public class InvoiceHandler {
     * @param xmlIs the xml input stream
     * @return the invoice model
     */
-   public static Invoice unmarshall(InputStream xmlIs) {
+   public Invoice from(InputStream xmlIs) {
       try {
          Unmarshaller unmarshaller = createZfUnmarshaller();
          return unmarshaller.unmarshal(new StreamSource(xmlIs), Invoice.class).getValue();
       } catch (JAXBException e) {
-         throw new KonikInvoiceHandlingException("Marshalling error", e);
+         throw new TransformationException("Marshalling error", e);
       }
-
+   }
+   
+   /**
+    * Marshals the invoice model to xml byte array
+    * 
+    * @param invoice the invoice
+    * @return the byte[]
+    */
+   public static byte[] from(Invoice invoice) {
+      ByteArrayOutputStream outputStream = new ByteArrayOutputStream(16000);
+      marshall(invoice, outputStream);
+      return outputStream.toByteArray();
    }
 
    /**
-    * Marshals the invoice model to xml stream.
+    * Marshals the invoice model to xml output stream.
     * 
     * @param invoice the invoice model
     * @param output the output stream to write to.
@@ -69,36 +86,30 @@ public class InvoiceHandler {
       try {
          createZfMarshaller().marshal(invoice, output);
       } catch (JAXBException e) {
-         throw new KonikInvoiceHandlingException("Marshalling error", e);
+         throw new TransformationException("Marshalling error", e);
       }
    }
 
    /**
-    * Marshals the invoice model to xml byte array
+    * Gets the ZUGFeRD schema Validator.
     * 
-    * @param invoice the invoice
-    * @return the byte[]
+    * @return the Schema Validator
+    * @throws SAXException the SAX exception
     */
-   public static byte[] marshall(Invoice invoice) {
-      ByteArrayOutputStream outputStream = new ByteArrayOutputStream(16000);
-      marshall(invoice, outputStream);
-      return outputStream.toByteArray();
-   }
-
-   static Validator getSchemaValidator() throws SAXException {
+   public Validator getZfSchemaValidator() throws SAXException {
       SchemaFactory sf = SchemaFactory.newInstance(W3C_XML_SCHEMA_NS_URI);
-      URL schemaInvoice = InvoiceHandler.class.getResource("/zfSchema/Invoice.xsd");
+      URL schemaInvoice = InvoiceTransformer.class.getResource("/zfSchema/Invoice.xsd");
       Schema invoiceSchema = sf.newSchema(schemaInvoice);
       return invoiceSchema.newValidator();
    }
 
-   public static Marshaller createZfMarshaller() throws JAXBException {
-      Marshaller marshaller = newInstance("io.konik.zugferd").createMarshaller();
+   private static Marshaller createZfMarshaller() throws JAXBException {
+      Marshaller marshaller = newInstance(KONIK_CONTEXT).createMarshaller();
       marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, false);
       return marshaller;
    }
 
-   static Unmarshaller createZfUnmarshaller() throws JAXBException {
-      return newInstance("io.konik.zugferd").createUnmarshaller();
+   private static Unmarshaller createZfUnmarshaller() throws JAXBException {
+      return newInstance(KONIK_CONTEXT).createUnmarshaller();
    }
 }

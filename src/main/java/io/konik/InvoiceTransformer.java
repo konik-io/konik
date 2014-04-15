@@ -40,7 +40,7 @@ import javax.xml.validation.Validator;
 import org.xml.sax.SAXException;
 
 /**
- * The Invoice Handler manages the invoice marshaling and unmarshalling.
+ * Transforms invoices from one representation to another or marshaling and unmarshalling.
  * 
  */
 @Named

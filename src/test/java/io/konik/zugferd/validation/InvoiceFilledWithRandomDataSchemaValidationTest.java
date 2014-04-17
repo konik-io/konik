@@ -1,6 +1,6 @@
 package io.konik.zugferd.validation;
 
-import static io.konik.invoice.profiles.InvoiceProfiles.BASIC;
+import static io.konik.invoice.profiles.InvoiceProfile.BASIC;
 import static io.konik.utils.InvoiceTestingUtils.createZfMarshaller;
 import static io.konik.utils.InvoiceTestingUtils.getSchemaValidator;
 import static org.junit.Assert.assertNotNull;

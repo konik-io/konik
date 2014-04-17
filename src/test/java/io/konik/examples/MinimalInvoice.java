@@ -17,7 +17,7 @@
  */
 package io.konik.examples;
 
-import static io.konik.invoice.profiles.InvoiceProfiles.BASIC;
+import static io.konik.invoice.profiles.InvoiceProfile.BASIC;
 import static io.konik.utils.InvoiceTestingUtils.getSchemaValidator;
 import static io.konik.zugferd.datatype.qualified.DateTimeFormat.F102;
 import io.konik.utils.InvoiceTestingUtils;

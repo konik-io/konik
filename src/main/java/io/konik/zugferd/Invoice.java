@@ -17,7 +17,7 @@
  */
 package io.konik.zugferd;
 
-import io.konik.invoice.profiles.InvoiceProfiles;
+import io.konik.invoice.profiles.InvoiceProfile;
 import io.konik.zugferd.entity.ExchangeDocument;
 import io.konik.zugferd.entity.ExchangeDocumentContext;
 import io.konik.zugferd.entity.Trade;
@@ -65,7 +65,7 @@ public class Invoice {
     * 
     * @param profile the profile
     */
-   public Invoice(InvoiceProfiles profile) {
+   public Invoice(InvoiceProfile profile) {
       this.context = new ExchangeDocumentContext(profile);
       this.header = new ExchangeDocument();
    }

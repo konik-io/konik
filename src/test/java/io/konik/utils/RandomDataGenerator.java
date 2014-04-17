@@ -5,6 +5,7 @@ import static org.apache.commons.lang3.ClassUtils.isPrimitiveOrWrapper;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.apache.commons.lang3.reflect.MethodUtils.getAccessibleMethod;
 import static org.apache.commons.lang3.reflect.MethodUtils.invokeMethod;
+import io.konik.invoice.profiles.InvoiceProfile;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -59,6 +60,10 @@ public class RandomDataGenerator {
       String invokeMethodName = method.getName().replace("get", "set");
       if (method.getName().startsWith("add")) invokeMethodName = method.getName();
       Method setterM = getAccessibleMethod(objToSetOn.getClass(), invokeMethodName, value.getClass());
+      if (setterM == null) {
+         System.out.println("Object:"+objToSetOn.getClass().getSimpleName() + " Method:" + method.getName() + " Value:" + value.toString());
+         return; 
+      }
       invokeMethod(objToSetOn, setterM.getName(), value);
    }
 
@@ -76,9 +81,15 @@ public class RandomDataGenerator {
       if (isAssignable(type,Boolean.class,true)) return true;
       if (isAssignable(type,Integer.class,true)) return randomNumeric(6);
       if (isAssignable(type,Integer.class,true)) return randomNumeric(6);
-      if (type.isEnum()) return type.getClass().getEnumConstants()[0];
+      if (type.isEnum()) return getEnum(type);
       if (isAssignable(type,Date.class,true)) return new Date();
       throw new IllegalArgumentException("Type " + type + " was not found");
+   }
+   private Object getEnum(Class<?> type) {
+      if (type.isAssignableFrom(InvoiceProfile.class)) {
+        return InvoiceProfile.class.getEnumConstants()[0];
+      }
+      return type.getClass().getEnumConstants()[0];
    }
 
    private String generateStringBasedOnName(String methodName) {

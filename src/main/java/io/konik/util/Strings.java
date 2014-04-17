@@ -15,22 +15,24 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
-package io.konik.exception;
-
+package io.konik.util;
 
 /**
- * The Konik Invoice Handling Exception is thrown whenever something goes wrong.</br>
- * This exception is thrown when the caller can not recover from the error and can not continue.
+ * 
+ * The Strings helper class. We can avoid importing Guava or Apache commons for now. 
  */
-public class TransformationException extends RuntimeException {
+public class Strings {
 
-   private static final long serialVersionUID = -249661599608287823L;
+   public static String nullToEmpty(String string) {
+      return (string == null) ? "" : string;
+   }
    
-   public TransformationException(String message){
-      super(message);
-      
+   public static String emptyToNull(String string) {
+      return isNullOrEmpty(string) ? null : string;
    }
-   public TransformationException(String message, Throwable throwable) {
-     super(message,throwable);
+
+   public static boolean isNullOrEmpty(String string) {
+      return string == null || string.isEmpty(); 
    }
+   
 }

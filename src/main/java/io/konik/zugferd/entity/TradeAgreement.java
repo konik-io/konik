@@ -19,67 +19,58 @@
 package io.konik.zugferd.entity;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * The Class TradeAgreement.
- *
- * 
+ * The Trade Agreement.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SupplyChainTradeAgreementType", propOrder = { "buyerReference", "seller", "buyer",
 		"buyerOrder", "contract", "grossPrice", "netPrice", "customerOrder" })
 public class TradeAgreement {
 
-	/** The buyer's reference. */
 	@XmlElement(name = "BuyerReference")
 	private String buyerReference;
 
-	/** The seller. */
-	@Valid
+	@NotNull@Valid
 	@XmlElement(name = "SellerTradeParty")
 	private TradeParty seller;
 
-	/** The buyer. */
 	@Valid
 	@XmlElement(name = "BuyerTradeParty")
 	private TradeParty buyer;
 
-	/** The buyer order. */
 	@Valid
 	@XmlElement(name = "BuyerOrderReferencedDocument")
 	private ReferencedDocument buyerOrder;
 
-	/** The contract. */
 	@Valid
 	@XmlElement(name = "ContractReferencedDocument")
 	private ReferencedDocument contract;
 
-	/** The gross price. */
 	@Valid
 	@XmlElement(name = "GrossPriceProductTradePrice")
 	private TradePrice grossPrice;
 
-	/** The net price. */
 	@Valid
 	@XmlElement(name = "NetPriceProductTradePrice")
 	private TradePrice netPrice;
 
-	/** The customer order. */
 	@Valid
 	@XmlElement(name = "CustomerOrderReferencedDocument")
 	private ReferencedDocument customerOrder;
 
 	/**
-	 * Instantiates a new supply chain trade agreement with basic parameters
-	 *
-	 * @param sellerTradeParty the seller trade party
-	 * @param buyerTradeParty
-	 * @param buyerOrderReferencedDocument
-	 */
+    * Instantiates a new supply chain trade agreement with basic parameters.
+    *
+    * @param sellerTradeParty the seller trade party
+    * @param buyerTradeParty the buyer trade party
+    * @param buyerOrderReferencedDocument the buyer order referenced document
+    */
 	public TradeAgreement(TradeParty sellerTradeParty, TradeParty buyerTradeParty,
 			ReferencedDocument buyerOrderReferencedDocument) {
 		super();
@@ -93,9 +84,12 @@ public class TradeAgreement {
 	}
 
 	/**
-	 * Gets the buyer reference.<br/>
-	 * The reference to ease the attribution for the buyer<br/>
-	 * Profile: COMFORT when part of {@link Trade}><br/>
+	 * Gets the buyer reference.
+
+	 * The reference to ease the attribution for the buyer
+
+	 * Profile: COMFORT when part of {@link Trade}
+
 	 *
 	 * @return the buyer reference
 	 */
@@ -104,9 +98,12 @@ public class TradeAgreement {
 	}
 
 	/**
-	 * Sets the buyer reference. <br/>
-	 * The reference to ease the attribution for the buyer<br/>
-	 * Profile: COMFORT when part of {@link Trade}><br/>
+	 * Sets the buyer reference. 
+
+	 * The reference to ease the attribution for the buyer
+
+	 * Profile: COMFORT when part of {@link Trade}
+
 	 *
 	 * @param buyerReference the new buyer reference
 	 * @return the trade agreement
@@ -177,8 +174,10 @@ public class TradeAgreement {
 	}
 
 	/**
-	 * Gets the contract referenced document.<br/>
-	 * Profile: COMFORT <br/>
+	 * Gets the contract referenced document.
+
+	 * Profile: COMFORT 
+
 	 *
 	 * @return the contract referenced document
 	 */
@@ -187,8 +186,10 @@ public class TradeAgreement {
 	}
 
 	/**
-	 * Sets the contract referenced document.<br/>
-	 * Profile: COMFORT <br/>
+	 * Sets the contract referenced document.
+
+	 * Profile: COMFORT 
+
 	 *
 	 * @param contract the new contract referenced document
 	 * @return the supply chain trade agreement
@@ -239,8 +240,10 @@ public class TradeAgreement {
 	}
 
 	/**
-	 * Gets the customer order referenced document.<br/>
-	 * Profile: COMFORT <br/>
+	 * Gets the customer order referenced document.
+
+	 * Profile: COMFORT 
+
 	 *
 	 * @return the customer order referenced document
 	 */
@@ -249,8 +252,10 @@ public class TradeAgreement {
 	}
 
 	/**
-	 * Sets the customer order referenced document. <br/>
-	 * Profile: COMFORT <br/>
+	 * Sets the customer order referenced document. 
+
+	 * Profile: COMFORT 
+
 	 *
 	 * @param customerOrder the new customer order referenced document
 	 * @return the supply chain trade agreement

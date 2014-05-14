@@ -26,32 +26,27 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * The Class Address represents the postal address of an entity.
- *
+ * = The Address
  * 
+ *  The postal address of an entity.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradeAddressType", propOrder = { "postcode", "lineOne", "lineTwo", "city", "countryCode" })
 public class Address {
 
-	/** The postcode/zipcode. */
 	@XmlElement(name = "PostcodeCode")
 	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
 	private String postcode;
 
-	/** The line one. */
 	@XmlElement(name = "LineOne")
 	private String lineOne;
 
-	/** The line two. */
 	@XmlElement(name = "LineTwo")
 	private String lineTwo;
 
-	/** The city name. */
 	@XmlElement(name = "CityName")
 	private String city;
 
-	/** The country id. */
 	@XmlElement(name = "CountryID")
 	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
 	private String countryCode;
@@ -95,8 +90,10 @@ public class Address {
 	}
 
 	/**
-	 * Gets the postcode.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller.<br/>
+	 * Gets the postcode.
+
+	 * Profile: BASIC when part of Trade.agreements.seller.
+
 	 * Example: {@code DE-123456}
 	 *
 	 * @return the postcode
@@ -106,8 +103,10 @@ public class Address {
 	}
 
 	/**
-	 * Sets the postcode code.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller.<br/>
+	 * Sets the postcode code.
+
+	 * Profile: BASIC when part of Trade.agreements.seller.
+
 	 * Example: {@code DE-123456}
 	 * @param postcode the postcode
 	 * @return the trade address
@@ -118,8 +117,10 @@ public class Address {
 	}
 
 	/**
-	 * Gets the line one. Usually the Street name.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller.<br/>
+	 * Gets the line one. Usually the Street name.
+
+	 * Profile: BASIC when part of Trade.agreements.seller.
+
 	 * Example: {@code Elm Street 13}
 	 *
 	 * @return the line one
@@ -129,8 +130,10 @@ public class Address {
 	}
 
 	/**
-	 * Sets the line one. Usually the Street name.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller.<br/>
+	 * Sets the line one. Usually the Street name.
+
+	 * Profile: BASIC when part of Trade.agreements.seller.
+
 	 * Example: {@code Elm Street 13}
 	 *
 	 * @param lineOne the new line one
@@ -142,8 +145,10 @@ public class Address {
 	}
 
 	/**
-	 * Gets the line two. Location like Building name or department.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller.<br/>
+	 * Gets the line two. Location like Building name or department.
+
+	 * Profile: BASIC when part of Trade.agreements.seller.
+
 	 * Example: {@code Department of broken dreams}
 	 *
 	 * @return the line two
@@ -153,8 +158,10 @@ public class Address {
 	}
 
 	/**
-	 * Sets the line two.. Location like Building name or department.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller.<br/>
+	 * Sets the line two.. Location like Building name or department.
+
+	 * Profile: BASIC when part of Trade.agreements.seller.
+
 	 * Example: {@code Department of broken dreams}
 	 *
 	 * @param lineTwo the new line two
@@ -166,8 +173,10 @@ public class Address {
 	}
 
 	/**
-	 * Gets the city name.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller.<br/>
+	 * Gets the city name.
+
+	 * Profile: BASIC when part of Trade.agreements.seller.
+
 	 * Example: {@code Zürich}
 	 *
 	 * @return the city name
@@ -177,8 +186,10 @@ public class Address {
 	}
 
 	/**
-	 * Sets the city name.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller.<br/>
+	 * Sets the city name.
+
+	 * Profile: BASIC when part of Trade.agreements.seller.
+
 	 * Example: {@code Zürich}
 	 *
 	 * @param cityName the new city name
@@ -190,9 +201,12 @@ public class Address {
 	}
 
 	/**
-	 * Gets the country id.<br/>
-	 * Two-letter country codes defined in ISO 3166-1,<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller.<br/>
+	 * Gets the country id.
+
+	 * Two-letter country codes defined in ISO 3166-1,
+
+	 * Profile: BASIC when part of Trade.agreements.seller.
+
 	 * Example: {@code CH}
 	 *
 	 * @return the ISO 3166-2A country code
@@ -203,9 +217,12 @@ public class Address {
 	}
 
 	/**
-	 * Sets the country code.<br/>
-	 * Two-letter country codes defined in ISO 3166-1,<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller.<br/>
+	 * Sets the country code.
+
+	 * Two-letter country codes defined in ISO 3166-1,
+
+	 * Profile: BASIC when part of Trade.agreements.seller.
+
 	 * Example: {@code CH}
 	 *
 	 * @param countryCode the country code

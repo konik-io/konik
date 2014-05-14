@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -28,8 +29,10 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class Trade. <br/>
- * Groups the various aspects a invoice trade transaction.<br/>
+ * The Class Trade. 
+
+ * Groups the various aspects a invoice trade transaction.
+
  * 
  * The Trade Transaction is divided into the "global" trade agreements, delivery and trade settlement
  * parameters that can be overwritten/complemented on item basis.
@@ -37,14 +40,14 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreements", "delivery", "tradeSettlement",
+@XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreement", "delivery", "tradeSettlement",
 		"items" })
 public class Trade {
 
 	/** The contract agreements. */
-   @Valid
+   @NotNull
 	@XmlElement(name = "ApplicableSupplyChainTradeAgreement")
-	private List<TradeAgreement> agreements;
+	private TradeAgreement agreement;
 
 	/** The trade delivery. */
    @Valid
@@ -62,29 +65,24 @@ public class Trade {
 	private List<Item> items;
 
 	/**
-	 * Gets the applicable supply chain trade agreement.
-	 * 
-	 * @return the applicable supply chain trade agreement
-	 */
-	public List<TradeAgreement> getAgreements() {
-		if (agreements == null) {
-			agreements = new ArrayList<TradeAgreement>();
-		}
-		return this.agreements;
-	}
+    * Gets the agreement.
+    *
+    * @return the agreement
+    */
+	public TradeAgreement getAgreement() {
+      return agreement;
+   }
 
-	/**
-	 * Adds the agreement.
-	 * 
-	 * @param newAgreement the new agreement
-	 * @return the supply chain trade transaction
-	 */
-	public Trade addAgreement(TradeAgreement newAgreement) {
-		getAgreements().add(newAgreement);
-		return this;
-	}
+   /**
+    * Sets the agreement.
+    *
+    * @param agreement the new agreement
+    */
+   public void setAgreement(TradeAgreement agreement) {
+      this.agreement = agreement;
+   }
 
-	/**
+   /**
 	 * Gets the applicable supply chain trade delivery.
 	 * 
 	 * @return the applicable supply chain trade delivery

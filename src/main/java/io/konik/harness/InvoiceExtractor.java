@@ -29,17 +29,17 @@ public interface InvoiceExtractor {
 
 
 	/**
-    * Extract invoice from a PDF
-    * 
-    * @param PDF containing the xml invoice model.
-    * @return  the extracted invoice model.
+    * Extract invoice from a PDF.
+    *
+    * @param pdf the pdf
+    * @return the extracted invoice model.
     */
 	public Invoice extract(final byte[] pdf);
 
 	/**
     * Extract invoice from PDF stream.
-    * 
-    * @param PDF containing the xml invoice model.
+    *
+    * @param pdf the pdf
     * @return the extracted invoice model.
     */
 	public Invoice extract(final InputStream pdf);

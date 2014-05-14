@@ -1,0 +1,2 @@
+"Benchmark","Mode","Threads","Samples","Mean","Mean Error (99.9%)","Unit"
+"io.konik.benchmark.InvoiceTransformerBenchmark.from_inputStream","thrpt",1,20,1745.9624999999996,105.60943925812421,"ops/s"

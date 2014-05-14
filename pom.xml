@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <artifactId>konik</artifactId>
    <name>konik</name>
@@ -33,6 +34,7 @@
    </developers>
 
    <dependencies>
+
       <dependency>
          <groupId>javax.validation</groupId>
          <artifactId>validation-api</artifactId>
@@ -43,6 +45,11 @@
          <groupId>javax.inject</groupId>
          <artifactId>javax.inject</artifactId>
          <optional>true</optional>
+      </dependency>
+      <dependency>
+         <groupId>com.neovisionaries</groupId>
+         <artifactId>nv-i18n</artifactId>
+         <version>1.12</version>
       </dependency>
 
       <!-- TEST dependencies -->
@@ -65,27 +72,36 @@
       <dependency>
          <groupId>com.google.guava</groupId>
          <artifactId>guava</artifactId>
-         <version>16.0.1</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>org.apache.commons</groupId>
          <artifactId>commons-lang3</artifactId>
-         <version>3.1</version>
          <scope>test</scope>
+      </dependency>
+      <!-- Benchmark dependencies -->
+      <dependency>
+         <groupId>org.openjdk.jmh</groupId>
+         <artifactId>jmh-core</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.openjdk.jmh</groupId>
+         <artifactId>jmh-generator-annprocess</artifactId>
+         <scope>provided</scope>
       </dependency>
    </dependencies>
 
    <build>
       <plugins>
          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
+            <version>1.2.0</version>
             <configuration>
-               <bootclasspath>${sun.boot.class.path}</bootclasspath><!-- bootclasspath
-                  required by Sun's JVM -->
-               <useStandardDocletOptions>false</useStandardDocletOptions>
-               <additionalJOption>-J-Xmx1024m</additionalJOption> <!-- Apple's JVM sometimes requires more memory -->
+               <packages>
+                  <param>io.konik</param>
+               </packages>
             </configuration>
          </plugin>
       </plugins>

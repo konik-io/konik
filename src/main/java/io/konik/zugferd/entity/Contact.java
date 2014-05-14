@@ -28,8 +28,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * The Class TradeContact.<br/>
- * Is a individual that can be contacted in ways specified by this class.
+ * = The Trade Contact
+ * 
+ * Is a individual that can be reached in ways specified by this class.
  * 
  * 
  */
@@ -37,44 +38,41 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "TradeContactType", propOrder = { "name", "department", "telephone", "fax", "email" })
 public class Contact {
 
-	/** The contact person name. */
 	@XmlElement(name = "PersonName")
 	private String name;
 
-	/** The department name. */
 	@XmlElement(name = "DepartmentName")
 	private String department;
 
-	/** The telephone number */
 	@Valid
 	@XmlElement(name = "TelephoneUniversalCommunication")
 	private UniversalCommunication telephone;
 
-	/** The fax number */
 	@Valid
 	@XmlElement(name = "FaxUniversalCommunication")
 	private UniversalCommunication fax;
 
-	/** The email address. */
 	@Valid
 	@XmlElement(name = "EmailURIUniversalCommunication")
 	private UniversalCommunication email;
 
-	/** Instantiates a new trade contact. */
+	/**
+    * Instantiates a new contact.
+    */
 	public Contact() {
 	}
 
 	/**
 	 * Instantiates a new trade contact.
 	 * 
-	 * @param personName the person name
+	 * @param contactName the person first and last name
 	 * @param departmentName the department name
-	 * @param telephone the telephone
-	 * @param fax the fax
+	 * @param telephone the telephone number
+	 * @param fax the fax number
 	 * @param email the email
 	 */
-	public Contact(String personName, String departmentName, String telephone, String fax, String email) {
-		this.name = personName;
+	public Contact(String contactName, String departmentName, String telephone, String fax, String email) {
+		this.name = contactName;
 		this.department = departmentName;
 		this.telephone = telephone != null ? new UniversalCommunication(TEL, telephone) : null;
 		this.fax = fax != null ? new UniversalCommunication(TEL, fax) : null;
@@ -82,8 +80,9 @@ public class Contact {
 	}
 
 	/**
-	 * Gets the contact person name.<br/>
-	 * Profile: EXTENDED.<br/>
+	 * Gets the contact person name.
+	 * 
+	 * Profile:: EXTENDED
 	 * 
 	 * @return the person name
 	 */
@@ -92,8 +91,9 @@ public class Contact {
 	}
 
 	/**
-	 * Sets the contact person name.<br/>
-	 * Profile: EXTENDED.<br/>
+	 * Sets the contact person name.
+	 * 
+	 * Profile:: EXTENDED
 	 * 
 	 * @param name the new person name
 	 */
@@ -102,9 +102,9 @@ public class Contact {
 	}
 
 	/**
-	 * Gets the department name.<br/>
-	 * Profile: EXTENDED.<br/>
+	 * Gets the department name.
 	 * 
+	 * Profile:: EXTENDED
 	 * @return the department name
 	 */
 	public String getDepartment() {
@@ -112,9 +112,9 @@ public class Contact {
 	}
 
 	/**
-	 * Sets the department name.<br/>
-	 * Profile: EXTENDED.<br/>
+	 * Sets the department name.
 	 * 
+	 * Profile:: EXTENDED
 	 * @param department the new department name
 	 */
 	public void setDepartment(String department) {
@@ -122,30 +122,21 @@ public class Contact {
 	}
 
 	/**
-	 * Gets the telephone number.<br/>
-	 * Profile: EXTENDED.<br/>
+	 * Gets the telephone number.
 	 * 
+    * Profile:: EXTENDED
+    * Example:: +{plus}49 (123) 456789-999+
 	 * @return the telephone universal communication
 	 */
-	public UniversalCommunication getTelephone() {
-		return telephone;
+	public String getTelephone() {
+		return telephone.getCompleteNumber();
 	}
 
 	/**
-	 * Sets the telephone number.<br/>
-	 * Profile: EXTENDED.<br/>
+	 * Sets the telephone number providing the string only.
 	 * 
-	 * @param telephone the new telephone number
-	 */
-	public void setTelephone(UniversalCommunication telephone) {
-		this.telephone = telephone;
-	}
-
-	/**
-	 * Sets the telephone number providing the string only.<br/>
-	 * Profile: EXTENDED.<br/>
-	 * Example: {@code +49 (123) 456789-999}
-	 * 
+    * Profile:: EXTENDED
+    * Example:: +{plus}49 (123) 456789-999+
 	 * @param telephone the new telephone universal communication
 	 */
 	public void setTelephone(String telephone) {
@@ -153,67 +144,46 @@ public class Contact {
 	}
 
 	/**
-	 * Gets the fax number.<br/>
-	 * Profile: EXTENDED.<br/>
-	 * Example: {@code +49 (123) 456789-999}
+	 * Gets the Fax number.
 	 * 
-	 * @return the fax number
+    * Profile:: EXTENDED
+    * Example:: +{plus}49 (123) 456789-999+
+	 * @return the Fax number
 	 */
 	public UniversalCommunication getFax() {
 		return fax;
 	}
 
 	/**
-	 * Sets the fax number.<br/>
-	 * Profile: EXTENDED.<br/>
-	 * Example: {@code +49 (123) 456789-999}
-	 * 
-	 * @param fax the new fax universal communication
-	 */
-	public void setFax(UniversalCommunication fax) {
-		this.fax = fax;
+    * Sets the telephone number providing the string only.
+    * 
+    * Profile:: EXTENDED
+    * Example:: +{plus}49 (123) 456789-999+
+    *
+    * @param faxNumber the new fax number
+    */
+	public void setFax(String faxNumber) {
+		this.fax = new UniversalCommunication(TEL, faxNumber);
 	}
 
 	/**
-	 * Sets the telephone number providing the string only.<br/>
-	 * Profile: EXTENDED.<br/>
-	 * Example: {@code +49 (123) 456789-999}
-	 * 
-	 * @param fax the new fax number
-	 */
-	public void setFax(String fax) {
-		this.fax = new UniversalCommunication(TEL, fax);
+    * Gets the email contacts E-mail address.
+    * 
+    * Profile:: EXTENDED
+    * Example:: +example@konik.io+
+    * @return the email address
+    */
+	public String getEmail() {
+		return email.getCompleteNumber();
 	}
 
 	/**
-	 * Gets the email contacts E-mail address.<br/>
-	 * Profile: EXTENDED.<br/>
-	 * Example: {@code Vadim.Bauer@example.com}
-	 * 
-	 * @return the email uri universal communication
-	 */
-	public UniversalCommunication getEmail() {
-		return email;
-	}
-
-	/**
-	 * Sets the email contacts E-mail address.<br/>
-	 * Profile: EXTENDED.<br/>
-	 * Example: {@code Vadim.Bauer@example.com}
-	 * 
-	 * @param email the new email uri universal communication
-	 */
-	public void setEmail(UniversalCommunication email) {
-		this.email = email;
-	}
-
-	/**
-	 * Sets the email contacts E-mail address.<br/>
-	 * Profile: EXTENDED.<br/>
-	 * Example: {@code Vadim.Bauer@example.com}
-	 * 
-	 * @param email the new email uri universal communication
-	 */
+    * Sets the email contacts E-mail address.
+    * Profile: EXTENDED.
+    * Example: +example@konik.io+
+    *
+    * @param email the new email
+    */
 	public void setEmail(String email) {
 		this.email = new UniversalCommunication(EMAIL, email);
 	}

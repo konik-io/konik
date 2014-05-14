@@ -23,14 +23,32 @@ package io.konik.util;
  */
 public class Strings {
 
+   /**
+    * Null to empty.
+    *
+    * @param string the string
+    * @return the string
+    */
    public static String nullToEmpty(String string) {
       return (string == null) ? "" : string;
    }
    
+   /**
+    * Empty to null.
+    *
+    * @param string the string
+    * @return the string
+    */
    public static String emptyToNull(String string) {
       return isNullOrEmpty(string) ? null : string;
    }
 
+   /**
+    * Checks if is null or empty.
+    *
+    * @param string the string
+    * @return true, if is null or empty
+    */
    public static boolean isNullOrEmpty(String string) {
       return string == null || string.isEmpty(); 
    }

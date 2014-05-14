@@ -19,17 +19,30 @@ package io.konik.exception;
 
 
 /**
- * The Konik Invoice Handling Exception is thrown whenever something goes wrong.</br>
+ * The Konik Invoice Handling Exception is thrown whenever something goes wrong.
+
  * This exception is thrown when the caller can not recover from the error and can not continue.
  */
 public class TransformationException extends RuntimeException {
 
    private static final long serialVersionUID = -249661599608287823L;
    
+   /**
+    * Instantiates a new transformation exception.
+    *
+    * @param message the message
+    */
    public TransformationException(String message){
       super(message);
       
    }
+   
+   /**
+    * Instantiates a new transformation exception.
+    *
+    * @param message the message
+    * @param throwable the throwable
+    */
    public TransformationException(String message, Throwable throwable) {
      super(message,throwable);
    }

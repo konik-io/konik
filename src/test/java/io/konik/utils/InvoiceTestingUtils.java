@@ -5,10 +5,9 @@ import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
 import static javax.xml.bind.JAXBContext.newInstance;
 import static org.apache.commons.lang3.Validate.notNull;
 import static org.junit.Assert.assertNotNull;
+import io.konik.zugferd.Invoice;
 
 import java.net.URL;
-
-import io.konik.zugferd.Invoice;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
@@ -21,14 +20,14 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 import org.xml.sax.SAXException;
-
+@SuppressWarnings("javadoc")
 public class InvoiceTestingUtils {
 
-   public static Invoice generateRandomDateInvoice() {
-      Invoice invoice = new Invoice();
-      new RandomDataGenerator().populteDataQuite(invoice); 
-      return invoice;
+   public static Invoice generateRandomInvoice() {
+      return new RandomInvoiceGenerator().generate();
    }
+   
+   
    public static Invoice loadInvoice() throws JAXBException{
       Unmarshaller unmarshaller = newInstance("io.konik.zugferd").createUnmarshaller();
       JAXBElement<Invoice> invoice = unmarshaller.unmarshal(loadSampleXmlContent(), Invoice.class);

@@ -18,7 +18,7 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.ID;
+import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,41 +35,69 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DocumentLineDocumentType", propOrder = { "itemNumber", "notes" })
+@XmlType(name = "DocumentLineDocumentType", propOrder = { "positionNumber", "notes" })
 public class DocumentLine {
 
-	/** The line id. */
 	@XmlElement(name = "LineID")
-	private ID itemNumber;
+	private ID positionNumber;
 
-	/** The included note. */
 	@XmlElement(name = "IncludedNote")
 	private List<Note> notes;
 
 	/**
-	 * Gets the line item number.<br/>
-	 * Profile: COMFORT<br/>
-	 *
-	 * @return the line id
-	 */
-	public ID getItemNumber() {
-		return itemNumber;
+    * Instantiates a new document line.
+    */
+	public DocumentLine() {
 	}
 
 	/**
-	 * Sets the line item number.<br/>
-	 * Profile: COMFORT<br/>
-	 *
-	 * @param lineItemNumber the new line id
-	 */
-	public void setItemNumber(ID lineItemNumber) {
-		this.itemNumber = lineItemNumber;
+    * Instantiates a new document line.
+    *
+    * @param positionNumber the position number
+    */
+	public DocumentLine(String positionNumber) {
+      super();
+      this.positionNumber = new ID(positionNumber);
+   }
+
+	/**
+    * Instantiates a new document line.
+    *
+    * @param positionNumber the position number
+    * @param notes the notes
+    */
+	public DocumentLine(String  positionNumber, List<Note> notes) {
+      this(positionNumber);
+      this.notes = notes;
+   }
+
+   /**
+    * Gets the line position number.
+    * Profile: COMFORT
+    *
+    * @return the position number
+    */
+	public String getPositionNumber() {
+		return positionNumber.getValue();
 	}
 
 	/**
-	 * Gets the included note.<br/>
-	 * Profile: Note.content COMFORT<br/>
-	 * Profile: Note.subjectCode EXTENDED<br/>
+    * Sets the line position number
+    * Profile: COMFORT
+    *
+    * @param positionNumber the new position number
+    */
+	public void setPositionNumber(String positionNumber) {
+		this.positionNumber = new ID(positionNumber);
+	}
+
+	/**
+	 * Gets the included note.
+
+	 * Profile: Note.content COMFORT
+
+	 * Profile: Note.subjectCode EXTENDED
+
 	 *
 	 * @return the included note
 	 */
@@ -81,9 +109,12 @@ public class DocumentLine {
 	}
 
 	/**
-	 * Adds the note.<br/>
-	 * Profile: Note.content COMFORT<br/>
-	 * Profile: Note.subjectCode EXTENDED<br/>
+	 * Adds the note.
+
+	 * Profile: Note.content COMFORT
+
+	 * Profile: Note.subjectCode EXTENDED
+
 	 *
 	 * @param note the note
 	 * @return the document line document

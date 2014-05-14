@@ -1,4 +1,4 @@
 /**
- * This package contains various Invoice validation Classes.
+ * Invoice validations services
  */
 package io.konik.validation;

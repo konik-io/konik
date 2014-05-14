@@ -18,7 +18,7 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.Quantity;
+import io.konik.zugferd.unqualified.Quantity;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -67,8 +67,10 @@ public class Delivery {
 	}
 
 	/**
-	 * Gets the billed quantity.<br/>
-	 * Profile: BASIC <br/>
+	 * Gets the billed quantity.
+
+	 * Profile: BASIC 
+
 	 *
 	 * @return the billed quantity
 	 */
@@ -77,8 +79,10 @@ public class Delivery {
 	}
 
 	/**
-	 * Sets the billed quantity.<br/>
-	 * Profile: BASIC <br/>
+	 * Sets the billed quantity.
+
+	 * Profile: BASIC 
+
 	 *
 	 * @param billedQuantity the new billed quantity
 	 */

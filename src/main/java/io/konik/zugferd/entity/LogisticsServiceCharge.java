@@ -18,7 +18,7 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.Amount;
+import io.konik.zugferd.unqualified.Amount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,24 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class LogisticsServiceCharge. Represents the transport and packaging costs.
+ * = The Logistics Service Charge
  * 
- * 
+ * Represents the transport and packaging costs.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LogisticsServiceChargeType", propOrder = { "description", "amount", "tradeTax" })
 public class LogisticsServiceCharge {
 
-	/** The description. */
 	@XmlElement(name = "Description")
 	private String description;
-
-	/** The applied amount. */
+	
 	@Valid
 	@XmlElement(name = "AppliedAmount")
 	private Amount amount;
 
-	/** The applied trade tax. */
 	@Valid
 	@XmlElement(name = "AppliedTradeTax")
 	private List<TradeTax> tradeTax;
@@ -103,14 +100,15 @@ public class LogisticsServiceCharge {
 		return this.tradeTax;
 	}
 
+
 	/**
-	 * Adds the trade tax.
-	 * 
-	 * @param tradeTax the trade tax
-	 * @return the logistics service charge
-	 */
-	public LogisticsServiceCharge addTradeTax(TradeTax tradeTax) {
-		getTradeTax().add(tradeTax);
+    * Adds a trade tax.
+    *
+    * @param additionalTradeTax the additional trade tax
+    * @return the logistics service charge
+    */
+	public LogisticsServiceCharge addTradeTax(TradeTax additionalTradeTax) {
+		getTradeTax().add(additionalTradeTax);
 		return this;
 	}
 

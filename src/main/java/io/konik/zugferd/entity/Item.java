@@ -24,56 +24,49 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * The Class represents the trade items.
- *
+ * = The Trade Item.
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SupplyChainTradeLineItemType", propOrder = { "position", "agreement", "delivery",
-		"settlement", "product" })
+@XmlType(name = "SupplyChainTradeLineItemType", propOrder = { "position", "agreement", "delivery","settlement", "product" })
 public class Item {
 
-	/** The associated document line document. */
    @Valid
 	@XmlElement(name = "AssociatedDocumentLineDocument")
 	private DocumentLine position;
 
-	/** The specified supply chain trade agreement. */
    @Valid
 	@XmlElement(name = "SpecifiedSupplyChainTradeAgreement")
 	private TradeAgreement agreement;
 
-	/** The specified supply chain trade delivery. */
    @Valid
 	@XmlElement(name = "SpecifiedSupplyChainTradeDelivery")
 	private Delivery delivery;
 
-	/** The specified supply chain trade settlement. */
    @Valid
 	@XmlElement(name = "SpecifiedSupplyChainTradeSettlement")
 	private TradeSettlement settlement;
 
-	/** The specified trade product. */
    @Valid
 	@XmlElement(name = "SpecifiedTradeProduct")
 	private TradeProduct product;
 
-	/**
-	 * Gets the associated document line document.
-	 *
-	 * @return the associated document line document
-	 */
+   /**
+    * Gets the item position document.
+    *
+    * @return the position
+    */
 	public DocumentLine getPosition() {
 		return position;
 	}
 
 	/**
-	 * Sets the associated document line document.
-	 *
-	 * @param newPosition the new associated document line document
-	 */
-	public void setPosition(DocumentLine newPosition) {
-		this.position = newPosition;
+    * Sets the item position document.
+    *
+    * @param position the new position
+    */
+	public void setPosition(DocumentLine position) {
+		this.position = position;
 	}
 
 	/**

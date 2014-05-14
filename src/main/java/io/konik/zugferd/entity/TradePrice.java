@@ -18,8 +18,8 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.Amount;
-import io.konik.zugferd.datatype.unqualified.Quantity;
+import io.konik.zugferd.unqualified.Amount;
+import io.konik.zugferd.unqualified.Quantity;
 
 import java.util.ArrayList;
 import java.util.List;

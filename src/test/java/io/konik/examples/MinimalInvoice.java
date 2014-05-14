@@ -17,19 +17,19 @@
  */
 package io.konik.examples;
 
-import static io.konik.invoice.profiles.InvoiceProfile.BASIC;
+import static com.neovisionaries.i18n.CurrencyCode.EUR;
+import static io.konik.unece.codes.DocumentNameType._380;
 import static io.konik.utils.InvoiceTestingUtils.getSchemaValidator;
-import static io.konik.zugferd.datatype.qualified.DateTimeFormat.F102;
 import io.konik.utils.InvoiceTestingUtils;
+import io.konik.zugferd.qualified.DateTime;
+import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.Invoice;
-import io.konik.zugferd.datatype.qualified.DateTime;
-import io.konik.zugferd.datatype.unqualified.Amount;
 import io.konik.zugferd.entity.Address;
 import io.konik.zugferd.entity.DebtorFinancialAccount;
 import io.konik.zugferd.entity.DebtorFinancialInstitution;
 import io.konik.zugferd.entity.Delivery;
 import io.konik.zugferd.entity.Event;
-import io.konik.zugferd.entity.ExchangeDocument;
+import io.konik.zugferd.entity.Header;
 import io.konik.zugferd.entity.Item;
 import io.konik.zugferd.entity.MonetarySummation;
 import io.konik.zugferd.entity.PaymentMeans;
@@ -39,11 +39,11 @@ import io.konik.zugferd.entity.TradeAgreement;
 import io.konik.zugferd.entity.TradeParty;
 import io.konik.zugferd.entity.TradeProduct;
 import io.konik.zugferd.entity.TradeSettlement;
+import io.konik.zugferd.profile.BasicProfile;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.Date;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -56,31 +56,32 @@ import org.xml.sax.SAXException;
  * The example class shows how easy it is to create a compact invoice.
  * 
  */
+@SuppressWarnings("javadoc")
 public class MinimalInvoice {
 
    private Invoice createMinimalValidInvoice() {
-      Invoice invoice = new Invoice(BASIC);
-      invoice.setHeader(new ExchangeDocument().setId("20131122-42").setTypeCode("380")
-            .setIssued(new DateTime(new Date())).addName("Rechnung"));
+      Invoice invoice = new Invoice(new BasicProfile());
+      invoice.setHeader(new Header().setInvoiceNumber("20131122-42").setType(_380)
+            .setIssued(new DateTime()).addName("Rechnung"));
 
-      Trade tradeTransaction = new Trade();
-      tradeTransaction.addAgreement(new TradeAgreement().setSellerTradeParty(
+      Trade trade = new Trade();
+      trade.setAgreement(new TradeAgreement().setSellerTradeParty(
             new TradeParty().setName("Seller Inc.").setAddress(new Address("35578", "Fontanestr, 14", "Wetzlar", "DE"))
                   .addTaxRegistration(new TaxRegistration("DE122...", "FC"))).setBuyerTradeParty(
             new TradeParty().setName("Buyer Inc.").setAddress(new Address("50667", "Domkloster 4", "Köln", "DE"))
                   .addTaxRegistration(new TaxRegistration("DE123...", "FC"))));
 
-      tradeTransaction.setDelivery(new Delivery().setEvent(new Event(new Date(), F102)));
+      trade.setDelivery(new Delivery().setEvent(new Event(new DateTime())));
 
-      tradeTransaction.setTradeSettlement(new TradeSettlement().setPaymentReference("20131122-42").setInvoiceCurrency("EUR")
+      trade.setTradeSettlement(new TradeSettlement().setPaymentReference("20131122-42").setCurrency(EUR)
             .addPaymentMeans(new PaymentMeans().setPayerAccount(new DebtorFinancialAccount("DE01234..")).setPayerInstitution(
                   new DebtorFinancialInstitution("GENO...")))
             .setMonetarySummation(new MonetarySummation().
-                  setNetTotal(new Amount(100d, "EUR")).setTaxTotal(new Amount(19d, "EUR")).setGrandTotal(new Amount(119d, "EUR"))));
+                  setNetTotal(new Amount(100, EUR)).setTaxTotal(new Amount(19, EUR)).setGrandTotal(new Amount(119, EUR))));
       
-      tradeTransaction.addItem(new Item().setProduct(new TradeProduct().setName("Webcam HD")));
+      trade.addItem(new Item().setProduct(new TradeProduct().setName("Webcam HD")));
 
-      invoice.addTrade(tradeTransaction);
+      invoice.setTrade(trade);
       return invoice;
    }
 

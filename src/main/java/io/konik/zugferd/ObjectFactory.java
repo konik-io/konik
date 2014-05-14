@@ -22,17 +22,30 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+/**
+ * A factory for creating Object objects.
+ */
 @XmlRegistry
 public class ObjectFactory {
 
+	/** The Constant QNAME. */
 	private final static QName QNAME = new QName("urn:un:unece:uncefact:data:standard:CBFBUY:5","Invoice","rsm");
 
-	public ObjectFactory() {
-	}
+	/**
+    * Creates a new Object object.
+    *
+    * @return the invoice
+    */
 	public Invoice createInvoice() {
 		return new Invoice();
 	}
 
+	/**
+    * Creates a new Object object.
+    *
+    * @param invoice the invoice
+    * @return the JAXB element 
+    */
 	@XmlElementDecl(namespace = "urn:un:unece:uncefact:data:standard:CBFBUY:5", name = "Invoice")
 	public JAXBElement<Invoice> createInvoice(Invoice invoice) {
 		return new JAXBElement<Invoice>(QNAME, Invoice.class, null, invoice);

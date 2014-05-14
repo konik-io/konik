@@ -18,7 +18,7 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.ID;
+import io.konik.zugferd.unqualified.ID;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -27,11 +27,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class TaxRegistration represents the tax number and its type. <br/>
- * The {@link ID#getValue()} is value added tax identification number<br/>
- * The {@link ID#getSchemeId()} is the Tax payer's number or VAT number according to (UNCL 1153) eg. FC or VA<br/>
- * 
- * 
+ * = The TaxRegistration represents the tax number and its type. 
+ * The {@link ID#getValue()} is value added tax identification number
+ * The {@link ID#getSchemeId()} is the Tax payer's number or VAT number according to (UNCL 1153) eg. FC or VA
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TaxRegistrationType", propOrder = { "id" })
@@ -66,8 +64,10 @@ public class TaxRegistration {
 	}
 
 	/**
-	 * Gets the tax number.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the tax number.
+
+	 * Profile: BASIC
+
 	 * Example: {@code DE234567891}
 	 * 
 	 * @return the number
@@ -77,8 +77,10 @@ public class TaxRegistration {
 	}
 
 	/**
-	 * Sets the tax number.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the tax number.
+
+	 * Profile: BASIC
+
 	 * Example: {@code DE234567891}
 	 * 
 	 * @param taxNumber the new value
@@ -88,8 +90,10 @@ public class TaxRegistration {
 	}
 
 	/**
-	 * Gets the tax type.the UNCL 1153 tax type.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the tax type.the UNCL 1153 tax type.
+
+	 * Profile: BASIC
+
 	 * Example: {@code VA}
 	 * 
 	 * @return the type
@@ -100,8 +104,10 @@ public class TaxRegistration {
 	}
 
 	/**
-	 * Sets the UNCL 1153 tax type.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the UNCL 1153 tax type.
+
+	 * Profile: BASIC
+
 	 * Example: {@code VA}
 	 * 
 	 * @param taxType the new type

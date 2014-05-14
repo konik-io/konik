@@ -51,10 +51,10 @@ public class TradeCountry {
 	}
 
 	/**
-	 * Sets the ISO 3166-2 codes of the country
-	 * 
-	 * @param id the new ISO 3166-2 codes of the country
-	 */
+    * Sets the ISO 3166-2 codes of the country.
+    *
+    * @param code the new code
+    */
 	public void setCode(String code) {
 		this.code = code;
 	}

@@ -24,12 +24,24 @@ package io.konik.harness;
  */
 public class InvoiceAppendError extends RuntimeException {
 
+   /** The Constant serialVersionUID. */
    private static final long serialVersionUID = -934899512930010703L;
 
+   /**
+    * Instantiates a new invoice append error.
+    *
+    * @param msg the message
+    */
    public InvoiceAppendError(String msg) {
       super(msg);
    }
 
+   /**
+    * Instantiates a new invoice append error.
+    *
+    * @param msg the message
+    * @param e the e
+    */
    public InvoiceAppendError(String msg, Throwable e) {
     super(msg, e);
    }

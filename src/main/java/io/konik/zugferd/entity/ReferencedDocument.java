@@ -17,11 +17,8 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.qualified.DateTime;
-import io.konik.zugferd.datatype.unqualified.ID;
-
-import java.util.ArrayList;
-import java.util.List;
+import io.konik.zugferd.qualified.DateTime;
+import io.konik.zugferd.unqualified.ID;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,26 +28,26 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * This Class References a external Document.
+ * = The Referenced Document
  * 
- * 
+ * References a external Document.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ReferencedDocumentType", propOrder = { "issued", "id" })
 public class ReferencedDocument {
 
-	/** The issue date time. */
    @Valid
 	@XmlElement(name = "IssueDateTime")
 	private DateTime issued;
 
-	/** The id. */
 	@XmlElement(name = "ID")
-	private List<ID> id;
+	private ID id;
 
 	/**
-	 * Gets the issue date time.<br/>
-	 * Profile: COMFORT <br/>
+	 * Gets the issue date time.
+
+	 * Profile: COMFORT 
+
 	 * 
 	 * @return the issue date time
 	 */
@@ -59,26 +56,45 @@ public class ReferencedDocument {
 	}
 
 	/**
-	 * Sets the issue date time.<br/>
-	 * Profile: COMFORT <br/>
+	 * Sets the issue date time.
+
+	 * Profile: COMFORT 
+
 	 * 
 	 * @param issued the new issue date time
 	 */
 	public void setIssued(DateTime issued) {
 		this.issued = issued;
 	}
-
+	
 	/**
-	 * Gets the id.<br/>
-	 * Profile: COMFORT <br/>
-	 * 
-	 * @return the id
-	 */
-	public List<ID> getId() {
-		if (id == null) {
-			id = new ArrayList<ID>();
-		}
-		return this.id;
+    * Sets the reference document id.
+    *
+    * @param value the value
+    * @return the referenced document
+    */
+	public ReferencedDocument setId(String value){
+	   id = new ID(value);
+	   return this;
 	}
 
+   /**
+    * Gets the id.
+    *
+    * @return the id
+    */
+   public ID getId() {
+      return id;
+   }
+
+   /**
+    * Sets the id.
+    *
+    * @param id the id
+    * @return the referenced document
+    */
+   public ReferencedDocument setId(ID id) {
+      this.id = id;
+      return this;
+   }
 }

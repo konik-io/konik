@@ -18,194 +18,212 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.qualified.PaymentMeansCode;
+import io.konik.unece.codes.PaymentMeansType;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.executable.ValidateOnExecution;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * The Class TradeSettlementPaymentMeans.
+ * = The Payment Means.
+ * 
+ * Detailed information on the means of payment.
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeSettlementPaymentMeansType", propOrder = { "code", "information", "payerAccount",
-		"payeeAccount", "payerInstitution", "payeeInstitution" })
+@XmlType(name = "TradeSettlementPaymentMeansType", propOrder = { "code", "information", "payerAccount", "payeeAccount",
+      "payerInstitution", "payeeInstitution" })
+@ValidateOnExecution
 public class PaymentMeans {
 
-	/** The UNCL 4461 type code. */
    @Valid
-	@XmlElement(name = "TypeCode")
-	private PaymentMeansCode code;
+   @XmlElement(name = "TypeCode")
+   private PaymentMeansType code;
 
-	/** The information. */
-	@XmlElement(name = "Information")
-	private List<String> information;
+   @XmlElement(name = "Information")
+   private List<String> information;
 
-	/** The payer/buyer party debtor financial account. */
-	@Valid
-	@XmlElement(name = "PayerPartyDebtorFinancialAccount")
-	private DebtorFinancialAccount payerAccount;
+   @Valid
+   @XmlElement(name = "PayerPartyDebtorFinancialAccount")
+   private DebtorFinancialAccount payerAccount;
 
-	/** The payee/seller party creditor financial account. */
-	@Valid
-	@XmlElement(name = "PayeePartyCreditorFinancialAccount")
-	private CreditorFinancialAccount payeeAccount;
+   @Valid
+   @XmlElement(name = "PayeePartyCreditorFinancialAccount")
+   private CreditorFinancialAccount payeeAccount;
 
-	/** The payer specified debtor financial institution. */
-	@Valid
-	@XmlElement(name = "PayerSpecifiedDebtorFinancialInstitution")
-	private DebtorFinancialInstitution payerInstitution;
+   @Valid
+   @XmlElement(name = "PayerSpecifiedDebtorFinancialInstitution")
+   private DebtorFinancialInstitution payerInstitution;
 
-	/** The payee specified creditor financial institution. */
-	@Valid
-	@XmlElement(name = "PayeeSpecifiedCreditorFinancialInstitution")
-	private CreditorFinancialInstitution payeeInstitution;
+   @Valid
+   @XmlElement(name = "PayeeSpecifiedCreditorFinancialInstitution")
+   private CreditorFinancialInstitution payeeInstitution;
 
-	/**
-	 * Gets the UNCL 4461 type code.<br/>
-	 * Profile: COMFORT<br/>
-	 * 
-	 * @return the UNCL 4461 type code
-	 * @see <a href="http://www.unece.org/trade/untdid/i98a/uncl/uncl4461.htm">UNCL 4461</a>
-	 */
-	public String getTypeCode() {
-		return code.getValue();
-	}
+   /**
+    * Gets the +UNCL 4461+ type code.
+    * Profile: COMFORT
+    * 
+    * @return the UNCL 4461 type code
+    * @see http://www.unece.org/trade/untdid/d13b/tred/tred4461.htm[UN/EDIFACT 4461 Payment means code^]
+    */
+   public PaymentMeansType getCode() {
+      return code;
+   }
 
-	/**
-	 * Sets the UNCL 4461 type code.<br/>
-	 * Profile: COMFORT<br/>
-	 * 
-	 * @param paymentCode the new UNCL 4461 payment code
-	 * @return the trade settlement payment means
-	 * @see <a href="http://www.unece.org/trade/untdid/i98a/uncl/uncl4461.htm">UNCL 4461</a>
-	 */
-	public PaymentMeans setTypeCode(String paymentCode) {
-		this.code = new PaymentMeansCode(paymentCode);
-		return this;
-	}
+   /**
+    * Sets the +UNCL 4461+ code.
+    *
+    * Profile: *COMFORT*
+    * 
+    * @param paymentMeansCode the new UNCL 4461 payment means code
+    * @return the trade settlement payment means
+    * @see http://www.unece.org/trade/untdid/d13b/tred/tred4461.htm[UN/EDIFACT 4461 Payment means code^]
+    */
+   public PaymentMeans setCode(PaymentMeansType paymentMeansCode) {
+      this.code = paymentMeansCode;
+      return this;
+   }
 
-	/**
-	 * Gets the free text payment method information.<br/>
-	 * Profile: COMFORT<br/>
-	 * Example: <code>Cash, Credit Card</code>
-	 * 
-	 * @return the information
-	 */
-	public List<String> getInformation() {
-		if (information == null) {
-			information = new ArrayList<String>();
-		}
-		return this.information;
-	}
+   /**
+    * Gets the free text payment method information.
+    * 
+    * Profile: COMFORT
+    * 
+    * Example: <code>Cash, Credit Card</code>
+    * 
+    * @return the information
+    */
+   public List<String> getInformation() {
+      if (information == null) {
+         information = new ArrayList<String>();
+      }
+      return this.information;
+   }
 
-	/**
-	 * Adds the free text payment method information.<br/>
-	 * Profile: COMFORT<br/>
-	 * Example: <code>Cash, Credit Card</code>
-	 * 
-	 * @param information the information
-	 * @return the trade settlement payment means
-	 */
-	public PaymentMeans addInformation(String information) {
-		getInformation().add(information);
-		return this;
-	}
+   /**
+    * Adds the free text payment method information.
+    * 
+    * Profile: COMFORT
+    * 
+    * Example: +Cash, Credit Card+
+    *
+    * @param additionalInformation the additional information
+    * @return the payment means
+    */
+   public PaymentMeans addInformation(String additionalInformation) {
+      getInformation().add(additionalInformation);
+      return this;
+   }
 
-	/**
-	 * Gets the payer/buyer debtor financial account.<br/>
-	 * Profile: COMFORT<br/>
-	 * 
-	 * @return the payer party debtor financial account
-	 */
-	public DebtorFinancialAccount getPayerAccount() {
-		return payerAccount;
-	}
+   /**
+    * Gets the payer/buyer debtor financial account.
+    * 
+    * Profile: COMFORT
+    * 
+    * 
+    * @return the payer party debtor financial account
+    */
+   public DebtorFinancialAccount getPayerAccount() {
+      return payerAccount;
+   }
 
-	/**
-	 * Sets the payer/buyer party debtor financial account.<br/>
-	 * Profile: COMFORT<br/>
-	 * 
-	 * @param payerAccount the payer account
-	 * @return the trade settlement payment means
-	 */
-	public PaymentMeans setPayerAccount(DebtorFinancialAccount payerAccount) {
-		this.payerAccount = payerAccount;
-		return this;
-	}
+   /**
+    * Sets the payer/buyer party debtor financial account.
+    * 
+    * Profile: COMFORT
+    * 
+    * 
+    * @param payerAccount the payer account
+    * @return the trade settlement payment means
+    */
+   public PaymentMeans setPayerAccount(DebtorFinancialAccount payerAccount) {
+      this.payerAccount = payerAccount;
+      return this;
+   }
 
-	/**
-	 * Gets the payee/seller party creditor financial account.<br/>
-	 * Profile: BASIC<br/>
-	 * 
-	 * @return the payee party creditor financial account
-	 */
-	public CreditorFinancialAccount getPayeeAccount() {
-		return payeeAccount;
-	}
+   /**
+    * Gets the payee/seller party creditor financial account.
+    * 
+    * Profile: BASIC
+    * 
+    * 
+    * @return the payee party creditor financial account
+    */
+   public CreditorFinancialAccount getPayeeAccount() {
+      return payeeAccount;
+   }
 
-	/**
-	 * Sets the payee/seller party creditor financial account.<br/>
-	 * Profile: BASIC<br/>
-	 * 
-	 * @param payeeAccount the payee account
-	 * @return the trade settlement payment means
-	 */
-	public PaymentMeans setPayeeAccount(CreditorFinancialAccount payeeAccount) {
-		this.payeeAccount = payeeAccount;
-		return this;
-	}
+   /**
+    * Sets the payee/seller party creditor financial account.
+    * 
+    * Profile: BASIC
+    * 
+    * 
+    * @param payeeAccount the payee account
+    * @return the trade settlement payment means
+    */
+   public PaymentMeans setPayeeAccount(CreditorFinancialAccount payeeAccount) {
+      this.payeeAccount = payeeAccount;
+      return this;
+   }
 
-	/**
-	 * Gets the payer/buyer specified debtor financial institution.<br/>
-	 * Profile: COMFORT<br/>
-	 * 
-	 * @return the payer specified debtor financial institution
-	 */
-	public DebtorFinancialInstitution getPayerInstitution() {
-		return payerInstitution;
-	}
+   /**
+    * Gets the payer/buyer specified debtor financial institution.
+    * 
+    * Profile: COMFORT
+    * 
+    * 
+    * @return the payer specified debtor financial institution
+    */
+   public DebtorFinancialInstitution getPayerInstitution() {
+      return payerInstitution;
+   }
 
-	/**
-	 * Sets the payer/buyer specified debtor financial institution.<br/>
-	 * Profile: COMFORT<br/>
-	 * 
-	 * @param payerInstitution the payer institution
-	 * @return the trade settlement payment means
-	 */
-	public PaymentMeans setPayerInstitution(DebtorFinancialInstitution payerInstitution) {
-		this.payerInstitution = payerInstitution;
-		return this;
-	}
+   /**
+    * Sets the payer/buyer specified debtor financial institution.
+    * 
+    * Profile: COMFORT
+    * 
+    * 
+    * @param payerInstitution the payer institution
+    * @return the trade settlement payment means
+    */
+   public PaymentMeans setPayerInstitution(DebtorFinancialInstitution payerInstitution) {
+      this.payerInstitution = payerInstitution;
+      return this;
+   }
 
-	/**
-	 * Gets the payee/seller specified creditor financial institution.<br/>
-	 * Profile: BASIC<br/>
-	 * 
-	 * @return the payee specified creditor financial institution
-	 */
-	public CreditorFinancialInstitution getPayeeInstitution() {
-		return payeeInstitution;
-	}
+   /**
+    * Gets the payee/seller specified creditor financial institution.
+    * 
+    * Profile: BASIC
+    * 
+    * 
+    * @return the payee specified creditor financial institution
+    */
+   public CreditorFinancialInstitution getPayeeInstitution() {
+      return payeeInstitution;
+   }
 
-	/**
-	 * Sets the payee/seller specified creditor financial institution.<br/>
-	 * Profile: BASIC<br/>
-	 * 
-	 * @param payeeInstitution the payee institution
-	 * @return the trade settlement payment means
-	 */
-	public PaymentMeans setPayeeInstitution(CreditorFinancialInstitution payeeInstitution) {
-		this.payeeInstitution = payeeInstitution;
-		return this;
-	}
+   /**
+    * Sets the payee/seller specified creditor financial institution.
+    * 
+    * Profile: BASIC
+    * 
+    * 
+    * @param payeeInstitution the payee institution
+    * @return the trade settlement payment means
+    */
+   public PaymentMeans setPayeeInstitution(CreditorFinancialInstitution payeeInstitution) {
+      this.payeeInstitution = payeeInstitution;
+      return this;
+   }
 
 }

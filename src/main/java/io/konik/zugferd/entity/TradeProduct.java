@@ -18,7 +18,7 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.ID;
+import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
 import java.util.List;

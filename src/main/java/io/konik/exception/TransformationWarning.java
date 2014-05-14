@@ -23,13 +23,24 @@ package io.konik.exception;
  * 
  */
 public class TransformationWarning extends Exception {
-
    private static final long serialVersionUID = -249661599608287823L;
    
+   /**
+    * Instantiates a new transformation warning.
+    *
+    * @param message the message
+    */
    public TransformationWarning(String message){
       super(message);
       
    }
+   
+   /**
+    * Instantiates a new transformation warning.
+    *
+    * @param message the message
+    * @param throwable the throwable
+    */
    public TransformationWarning(String message, Throwable throwable) {
      super(message,throwable);
    }

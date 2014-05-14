@@ -17,7 +17,7 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.ID;
+import io.konik.zugferd.unqualified.ID;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class UniversalCommunication.
+ * = The Universal Communication.
  * 
  * 
  */

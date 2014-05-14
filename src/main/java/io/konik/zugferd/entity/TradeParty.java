@@ -18,12 +18,13 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.ID;
+import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -33,8 +34,6 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * Identifies the trade party by the given parameters. Also provides a contact and tax registration
  * informations.
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradePartyType", propOrder = { "id", "globalId", "name", "contact", "address",
@@ -50,6 +49,7 @@ public class TradeParty {
 	private List<ID> globalId;
 
 	/** The name of the trade party. */
+	@NotNull
 	@XmlElement(name = "Name")
 	private String name;
 
@@ -69,8 +69,10 @@ public class TradeParty {
 	private List<TaxRegistration> taxRegistration;
 
 	/**
-	 * Gets the id.<br/>
-	 * Profile: COMFORT when part of Trade.agreements.seller><br/>
+	 * Gets the id.
+
+	 * Profile: COMFORT when part of Trade.agreements.seller
+
 	 * Example: {@code The supplier number given by the customer/buyer }
 	 * 
 	 * @return the id
@@ -80,8 +82,10 @@ public class TradeParty {
 	}
 
 	/**
-	 * Sets the id.<br/>
-	 * Profile: COMFORT when part of Trade.agreements.seller><br/>
+	 * Sets the id.
+
+	 * Profile: COMFORT when part of Trade.agreements.seller
+
 	 * Example: {@code The supplier number given by the customer/buyer }
 	 * 
 	 * @param id the new id
@@ -91,10 +95,13 @@ public class TradeParty {
 	}
 
 	/**
-	 * Gets the trade party global id. (GLN, DUNS, BIC, ODETTE)<br/>
-	 * Profile: COMFORT when part of Trade.agreements.seller><br/>
-	 * Example: {@link ID#getValue()}{@code  GENODED1SPK, 4000001000005 } Example: {@link ID#getSchemeId()} the
-	 * ISO 6523 code {@code 0021, 0088, 0060, 0177 }
+	 * Gets the trade party global id. (GLN, DUNS, BIC, ODETTE)
+	 * 
+	 * Profile: COMFORT when part of Trade.agreements.seller
+	 * 
+	 * Example: {@link ID#getValue()} {@code  GENODED1SPK, 4000001000005 } 
+	 * 
+	 * Example: {@link ID#getSchemeId()} the ISO 6523 code {@code 0021, 0088, 0060, 0177 }
 	 * 
 	 * @return the global id
 	 */
@@ -106,21 +113,25 @@ public class TradeParty {
 	}
 
 	/**
-	 * Adds the global id. Profile: COMFORT when part of Trade.agreements.seller><br/>
-	 * Example: {@link ID#getValue()}{@code  GENODED1SPK, 4000001000005 } Example: {@link ID#getSchemeId()} the
-	 * ISO 6523 code {@code 0021, 0088, 0060, 0177 }
-	 * 
-	 * @param globalId the global id
-	 * @return the trade party
-	 */
-	public TradeParty addGlobalId(ID globalId) {
-		getGlobalId().add(globalId);
+    * Adds the global id. Profile: COMFORT when part of Trade.agreements.seller
+    * 
+    * Example: {@link ID#getValue()}{@code  GENODED1SPK, 4000001000005 }
+    * 
+    * Example: {@link ID#getSchemeId()} the ISO 6523 code {@code 0021, 0088, 0060, 0177 }
+    *
+    * @param additionalGlobalId the additional global id
+    * @return the trade party
+    */
+	public TradeParty addGlobalId(ID additionalGlobalId) {
+		getGlobalId().add(additionalGlobalId);
 		return this;
 	}
 
 	/**
-	 * Gets the trade party name. Usually the Company name.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller/buyer.<br/>
+	 * Gets the trade party name. Usually the Company name.
+
+	 * Profile: BASIC when part of Trade.agreements.seller/buyer.
+
 	 * Example: {@code  ACME Inc.}
 	 * 
 	 * @return the name
@@ -130,8 +141,10 @@ public class TradeParty {
 	}
 
 	/**
-	 * Sets the trade party name. Usually the Company name.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller/buyer.<br/>
+	 * Sets the trade party name. Usually the Company name.
+
+	 * Profile: BASIC when part of Trade.agreements.seller/buyer.
+
 	 * Example: {@code  ACME Inc.}
 	 * 
 	 * @param name the name
@@ -143,8 +156,10 @@ public class TradeParty {
 	}
 
 	/**
-	 * Gets the contact person.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller/buyer.<br/>
+	 * Gets the contact person.
+
+	 * Profile: BASIC when part of Trade.agreements.seller/buyer.
+
 	 * 
 	 * @return the defined trade contact
 	 */
@@ -153,8 +168,10 @@ public class TradeParty {
 	}
 
 	/**
-	 * Sets the contact person.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller/buyer.<br/>
+	 * Sets the contact person.
+
+	 * Profile: BASIC when part of Trade.agreements.seller/buyer.
+
 	 * 
 	 * @param contact the new defined trade contact
 	 * @return the trade party
@@ -165,8 +182,10 @@ public class TradeParty {
 	}
 
 	/**
-	 * Gets the postal trade address.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller/buyer.<br/>
+	 * Gets the postal trade address.
+
+	 * Profile: BASIC when part of Trade.agreements.seller/buyer.
+
 	 * 
 	 * @return the postal trade address
 	 */
@@ -175,8 +194,10 @@ public class TradeParty {
 	}
 
 	/**
-	 * Sets the postal trade address.<br/>
-	 * Profile: BASIC when part of Trade.agreements.seller/buyer.<br/>
+	 * Sets the postal trade address.
+
+	 * Profile: BASIC when part of Trade.agreements.seller/buyer.
+
 	 * 
 	 * @param postalAddress the new postal trade address
 	 * @return the trade party
@@ -187,8 +208,10 @@ public class TradeParty {
 	}
 
 	/**
-	 * Gets the specified tax registration.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the specified tax registration.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @return the specified tax registration
 	 */
@@ -200,14 +223,16 @@ public class TradeParty {
 	}
 
 	/**
-	 * Adds the tax registration.<br/>
-	 * Profile: BASIC<br/>
+	 * Adds the tax registration.
+
+	 * Profile: BASIC
+
 	 * 
-	 * @param taxRegistration the tax registration
+	 * @param additionalTaxRegistration an additional Tax Registration 
 	 * @return the trade party
 	 */
-	public TradeParty addTaxRegistration(TaxRegistration taxRegistration) {
-		getTaxRegistration().add(taxRegistration);
+	public TradeParty addTaxRegistration(TaxRegistration additionalTaxRegistration) {
+		getTaxRegistration().add(additionalTaxRegistration);
 		return this;
 	}
 

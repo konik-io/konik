@@ -44,7 +44,6 @@ public interface InvoiceAppender {
     * @param invoice the invoice
     * @param inputPdf the input pdf
     * @param resultingPdf the resulting pdf
-    * @return the resulting PDF output stream
     */
 	public void append(Invoice invoice, InputStream inputPdf, OutputStream resultingPdf);
 

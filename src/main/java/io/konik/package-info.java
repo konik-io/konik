@@ -1,5 +1,4 @@
 /**
- * The Konik library is a easy to use open source implementation of the ZUGFeRD data model including various enhancements. 
- * 
+ * The starting point Model, XML handling, transformation and validation.
  */
 package io.konik;

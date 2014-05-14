@@ -1,3 +1,6 @@
+/**
+ * The starting point of every Konik Invoice.
+ */
 @XmlSchema(elementFormDefault = XmlNsForm.QUALIFIED, namespace = "urn:un:unece:uncefact:data:standard:CBFBUY:5", xmlns = { @XmlNs(prefix = "rsm", namespaceURI = "urn:un:unece:uncefact:data:standard:CBFBUY:5") })
 package io.konik.zugferd;
 

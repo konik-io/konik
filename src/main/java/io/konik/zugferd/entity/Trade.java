@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -28,76 +29,67 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class Trade. <br/>
- * Groups the various aspects a invoice trade transaction.<br/>
+ * = The Trade.
+ *  
+ * Groups the various aspects of an trade transaction.
  * 
- * The Trade Transaction is divided into the "global" trade agreements, delivery and trade settlement
+ * A Trade is divided into the "global" trade agreements, delivery and trade settlement
  * parameters that can be overwritten/complemented on item basis.
- * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreements", "delivery", "tradeSettlement",
+@XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreement", "delivery", "tradeSettlement",
 		"items" })
 public class Trade {
 
-	/** The contract agreements. */
-   @Valid
+   @NotNull
 	@XmlElement(name = "ApplicableSupplyChainTradeAgreement")
-	private List<TradeAgreement> agreements;
+	private TradeAgreement agreement;
 
-	/** The trade delivery. */
    @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeDelivery")
 	private Delivery delivery;
 
-	/** The payment settlement. */
    @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeSettlement")
 	private TradeSettlement tradeSettlement;
 
-	/** The items. */
    @Valid
 	@XmlElement(name = "IncludedSupplyChainTradeLineItem")
 	private List<Item> items;
 
 	/**
-	 * Gets the applicable supply chain trade agreement.
-	 * 
-	 * @return the applicable supply chain trade agreement
-	 */
-	public List<TradeAgreement> getAgreements() {
-		if (agreements == null) {
-			agreements = new ArrayList<TradeAgreement>();
-		}
-		return this.agreements;
-	}
+    * Gets the trade agreement.
+    *
+    * @return the agreement
+    */
+	public TradeAgreement getAgreement() {
+      return agreement;
+   }
 
-	/**
-	 * Adds the agreement.
-	 * 
-	 * @param newAgreement the new agreement
-	 * @return the supply chain trade transaction
-	 */
-	public Trade addAgreement(TradeAgreement newAgreement) {
-		getAgreements().add(newAgreement);
-		return this;
-	}
+   /**
+    * Sets the trade agreement.
+    *
+    * @param agreement the new agreement
+    */
+   public void setAgreement(TradeAgreement agreement) {
+      this.agreement = agreement;
+   }
 
-	/**
-	 * Gets the applicable supply chain trade delivery.
+   /**
+	 * Gets the trade delivery.
 	 * 
-	 * @return the applicable supply chain trade delivery
+	 * @return the trade delivery
 	 */
 	public Delivery getDelivery() {
 		return delivery;
 	}
 
 	/**
-	 * Sets the applicable supply chain trade delivery.
+	 * Sets the trade delivery.
 	 * 
-	 * @param delivery the new applicable supply chain trade delivery
-	 * @return the supply chain trade transaction
+	 * @param delivery the new trade delivery
+	 * @return the trade 
 	 */
 	public Trade setDelivery(Delivery delivery) {
 		this.delivery = delivery;
@@ -105,16 +97,16 @@ public class Trade {
 	}
 
 	/**
-	 * Gets the applicable supply chain trade settlement.
+	 * Gets the trade settlement.
 	 * 
-	 * @return the applicable supply chain trade settlement
+	 * @return the trade settlement
 	 */
 	public TradeSettlement getTradeSettlement() {
 		return tradeSettlement;
 	}
 
 	/**
-	 * Sets the applicable supply chain trade settlement.
+	 * Sets the trade settlement.
 	 * 
 	 * @param tradeSettlement the new trade settlement
 	 */
@@ -138,7 +130,7 @@ public class Trade {
 	 * Adds an item.
 	 * 
 	 * @param item the item
-	 * @return the trade transaction
+	 * @return the trade 
 	 */
 	public Trade addItem(Item item) {
 		getItems().add(item);

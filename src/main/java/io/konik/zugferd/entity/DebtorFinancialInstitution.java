@@ -18,7 +18,7 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.ID;
+import io.konik.zugferd.unqualified.ID;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -27,95 +27,75 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class DebtorFinancialInstitution.
+ * = The Debtor Financial Institution.
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DebtorFinancialInstitutionType", propOrder = { "bic", "germanBankleitzahl", "name" })
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "DebtorFinancialInstitutionType", propOrder = { "bic", "germanBankleitzahl", "name" })
 public class DebtorFinancialInstitution {
 
-	/** The bicid. */
-	@XmlElement(name = "BICID")
-	private ID bic;
-
-	/** The german bankleitzahl id. */
-	@XmlElement(name = "GermanBankleitzahlID")
-	private ID germanBankleitzahl;
-
-	/** The name. */
-	@XmlElement(name = "Name")
-	private String name;
-
-	/** Instantiates a new debtor financial institution. */
-	public DebtorFinancialInstitution() {
-	}
-
-	/**
-	 * Instantiates a new debtor financial institution.
-	 * 
-	 * @param bic the bic
-	 */
-	public DebtorFinancialInstitution(String bic) {
-		this.bic = new ID(bic);
-	}
-
-	/**
-	 * Gets the bic
-	 * 
-	 * @return the bic
-	 */
-	public String getBic() {
-		return bic.getValue();
-	}
-
-	/**
-	 * Sets the bicid.
-	 * 
-	 * @param bic the bic
-	 * @return the debtor financial institution
-	 */
-	public DebtorFinancialInstitution setBic(String bic) {
-		this.bic = new ID(bic);
-		return this;
-	}
-
-	/**
-	 * Gets the german bankleitzahl.
-	 * 
-	 * @return the german bankleitzahl id
-	 */
-	public String getGermanBankleitzahl() {
-		return germanBankleitzahl.getValue();
-	}
-
-	/**
-	 * Sets the german bankleitzahl id.
-	 * 
-	 * @param blz the blz
-	 * @return the debtor financial institution
-	 */
-	public DebtorFinancialInstitution setGermanBankleitzahl(String blz) {
-		this.germanBankleitzahl = new ID(blz);
-		return this;
-	}
-
-	/**
-	 * Gets the name.
-	 * 
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * Sets the name.
-	 * 
-	 * @param institutionName the new name
-	 */
-	public void setName(String institutionName) {
-		this.name = institutionName;
-	}
-
+//   @XmlElement(name = "BICID")
+//   private ID bic;
+//
+//   @XmlElement(name = "GermanBankleitzahlID")
+//   private ID germanBankleitzahl;
+//
+//   @XmlElement(name = "Name")
+//   private String name;
+//
+//   /**
+//    * Gets the BIC.
+//    * 
+//    * @return the bic
+//    */
+//   public String getBic() {
+//      return bic.getValue();
+//   }
+//
+//   /**
+//    * Sets the BIC.
+//    * 
+//    * @param bic the new bic
+//    */
+//   public void setBic(String bic) {
+//      this.bic = new ID(bic);
+//   }
+//
+//   /**
+//    * Gets the german bankleitzahl.
+//    * 
+//    * @return the german bankleitzahl
+//    */
+//   public String getGermanBankleitzahl() {
+//      return germanBankleitzahl.getValue();
+//   }
+//
+//   /**
+//    * Sets the german bankleitzahl.
+//    * 
+//    * @param germanBankleitzahl the new german bankleitzahl
+//    */
+//   public void setGermanBankleitzahl(String germanBankleitzahl) {
+//      this.germanBankleitzahl = new ID(germanBankleitzahl);
+//   }
+//
+//   /**
+//    * Gets the name.
+//    * 
+//    * @return the name
+//    */
+//   public String getName() {
+//      return name;
+//   }
+//
+//   /**
+//    * Sets the name.
+//    * 
+//    * @param name the new name
+//    */
+//   public void setName(String name) {
+//      this.name = name;
+//   }
+//
 }

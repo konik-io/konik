@@ -17,15 +17,12 @@
  */
 package io.konik.zugferd;
 
-import io.konik.invoice.profiles.InvoiceProfile;
-import io.konik.zugferd.entity.ExchangeDocument;
-import io.konik.zugferd.entity.ExchangeDocumentContext;
+import io.konik.zugferd.entity.Context;
+import io.konik.zugferd.entity.Header;
 import io.konik.zugferd.entity.Trade;
+import io.konik.zugferd.profile.Profile;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -39,25 +36,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "Invoice")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = { "context", "header", "trades" })
+@XmlType(propOrder = { "context", "header", "trade" })
 public class Invoice {
 
    /** The context. Groups properties of the xml message. */
-   @Valid
+   @NotNull
    @XmlElement(name = "SpecifiedExchangedDocumentContext")
-   private ExchangeDocumentContext context;
+   private Context context;
 
    /** The document related header information. */
-   @Valid
+   @NotNull
    @XmlElement(name = "HeaderExchangedDocument")
-   private ExchangeDocument header;
+   private Header header;
 
    /** The specified supply chain trade transactions. */
-   @Valid
+   @NotNull
    @XmlElement(name = "SpecifiedSupplyChainTradeTransaction")
-   private List<Trade> trades;
+   private Trade trade;
 
+   /**
+    * Creates a new invoice.
+    */
    public Invoice() {
+      this.context = new Context();
+      this.header = new Header();
    }
 
    /**
@@ -65,9 +67,9 @@ public class Invoice {
     * 
     * @param profile the profile
     */
-   public Invoice(InvoiceProfile profile) {
-      this.context = new ExchangeDocumentContext(profile);
-      this.header = new ExchangeDocument();
+   public Invoice(Profile profile) {
+      this.context = new Context(profile);
+      this.header = new Header();
    }
 
    /**
@@ -75,7 +77,7 @@ public class Invoice {
     * 
     * @return the exchanged document context
     */
-   public ExchangeDocumentContext getContext() {
+   public Context getContext() {
       return context;
    }
 
@@ -85,7 +87,7 @@ public class Invoice {
     * @param context the new exchanged document context
     * @return the invoice
     */
-   public Invoice setContext(ExchangeDocumentContext context) {
+   public Invoice setContext(Context context) {
       this.context = context;
       return this;
    }
@@ -95,7 +97,7 @@ public class Invoice {
     * 
     * @return the exchange document header
     */
-   public ExchangeDocument getHeader() {
+   public Header getHeader() {
       return header;
    }
 
@@ -105,32 +107,31 @@ public class Invoice {
     * @param header the new exchange document header
     * @return the invoice
     */
-   public Invoice setHeader(ExchangeDocument header) {
+   public Invoice setHeader(Header header) {
       this.header = header;
       return this;
    }
 
    /**
-    * Gets the specified supply chain trade transaction.
-    * 
-    * @return the specified supply chain trade transaction
+    * Gets the trade.
+    *
+    * @return the trade
     */
-   public List<Trade> getTrades() {
-      if (trades == null) {
-         trades = new ArrayList<Trade>();
-      }
-      return this.trades;
+   public Trade getTrade() {
+      return trade;
    }
 
    /**
-    * Adds a trade to invoice.
-    * 
-    * @param trade the trade transaction
+    * Sets the trade.
+    *
+    * @param trade the new trade
     * @return the invoice
     */
-   public Invoice addTrade(Trade trade) {
-      getTrades().add(trade);
+   public Invoice setTrade(Trade trade) {
+      this.trade = trade;
       return this;
    }
+
+
 
 }

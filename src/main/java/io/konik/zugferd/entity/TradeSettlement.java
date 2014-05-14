@@ -19,6 +19,8 @@
 package io.konik.zugferd.entity;
 
 
+import com.neovisionaries.i18n.CurrencyCode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,15 +34,16 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * The Class SupplyChainTradeSettlement. <br/>
+ * The Class SupplyChainTradeSettlement. 
+
  * Contains the payment related information.
  *
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SupplyChainTradeSettlementType", propOrder = { "paymentReference", "invoiceCurrency",
+@XmlType(name = "SupplyChainTradeSettlementType", propOrder = { "paymentReference", "currencyCode",
 		"invoicee", "paymentMeans", "tradeTax", "billingPeriod", "allowanceCharge", "serviceCharge",
-		"paymentTerms", "monetarySummation", "accountingAccount" })
+		"paymentTerms", "monetarySummation", "bookingReference" })
 public class TradeSettlement {
 
 	/** The payment reference or reason for payment */
@@ -50,7 +53,7 @@ public class TradeSettlement {
 	/** The invoice currency code. */
 	@XmlElement(name = "InvoiceCurrencyCode")
 	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-	private String invoiceCurrency;
+	private String currencyCode;
 
 	/** The invoicee trade party. */
 	@Valid
@@ -70,7 +73,7 @@ public class TradeSettlement {
 	/** The billing period. */
 	@Valid
 	@XmlElement(name = "BillingSpecifiedPeriod")
-	private BillingPeriod billingPeriod;
+	private Period billingPeriod;
 
 	/** The trade allowance charge. */
 	@Valid
@@ -85,7 +88,7 @@ public class TradeSettlement {
 	/** The trade payment terms. */
 	@Valid
 	@XmlElement(name = "SpecifiedTradePaymentTerms")
-	private List<PaymentTerms> paymentTerms;
+	private List<PaymentTerm> paymentTerms;
 
 	/** The trade settlement monetary summation. */
 	@Valid
@@ -94,12 +97,15 @@ public class TradeSettlement {
 
 	/** The receivable specified trade accounting account. */
 	@XmlElement(name = "ReceivableSpecifiedTradeAccountingAccount")
-	private AccountingAccount accountingAccount;
+	private Account bookingReference;
 
 	/**
-	 * Gets the payment reference.<br/>
-	 * Can be same as invoice number.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the payment reference.
+
+	 * Can be same as invoice number.
+
+	 * Profile: BASIC
+
 	 *
 	 * @return the payment reference
 	 */
@@ -108,9 +114,12 @@ public class TradeSettlement {
 	}
 
 	/**
-	 * Sets the payment reference or note to payee<br/>
-	 * Can be same as invoice number.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the payment reference or note to payee
+
+	 * Can be same as invoice number.
+
+	 * Profile: BASIC
+
 	 *
 	 * @param referenceText the reference text
 	 * @return the trade settlement
@@ -121,32 +130,53 @@ public class TradeSettlement {
 	}
 
 	/**
-	 * Gets the invoice currency code as ISO 4217 3A <br/>
-	 * Profile: BASIC<br/>
+	 * Gets the invoice currency code
 	 *
-	 * @return the invoice currency code
-	 * @see <a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217 3A currency code</a>
+	 * Profile: BASIC
+	 * @return the +ISO 4217 3A+ currency code
 	 */
-	public String getInvoiceCurrency() {
-		return invoiceCurrency;
+	public String getCurrencyCode() {
+		return currencyCode;
 	}
 
+   /**
+    * Gets the currency.
+    *
+    * @return the currency
+    */
+   public CurrencyCode getCurrency() {
+      return CurrencyCode.getByCode(currencyCode);
+   }
+   
 	/**
-	 * Sets the invoice currency code in ISO 4217 3A.<br/>
-	 * Profile: BASIC<br/>
-	 *
-	 * @param invoiceCurrencyCode the new ISO 4217 3A invoice currency code
-	 * @return the supply chain trade settlement
-	 * @see <a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217 3A currency code</a>
-	 */
-	public TradeSettlement setInvoiceCurrency(String invoiceCurrencyCode) {
-		this.invoiceCurrency = invoiceCurrencyCode;
+    * Sets the invoice currency code.
+    * Profile: BASIC
+    *
+    * @param currencyCode the new +ISO 4217 3A+ currency code
+    * @return the trade settlement
+    */
+	public TradeSettlement setCurrency(String currencyCode) {
+		this.currencyCode = currencyCode;
 		return this;
 	}
+	
+	/**
+    * Sets the invoice currency.
+    *
+    * @param currency the currency
+    * @return the trade settlement
+    */
+  	public TradeSettlement setCurrency(CurrencyCode currency) {
+	      this.currencyCode = currency.name();
+	      return this;
+	   }
+
 
 	/**
-	 * Gets the invoicee trade party.<br/>
-	 * Profile: COMFORT<br/>
+	 * Gets the invoicee trade party.
+
+	 * Profile: COMFORT
+
 	 *
 	 * @return the invoicee trade party
 	 */
@@ -155,8 +185,10 @@ public class TradeSettlement {
 	}
 
 	/**
-	 * Sets the invoicee trade party.<br/>
-	 * Profile: COMFORT<br/>
+	 * Sets the invoicee trade party.
+
+	 * Profile: COMFORT
+
 	 *
 	 * @param invoicee the new invoicee trade party
 	 * @return the supply chain trade settlement
@@ -202,41 +234,47 @@ public class TradeSettlement {
 	}
 
 	/**
-	 * Adds the trade tax.
-	 *
-	 * @param tradeTax the trade tax
+	 * Adds a trade tax.
+
+	 * @param additionalTradeTax 
 	 * @return the trade settlement
 	 */
-	public TradeSettlement addTradeTax(TradeTax tradeTax) {
-		getTradeTax().add(tradeTax);
+	public TradeSettlement addTradeTax(TradeTax additionalTradeTax) {
+		getTradeTax().add(additionalTradeTax);
 		return this;
 	}
 
 	/**
-	 * Gets the billing specified period.<br/>
-	 * Profile: COMFORT<br/>
+	 * Gets the billing specified period.
+
+	 * Profile: COMFORT
+
 	 *
 	 * @return the billing specified period
 	 */
-	public BillingPeriod getBillingPeriod() {
+	public Period getBillingPeriod() {
 		return billingPeriod;
 	}
 
 	/**
-	 * Sets the billing specified period.<br/>
-	 * Profile: COMFORT<br/>
+	 * Sets the billing specified period.
+
+	 * Profile: COMFORT
+
 	 *
 	 * @param billingPeriod the new billing specified period
 	 * @return the supply chain trade settlement
 	 */
-	public TradeSettlement setBillingPeriod(BillingPeriod billingPeriod) {
+	public TradeSettlement setBillingPeriod(Period billingPeriod) {
 		this.billingPeriod = billingPeriod;
 		return this;
 	}
 
 	/**
-	 * Gets the trade allowance charge.<br/>
-	 * Profile: COMFORT<br/>
+	 * Gets the trade allowance charge.
+
+	 * Profile: COMFORT
+
 	 *
 	 * @return the specified trade allowance charge
 	 */
@@ -248,20 +286,24 @@ public class TradeSettlement {
 	}
 
 	/**
-	 * Adds the trade allowance charge.<br/>
-	 * Profile: COMFORT<br/>
+	 * Adds the trade allowance charge.
+
+	 * Profile: COMFORT
+
 	 *
-	 * @param allowanceCharge the allowance charge
+	 * @param additionalAllowanceCharge an additional allowance charge
 	 * @return the trade settlement
 	 */
-	public TradeSettlement addAllowanceCharge(AllowanceCharge allowanceCharge) {
-		getAllowanceCharge().add(allowanceCharge);
+	public TradeSettlement addAllowanceCharge(AllowanceCharge additionalAllowanceCharge) {
+		getAllowanceCharge().add(additionalAllowanceCharge);
 		return this;
 	}
 
 	/**
-	 * Gets the specified logistics service charge.<br/>
-	 * Profile: COMFORT<br/>
+	 * Gets the specified logistics service charge.
+
+	 * Profile: COMFORT
+
 	 *
 	 * @return the specified logistics service charge
 	 */
@@ -273,8 +315,10 @@ public class TradeSettlement {
 	}
 
 	/**
-	 * Adds the specified logistics service charge.<br/>
-	 * Profile: COMFORT<br/>
+	 * Adds the specified logistics service charge.
+
+	 * Profile: COMFORT
+
 	 *
 	 * @param logisticsServiceCharge the logistics service charge
 	 * @return the trade settlement
@@ -285,33 +329,37 @@ public class TradeSettlement {
 	}
 
 	/**
-	 * Gets the specified trade payment terms.<br/>
-	 * Profile: COMFORT<br/>
+	 * Gets the specified trade payment terms.
+
+	 * Profile: COMFORT
+
 	 *
 	 * @return the specified trade payment terms
 	 */
-	public List<PaymentTerms> getPaymentTerms() {
+	public List<PaymentTerm> getPaymentTerms() {
 		if (paymentTerms == null) {
-			paymentTerms = new ArrayList<PaymentTerms>();
+			paymentTerms = new ArrayList<PaymentTerm>();
 		}
 		return this.paymentTerms;
 	}
 
 	/**
-	 * Adds the payment terms.<br/>
-	 * Profile: COMFORT<br/>
-	 *
-	 * @param paymentTerms the trade payment terms
-	 * @return the trade settlement
-	 */
-	public TradeSettlement addPaymentTerms(PaymentTerms paymentTerms) {
-		getPaymentTerms().add(paymentTerms);
+	 * Adds a Payment Term
+    * Profile: COMFORT.
+    *
+    * @param additionalPaymentTerm the additional payment term
+    * @return the trade settlement
+    */
+	public TradeSettlement addPaymentTerm(PaymentTerm additionalPaymentTerm) {
+		getPaymentTerms().add(additionalPaymentTerm);
 		return this;
 	}
 
 	/**
-	 * Gets the trade settlement monetary summation.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the trade settlement monetary summation.
+
+	 * Profile: BASIC
+
 	 *
 	 * @return the specified trade settlement monetary summation
 	 */
@@ -320,8 +368,10 @@ public class TradeSettlement {
 	}
 
 	/**
-	 * Sets the trade settlement monetary summation.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the trade settlement monetary summation.
+
+	 * Profile: BASIC
+
 	 *
 	 * @param monetarySummation the new monetary summation
 	 * @return the supply chain trade settlement
@@ -332,24 +382,24 @@ public class TradeSettlement {
 	}
 
 	/**
-	 * Gets the receivable specified trade accounting account.<br/>
-	 * Profile: EXTENDED<br/>
-	 *
-	 * @return the trade accounting account
-	 */
-	public AccountingAccount getAccountingAccount() {
-		return accountingAccount;
+    * Gets the booking reference account.
+    * Profile: EXTENDED
+    *
+    * @return the account of the booking reference
+    */
+	public Account getBookingReference() {
+		return bookingReference;
 	}
 
 	/**
-	 * Sets the receivable specified trade accounting account.<br/>
-	 * Profile: EXTENDED<br/>
-	 *
-	 * @param accountingAccount the new receivable specified trade accounting account
-	 * @return the supply chain trade settlement
-	 */
-	public TradeSettlement setAccountingAccount(AccountingAccount accountingAccount) {
-		this.accountingAccount = accountingAccount;
+    * Sets the booking reference account.
+    * Profile: EXTENDED
+    *
+    * @param bookingReference the booking reference account.
+    * @return the trade
+    */
+	public TradeSettlement setBookingReference(Account bookingReference) {
+		this.bookingReference = bookingReference;
 		return this;
 	}
 

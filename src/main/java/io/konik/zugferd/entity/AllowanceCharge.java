@@ -18,7 +18,7 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.Amount;
+import io.konik.zugferd.unqualified.Amount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,54 +31,63 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class TradeAllowanceCharge represents the detail information about surcharges and discounts.
- * 
+ * = The Allowance Charge 
+ * Represents the detail information about surcharges and discounts.
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeAllowanceChargeType", propOrder = { "chargeIndicator", "basisAmount", "actualAmount",
+@XmlType(name = "TradeAllowanceChargeType", propOrder = { "surcharge", "basisAmount", "actualAmount",
 		"reason", "categoryTradeTax" })
 public class AllowanceCharge {
 
-	/** The charge indicator. */
 	@XmlElement(name = "ChargeIndicator")
-	private Boolean chargeIndicator;
+	private boolean surcharge;
 
-	/** The basis amount. */
 	@Valid
 	@XmlElement(name = "BasisAmount")
 	private Amount basisAmount;
 
-	/** The actual amount. */
 	@Valid
 	@XmlElement(name = "ActualAmount")
 	private Amount actualAmount;
 
-	/** The reason. */
 	@XmlElement(name = "Reason")
 	private String reason;
 
-	/** The category trade tax. */
 	@XmlElement(name = "CategoryTradeTax")
 	private List<TradeTax> categoryTradeTax;
 
 	/**
-	 * Checks if is charge indicator.
-	 * 
-	 * @return true if charge otherwise discount
-	 */
-	public Boolean isChargeIndicator() {
-		return chargeIndicator;
+    * Checks if is a surcharge.
+    *
+    * @return true if charge otherwise discount
+    */
+	public boolean isSurcharge() {
+		return surcharge;
 	}
+	
+	  /**
+    * Checks if is discount.
+    *
+    * @return true if discount otherwise charge
+    */
+  	public boolean isDiscount() {
+	      return !surcharge;
+	   }
 
 	/**
-	 * Sets the charge indicator.
-	 * 
-	 * @param charge the new charge indicator
+	 * Sets amount to be a surcharge.
 	 */
-	public void setChargeIndicator(Boolean charge) {
-		this.chargeIndicator = charge;
+	public void setSurcharge() {
+		this.surcharge = true;
 	}
+	
+	/**
+    * Sets the amount to be a discount.
+    */
+   public void setDiscount() {
+      this.surcharge = false;
+   }
 
 	/**
 	 * Gets the basis amount.

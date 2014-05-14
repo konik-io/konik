@@ -18,7 +18,7 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.Amount;
+import io.konik.zugferd.unqualified.Amount;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -28,11 +28,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class TradeSettlementMonetarySummation.
- * 
- * //TODO: implement a way how some of the values can be calculated by the framework.
- * 
- * 
+ * = The Monetary Summation.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradeSettlementMonetarySummationType", propOrder = { "netTotal", "chargeTotal",
@@ -54,7 +50,7 @@ public class MonetarySummation {
 	@XmlElement(name = "AllowanceTotalAmount")
 	private Amount allowanceTotal;
 
-	/** The tax basis total amount. The invoice net sum = netTotal + charges - allowence. */
+	/** The tax basis total amount. The invoice net sum = netTotal + charges - allowance. */
 	@XmlElement(name = "TaxBasisTotalAmount")
 	@Valid
 	private Amount taxBasisTotal;
@@ -80,8 +76,10 @@ public class MonetarySummation {
 	private Amount duePayable;
 
 	/**
-	 * Gets the line total amount.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the line total amount.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @return the line total amount
 	 */
@@ -90,8 +88,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Sets the line total amount.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the line total amount.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @param netTotal the new line total amount
 	 * @return the trade settlement monetary summation
@@ -102,8 +102,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Gets the charge total amount.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the charge total amount.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @return the charge total amount
 	 */
@@ -112,8 +114,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Sets the charge total amount.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the charge total amount.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @param chargeTotal the new charge total amount
 	 * @return the trade settlement monetary summation
@@ -124,8 +128,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Gets the allowance total amount.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the allowance total amount.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @return the allowance total amount
 	 */
@@ -134,8 +140,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Sets the allowance total amount.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the allowance total amount.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @param allowanceTotal the new allowance total amount
 	 * @return the trade settlement monetary summation
@@ -146,9 +154,12 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Gets the tax basis total amount.<br/>
-	 * The invoice net sum = netTotal + charges - allowence.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the tax basis total amount.
+
+	 * The invoice net sum = netTotal + charges - allowence.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @return the tax basis total amount
 	 */
@@ -157,9 +168,12 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Sets the tax basis total amount.<br/>
-	 * The invoice net sum = netTotal + charges - allowence.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the tax basis total amount.
+
+	 * The invoice net sum = netTotal + charges - allowence.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @param taxBasisTotal the new tax basis total amount
 	 * @return the trade settlement monetary summation
@@ -170,8 +184,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Gets the total tax amount.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the total tax amount.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @return the tax total amount
 	 */
@@ -180,8 +196,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Sets the total tax amount.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the total tax amount.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @param taxTotal the new tax total amount
 	 * @return the trade settlement monetary summation
@@ -192,8 +210,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Gets the grand total amount.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the grand total amount.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @return the grand total amount
 	 */
@@ -202,8 +222,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Sets the grand total amount.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the grand total amount.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @param grandTotal the new grand total amount
 	 * @return the trade settlement monetary summation
@@ -214,8 +236,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Gets the total prepaid amount.<br/>
-	 * Profile: COMFORT<br/>
+	 * Gets the total prepaid amount.
+
+	 * Profile: COMFORT
+
 	 * 
 	 * @return the total prepaid amount
 	 */
@@ -224,8 +248,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Sets the total prepaid amount.<br/>
-	 * Profile: COMFORT<br/>
+	 * Sets the total prepaid amount.
+
+	 * Profile: COMFORT
+
 	 * 
 	 * @param totalPrepaid the new total prepaid amount
 	 * @return the trade settlement monetary summation
@@ -236,8 +262,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Gets the due payable amount.<br/>
-	 * Profile: COMFORT<br/>
+	 * Gets the due payable amount.
+
+	 * Profile: COMFORT
+
 	 * 
 	 * @return the due payable amount
 	 */
@@ -246,8 +274,10 @@ public class MonetarySummation {
 	}
 
 	/**
-	 * Sets the due payable amount.<br/>
-	 * Profile: COMFORT<br/>
+	 * Sets the due payable amount.
+
+	 * Profile: COMFORT
+
 	 * 
 	 * @param duePayable the new due payable amount
 	 * @return the trade settlement monetary summation

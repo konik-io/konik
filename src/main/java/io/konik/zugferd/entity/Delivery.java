@@ -18,9 +18,10 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.Quantity;
+import io.konik.zugferd.unqualified.Quantity;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -28,25 +29,20 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class handles the trade delivery.
- *
- * 
+ * = The Trade Delivery.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SupplyChainTradeDeliveryType", propOrder = { "billedQuantity", "event", "note" })
 public class Delivery {
 
-	/** The billed quantity. */
-   @Valid
+   @Valid@NotNull
 	@XmlElement(name = "BilledQuantity")
 	private Quantity billedQuantity;
 
-	/** The actual delivery supply chain event. */
    @Valid
 	@XmlElement(name = "ActualDeliverySupplyChainEvent")
 	private Event event;
 
-	/** The delivery note referenced document. */
    @Valid
 	@XmlElement(name = "DeliveryNoteReferencedDocument")
 	private ReferencedDocument note;
@@ -56,7 +52,7 @@ public class Delivery {
 	}
 
 	/**
-	 * Instantiates a new supply chain trade delivery.
+	 * Instantiates a new trade delivery.
 	 *
 	 * @param billedQuantity the billed quantity
 	 * @param deliveryEvent the event
@@ -67,8 +63,10 @@ public class Delivery {
 	}
 
 	/**
-	 * Gets the billed quantity.<br/>
-	 * Profile: BASIC <br/>
+	 * Gets the billed quantity.
+
+	 * Profile: BASIC 
+
 	 *
 	 * @return the billed quantity
 	 */
@@ -77,8 +75,10 @@ public class Delivery {
 	}
 
 	/**
-	 * Sets the billed quantity.<br/>
-	 * Profile: BASIC <br/>
+	 * Sets the billed quantity.
+
+	 * Profile: BASIC 
+
 	 *
 	 * @param billedQuantity the new billed quantity
 	 */
@@ -96,9 +96,9 @@ public class Delivery {
 	}
 
 	/**
-	 * Sets the actual delivery supply chain event.
+	 * Sets the actual delivery  event.
 	 *
-	 * @param deliveryEvent the new actual delivery supply chain event
+	 * @param deliveryEvent the new actual delivery  event
 	 * @return the trade delivery
 	 */
 	public Delivery setEvent(Event deliveryEvent) {

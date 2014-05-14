@@ -18,9 +18,9 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.qualified.TaxCategoryCode;
-import io.konik.zugferd.datatype.qualified.TaxTypeCode;
-import io.konik.zugferd.datatype.unqualified.Amount;
+import io.konik.unece.codes.TaxType;
+import io.konik.zugferd.qualified.TaxCategoryCode;
+import io.konik.zugferd.unqualified.Amount;
 
 import java.math.BigDecimal;
 
@@ -32,45 +32,38 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class TradeTax.
- * 
- * 
+ * = The Trade Tax.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeTaxType", propOrder = { "calculatedAmount", "typeCode", "exemptionReason",
-		"basisAmount", "categoryCode", "applicablePercentage" })
+@XmlType(name = "TradeTaxType", propOrder = { "calculatedAmount", "typeCode", "exemptionReason","basisAmount", "categoryCode", "applicablePercentage" })
 public class TradeTax {
 
-	/** The calculated amount. */
    @Valid
 	@XmlElement(name = "CalculatedAmount")
 	private Amount calculatedAmount;
 
-	/** The type code. */
    @Valid
 	@XmlElement(name = "TypeCode")
-	private TaxTypeCode typeCode;
+	private TaxType typeCode;
 
-	/** The exemption reason. */
 	@XmlElement(name = "ExemptionReason")
 	private String exemptionReason;
 
-	/** The basis amount. */
 	@Valid
 	@XmlElement(name = "BasisAmount")
 	private Amount basisAmount;
 
-	/** The category code. */
 	@XmlElement(name = "CategoryCode")
 	private TaxCategoryCode categoryCode;
 
-	/** The applicable percent. */
 	@XmlElement(name = "ApplicablePercent")
 	private BigDecimal applicablePercentage;
 
 	/**
-	 * Gets the calculated amount.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the calculated amount.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @return the calculated amount
 	 */
@@ -79,8 +72,10 @@ public class TradeTax {
 	}
 
 	/**
-	 * Sets the calculated amount.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the calculated amount.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @param calculatedAmount the new calculated amount
 	 */
@@ -89,30 +84,33 @@ public class TradeTax {
 	}
 
 	/**
-	 * Gets the UNCL 5153 tax type code.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the UNCL 5153 tax type code.
+	 * 
+	 * Profile:: BASIC
 	 * 
 	 * @return the type code
-	 * @see <a href="http://www.unece.org/trade/untdid/d98b/uncl/uncl5153.htm">UNCL 5153</a>
 	 */
-	public TaxTypeCode getTypeCode() {
+	public TaxType getTypeCode() {
 		return typeCode;
 	}
 
 	/**
-	 * Sets tthe UNCL 5153 tax type code.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the UNCL 5153 tax type code.
+	 * 
+	 * Profile:: BASIC
 	 * 
 	 * @param typeCode the new type code
 	 * @see <a href="http://www.unece.org/trade/untdid/d98b/uncl/uncl5153.htm">UNCL 5153</a>
 	 */
-	public void setTypeCode(TaxTypeCode typeCode) {
+	public void setTypeCode(TaxType typeCode) {
 		this.typeCode = typeCode;
 	}
 
 	/**
-	 * Gets the tax exemption reason.<br/>
-	 * Profile: COMFORT<br/>
+	 * Gets the tax exemption reason.
+
+	 * Profile: COMFORT
+
 	 * 
 	 * @return the exemption reason
 	 */
@@ -121,8 +119,10 @@ public class TradeTax {
 	}
 
 	/**
-	 * Sets the tax exemption reason.<br/>
-	 * Profile: COMFORT<br/>
+	 * Sets the tax exemption reason.
+
+	 * Profile: COMFORT
+
 	 * 
 	 * @param exemptionReason the new exemption reason
 	 */
@@ -131,8 +131,10 @@ public class TradeTax {
 	}
 
 	/**
-	 * Gets the basis amount for tax calculation.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the basis amount for tax calculation.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @return the basis amount
 	 */
@@ -141,8 +143,10 @@ public class TradeTax {
 	}
 
 	/**
-	 * Sets the basis amount for tax calculation.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the basis amount for tax calculation.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @param basisAmount the new basis amount
 	 */
@@ -151,8 +155,10 @@ public class TradeTax {
 	}
 
 	/**
-	 * Gets the tax category code.<br/>
-	 * Profile: COMFORT<br/>
+	 * Gets the tax category code.
+
+	 * Profile: COMFORT
+
 	 * 
 	 * @return the category code
 	 */
@@ -161,8 +167,10 @@ public class TradeTax {
 	}
 
 	/**
-	 * Sets the tax category code.<br/>
-	 * Profile: COMFORT<br/>
+	 * Sets the tax category code.
+
+	 * Profile: COMFORT
+
 	 * 
 	 * @param value the new category code
 	 */
@@ -171,8 +179,10 @@ public class TradeTax {
 	}
 
 	/**
-	 * Gets the applicable tax percentage.<br/>
-	 * Profile: BASIC<br/>
+	 * Gets the applicable tax percentage.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @return the applicable tax percentage
 	 */
@@ -181,8 +191,10 @@ public class TradeTax {
 	}
 
 	/**
-	 * Sets the applicable tax percentage.<br/>
-	 * Profile: BASIC<br/>
+	 * Sets the applicable tax percentage.
+
+	 * Profile: BASIC
+
 	 * 
 	 * @param applicablePercentage the new applicable tax percentage
 	 */

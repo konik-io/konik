@@ -63,7 +63,7 @@ Die beiden Logos "FeRD" und "ZUGFeRD" sind urheberrechtlich geschützt. Die Verw
 	<xs:complexType name="ExchangedDocumentContextType">
 		<xs:sequence>
 			<xs:element name="TestIndicator" type="udt:IndicatorType" form="unqualified" minOccurs="0"/>
-			<xs:element name="GuidelineSpecifiedDocumentContextParameter" type="ram:DocumentContextParameterType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="GuidelineSpecifiedDocumentContextParameter" type="ram:DocumentContextParameterType" form="unqualified" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ExchangedDocumentType">

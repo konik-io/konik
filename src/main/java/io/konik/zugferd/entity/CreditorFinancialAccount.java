@@ -18,7 +18,7 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.ID;
+import io.konik.zugferd.unqualified.ID;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -27,56 +27,52 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class CreditorFinancialAccount.
- * 
- * 
+ * = The Creditor Financial Account.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CreditorFinancialAccountType", propOrder = { "iban", "proprietaryId" })
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "CreditorFinancialAccountType", propOrder = { "iban", "proprietaryId" })
 public class CreditorFinancialAccount {
-
-	/** The ibanid. */
-	@XmlElement(name = "IBANID")
-	private ID iban;
-
-	/** The proprietary id. */
-	@XmlElement(name = "ProprietaryID")
-	private ID proprietaryId;
-
-	/**
-	 * Gets the iban.
-	 * 
-	 * @return the iban
-	 */
-	public ID getIban() {
-		return iban;
-	}
-
-	/**
-	 * // * Sets the iban.
-	 * 
-	 * @param iban the new iban
-	 */
-	public void setIban(ID iban) {
-		this.iban = iban;
-	}
-
-	/**
-	 * Gets the proprietary id.
-	 * 
-	 * @return the proprietary id
-	 */
-	public ID getProprietaryID() {
-		return proprietaryId;
-	}
-
-	/**
-	 * Sets the proprietary id.
-	 * 
-	 * @param proprietaryId the new proprietary id
-	 */
-	public void setProprietaryID(ID proprietaryId) {
-		this.proprietaryId = proprietaryId;
-	}
-
+//
+//	@XmlElement(name = "IBANID")
+//	private ID iban;
+//
+//	@XmlElement(name = "ProprietaryID")
+//	private ID proprietaryId;
+//
+//	/**
+//	 * Gets the iban.
+//	 * 
+//	 * @return the iban
+//	 */
+//	public String getIban() {
+//		return iban.getValue();
+//	}
+//
+//	/**
+//	 * Sets the iban.
+//	 * 
+//	 * @param iban the new iban
+//	 */
+//	public void setIban(String iban) {
+//		this.iban = new ID(iban);
+//	}
+//
+//	/**
+//	 * Gets the proprietary id.
+//	 * 
+//	 * @return the proprietary id
+//	 */
+//	public String getProprietaryID() {
+//		return proprietaryId.getValue();
+//	}
+//
+//	/**
+//	 * Sets the proprietary id.
+//	 * 
+//	 * @param proprietaryId the new proprietary id
+//	 */
+//	public void setProprietaryID(String proprietaryId) {
+//		this.proprietaryId = new ID(proprietaryId);
+//	}
+//
 }

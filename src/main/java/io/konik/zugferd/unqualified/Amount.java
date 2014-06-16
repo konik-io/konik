@@ -1,24 +1,22 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package io.konik.zugferd.unqualified;
-
-import com.neovisionaries.i18n.CurrencyCode;
 
 import java.math.BigDecimal;
 
@@ -27,8 +25,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import com.neovisionaries.i18n.CurrencyCode;
 
 /**
  * = The Monetary Amount.
@@ -43,8 +41,8 @@ public class Amount {
    private BigDecimal value;
 
    @XmlAttribute(name = "currencyID")
-   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-   private String currencyCode;
+//   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   private CurrencyCode currency;
 
    /** Instantiates a new amount. */
    public Amount() {
@@ -54,36 +52,36 @@ public class Amount {
     * Instantiates a new amount.
     *
     * @param value the value
-    * @param currencyCode the currency code
+    * @param currency the currency code
     */
-   public Amount(long value, CurrencyCode currencyCode) {
+   public Amount(long value, CurrencyCode currency) {
       super();
       this.value = BigDecimal.valueOf(value);
-      this.currencyCode = currencyCode.name();
+      this.currency = currency;
    }
 
    /**
     * Instantiates a new amount.
     *
     * @param value the value
-    * @param currencyCode the currency code
+    * @param currency the currency code
     */
-   public Amount(String value, CurrencyCode currencyCode) {
+   public Amount(String value, CurrencyCode currency) {
       super();
       this.value = new BigDecimal(value);
-      this.currencyCode = currencyCode.name();
+      this.currency = currency;
    }
 
    /**
     * Instantiates a new amount.
     *
     * @param value the value
-    * @param currencyCode the currency code
+    * @param currency the currency code
     */
-   public Amount(BigDecimal value, CurrencyCode currencyCode) {
+   public Amount(BigDecimal value, CurrencyCode currency) {
       super();
       this.value = value;
-      this.currencyCode = currencyCode.name();
+      this.currency = currency;
    }
 
    /**
@@ -111,38 +109,18 @@ public class Amount {
     *
     * @return the +ISO 4217 3A+ currency code
     */
-   public String getCurrencyCode() {
-      return currencyCode;
-   }
-
-   /**
-    * Gets the currency code type.
-    *
-    * @return the currency code type
-    */
    public CurrencyCode getCurrency() {
-      return CurrencyCode.getByCode(currencyCode);
+      return currency;
    }
    
    /**
     * Sets the currency code.
     *
-    * @param currencyCode the new +ISO 4217 3A+ currency code
+    * @param currency the new +ISO 4217 3A+ currency code
     * @return the amount
     */
-   public Amount setCurrencyCode(String currencyCode) {
-      this.currencyCode = currencyCode;
-      return this;
-   }
-   
-   /**
-    * Sets the currency.
-    *
-    * @param currencyCode the new currency code
-    * @return the amount
-    */
-   public Amount setCurrency(CurrencyCode currencyCode) {
-      this.currencyCode = currencyCode.name();
+   public Amount setCurrency(CurrencyCode currency) {
+      this.currency = currency;
       return this;
    }
 

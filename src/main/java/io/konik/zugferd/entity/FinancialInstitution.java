@@ -1,21 +1,21 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package io.konik.zugferd.entity;
 
 import io.konik.zugferd.unqualified.ID;
@@ -66,12 +66,14 @@ public class FinancialInstitution {
 	}
 
 	/**
-	 * Sets the BIC.
-	 * 
-	 * @param bic the new bic
-	 */
-	public void setBic(String bic) {
+    * Sets the BIC.
+    *
+    * @param bic the new bic
+    * @return the financial institution
+    */
+	public FinancialInstitution setBic(String bic) {
 		this.bic = new ID(bic);
+		return this;
 	}
 
 	/**
@@ -84,12 +86,14 @@ public class FinancialInstitution {
 	}
 
 	/**
-	 * Sets the german bankleitzahl.
-	 * 
-	 * @param germanBankleitzahl the new german bankleitzahl
-	 */
-	public void setGermanBankleitzahl(String germanBankleitzahl) {
+    * Sets the german bankleitzahl.
+    *
+    * @param germanBankleitzahl the new german bankleitzahl
+    * @return the financial institution
+    */
+	public FinancialInstitution setGermanBankleitzahl(String germanBankleitzahl) {
 		this.germanBankleitzahl = new ID(germanBankleitzahl);
+		return this;
 	}
 
 	/**
@@ -102,12 +106,14 @@ public class FinancialInstitution {
 	}
 
 	/**
-	 * Sets the name.
-	 * 
-	 * @param name the new name
-	 */
-	public void setName(String name) {
+    * Sets the name.
+    *
+    * @param name the new name
+    * @return the financial institution
+    */
+	public FinancialInstitution setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 }

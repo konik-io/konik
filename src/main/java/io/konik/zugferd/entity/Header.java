@@ -1,24 +1,25 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
 
-import io.konik.unece.codes.DocumentNameType;
 import io.konik.zugferd.qualified.DateTime;
+import io.konik.zugferd.unece.codes.DocumentNameCode;
 import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
@@ -29,14 +30,12 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * = The Invoice Document Header
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ExchangedDocumentType", propOrder = { "invoiceNumber", "name", "typeCode", "issued", "notes" })
+@XmlType(name = "ExchangedDocumentType", propOrder = { "invoiceNumber", "name", "code", "issued", "notes" })
 public class Header {
    
    @Valid
@@ -47,8 +46,7 @@ public class Header {
    private List<String> name;
 
    @XmlElement(name = "TypeCode")
-   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-   private String typeCode;
+   private DocumentNameCode code;
 
    @XmlElement(name = "IssueDateTime")
    @Valid
@@ -113,32 +111,6 @@ public class Header {
       return this;
    }
 
-   /**
-    * Gets the +UNCL 1001+ Document Name Type.
-    * Profile: BASIC
-    * Example: {@code 380, 381, 383, 389, 261}
-    *
-    * @return the type or {@link IllegalArgumentException} if {@link DocumentNameType} does not contain the given code.
-    * @see http://www.unece.org/trade/untdid/d13b/tred/tred1001.htm[UN/EDIFACT 1001 Document name coe^]
-    */
-   public DocumentNameType getType() {
-      return DocumentNameType.getTypeByCode(typeCode);
-   }
-
-   /**
-    * Sets the +UNCL 1001+ Document Name Type.
-    * 
-    * Profile: BASIC
-    * Example: {@code 380, 381, 383, 389, 261}
-    * 
-    * @param type the type
-    * @return the header document
-    * @see http://www.unece.org/trade/untdid/d13b/tred/tred1001.htm[UN/EDIFACT 1001 Document name coe^]
-    */
-   public Header setType(DocumentNameType type) {
-      this.typeCode = type.getCode();
-      return this;
-   }
 
    /**
     * Gets +UNCL 1001+ Document Name Code.
@@ -146,27 +118,29 @@ public class Header {
     * Profile: BASIC
     * Example: {@code 380, 381, 383, 389, 261}
     * 
-    * @return the type code
+    * @return the document name code
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred1001.htm[UN/EDIFACT 1001 Document name coe^]
     */
-   public String getTypeCode() {
-      return typeCode;
+   public DocumentNameCode getCode() {
+      return code;
    }
-
+   
    /**
     * Sets the +UNCL 1001+ Document Name Code.
     * 
     * Profile: BASIC
     * Example: {@code 380, 381, 383, 389, 261}
-    * 
-    * @param typeCode the type code
+    *
+    * @param code the new document name code
     * @return the header document
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred1001.htm[UN/EDIFACT 1001 Document name coe^]
     */
-   public Header setTypeCode(String typeCode) {
-      this.typeCode = typeCode;// new DocumentCode(typeCode);
+
+   public Header setCode(DocumentNameCode code) {
+      this.code = code;
       return this;
    }
+   
 
    /**
     * Gets the invoice issue date time.

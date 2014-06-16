@@ -1,31 +1,30 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package io.konik.zugferd.entity;
 
-import static io.konik.zugferd.entity.UriSchemeNames.EMAIL;
-import static io.konik.zugferd.entity.UriSchemeNames.TEL;
+import io.konik.jaxb.adapter.UniversalCommunicationAdapter;
 
-import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * = The Trade Contact
@@ -44,23 +43,22 @@ public class Contact {
 	@XmlElement(name = "DepartmentName")
 	private String department;
 
-	@Valid
 	@XmlElement(name = "TelephoneUniversalCommunication")
-	private UniversalCommunication telephone;
+	@XmlJavaTypeAdapter(value = UniversalCommunicationAdapter.class)
+	private String telephone;
 
-	@Valid
 	@XmlElement(name = "FaxUniversalCommunication")
-	private UniversalCommunication fax;
+	@XmlJavaTypeAdapter(value = UniversalCommunicationAdapter.class)
+	private String fax;
 
-	@Valid
 	@XmlElement(name = "EmailURIUniversalCommunication")
-	private UniversalCommunication email;
+	@XmlJavaTypeAdapter(value = UniversalCommunicationAdapter.class)
+	private String email;
 
 	/**
     * Instantiates a new contact.
     */
-	public Contact() {
-	}
+	public Contact() {}
 
 	/**
 	 * Instantiates a new trade contact.
@@ -74,9 +72,9 @@ public class Contact {
 	public Contact(String contactName, String departmentName, String telephone, String fax, String email) {
 		this.name = contactName;
 		this.department = departmentName;
-		this.telephone = telephone != null ? new UniversalCommunication(TEL, telephone) : null;
-		this.fax = fax != null ? new UniversalCommunication(TEL, fax) : null;
-		this.email = email != null ? new UniversalCommunication(EMAIL, email) : null;
+		this.telephone = telephone;
+		this.fax = fax;
+		this.email = email;
 	}
 
 	/**
@@ -96,9 +94,11 @@ public class Contact {
 	 * Profile:: EXTENDED
 	 * 
 	 * @param name the new person name
+	 * @return 
 	 */
-	public void setName(String name) {
+	public Contact setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	/**
@@ -116,9 +116,11 @@ public class Contact {
 	 * 
 	 * Profile:: EXTENDED
 	 * @param department the new department name
+	 * @return 
 	 */
-	public void setDepartment(String department) {
+	public Contact setDepartment(String department) {
 		this.department = department;
+		return this;
 	}
 
 	/**
@@ -129,7 +131,7 @@ public class Contact {
 	 * @return the telephone universal communication
 	 */
 	public String getTelephone() {
-		return telephone.getCompleteNumber();
+		return telephone;
 	}
 
 	/**
@@ -138,9 +140,11 @@ public class Contact {
     * Profile:: EXTENDED
     * Example:: +{plus}49 (123) 456789-999+
 	 * @param telephone the new telephone universal communication
+	 * @return 
 	 */
-	public void setTelephone(String telephone) {
-		this.telephone = new UniversalCommunication(TEL, telephone);
+	public Contact setTelephone(String telephone) {
+		this.telephone =telephone;
+		return this;
 	}
 
 	/**
@@ -150,7 +154,7 @@ public class Contact {
     * Example:: +{plus}49 (123) 456789-999+
 	 * @return the Fax number
 	 */
-	public UniversalCommunication getFax() {
+	public String getFax() {
 		return fax;
 	}
 
@@ -161,9 +165,11 @@ public class Contact {
     * Example:: +{plus}49 (123) 456789-999+
     *
     * @param faxNumber the new fax number
+    * @return the contact
     */
-	public void setFax(String faxNumber) {
-		this.fax = new UniversalCommunication(TEL, faxNumber);
+	public Contact setFax(String faxNumber) {
+		this.fax = faxNumber;
+		return this;
 	}
 
 	/**
@@ -174,7 +180,7 @@ public class Contact {
     * @return the email address
     */
 	public String getEmail() {
-		return email.getCompleteNumber();
+		return email;
 	}
 
 	/**
@@ -183,8 +189,10 @@ public class Contact {
     * Example: +example@konik.io+
     *
     * @param email the new email
+    * @return the contact
     */
-	public void setEmail(String email) {
-		this.email = new UniversalCommunication(EMAIL, email);
+	public Contact setEmail(String email) {
+		this.email = email;
+		return this;
 	}
 }

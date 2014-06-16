@@ -1,24 +1,24 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package io.konik.zugferd.entity;
 
-import io.konik.unece.codes.PaymentMeansType;
+import io.konik.zugferd.unece.codes.PaymentMeansCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +43,7 @@ public class PaymentMeans {
 
    @Valid
    @XmlElement(name = "TypeCode")
-   private PaymentMeansType code;
+   private PaymentMeansCode code;
 
    @XmlElement(name = "Information")
    private List<String> information;
@@ -71,7 +71,7 @@ public class PaymentMeans {
     * @return the UNCL 4461 type code
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred4461.htm[UN/EDIFACT 4461 Payment means code^]
     */
-   public PaymentMeansType getCode() {
+   public PaymentMeansCode getCode() {
       return code;
    }
 
@@ -84,7 +84,7 @@ public class PaymentMeans {
     * @return the trade settlement payment means
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred4461.htm[UN/EDIFACT 4461 Payment means code^]
     */
-   public PaymentMeans setCode(PaymentMeansType paymentMeansCode) {
+   public PaymentMeans setCode(PaymentMeansCode paymentMeansCode) {
       this.code = paymentMeansCode;
       return this;
    }

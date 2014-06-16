@@ -1,19 +1,20 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
 
@@ -29,22 +30,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * = The Trade.
+ * = The Trade transaction.
  *  
- * Groups the various aspects of an trade transaction.
- * 
- * A Trade is divided into the "global" trade agreements, delivery and trade settlement
- * parameters that can be overwritten/complemented on item basis.
- * 
+ * A Trade contains "global" agreements, delivery and settlement. On Item basis those parameters  can be refined.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreement", "delivery", "tradeSettlement",
-		"items" })
+@XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreement", "delivery", "settlement","items" })
 public class Trade {
 
    @NotNull
 	@XmlElement(name = "ApplicableSupplyChainTradeAgreement")
-	private TradeAgreement agreement;
+	private Agreement agreement;
 
    @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeDelivery")
@@ -52,7 +48,7 @@ public class Trade {
 
    @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeSettlement")
-	private TradeSettlement tradeSettlement;
+	private Settlement settlement;
 
    @Valid
 	@XmlElement(name = "IncludedSupplyChainTradeLineItem")
@@ -63,7 +59,7 @@ public class Trade {
     *
     * @return the agreement
     */
-	public TradeAgreement getAgreement() {
+	public Agreement getAgreement() {
       return agreement;
    }
 
@@ -71,9 +67,11 @@ public class Trade {
     * Sets the trade agreement.
     *
     * @param agreement the new agreement
+    * @return the trade
     */
-   public void setAgreement(TradeAgreement agreement) {
+   public Trade setAgreement(Agreement agreement) {
       this.agreement = agreement;
+      return this;
    }
 
    /**
@@ -101,17 +99,19 @@ public class Trade {
 	 * 
 	 * @return the trade settlement
 	 */
-	public TradeSettlement getTradeSettlement() {
-		return tradeSettlement;
+	public Settlement getSettlement() {
+		return settlement;
 	}
 
 	/**
-	 * Sets the trade settlement.
-	 * 
-	 * @param tradeSettlement the new trade settlement
-	 */
-	public void setTradeSettlement(TradeSettlement tradeSettlement) {
-		this.tradeSettlement = tradeSettlement;
+    * Sets the trade settlement.
+    *
+    * @param tradeSettlement the new trade settlement
+    * @return the trade
+    */
+	public Trade setSettlement(Settlement tradeSettlement) {
+		this.settlement = tradeSettlement;
+		return this;
 	}
 
 	/**

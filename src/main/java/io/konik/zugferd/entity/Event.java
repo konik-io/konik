@@ -1,25 +1,25 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package io.konik.zugferd.entity;
 
-import io.konik.unece.codes.DateTimeType;
 import io.konik.zugferd.qualified.DateTime;
+import io.konik.zugferd.unece.codes.DateTimeType;
 
 import java.util.Date;
 
@@ -54,7 +54,7 @@ public class Event {
     * @param type the type
     * @param date the date
     */
-	public Event(DateTimeType type,Date date) {
+	public Event(DateTimeType type, Date date) {
 	   this.occurrence = new DateTime(type, date);
    }
 	/**
@@ -79,9 +79,11 @@ public class Event {
     * Sets the occurrence.
     *
     * @param occurrence the new occurrence
+    * @return the event
     */
-   public void setOccurrence(DateTime occurrence) {
+   public Event setOccurrence(DateTime occurrence) {
       this.occurrence = occurrence;
+      return this;
    }
 
    /**

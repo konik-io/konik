@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2014 konik.io
+ *
+ * This file is part of Konik library.
+ *
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Konik library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ */
 package io.konik.utils;
 
 import static java.lang.Boolean.TRUE;
@@ -6,7 +24,6 @@ import static org.apache.commons.lang3.ClassUtils.isPrimitiveOrWrapper;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.apache.commons.lang3.reflect.MethodUtils.getAccessibleMethod;
 import static org.apache.commons.lang3.reflect.MethodUtils.invokeMethod;
-import io.konik.zugferd.Invoice;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -24,9 +41,11 @@ public class RandomInvoiceGenerator {
    LoremIpsum jlorem = new LoremIpsum();
    Random random = new Random();
    
-   public Invoice generate() {
+
+   @SuppressWarnings({ "unchecked" })
+   public <T> T generate(Class<T> root) {
       try {
-         return (Invoice) populteData(Invoice.class, null);
+         return (T) populteData(root, null);
       } catch (InstantiationException e) {
          e.printStackTrace();
       } catch (IllegalAccessException e) {
@@ -138,19 +157,27 @@ public class RandomInvoiceGenerator {
       String name = jlorem.randomWord();
       
       if (methodName.contains("UnitCode")) {
-         return name.substring(0, 2);
+         return name.substring(0, name.length()<2?name.length():2);
       }
       
       if (methodName.contains("currencyId") ) {
          return RandomStringUtils.randomAlphabetic(3).toUpperCase();
       }
       
-      if (methodName.contains("Number")) {
-         return String.valueOf(new Random().nextInt(7));
+      if (methodName.contains("Number") ) {
+         return String.valueOf(new Random().nextInt(1000));
+      }
+      
+      if (methodName.contains("Telephone") || methodName.contains("Fax") ) {
+         return "+4178906011";
       }
       
       if (methodName.contains("Description")) {
          return jlorem.sentences(2);
+      }
+      
+      if (methodName.contains("Email")) {
+         return "hello@konik.io";
       }
       
       if (methodName.contains("Id") ) {

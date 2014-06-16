@@ -1,21 +1,21 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package io.konik.zugferd.entity;
 
 import io.konik.zugferd.profile.Profile;
@@ -81,9 +81,11 @@ public class Context {
     * Profile: BASIC
     * 
     * @param test the new indicates if this invoice is for testing purpose only
+    * @return 
     */
-   public void setTest(boolean test) {
+   public Context setTest(boolean test) {
       this.test = test;
+      return this;
    }
 
    /**
@@ -105,10 +107,12 @@ public class Context {
     * Profile: BASIC
     * 
     * Example: {@code urn:ferd:invoice:1.0:comfort}
-    * 
+    *
     * @param profile the new profile
+    * @return the context
     */
-   public void setProfile(Profile profile) {
+   public Context setProfile(Profile profile) {
       this.profile = profile;
+      return this;
    }
 }

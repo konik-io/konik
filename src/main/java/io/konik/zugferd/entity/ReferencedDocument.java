@@ -1,19 +1,20 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
 
@@ -56,25 +57,25 @@ public class ReferencedDocument {
 	}
 
 	/**
-	 * Sets the issue date time.
-
-	 * Profile: COMFORT 
-
-	 * 
-	 * @param issued the new issue date time
-	 */
-	public void setIssued(DateTime issued) {
+    * Sets the issue date time.
+    * Profile: COMFORT
+    *
+    * @param issued the new issue date time
+    * @return the referenced document
+    */
+	public ReferencedDocument setIssued(DateTime issued) {
 		this.issued = issued;
+		return this;
 	}
 	
 	/**
     * Sets the reference document id.
     *
-    * @param value the value
+    * @param referenceDocumentId the value
     * @return the referenced document
     */
-	public ReferencedDocument setId(String value){
-	   id = new ID(value);
+	public ReferencedDocument setId(String referenceDocumentId){
+	   id = new ID(referenceDocumentId);
 	   return this;
 	}
 
@@ -83,18 +84,7 @@ public class ReferencedDocument {
     *
     * @return the id
     */
-   public ID getId() {
-      return id;
-   }
-
-   /**
-    * Sets the id.
-    *
-    * @param id the id
-    * @return the referenced document
-    */
-   public ReferencedDocument setId(ID id) {
-      this.id = id;
-      return this;
+   public String getId() {
+      return id==null?null:id.getValue();
    }
 }

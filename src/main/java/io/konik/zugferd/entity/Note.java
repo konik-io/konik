@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * = The Note.
+ * = The Note
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NoteType", propOrder = { "content", "subjectCode" })

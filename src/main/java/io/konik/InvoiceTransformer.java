@@ -92,7 +92,7 @@ public class InvoiceTransformer {
    }
 
    /**
-    * Transform from XML content from File to the invoice model
+    * Transform from XML content from File to the invoice model.
     * 
     * @param file the file
     * @return the invoice
@@ -107,7 +107,7 @@ public class InvoiceTransformer {
       }
    }
    /**
-    * Transform from Invoice model to xml byte array
+    * Transform from Invoice model to xml byte array.
     * 
     * @param invoice the invoice
     * @return the byte[]

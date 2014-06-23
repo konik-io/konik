@@ -91,10 +91,10 @@ public class Address {
 
 	/**
 	 * Gets the postcode.
-
-	 * Profile: BASIC when part of Trade.agreements.seller.
-
-	 * Example: {@code DE-123456}
+	 * 
+	 * Profile:: BASIC when part of Trade.agreements.seller.
+	 * 
+	 * Example:: {@code DE-123456}
 	 *
 	 * @return the postcode
 	 */
@@ -104,10 +104,10 @@ public class Address {
 
 	/**
 	 * Sets the postcode code.
-
-	 * Profile: BASIC when part of Trade.agreements.seller.
-
-	 * Example: {@code DE-123456}
+	 * 
+	 * Profile:: BASIC when part of Trade.agreements.seller.
+	 * 
+	 * Example:: {@code DE-123456}
 	 * @param postcode the postcode
 	 * @return the trade address
 	 */
@@ -118,10 +118,10 @@ public class Address {
 
 	/**
 	 * Gets the line one. Usually the Street name.
-
-	 * Profile: BASIC when part of Trade.agreements.seller.
-
-	 * Example: {@code Elm Street 13}
+	 * 
+	 * Profile:: BASIC when part of Trade.agreements.seller.
+	 * 
+	 * Example:: {@code Elm Street 13}
 	 *
 	 * @return the line one
 	 */
@@ -131,10 +131,10 @@ public class Address {
 
 	/**
 	 * Sets the line one. Usually the Street name.
-
-	 * Profile: BASIC when part of Trade.agreements.seller.
-
-	 * Example: {@code Elm Street 13}
+	 * 
+	 * Profile:: BASIC when part of Trade.agreements.seller.
+	 * 
+	 * Example:: {@code Elm Street 13}
 	 *
 	 * @param lineOne the new line one
 	 * @return the trade address
@@ -146,10 +146,10 @@ public class Address {
 
 	/**
 	 * Gets the line two. Location like Building name or department.
-
-	 * Profile: BASIC when part of Trade.agreements.seller.
-
-	 * Example: {@code Department of broken dreams}
+	 * 
+	 * Profile:: BASIC when part of Trade.agreements.seller.
+	 * 
+	 * Example:: {@code Department of broken dreams}
 	 *
 	 * @return the line two
 	 */
@@ -159,10 +159,10 @@ public class Address {
 
 	/**
 	 * Sets the line two.. Location like Building name or department.
-
-	 * Profile: BASIC when part of Trade.agreements.seller.
-
-	 * Example: {@code Department of broken dreams}
+	 * 
+	 * Profile:: BASIC when part of Trade.agreements.seller.
+	 * 
+	 * Example:: {@code Department of broken dreams}
 	 *
 	 * @param lineTwo the new line two
 	 * @return the trade address
@@ -174,10 +174,10 @@ public class Address {
 
 	/**
 	 * Gets the city name.
-
-	 * Profile: BASIC when part of Trade.agreements.seller.
-
-	 * Example: {@code Zürich}
+	 * 
+	 * Profile:: BASIC when part of Trade.agreements.seller.
+	 * 
+	 * Example:: {@code Zürich}
 	 *
 	 * @return the city name
 	 */
@@ -187,10 +187,10 @@ public class Address {
 
 	/**
 	 * Sets the city name.
-
-	 * Profile: BASIC when part of Trade.agreements.seller.
-
-	 * Example: {@code Zürich}
+	 * 
+	 * Profile:: BASIC when part of Trade.agreements.seller.
+	 * 
+	 * Example:: {@code Zürich}
 	 *
 	 * @param cityName the new city name
 	 * @return the trade address
@@ -205,9 +205,9 @@ public class Address {
 
 	 * Two-letter country codes defined in ISO 3166-1,
 
-	 * Profile: BASIC when part of Trade.agreements.seller.
+	 * Profile:: BASIC when part of Trade.agreements.seller.
 
-	 * Example: {@code CH}
+	 * Example:: {@code CH}
 	 *
 	 * @return the ISO 3166-2A country code
 	 * @see <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-2A Country Codes</a>
@@ -218,12 +218,12 @@ public class Address {
 
 	/**
 	 * Sets the country code.
-
+	 * 
 	 * Two-letter country codes defined in ISO 3166-1,
-
-	 * Profile: BASIC when part of Trade.agreements.seller.
-
-	 * Example: {@code CH}
+	 * 
+	 * Profile:: BASIC when part of Trade.agreements.seller.
+	 * 
+	 * Example:: {@code CH}
 	 *
 	 * @param countryCode the country code
 	 * @return the trade address

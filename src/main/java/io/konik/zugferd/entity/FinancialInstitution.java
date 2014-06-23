@@ -18,26 +18,28 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.unqualified.ID;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * = The Creditor Financial Institution.
+ * = The Financial Institution.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = { "bic", "germanBankleitzahl", "name" })
 public class FinancialInstitution {
 
 	@XmlElement(name = "BICID")
-	private ID bic;
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	private String bic;
 
 	@XmlElement(name = "GermanBankleitzahlID")
-	private ID germanBankleitzahl;
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	private String germanBankleitzahl;
 
 	@XmlElement(name = "Name")
 	private String name;
@@ -62,7 +64,7 @@ public class FinancialInstitution {
 	 * @return the bic
 	 */
 	public String getBic() {
-		return bic.getValue();
+		return bic;
 	}
 
 	/**
@@ -72,27 +74,27 @@ public class FinancialInstitution {
     * @return the financial institution
     */
 	public FinancialInstitution setBic(String bic) {
-		this.bic = new ID(bic);
+		this.bic = bic;
 		return this;
 	}
 
 	/**
-	 * Gets the german bankleitzahl.
+	 * Gets the German bankleitzahl.
 	 * 
 	 * @return the german bankleitzahl
 	 */
 	public String getGermanBankleitzahl() {
-		return germanBankleitzahl.getValue();
+		return germanBankleitzahl;
 	}
 
 	/**
-    * Sets the german bankleitzahl.
+    * Sets the German bankleitzahl.
     *
     * @param germanBankleitzahl the new german bankleitzahl
     * @return the financial institution
     */
 	public FinancialInstitution setGermanBankleitzahl(String germanBankleitzahl) {
-		this.germanBankleitzahl = new ID(germanBankleitzahl);
+		this.germanBankleitzahl = germanBankleitzahl;
 		return this;
 	}
 

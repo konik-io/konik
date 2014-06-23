@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  * = The Trade Tax.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeTaxType", propOrder = { "calculatedAmount", "code", "exemptionReason","basisAmount", "categoryCode", "applicablePercentage" })
+@XmlType(name = "TradeTaxType", propOrder = { "calculatedAmount", "code", "exemptionReason","basisAmount", "category", "applicablePercentage" })
 public class Tax {
 
    @Valid
@@ -54,16 +54,15 @@ public class Tax {
 	private Amount basisAmount;
 
 	@XmlElement(name = "CategoryCode")
-	private TaxCategory categoryCode;
+	private TaxCategory category;
 
 	@XmlElement(name = "ApplicablePercent")
 	private BigDecimal applicablePercentage;
 
 	/**
 	 * Gets the calculated amount.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
 	 * 
 	 * @return the calculated amount
 	 */
@@ -73,7 +72,8 @@ public class Tax {
 
 	/**
     * Sets the calculated amount.
-    * Profile: BASIC
+    * 
+    * Profile:: BASIC
     *
     * @param calculatedAmount the new calculated amount
     * @return the tax
@@ -110,9 +110,8 @@ public class Tax {
 
 	/**
 	 * Gets the tax exemption reason.
-
-	 * Profile: COMFORT
-
+	 * 
+	 * Profile:: COMFORT
 	 * 
 	 * @return the exemption reason
 	 */
@@ -122,7 +121,8 @@ public class Tax {
 
 	/**
     * Sets the tax exemption reason.
-    * Profile: COMFORT
+    * 
+    * Profile:: COMFORT
     *
     * @param exemptionReason the new exemption reason
     * @return the tax
@@ -134,9 +134,8 @@ public class Tax {
 
 	/**
 	 * Gets the basis amount for tax calculation.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
 	 * 
 	 * @return the basis amount
 	 */
@@ -146,7 +145,8 @@ public class Tax {
 
 	/**
     * Sets the basis amount for tax calculation.
-    * Profile: BASIC
+    * 
+    * Profile:: BASIC
     *
     * @param basisAmount the new basis amount
     * @return the tax
@@ -157,34 +157,34 @@ public class Tax {
 	}
 
 	/**
-	 * Gets the tax category code.
-
-	 * Profile: COMFORT
-
+	 * Gets the tax category.
+	 * 
+	 * Profile:: COMFORT
 	 * 
 	 * @return the category code
 	 */
-	public TaxCategory getCategoryCode() {
-		return categoryCode;
+	public TaxCategory getCategory() {
+		return category;
 	}
 
 	/**
-    * Sets the tax category code.
-    * Profile: COMFORT
+    * Sets the tax category.
+    * 
+    * Profile:: COMFORT
     *
     * @param value the new category code
     * @return the tax
     */
-	public Tax setCategoryCode(TaxCategory value) {
-		this.categoryCode = value;
+	public Tax setCategory(TaxCategory value) {
+		this.category = value;
 		return this;
 	}
 
 	/**
 	 * Gets the applicable tax percentage.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
+	 * 
 	 * 
 	 * @return the applicable tax percentage
 	 */
@@ -194,7 +194,8 @@ public class Tax {
 
 	/**
     * Sets the applicable tax percentage.
-    * Profile: BASIC
+    * 
+    * Profile:: BASIC
     *
     * @param applicablePercentage the new applicable tax percentage
     * @return the tax

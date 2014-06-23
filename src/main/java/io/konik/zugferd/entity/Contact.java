@@ -29,9 +29,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 /**
  * = The Trade Contact
  * 
- * Is a individual that can be reached in ways specified by this class.
- * 
- * 
+ * An individual with contact information.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradeContactType", propOrder = { "name", "department", "telephone", "fax", "email" })
@@ -105,6 +103,7 @@ public class Contact {
 	 * Gets the department name.
 	 * 
 	 * Profile:: EXTENDED
+	 * 
 	 * @return the department name
 	 */
 	public String getDepartment() {
@@ -115,6 +114,7 @@ public class Contact {
 	 * Sets the department name.
 	 * 
 	 * Profile:: EXTENDED
+	 * 
 	 * @param department the new department name
 	 * @return 
 	 */
@@ -127,6 +127,7 @@ public class Contact {
 	 * Gets the telephone number.
 	 * 
     * Profile:: EXTENDED
+    * 
     * Example:: +{plus}49 (123) 456789-999+
 	 * @return the telephone universal communication
 	 */
@@ -138,6 +139,7 @@ public class Contact {
 	 * Sets the telephone number providing the string only.
 	 * 
     * Profile:: EXTENDED
+    * 
     * Example:: +{plus}49 (123) 456789-999+
 	 * @param telephone the new telephone universal communication
 	 * @return 
@@ -151,6 +153,7 @@ public class Contact {
 	 * Gets the Fax number.
 	 * 
     * Profile:: EXTENDED
+    * 
     * Example:: +{plus}49 (123) 456789-999+
 	 * @return the Fax number
 	 */
@@ -162,6 +165,7 @@ public class Contact {
     * Sets the telephone number providing the string only.
     * 
     * Profile:: EXTENDED
+    * 
     * Example:: +{plus}49 (123) 456789-999+
     *
     * @param faxNumber the new fax number
@@ -176,6 +180,7 @@ public class Contact {
     * Gets the email contacts E-mail address.
     * 
     * Profile:: EXTENDED
+    * 
     * Example:: +example@konik.io+
     * @return the email address
     */
@@ -185,8 +190,10 @@ public class Contact {
 
 	/**
     * Sets the email contacts E-mail address.
-    * Profile: EXTENDED.
-    * Example: +example@konik.io+
+    * 
+    * Profile:: EXTENDED.
+    * 
+    * Example:: +example@konik.io+
     *
     * @param email the new email
     * @return the contact

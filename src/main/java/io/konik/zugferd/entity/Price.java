@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * = The Price.
+ * = The Price
  * 
  * 
  */
@@ -40,17 +40,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "TradePriceType", propOrder = { "chargeAmount", "basisQuantity", "allowanceCharge" })
 public class Price {
 
-	/** The charge amount. */
    @Valid
 	@XmlElement(name = "ChargeAmount")
 	private Amount chargeAmount;
 
-	/** The basis quantity. */
    @Valid
 	@XmlElement(name = "BasisQuantity")
 	private Quantity basisQuantity;
 
-	/** The applied trade allowance charge. */
    @Valid
 	@XmlElement(name = "AppliedTradeAllowanceCharge")
 	private List<AllowanceCharge> allowanceCharge;

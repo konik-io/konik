@@ -29,8 +29,8 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * = The Allowance Charge 
- * Represents the detail information about surcharges and discounts.
  * 
+ * Represents trade surcharges and discounts as well as a reason.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradeAllowanceChargeType", propOrder = { "surcharge", "basisAmount", "actualAmount",

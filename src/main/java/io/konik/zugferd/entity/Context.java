@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * = The Exchanged Document Context.
+ * = The Exchanged Document Context
  * 
  * Grouping of the properties of the message.
  */
@@ -63,7 +63,7 @@ public class Context {
     * The sales tax liability does not arise. This flag is used in particular in the introductory period of new business
     * relationships.
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
     * 
     * @return true if this invoice is for testing purpose only
@@ -78,7 +78,7 @@ public class Context {
     * The sales tax liability does not arise. This flag is used in particular in the introductory period of new business
     * relationships.
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
     * @param test the new indicates if this invoice is for testing purpose only
     * @return 
@@ -91,9 +91,9 @@ public class Context {
    /**
     * Gets the guideline or profile of the invoice
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
-    * Example: {@code urn:ferd:invoice:1.0:comfort}
+    * Example:: {@code urn:ferd:invoice:1.0:comfort}
     * 
     * @return the profile
     */
@@ -104,9 +104,9 @@ public class Context {
    /**
     * Sets the guideline or profile of the invoice
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
-    * Example: {@code urn:ferd:invoice:1.0:comfort}
+    * Example:: {@code urn:ferd:invoice:1.0:comfort}
     *
     * @param profile the new profile
     * @return the context

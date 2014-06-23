@@ -23,6 +23,7 @@ import static com.neovisionaries.i18n.CurrencyCode.EUR;
 import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
 import static io.konik.zugferd.unece.codes.DocumentNameCode._380;
 import static io.konik.zugferd.unece.codes.Reference.FC;
+import static org.assertj.core.util.Dates.tomorrow;
 import io.konik.utils.InvoiceLoaderUtils;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.Address;
@@ -35,11 +36,11 @@ import io.konik.zugferd.entity.Header;
 import io.konik.zugferd.entity.Item;
 import io.konik.zugferd.entity.MonetarySummation;
 import io.konik.zugferd.entity.PaymentMeans;
+import io.konik.zugferd.entity.Product;
+import io.konik.zugferd.entity.Settlement;
 import io.konik.zugferd.entity.TaxRegistration;
 import io.konik.zugferd.entity.Trade;
 import io.konik.zugferd.entity.TradeParty;
-import io.konik.zugferd.entity.Product;
-import io.konik.zugferd.entity.Settlement;
 import io.konik.zugferd.profile.BasicProfile;
 import io.konik.zugferd.qualified.DateTime;
 import io.konik.zugferd.unqualified.Amount;
@@ -62,29 +63,38 @@ import org.xml.sax.SAXException;
 @SuppressWarnings("javadoc")
 public class MinimalInvoice {
 
+   DateTime now = new DateTime();
+   DateTime tomorrow = new DateTime(tomorrow());
+
    private Invoice createMinimalValidInvoice() {
+
       Invoice invoice = new Invoice(new BasicProfile());
-      invoice.setHeader(new Header().setInvoiceNumber("20131122-42").setCode(_380)
-            .setIssued(new DateTime()).addName("Rechnung"));
+      invoice.setHeader(new Header().setInvoiceNumber("20131122-42").setCode(_380).setIssued(now).addName("Rechnung"));
 
       Trade trade = new Trade();
+      invoice.setTrade(trade);
+      
       trade.setAgreement(new Agreement().setSellerTradeParty(
             new TradeParty().setName("Seller Inc.").setAddress(new Address("35578", "Fontanestr, 14", "Wetzlar", "DE"))
                   .addTaxRegistration(new TaxRegistration("DE122...", FC))).setBuyerTradeParty(
             new TradeParty().setName("Buyer Inc.").setAddress(new Address("50667", "Domkloster 4", "Köln", "DE"))
                   .addTaxRegistration(new TaxRegistration("DE123...", FC))));
 
-      trade.setDelivery(new Delivery().setEvent(new Event(new DateTime())));
+      trade.setDelivery(new Delivery().setEvent(new Event(tomorrow)));
 
-      trade.setSettlement(new Settlement().setPaymentReference("20131122-42").setCurrency(EUR)
-            .addPaymentMeans(new PaymentMeans().setPayerAccount(new FinancialAccount("DE01234..")).setPayerInstitution(
-                  new FinancialInstitution("GENO...")))
-            .setMonetarySummation(new MonetarySummation().
-                  setNetTotal(new Amount(100, EUR)).setTaxTotal(new Amount(19, EUR)).setGrandTotal(new Amount(119, EUR))));
+      trade.setSettlement(new Settlement()
+            .setPaymentReference("20131122-42")
+            .setCurrency(EUR)
+            .addPaymentMeans(
+                  new PaymentMeans().setPayerAccount(new FinancialAccount("DE01234..")).setPayerInstitution(
+                        new FinancialInstitution("GENO...")))
+            .setMonetarySummation(
+                  new MonetarySummation().setNetTotal(new Amount(100, EUR)).setTaxTotal(new Amount(19, EUR))
+                        .setGrandTotal(new Amount(119, EUR))));
+
+      trade.addItem(new Item().setProduct(new Product().setName("Saddle").addOrigins(DE)));
+
       
-      trade.addItem(new Item().setProduct(new Product().setName("Webcam HD").addOrigins(DE)));
-
-      invoice.setTrade(trade);
       return invoice;
    }
 
@@ -97,7 +107,7 @@ public class MinimalInvoice {
       ByteArrayOutputStream os = new ByteArrayOutputStream();
       marshaller.marshal(invoice, os);
 
-      		System.out.println(os.toString());
+      System.out.println(os.toString());
 
       //validate
       getSchemaValidator().validate(new StreamSource(new StringReader(os.toString())));

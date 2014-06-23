@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * = The Payment Means.
+ * = The Payment Means
  * 
  * Detailed information on the means of payment.
  */
@@ -66,7 +66,8 @@ public class PaymentMeans {
 
    /**
     * Gets the +UNCL 4461+ type code.
-    * Profile: COMFORT
+    * 
+    * Profile:: COMFORT
     * 
     * @return the UNCL 4461 type code
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred4461.htm[UN/EDIFACT 4461 Payment means code^]
@@ -78,7 +79,7 @@ public class PaymentMeans {
    /**
     * Sets the +UNCL 4461+ code.
     *
-    * Profile: *COMFORT*
+    * Profile:: *COMFORT*
     * 
     * @param paymentMeansCode the new UNCL 4461 payment means code
     * @return the trade settlement payment means
@@ -92,9 +93,9 @@ public class PaymentMeans {
    /**
     * Gets the free text payment method information.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
-    * Example: <code>Cash, Credit Card</code>
+    * Example:: +Cash, Credit Card+
     * 
     * @return the information
     */
@@ -108,9 +109,9 @@ public class PaymentMeans {
    /**
     * Adds the free text payment method information.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
-    * Example: +Cash, Credit Card+
+    * Example:: +Cash, Credit Card+
     *
     * @param additionalInformation the additional information
     * @return the payment means
@@ -123,7 +124,7 @@ public class PaymentMeans {
    /**
     * Gets the payer/buyer debtor financial account.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     * 
     * @return the payer party debtor financial account
@@ -135,7 +136,7 @@ public class PaymentMeans {
    /**
     * Sets the payer/buyer party debtor financial account.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     * 
     * @param payerAccount the payer account
@@ -149,7 +150,7 @@ public class PaymentMeans {
    /**
     * Gets the payee/seller party creditor financial account.
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
     * 
     * @return the payee party creditor financial account
@@ -161,7 +162,7 @@ public class PaymentMeans {
    /**
     * Sets the payee/seller party creditor financial account.
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
     * 
     * @param payeeAccount the payee account
@@ -175,7 +176,7 @@ public class PaymentMeans {
    /**
     * Gets the payer/buyer specified debtor financial institution.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     * 
     * @return the payer specified debtor financial institution
@@ -187,7 +188,7 @@ public class PaymentMeans {
    /**
     * Sets the payer/buyer specified debtor financial institution.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     * 
     * @param payerInstitution the payer institution
@@ -201,7 +202,7 @@ public class PaymentMeans {
    /**
     * Gets the payee/seller specified creditor financial institution.
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
     * 
     * @return the payee specified creditor financial institution
@@ -213,7 +214,7 @@ public class PaymentMeans {
    /**
     * Sets the payee/seller specified creditor financial institution.
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
     * 
     * @param payeeInstitution the payee institution

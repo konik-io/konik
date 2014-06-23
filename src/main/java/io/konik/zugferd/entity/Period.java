@@ -30,7 +30,6 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * = The Period of time
  * 
- * with a start and end date.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SpecifiedPeriodType", propOrder = { "start", "end" })

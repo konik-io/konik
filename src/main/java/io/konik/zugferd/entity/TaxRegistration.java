@@ -69,8 +69,9 @@ public class TaxRegistration {
 	/**
 	 * Gets the tax number.
 	 * 
-	 * Profile: BASIC
-	 * Example: {@code DE234567891}
+	 * Profile:: BASIC
+	 * 
+	 * Example:: {@code DE234567891}
 	 * 
 	 * @return the number
 	 */
@@ -81,8 +82,9 @@ public class TaxRegistration {
 	/**
     * Sets the tax number.
     * 
-    * Profile: BASIC
-    * Example: {@code DE234567891}
+    * Profile:: BASIC
+    * 
+    * Example:: {@code DE234567891}
     *
     * @param taxNumber the new value
     * @return the tax registration
@@ -95,8 +97,9 @@ public class TaxRegistration {
 	/**
     * Gets the tax type. The UNCL 1153 tax type.
     * 
-    * Profile: BASIC
-    * Example: {@code VA}
+    * Profile:: BASIC
+    * 
+    * Example:: {@code VA}
     *
     * @return the type
     */
@@ -107,8 +110,9 @@ public class TaxRegistration {
 	/**
     * Sets the UNCL 1153 tax type.
     * 
-    * Profile: BASIC
-    * Example: {@code VA}
+    * Profile:: BASIC
+    * 
+    * Example:: {@code VA}
     *
     * @param taxType the new type
     * @return the tax registration

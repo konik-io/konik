@@ -18,15 +18,15 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.unqualified.ID;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * = The Trade Accounting Account.
+ * = The Trade Accounting Account
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlType;
 public class Account {
 
    @XmlElement(name = "ID")
-   private ID id;
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   private String id;
 
    /**
     * Instantiates a new account.
@@ -47,7 +48,7 @@ public class Account {
     * @param id the id
     */
    public Account(String id) {
-      this.id = new ID(id);
+      this.id = id;
    }
    
    /**
@@ -56,7 +57,7 @@ public class Account {
     * @return the id
     */
    public String getId() {
-      return id.getValue();
+      return id;
    }
 
 

@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * = The Universal Communication.
+ * = The Universal Communication
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UniversalCommunicationType", propOrder = { "email", "number" })

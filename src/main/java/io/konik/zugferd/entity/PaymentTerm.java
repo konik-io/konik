@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * = The Payment Term
- * Payment Term for the trade.
+ * 
+ * Trade payment Term
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradePaymentTermsType", propOrder = { "description", "due" })

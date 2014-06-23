@@ -28,11 +28,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import com.neovisionaries.i18n.CountryCode;
 
 /**
- * = The Trade Product.
+ * = The Trade Product
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradeProductType", propOrder = { "globalId", "sellerAssignedId", "buyerAssignedId", "name",
@@ -43,10 +45,12 @@ public class Product {
    private ID globalId;
 
    @XmlElement(name = "SellerAssignedID")
-   private ID sellerAssignedId;
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   private String sellerAssignedId;
 
    @XmlElement(name = "BuyerAssignedID")
-   private ID buyerAssignedId;
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   private String buyerAssignedId;
 
    @XmlElement(name = "Name")
    private String name;
@@ -83,7 +87,7 @@ public class Product {
     *
     * @return the seller assigned id
     */
-   public ID getSellerAssignedId() {
+   public String getSellerAssignedId() {
       return sellerAssignedId;
    }
 
@@ -93,7 +97,7 @@ public class Product {
     * @param sellerAssignedId the new seller assigned id
     * @return the trade product
     */
-   public Product setSellerAssignedId(ID sellerAssignedId) {
+   public Product setSellerAssignedId(String sellerAssignedId) {
       this.sellerAssignedId = sellerAssignedId;
       return this;
    }
@@ -103,7 +107,7 @@ public class Product {
     *
     * @return the buyer assigned id
     */
-   public ID getBuyerAssignedId() {
+   public String getBuyerAssignedId() {
       return buyerAssignedId;
    }
 
@@ -113,7 +117,7 @@ public class Product {
     * @param buyerAssignedId the new buyer assigned id
     * @return the trade product
     */
-   public Product setBuyerAssignedId(ID buyerAssignedId) {
+   public Product setBuyerAssignedId(String buyerAssignedId) {
       this.buyerAssignedId = buyerAssignedId;
       return this;
    }

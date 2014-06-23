@@ -29,10 +29,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * Identifies the trade party by the given parameters. Also provides a contact and tax registration
- * informations.
+ * = The Trade Party
+ * 
+ * Applies to a buyer, seller, order recipient or invoice recipient.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradePartyType", propOrder = { "id", "globalId", "name", "contact", "address", "taxRegistration" })
@@ -40,7 +43,8 @@ public class TradeParty {
 
    /** The vendor number or customer number */
    @XmlElement(name = "ID")
-   private ID id;
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   private String id;
 
    /** The global vendor number or customer number id */
    @XmlElement(name = "GlobalID")
@@ -69,37 +73,38 @@ public class TradeParty {
    /**
     * Gets the id.
     * 
-    * Profile: COMFORT when part of Trade.agreements.seller
+    * Profile:: COMFORT when part of Trade.agreements.seller
     * 
-    * Example: {@code The supplier number given by the customer/buyer }
+    * Example:: {@code The supplier number given by the customer/buyer }
     * 
     * @return the id
     */
    public String getId() {
-      return id == null ? null : id.getValue();
+      return id;
    }
 
    /**
     * Sets the id.
-    * Profile: COMFORT when part of Trade.agreements.seller
-    * Example: {@code The supplier number given by the customer/buyer }
+    * Profile:: COMFORT when part of Trade.agreements.seller
+    * 
+    * Example:: {@code The supplier number given by the customer/buyer }
     *
     * @param id the new id
     * @return the trade party
     */
    public TradeParty setId(String id) {
-      this.id = new ID(id);
+      this.id = id;
       return this;
    }
 
    /**
     * Gets the trade party global id. (GLN, DUNS, BIC, ODETTE)
     * 
-    * Profile: COMFORT when part of Trade.agreements.seller
+    * Profile:: COMFORT when part of Trade.agreements.seller
     * 
-    * Example: {@link ID#getValue()} {@code  GENODED1SPK, 4000001000005 }
-    * 
-    * Example: {@link ID#getSchemeId()} the ISO 6523 code {@code 0021, 0088, 0060, 0177 }
+    * Example::
+    * - {@link ID#getValue()} {@code  GENODED1SPK, 4000001000005 }
+    * - {@link ID#getSchemeId()} the ISO 6523 code {@code 0021, 0088, 0060, 0177 }
     * 
     * @return the global id
     */
@@ -115,9 +120,10 @@ public class TradeParty {
     * 
     * Profile:: COMFORT when part of Trade.agreements.seller
     * 
-    * Example:: {@link ID#getValue()}{@code  GENODED1SPK, 4000001000005 }
-    * Example:: {@link ID#getSchemeId()} the ISO 6523 code {@code 0021, 0088, 0060, 0177 }
-    *
+    * Example::
+    * - {@link ID#getValue()} {@code  GENODED1SPK, 4000001000005 }
+    * - {@link ID#getSchemeId()} the ISO 6523 code {@code 0021, 0088, 0060, 0177 }
+    * 
     * @param additionalGlobalId the additional global id
     * @return the trade party
     */
@@ -129,9 +135,9 @@ public class TradeParty {
    /**
     * Gets the trade party name. Usually the Company name.
     * 
-    * Profile: BASIC when part of Trade.agreements.seller/buyer.
+    * Profile:: BASIC when part of Trade.agreements.seller/buyer.
     * 
-    * Example: {@code  ACME Inc.}
+    * Example:: {@code  ACME Inc.}
     * 
     * @return the name
     */
@@ -142,9 +148,9 @@ public class TradeParty {
    /**
     * Sets the trade party name. Usually the Company name.
     * 
-    * Profile: BASIC when part of Trade.agreements.seller/buyer.
+    * Profile:: BASIC when part of Trade.agreements.seller/buyer.
     * 
-    * Example: {@code  ACME Inc.}
+    * Example:: {@code  ACME Inc.}
     * 
     * @param name the name
     * @return the trade party
@@ -157,7 +163,7 @@ public class TradeParty {
    /**
     * Gets the contact person.
     * 
-    * Profile: BASIC when part of Trade.agreements.seller/buyer.
+    * Profile:: BASIC when part of Trade.agreements.seller/buyer.
     * 
     * 
     * @return the defined trade contact
@@ -169,7 +175,7 @@ public class TradeParty {
    /**
     * Sets the contact person.
     * 
-    * Profile: BASIC when part of Trade.agreements.seller/buyer.
+    * Profile:: BASIC when part of Trade.agreements.seller/buyer.
     * 
     * 
     * @param contact the new defined trade contact
@@ -183,7 +189,7 @@ public class TradeParty {
    /**
     * Gets the postal trade address.
     * 
-    * Profile: BASIC when part of Trade.agreements.seller/buyer.
+    * Profile:: BASIC when part of Trade.agreements.seller/buyer.
     * 
     * 
     * @return the postal trade address
@@ -195,7 +201,7 @@ public class TradeParty {
    /**
     * Sets the postal trade address.
     * 
-    * Profile: BASIC when part of Trade.agreements.seller/buyer.
+    * Profile:: BASIC when part of Trade.agreements.seller/buyer.
     * 
     * 
     * @param postalAddress the new postal trade address
@@ -209,7 +215,7 @@ public class TradeParty {
    /**
     * Gets the specified tax registration.
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
     * 
     * @return the specified tax registration
@@ -224,7 +230,7 @@ public class TradeParty {
    /**
     * Adds the tax registration.
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
     * 
     * @param additionalTaxRegistration an additional Tax Registration

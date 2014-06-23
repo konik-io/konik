@@ -32,9 +32,7 @@ import com.neovisionaries.i18n.CurrencyCode;
 /**
  * = The Trade Settlement
  * 
- * Contains the payment related information.
- *
- * 
+ * Contains payment related information.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SupplyChainTradeSettlementType", propOrder = { "paymentReference", "currency", "invoicee",
@@ -99,7 +97,7 @@ public class Settlement {
     * 
     * Can be same as invoice number.
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
     *
     * @return the payment reference
@@ -113,7 +111,7 @@ public class Settlement {
     * 
     * Can be same as invoice number.
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
     *
     * @param referenceText the reference text
@@ -127,7 +125,7 @@ public class Settlement {
     /**
     * Gets the invoice currency code
     * 
-    * Profile: BASIC.
+    * Profile:: BASIC.
     *
     * @return the +ISO 4217 3A+ currency code
     */
@@ -137,7 +135,7 @@ public class Settlement {
 
    /**
     * Sets the invoice currency code.
-    * Profile: BASIC
+    * Profile:: BASIC
     *
     * @param currency the new currency
     * @return the trade settlement
@@ -151,7 +149,7 @@ public class Settlement {
    /**
     * Gets the invoicee trade party.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     *
     * @return the invoicee trade party
@@ -163,7 +161,7 @@ public class Settlement {
    /**
     * Sets the invoicee trade party.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     *
     * @param invoicee the new invoicee trade party
@@ -223,7 +221,7 @@ public class Settlement {
    /**
     * Gets the billing specified period.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     *
     * @return the billing specified period
@@ -235,7 +233,7 @@ public class Settlement {
    /**
     * Sets the billing specified period.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     *
     * @param billingPeriod the new billing specified period
@@ -249,7 +247,7 @@ public class Settlement {
    /**
     * Gets the trade allowance charge.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     *
     * @return the specified trade allowance charge
@@ -264,7 +262,7 @@ public class Settlement {
    /**
     * Adds the trade allowance charge.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     *
     * @param additionalAllowanceCharge an additional allowance charge
@@ -278,7 +276,7 @@ public class Settlement {
    /**
     * Gets the specified logistics service charge.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     *
     * @return the specified logistics service charge
@@ -293,7 +291,7 @@ public class Settlement {
    /**
     * Adds the specified logistics service charge.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     *
     * @param logisticsServiceCharge the logistics service charge
@@ -307,7 +305,7 @@ public class Settlement {
    /**
     * Gets the specified trade payment terms.
     * 
-    * Profile: COMFORT
+    * Profile:: COMFORT
     * 
     *
     * @return the specified trade payment terms
@@ -321,7 +319,7 @@ public class Settlement {
 
    /**
     * Adds a Payment Term
-    * Profile: COMFORT.
+    * Profile:: COMFORT.
     *
     * @param additionalPaymentTerm the additional payment term
     * @return the trade settlement
@@ -334,7 +332,7 @@ public class Settlement {
    /**
     * Gets the trade settlement monetary summation.
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
     *
     * @return the specified trade settlement monetary summation
@@ -346,7 +344,7 @@ public class Settlement {
    /**
     * Sets the trade settlement monetary summation.
     * 
-    * Profile: BASIC
+    * Profile:: BASIC
     * 
     *
     * @param monetarySummation the new monetary summation
@@ -359,7 +357,7 @@ public class Settlement {
 
    /**
     * Gets the booking reference account.
-    * Profile: EXTENDED
+    * Profile:: EXTENDED
     *
     * @return the account of the booking reference
     */
@@ -369,7 +367,7 @@ public class Settlement {
 
    /**
     * Sets the booking reference account.
-    * Profile: EXTENDED
+    * Profile:: EXTENDED
     *
     * @param bookingReference the booking reference account.
     * @return the trade

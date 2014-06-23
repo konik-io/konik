@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * = The Trade Delivery.
+ * = The Trade Delivery
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SupplyChainTradeDeliveryType", propOrder = { "billedQuantity", "event", "note" })
@@ -64,9 +65,8 @@ public class Delivery {
 
 	/**
 	 * Gets the billed quantity.
-
-	 * Profile: BASIC 
-
+	 * 
+	 * Profile:: BASIC 
 	 *
 	 * @return the billed quantity
 	 */
@@ -76,7 +76,8 @@ public class Delivery {
 
 	/**
     * Sets the billed quantity.
-    * Profile: BASIC
+    * 
+    * Profile:: BASIC
     *
     * @param billedQuantity the new billed quantity
     * @return the delivery

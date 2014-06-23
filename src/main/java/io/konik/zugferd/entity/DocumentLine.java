@@ -1,24 +1,21 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
-
-import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +27,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * = The Item Line Document.
+ * = The Item Line Document
+ * 
+ * For Item position and notes
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DocumentLineDocumentType", propOrder = { "positionNumber", "notes" })
+@XmlType(name = "DocumentLineDocumentType", propOrder = { "position", "notes" })
 public class DocumentLine {
 
 	@XmlElement(name = "LineID")
-	private ID positionNumber;
+	private int position;
 
 	@XmlElement(name = "IncludedNote")
 	private List<Note> notes;
@@ -51,54 +50,55 @@ public class DocumentLine {
 	/**
     * Instantiates a new document line.
     *
-    * @param positionNumber the position number
+    * @param position the position number
     */
-	public DocumentLine(String positionNumber) {
+	public DocumentLine(int position) {
       super();
-      this.positionNumber = new ID(positionNumber);
+      this.position = position;
    }
 
 	/**
     * Instantiates a new document line.
     *
-    * @param positionNumber the position number
+    * @param position the position
     * @param notes the notes
     */
-	public DocumentLine(String  positionNumber, List<Note> notes) {
-      this(positionNumber);
+	public DocumentLine(int position, List<Note> notes) {
+      this(position);
       this.notes = notes;
    }
 
    /**
-    * Gets the line position number.
-    * Profile: COMFORT
+    * Gets the line position.
+    * 
+    * Profile:: COMFORT
     *
     * @return the position number
     */
-	public String getPositionNumber() {
-		return positionNumber.getValue();
+	public int getPosition() {
+		return position;
 	}
 
 	/**
-    * Sets the line position number
-    * Profile: COMFORT.
+    * Sets the line position
+    * 
+    * Profile:: COMFORT.
     *
-    * @param positionNumber the new position number
+    * @param position the position
     * @return the document line
     */
-	public DocumentLine setPositionNumber(String positionNumber) {
-		this.positionNumber = new ID(positionNumber);
+	public DocumentLine setPosition(int position) {
+		this.position = position;
 		return this;
 	}
 
 	/**
 	 * Gets the included note.
-
-	 * Profile: Note.content COMFORT
-
-	 * Profile: Note.subjectCode EXTENDED
-
-	 *
+	 * 
+	 * Profile:: 
+	 * - Note.content COMFORT
+	 * - Note.subjectCode EXTENDED
+	 * 
 	 * @return the included note
 	 */
 	public List<Note> getNotes() {
@@ -110,11 +110,10 @@ public class DocumentLine {
 
 	/**
 	 * Adds the note.
-
-	 * Profile: Note.content COMFORT
-
-	 * Profile: Note.subjectCode EXTENDED
-
+	 * 
+	 * Profile:: 
+	 * - Note.content COMFORT
+	 * - Note.subjectCode EXTENDED
 	 *
 	 * @param note the note
 	 * @return the document line document

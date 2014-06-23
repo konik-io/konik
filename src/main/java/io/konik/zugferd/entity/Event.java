@@ -31,15 +31,13 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class SupplyChainEvent.
- * 
+ * = The Delivery Event
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SupplyChainEventType", propOrder = { "occurrence" })
 public class Event {
 
-	/** The occurrences date time. */
    @Valid
 	@XmlElement(name = "OccurrenceDateTime")
 	private DateTime occurrence;

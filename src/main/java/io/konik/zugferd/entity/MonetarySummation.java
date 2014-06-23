@@ -28,7 +28,8 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * = The Monetary Summation.
+ * = The Monetary Summation
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradeSettlementMonetarySummationType", propOrder = { "netTotal", "chargeTotal",
@@ -77,9 +78,9 @@ public class MonetarySummation {
 
 	/**
 	 * Gets the line total amount.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
+	 * 
 	 * 
 	 * @return the line total amount
 	 */
@@ -89,9 +90,9 @@ public class MonetarySummation {
 
 	/**
 	 * Sets the line total amount.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
+	 * 
 	 * 
 	 * @param netTotal the new line total amount
 	 * @return the trade settlement monetary summation
@@ -103,9 +104,9 @@ public class MonetarySummation {
 
 	/**
 	 * Gets the charge total amount.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
+	 * 
 	 * 
 	 * @return the charge total amount
 	 */
@@ -115,9 +116,9 @@ public class MonetarySummation {
 
 	/**
 	 * Sets the charge total amount.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
+	 * 
 	 * 
 	 * @param chargeTotal the new charge total amount
 	 * @return the trade settlement monetary summation
@@ -129,9 +130,8 @@ public class MonetarySummation {
 
 	/**
 	 * Gets the allowance total amount.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
 	 * 
 	 * @return the allowance total amount
 	 */
@@ -141,9 +141,8 @@ public class MonetarySummation {
 
 	/**
 	 * Sets the allowance total amount.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
 	 * 
 	 * @param allowanceTotal the new allowance total amount
 	 * @return the trade settlement monetary summation
@@ -155,11 +154,9 @@ public class MonetarySummation {
 
 	/**
 	 * Gets the tax basis total amount.
-
 	 * The invoice net sum = netTotal + charges - allowence.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
 	 * 
 	 * @return the tax basis total amount
 	 */
@@ -169,11 +166,9 @@ public class MonetarySummation {
 
 	/**
 	 * Sets the tax basis total amount.
-
 	 * The invoice net sum = netTotal + charges - allowence.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
 	 * 
 	 * @param taxBasisTotal the new tax basis total amount
 	 * @return the trade settlement monetary summation
@@ -185,9 +180,8 @@ public class MonetarySummation {
 
 	/**
 	 * Gets the total tax amount.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
 	 * 
 	 * @return the tax total amount
 	 */
@@ -197,9 +191,8 @@ public class MonetarySummation {
 
 	/**
 	 * Sets the total tax amount.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
 	 * 
 	 * @param taxTotal the new tax total amount
 	 * @return the trade settlement monetary summation
@@ -211,9 +204,8 @@ public class MonetarySummation {
 
 	/**
 	 * Gets the grand total amount.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
 	 * 
 	 * @return the grand total amount
 	 */
@@ -223,9 +215,9 @@ public class MonetarySummation {
 
 	/**
 	 * Sets the grand total amount.
-
-	 * Profile: BASIC
-
+	 * 
+	 * Profile:: BASIC
+	 * 
 	 * 
 	 * @param grandTotal the new grand total amount
 	 * @return the trade settlement monetary summation
@@ -237,9 +229,9 @@ public class MonetarySummation {
 
 	/**
 	 * Gets the total prepaid amount.
-
-	 * Profile: COMFORT
-
+	 * 
+	 * Profile:: COMFORT
+	 * 
 	 * 
 	 * @return the total prepaid amount
 	 */
@@ -250,7 +242,7 @@ public class MonetarySummation {
 	/**
 	 * Sets the total prepaid amount.
 
-	 * Profile: COMFORT
+	 * Profile:: COMFORT
 
 	 * 
 	 * @param totalPrepaid the new total prepaid amount
@@ -263,9 +255,9 @@ public class MonetarySummation {
 
 	/**
 	 * Gets the due payable amount.
-
-	 * Profile: COMFORT
-
+	 * 
+	 * Profile:: COMFORT
+	 * 
 	 * 
 	 * @return the due payable amount
 	 */
@@ -276,7 +268,7 @@ public class MonetarySummation {
 	/**
 	 * Sets the due payable amount.
 
-	 * Profile: COMFORT
+	 * Profile:: COMFORT
 
 	 * 
 	 * @param duePayable the new due payable amount

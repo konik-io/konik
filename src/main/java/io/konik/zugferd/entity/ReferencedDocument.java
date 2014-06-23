@@ -19,13 +19,14 @@
 package io.konik.zugferd.entity;
 
 import io.konik.zugferd.qualified.DateTime;
-import io.konik.zugferd.unqualified.ID;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -42,13 +43,13 @@ public class ReferencedDocument {
 	private DateTime issued;
 
 	@XmlElement(name = "ID")
-	private ID id;
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	private String id;
 
 	/**
 	 * Gets the issue date time.
-
-	 * Profile: COMFORT 
-
+	 * 
+	 * Profile:: COMFORT 
 	 * 
 	 * @return the issue date time
 	 */
@@ -58,7 +59,8 @@ public class ReferencedDocument {
 
 	/**
     * Sets the issue date time.
-    * Profile: COMFORT
+    * 
+    * Profile:: COMFORT
     *
     * @param issued the new issue date time
     * @return the referenced document
@@ -75,7 +77,7 @@ public class ReferencedDocument {
     * @return the referenced document
     */
 	public ReferencedDocument setId(String referenceDocumentId){
-	   id = new ID(referenceDocumentId);
+	   id = referenceDocumentId;
 	   return this;
 	}
 
@@ -85,6 +87,6 @@ public class ReferencedDocument {
     * @return the id
     */
    public String getId() {
-      return id==null?null:id.getValue();
+      return id;
    }
 }

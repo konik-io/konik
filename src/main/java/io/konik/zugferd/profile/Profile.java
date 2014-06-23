@@ -18,30 +18,30 @@
  */
 package io.konik.zugferd.profile;
 
-import io.konik.zugferd.unqualified.ID;
-
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * The ZUGFeRD full Profile Name
  * 
  * Construction schema. namespace:version:[basic, comfort or extended]
  * 
- * Example: urn:ferd:invoice:rce:extended
+ * Example:: urn:ferd:invoice:rce:extended
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentContextParameterType", propOrder = { "id" })
 public class Profile {
 
-   /** The id. */
    @NotNull
    @XmlElement(name = "ID")
-   private final ID id;
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   private final String id;
    
    /**
     * Instantiates a new profile.
@@ -56,7 +56,7 @@ public class Profile {
     * @param fullName the full name
     */
    public Profile(String fullName) {
-      this.id = new ID(fullName);
+      this.id = fullName;
    }
 
    /**
@@ -65,7 +65,7 @@ public class Profile {
     * @param type the type
     */
    public Profile(ProfileType type) {
-      this.id = new ID(type.fullName);
+      this.id = type.fullName;
    }
 
    /**
@@ -76,7 +76,7 @@ public class Profile {
     * @return the full profile name
     */
    public String getFullName() {
-      return id.getValue();
+      return id;
    }
    
    /**
@@ -87,7 +87,7 @@ public class Profile {
     * @return the simple name of the profile
     */
    public String getSimpleName() {
-      return id.getValue().substring(id.getValue().lastIndexOf(':'));
+      return id.substring(id.lastIndexOf(':'));
    }
    
    /**
@@ -96,7 +96,7 @@ public class Profile {
     * @return true, if is basic
     */
    public boolean isBasic() {
-      return ProfileType.isBasic(id.getValue());
+      return ProfileType.isBasic(id);
    }
    
    /**
@@ -105,7 +105,7 @@ public class Profile {
     * @return true, if is comfort
     */
    public boolean isComfort() {
-      return ProfileType.isComfort(id.getValue());
+      return ProfileType.isComfort(id);
    }
    
    /**
@@ -114,7 +114,7 @@ public class Profile {
     * @return true, if is extended
     */
    public boolean isExtended() {
-      return ProfileType.isExtended(id.getValue());
+      return ProfileType.isExtended(id);
    }
    
    /**
@@ -123,7 +123,7 @@ public class Profile {
     * @return the version of the underlying invoice.
     */
    public String getVersion() {
-      return ProfileType.extractVersion(id.getValue());
+      return ProfileType.extractVersion(id);
    }
 
 }

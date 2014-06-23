@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * = The Trade Agreement.
+ * = The Trade Agreement
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SupplyChainTradeAgreementType", propOrder = { "buyerReference", "seller", "buyer",
@@ -85,11 +85,11 @@ public class Agreement {
 
 	/**
 	 * Gets the buyer reference.
-
+	 * 
 	 * The reference to ease the attribution for the buyer
-
-	 * Profile: COMFORT when part of {@link Trade}
-
+	 * 
+	 * Profile:: COMFORT when part of {@link Trade}
+	 * 
 	 *
 	 * @return the buyer reference
 	 */
@@ -99,11 +99,10 @@ public class Agreement {
 
 	/**
 	 * Sets the buyer reference. 
-
+	 * 
 	 * The reference to ease the attribution for the buyer
-
-	 * Profile: COMFORT when part of {@link Trade}
-
+	 * 
+	 * Profile:: COMFORT when part of {@link Trade}
 	 *
 	 * @param buyerReference the new buyer reference
 	 * @return the trade agreement
@@ -175,9 +174,8 @@ public class Agreement {
 
 	/**
 	 * Gets the contract referenced document.
-
-	 * Profile: COMFORT 
-
+	 * 
+	 * Profile:: COMFORT 
 	 *
 	 * @return the contract referenced document
 	 */
@@ -187,9 +185,8 @@ public class Agreement {
 
 	/**
 	 * Sets the contract referenced document.
-
-	 * Profile: COMFORT 
-
+	 * 
+	 * Profile:: COMFORT 
 	 *
 	 * @param contract the new contract referenced document
 	 * @return the supply chain trade agreement
@@ -241,9 +238,8 @@ public class Agreement {
 
 	/**
 	 * Gets the customer order referenced document.
-
-	 * Profile: COMFORT 
-
+	 * 
+	 * Profile:: COMFORT 
 	 *
 	 * @return the customer order referenced document
 	 */
@@ -252,10 +248,9 @@ public class Agreement {
 	}
 
 	/**
-	 * Sets the customer order referenced document. 
-
-	 * Profile: COMFORT 
-
+	 * Sets the customer order referenced document.
+	 *  
+	 * Profile:: COMFORT 
 	 *
 	 * @param customerOrder the new customer order referenced document
 	 * @return the supply chain trade agreement

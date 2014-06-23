@@ -20,7 +20,6 @@ package io.konik.zugferd.entity;
 
 import io.konik.zugferd.qualified.DateTime;
 import io.konik.zugferd.unece.codes.DocumentNameCode;
-import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +29,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * = The Invoice Document Header
@@ -38,9 +39,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ExchangedDocumentType", propOrder = { "invoiceNumber", "name", "code", "issued", "notes" })
 public class Header {
    
-   @Valid
    @XmlElement(name = "ID")
-   private ID invoiceNumber;
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   private String invoiceNumber;
 
    @XmlElement(name = "Name")
    private List<String> name;
@@ -57,34 +58,38 @@ public class Header {
 
    /**
     * Gets the invoice number.
-    * Profile: BASIC
-    * Example: {@code 2012-12345}
+    * 
+    * Profile:: BASIC
+    * 
+    * Example:: {@code 2012-12345}
     *
     * @return the invoice number
     */
    public String getInvoiceNumber() {
-      return invoiceNumber.getValue();
+      return invoiceNumber;
    }
 
    /**
     * Sets the invoice number.
-    * Profile: BASIC
-    * Example: {@code 2012-12345}
+    * 
+    * Profile:: BASIC
+    * 
+    * Example:: {@code 2012-12345}
     *
     * @param invoiceNumber the invoice number
     * @return the header document
     */
    public Header setInvoiceNumber(String invoiceNumber) {
-      this.invoiceNumber = new ID(invoiceNumber);
+      this.invoiceNumber = invoiceNumber;
       return this;
    }
 
    /**
     * Gets the free text invoice name.
     * 
-    * Profile: BASIC + COMFORT
+    * Profile:: BASIC
     * 
-    * Example: {@code invoice, credit advice, debit note, pro forma invoice}
+    * Example:: {@code invoice, credit advice, debit note, pro forma invoice}
     * 
     * @return the invoice name
     */
@@ -98,9 +103,9 @@ public class Header {
    /**
     * Adds a free text invoice name.
     * 
-    * Profile: BASIC + COMFORT
+    * Profile:: BASIC
     * 
-    * Example: {@code invoice, credit advice, debit note, pro forma invoice}
+    * Example:: {@code invoice, credit advice, debit note, pro forma invoice}
     * 
     * @param additionalName the additional invoice name
     * @return the exchanged document
@@ -115,8 +120,9 @@ public class Header {
    /**
     * Gets +UNCL 1001+ Document Name Code.
     * 
-    * Profile: BASIC
-    * Example: {@code 380, 381, 383, 389, 261}
+    * Profile:: BASIC
+    * 
+    * Example:: {@code 380, 381, 383, 389, 261}
     * 
     * @return the document name code
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred1001.htm[UN/EDIFACT 1001 Document name coe^]
@@ -128,8 +134,9 @@ public class Header {
    /**
     * Sets the +UNCL 1001+ Document Name Code.
     * 
-    * Profile: BASIC
-    * Example: {@code 380, 381, 383, 389, 261}
+    * Profile:: BASIC
+    * 
+    * Example:: {@code 380, 381, 383, 389, 261}
     *
     * @param code the new document name code
     * @return the header document
@@ -145,7 +152,7 @@ public class Header {
    /**
     * Gets the invoice issue date time.
     * 
-    * Profile: BASIC + COMFORT
+    * Profile:: BASIC
     * 
     * 
     * @return the issue date time
@@ -157,7 +164,7 @@ public class Header {
    /**
     * Sets the invoice issue date time.
     * 
-    * Profile: BASIC + COMFORT
+    * Profile:: BASIC
     * 
     * 
     * @param issued the new issue date time
@@ -171,15 +178,16 @@ public class Header {
    /**
     * Gets the invoice header notes.
     * 
-    * Profile {@link Note#getContent()}: BASIC + COMFORT
+    * Profile:: 
+    * - {@link Note#getContent()}: BASIC
+    * - {@link Note#getSubjectCode()}: COMFORT
     * 
-    * Profile {@link Note#getSubjectCode()}: COMFORT
+    * Example:: 
+    * {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.}
     * 
-    * Example: {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.
-    * X.}
-    * 
-    * Example: {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
-    * 
+    * Example:: 
+    * - {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.}
+    * - {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
     * 
     * @return the included note
     */
@@ -193,14 +201,13 @@ public class Header {
    /**
     * Adds a invoice header note.
     * 
-    * Profile {@link Note#getContent()}: BASIC + COMFORT
+    * Profile:: 
+    * - {@link Note#getContent()}: BASIC
+    * - {@link Note#getSubjectCode()}: COMFORT
     * 
-    * Profile {@link Note#getSubjectCode()}: COMFORT
-    * 
-    * Example: {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.
-    * X.}
-    * 
-    * Example: {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
+    * Example:: 
+    * - {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.}
+    * - {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
     * 
     * 
     * @param note the note

@@ -18,26 +18,28 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.unqualified.ID;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * = The Creditor Financial Account.
+ * = The Financial Account.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = { "iban", "proprietaryId" })
 public class FinancialAccount {
 
 	@XmlElement(name = "IBANID")
-	private ID iban;
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	private String iban;
 
 	@XmlElement(name = "ProprietaryID")
-	private ID proprietaryId;
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	private String proprietaryId;
 
 	/**
     * Instantiates a new financial account.
@@ -62,7 +64,7 @@ public class FinancialAccount {
 	 * @return the iban
 	 */
 	public String getIban() {
-		return iban.getValue();
+		return iban;
 	}
 
 	/**
@@ -72,7 +74,7 @@ public class FinancialAccount {
     * @return the financial account
     */
 	public FinancialAccount setIban(String iban) {
-		this.iban = new ID(iban);
+		this.iban =iban;
 		return this;
 	}
 
@@ -82,7 +84,7 @@ public class FinancialAccount {
 	 * @return the proprietary id
 	 */
 	public String getProprietaryID() {
-		return proprietaryId.getValue();
+		return proprietaryId;
 	}
 
 	/**
@@ -92,7 +94,7 @@ public class FinancialAccount {
     * @return the financial account
     */
 	public FinancialAccount setProprietaryID(String proprietaryId) {
-		this.proprietaryId = new ID(proprietaryId);
+		this.proprietaryId = proprietaryId;
 		return this;
 	}
 

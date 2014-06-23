@@ -58,7 +58,7 @@ public class InvoiceFilledWithRandomDataSchemaValidationTest {
       //validate
       String xmlInvoiceString = xmlOutcome.toString();
       assertNotNull(xmlInvoiceString);
-      System.out.println(xmlInvoiceString);
+//      System.out.println(xmlInvoiceString);
       Files.write(xmlInvoiceString, new File("target/random_zf_invoice.xml"), Charset.forName("UTF-8"));
 
       //validate

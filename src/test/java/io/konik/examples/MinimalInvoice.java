@@ -46,6 +46,7 @@ import io.konik.zugferd.qualified.DateTime;
 import io.konik.zugferd.unqualified.Amount;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 
@@ -55,6 +56,8 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.junit.Test;
 import org.xml.sax.SAXException;
+
+import com.google.common.io.Files;
 
 /**
  * The example class shows how easy it is to create a compact invoice.
@@ -107,7 +110,8 @@ public class MinimalInvoice {
       ByteArrayOutputStream os = new ByteArrayOutputStream();
       marshaller.marshal(invoice, os);
 
-      System.out.println(os.toString());
+      Files.write(os.toByteArray(), new File("target/minimal-invoice.xml"));
+//      System.out.println(os.toString());
 
       //validate
       getSchemaValidator().validate(new StreamSource(new StringReader(os.toString())));

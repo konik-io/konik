@@ -18,7 +18,9 @@
  */
 package io.konik.zugferd.unece.codes;
 
+import static io.konik.util.KonikEnum.isKnownCode;
 import io.konik.exception.TransformationException;
+import io.konik.util.KonikEnum;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -308,11 +310,7 @@ public enum DateTimeType {
     * @return true, if code is known
     */
    public static boolean isKnown(String code) {
-      try {
-         return DateTimeType.valueOf(ENUM_PREFIX + code.toUpperCase()) != null;
-      } catch (IllegalArgumentException e) {
-         return false;
-      }
+      return isKnownCode(DateTimeType.class, ENUM_PREFIX + code);
    }
 
    /**

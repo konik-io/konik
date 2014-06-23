@@ -1,26 +1,27 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.Quantity;
+import io.konik.zugferd.unqualified.Quantity;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -28,25 +29,21 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class handles the trade delivery.
- *
+ * = The Trade Delivery
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SupplyChainTradeDeliveryType", propOrder = { "billedQuantity", "event", "note" })
 public class Delivery {
 
-	/** The billed quantity. */
-   @Valid
+   @Valid@NotNull
 	@XmlElement(name = "BilledQuantity")
 	private Quantity billedQuantity;
 
-	/** The actual delivery supply chain event. */
    @Valid
 	@XmlElement(name = "ActualDeliverySupplyChainEvent")
 	private Event event;
 
-	/** The delivery note referenced document. */
    @Valid
 	@XmlElement(name = "DeliveryNoteReferencedDocument")
 	private ReferencedDocument note;
@@ -56,7 +53,7 @@ public class Delivery {
 	}
 
 	/**
-	 * Instantiates a new supply chain trade delivery.
+	 * Instantiates a new trade delivery.
 	 *
 	 * @param billedQuantity the billed quantity
 	 * @param deliveryEvent the event
@@ -67,8 +64,9 @@ public class Delivery {
 	}
 
 	/**
-	 * Gets the billed quantity.<br/>
-	 * Profile: BASIC <br/>
+	 * Gets the billed quantity.
+	 * 
+	 * Profile:: BASIC 
 	 *
 	 * @return the billed quantity
 	 */
@@ -77,13 +75,16 @@ public class Delivery {
 	}
 
 	/**
-	 * Sets the billed quantity.<br/>
-	 * Profile: BASIC <br/>
-	 *
-	 * @param billedQuantity the new billed quantity
-	 */
-	public void setBilledQuantity(Quantity billedQuantity) {
+    * Sets the billed quantity.
+    * 
+    * Profile:: BASIC
+    *
+    * @param billedQuantity the new billed quantity
+    * @return the delivery
+    */
+	public Delivery setBilledQuantity(Quantity billedQuantity) {
 		this.billedQuantity = billedQuantity;
+		return this;
 	}
 
 	/**
@@ -96,9 +97,9 @@ public class Delivery {
 	}
 
 	/**
-	 * Sets the actual delivery supply chain event.
+	 * Sets the actual delivery  event.
 	 *
-	 * @param deliveryEvent the new actual delivery supply chain event
+	 * @param deliveryEvent the new actual delivery  event
 	 * @return the trade delivery
 	 */
 	public Delivery setEvent(Event deliveryEvent) {

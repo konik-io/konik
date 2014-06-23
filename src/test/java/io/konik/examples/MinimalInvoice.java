@@ -1,49 +1,53 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.examples;
 
-import static io.konik.invoice.profiles.InvoiceProfile.BASIC;
-import static io.konik.utils.InvoiceTestingUtils.getSchemaValidator;
-import static io.konik.zugferd.datatype.qualified.DateTimeFormat.F102;
-import io.konik.utils.InvoiceTestingUtils;
+import static com.neovisionaries.i18n.CountryCode.DE;
+import static com.neovisionaries.i18n.CurrencyCode.EUR;
+import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
+import static io.konik.zugferd.unece.codes.DocumentNameCode._380;
+import static io.konik.zugferd.unece.codes.Reference.FC;
+import static org.assertj.core.util.Dates.tomorrow;
+import io.konik.utils.InvoiceLoaderUtils;
 import io.konik.zugferd.Invoice;
-import io.konik.zugferd.datatype.qualified.DateTime;
-import io.konik.zugferd.datatype.unqualified.Amount;
 import io.konik.zugferd.entity.Address;
-import io.konik.zugferd.entity.DebtorFinancialAccount;
-import io.konik.zugferd.entity.DebtorFinancialInstitution;
+import io.konik.zugferd.entity.Agreement;
 import io.konik.zugferd.entity.Delivery;
 import io.konik.zugferd.entity.Event;
-import io.konik.zugferd.entity.ExchangeDocument;
+import io.konik.zugferd.entity.FinancialAccount;
+import io.konik.zugferd.entity.FinancialInstitution;
+import io.konik.zugferd.entity.Header;
 import io.konik.zugferd.entity.Item;
 import io.konik.zugferd.entity.MonetarySummation;
 import io.konik.zugferd.entity.PaymentMeans;
+import io.konik.zugferd.entity.Product;
+import io.konik.zugferd.entity.Settlement;
 import io.konik.zugferd.entity.TaxRegistration;
 import io.konik.zugferd.entity.Trade;
-import io.konik.zugferd.entity.TradeAgreement;
 import io.konik.zugferd.entity.TradeParty;
-import io.konik.zugferd.entity.TradeProduct;
-import io.konik.zugferd.entity.TradeSettlement;
+import io.konik.zugferd.profile.BasicProfile;
+import io.konik.zugferd.qualified.DateTime;
+import io.konik.zugferd.unqualified.Amount;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.Date;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -56,31 +60,41 @@ import org.xml.sax.SAXException;
  * The example class shows how easy it is to create a compact invoice.
  * 
  */
+@SuppressWarnings("javadoc")
 public class MinimalInvoice {
 
+   DateTime now = new DateTime();
+   DateTime tomorrow = new DateTime(tomorrow());
+
    private Invoice createMinimalValidInvoice() {
-      Invoice invoice = new Invoice(BASIC);
-      invoice.setHeader(new ExchangeDocument().setId("20131122-42").setTypeCode("380")
-            .setIssued(new DateTime(new Date())).addName("Rechnung"));
 
-      Trade tradeTransaction = new Trade();
-      tradeTransaction.addAgreement(new TradeAgreement().setSellerTradeParty(
-            new TradeParty().setName("Seller Inc.").setAddress(new Address("35578", "Fontanestr, 14", "Wetzlar", "DE"))
-                  .addTaxRegistration(new TaxRegistration("DE122...", "FC"))).setBuyerTradeParty(
-            new TradeParty().setName("Buyer Inc.").setAddress(new Address("50667", "Domkloster 4", "Köln", "DE"))
-                  .addTaxRegistration(new TaxRegistration("DE123...", "FC"))));
+      Invoice invoice = new Invoice(new BasicProfile());
+      invoice.setHeader(new Header().setInvoiceNumber("20131122-42").setCode(_380).setIssued(now).addName("Rechnung"));
 
-      tradeTransaction.setDelivery(new Delivery().setEvent(new Event(new Date(), F102)));
-
-      tradeTransaction.setTradeSettlement(new TradeSettlement().setPaymentReference("20131122-42").setInvoiceCurrency("EUR")
-            .addPaymentMeans(new PaymentMeans().setPayerAccount(new DebtorFinancialAccount("DE01234..")).setPayerInstitution(
-                  new DebtorFinancialInstitution("GENO...")))
-            .setMonetarySummation(new MonetarySummation().
-                  setNetTotal(new Amount(100d, "EUR")).setTaxTotal(new Amount(19d, "EUR")).setGrandTotal(new Amount(119d, "EUR"))));
+      Trade trade = new Trade();
+      invoice.setTrade(trade);
       
-      tradeTransaction.addItem(new Item().setProduct(new TradeProduct().setName("Webcam HD")));
+      trade.setAgreement(new Agreement().setSellerTradeParty(
+            new TradeParty().setName("Seller Inc.").setAddress(new Address("35578", "Fontanestr, 14", "Wetzlar", "DE"))
+                  .addTaxRegistration(new TaxRegistration("DE122...", FC))).setBuyerTradeParty(
+            new TradeParty().setName("Buyer Inc.").setAddress(new Address("50667", "Domkloster 4", "Köln", "DE"))
+                  .addTaxRegistration(new TaxRegistration("DE123...", FC))));
 
-      invoice.addTrade(tradeTransaction);
+      trade.setDelivery(new Delivery().setEvent(new Event(tomorrow)));
+
+      trade.setSettlement(new Settlement()
+            .setPaymentReference("20131122-42")
+            .setCurrency(EUR)
+            .addPaymentMeans(
+                  new PaymentMeans().setPayerAccount(new FinancialAccount("DE01234..")).setPayerInstitution(
+                        new FinancialInstitution("GENO...")))
+            .setMonetarySummation(
+                  new MonetarySummation().setNetTotal(new Amount(100, EUR)).setTaxTotal(new Amount(19, EUR))
+                        .setGrandTotal(new Amount(119, EUR))));
+
+      trade.addItem(new Item().setProduct(new Product().setName("Saddle").addOrigins(DE)));
+
+      
       return invoice;
    }
 
@@ -88,12 +102,12 @@ public class MinimalInvoice {
    public void creatBasicInvoice() throws JAXBException, SAXException, IOException {
       //setup
       Invoice invoice = createMinimalValidInvoice();
-      Marshaller marshaller = InvoiceTestingUtils.createZfMarshaller();
+      Marshaller marshaller = InvoiceLoaderUtils.createZfMarshaller();
 
       ByteArrayOutputStream os = new ByteArrayOutputStream();
       marshaller.marshal(invoice, os);
 
-      		System.out.println(os.toString());
+      System.out.println(os.toString());
 
       //validate
       getSchemaValidator().validate(new StreamSource(new StringReader(os.toString())));

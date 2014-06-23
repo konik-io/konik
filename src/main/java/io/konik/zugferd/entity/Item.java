@@ -1,19 +1,20 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
 
@@ -24,56 +25,51 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * The Class represents the trade items.
- *
+ * = The Trade Item.
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SupplyChainTradeLineItemType", propOrder = { "position", "agreement", "delivery",
-		"settlement", "product" })
+@XmlType(name = "SupplyChainTradeLineItemType", propOrder = { "position", "agreement", "delivery","settlement", "product" })
 public class Item {
 
-	/** The associated document line document. */
    @Valid
 	@XmlElement(name = "AssociatedDocumentLineDocument")
 	private DocumentLine position;
 
-	/** The specified supply chain trade agreement. */
    @Valid
 	@XmlElement(name = "SpecifiedSupplyChainTradeAgreement")
-	private TradeAgreement agreement;
+	private Agreement agreement;
 
-	/** The specified supply chain trade delivery. */
    @Valid
 	@XmlElement(name = "SpecifiedSupplyChainTradeDelivery")
 	private Delivery delivery;
 
-	/** The specified supply chain trade settlement. */
    @Valid
 	@XmlElement(name = "SpecifiedSupplyChainTradeSettlement")
-	private TradeSettlement settlement;
+	private Settlement settlement;
 
-	/** The specified trade product. */
    @Valid
 	@XmlElement(name = "SpecifiedTradeProduct")
-	private TradeProduct product;
+	private Product product;
 
-	/**
-	 * Gets the associated document line document.
-	 *
-	 * @return the associated document line document
-	 */
+   /**
+    * Gets the item position document.
+    *
+    * @return the position
+    */
 	public DocumentLine getPosition() {
 		return position;
 	}
 
 	/**
-	 * Sets the associated document line document.
-	 *
-	 * @param newPosition the new associated document line document
-	 */
-	public void setPosition(DocumentLine newPosition) {
-		this.position = newPosition;
+    * Sets the item position document.
+    *
+    * @param position the new position
+    * @return the item
+    */
+	public Item setPosition(DocumentLine position) {
+		this.position = position;
+		return this;
 	}
 
 	/**
@@ -81,7 +77,7 @@ public class Item {
 	 *
 	 * @return the specified supply chain trade agreement
 	 */
-	public TradeAgreement getAgreement() {
+	public Agreement getAgreement() {
 		return agreement;
 	}
 
@@ -91,7 +87,7 @@ public class Item {
 	 * @param agreement the new specified supply chain trade agreement
 	 * @return the item
 	 */
-	public Item setAgreement(TradeAgreement agreement) {
+	public Item setAgreement(Agreement agreement) {
 		this.agreement = agreement;
 		return this;
 	}
@@ -121,7 +117,7 @@ public class Item {
 	 *
 	 * @return the specified supply chain trade settlement
 	 */
-	public TradeSettlement getSettlement() {
+	public Settlement getSettlement() {
 		return settlement;
 	}
 
@@ -131,7 +127,7 @@ public class Item {
 	 * @param settlement the new specified supply chain trade settlement
 	 * @return the item
 	 */
-	public Item setSettlement(TradeSettlement settlement) {
+	public Item setSettlement(Settlement settlement) {
 		this.settlement = settlement;
 		return this;
 	}
@@ -141,7 +137,7 @@ public class Item {
 	 *
 	 * @return the specified trade product
 	 */
-	public TradeProduct getProduct() {
+	public Product getProduct() {
 		return product;
 	}
 
@@ -151,7 +147,7 @@ public class Item {
 	 * @param product the product
 	 * @return the item
 	 */
-	public Item setProduct(TradeProduct product) {
+	public Item setProduct(Product product) {
 		this.product = product;
 		return this;
 	}

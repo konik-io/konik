@@ -1,24 +1,24 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.Amount;
+import io.konik.zugferd.unqualified.Amount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,27 +31,24 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class LogisticsServiceCharge. Represents the transport and packaging costs.
+ * = The Logistics Service Charge
  * 
- * 
+ * Represents the transport and packaging costs.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LogisticsServiceChargeType", propOrder = { "description", "amount", "tradeTax" })
 public class LogisticsServiceCharge {
 
-	/** The description. */
 	@XmlElement(name = "Description")
 	private String description;
-
-	/** The applied amount. */
+	
 	@Valid
 	@XmlElement(name = "AppliedAmount")
 	private Amount amount;
 
-	/** The applied trade tax. */
 	@Valid
 	@XmlElement(name = "AppliedTradeTax")
-	private List<TradeTax> tradeTax;
+	private List<Tax> tradeTax;
 
 	/**
 	 * Gets the description.
@@ -83,12 +80,14 @@ public class LogisticsServiceCharge {
 	}
 
 	/**
-	 * Sets the applied amount.
-	 * 
-	 * @param amount the new applied amount
-	 */
-	public void setAmount(Amount amount) {
+    * Sets the applied amount.
+    *
+    * @param amount the new applied amount
+    * @return the logistics service charge
+    */
+	public LogisticsServiceCharge setAmount(Amount amount) {
 		this.amount = amount;
+		return this;
 	}
 
 	/**
@@ -96,21 +95,22 @@ public class LogisticsServiceCharge {
 	 * 
 	 * @return the applied trade tax
 	 */
-	public List<TradeTax> getTradeTax() {
+	public List<Tax> getTradeTax() {
 		if (tradeTax == null) {
-			tradeTax = new ArrayList<TradeTax>();
+			tradeTax = new ArrayList<Tax>();
 		}
 		return this.tradeTax;
 	}
 
+
 	/**
-	 * Adds the trade tax.
-	 * 
-	 * @param tradeTax the trade tax
-	 * @return the logistics service charge
-	 */
-	public LogisticsServiceCharge addTradeTax(TradeTax tradeTax) {
-		getTradeTax().add(tradeTax);
+    * Adds a trade tax.
+    *
+    * @param additionalTradeTax the additional trade tax
+    * @return the logistics service charge
+    */
+	public LogisticsServiceCharge addTradeTax(Tax additionalTradeTax) {
+		getTradeTax().add(additionalTradeTax);
 		return this;
 	}
 

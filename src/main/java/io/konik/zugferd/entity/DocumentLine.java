@@ -15,10 +15,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package io.konik.zugferd.entity;
-
-import io.konik.zugferd.datatype.unqualified.ID;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,47 +27,78 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class Item Line Document.
- *
+ * = The Item Line Document
  * 
+ * For Item position and notes
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DocumentLineDocumentType", propOrder = { "itemNumber", "notes" })
+@XmlType(name = "DocumentLineDocumentType", propOrder = { "position", "notes" })
 public class DocumentLine {
 
-	/** The line id. */
 	@XmlElement(name = "LineID")
-	private ID itemNumber;
+	private int position;
 
-	/** The included note. */
 	@XmlElement(name = "IncludedNote")
 	private List<Note> notes;
 
 	/**
-	 * Gets the line item number.<br/>
-	 * Profile: COMFORT<br/>
-	 *
-	 * @return the line id
-	 */
-	public ID getItemNumber() {
-		return itemNumber;
+    * Instantiates a new document line.
+    */
+	public DocumentLine() {
 	}
 
 	/**
-	 * Sets the line item number.<br/>
-	 * Profile: COMFORT<br/>
-	 *
-	 * @param lineItemNumber the new line id
-	 */
-	public void setItemNumber(ID lineItemNumber) {
-		this.itemNumber = lineItemNumber;
+    * Instantiates a new document line.
+    *
+    * @param position the position number
+    */
+	public DocumentLine(int position) {
+      super();
+      this.position = position;
+   }
+
+	/**
+    * Instantiates a new document line.
+    *
+    * @param position the position
+    * @param notes the notes
+    */
+	public DocumentLine(int position, List<Note> notes) {
+      this(position);
+      this.notes = notes;
+   }
+
+   /**
+    * Gets the line position.
+    * 
+    * Profile:: COMFORT
+    *
+    * @return the position number
+    */
+	public int getPosition() {
+		return position;
 	}
 
 	/**
-	 * Gets the included note.<br/>
-	 * Profile: Note.content COMFORT<br/>
-	 * Profile: Note.subjectCode EXTENDED<br/>
-	 *
+    * Sets the line position
+    * 
+    * Profile:: COMFORT.
+    *
+    * @param position the position
+    * @return the document line
+    */
+	public DocumentLine setPosition(int position) {
+		this.position = position;
+		return this;
+	}
+
+	/**
+	 * Gets the included note.
+	 * 
+	 * Profile:: 
+	 * - Note.content COMFORT
+	 * - Note.subjectCode EXTENDED
+	 * 
 	 * @return the included note
 	 */
 	public List<Note> getNotes() {
@@ -81,9 +109,11 @@ public class DocumentLine {
 	}
 
 	/**
-	 * Adds the note.<br/>
-	 * Profile: Note.content COMFORT<br/>
-	 * Profile: Note.subjectCode EXTENDED<br/>
+	 * Adds the note.
+	 * 
+	 * Profile:: 
+	 * - Note.content COMFORT
+	 * - Note.subjectCode EXTENDED
 	 *
 	 * @param note the note
 	 * @return the document line document

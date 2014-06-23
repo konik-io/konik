@@ -1,24 +1,25 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.ID;
+import io.konik.zugferd.unece.codes.Reference;
+import io.konik.zugferd.unqualified.ID;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -27,19 +28,19 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class TaxRegistration represents the tax number and its type. <br/>
- * The {@link ID#getValue()} is value added tax identification number<br/>
- * The {@link ID#getSchemeId()} is the Tax payer's number or VAT number according to (UNCL 1153) eg. FC or VA<br/>
+ * = The Tax Registration
  * 
- * 
+ * Represents the tax number and its type. 
+ * The {@link ID#getValue()} is value added tax identification number
+ * The {@link ID#getSchemeId()} is the Tax payer's number or VAT number according to (UNCL 1153) eg. FC or VA
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TaxRegistrationType", propOrder = { "id" })
 public class TaxRegistration {
 
-	/** The value added tax number and type */
+	/** The id. */
 	@XmlElement(name = "ID")
-	private ID id;
+	private final ID id;
 
 	/** Instantiates a new tax registration. */
 	public TaxRegistration() {
@@ -59,16 +60,18 @@ public class TaxRegistration {
 	 * Instantiates a new tax registration.
 	 * 
 	 * @param taxNumber the tax id
-	 * @param taxType the scheme id
+	 * @param typeOfTax the scheme id
 	 */
-	public TaxRegistration(String taxNumber, String taxType) {
-		this.id = new ID(taxNumber, taxType);
+	public TaxRegistration(String taxNumber, Reference typeOfTax) {
+		this.id = new ID(taxNumber, typeOfTax.code);
 	}
 
 	/**
-	 * Gets the tax number.<br/>
-	 * Profile: BASIC<br/>
-	 * Example: {@code DE234567891}
+	 * Gets the tax number.
+	 * 
+	 * Profile:: BASIC
+	 * 
+	 * Example:: {@code DE234567891}
 	 * 
 	 * @return the number
 	 */
@@ -77,38 +80,46 @@ public class TaxRegistration {
 	}
 
 	/**
-	 * Sets the tax number.<br/>
-	 * Profile: BASIC<br/>
-	 * Example: {@code DE234567891}
-	 * 
-	 * @param taxNumber the new value
-	 */
-	public void setNumber(String taxNumber) {
+    * Sets the tax number.
+    * 
+    * Profile:: BASIC
+    * 
+    * Example:: {@code DE234567891}
+    *
+    * @param taxNumber the new value
+    * @return the tax registration
+    */
+	public TaxRegistration setNumber(String taxNumber) {
 		this.id.setValue(taxNumber);
+		return this;
 	}
 
 	/**
-	 * Gets the tax type.the UNCL 1153 tax type.<br/>
-	 * Profile: BASIC<br/>
-	 * Example: {@code VA}
-	 * 
-	 * @return the type
-	 * @see <a href="http://www.unece.org/trade/untdid/i98a/uncl/uncl1153.htm">UNCL 1153</a>
-	 */
-	public String getType() {
-		return id.getSchemeId();
+    * Gets the tax type. The UNCL 1153 tax type.
+    * 
+    * Profile:: BASIC
+    * 
+    * Example:: {@code VA}
+    *
+    * @return the type
+    */
+	public Reference getType() {
+		return Reference.getByCode(id.getSchemeId());
 	}
 
 	/**
-	 * Sets the UNCL 1153 tax type.<br/>
-	 * Profile: BASIC<br/>
-	 * Example: {@code VA}
-	 * 
-	 * @param taxType the new type
-	 * @see <a href="http://www.unece.org/trade/untdid/i98a/uncl/uncl1153.htm">UNCL 1153</a>
-	 */
-	public void setType(String taxType) {
-		this.id.setValue(taxType);
+    * Sets the UNCL 1153 tax type.
+    * 
+    * Profile:: BASIC
+    * 
+    * Example:: {@code VA}
+    *
+    * @param taxType the new type
+    * @return the tax registration
+    */
+	public TaxRegistration setType(Reference taxType) {
+		this.id.setValue(taxType.code);
+		return this;
 	}
 
 }

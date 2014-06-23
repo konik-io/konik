@@ -1,29 +1,27 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.qualified.DateTime;
-import io.konik.zugferd.datatype.qualified.DateTimeFormat;
+import io.konik.zugferd.qualified.DateTime;
+import io.konik.zugferd.unece.codes.DateTimeType;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -33,54 +31,67 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class SupplyChainEvent.
- * 
+ * = The Delivery Event
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SupplyChainEventType", propOrder = { "occurrences" })
+@XmlType(name = "SupplyChainEventType", propOrder = { "occurrence" })
 public class Event {
 
-	/** The occurrences date time. */
    @Valid
 	@XmlElement(name = "OccurrenceDateTime")
-	private List<DateTime> occurrences;
+	private DateTime occurrence;
 
 	/** Instantiates a new supply chain event. */
 	public Event() {
 	}
-
+   
+	/**
+    * Instantiates a new event.
+    *
+    * @param type the type
+    * @param date the date
+    */
+	public Event(DateTimeType type, Date date) {
+	   this.occurrence = new DateTime(type, date);
+   }
 	/**
 	 * Instantiates a new supply chain event and sets the first event.
 	 * 
-	 * @param date the date
-	 * @param fdc the date representation
+	 * @param dateTime the date time
 	 */
-	public Event(Date date, DateTimeFormat fdc) {
-		addOccurrence(new DateTime(date, fdc));
+	public Event(DateTime dateTime) {
+		setOccurrence(dateTime);
 	}
 
-	/**
-	 * Gets the occurrences date time.
-	 * 
-	 * @return the occurrences date time
-	 */
-	public List<DateTime> getOccurrence() {
-		if (occurrences == null) {
-			occurrences = new ArrayList<DateTime>();
-		}
-		return this.occurrences;
-	}
-
-	/**
-    * Adds the occurrences.
-    * 
-    * @param dateTime the date time
-    * @return the supply chain event
+   /**
+    * Gets the occurrence.
+    *
+    * @return the occurrence
     */
-	public Event addOccurrence(DateTime dateTime) {
-		getOccurrence().add(dateTime);
-		return this;
-	}
+   public DateTime getOccurrence() {
+      return occurrence;
+   }
+
+   /**
+    * Sets the occurrence.
+    *
+    * @param occurrence the new occurrence
+    * @return the event
+    */
+   public Event setOccurrence(DateTime occurrence) {
+      this.occurrence = occurrence;
+      return this;
+   }
+
+   /**
+    * Gets the occurrence.
+    *
+    * @return the occurrence
+    */
+   public Date getOccurrenceAsDate() {
+      return occurrence.asDate();
+   }
+
 
 }

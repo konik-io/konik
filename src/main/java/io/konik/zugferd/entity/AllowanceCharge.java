@@ -1,27 +1,24 @@
-/* Copyright (C) 2014 konik.io
+/*
+ * Copyright (C) 2014 konik.io
  *
- * This file is part of the Konik library.
+ * This file is part of Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful,
+ * Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.datatype.unqualified.Amount;
-
-import java.util.ArrayList;
-import java.util.List;
+import io.konik.zugferd.unqualified.Amount;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,54 +28,69 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Class TradeAllowanceCharge represents the detail information about surcharges and discounts.
+ * = The Allowance Charge 
  * 
- * 
+ * Represents trade surcharges and discounts as well as a reason.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeAllowanceChargeType", propOrder = { "chargeIndicator", "basisAmount", "actualAmount",
-		"reason", "categoryTradeTax" })
+@XmlType(name = "TradeAllowanceChargeType", propOrder = { "surcharge", "basisAmount", "actualAmount",
+		"reason", "category" })
 public class AllowanceCharge {
 
-	/** The charge indicator. */
 	@XmlElement(name = "ChargeIndicator")
-	private Boolean chargeIndicator;
+	private boolean surcharge;
 
-	/** The basis amount. */
 	@Valid
 	@XmlElement(name = "BasisAmount")
 	private Amount basisAmount;
 
-	/** The actual amount. */
 	@Valid
 	@XmlElement(name = "ActualAmount")
 	private Amount actualAmount;
 
-	/** The reason. */
 	@XmlElement(name = "Reason")
 	private String reason;
 
-	/** The category trade tax. */
 	@XmlElement(name = "CategoryTradeTax")
-	private List<TradeTax> categoryTradeTax;
+	private Tax category;
 
 	/**
-	 * Checks if is charge indicator.
-	 * 
-	 * @return true if charge otherwise discount
-	 */
-	public Boolean isChargeIndicator() {
-		return chargeIndicator;
+    * Checks if is a surcharge.
+    *
+    * @return true if charge otherwise discount
+    */
+	public boolean isSurcharge() {
+		return surcharge;
 	}
+	
+	  /**
+    * Checks if is discount.
+    *
+    * @return true if discount otherwise charge
+    */
+  	public boolean isDiscount() {
+	      return !surcharge;
+	   }
 
 	/**
-	 * Sets the charge indicator.
-	 * 
-	 * @param charge the new charge indicator
-	 */
-	public void setChargeIndicator(Boolean charge) {
-		this.chargeIndicator = charge;
+    * Sets amount to be a surcharge.
+    *
+    * @return the allowance charge
+    */
+	public AllowanceCharge setSurcharge() {
+		this.surcharge = true;
+		return this;
 	}
+	
+	/**
+    * Sets the amount to be a discount.
+    *
+    * @return the allowance charge
+    */
+   public AllowanceCharge setDiscount() {
+      this.surcharge = false;
+      return this;
+   }
 
 	/**
 	 * Gets the basis amount.
@@ -90,12 +102,14 @@ public class AllowanceCharge {
 	}
 
 	/**
-	 * Sets the basis amount.
-	 * 
-	 * @param basisAmount the new basis amount
-	 */
-	public void setBasisAmount(Amount basisAmount) {
+    * Sets the basis amount.
+    *
+    * @param basisAmount the new basis amount
+    * @return the allowance charge
+    */
+	public AllowanceCharge setBasisAmount(Amount basisAmount) {
 		this.basisAmount = basisAmount;
+		return this;
 	}
 
 	/**
@@ -108,12 +122,14 @@ public class AllowanceCharge {
 	}
 
 	/**
-	 * Sets the actual amount.
-	 * 
-	 * @param actualAmount the new actual amount
-	 */
-	public void setActualAmount(Amount actualAmount) {
+    * Sets the actual amount.
+    *
+    * @param actualAmount the new actual amount
+    * @return the allowance charge
+    */
+	public AllowanceCharge setActualAmount(Amount actualAmount) {
 		this.actualAmount = actualAmount;
+		return this;
 	}
 
 	/**
@@ -126,24 +142,33 @@ public class AllowanceCharge {
 	}
 
 	/**
-	 * Sets the reason.
-	 * 
-	 * @param reason the new reason
-	 */
-	public void setReason(String reason) {
+    * Sets the reason.
+    *
+    * @param reason the new reason
+    * @return the allowance charge
+    */
+	public AllowanceCharge setReason(String reason) {
 		this.reason = reason;
+		return this;
 	}
 
-	/**
-	 * Gets the category trade tax.
-	 * 
-	 * @return the category trade tax
-	 */
-	public List<TradeTax> getCategoryTradeTax() {
-		if (categoryTradeTax == null) {
-			categoryTradeTax = new ArrayList<TradeTax>();
-		}
-		return this.categoryTradeTax;
-	}
+   /**
+    * Gets the category.
+    *
+    * @return the category
+    */
+   public Tax getCategory() {
+      return category;
+   }
 
+   /**
+    * Sets the category.
+    *
+    * @param category the new category
+    * @return the allowance charge
+    */
+   public AllowanceCharge setCategory(Tax category) {
+      this.category = category;
+      return this;
+   }
 }

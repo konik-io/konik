@@ -6078,17 +6078,30 @@ public enum Reference {
     **/
    ZZZ("Mutually defined reference number");
 
-
-   /** The code. */
-   final public String code;
-   
    /** the description for the code. */
-   final public String description;
+   final private String description;
 
    
    private Reference(String description) {
-      this.code = name();
       this.description = description;
+   }
+   
+   /**
+    * Gets the code.
+    *
+    * @return the code
+    */
+   public String getCode() {
+      return name();
+   }
+   
+   /**
+    * Gets the description.
+    *
+    * @return the description
+    */
+   public String getDescription() {
+      return description;
    }
    
    /**
@@ -6103,6 +6116,6 @@ public enum Reference {
    
    @Override
    public String toString() {
-      return new StringBuilder().append("[").append(code).append("] ").append(description).toString();
+      return new StringBuilder().append("[").append(getCode()).append("] ").append(description).toString();
    }
 }

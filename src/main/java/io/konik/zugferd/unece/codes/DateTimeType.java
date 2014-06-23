@@ -1,26 +1,24 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.unece.codes;
 
 import static io.konik.util.KonikEnum.isKnownCode;
 import io.konik.exception.TransformationException;
-import io.konik.util.KonikEnum;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -242,13 +240,10 @@ public enum DateTimeType {
 //   _814("Working days");
 
    /** The prefix of enum "_". */
-   private static final String ENUM_PREFIX = "_";
-
-   /** The code e.g. +102, 103, 104, ...+ */
-   public final String code;
+   private static final String PREFIX = "_";
 
    /** The pattern e.g. +yyyyMMdd+ */
-   public final String pattern;
+   private final String pattern;
 
    /** The thread local formatter. */
    private final ThreadLocal<SimpleDateFormat> formatter;
@@ -259,7 +254,6 @@ public enum DateTimeType {
     * @param pattern the pattern
     */
    private DateTimeType(final String pattern) {
-      this.code = name().substring(1);
       this.pattern = pattern;
       this.formatter = new ThreadLocal<SimpleDateFormat>() {
          @Override
@@ -268,6 +262,25 @@ public enum DateTimeType {
          }
       };
    }
+   
+   /**
+    * Gets the code.
+    *
+    * @return the code
+    */
+   public String getCode() {
+      return name().substring(1);
+   }
+
+   /**
+    * Gets the pattern.
+    *
+    * @return the pattern
+    */
+   public String getPattern() {
+      return pattern;
+   }
+   
 
    /**
     * Format the given date to a string.
@@ -310,7 +323,7 @@ public enum DateTimeType {
     * @return true, if code is known
     */
    public static boolean isKnown(String code) {
-      return isKnownCode(DateTimeType.class, ENUM_PREFIX + code);
+      return isKnownCode(DateTimeType.class, PREFIX + code);
    }
 
    /**
@@ -320,7 +333,7 @@ public enum DateTimeType {
     * @return the known DateTimeType
     */
    public static DateTimeType getByCode(String code) {
-      return DateTimeType.valueOf(ENUM_PREFIX + code);
+      return DateTimeType.valueOf(PREFIX + code);
    }
    
    /**
@@ -334,4 +347,8 @@ public enum DateTimeType {
       builder.append("BasicProfile [").append("name=").append(this.name()).append(" ,pattern=").append(pattern).append("]");
       return builder.toString();
    }
+
+
+   
+   
 }

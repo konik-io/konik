@@ -753,14 +753,28 @@ public enum PaymentMeansCode {
    public static final String PREFIX = "_";
 
    /** the description for the code. */
-   final public String description;
-
-   /** The code. */
-   final public String code;
+   final private String description;
    
    PaymentMeansCode(String descirption) {
       this.description = descirption;
-      code = name().substring(1);
+   }
+   
+   /**
+    * Gets the code.
+    *
+    * @return the code
+    */
+   public String getCode() {
+      return name().substring(1);
+   }
+   
+   /**
+    * Gets the description.
+    *
+    * @return the description
+    */
+   public String getDescription() {
+      return description;
    }
 
    /**
@@ -785,6 +799,6 @@ public enum PaymentMeansCode {
    
    @Override
    public String toString() {
-      return new StringBuilder().append("[").append(code).append("] ").append(description).toString();
+      return new StringBuilder().append("[").append(getCode()).append("] ").append(description).toString();
    }
 }

@@ -1,20 +1,19 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.unece.codes;
 
@@ -27,7 +26,6 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * 
  * = The Document Name Code Enumeration.
  * Based on UN/EDIFACT 1001 *Document name code*
  * Version 2013 b
@@ -4743,10 +4741,10 @@ public enum DocumentNameCode {
    public static final String PREFIX = "_";
 
    /** The code. */
-   final public String code;
+   final private String code;
    
    /** the description for the code. */
-   final public String description;
+   final private String description;
 
    /**
     * Instantiates a new document name code.
@@ -4756,6 +4754,24 @@ public enum DocumentNameCode {
    private DocumentNameCode(String description) {
       this.code = name().substring(1);
       this.description = description;
+   }
+   
+   /**
+    * Gets the code.
+    *
+    * @return the code
+    */
+   public String getCode() {
+      return name().substring(1);
+   }
+   
+   /**
+    * Gets the description.
+    *
+    * @return the description
+    */
+   public String getDescription() {
+      return description;
    }
 
    /**

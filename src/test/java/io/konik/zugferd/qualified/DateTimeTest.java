@@ -66,7 +66,7 @@ public class DateTimeTest {
       DateTime dateTime = new DateTime(_204);
 
       //then
-      assertThat(dateTime.getValue()).isEqualTo(getInstance(_204.pattern).format(now));
+      assertThat(dateTime.getValue()).isEqualTo(getInstance(_204.getPattern()).format(now));
    }
 
    @Test
@@ -76,8 +76,8 @@ public class DateTimeTest {
 
       //when
       DateTime dateTime = new DateTime(_203);
-      assertThat(dateTime.getCode()).isEqualTo(_203.code);
-      assertThat(dateTime.getValue()).isEqualTo(getInstance(_203.pattern).format(now));
+      assertThat(dateTime.getCode()).isEqualTo(_203.getCode());
+      assertThat(dateTime.getValue()).isEqualTo(getInstance(_203.getPattern()).format(now));
    }
 
    @Test(expected = IllegalArgumentException.class)

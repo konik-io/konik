@@ -63,7 +63,7 @@ public class TaxRegistration {
 	 * @param typeOfTax the scheme id
 	 */
 	public TaxRegistration(String taxNumber, Reference typeOfTax) {
-		this.id = new ID(taxNumber, typeOfTax.code);
+		this.id = new ID(taxNumber, typeOfTax.getCode());
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class TaxRegistration {
     * @return the tax registration
     */
 	public TaxRegistration setType(Reference taxType) {
-		this.id.setValue(taxType.code);
+		this.id.setValue(taxType.getCode());
 		return this;
 	}
 

@@ -82,7 +82,7 @@ public class DateTime {
     * @param date the date
     */
    public DateTime(DateTimeType type, Date date) {
-      this(type.code,type.format(date));
+      this(type.getCode(),type.format(date));
    }
    
    /**

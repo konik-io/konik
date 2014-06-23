@@ -97,9 +97,6 @@ public enum UnitOfMeasurement {
    /** The Month. */
    MONTH("MON", "Month");
 
-   /** The code. */
-   public final String code;
-
    /** The description. */
    public final String description;
 
@@ -110,8 +107,25 @@ public enum UnitOfMeasurement {
     * @param description the description
     */
    UnitOfMeasurement(String code, String description) {
-      this.code = code;
       this.description = description;
+   }
+   
+   /**
+    * Gets the code.
+    *
+    * @return the code
+    */
+   public String getCode() {
+      return name();
+   }
+   
+   /**
+    * Gets the description.
+    *
+    * @return the description
+    */
+   public String getDescription() {
+      return description;
    }
 
    /**
@@ -122,13 +136,13 @@ public enum UnitOfMeasurement {
     */
    public static UnitOfMeasurement getByCode(String code) {
       for (UnitOfMeasurement v : values()) {
-         if (v.code.intern() == code.intern()) return v;
+         if (v.name().intern() == code.intern()) return v;
       }
       return null;
    }
    
    @Override
    public String toString() {
-      return new StringBuilder().append("[").append(code).append("] ").append(description).toString();
+      return new StringBuilder().append("[").append(getCode()).append("] ").append(description).toString();
    }
 }

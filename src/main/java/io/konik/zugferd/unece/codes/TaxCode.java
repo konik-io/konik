@@ -298,17 +298,29 @@ public enum TaxCode {
     */
    VAT("Value added tax");
 
-   /** The tax code. */
-   public final String code;
-
    /** The description for the tax code */
-   public final String description;
+   private final String description;
    
    private TaxCode(String description) {
       this.description = description;
-      this.code = name();
    }
-
+   /**
+    * Gets the code.
+    *
+    * @return the code
+    */
+   public String getCode() {
+      return name();
+   }
+   
+   /**
+    * Gets the description.
+    *
+    * @return the description
+    */
+   public String getDescription() {
+      return description;
+   }
    /**
     * Gets the type by code.
     *
@@ -321,6 +333,6 @@ public enum TaxCode {
 
    @Override
    public String toString() {
-      return new StringBuilder().append("[").append(code).append("] ").append(description).toString();
+      return new StringBuilder().append("[").append(getCode()).append("] ").append(description).toString();
    }
 }

@@ -1,20 +1,19 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.unece.codes;
 
@@ -138,21 +137,43 @@ public enum TaxCategory {
     **/
    Z("Zero rated goods", "Code specifying that the goods are at a zero rate.");
 
-   /** The code. */
-   public final String code;
+   private final String description;
 
-   /** The description to the code */
-   public final String description;
-
-   /** The detailed description. */
-   public final String detailedDescription;
+   private final String detailedDescription;
 
    private TaxCategory(String description, String detailedDescription) {
-      this.code = name();
       this.description = description;
       this.detailedDescription = detailedDescription;
    }
    
+   /**
+    * Gets the code.
+    *
+    * @return the code
+    */
+   public String getCode() {
+      return name();
+   }
+   
+   /**
+    * Gets the description.
+    *
+    * @return the description
+    */
+   public String getDescription() {
+      return description;
+   }
+   
+   
+   /**
+    * Gets the detailed description.
+    *
+    * @return the detailed description
+    */
+   public String getDetailedDescription() {
+      return detailedDescription;
+   }
+
    /**
     * Retrieves a TaxCategoryCode the by the given code.
     *
@@ -165,7 +186,7 @@ public enum TaxCategory {
    
    @Override
    public String toString() {
-      return new StringBuilder().append("[").append(code).append("] ").append(description).toString();
+      return new StringBuilder().append("[").append(getCode()).append("] ").append(description).toString();
    }
 
 }

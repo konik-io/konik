@@ -27,6 +27,8 @@ import static java.lang.Enum.valueOf;
  */
 public class KonikEnum {
 
+   private KonikEnum(){
+   }
    /**
     * Checks if the given code is contained in the Enumeration.
     * @param <E>

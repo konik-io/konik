@@ -23,6 +23,9 @@ package io.konik.util;
  * The Strings helper class. We can avoid importing Guava or Apache commons for now. 
  */
 public class Strings {
+   
+   private Strings() {
+   }
 
    /**
     * Null to empty.

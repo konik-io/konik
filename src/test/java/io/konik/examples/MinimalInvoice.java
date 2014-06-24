@@ -78,7 +78,7 @@ public class MinimalInvoice {
       invoice.setTrade(trade);
       
       trade.setAgreement(new Agreement().setSellerTradeParty(
-            new TradeParty().setName("Seller Inc.").setAddress(new Address("35578", "Fontanestr, 14", "Wetzlar", "DE"))
+            new TradeParty().setName("Seller Inc.").setAddress(new Address("80331", "Marienplatz 1", "München", "DE"))
                   .addTaxRegistration(new TaxRegistration("DE122...", FC))).setBuyerTradeParty(
             new TradeParty().setName("Buyer Inc.").setAddress(new Address("50667", "Domkloster 4", "Köln", "DE"))
                   .addTaxRegistration(new TaxRegistration("DE123...", FC))));

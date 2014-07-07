@@ -18,8 +18,8 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.qualified.DateTime;
 import io.konik.zugferd.unece.codes.DateTimeType;
+import io.konik.zugferd.unqualified.DateTime;
 
 import java.util.Date;
 

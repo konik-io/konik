@@ -20,6 +20,7 @@ package io.konik.zugferd.unqualified;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -31,28 +32,30 @@ import com.neovisionaries.i18n.CurrencyCode;
 /**
  * = The Monetary Amount.
  * 
- * A number of monetary units specified in a currency where the unit of the currency is explicit or implied.
+ * A number of monetary units specified by a currency where the currency is explicit or implied.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AmountType", propOrder = { "value" })
 public class Amount {
 
+   @NotNull
    @XmlValue
    private BigDecimal value;
 
+   @NotNull 
    @XmlAttribute(name = "currencyID")
-//   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private CurrencyCode currency;
 
    /** Instantiates a new amount. */
-   public Amount() {
+   Amount() {
    }
 
    /**
     * Instantiates a new amount.
     *
-    * @param value the value
+    * @param value the monetary value as a long
     * @param currency the currency code
+    * 
     */
    public Amount(long value, CurrencyCode currency) {
       super();
@@ -63,8 +66,9 @@ public class Amount {
    /**
     * Instantiates a new amount.
     *
-    * @param value the value
+    * @param value the monetary value as a string
     * @param currency the currency code
+    * @throws NumberFormatException if +value+ is not a valid representation of a +BigDecimal+.
     */
    public Amount(String value, CurrencyCode currency) {
       super();

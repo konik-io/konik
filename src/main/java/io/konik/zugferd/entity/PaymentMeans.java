@@ -1,24 +1,24 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
 
 import io.konik.zugferd.unece.codes.PaymentMeansCode;
+import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,18 +36,20 @@ import javax.xml.bind.annotation.XmlType;
  * Detailed information on the means of payment.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeSettlementPaymentMeansType", propOrder = { "code", "information", "payerAccount", "payeeAccount",
+@XmlType(name = "TradeSettlementPaymentMeansType", propOrder = { "code", "informations","clientCreditorId", "payerAccount", "payeeAccount",
       "payerInstitution", "payeeInstitution" })
 @ValidateOnExecution
 public class PaymentMeans {
 
-   @Valid
    @XmlElement(name = "TypeCode")
    private PaymentMeansCode code;
 
    @XmlElement(name = "Information")
-   private List<String> information;
+   private List<String> informations;
 
+   @Valid @XmlElement(name = "ID")
+   protected ID clientCreditorId; //TODO: only place for schemeAgencyID
+   
    @Valid
    @XmlElement(name = "PayerPartyDebtorFinancialAccount")
    private FinancialAccount payerAccount;
@@ -99,11 +101,11 @@ public class PaymentMeans {
     * 
     * @return the information
     */
-   public List<String> getInformation() {
-      if (information == null) {
-         information = new ArrayList<String>();
+   public List<String> getInformations() {
+      if (informations == null) {
+         informations = new ArrayList<String>();
       }
-      return this.information;
+      return this.informations;
    }
 
    /**
@@ -117,8 +119,27 @@ public class PaymentMeans {
     * @return the payment means
     */
    public PaymentMeans addInformation(String additionalInformation) {
-      getInformation().add(additionalInformation);
+      getInformations().add(additionalInformation);
       return this;
+   }
+
+   
+   /**
+    * Gets the client creditor id.
+    *
+    * @return the client creditor id
+    */
+   public ID getClientCreditorId() {
+      return clientCreditorId;
+   }
+
+   /**
+    * Sets the client creditor id.
+    *
+    * @param clientCreditorId the new client creditor id
+    */
+   public void setClientCreditorId(ID clientCreditorId) {
+      this.clientCreditorId = clientCreditorId;
    }
 
    /**

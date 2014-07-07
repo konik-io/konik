@@ -1,20 +1,19 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
 
@@ -33,7 +32,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradeSettlementMonetarySummationType", propOrder = { "netTotal", "chargeTotal",
-		"allowanceTotal", "taxBasisTotal", "taxTotal", "grandTotal", "totalPrepaid", "duePayable" })
+		"allowanceTotal", "taxBasisTotal", "taxTotal", "grandTotal", "totalPrepaid", "totalAllowance","duePayable" })
+//TODO: trade.item.settlement.monetarySummation ONLY lineTotal, allowanceTotal 
+//TODO: trade.settlement.monetarySummation no allowanceTotal
 public class MonetarySummation {
 
 	/** The "net total" amount. */
@@ -71,6 +72,10 @@ public class MonetarySummation {
 	@XmlElement(name = "TotalPrepaidAmount")
 	private Amount totalPrepaid;
 
+   @XmlElement(name = "TotalAllowanceChargeAmount")
+   @Valid
+   private Amount totalAllowance;
+   
 	/** The due payable amount. */
 	@Valid
 	@XmlElement(name = "DuePayableAmount")
@@ -252,12 +257,29 @@ public class MonetarySummation {
 		this.totalPrepaid = totalPrepaid;
 		return this;
 	}
-
+	
 	/**
+    * Gets the total allowance.
+    *
+    * @return the total allowance
+    */
+	public Amount getTotalAllowance() {
+      return totalAllowance;
+   }
+
+   /**
+    * Sets the total allowance.
+    *
+    * @param totalAllowance the total allowance
+    */
+   public void setTotalAllowance(Amount totalAllowance) {
+      this.totalAllowance = totalAllowance;
+   }
+
+   /**
 	 * Gets the due payable amount.
 	 * 
 	 * Profile:: COMFORT
-	 * 
 	 * 
 	 * @return the due payable amount
 	 */
@@ -267,9 +289,8 @@ public class MonetarySummation {
 
 	/**
 	 * Sets the due payable amount.
-
+	 * 
 	 * Profile:: COMFORT
-
 	 * 
 	 * @param duePayable the new due payable amount
 	 * @return the trade settlement monetary summation

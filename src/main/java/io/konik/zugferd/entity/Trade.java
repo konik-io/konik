@@ -18,6 +18,10 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.zugferd.entity.trade.Agreement;
+import io.konik.zugferd.entity.trade.Delivery;
+import io.konik.zugferd.entity.trade.TradeSettlement;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,19 +42,19 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreement", "delivery", "settlement","items" })
 public class Trade {
 
-   @NotNull
+   @NotNull @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeAgreement")
 	private Agreement agreement;
 
-   @Valid
+   @NotNull @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeDelivery")
 	private Delivery delivery;
 
-   @Valid
+   @NotNull @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeSettlement")
-	private Settlement settlement;
+	private TradeSettlement settlement;
 
-   @Valid
+   @NotNull @Valid
 	@XmlElement(name = "IncludedSupplyChainTradeLineItem")
 	private List<Item> items;
 
@@ -99,7 +103,7 @@ public class Trade {
 	 * 
 	 * @return the trade settlement
 	 */
-	public Settlement getSettlement() {
+	public TradeSettlement getSettlement() {
 		return settlement;
 	}
 
@@ -109,7 +113,7 @@ public class Trade {
     * @param tradeSettlement the new trade settlement
     * @return the trade
     */
-	public Trade setSettlement(Settlement tradeSettlement) {
+	public Trade setSettlement(TradeSettlement tradeSettlement) {
 		this.settlement = tradeSettlement;
 		return this;
 	}

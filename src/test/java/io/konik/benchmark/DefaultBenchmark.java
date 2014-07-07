@@ -21,7 +21,7 @@ package io.konik.benchmark;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.openjdk.jmh.output.results.ResultFormatType;
+import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;

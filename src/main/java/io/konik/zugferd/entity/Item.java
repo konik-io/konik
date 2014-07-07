@@ -18,6 +18,10 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
+import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
+import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
+
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -38,15 +42,15 @@ public class Item {
 
    @Valid
 	@XmlElement(name = "SpecifiedSupplyChainTradeAgreement")
-	private Agreement agreement;
+	private SpecifiedAgreement agreement;
 
    @Valid
 	@XmlElement(name = "SpecifiedSupplyChainTradeDelivery")
-	private Delivery delivery;
+	private SpecifiedDelivery delivery;
 
    @Valid
 	@XmlElement(name = "SpecifiedSupplyChainTradeSettlement")
-	private Settlement settlement;
+	private SpecifiedSettlement settlement;
 
    @Valid
 	@XmlElement(name = "SpecifiedTradeProduct")
@@ -77,7 +81,7 @@ public class Item {
 	 *
 	 * @return the specified supply chain trade agreement
 	 */
-	public Agreement getAgreement() {
+	public SpecifiedAgreement getAgreement() {
 		return agreement;
 	}
 
@@ -87,7 +91,7 @@ public class Item {
 	 * @param agreement the new specified supply chain trade agreement
 	 * @return the item
 	 */
-	public Item setAgreement(Agreement agreement) {
+	public Item setAgreement(SpecifiedAgreement agreement) {
 		this.agreement = agreement;
 		return this;
 	}
@@ -97,7 +101,7 @@ public class Item {
 	 *
 	 * @return the specified supply chain trade delivery
 	 */
-	public Delivery getDelivery() {
+	public SpecifiedDelivery getDelivery() {
 		return delivery;
 	}
 
@@ -107,7 +111,7 @@ public class Item {
 	 * @param delivery the new specified supply chain trade delivery
 	 * @return the item
 	 */
-	public Item setDelivery(Delivery delivery) {
+	public Item setDelivery(SpecifiedDelivery delivery) {
 		this.delivery = delivery;
 		return this;
 	}
@@ -117,7 +121,7 @@ public class Item {
 	 *
 	 * @return the specified supply chain trade settlement
 	 */
-	public Settlement getSettlement() {
+	public SpecifiedSettlement getSettlement() {
 		return settlement;
 	}
 
@@ -127,7 +131,7 @@ public class Item {
 	 * @param settlement the new specified supply chain trade settlement
 	 * @return the item
 	 */
-	public Item setSettlement(Settlement settlement) {
+	public Item setSettlement(SpecifiedSettlement settlement) {
 		this.settlement = settlement;
 		return this;
 	}

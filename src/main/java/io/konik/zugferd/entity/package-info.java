@@ -19,15 +19,20 @@
 /**
  * ZUGFeRD entities.  
  */
-@XmlSchema(namespace = "urn:un:unece:uncefact:data:draft:ReusableAggregateBusinessInformationEntity:1")
-@XmlJavaTypeAdapters({
-   @XmlJavaTypeAdapter(value=CountryAdapter.class,type=TradeCountry.class)
-})
+@XmlSchema(elementFormDefault = QUALIFIED, 
+   namespace = "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12", 
+   xmlns = { 
+      @XmlNs(prefix = "ram", namespaceURI = "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12") 
+      }
+)
+@XmlJavaTypeAdapters({ @XmlJavaTypeAdapter(value = CountryAdapter.class, type = TradeCountry.class) })
 package io.konik.zugferd.entity;
 
+import static javax.xml.bind.annotation.XmlNsForm.QUALIFIED;
 import io.konik.jaxb.adapter.CountryAdapter;
-import io.konik.jaxb.bindable.TradeCountry;
+import io.konik.jaxb.bindable.entity.TradeCountry;
 
+import javax.xml.bind.annotation.XmlNs;
 import javax.xml.bind.annotation.XmlSchema;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapters;

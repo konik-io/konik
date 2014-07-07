@@ -21,7 +21,6 @@ package io.konik.zugferd;
 import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
 import static org.assertj.core.api.Assertions.assertThat;
 import io.konik.utils.InvoiceLoaderUtils;
-import io.konik.zugferd.Invoice;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -36,20 +35,15 @@ import javax.xml.validation.Validator;
 
 import org.junit.Test;
 import org.xml.sax.SAXException;
+
+
 @SuppressWarnings("javadoc")
 public class SampleInvoiceValidationRoundtripTest {
    
    
-	/**
-	 * Unmarshall sample invoice and marshall it again. Validate result against schema
-	 * 
-	 * @throws SAXException the sAX exception
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @throws JAXBException the jAXB exception
-	 */
 	@Test
 	public void validateExistingInvoiceAginstSchema() throws SAXException, IOException, JAXBException {
-		Source xmlSource = InvoiceLoaderUtils.loadSampleXmlContent();
+		Source xmlSource = InvoiceLoaderUtils.loadZfBasicXmlInvoice();
 		Validator validator = InvoiceLoaderUtils.getSchemaValidator();
 		validator.validate(xmlSource);
 	}
@@ -63,7 +57,7 @@ public class SampleInvoiceValidationRoundtripTest {
       //exec
       StringWriter stringWriter = new StringWriter(10000);
       marshaller.marshal(invoice, stringWriter);
-//      marshaller.marshal(invoice, new File("sample_invoice_out.xml"));
+      //marshaller.marshal(invoice, new File("sample_invoice_out.xml"));
 
       StringReader reader = new StringReader(stringWriter.toString());
       getSchemaValidator().validate(new StreamSource(reader));
@@ -75,12 +69,13 @@ public class SampleInvoiceValidationRoundtripTest {
       //setup
       StreamSource source = new StreamSource(getClass().getResourceAsStream("/random_zf_invoice_1.xml"));
       StreamSource sourceCopy = new StreamSource(getClass().getResourceAsStream("/random_zf_invoice_1.xml"));
-      
+
+      //execute
       Unmarshaller unmarshaller = InvoiceLoaderUtils.createZfUnmarshaller();
       Invoice invoice = unmarshaller.unmarshal(sourceCopy,Invoice.class).getValue();
       
+      //verify
       assertThat(invoice).isNotNull();
-      
       getSchemaValidator().validate(source);
    }
    

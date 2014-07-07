@@ -24,13 +24,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.openjdk.jmh.annotations.Mode.Throughput;
 import static org.openjdk.jmh.annotations.Scope.Thread;
 import io.konik.InvoiceTransformer;
+import io.konik.utils.InvoiceLoaderUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 import org.junit.Test;
+import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.GenerateMicroBenchmark;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
@@ -47,13 +48,13 @@ public class InvoiceTransformerBenchmark extends DefaultBenchmark {
    
    @Setup
    public void setup() throws IOException {
-      invoice = toByteArray(getClass().getResourceAsStream("/ZUGFeRD-invoice.xml"));
+      invoice = toByteArray(InvoiceLoaderUtils.loadZfBasicXmlInvoiceAsStream());
       assertThat(invoice).isNotNull();
    }
 
-   @GenerateMicroBenchmark
+   @Benchmark
    public void from_inputStream() throws Exception {
-      transformer.from(new ByteArrayInputStream(invoice));
+      transformer.toModel(new ByteArrayInputStream(invoice));
    }
    
    @Test

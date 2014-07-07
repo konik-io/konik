@@ -1,63 +1,92 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.qualified.DateTime;
+import io.konik.jaxb.adapter.IssueDateTimeAdapter;
+import io.konik.zugferd.entity.trade.item.ReferencedDocumentLine;
+
+import java.util.Date;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 
 /**
  * = The Referenced Document
  * 
  * References a external Document.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ReferencedDocumentType", propOrder = { "issued", "id" })
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(name = "ReferencedDocumentType",propOrder = { "issued", "linePos", "typeCode", "id", "referenceTypeCode" })
+@XmlSeeAlso({ReferencedDocumentLine.class})
 public class ReferencedDocument {
 
+   @XmlElement(name = "IssueDateTime")
+   @XmlJavaTypeAdapter(value = IssueDateTimeAdapter.class)
+   private Date issued;
+
    @Valid
-	@XmlElement(name = "IssueDateTime")
-	private DateTime issued;
+   @XmlElement(name = "LineID")
+   protected String linePos;
 
-	@XmlElement(name = "ID")
-	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-	private String id;
+   @Valid
+   @XmlElement(name = "TypeCode")
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   protected String typeCode;
 
-	/**
-	 * Gets the issue date time.
-	 * 
-	 * Profile:: COMFORT 
-	 * 
-	 * @return the issue date time
-	 */
-	public DateTime getIssued() {
-		return issued;
-	}
+   @XmlElement(name = "ID")
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   private String id;
 
-	/**
+   @Valid
+   @XmlElement(name = "ReferenceTypeCode")
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   protected String referenceTypeCode;
+
+   protected ReferencedDocument() {}
+
+   /**
+    * The Constructor.
+    *
+    * @param identifier the id value of the referenced document 
+    */
+   public ReferencedDocument(String identifier) {
+      super();
+      this.id = identifier;
+   }
+
+   /**
+    * Gets the issue date time.
+    * 
+    * Profile:: COMFORT
+    * 
+    * @return the issue date time
+    */
+   public Date getIssued() {
+      return issued;
+   }
+
+   /**
     * Sets the issue date time.
     * 
     * Profile:: COMFORT
@@ -65,26 +94,30 @@ public class ReferencedDocument {
     * @param issued the new issue date time
     * @return the referenced document
     */
-	public ReferencedDocument setIssued(DateTime issued) {
-		this.issued = issued;
-		return this;
-	}
-	
-	/**
-    * Sets the reference document id.
-    *
-    * @param referenceDocumentId the value
-    * @return the referenced document
-    */
-	public ReferencedDocument setId(String referenceDocumentId){
-	   id = referenceDocumentId;
-	   return this;
-	}
+   public ReferencedDocument setIssued(Date issued) {
+      this.issued = issued;
+      return this;
+   }
 
    /**
-    * Gets the id.
+    * Sets the reference document identifier.
+    * 
+    * Examples:: Order number, document number, number of customer order, delivery note numbers
     *
-    * @return the id
+    * @param referenceDocumentIdentifier the id of the document
+    * @return the referenced document
+    */
+   public ReferencedDocument setId(String referenceDocumentIdentifier) {
+      id = referenceDocumentIdentifier;
+      return this;
+   }
+
+   /**
+    * Gets the identifier.
+    * 
+    * Examples:: Order number, document number, number of customer order, delivery note numbers 
+    * 
+    * @return the id the identifier of the referenced document
     */
    public String getId() {
       return id;

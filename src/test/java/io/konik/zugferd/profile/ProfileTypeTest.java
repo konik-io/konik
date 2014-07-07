@@ -18,22 +18,19 @@
  */
 package io.konik.zugferd.profile;
 
+import static io.konik.zugferd.profile.ProfileVersion.extractVersion;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Before;
 import org.junit.Test;
 
 @SuppressWarnings("javadoc")
 public class ProfileTypeTest {
 
-
-   @Before
-   public void setUp() throws Exception {
-   }
-
    @Test
    public void getProfile_Basic() throws Exception {
-      ProfileType.getProfile("urn:ferd:invoice:rc:basic");
+      ProfileType profile = ProfileType.getProfile("urn:ferd:CrossIndustryDocument:invoice:1p0:basic");
+      assertThat(profile.simpleName()).isEqualTo("basic");
+      assertThat(extractVersion(profile.fullName()).version()).isEqualTo("1p0");
    }
 
    @Test

@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 public class DocumentLine {
 
 	@XmlElement(name = "LineID")
-	private int position;
+	private Integer position;
 
 	@XmlElement(name = "IncludedNote")
 	private List<Note> notes;
@@ -54,7 +54,7 @@ public class DocumentLine {
     */
 	public DocumentLine(int position) {
       super();
-      this.position = position;
+      this.position = Integer.valueOf(position);
    }
 
 	/**
@@ -76,7 +76,7 @@ public class DocumentLine {
     * @return the position number
     */
 	public int getPosition() {
-		return position;
+		return position.intValue();
 	}
 
 	/**
@@ -88,7 +88,7 @@ public class DocumentLine {
     * @return the document line
     */
 	public DocumentLine setPosition(int position) {
-		this.position = position;
+		this.position = Integer.valueOf(position);
 		return this;
 	}
 

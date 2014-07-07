@@ -1,24 +1,22 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik;
 
-import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
 import static javax.xml.bind.JAXBContext.newInstance;
 import io.konik.exception.TransformationException;
 import io.konik.zugferd.Invoice;
@@ -26,11 +24,13 @@ import io.konik.zugferd.Invoice;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
@@ -56,7 +56,7 @@ public class InvoiceTransformer {
    private final JAXBContext jaxbContext;
 
    /**
-    * Instantiates a new invoice transformer.
+    * Instantiates a default invoice transformer.
     */
    public InvoiceTransformer() {
       try {
@@ -67,9 +67,9 @@ public class InvoiceTransformer {
    }
    
    /**
-    * Instantiates a new invoice transformer.
+    * Instantiates a new invoice transformer providing a JAXB Context
     *
-    * @param jaxbContext the jaxb context
+    * @param jaxbContext the JAXB context
     */
    @Inject
    public InvoiceTransformer(JAXBContext jaxbContext) {
@@ -77,15 +77,15 @@ public class InvoiceTransformer {
    }
    
    /**
-    * Transform from XML input stream  to the invoice model.
+    * Transform from XML input stream to the invoice model.
     * 
-    * @param xmlIs the xml input stream
+    * @param xmlInputStream the xml input stream
     * @return the invoice model
     */
-   public Invoice from(InputStream xmlIs) {
+   public Invoice toModel(InputStream xmlInputStream) {
       try {
          Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-         return unmarshaller.unmarshal(new StreamSource(xmlIs), Invoice.class).getValue();
+         return unmarshaller.unmarshal(new StreamSource(xmlInputStream), Invoice.class).getValue();
       } catch (JAXBException e) {
          throw new TransformationException("Marshalling error", e);
       }
@@ -98,7 +98,7 @@ public class InvoiceTransformer {
     * @return the invoice
     */
    @SuppressWarnings("unchecked")
-   public Invoice from(File file) {
+   public Invoice toModel(File file) {
       try {
          Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
          return ((JAXBElement<Invoice>) unmarshaller.unmarshal(file)).getValue();
@@ -112,10 +112,10 @@ public class InvoiceTransformer {
     * @param invoice the invoice
     * @return the byte[]
     */
-   public byte[] from(Invoice invoice) {
+   public byte[] fromModel(Invoice invoice) {
       ByteArrayOutputStream outputStream = new ByteArrayOutputStream(16000);
       try {
-         Marshaller marshaller = jaxbContext.createMarshaller();
+         Marshaller marshaller = createMarshaller();
          marshaller.marshal(invoice, outputStream);
       } catch (JAXBException e) {
          throw new TransformationException("Marshalling error", e);
@@ -129,14 +129,15 @@ public class InvoiceTransformer {
     * @param invoice the invoice
     * @param outputStream the output stream
     */
-   public void from(Invoice invoice, ByteArrayOutputStream outputStream) {
+   public void fromModel(Invoice invoice, OutputStream outputStream) {
       try {
-         Marshaller marshaller = jaxbContext.createMarshaller();
-         marshaller.marshal(invoice, outputStream);
+         Marshaller marshaller = createMarshaller();
+         marshaller.marshal(invoice, outputStream );
       } catch (JAXBException e) {
          throw new TransformationException("Marshalling error", e);
       }
    }
+
 
 
    /**
@@ -146,9 +147,21 @@ public class InvoiceTransformer {
     * @throws SAXException the SAX exception
     */
    public Validator getZfSchemaValidator() throws SAXException {
-      SchemaFactory sf = SchemaFactory.newInstance(W3C_XML_SCHEMA_NS_URI);
-      URL schemaInvoice = InvoiceTransformer.class.getResource("/zfSchema/Invoice.xsd");
+      SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
+      URL schemaInvoice = InvoiceTransformer.class.getResource("/zfSchema/ZUGFeRD_1p0.xsd");
       Schema invoiceSchema = sf.newSchema(schemaInvoice);
       return invoiceSchema.newValidator();
    }
+   
+   
+   private Marshaller createMarshaller() throws JAXBException {
+       Marshaller marshaller = jaxbContext.createMarshaller();
+       marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, formatXmlOutput());
+       return marshaller;
+   }
+
+   protected Boolean formatXmlOutput() {
+      return Boolean.FALSE;
+   }
+   
 }

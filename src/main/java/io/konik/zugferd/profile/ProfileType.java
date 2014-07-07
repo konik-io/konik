@@ -1,27 +1,27 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.profile;
 
 /**
- * The Invoice Profiles.
+ * The latest Version Invoice Profiles.
  */
 public enum ProfileType {
+
    /** The basic profile */
    BASIC,
    /** The comfort profile */
@@ -29,28 +29,70 @@ public enum ProfileType {
    /** The extended profile */
    EXTENDED;
 
-   /** The ZUGFeRD name space prefix */
-   public final static String NS = "urn:ferd:invoice";
-   
-   /** The ZUGFeRD VERSION. */
-   public final static String VERSION = "rc";
+   private static final String DELIMITED = ":";
+   private final static String NS = "urn:ferd:CrossIndustryDocument:invoice";
 
-   /** The full name. with namespace:version:profileName*/
-   public final String fullName;
-   
-   /** The simple name. */
-   public final String simpleName;
-   
-   /** The conformance level is simple name in capital letters */
-   public final String conformanceLevel;
+   //   private final String fullName;
 
    /**
     * Instantiates a new profile type.
     */
    ProfileType() {
-      conformanceLevel = name();
-      simpleName = conformanceLevel.toLowerCase();
-      fullName = NS + ":" + VERSION + ":" + simpleName;
+   }
+
+   /**
+    * Gets the full name with the latest version.
+    * 
+    * Full name consists of namespace:version:profile
+    * 
+    * Example:: urn:ferd:CrossIndustryDocument:invoice:1p0:basic
+    *
+    * @return the full name
+    */
+   public String fullName() {
+      return fullName(ProfileVersion.latestVersion());
+   }
+
+   /**
+    * constructs the full name with the given version. 
+    * Full name consists of namespace:version:profile
+    * 
+    * Example:: urn:ferd:CrossIndustryDocument:invoice:1p0:basic
+    *
+    * @param version the version
+    * @return the string the full name 
+    */
+   public String fullName(ProfileVersion version) {
+      StringBuilder fullName = new StringBuilder();
+      fullName.append(NS).append(DELIMITED).append(version.version()).append(DELIMITED).append(simpleName());
+      return fullName.toString();
+   }
+
+   /**
+    * Gets the simple name.
+    * 
+    * Simple may be basic, comfort or extended.
+    * 
+    * Example:: basic, comfort, extended
+    * 
+    * @return the simple name basic, comfort or extended.
+    */
+   public String simpleName() {
+      return name().toLowerCase();
+   }
+
+   /**
+    * Gets the conformance level.
+    * 
+    * Is the {@link #simpleName()} in capital or {@link #name()}
+    * 
+    * Example:: BASIC, COMFORT, EXTENDED
+    * 
+    * @see #simpleName()
+    * @return the conformance level
+    */
+   public String getConformanceLevel() {
+      return name();
    }
 
    /**
@@ -61,9 +103,8 @@ public enum ProfileType {
     */
    public static ProfileType getProfile(String fullName) {
       for (ProfileType v : values()) {
-         if(v.fullName.equals(fullName)) {
-            return v;   
-         }
+         ProfileVersion version = ProfileVersion.extractVersion(fullName);
+         if (v.fullName(version).equals(fullName)) { return v; }
       }
       throw new EnumConstantNotPresentException(ProfileType.class, fullName);
    }
@@ -76,13 +117,11 @@ public enum ProfileType {
     */
    public static ProfileType getProfileByName(String name) {
       for (ProfileType v : values()) {
-         if(v.simpleName.equals(name.toLowerCase())) {
-            return v;
-         }
+         if (v.simpleName().equals(name.toLowerCase())) { return v; }
       }
       throw new EnumConstantNotPresentException(ProfileType.class, name);
    }
-   
+
    /**
     * Checks if is basic.
     *
@@ -90,9 +129,9 @@ public enum ProfileType {
     * @return true, if is basic
     */
    public static boolean isBasic(String fullName) {
-      return fullName.endsWith(BASIC.simpleName);
+      return fullName.endsWith(BASIC.simpleName());
    }
-   
+
    /**
     * Checks if is comfort.
     *
@@ -100,9 +139,9 @@ public enum ProfileType {
     * @return true, if is comfort
     */
    public static boolean isComfort(String fullName) {
-      return fullName.endsWith(COMFORT.simpleName);
+      return fullName.endsWith(COMFORT.simpleName());
    }
-   
+
    /**
     * Checks if is extended.
     *
@@ -110,25 +149,8 @@ public enum ProfileType {
     * @return true, if is extended
     */
    public static boolean isExtended(String fullName) {
-      return fullName.endsWith(EXTENDED.simpleName);
+      return fullName.endsWith(EXTENDED.simpleName());
    }
 
-   /**
-    * Extract version from full name.
-    *
-    * @param fullName the full name
-    * @return the version of provided in the full name or empty string
-    */
-   public static String extractVersion(String fullName) {
-      if (fullName==null || fullName.isEmpty()) {
-         return "";
-      }
-      String[] tokens = fullName.split(":");
-      if (tokens.length<4) {
-         return "";
-      }
-      return tokens[3];
-      
-      
-   }
+
 }

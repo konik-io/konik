@@ -18,7 +18,7 @@
  */
 package io.konik.jaxb.adapter;
 
-import io.konik.jaxb.bindable.TradeCountry;
+import io.konik.jaxb.bindable.entity.TradeCountry;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 

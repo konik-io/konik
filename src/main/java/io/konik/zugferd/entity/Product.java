@@ -1,20 +1,19 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
 
@@ -38,7 +37,7 @@ import com.neovisionaries.i18n.CountryCode;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradeProductType", propOrder = { "globalId", "sellerAssignedId", "buyerAssignedId", "name",
-      "description", "origins" })
+      "description", "characteristics", "classifications", "origins", "containedProducts" })
 public class Product {
 
    @XmlElement(name = "GlobalID")
@@ -58,9 +57,21 @@ public class Product {
    @XmlElement(name = "Description")
    private String description;
 
+   @XmlElement(name = "ApplicableProductCharacteristic")
+   @Valid
+   protected List<ProductCharacteristic> characteristics;
+
+   @XmlElement(name = "DesignatedProductClassification")
+   @Valid
+   protected List<ProductClassification> classifications;
+
    @Valid
    @XmlElement(name = "OriginTradeCountry")
    private List<CountryCode> origins;
+
+   @XmlElement(name = "IncludedReferencedProduct")
+   @Valid
+   protected List<ReferencedProduct> containedProducts;
 
    /**
     * Gets the global id.
@@ -161,6 +172,56 @@ public class Product {
       this.description = description;
       return this;
    }
+   
+   
+
+   /**
+    * Gets the characteristics.
+    *
+    * @return the characteristics
+    */
+   public List<ProductCharacteristic> getCharacteristics() {
+      if(characteristics == null) {
+         characteristics = new ArrayList<ProductCharacteristic>();
+      }
+      return characteristics;
+   }
+
+   /**
+    * Sets the characteristics.
+    *
+    * @param characteristic the characteristics
+    * @return the product
+    */
+   public Product setCharacteristics(ProductCharacteristic characteristic) {
+      getCharacteristics().add(characteristic);
+      return this;
+   }
+
+   /**
+    * Gets the classifications.
+    *
+    * @return the classifications
+    */
+   public List<ProductClassification> getClassifications() {
+      if(classifications == null) {
+         classifications = new ArrayList<ProductClassification>();
+      }
+      return classifications;
+   }
+
+   /**
+    * Sets the classifications.
+    *
+    * @param classification the classifications
+    * @return the product
+    */
+   public Product setClassifications(ProductClassification classification) {
+      getClassifications().add(classification);
+      return this;
+   }
+
+
 
    /**
     * Gets the origin trade country.
@@ -182,6 +243,29 @@ public class Product {
     */
    public Product addOrigins(CountryCode originCountry) {
       getOrigins().add(originCountry);
+      return this;
+   }
+   
+   /**
+    * Gets the contained products.
+    *
+    * @return the contained products
+    */
+   public List<ReferencedProduct> getContainedProducts() {
+      if(containedProducts == null) {
+         containedProducts = new ArrayList<ReferencedProduct>();
+      }
+      return containedProducts;
+   }
+
+   /**
+    * Additional contained products.
+    *
+    * @param containedProduct the contained product
+    * @return the product
+    */
+   public Product addContainedProducts(ReferencedProduct containedProduct) {
+         getContainedProducts().add(containedProduct);   
       return this;
    }
 

@@ -18,18 +18,20 @@
  */
 package io.konik.zugferd.profile;
 
+import io.konik.zugferd.entity.Parameter;
+
 
 
 /**
  * 
  * The COMFORT Profile.
  */
-public class ComfortProfile extends Profile {
+public class ComfortProfile extends Parameter {
    
    /**
     * Instantiates a new COMFORT profile.
     */
    public ComfortProfile() {
-      super(ProfileType.COMFORT);
+      super(ProfileType.COMFORT.fullName());
    }
 }

@@ -18,18 +18,20 @@
  */
 package io.konik.zugferd.profile;
 
+import io.konik.zugferd.entity.Parameter;
+
 
 
 /**
  * 
  * The Basic Profile.
  */
-public class BasicProfile extends Profile {
+public class BasicProfile extends Parameter {
    
    /**
     * Instantiates a new basic profile.
     */
    public BasicProfile() {
-      super(ProfileType.BASIC);
+      super(ProfileType.BASIC.fullName());
    }
 }

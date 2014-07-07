@@ -18,18 +18,20 @@
  */
 package io.konik.zugferd.profile;
 
+import io.konik.zugferd.entity.Parameter;
+
 
 
 /**
  * 
  * The EXTENDED Profile.
  */
-public class ExtendedProfile extends Profile {
+public class ExtendedProfile extends Parameter {
    
    /**
     * Instantiates a new EXTENDED profile.
     */
    public ExtendedProfile() {
-      super(ProfileType.EXTENDED);
+      super(ProfileType.EXTENDED.fullName());
    }
 }

@@ -31,6 +31,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
+import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -40,6 +41,7 @@ import javax.validation.constraints.NotNull;
 @NotNull
 @Constraint(validatedBy = AmountValidator.class)
 @Documented
+@ReportAsSingleViolation
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 public @interface ValidAmount {

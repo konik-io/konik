@@ -20,9 +20,9 @@
  * The starting point of every Konik Invoice.
  */
 @XmlSchema(
-      namespace = "urn:un:unece:uncefact:data:standard:CBFBUY:5", 
+      namespace = "urn:ferd:CrossIndustryDocument:invoice:1p0", 
       xmlns = { 
-            @XmlNs(prefix = "rsm", namespaceURI = "urn:un:unece:uncefact:data:standard:CBFBUY:5") 
+            @XmlNs(prefix = "rsm", namespaceURI = "urn:ferd:CrossIndustryDocument:invoice:1p0") 
       },
       elementFormDefault = XmlNsForm.QUALIFIED
 )

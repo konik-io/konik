@@ -1,30 +1,33 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.qualified.DateTime;
-import io.konik.zugferd.unece.codes.DocumentNameCode;
+import io.konik.jaxb.adapter.PeriodCompleteToDateTimeAdapter;
+import io.konik.validator.annotation.NullableNotBlank;
+import io.konik.zugferd.unece.codes.DocumentCode;
+import io.konik.zugferd.unqualified.DateTime;
+import io.konik.zugferd.unqualified.Indicator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -32,29 +35,46 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.neovisionaries.i18n.LanguageCode;
+
 /**
  * = The Invoice Document Header
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ExchangedDocumentType", propOrder = { "invoiceNumber", "name", "code", "issued", "notes" })
+@XmlType(name = "ExchangedDocumentType", propOrder = { "invoiceNumber", "name", "code", "issued", "copy","languages", "notes","effective" })
 public class Header {
    
+   @NotNull @NullableNotBlank
    @XmlElement(name = "ID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String invoiceNumber;
-
+   
+   @NotNull @NullableNotBlank
    @XmlElement(name = "Name")
-   private List<String> name;
-
+   private String name;
+ 
+   @NotNull
    @XmlElement(name = "TypeCode")
-   private DocumentNameCode code;
+   private DocumentCode code;
 
    @XmlElement(name = "IssueDateTime")
-   @Valid
+   @NotNull @Valid
    private DateTime issued;
+   
+   @XmlElement(name = "CopyIndicator")
+   private Indicator copy;
 
+   @XmlElement(name = "LanguageID")
+   protected List<LanguageCode> languages;
+
+   @Valid
    @XmlElement(name = "IncludedNote")
    private List<Note> notes;
+
+   @Valid
+   @XmlElement(name = "EffectiveSpecifiedPeriod")
+   @XmlJavaTypeAdapter(value = PeriodCompleteToDateTimeAdapter.class)
+   protected DateTime effective;
 
    /**
     * Gets the invoice number.
@@ -93,10 +113,7 @@ public class Header {
     * 
     * @return the invoice name
     */
-   public List<String> getName() {
-      if (name == null) {
-         name = new ArrayList<String>();
-      }
+   public String getName() {
       return this.name;
    }
 
@@ -106,13 +123,13 @@ public class Header {
     * Profile:: BASIC
     * 
     * Example:: {@code invoice, credit advice, debit note, pro forma invoice}
-    * 
-    * @param additionalName the additional invoice name
+    *
+    * @param name the new name
     * @return the exchanged document
     * @see #getName()
     */
-   public Header addName(String additionalName) {
-      getName().add(additionalName);
+   public Header setName(String name) {
+      this.name = name;
       return this;
    }
 
@@ -127,7 +144,7 @@ public class Header {
     * @return the document name code
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred1001.htm[UN/EDIFACT 1001 Document name coe^]
     */
-   public DocumentNameCode getCode() {
+   public DocumentCode getCode() {
       return code;
    }
    
@@ -143,7 +160,7 @@ public class Header {
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred1001.htm[UN/EDIFACT 1001 Document name coe^]
     */
 
-   public Header setCode(DocumentNameCode code) {
+   public Header setCode(DocumentCode code) {
       this.code = code;
       return this;
    }
@@ -217,5 +234,27 @@ public class Header {
       getNotes().add(note);
       return this;
    }
+
+   /**
+    * Gets the effective or due date of the invoice
+    *
+    * @return effective the effective or due date
+    */
+   public DateTime getEffective() {
+      return effective;
+   }
+
+   /**
+    * Sets the effective or due date of the invoice.
+    *
+    * @param effective the effective or due date
+    * @return the header
+    */
+   public Header setEffective(DateTime effective) {
+      this.effective = effective;
+      return this;
+   }
+   
+   
 
 }

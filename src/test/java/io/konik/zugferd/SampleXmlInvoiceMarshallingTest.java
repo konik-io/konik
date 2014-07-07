@@ -20,8 +20,6 @@ package io.konik.zugferd;
 
 import static org.junit.Assert.assertTrue;
 import io.konik.utils.InvoiceLoaderUtils;
-import io.konik.zugferd.Invoice;
-import io.konik.zugferd.ObjectFactory;
 
 import java.io.ByteArrayOutputStream;
 

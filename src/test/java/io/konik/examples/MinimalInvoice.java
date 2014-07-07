@@ -18,17 +18,15 @@
  */
 package io.konik.examples;
 
-import static com.neovisionaries.i18n.CountryCode.DE;
 import static com.neovisionaries.i18n.CurrencyCode.EUR;
 import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
-import static io.konik.zugferd.unece.codes.DocumentNameCode._380;
+import static io.konik.zugferd.unece.codes.DocumentCode._380;
 import static io.konik.zugferd.unece.codes.Reference.FC;
+import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
 import static org.assertj.core.util.Dates.tomorrow;
 import io.konik.InvoiceTransformer;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.Address;
-import io.konik.zugferd.entity.Agreement;
-import io.konik.zugferd.entity.Delivery;
 import io.konik.zugferd.entity.Event;
 import io.konik.zugferd.entity.FinancialAccount;
 import io.konik.zugferd.entity.FinancialInstitution;
@@ -37,29 +35,32 @@ import io.konik.zugferd.entity.Item;
 import io.konik.zugferd.entity.MonetarySummation;
 import io.konik.zugferd.entity.PaymentMeans;
 import io.konik.zugferd.entity.Product;
-import io.konik.zugferd.entity.Settlement;
+import io.konik.zugferd.entity.CommonSettlement;
 import io.konik.zugferd.entity.TaxRegistration;
 import io.konik.zugferd.entity.Trade;
 import io.konik.zugferd.entity.TradeParty;
+import io.konik.zugferd.entity.trade.Agreement;
+import io.konik.zugferd.entity.trade.Delivery;
+import io.konik.zugferd.entity.trade.TradeSettlement;
+import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
 import io.konik.zugferd.profile.BasicProfile;
-import io.konik.zugferd.qualified.DateTime;
 import io.konik.zugferd.unqualified.Amount;
+import io.konik.zugferd.unqualified.DateTime;
+import io.konik.zugferd.unqualified.Quantity;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.StringReader;
+import java.io.InputStream;
 
 import javax.xml.transform.stream.StreamSource;
 
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
-import com.google.common.io.Files;
+import com.google.common.io.ByteSource;
 
 /**
  * The example class shows how easy it is to create a compact invoice.
- * 
  */
 @SuppressWarnings("javadoc")
 public class MinimalInvoice {
@@ -67,53 +68,75 @@ public class MinimalInvoice {
    DateTime now = new DateTime();
    DateTime tomorrow = new DateTime(tomorrow());
 
-   private Invoice createMinimalValidInvoice() {
-
-Invoice invoice = new Invoice(new BasicProfile());
-invoice.setHeader(
-      new Header().setInvoiceNumber("20131122-42").setCode(_380).setIssued(now).addName("Rechnung"));
-
-Trade trade = new Trade();
-trade.setAgreement(new Agreement().setSellerTradeParty(
-      new TradeParty().setName("Seller Inc.").setAddress(
-            new Address("80331", "Marienplatz 1", "München", "DE")).addTaxRegistration(
-                  new TaxRegistration("DE122...", FC))).setBuyerTradeParty(
-      new TradeParty().setName("Buyer Inc.").setAddress(
-            new Address("50667", "Domkloster 4", "Köln", "DE")).addTaxRegistration(
-                  new TaxRegistration("DE123...", FC))));
-trade.setDelivery(
-      new Delivery().setEvent(
-            new Event(tomorrow)));
-trade.setSettlement(
-      new Settlement().setPaymentReference("20131122-42").setCurrency(EUR).addPaymentMeans(
-            new PaymentMeans().setPayerAccount(new FinancialAccount("DE01234..")).setPayerInstitution(
-                  new FinancialInstitution("GENO..."))).setMonetarySummation(
-                        new MonetarySummation().setNetTotal(
-                              new Amount(100, EUR)).setTaxTotal(
-                                    new Amount(19, EUR)).setGrandTotal(
-                                          new Amount(119, EUR))));
-trade.addItem(
-      new Item().setProduct(
-            new Product().setName("Saddle").addOrigins(DE)));
-
-invoice.setTrade(trade);
-return invoice;
+   private Invoice createMinimalInvoiceModel() {
+      
+      Invoice invoice = new Invoice(new BasicProfile());    // <1>
+      invoice.setHeader(new Header()
+         .setInvoiceNumber("20131122-42")
+         .setCode(_380)
+         .setIssued(now)
+         .setName("Rechnung"));
+      
+      Trade trade = new Trade();
+      trade.setAgreement(new Agreement()     // <2>
+            .setSellerTradeParty(new TradeParty()
+                  .setName("Seller Inc.")
+                  .setAddress(new Address("80331", "Marienplatz 1", "München", "DE"))
+                  .addTaxRegistration(new TaxRegistration("DE122...", FC)))
+            .setBuyer(new TradeParty()
+                  .setName("Buyer Inc.")
+                  .setAddress(new Address("50667", "Domkloster 4", "Köln", "DE"))
+                  .addTaxRegistration(new TaxRegistration("DE123...", FC))));
+      
+      trade.setDelivery(new Delivery(new Event(tomorrow)));
+      
+      trade.setSettlement(new TradeSettlement()
+            .setPaymentReference("20131122-42")
+            .setCurrency(EUR)
+            .addPaymentMeans(new PaymentMeans()
+               .setPayerAccount(new FinancialAccount("DE01234.."))
+                  .setPayerInstitution(new FinancialInstitution("GENO...")))
+            .setMonetarySummation(new MonetarySummation()
+               .setNetTotal(new Amount(100, EUR))
+               .setTaxTotal(new Amount(19, EUR))
+               .setGrandTotal(new Amount(119, EUR))));
+      
+      trade.addItem(new Item()
+         .setProduct(new Product().setName("Saddle"))
+         .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))));
+      invoice.setTrade(trade);
+      
+      return invoice;
    }
 
+   
+   public void createXmlFromModel(Invoice invoice) throws IOException {
+      InvoiceTransformer transformer = new InvoiceTransformer();     // <1>
+      FileOutputStream outputStream = new FileOutputStream("target/minimal-invoice.xml");
+      transformer.fromModel(invoice, outputStream);      // <2>
+   }
+   
+   
    @Test
-   public void creatBasicInvoice() throws SAXException, IOException {
+   public void creatMinimalInvoice() throws IOException {
       //setup
-      Invoice invoice = createMinimalValidInvoice();
+      Invoice invoice = createMinimalInvoiceModel();
+      createXmlFromModel(invoice);
+   }
+   
+   @Test
+   public void validateMinimalInvoice() throws IOException, SAXException {
+      //setup
+      Invoice invoice = createMinimalInvoiceModel();
       InvoiceTransformer transformer = new InvoiceTransformer();
 
-      ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-      transformer.from(invoice, outputStream);
+      //execute
+      byte[] xmlInvoice = transformer.fromModel(invoice);
 
-      Files.write(outputStream.toByteArray(), new File("target/minimal-invoice.xml"));
-      //      System.out.println(os.toString());
-
-      //validate
-      getSchemaValidator().validate(new StreamSource(new StringReader(outputStream.toString())));
+      //verify
+      InputStream is = ByteSource.wrap(xmlInvoice).openBufferedStream();
+      getSchemaValidator().validate(new StreamSource(is));
+   
    }
 
 }

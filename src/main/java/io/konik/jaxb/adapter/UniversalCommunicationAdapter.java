@@ -18,38 +18,39 @@
  */
 package io.konik.jaxb.adapter;
 
+import static io.konik.util.Strings.isNotEmpty;
 import static io.konik.util.Strings.isNullOrEmpty;
-import io.konik.jaxb.bindable.UniversalCommunication;
+import io.konik.jaxb.bindable.entity.UniversalCommunication;
 
 import java.util.regex.Pattern;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
- * 
- * = The Currency Adapter
+ * = The Universal Communication Adapter
  */
 public class UniversalCommunicationAdapter extends XmlAdapter<UniversalCommunication, String> {
-  
+
    Pattern emailRegEx = Pattern.compile(".+@.+\\..+");
-   
+
    @Override
-   public UniversalCommunication marshal(String mailOrTel) throws Exception {
+   public UniversalCommunication marshal(String unversalCommunication) throws Exception {
+      if (isNullOrEmpty(unversalCommunication)) { return null; }
+
       UniversalCommunication communication = new UniversalCommunication();
-      if (isNullOrEmpty(mailOrTel) || emailRegEx.matcher(mailOrTel).matches()){
-         communication.setMail(mailOrTel);
-      }else {
-         communication.setCompleteNumber(mailOrTel);
+      if (emailRegEx.matcher(unversalCommunication).matches()) {
+         communication.setMail(unversalCommunication);
+      } else {
+         communication.setCompleteNumber(unversalCommunication);
       }
       return communication;
    }
 
    @Override
    public String unmarshal(UniversalCommunication communication) throws Exception {
-      if (isNullOrEmpty(communication.getCompleteNumber())) {
-         return communication.getMail();
+      if (isNotEmpty(communication.getCompleteNumber())) {
+         return communication.getCompleteNumber();   
       }
-      return communication.getCompleteNumber();
+      return communication.getMail();
    }
-
 }

@@ -90,7 +90,8 @@ public class RandomInvoiceGenerator {
          Class<?>[] constructorParameters = biggestConstructor.getParameterTypes();
          Object[] constructorParameterObjects = new Object[constructorParameters.length];
          for (int i = 0; i < constructorParameters.length; i++) {
-            constructorParameterObjects[i] = populteData(constructorParameters[i],biggestConstructor.getName());
+            Class<?> cp = constructorParameters[i];
+            constructorParameterObjects[i] = populteData(cp,biggestConstructor.getName());
          }
          return biggestConstructor.newInstance(constructorParameterObjects);
       }
@@ -112,21 +113,22 @@ public class RandomInvoiceGenerator {
    }
    
    
-   private void setValue(Object objToSetOn, Method method, Object value) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException  {
-      String methodToCall = method.getName().replace("get", "set");
+   private void setValue(Object entity, Method entityMethod, Object paramValue) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException  {
+      String methodToCall = entityMethod.getName().replace("get", "set");
       int repeadAdder = 1;
-      if (method.getName().startsWith("add")) { 
-         methodToCall = method.getName();//overwrite
-         repeadAdder +=  new Random(System.nanoTime()).nextInt(5);//repeat call for adder
+      if (entityMethod.getName().startsWith("add")) { 
+         Collection.class.isAssignableFrom(entityMethod.getReturnType());
+         methodToCall = entityMethod.getName();//overwrite
+         repeadAdder += random.nextInt(5);//repeat call for adder
       }
-      Method setterOrAdder = getAccessibleMethod(objToSetOn.getClass(), methodToCall, value.getClass());
+      Method setterOrAdder = getAccessibleMethod(entity.getClass(), methodToCall, paramValue.getClass());
       if (setterOrAdder == null) {
-         System.out.println("Could not find setter on Class Instnace :"+objToSetOn.getClass().getSimpleName() + " Getter :" + method.getName() + " has no setter. Ignoring value:" + value.toString());
+         System.out.println("Could not find setter on Class Instnace :"+entity.getClass().getSimpleName() + " Getter :" + entityMethod.getName() + " has no setter. Ignoring value:" + paramValue.toString());
          return; 
       }
       //repeat a few times for adder
       for (int i = 0; i < repeadAdder; i++) {
-         invokeMethod(objToSetOn, setterOrAdder.getName(), value);   
+         invokeMethod(entity, setterOrAdder.getName(), paramValue);   
       }
    }
 
@@ -142,8 +144,7 @@ public class RandomInvoiceGenerator {
       if (String.class.isAssignableFrom(type)) return generateStringBasedOnName(methodName);
       if (BigDecimal.class.isAssignableFrom(type)) return new BigDecimal(randomNumeric(6));
       if (isAssignable(type,Boolean.class,true)) return TRUE;
-      if (isAssignable(type,Integer.class,true)) return randomNumeric(6);
-      if (isAssignable(type,Integer.class,true)) return randomNumeric(6);
+      if (isAssignable(type,Integer.class,true)) return random.nextInt(100);
       if (type.isEnum()) return getEnum(type);
       if (isAssignable(type,Date.class,true)) return new Date();
       throw new IllegalArgumentException("Type " + type + " was not found");

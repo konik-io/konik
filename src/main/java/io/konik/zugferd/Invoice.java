@@ -20,9 +20,10 @@ package io.konik.zugferd;
 
 import io.konik.zugferd.entity.Context;
 import io.konik.zugferd.entity.Header;
+import io.konik.zugferd.entity.Parameter;
 import io.konik.zugferd.entity.Trade;
-import io.konik.zugferd.profile.Profile;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -33,24 +34,24 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * = ZUGFeRD Invoice Model.
  */
-@XmlRootElement(name = "Invoice")
+@XmlRootElement(name = "CrossIndustryDocument")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = { "context", "header", "trade" })
 public class Invoice {
 
    /** The context. Groups properties of the xml message. */
-   @NotNull
-   @XmlElement(name = "SpecifiedExchangedDocumentContext")
+   @NotNull@Valid
+   @XmlElement(name = "SpecifiedExchangedDocumentContext",required=true)
    private Context context;
 
    /** The document related header information. */
-   @NotNull
-   @XmlElement(name = "HeaderExchangedDocument")
+   @NotNull@Valid
+   @XmlElement(name = "HeaderExchangedDocument",required=true)
    private Header header;
 
    /** The trade transactions. */
-   @NotNull
-   @XmlElement(name = "SpecifiedSupplyChainTradeTransaction")
+   @NotNull@Valid
+   @XmlElement(name = "SpecifiedSupplyChainTradeTransaction",required=true)
    private Trade trade;
 
    /**
@@ -66,7 +67,7 @@ public class Invoice {
     * 
     * @param profile the profile
     */
-   public Invoice(Profile profile) {
+   public Invoice(Parameter profile) {
       this.context = new Context(profile);
       this.header = new Header();
    }

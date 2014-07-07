@@ -56,5 +56,15 @@ public class Strings {
    public static boolean isNullOrEmpty(String string) {
       return string == null || string.isEmpty(); 
    }
-   
+   /**
+    * Checks if is not null or empty.
+    *
+    * @param string the string
+    * @return true, if is not null or empty
+    */
+   public static boolean isNotEmpty(String string) {
+      return !isNullOrEmpty(string);
+   }
 }
+
+

@@ -77,7 +77,7 @@ public enum UnitOfMeasurement {
    METER_CUBIC("MTQ", "cubic meter (m3)"),
 
    /** The Meter (m). */
-   METER("MTR,", "Meter (m)"),
+   METER("MTR", "Meter (m)"),
 
    /** The Second (s). */
    SECOND("SEC", "Second (s)"),
@@ -97,8 +97,8 @@ public enum UnitOfMeasurement {
    /** The Month. */
    MONTH("MON", "Month");
 
-   /** The description. */
-   public final String description;
+   private final String description;
+   private final String code;
 
    /**
     * Instantiates a new unit types.
@@ -107,6 +107,7 @@ public enum UnitOfMeasurement {
     * @param description the description
     */
    UnitOfMeasurement(String code, String description) {
+      this.code = code;
       this.description = description;
    }
    
@@ -116,7 +117,7 @@ public enum UnitOfMeasurement {
     * @return the code
     */
    public String getCode() {
-      return name();
+      return code;
    }
    
    /**
@@ -136,7 +137,7 @@ public enum UnitOfMeasurement {
     */
    public static UnitOfMeasurement getByCode(String code) {
       for (UnitOfMeasurement v : values()) {
-         if (v.name().intern() == code.intern()) return v;
+         if (v.getCode().intern() == code.intern()) return v;
       }
       return null;
    }

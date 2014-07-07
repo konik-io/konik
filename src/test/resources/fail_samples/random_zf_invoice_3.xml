@@ -1,0 +1,1353 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rsm:CrossIndustryDocument xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15"
+   xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12" xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0">
+   <rsm:SpecifiedExchangedDocumentContext>
+      <ram:GuidelineSpecifiedDocumentContextParameter>
+         <ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:extended</ram:ID>
+      </ram:GuidelineSpecifiedDocumentContextParameter>
+   </rsm:SpecifiedExchangedDocumentContext>
+   <rsm:HeaderExchangedDocument>
+      <ram:ID>673</ram:ID>
+      <ram:Name>odio</ram:Name>
+      <ram:TypeCode>786</ram:TypeCode>
+      <ram:IssueDateTime>
+         <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+      </ram:IssueDateTime>
+      <ram:IncludedNote>
+         <ram:Content>metus</ram:Content>
+         <ram:SubjectCode>parturient</ram:SubjectCode>
+      </ram:IncludedNote>
+      <ram:IncludedNote>
+         <ram:Content>metus</ram:Content>
+         <ram:SubjectCode>parturient</ram:SubjectCode>
+      </ram:IncludedNote>
+   </rsm:HeaderExchangedDocument>
+   <rsm:SpecifiedSupplyChainTradeTransaction>
+      <ram:ApplicableSupplyChainTradeAgreement>
+         <ram:BuyerReference>nascetur</ram:BuyerReference>
+         <ram:SellerTradeParty>
+            <ram:ID>DCV</ram:ID>
+            <ram:GlobalID schemeID="HEU">faucibus</ram:GlobalID>
+            <ram:GlobalID schemeID="HEU">faucibus</ram:GlobalID>
+            <ram:GlobalID schemeID="HEU">faucibus</ram:GlobalID>
+            <ram:GlobalID schemeID="HEU">faucibus</ram:GlobalID>
+            <ram:GlobalID schemeID="HEU">faucibus</ram:GlobalID>
+            <ram:Name>ullamcorper</ram:Name>
+            <ram:DefinedTradeContact>
+               <ram:PersonName>turpis</ram:PersonName>
+               <ram:DepartmentName>nibh</ram:DepartmentName>
+               <ram:TelephoneUniversalCommunication>
+                  <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+               </ram:TelephoneUniversalCommunication>
+               <ram:FaxUniversalCommunication>
+                  <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+               </ram:FaxUniversalCommunication>
+               <ram:EmailURIUniversalCommunication>
+                  <ram:URIID>hello@konik.io</ram:URIID>
+               </ram:EmailURIUniversalCommunication>
+            </ram:DefinedTradeContact>
+            <ram:PostalTradeAddress>
+               <ram:PostcodeCode>in</ram:PostcodeCode>
+               <ram:LineOne>sociis</ram:LineOne>
+               <ram:LineTwo>vestibulum</ram:LineTwo>
+               <ram:CityName>inceptos</ram:CityName>
+               <ram:CountryID>502</ram:CountryID>
+            </ram:PostalTradeAddress>
+            <ram:SpecifiedTaxRegistration>
+               <ram:ID>216</ram:ID>
+            </ram:SpecifiedTaxRegistration>
+            <ram:SpecifiedTaxRegistration>
+               <ram:ID>216</ram:ID>
+            </ram:SpecifiedTaxRegistration>
+            <ram:SpecifiedTaxRegistration>
+               <ram:ID>216</ram:ID>
+            </ram:SpecifiedTaxRegistration>
+            <ram:SpecifiedTaxRegistration>
+               <ram:ID>216</ram:ID>
+            </ram:SpecifiedTaxRegistration>
+         </ram:SellerTradeParty>
+         <ram:BuyerTradeParty>
+            <ram:ID>443</ram:ID>
+            <ram:GlobalID schemeID="314">non</ram:GlobalID>
+            <ram:GlobalID schemeID="314">non</ram:GlobalID>
+            <ram:GlobalID schemeID="314">non</ram:GlobalID>
+            <ram:GlobalID schemeID="314">non</ram:GlobalID>
+            <ram:Name>consequat</ram:Name>
+            <ram:DefinedTradeContact>
+               <ram:PersonName>leo</ram:PersonName>
+               <ram:DepartmentName>scelerisque</ram:DepartmentName>
+               <ram:TelephoneUniversalCommunication>
+                  <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+               </ram:TelephoneUniversalCommunication>
+               <ram:FaxUniversalCommunication>
+                  <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+               </ram:FaxUniversalCommunication>
+               <ram:EmailURIUniversalCommunication>
+                  <ram:URIID>hello@konik.io</ram:URIID>
+               </ram:EmailURIUniversalCommunication>
+            </ram:DefinedTradeContact>
+            <ram:PostalTradeAddress>
+               <ram:PostcodeCode>himenaeos</ram:PostcodeCode>
+               <ram:LineOne>pretium</ram:LineOne>
+               <ram:LineTwo>vestibulum</ram:LineTwo>
+               <ram:CityName>rhoncus</ram:CityName>
+               <ram:CountryID>759</ram:CountryID>
+            </ram:PostalTradeAddress>
+            <ram:SpecifiedTaxRegistration>
+               <ram:ID>802</ram:ID>
+            </ram:SpecifiedTaxRegistration>
+            <ram:SpecifiedTaxRegistration>
+               <ram:ID>802</ram:ID>
+            </ram:SpecifiedTaxRegistration>
+            <ram:SpecifiedTaxRegistration>
+               <ram:ID>802</ram:ID>
+            </ram:SpecifiedTaxRegistration>
+         </ram:BuyerTradeParty>
+         <ram:BuyerOrderReferencedDocument>
+            <ram:IssueDateTime>2014-07-17T10:41:03</ram:IssueDateTime>
+            <ram:ID>627</ram:ID>
+         </ram:BuyerOrderReferencedDocument>
+         <ram:ContractReferencedDocument>
+            <ram:IssueDateTime>2014-07-17T10:41:03</ram:IssueDateTime>
+            <ram:ID>360</ram:ID>
+         </ram:ContractReferencedDocument>
+         <ram:GrossPriceProductTradePrice>
+            <ram:ChargeAmount>723472</ram:ChargeAmount>
+            <ram:BasisQuantity unitCode="ac">975956</ram:BasisQuantity>
+         </ram:GrossPriceProductTradePrice>
+         <ram:NetPriceProductTradePrice>
+            <ram:ChargeAmount currencyID="CUC">817090</ram:ChargeAmount>
+            <ram:BasisQuantity unitCode="li">935025</ram:BasisQuantity>
+         </ram:NetPriceProductTradePrice>
+         <ram:CustomerOrderReferencedDocument>
+            <ram:IssueDateTime>2014-07-17T10:41:03</ram:IssueDateTime>
+            <ram:ID>196</ram:ID>
+         </ram:CustomerOrderReferencedDocument>
+      </ram:ApplicableSupplyChainTradeAgreement>
+      <ram:ApplicableSupplyChainTradeDelivery>
+         <ram:BilledQuantity unitCode="di">928501</ram:BilledQuantity>
+         <ram:ActualDeliverySupplyChainEvent>
+            <ram:OccurrenceDateTime>
+               <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+            </ram:OccurrenceDateTime>
+         </ram:ActualDeliverySupplyChainEvent>
+         <ram:DeliveryNoteReferencedDocument>
+            <ram:IssueDateTime>2014-07-17T10:41:03</ram:IssueDateTime>
+            <ram:ID>75</ram:ID>
+         </ram:DeliveryNoteReferencedDocument>
+      </ram:ApplicableSupplyChainTradeDelivery>
+      <ram:ApplicableSupplyChainTradeSettlement>
+         <ram:PaymentReference>rutrum</ram:PaymentReference>
+         <ram:InvoiceCurrencyCode>SRD</ram:InvoiceCurrencyCode>
+         <ram:InvoiceeTradeParty>
+            <ram:ID>838</ram:ID>
+            <ram:GlobalID schemeID="NRN">sem</ram:GlobalID>
+            <ram:GlobalID schemeID="NRN">sem</ram:GlobalID>
+            <ram:GlobalID schemeID="NRN">sem</ram:GlobalID>
+            <ram:GlobalID schemeID="NRN">sem</ram:GlobalID>
+            <ram:Name>volutpat</ram:Name>
+            <ram:DefinedTradeContact>
+               <ram:PersonName>tempus</ram:PersonName>
+               <ram:DepartmentName>tincidunt</ram:DepartmentName>
+               <ram:TelephoneUniversalCommunication>
+                  <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+               </ram:TelephoneUniversalCommunication>
+               <ram:FaxUniversalCommunication>
+                  <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+               </ram:FaxUniversalCommunication>
+               <ram:EmailURIUniversalCommunication>
+                  <ram:URIID>hello@konik.io</ram:URIID>
+               </ram:EmailURIUniversalCommunication>
+            </ram:DefinedTradeContact>
+            <ram:PostalTradeAddress>
+               <ram:PostcodeCode>placerat</ram:PostcodeCode>
+               <ram:LineOne>tincidunt</ram:LineOne>
+               <ram:LineTwo>sollicitudin</ram:LineTwo>
+               <ram:CityName>sit</ram:CityName>
+               <ram:CountryID>341</ram:CountryID>
+            </ram:PostalTradeAddress>
+            <ram:SpecifiedTaxRegistration>
+               <ram:ID>858</ram:ID>
+            </ram:SpecifiedTaxRegistration>
+            <ram:SpecifiedTaxRegistration>
+               <ram:ID>858</ram:ID>
+            </ram:SpecifiedTaxRegistration>
+            <ram:SpecifiedTaxRegistration>
+               <ram:ID>858</ram:ID>
+            </ram:SpecifiedTaxRegistration>
+            <ram:SpecifiedTaxRegistration>
+               <ram:ID>858</ram:ID>
+            </ram:SpecifiedTaxRegistration>
+         </ram:InvoiceeTradeParty>
+         <ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:TypeCode>74</ram:TypeCode>
+            <ram:Information>ad</ram:Information>
+            <ram:Information>ad</ram:Information>
+            <ram:Information>ad</ram:Information>
+            <ram:Information>ad</ram:Information>
+            <ram:Information>ad</ram:Information>
+            <ram:PayerPartyDebtorFinancialAccount>
+               <ram:IBANID>mi</ram:IBANID>
+               <ram:ProprietaryID>sociosqu</ram:ProprietaryID>
+            </ram:PayerPartyDebtorFinancialAccount>
+            <ram:PayeePartyCreditorFinancialAccount>
+               <ram:IBANID>orci</ram:IBANID>
+               <ram:ProprietaryID>praesent</ram:ProprietaryID>
+            </ram:PayeePartyCreditorFinancialAccount>
+            <ram:PayerSpecifiedDebtorFinancialInstitution>
+               <ram:BICID>nibh</ram:BICID>
+               <ram:GermanBankleitzahlID>commodo</ram:GermanBankleitzahlID>
+               <ram:Name>inceptos</ram:Name>
+            </ram:PayerSpecifiedDebtorFinancialInstitution>
+            <ram:PayeeSpecifiedCreditorFinancialInstitution>
+               <ram:BICID>fames</ram:BICID>
+               <ram:GermanBankleitzahlID>dignissim</ram:GermanBankleitzahlID>
+               <ram:Name>aptent</ram:Name>
+            </ram:PayeeSpecifiedCreditorFinancialInstitution>
+         </ram:SpecifiedTradeSettlementPaymentMeans>
+         <ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:TypeCode>74</ram:TypeCode>
+            <ram:Information>ad</ram:Information>
+            <ram:Information>ad</ram:Information>
+            <ram:Information>ad</ram:Information>
+            <ram:Information>ad</ram:Information>
+            <ram:Information>ad</ram:Information>
+            <ram:PayerPartyDebtorFinancialAccount>
+               <ram:IBANID>mi</ram:IBANID>
+               <ram:ProprietaryID>sociosqu</ram:ProprietaryID>
+            </ram:PayerPartyDebtorFinancialAccount>
+            <ram:PayeePartyCreditorFinancialAccount>
+               <ram:IBANID>orci</ram:IBANID>
+               <ram:ProprietaryID>praesent</ram:ProprietaryID>
+            </ram:PayeePartyCreditorFinancialAccount>
+            <ram:PayerSpecifiedDebtorFinancialInstitution>
+               <ram:BICID>nibh</ram:BICID>
+               <ram:GermanBankleitzahlID>commodo</ram:GermanBankleitzahlID>
+               <ram:Name>inceptos</ram:Name>
+            </ram:PayerSpecifiedDebtorFinancialInstitution>
+            <ram:PayeeSpecifiedCreditorFinancialInstitution>
+               <ram:BICID>fames</ram:BICID>
+               <ram:GermanBankleitzahlID>dignissim</ram:GermanBankleitzahlID>
+               <ram:Name>aptent</ram:Name>
+            </ram:PayeeSpecifiedCreditorFinancialInstitution>
+         </ram:SpecifiedTradeSettlementPaymentMeans>
+         <ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:TypeCode>74</ram:TypeCode>
+            <ram:Information>ad</ram:Information>
+            <ram:Information>ad</ram:Information>
+            <ram:Information>ad</ram:Information>
+            <ram:Information>ad</ram:Information>
+            <ram:Information>ad</ram:Information>
+            <ram:PayerPartyDebtorFinancialAccount>
+               <ram:IBANID>mi</ram:IBANID>
+               <ram:ProprietaryID>sociosqu</ram:ProprietaryID>
+            </ram:PayerPartyDebtorFinancialAccount>
+            <ram:PayeePartyCreditorFinancialAccount>
+               <ram:IBANID>orci</ram:IBANID>
+               <ram:ProprietaryID>praesent</ram:ProprietaryID>
+            </ram:PayeePartyCreditorFinancialAccount>
+            <ram:PayerSpecifiedDebtorFinancialInstitution>
+               <ram:BICID>nibh</ram:BICID>
+               <ram:GermanBankleitzahlID>commodo</ram:GermanBankleitzahlID>
+               <ram:Name>inceptos</ram:Name>
+            </ram:PayerSpecifiedDebtorFinancialInstitution>
+            <ram:PayeeSpecifiedCreditorFinancialInstitution>
+               <ram:BICID>fames</ram:BICID>
+               <ram:GermanBankleitzahlID>dignissim</ram:GermanBankleitzahlID>
+               <ram:Name>aptent</ram:Name>
+            </ram:PayeeSpecifiedCreditorFinancialInstitution>
+         </ram:SpecifiedTradeSettlementPaymentMeans>
+         <ram:ApplicableTradeTax>
+            <ram:CalculatedAmount currencyID="DJF">289778</ram:CalculatedAmount>
+            <ram:TypeCode>OTH</ram:TypeCode>
+            <ram:ExemptionReason>metus</ram:ExemptionReason>
+            <ram:BasisAmount currencyID="SEK">497765</ram:BasisAmount>
+            <ram:CategoryCode>AD</ram:CategoryCode>
+            <ram:ApplicablePercent>361351</ram:ApplicablePercent>
+         </ram:ApplicableTradeTax>
+         <ram:ApplicableTradeTax>
+            <ram:CalculatedAmount currencyID="DJF">289778</ram:CalculatedAmount>
+            <ram:TypeCode>OTH</ram:TypeCode>
+            <ram:ExemptionReason>metus</ram:ExemptionReason>
+            <ram:BasisAmount currencyID="SEK">497765</ram:BasisAmount>
+            <ram:CategoryCode>AD</ram:CategoryCode>
+            <ram:ApplicablePercent>361351</ram:ApplicablePercent>
+         </ram:ApplicableTradeTax>
+         <ram:BillingSpecifiedPeriod>
+            <ram:StartDateTime>
+               <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+            </ram:StartDateTime>
+            <ram:EndDateTime>
+               <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+            </ram:EndDateTime>
+         </ram:BillingSpecifiedPeriod>
+         <ram:SpecifiedTradeAllowanceCharge>
+            <ram:ChargeIndicator>
+               <udt:Indicator>false</udt:Indicator>
+            </ram:ChargeIndicator>
+            <ram:BasisAmount>3416</ram:BasisAmount>
+            <ram:ActualAmount currencyID="AFN">141496</ram:ActualAmount>
+            <ram:Reason>fringilla</ram:Reason>
+            <ram:CategoryTradeTax>
+               <ram:CalculatedAmount currencyID="RON">315160</ram:CalculatedAmount>
+               <ram:TypeCode>PRF</ram:TypeCode>
+               <ram:ExemptionReason>sem</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="KES">852457</ram:BasisAmount>
+               <ram:CategoryCode>S</ram:CategoryCode>
+               <ram:ApplicablePercent>906007</ram:ApplicablePercent>
+            </ram:CategoryTradeTax>
+         </ram:SpecifiedTradeAllowanceCharge>
+         <ram:SpecifiedTradeAllowanceCharge>
+            <ram:ChargeIndicator>
+               <udt:Indicator>false</udt:Indicator>
+            </ram:ChargeIndicator>
+            <ram:BasisAmount>3416</ram:BasisAmount>
+            <ram:ActualAmount currencyID="AFN">141496</ram:ActualAmount>
+            <ram:Reason>fringilla</ram:Reason>
+            <ram:CategoryTradeTax>
+               <ram:CalculatedAmount currencyID="RON">315160</ram:CalculatedAmount>
+               <ram:TypeCode>PRF</ram:TypeCode>
+               <ram:ExemptionReason>sem</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="KES">852457</ram:BasisAmount>
+               <ram:CategoryCode>S</ram:CategoryCode>
+               <ram:ApplicablePercent>906007</ram:ApplicablePercent>
+            </ram:CategoryTradeTax>
+         </ram:SpecifiedTradeAllowanceCharge>
+         <ram:SpecifiedTradeAllowanceCharge>
+            <ram:ChargeIndicator>
+               <udt:Indicator>false</udt:Indicator>
+            </ram:ChargeIndicator>
+            <ram:BasisAmount>3416</ram:BasisAmount>
+            <ram:ActualAmount currencyID="AFN">141496</ram:ActualAmount>
+            <ram:Reason>fringilla</ram:Reason>
+            <ram:CategoryTradeTax>
+               <ram:CalculatedAmount currencyID="RON">315160</ram:CalculatedAmount>
+               <ram:TypeCode>PRF</ram:TypeCode>
+               <ram:ExemptionReason>sem</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="KES">852457</ram:BasisAmount>
+               <ram:CategoryCode>S</ram:CategoryCode>
+               <ram:ApplicablePercent>906007</ram:ApplicablePercent>
+            </ram:CategoryTradeTax>
+         </ram:SpecifiedTradeAllowanceCharge>
+         <ram:SpecifiedTradeAllowanceCharge>
+            <ram:ChargeIndicator>
+               <udt:Indicator>false</udt:Indicator>
+            </ram:ChargeIndicator>
+            <ram:BasisAmount>3416</ram:BasisAmount>
+            <ram:ActualAmount currencyID="AFN">141496</ram:ActualAmount>
+            <ram:Reason>fringilla</ram:Reason>
+            <ram:CategoryTradeTax>
+               <ram:CalculatedAmount currencyID="RON">315160</ram:CalculatedAmount>
+               <ram:TypeCode>PRF</ram:TypeCode>
+               <ram:ExemptionReason>sem</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="KES">852457</ram:BasisAmount>
+               <ram:CategoryCode>S</ram:CategoryCode>
+               <ram:ApplicablePercent>906007</ram:ApplicablePercent>
+            </ram:CategoryTradeTax>
+         </ram:SpecifiedTradeAllowanceCharge>
+         <ram:SpecifiedTradeAllowanceCharge>
+            <ram:ChargeIndicator>
+               <udt:Indicator>false</udt:Indicator>
+            </ram:ChargeIndicator>
+            <ram:BasisAmount>3416</ram:BasisAmount>
+            <ram:ActualAmount currencyID="AFN">141496</ram:ActualAmount>
+            <ram:Reason>fringilla</ram:Reason>
+            <ram:CategoryTradeTax>
+               <ram:CalculatedAmount currencyID="RON">315160</ram:CalculatedAmount>
+               <ram:TypeCode>PRF</ram:TypeCode>
+               <ram:ExemptionReason>sem</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="KES">852457</ram:BasisAmount>
+               <ram:CategoryCode>S</ram:CategoryCode>
+               <ram:ApplicablePercent>906007</ram:ApplicablePercent>
+            </ram:CategoryTradeTax>
+         </ram:SpecifiedTradeAllowanceCharge>
+         <ram:SpecifiedLogisticsServiceCharge>
+            <ram:Description>Netus viverra tempor aliquet. Conubia mi purus orci eleifend eros turpis etiam nisl congue,
+               enim laoreet tristique hendrerit per eros facilisi litora a facilisis nascetur interdum.</ram:Description>
+            <ram:AppliedAmount currencyID="NOK">760714</ram:AppliedAmount>
+            <ram:AppliedTradeTax>
+               <ram:CalculatedAmount currencyID="SBD">297236</ram:CalculatedAmount>
+               <ram:TypeCode>AAK</ram:TypeCode>
+               <ram:ExemptionReason>pretium</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="JOD">959199</ram:BasisAmount>
+               <ram:CategoryCode>G</ram:CategoryCode>
+               <ram:ApplicablePercent>225147</ram:ApplicablePercent>
+            </ram:AppliedTradeTax>
+            <ram:AppliedTradeTax>
+               <ram:CalculatedAmount currencyID="SBD">297236</ram:CalculatedAmount>
+               <ram:TypeCode>AAK</ram:TypeCode>
+               <ram:ExemptionReason>pretium</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="JOD">959199</ram:BasisAmount>
+               <ram:CategoryCode>G</ram:CategoryCode>
+               <ram:ApplicablePercent>225147</ram:ApplicablePercent>
+            </ram:AppliedTradeTax>
+         </ram:SpecifiedLogisticsServiceCharge>
+         <ram:SpecifiedLogisticsServiceCharge>
+            <ram:Description>Netus viverra tempor aliquet. Conubia mi purus orci eleifend eros turpis etiam nisl congue,
+               enim laoreet tristique hendrerit per eros facilisi litora a facilisis nascetur interdum.</ram:Description>
+            <ram:AppliedAmount currencyID="NOK">760714</ram:AppliedAmount>
+            <ram:AppliedTradeTax>
+               <ram:CalculatedAmount currencyID="SBD">297236</ram:CalculatedAmount>
+               <ram:TypeCode>AAK</ram:TypeCode>
+               <ram:ExemptionReason>pretium</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="JOD">959199</ram:BasisAmount>
+               <ram:CategoryCode>G</ram:CategoryCode>
+               <ram:ApplicablePercent>225147</ram:ApplicablePercent>
+            </ram:AppliedTradeTax>
+            <ram:AppliedTradeTax>
+               <ram:CalculatedAmount currencyID="SBD">297236</ram:CalculatedAmount>
+               <ram:TypeCode>AAK</ram:TypeCode>
+               <ram:ExemptionReason>pretium</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="JOD">959199</ram:BasisAmount>
+               <ram:CategoryCode>G</ram:CategoryCode>
+               <ram:ApplicablePercent>225147</ram:ApplicablePercent>
+            </ram:AppliedTradeTax>
+         </ram:SpecifiedLogisticsServiceCharge>
+         <ram:SpecifiedTradePaymentTerms>
+            <ram:Description>Elementum massa pretium mauris cursus faucibus in. Ornare turpis fusce class ullamcorper
+               dictum lectus malesuada, netus bibendum conubia fusce curae nulla fames volutpat praesent, lectus ut
+               mollis.</ram:Description>
+            <ram:DueDateDateTime>
+               <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+            </ram:DueDateDateTime>
+         </ram:SpecifiedTradePaymentTerms>
+         <ram:SpecifiedTradePaymentTerms>
+            <ram:Description>Elementum massa pretium mauris cursus faucibus in. Ornare turpis fusce class ullamcorper
+               dictum lectus malesuada, netus bibendum conubia fusce curae nulla fames volutpat praesent, lectus ut
+               mollis.</ram:Description>
+            <ram:DueDateDateTime>
+               <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+            </ram:DueDateDateTime>
+         </ram:SpecifiedTradePaymentTerms>
+         <ram:SpecifiedTradePaymentTerms>
+            <ram:Description>Elementum massa pretium mauris cursus faucibus in. Ornare turpis fusce class ullamcorper
+               dictum lectus malesuada, netus bibendum conubia fusce curae nulla fames volutpat praesent, lectus ut
+               mollis.</ram:Description>
+            <ram:DueDateDateTime>
+               <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+            </ram:DueDateDateTime>
+         </ram:SpecifiedTradePaymentTerms>
+         <ram:SpecifiedTradeSettlementMonetarySummation>
+            <ram:LineTotalAmount currencyID="SGD">16</ram:LineTotalAmount>
+            <ram:ChargeTotalAmount currencyID="WST">806804</ram:ChargeTotalAmount>
+            <ram:AllowanceTotalAmount currencyID="LBP">770225</ram:AllowanceTotalAmount>
+            <ram:TaxBasisTotalAmount currencyID="ETB">219851</ram:TaxBasisTotalAmount>
+            <ram:TaxTotalAmount currencyID="MUR">225302</ram:TaxTotalAmount>
+            <ram:GrandTotalAmount currencyID="MZN">631362</ram:GrandTotalAmount>
+            <ram:TotalPrepaidAmount currencyID="UZS">764335</ram:TotalPrepaidAmount>
+            <ram:DuePayableAmount>694023</ram:DuePayableAmount>
+         </ram:SpecifiedTradeSettlementMonetarySummation>
+         <ram:ReceivableSpecifiedTradeAccountingAccount>
+            <ram:ID>eu</ram:ID>
+         </ram:ReceivableSpecifiedTradeAccountingAccount>
+      </ram:ApplicableSupplyChainTradeSettlement>
+      <ram:IncludedSupplyChainTradeLineItem>
+         <ram:AssociatedDocumentLineDocument>
+            <ram:IncludedNote>
+               <ram:Content>consequat</ram:Content>
+               <ram:SubjectCode>fermentum</ram:SubjectCode>
+            </ram:IncludedNote>
+            <ram:IncludedNote>
+               <ram:Content>consequat</ram:Content>
+               <ram:SubjectCode>fermentum</ram:SubjectCode>
+            </ram:IncludedNote>
+            <ram:IncludedNote>
+               <ram:Content>consequat</ram:Content>
+               <ram:SubjectCode>fermentum</ram:SubjectCode>
+            </ram:IncludedNote>
+         </ram:AssociatedDocumentLineDocument>
+         <ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:BuyerReference>et</ram:BuyerReference>
+            <ram:SellerTradeParty>
+               <ram:ID>MSM</ram:ID>
+               <ram:GlobalID schemeID="351">etiam</ram:GlobalID>
+               <ram:GlobalID schemeID="351">etiam</ram:GlobalID>
+               <ram:GlobalID schemeID="351">etiam</ram:GlobalID>
+               <ram:GlobalID schemeID="351">etiam</ram:GlobalID>
+               <ram:GlobalID schemeID="351">etiam</ram:GlobalID>
+               <ram:Name>eget</ram:Name>
+               <ram:DefinedTradeContact>
+                  <ram:PersonName>in</ram:PersonName>
+                  <ram:DepartmentName>ad</ram:DepartmentName>
+                  <ram:TelephoneUniversalCommunication>
+                     <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+                  </ram:TelephoneUniversalCommunication>
+                  <ram:FaxUniversalCommunication>
+                     <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+                  </ram:FaxUniversalCommunication>
+                  <ram:EmailURIUniversalCommunication>
+                     <ram:URIID>hello@konik.io</ram:URIID>
+                  </ram:EmailURIUniversalCommunication>
+               </ram:DefinedTradeContact>
+               <ram:PostalTradeAddress>
+                  <ram:PostcodeCode>ad</ram:PostcodeCode>
+                  <ram:LineOne>nunc</ram:LineOne>
+                  <ram:LineTwo>laoreet</ram:LineTwo>
+                  <ram:CityName>parturient</ram:CityName>
+                  <ram:CountryID>190</ram:CountryID>
+               </ram:PostalTradeAddress>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>745</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>745</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>745</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>745</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>745</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+               <ram:ID>HGG</ram:ID>
+               <ram:GlobalID schemeID="103">auctor</ram:GlobalID>
+               <ram:GlobalID schemeID="103">auctor</ram:GlobalID>
+               <ram:GlobalID schemeID="103">auctor</ram:GlobalID>
+               <ram:GlobalID schemeID="103">auctor</ram:GlobalID>
+               <ram:Name>eu</ram:Name>
+               <ram:DefinedTradeContact>
+                  <ram:PersonName>felis</ram:PersonName>
+                  <ram:DepartmentName>natoque</ram:DepartmentName>
+                  <ram:TelephoneUniversalCommunication>
+                     <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+                  </ram:TelephoneUniversalCommunication>
+                  <ram:FaxUniversalCommunication>
+                     <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+                  </ram:FaxUniversalCommunication>
+                  <ram:EmailURIUniversalCommunication>
+                     <ram:URIID>hello@konik.io</ram:URIID>
+                  </ram:EmailURIUniversalCommunication>
+               </ram:DefinedTradeContact>
+               <ram:PostalTradeAddress>
+                  <ram:PostcodeCode>id</ram:PostcodeCode>
+                  <ram:LineOne>massa</ram:LineOne>
+                  <ram:LineTwo>ligula</ram:LineTwo>
+                  <ram:CityName>condimentum</ram:CityName>
+                  <ram:CountryID>211</ram:CountryID>
+               </ram:PostalTradeAddress>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>600</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>600</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+            </ram:BuyerTradeParty>
+            <ram:BuyerOrderReferencedDocument>
+               <ram:IssueDateTime>2014-07-17T10:41:03</ram:IssueDateTime>
+               <ram:ID>455</ram:ID>
+            </ram:BuyerOrderReferencedDocument>
+            <ram:ContractReferencedDocument>
+               <ram:IssueDateTime>2014-07-17T10:41:03</ram:IssueDateTime>
+               <ram:ID>KGF</ram:ID>
+            </ram:ContractReferencedDocument>
+            <ram:GrossPriceProductTradePrice>
+               <ram:ChargeAmount currencyID="KGS">334996</ram:ChargeAmount>
+               <ram:BasisQuantity unitCode="ac">489765</ram:BasisQuantity>
+            </ram:GrossPriceProductTradePrice>
+            <ram:NetPriceProductTradePrice>
+               <ram:ChargeAmount currencyID="XBA">361273</ram:ChargeAmount>
+               <ram:BasisQuantity unitCode="da">978465</ram:BasisQuantity>
+            </ram:NetPriceProductTradePrice>
+            <ram:CustomerOrderReferencedDocument>
+               <ram:IssueDateTime>2014-07-17T10:41:03</ram:IssueDateTime>
+               <ram:ID>RSP</ram:ID>
+            </ram:CustomerOrderReferencedDocument>
+         </ram:SpecifiedSupplyChainTradeAgreement>
+         <ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:BilledQuantity unitCode="le">682162</ram:BilledQuantity>
+            <ram:ActualDeliverySupplyChainEvent>
+               <ram:OccurrenceDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+            <ram:DeliveryNoteReferencedDocument>
+               <ram:IssueDateTime>2014-07-17T10:41:03</ram:IssueDateTime>
+               <ram:ID>390</ram:ID>
+            </ram:DeliveryNoteReferencedDocument>
+         </ram:SpecifiedSupplyChainTradeDelivery>
+         <ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:PaymentReference>ullamcorper</ram:PaymentReference>
+            <ram:InvoiceCurrencyCode>NAD</ram:InvoiceCurrencyCode>
+            <ram:InvoiceeTradeParty>
+               <ram:ID>DRZ</ram:ID>
+               <ram:GlobalID schemeID="EQL">dui</ram:GlobalID>
+               <ram:GlobalID schemeID="EQL">dui</ram:GlobalID>
+               <ram:GlobalID schemeID="EQL">dui</ram:GlobalID>
+               <ram:GlobalID schemeID="EQL">dui</ram:GlobalID>
+               <ram:GlobalID schemeID="EQL">dui</ram:GlobalID>
+               <ram:Name>netus</ram:Name>
+               <ram:DefinedTradeContact>
+                  <ram:PersonName>porttitor</ram:PersonName>
+                  <ram:DepartmentName>ornare</ram:DepartmentName>
+                  <ram:TelephoneUniversalCommunication>
+                     <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+                  </ram:TelephoneUniversalCommunication>
+                  <ram:FaxUniversalCommunication>
+                     <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+                  </ram:FaxUniversalCommunication>
+                  <ram:EmailURIUniversalCommunication>
+                     <ram:URIID>hello@konik.io</ram:URIID>
+                  </ram:EmailURIUniversalCommunication>
+               </ram:DefinedTradeContact>
+               <ram:PostalTradeAddress>
+                  <ram:PostcodeCode>mus</ram:PostcodeCode>
+                  <ram:LineOne>elit</ram:LineOne>
+                  <ram:LineTwo>ligula</ram:LineTwo>
+                  <ram:CityName>lacinia</ram:CityName>
+                  <ram:CountryID>PGK</ram:CountryID>
+               </ram:PostalTradeAddress>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>955</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>955</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>955</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+            </ram:InvoiceeTradeParty>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+               <ram:TypeCode>20</ram:TypeCode>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:PayerPartyDebtorFinancialAccount>
+                  <ram:IBANID>odio</ram:IBANID>
+                  <ram:ProprietaryID>nec</ram:ProprietaryID>
+               </ram:PayerPartyDebtorFinancialAccount>
+               <ram:PayeePartyCreditorFinancialAccount>
+                  <ram:IBANID>amet</ram:IBANID>
+                  <ram:ProprietaryID>nostra</ram:ProprietaryID>
+               </ram:PayeePartyCreditorFinancialAccount>
+               <ram:PayerSpecifiedDebtorFinancialInstitution>
+                  <ram:BICID>cubilia</ram:BICID>
+                  <ram:GermanBankleitzahlID>ad</ram:GermanBankleitzahlID>
+                  <ram:Name>pharetra</ram:Name>
+               </ram:PayerSpecifiedDebtorFinancialInstitution>
+               <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                  <ram:BICID>mollis</ram:BICID>
+                  <ram:GermanBankleitzahlID>lectus</ram:GermanBankleitzahlID>
+                  <ram:Name>gravida</ram:Name>
+               </ram:PayeeSpecifiedCreditorFinancialInstitution>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+               <ram:TypeCode>20</ram:TypeCode>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:PayerPartyDebtorFinancialAccount>
+                  <ram:IBANID>odio</ram:IBANID>
+                  <ram:ProprietaryID>nec</ram:ProprietaryID>
+               </ram:PayerPartyDebtorFinancialAccount>
+               <ram:PayeePartyCreditorFinancialAccount>
+                  <ram:IBANID>amet</ram:IBANID>
+                  <ram:ProprietaryID>nostra</ram:ProprietaryID>
+               </ram:PayeePartyCreditorFinancialAccount>
+               <ram:PayerSpecifiedDebtorFinancialInstitution>
+                  <ram:BICID>cubilia</ram:BICID>
+                  <ram:GermanBankleitzahlID>ad</ram:GermanBankleitzahlID>
+                  <ram:Name>pharetra</ram:Name>
+               </ram:PayerSpecifiedDebtorFinancialInstitution>
+               <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                  <ram:BICID>mollis</ram:BICID>
+                  <ram:GermanBankleitzahlID>lectus</ram:GermanBankleitzahlID>
+                  <ram:Name>gravida</ram:Name>
+               </ram:PayeeSpecifiedCreditorFinancialInstitution>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+               <ram:TypeCode>20</ram:TypeCode>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:PayerPartyDebtorFinancialAccount>
+                  <ram:IBANID>odio</ram:IBANID>
+                  <ram:ProprietaryID>nec</ram:ProprietaryID>
+               </ram:PayerPartyDebtorFinancialAccount>
+               <ram:PayeePartyCreditorFinancialAccount>
+                  <ram:IBANID>amet</ram:IBANID>
+                  <ram:ProprietaryID>nostra</ram:ProprietaryID>
+               </ram:PayeePartyCreditorFinancialAccount>
+               <ram:PayerSpecifiedDebtorFinancialInstitution>
+                  <ram:BICID>cubilia</ram:BICID>
+                  <ram:GermanBankleitzahlID>ad</ram:GermanBankleitzahlID>
+                  <ram:Name>pharetra</ram:Name>
+               </ram:PayerSpecifiedDebtorFinancialInstitution>
+               <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                  <ram:BICID>mollis</ram:BICID>
+                  <ram:GermanBankleitzahlID>lectus</ram:GermanBankleitzahlID>
+                  <ram:Name>gravida</ram:Name>
+               </ram:PayeeSpecifiedCreditorFinancialInstitution>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+               <ram:CalculatedAmount currencyID="CHF">174668</ram:CalculatedAmount>
+               <ram:TypeCode>EXP</ram:TypeCode>
+               <ram:ExemptionReason>eu</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="NGN">199266</ram:BasisAmount>
+               <ram:CategoryCode>AE</ram:CategoryCode>
+               <ram:ApplicablePercent>312049</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:ApplicableTradeTax>
+               <ram:CalculatedAmount currencyID="CHF">174668</ram:CalculatedAmount>
+               <ram:TypeCode>EXP</ram:TypeCode>
+               <ram:ExemptionReason>eu</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="NGN">199266</ram:BasisAmount>
+               <ram:CategoryCode>AE</ram:CategoryCode>
+               <ram:ApplicablePercent>312049</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:BillingSpecifiedPeriod>
+               <ram:StartDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:StartDateTime>
+               <ram:EndDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:EndDateTime>
+            </ram:BillingSpecifiedPeriod>
+            <ram:SpecifiedTradeAllowanceCharge>
+               <ram:ChargeIndicator>
+                  <udt:Indicator>false</udt:Indicator>
+               </ram:ChargeIndicator>
+               <ram:BasisAmount currencyID="INR">290926</ram:BasisAmount>
+               <ram:ActualAmount currencyID="ERN">974631</ram:ActualAmount>
+               <ram:Reason>pellentesque</ram:Reason>
+               <ram:CategoryTradeTax>
+                  <ram:CalculatedAmount currencyID="GMD">679079</ram:CalculatedAmount>
+                  <ram:TypeCode>LAC</ram:TypeCode>
+                  <ram:ExemptionReason>luctus</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="PAB">922669</ram:BasisAmount>
+                  <ram:CategoryCode>AC</ram:CategoryCode>
+                  <ram:ApplicablePercent>358449</ram:ApplicablePercent>
+               </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedTradeAllowanceCharge>
+               <ram:ChargeIndicator>
+                  <udt:Indicator>false</udt:Indicator>
+               </ram:ChargeIndicator>
+               <ram:BasisAmount currencyID="INR">290926</ram:BasisAmount>
+               <ram:ActualAmount currencyID="ERN">974631</ram:ActualAmount>
+               <ram:Reason>pellentesque</ram:Reason>
+               <ram:CategoryTradeTax>
+                  <ram:CalculatedAmount currencyID="GMD">679079</ram:CalculatedAmount>
+                  <ram:TypeCode>LAC</ram:TypeCode>
+                  <ram:ExemptionReason>luctus</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="PAB">922669</ram:BasisAmount>
+                  <ram:CategoryCode>AC</ram:CategoryCode>
+                  <ram:ApplicablePercent>358449</ram:ApplicablePercent>
+               </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedTradeAllowanceCharge>
+               <ram:ChargeIndicator>
+                  <udt:Indicator>false</udt:Indicator>
+               </ram:ChargeIndicator>
+               <ram:BasisAmount currencyID="INR">290926</ram:BasisAmount>
+               <ram:ActualAmount currencyID="ERN">974631</ram:ActualAmount>
+               <ram:Reason>pellentesque</ram:Reason>
+               <ram:CategoryTradeTax>
+                  <ram:CalculatedAmount currencyID="GMD">679079</ram:CalculatedAmount>
+                  <ram:TypeCode>LAC</ram:TypeCode>
+                  <ram:ExemptionReason>luctus</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="PAB">922669</ram:BasisAmount>
+                  <ram:CategoryCode>AC</ram:CategoryCode>
+                  <ram:ApplicablePercent>358449</ram:ApplicablePercent>
+               </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedTradeAllowanceCharge>
+               <ram:ChargeIndicator>
+                  <udt:Indicator>false</udt:Indicator>
+               </ram:ChargeIndicator>
+               <ram:BasisAmount currencyID="INR">290926</ram:BasisAmount>
+               <ram:ActualAmount currencyID="ERN">974631</ram:ActualAmount>
+               <ram:Reason>pellentesque</ram:Reason>
+               <ram:CategoryTradeTax>
+                  <ram:CalculatedAmount currencyID="GMD">679079</ram:CalculatedAmount>
+                  <ram:TypeCode>LAC</ram:TypeCode>
+                  <ram:ExemptionReason>luctus</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="PAB">922669</ram:BasisAmount>
+                  <ram:CategoryCode>AC</ram:CategoryCode>
+                  <ram:ApplicablePercent>358449</ram:ApplicablePercent>
+               </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedLogisticsServiceCharge>
+               <ram:Description>Consectetur tortor per sapien duis sociosqu facilisi. Accumsan porta tempor mollis amet
+                  condimentum pellentesque dis.</ram:Description>
+               <ram:AppliedAmount currencyID="TND">417471</ram:AppliedAmount>
+               <ram:AppliedTradeTax>
+                  <ram:CalculatedAmount currencyID="ETB">124213</ram:CalculatedAmount>
+                  <ram:TypeCode>VAD</ram:TypeCode>
+                  <ram:ExemptionReason>egestas</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="CVE">145223</ram:BasisAmount>
+                  <ram:CategoryCode>Z</ram:CategoryCode>
+                  <ram:ApplicablePercent>114701</ram:ApplicablePercent>
+               </ram:AppliedTradeTax>
+               <ram:AppliedTradeTax>
+                  <ram:CalculatedAmount currencyID="ETB">124213</ram:CalculatedAmount>
+                  <ram:TypeCode>VAD</ram:TypeCode>
+                  <ram:ExemptionReason>egestas</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="CVE">145223</ram:BasisAmount>
+                  <ram:CategoryCode>Z</ram:CategoryCode>
+                  <ram:ApplicablePercent>114701</ram:ApplicablePercent>
+               </ram:AppliedTradeTax>
+               <ram:AppliedTradeTax>
+                  <ram:CalculatedAmount currencyID="ETB">124213</ram:CalculatedAmount>
+                  <ram:TypeCode>VAD</ram:TypeCode>
+                  <ram:ExemptionReason>egestas</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="CVE">145223</ram:BasisAmount>
+                  <ram:CategoryCode>Z</ram:CategoryCode>
+                  <ram:ApplicablePercent>114701</ram:ApplicablePercent>
+               </ram:AppliedTradeTax>
+               <ram:AppliedTradeTax>
+                  <ram:CalculatedAmount currencyID="ETB">124213</ram:CalculatedAmount>
+                  <ram:TypeCode>VAD</ram:TypeCode>
+                  <ram:ExemptionReason>egestas</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="CVE">145223</ram:BasisAmount>
+                  <ram:CategoryCode>Z</ram:CategoryCode>
+                  <ram:ApplicablePercent>114701</ram:ApplicablePercent>
+               </ram:AppliedTradeTax>
+               <ram:AppliedTradeTax>
+                  <ram:CalculatedAmount currencyID="ETB">124213</ram:CalculatedAmount>
+                  <ram:TypeCode>VAD</ram:TypeCode>
+                  <ram:ExemptionReason>egestas</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="CVE">145223</ram:BasisAmount>
+                  <ram:CategoryCode>Z</ram:CategoryCode>
+                  <ram:ApplicablePercent>114701</ram:ApplicablePercent>
+               </ram:AppliedTradeTax>
+            </ram:SpecifiedLogisticsServiceCharge>
+            <ram:SpecifiedTradePaymentTerms>
+               <ram:Description>Cum penatibus posuere lacus torquent litora curae duis sapien imperdiet velit facilisi
+                  laoreet, sagittis convallis quam in aptent ornare sodales euismod quisque bibendum torquent lacus.
+                  Nostra mollis tempus laoreet leo nam est scelerisque vivamus mollis magna volutpat nibh, taciti
+                  egestas scelerisque.</ram:Description>
+               <ram:DueDateDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradePaymentTerms>
+               <ram:Description>Cum penatibus posuere lacus torquent litora curae duis sapien imperdiet velit facilisi
+                  laoreet, sagittis convallis quam in aptent ornare sodales euismod quisque bibendum torquent lacus.
+                  Nostra mollis tempus laoreet leo nam est scelerisque vivamus mollis magna volutpat nibh, taciti
+                  egestas scelerisque.</ram:Description>
+               <ram:DueDateDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradePaymentTerms>
+               <ram:Description>Cum penatibus posuere lacus torquent litora curae duis sapien imperdiet velit facilisi
+                  laoreet, sagittis convallis quam in aptent ornare sodales euismod quisque bibendum torquent lacus.
+                  Nostra mollis tempus laoreet leo nam est scelerisque vivamus mollis magna volutpat nibh, taciti
+                  egestas scelerisque.</ram:Description>
+               <ram:DueDateDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradePaymentTerms>
+               <ram:Description>Cum penatibus posuere lacus torquent litora curae duis sapien imperdiet velit facilisi
+                  laoreet, sagittis convallis quam in aptent ornare sodales euismod quisque bibendum torquent lacus.
+                  Nostra mollis tempus laoreet leo nam est scelerisque vivamus mollis magna volutpat nibh, taciti
+                  egestas scelerisque.</ram:Description>
+               <ram:DueDateDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradePaymentTerms>
+               <ram:Description>Cum penatibus posuere lacus torquent litora curae duis sapien imperdiet velit facilisi
+                  laoreet, sagittis convallis quam in aptent ornare sodales euismod quisque bibendum torquent lacus.
+                  Nostra mollis tempus laoreet leo nam est scelerisque vivamus mollis magna volutpat nibh, taciti
+                  egestas scelerisque.</ram:Description>
+               <ram:DueDateDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradeSettlementMonetarySummation>
+               <ram:LineTotalAmount currencyID="MWK">194601</ram:LineTotalAmount>
+               <ram:ChargeTotalAmount currencyID="GEL">29742</ram:ChargeTotalAmount>
+               <ram:AllowanceTotalAmount currencyID="BTN">676383</ram:AllowanceTotalAmount>
+               <ram:TaxBasisTotalAmount currencyID="BDT">266217</ram:TaxBasisTotalAmount>
+               <ram:TaxTotalAmount currencyID="AED">626125</ram:TaxTotalAmount>
+               <ram:GrandTotalAmount>985445</ram:GrandTotalAmount>
+               <ram:TotalPrepaidAmount currencyID="ETB">713257</ram:TotalPrepaidAmount>
+               <ram:DuePayableAmount currencyID="UYU">19568</ram:DuePayableAmount>
+            </ram:SpecifiedTradeSettlementMonetarySummation>
+            <ram:ReceivableSpecifiedTradeAccountingAccount>
+               <ram:ID>ullamcorper</ram:ID>
+            </ram:ReceivableSpecifiedTradeAccountingAccount>
+         </ram:SpecifiedSupplyChainTradeSettlement>
+         <ram:SpecifiedTradeProduct>
+            <ram:GlobalID schemeID="696">nullam</ram:GlobalID>
+            <ram:SellerAssignedID>IMK</ram:SellerAssignedID>
+            <ram:BuyerAssignedID>CKT</ram:BuyerAssignedID>
+            <ram:Name>semper</ram:Name>
+            <ram:Description>Eleifend parturient laoreet cum ultricies habitasse consequat blandit mauris facilisi nunc.
+               Enim class praesent non integer nostra scelerisque pellentesque tempor.</ram:Description>
+            <ram:OriginTradeCountry>
+               <ram:ID>VC</ram:ID>
+            </ram:OriginTradeCountry>
+            <ram:OriginTradeCountry>
+               <ram:ID>VC</ram:ID>
+            </ram:OriginTradeCountry>
+         </ram:SpecifiedTradeProduct>
+      </ram:IncludedSupplyChainTradeLineItem>
+      <ram:IncludedSupplyChainTradeLineItem>
+         <ram:AssociatedDocumentLineDocument>
+            <ram:IncludedNote>
+               <ram:Content>consequat</ram:Content>
+               <ram:SubjectCode>fermentum</ram:SubjectCode>
+            </ram:IncludedNote>
+            <ram:IncludedNote>
+               <ram:Content>consequat</ram:Content>
+               <ram:SubjectCode>fermentum</ram:SubjectCode>
+            </ram:IncludedNote>
+            <ram:IncludedNote>
+               <ram:Content>consequat</ram:Content>
+               <ram:SubjectCode>fermentum</ram:SubjectCode>
+            </ram:IncludedNote>
+         </ram:AssociatedDocumentLineDocument>
+         <ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:BuyerReference>et</ram:BuyerReference>
+            <ram:SellerTradeParty>
+               <ram:ID>MSM</ram:ID>
+               <ram:GlobalID schemeID="351">etiam</ram:GlobalID>
+               <ram:GlobalID schemeID="351">etiam</ram:GlobalID>
+               <ram:GlobalID schemeID="351">etiam</ram:GlobalID>
+               <ram:GlobalID schemeID="351">etiam</ram:GlobalID>
+               <ram:GlobalID schemeID="351">etiam</ram:GlobalID>
+               <ram:Name>eget</ram:Name>
+               <ram:DefinedTradeContact>
+                  <ram:PersonName>in</ram:PersonName>
+                  <ram:DepartmentName>ad</ram:DepartmentName>
+                  <ram:TelephoneUniversalCommunication>
+                     <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+                  </ram:TelephoneUniversalCommunication>
+                  <ram:FaxUniversalCommunication>
+                     <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+                  </ram:FaxUniversalCommunication>
+                  <ram:EmailURIUniversalCommunication>
+                     <ram:URIID>hello@konik.io</ram:URIID>
+                  </ram:EmailURIUniversalCommunication>
+               </ram:DefinedTradeContact>
+               <ram:PostalTradeAddress>
+                  <ram:PostcodeCode>ad</ram:PostcodeCode>
+                  <ram:LineOne>nunc</ram:LineOne>
+                  <ram:LineTwo>laoreet</ram:LineTwo>
+                  <ram:CityName>parturient</ram:CityName>
+                  <ram:CountryID>190</ram:CountryID>
+               </ram:PostalTradeAddress>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>745</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>745</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>745</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>745</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>745</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+               <ram:ID>HGG</ram:ID>
+               <ram:GlobalID schemeID="103">auctor</ram:GlobalID>
+               <ram:GlobalID schemeID="103">auctor</ram:GlobalID>
+               <ram:GlobalID schemeID="103">auctor</ram:GlobalID>
+               <ram:GlobalID schemeID="103">auctor</ram:GlobalID>
+               <ram:Name>eu</ram:Name>
+               <ram:DefinedTradeContact>
+                  <ram:PersonName>felis</ram:PersonName>
+                  <ram:DepartmentName>natoque</ram:DepartmentName>
+                  <ram:TelephoneUniversalCommunication>
+                     <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+                  </ram:TelephoneUniversalCommunication>
+                  <ram:FaxUniversalCommunication>
+                     <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+                  </ram:FaxUniversalCommunication>
+                  <ram:EmailURIUniversalCommunication>
+                     <ram:URIID>hello@konik.io</ram:URIID>
+                  </ram:EmailURIUniversalCommunication>
+               </ram:DefinedTradeContact>
+               <ram:PostalTradeAddress>
+                  <ram:PostcodeCode>id</ram:PostcodeCode>
+                  <ram:LineOne>massa</ram:LineOne>
+                  <ram:LineTwo>ligula</ram:LineTwo>
+                  <ram:CityName>condimentum</ram:CityName>
+                  <ram:CountryID>211</ram:CountryID>
+               </ram:PostalTradeAddress>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>600</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>600</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+            </ram:BuyerTradeParty>
+            <ram:BuyerOrderReferencedDocument>
+               <ram:IssueDateTime>2014-07-17T10:41:03</ram:IssueDateTime>
+               <ram:ID>455</ram:ID>
+            </ram:BuyerOrderReferencedDocument>
+            <ram:ContractReferencedDocument>
+               <ram:IssueDateTime>2014-07-17T10:41:03</ram:IssueDateTime>
+               <ram:ID>KGF</ram:ID>
+            </ram:ContractReferencedDocument>
+            <ram:GrossPriceProductTradePrice>
+               <ram:ChargeAmount currencyID="KGS">334996</ram:ChargeAmount>
+               <ram:BasisQuantity unitCode="ac">489765</ram:BasisQuantity>
+            </ram:GrossPriceProductTradePrice>
+            <ram:NetPriceProductTradePrice>
+               <ram:ChargeAmount currencyID="XBA">361273</ram:ChargeAmount>
+               <ram:BasisQuantity unitCode="da">978465</ram:BasisQuantity>
+            </ram:NetPriceProductTradePrice>
+            <ram:CustomerOrderReferencedDocument>
+               <ram:IssueDateTime>2014-07-17T10:41:03</ram:IssueDateTime>
+               <ram:ID>RSP</ram:ID>
+            </ram:CustomerOrderReferencedDocument>
+         </ram:SpecifiedSupplyChainTradeAgreement>
+         <ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:BilledQuantity unitCode="le">682162</ram:BilledQuantity>
+            <ram:ActualDeliverySupplyChainEvent>
+               <ram:OccurrenceDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+            <ram:DeliveryNoteReferencedDocument>
+               <ram:IssueDateTime>2014-07-17T10:41:03</ram:IssueDateTime>
+               <ram:ID>390</ram:ID>
+            </ram:DeliveryNoteReferencedDocument>
+         </ram:SpecifiedSupplyChainTradeDelivery>
+         <ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:PaymentReference>ullamcorper</ram:PaymentReference>
+            <ram:InvoiceCurrencyCode>NAD</ram:InvoiceCurrencyCode>
+            <ram:InvoiceeTradeParty>
+               <ram:ID>DRZ</ram:ID>
+               <ram:GlobalID schemeID="EQL">dui</ram:GlobalID>
+               <ram:GlobalID schemeID="EQL">dui</ram:GlobalID>
+               <ram:GlobalID schemeID="EQL">dui</ram:GlobalID>
+               <ram:GlobalID schemeID="EQL">dui</ram:GlobalID>
+               <ram:GlobalID schemeID="EQL">dui</ram:GlobalID>
+               <ram:Name>netus</ram:Name>
+               <ram:DefinedTradeContact>
+                  <ram:PersonName>porttitor</ram:PersonName>
+                  <ram:DepartmentName>ornare</ram:DepartmentName>
+                  <ram:TelephoneUniversalCommunication>
+                     <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+                  </ram:TelephoneUniversalCommunication>
+                  <ram:FaxUniversalCommunication>
+                     <ram:CompleteNumber>+4178906011</ram:CompleteNumber>
+                  </ram:FaxUniversalCommunication>
+                  <ram:EmailURIUniversalCommunication>
+                     <ram:URIID>hello@konik.io</ram:URIID>
+                  </ram:EmailURIUniversalCommunication>
+               </ram:DefinedTradeContact>
+               <ram:PostalTradeAddress>
+                  <ram:PostcodeCode>mus</ram:PostcodeCode>
+                  <ram:LineOne>elit</ram:LineOne>
+                  <ram:LineTwo>ligula</ram:LineTwo>
+                  <ram:CityName>lacinia</ram:CityName>
+                  <ram:CountryID>PGK</ram:CountryID>
+               </ram:PostalTradeAddress>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>955</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>955</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+               <ram:SpecifiedTaxRegistration>
+                  <ram:ID>955</ram:ID>
+               </ram:SpecifiedTaxRegistration>
+            </ram:InvoiceeTradeParty>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+               <ram:TypeCode>20</ram:TypeCode>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:PayerPartyDebtorFinancialAccount>
+                  <ram:IBANID>odio</ram:IBANID>
+                  <ram:ProprietaryID>nec</ram:ProprietaryID>
+               </ram:PayerPartyDebtorFinancialAccount>
+               <ram:PayeePartyCreditorFinancialAccount>
+                  <ram:IBANID>amet</ram:IBANID>
+                  <ram:ProprietaryID>nostra</ram:ProprietaryID>
+               </ram:PayeePartyCreditorFinancialAccount>
+               <ram:PayerSpecifiedDebtorFinancialInstitution>
+                  <ram:BICID>cubilia</ram:BICID>
+                  <ram:GermanBankleitzahlID>ad</ram:GermanBankleitzahlID>
+                  <ram:Name>pharetra</ram:Name>
+               </ram:PayerSpecifiedDebtorFinancialInstitution>
+               <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                  <ram:BICID>mollis</ram:BICID>
+                  <ram:GermanBankleitzahlID>lectus</ram:GermanBankleitzahlID>
+                  <ram:Name>gravida</ram:Name>
+               </ram:PayeeSpecifiedCreditorFinancialInstitution>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+               <ram:TypeCode>20</ram:TypeCode>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:PayerPartyDebtorFinancialAccount>
+                  <ram:IBANID>odio</ram:IBANID>
+                  <ram:ProprietaryID>nec</ram:ProprietaryID>
+               </ram:PayerPartyDebtorFinancialAccount>
+               <ram:PayeePartyCreditorFinancialAccount>
+                  <ram:IBANID>amet</ram:IBANID>
+                  <ram:ProprietaryID>nostra</ram:ProprietaryID>
+               </ram:PayeePartyCreditorFinancialAccount>
+               <ram:PayerSpecifiedDebtorFinancialInstitution>
+                  <ram:BICID>cubilia</ram:BICID>
+                  <ram:GermanBankleitzahlID>ad</ram:GermanBankleitzahlID>
+                  <ram:Name>pharetra</ram:Name>
+               </ram:PayerSpecifiedDebtorFinancialInstitution>
+               <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                  <ram:BICID>mollis</ram:BICID>
+                  <ram:GermanBankleitzahlID>lectus</ram:GermanBankleitzahlID>
+                  <ram:Name>gravida</ram:Name>
+               </ram:PayeeSpecifiedCreditorFinancialInstitution>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+               <ram:TypeCode>20</ram:TypeCode>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:Information>bibendum</ram:Information>
+               <ram:PayerPartyDebtorFinancialAccount>
+                  <ram:IBANID>odio</ram:IBANID>
+                  <ram:ProprietaryID>nec</ram:ProprietaryID>
+               </ram:PayerPartyDebtorFinancialAccount>
+               <ram:PayeePartyCreditorFinancialAccount>
+                  <ram:IBANID>amet</ram:IBANID>
+                  <ram:ProprietaryID>nostra</ram:ProprietaryID>
+               </ram:PayeePartyCreditorFinancialAccount>
+               <ram:PayerSpecifiedDebtorFinancialInstitution>
+                  <ram:BICID>cubilia</ram:BICID>
+                  <ram:GermanBankleitzahlID>ad</ram:GermanBankleitzahlID>
+                  <ram:Name>pharetra</ram:Name>
+               </ram:PayerSpecifiedDebtorFinancialInstitution>
+               <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                  <ram:BICID>mollis</ram:BICID>
+                  <ram:GermanBankleitzahlID>lectus</ram:GermanBankleitzahlID>
+                  <ram:Name>gravida</ram:Name>
+               </ram:PayeeSpecifiedCreditorFinancialInstitution>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+               <ram:CalculatedAmount currencyID="CHF">174668</ram:CalculatedAmount>
+               <ram:TypeCode>EXP</ram:TypeCode>
+               <ram:ExemptionReason>eu</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="NGN">199266</ram:BasisAmount>
+               <ram:CategoryCode>AE</ram:CategoryCode>
+               <ram:ApplicablePercent>312049</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:ApplicableTradeTax>
+               <ram:CalculatedAmount currencyID="CHF">174668</ram:CalculatedAmount>
+               <ram:TypeCode>EXP</ram:TypeCode>
+               <ram:ExemptionReason>eu</ram:ExemptionReason>
+               <ram:BasisAmount currencyID="NGN">199266</ram:BasisAmount>
+               <ram:CategoryCode>AE</ram:CategoryCode>
+               <ram:ApplicablePercent>312049</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:BillingSpecifiedPeriod>
+               <ram:StartDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:StartDateTime>
+               <ram:EndDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:EndDateTime>
+            </ram:BillingSpecifiedPeriod>
+            <ram:SpecifiedTradeAllowanceCharge>
+               <ram:ChargeIndicator>
+                  <udt:Indicator>false</udt:Indicator>
+               </ram:ChargeIndicator>
+               <ram:BasisAmount currencyID="INR">290926</ram:BasisAmount>
+               <ram:ActualAmount currencyID="ERN">974631</ram:ActualAmount>
+               <ram:Reason>pellentesque</ram:Reason>
+               <ram:CategoryTradeTax>
+                  <ram:CalculatedAmount currencyID="GMD">679079</ram:CalculatedAmount>
+                  <ram:TypeCode>LAC</ram:TypeCode>
+                  <ram:ExemptionReason>luctus</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="PAB">922669</ram:BasisAmount>
+                  <ram:CategoryCode>AC</ram:CategoryCode>
+                  <ram:ApplicablePercent>358449</ram:ApplicablePercent>
+               </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedTradeAllowanceCharge>
+               <ram:ChargeIndicator>
+                  <udt:Indicator>false</udt:Indicator>
+               </ram:ChargeIndicator>
+               <ram:BasisAmount currencyID="INR">290926</ram:BasisAmount>
+               <ram:ActualAmount currencyID="ERN">974631</ram:ActualAmount>
+               <ram:Reason>pellentesque</ram:Reason>
+               <ram:CategoryTradeTax>
+                  <ram:CalculatedAmount currencyID="GMD">679079</ram:CalculatedAmount>
+                  <ram:TypeCode>LAC</ram:TypeCode>
+                  <ram:ExemptionReason>luctus</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="PAB">922669</ram:BasisAmount>
+                  <ram:CategoryCode>AC</ram:CategoryCode>
+                  <ram:ApplicablePercent>358449</ram:ApplicablePercent>
+               </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedTradeAllowanceCharge>
+               <ram:ChargeIndicator>
+                  <udt:Indicator>false</udt:Indicator>
+               </ram:ChargeIndicator>
+               <ram:BasisAmount currencyID="INR">290926</ram:BasisAmount>
+               <ram:ActualAmount currencyID="ERN">974631</ram:ActualAmount>
+               <ram:Reason>pellentesque</ram:Reason>
+               <ram:CategoryTradeTax>
+                  <ram:CalculatedAmount currencyID="GMD">679079</ram:CalculatedAmount>
+                  <ram:TypeCode>LAC</ram:TypeCode>
+                  <ram:ExemptionReason>luctus</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="PAB">922669</ram:BasisAmount>
+                  <ram:CategoryCode>AC</ram:CategoryCode>
+                  <ram:ApplicablePercent>358449</ram:ApplicablePercent>
+               </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedTradeAllowanceCharge>
+               <ram:ChargeIndicator>
+                  <udt:Indicator>false</udt:Indicator>
+               </ram:ChargeIndicator>
+               <ram:BasisAmount currencyID="INR">290926</ram:BasisAmount>
+               <ram:ActualAmount currencyID="ERN">974631</ram:ActualAmount>
+               <ram:Reason>pellentesque</ram:Reason>
+               <ram:CategoryTradeTax>
+                  <ram:CalculatedAmount currencyID="GMD">679079</ram:CalculatedAmount>
+                  <ram:TypeCode>LAC</ram:TypeCode>
+                  <ram:ExemptionReason>luctus</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="PAB">922669</ram:BasisAmount>
+                  <ram:CategoryCode>AC</ram:CategoryCode>
+                  <ram:ApplicablePercent>358449</ram:ApplicablePercent>
+               </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedLogisticsServiceCharge>
+               <ram:Description>Consectetur tortor per sapien duis sociosqu facilisi. Accumsan porta tempor mollis amet
+                  condimentum pellentesque dis.</ram:Description>
+               <ram:AppliedAmount currencyID="TND">417471</ram:AppliedAmount>
+               <ram:AppliedTradeTax>
+                  <ram:CalculatedAmount currencyID="ETB">124213</ram:CalculatedAmount>
+                  <ram:TypeCode>VAD</ram:TypeCode>
+                  <ram:ExemptionReason>egestas</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="CVE">145223</ram:BasisAmount>
+                  <ram:CategoryCode>Z</ram:CategoryCode>
+                  <ram:ApplicablePercent>114701</ram:ApplicablePercent>
+               </ram:AppliedTradeTax>
+               <ram:AppliedTradeTax>
+                  <ram:CalculatedAmount currencyID="ETB">124213</ram:CalculatedAmount>
+                  <ram:TypeCode>VAD</ram:TypeCode>
+                  <ram:ExemptionReason>egestas</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="CVE">145223</ram:BasisAmount>
+                  <ram:CategoryCode>Z</ram:CategoryCode>
+                  <ram:ApplicablePercent>114701</ram:ApplicablePercent>
+               </ram:AppliedTradeTax>
+               <ram:AppliedTradeTax>
+                  <ram:CalculatedAmount currencyID="ETB">124213</ram:CalculatedAmount>
+                  <ram:TypeCode>VAD</ram:TypeCode>
+                  <ram:ExemptionReason>egestas</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="CVE">145223</ram:BasisAmount>
+                  <ram:CategoryCode>Z</ram:CategoryCode>
+                  <ram:ApplicablePercent>114701</ram:ApplicablePercent>
+               </ram:AppliedTradeTax>
+               <ram:AppliedTradeTax>
+                  <ram:CalculatedAmount currencyID="ETB">124213</ram:CalculatedAmount>
+                  <ram:TypeCode>VAD</ram:TypeCode>
+                  <ram:ExemptionReason>egestas</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="CVE">145223</ram:BasisAmount>
+                  <ram:CategoryCode>Z</ram:CategoryCode>
+                  <ram:ApplicablePercent>114701</ram:ApplicablePercent>
+               </ram:AppliedTradeTax>
+               <ram:AppliedTradeTax>
+                  <ram:CalculatedAmount currencyID="ETB">124213</ram:CalculatedAmount>
+                  <ram:TypeCode>VAD</ram:TypeCode>
+                  <ram:ExemptionReason>egestas</ram:ExemptionReason>
+                  <ram:BasisAmount currencyID="CVE">145223</ram:BasisAmount>
+                  <ram:CategoryCode>Z</ram:CategoryCode>
+                  <ram:ApplicablePercent>114701</ram:ApplicablePercent>
+               </ram:AppliedTradeTax>
+            </ram:SpecifiedLogisticsServiceCharge>
+            <ram:SpecifiedTradePaymentTerms>
+               <ram:Description>Cum penatibus posuere lacus torquent litora curae duis sapien imperdiet velit facilisi
+                  laoreet, sagittis convallis quam in aptent ornare sodales euismod quisque bibendum torquent lacus.
+                  Nostra mollis tempus laoreet leo nam est scelerisque vivamus mollis magna volutpat nibh, taciti
+                  egestas scelerisque.</ram:Description>
+               <ram:DueDateDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradePaymentTerms>
+               <ram:Description>Cum penatibus posuere lacus torquent litora curae duis sapien imperdiet velit facilisi
+                  laoreet, sagittis convallis quam in aptent ornare sodales euismod quisque bibendum torquent lacus.
+                  Nostra mollis tempus laoreet leo nam est scelerisque vivamus mollis magna volutpat nibh, taciti
+                  egestas scelerisque.</ram:Description>
+               <ram:DueDateDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradePaymentTerms>
+               <ram:Description>Cum penatibus posuere lacus torquent litora curae duis sapien imperdiet velit facilisi
+                  laoreet, sagittis convallis quam in aptent ornare sodales euismod quisque bibendum torquent lacus.
+                  Nostra mollis tempus laoreet leo nam est scelerisque vivamus mollis magna volutpat nibh, taciti
+                  egestas scelerisque.</ram:Description>
+               <ram:DueDateDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradePaymentTerms>
+               <ram:Description>Cum penatibus posuere lacus torquent litora curae duis sapien imperdiet velit facilisi
+                  laoreet, sagittis convallis quam in aptent ornare sodales euismod quisque bibendum torquent lacus.
+                  Nostra mollis tempus laoreet leo nam est scelerisque vivamus mollis magna volutpat nibh, taciti
+                  egestas scelerisque.</ram:Description>
+               <ram:DueDateDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradePaymentTerms>
+               <ram:Description>Cum penatibus posuere lacus torquent litora curae duis sapien imperdiet velit facilisi
+                  laoreet, sagittis convallis quam in aptent ornare sodales euismod quisque bibendum torquent lacus.
+                  Nostra mollis tempus laoreet leo nam est scelerisque vivamus mollis magna volutpat nibh, taciti
+                  egestas scelerisque.</ram:Description>
+               <ram:DueDateDateTime>
+                  <udt:DateTimeString format="102">20140717</udt:DateTimeString>
+               </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradeSettlementMonetarySummation>
+               <ram:LineTotalAmount currencyID="MWK">194601</ram:LineTotalAmount>
+               <ram:ChargeTotalAmount currencyID="GEL">29742</ram:ChargeTotalAmount>
+               <ram:AllowanceTotalAmount currencyID="BTN">676383</ram:AllowanceTotalAmount>
+               <ram:TaxBasisTotalAmount currencyID="BDT">266217</ram:TaxBasisTotalAmount>
+               <ram:TaxTotalAmount currencyID="AED">626125</ram:TaxTotalAmount>
+               <ram:GrandTotalAmount>985445</ram:GrandTotalAmount>
+               <ram:TotalPrepaidAmount currencyID="ETB">713257</ram:TotalPrepaidAmount>
+               <ram:DuePayableAmount currencyID="UYU">19568</ram:DuePayableAmount>
+            </ram:SpecifiedTradeSettlementMonetarySummation>
+            <ram:ReceivableSpecifiedTradeAccountingAccount>
+               <ram:ID>ullamcorper</ram:ID>
+            </ram:ReceivableSpecifiedTradeAccountingAccount>
+         </ram:SpecifiedSupplyChainTradeSettlement>
+         <ram:SpecifiedTradeProduct>
+            <ram:GlobalID schemeID="696">nullam</ram:GlobalID>
+            <ram:SellerAssignedID>IMK</ram:SellerAssignedID>
+            <ram:BuyerAssignedID>CKT</ram:BuyerAssignedID>
+            <ram:Name>semper</ram:Name>
+            <ram:Description>Eleifend parturient laoreet cum ultricies habitasse consequat blandit mauris facilisi nunc.
+               Enim class praesent non integer nostra scelerisque pellentesque tempor.</ram:Description>
+            <ram:OriginTradeCountry>
+               <ram:ID>VC</ram:ID>
+            </ram:OriginTradeCountry>
+            <ram:OriginTradeCountry>
+               <ram:ID>VC</ram:ID>
+            </ram:OriginTradeCountry>
+         </ram:SpecifiedTradeProduct>
+      </ram:IncludedSupplyChainTradeLineItem>
+   </rsm:SpecifiedSupplyChainTradeTransaction>
+</rsm:CrossIndustryDocument>

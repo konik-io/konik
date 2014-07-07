@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+Nutzungsrechte 
+ZUGFeRD Datenformat Version 1.0, 25.6.2014
+
+Zweck des Forums für elektronische Rechnungen bei der AWV e.V („FeRD“) ist u.a. die Schaffung und Spezifizierung 
+eines offenen Datenformats für strukturierten elektronischen Datenaustausch auf der Grundlage offener und nicht 
+diskriminierender, standardisierter Technologien („ZUGFeRD Datenformat“)
+
+Das ZUGFeRD Datenformat wird nach Maßgabe des FeRD sowohl Unternehmen als auch der öffentlichen Verwaltung 
+frei zugänglich gemacht. Hierfür bietet FeRD allen Unternehmen und Organisationen der öffentlichen Verwaltung eine 
+Lizenz für die Nutzung des urheberrechtlich geschützten ZUGFeRD-Datenformats zu fairen, sachgerechten und nicht 
+diskriminierenden Bedingungen an.
+
+Die Spezifikation des FeRD zur Implementierung des ZUGFeRD Datenformats ist in ihrer jeweils geltenden Fassung 
+abrufbar unter www.ferd-net.de.
+
+Im Einzelnen schließt die Nutzungsgewährung ein: 
+=====================================
+
+FeRD räumt eine Lizenz für die Nutzung des urheberrechtlich geschützten ZUGFeRD Datenformats in der jeweils 
+geltenden und akzeptierten Fassung (www.ferd-net.de) ein. 
+Die Lizenz beinhaltet ein unwiderrufliches Nutzungsrecht einschließlich des Rechts der Weiterentwicklung, 
+Weiterbearbeitung und Verbindung mit anderen Produkten.
+Die Lizenz gilt insbesondere für die Entwicklung, die Gestaltung, die Herstellung, den Verkauf, die Nutzung oder 
+anderweitige Verwendung des ZUGFeRD Datenformats für Hardware- und/oder Softwareprodukte sowie sonstige 
+Anwendungen und Dienste. 
+Diese Lizenz schließt nicht die wesentlichen Patente der Mitglieder von FeRD ein. Als wesentliche Patente sind Patente 
+und Patentanmeldungen weltweit zu verstehen, die einen oder mehrere Patentansprüche beinhalten, bei denen es sich um 
+notwendige Ansprüche handelt. Notwendige Ansprüche sind lediglich jene Ansprüche der Wesentlichen Patente, die durch 
+die Implementierung des ZUGFeRD Datenformats notwendigerweise verletzt würden. 
+Der Lizenznehmer ist berechtigt, seinen jeweiligen Konzerngesellschaften ein unbefristetes, weltweites, nicht übertragbares, 
+unwiderrufliches Nutzungsrecht einschließlich des Rechts der Weiterentwicklung, Weiterbearbeitung und Verbindung mit 
+anderen Produkten einzuräumen. 
+
+Die Lizenz wird kostenfrei zur Verfügung gestellt. 
+
+Außer im Falle vorsätzlichen Verschuldens oder grober Fahrlässigkeit haftet FeRD weder für Nutzungsausfall, entgangenen 
+Gewinn, Datenverlust, Kommunikationsverlust, Einnahmeausfall, Vertragseinbußen, Geschäftsausfall oder für Kosten, 
+Schäden, Verluste oder Haftpflichten im Zusammenhang mit einer Unterbrechung der Geschäftstätigkeit, noch für konkrete, 
+beiläufig entstandene, mittelbare Schäden, Straf- oder Folgeschäden und zwar auch dann nicht, wenn die Möglichkeit der 
+Kosten, Verluste bzw. Schäden hätte normalerweise vorhergesehen werden können.
+
+-->
+
+<xs:schema xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:12" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15" targetNamespace="urn:un:unece:uncefact:data:standard:QualifiedDataType:12" elementFormDefault="qualified" version="12.0">
+	<xs:import namespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15" schemaLocation="ZUGFeRD_1p0_urn_un_unece_uncefact_data_standard_UnqualifiedDataType_15.xsd"/>
+	<xs:simpleType name="AllowanceChargeReasonCodeContentType">
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+	<xs:complexType name="AllowanceChargeReasonCodeType">
+		<xs:simpleContent>
+			<xs:extension base="qdt:AllowanceChargeReasonCodeContentType"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="CountryIDContentType">
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+	<xs:complexType name="CountryIDType">
+		<xs:simpleContent>
+			<xs:extension base="qdt:CountryIDContentType"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="DateMandatoryDateTimeType">
+		<xs:union memberTypes="xs:dateTime xs:date"/>
+	</xs:simpleType>
+	<xs:simpleType name="DeliveryTermsCodeContentType">
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+	<xs:complexType name="DeliveryTermsCodeType">
+		<xs:simpleContent>
+			<xs:extension base="qdt:DeliveryTermsCodeContentType"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="DocumentCodeContentType">
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+	<xs:complexType name="DocumentCodeType">
+		<xs:simpleContent>
+			<xs:extension base="qdt:DocumentCodeContentType"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="PaymentMeansCodeContentType">
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+	<xs:complexType name="PaymentMeansCodeType">
+		<xs:simpleContent>
+			<xs:extension base="qdt:PaymentMeansCodeContentType"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="ReferenceCodeContentType">
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+	<xs:complexType name="ReferenceCodeType">
+		<xs:simpleContent>
+			<xs:extension base="qdt:ReferenceCodeContentType"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="TaxCategoryCodeContentType">
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+	<xs:complexType name="TaxCategoryCodeType">
+		<xs:simpleContent>
+			<xs:extension base="qdt:TaxCategoryCodeContentType"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="TaxTypeCodeContentType">
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+	<xs:complexType name="TaxTypeCodeType">
+		<xs:simpleContent>
+			<xs:extension base="qdt:TaxTypeCodeContentType"/>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

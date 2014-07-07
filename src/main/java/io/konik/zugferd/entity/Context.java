@@ -65,6 +65,7 @@ public class Context {
     * 
     * Profile:: BASIC
     * 
+    * Default:: +false+
     * 
     * @return true if this invoice is for testing purpose only
     */
@@ -80,8 +81,10 @@ public class Context {
     * 
     * Profile:: BASIC
     * 
+    * Default:: +false+
+    * 
     * @param test the new indicates if this invoice is for testing purpose only
-    * @return 
+    * @return the context
     */
    public Context setTest(boolean test) {
       this.test = test;

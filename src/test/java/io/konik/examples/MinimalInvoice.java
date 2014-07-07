@@ -24,7 +24,7 @@ import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
 import static io.konik.zugferd.unece.codes.DocumentNameCode._380;
 import static io.konik.zugferd.unece.codes.Reference.FC;
 import static org.assertj.core.util.Dates.tomorrow;
-import io.konik.utils.InvoiceLoaderUtils;
+import io.konik.InvoiceTransformer;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.Address;
 import io.konik.zugferd.entity.Agreement;
@@ -50,8 +50,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import javax.xml.transform.stream.StreamSource;
 
 import org.junit.Test;
@@ -71,49 +69,51 @@ public class MinimalInvoice {
 
    private Invoice createMinimalValidInvoice() {
 
-      Invoice invoice = new Invoice(new BasicProfile());
-      invoice.setHeader(new Header().setInvoiceNumber("20131122-42").setCode(_380).setIssued(now).addName("Rechnung"));
+Invoice invoice = new Invoice(new BasicProfile());
+invoice.setHeader(
+      new Header().setInvoiceNumber("20131122-42").setCode(_380).setIssued(now).addName("Rechnung"));
 
-      Trade trade = new Trade();
-      invoice.setTrade(trade);
-      
-      trade.setAgreement(new Agreement().setSellerTradeParty(
-            new TradeParty().setName("Seller Inc.").setAddress(new Address("80331", "Marienplatz 1", "München", "DE"))
-                  .addTaxRegistration(new TaxRegistration("DE122...", FC))).setBuyerTradeParty(
-            new TradeParty().setName("Buyer Inc.").setAddress(new Address("50667", "Domkloster 4", "Köln", "DE"))
-                  .addTaxRegistration(new TaxRegistration("DE123...", FC))));
+Trade trade = new Trade();
+trade.setAgreement(new Agreement().setSellerTradeParty(
+      new TradeParty().setName("Seller Inc.").setAddress(
+            new Address("80331", "Marienplatz 1", "München", "DE")).addTaxRegistration(
+                  new TaxRegistration("DE122...", FC))).setBuyerTradeParty(
+      new TradeParty().setName("Buyer Inc.").setAddress(
+            new Address("50667", "Domkloster 4", "Köln", "DE")).addTaxRegistration(
+                  new TaxRegistration("DE123...", FC))));
+trade.setDelivery(
+      new Delivery().setEvent(
+            new Event(tomorrow)));
+trade.setSettlement(
+      new Settlement().setPaymentReference("20131122-42").setCurrency(EUR).addPaymentMeans(
+            new PaymentMeans().setPayerAccount(new FinancialAccount("DE01234..")).setPayerInstitution(
+                  new FinancialInstitution("GENO..."))).setMonetarySummation(
+                        new MonetarySummation().setNetTotal(
+                              new Amount(100, EUR)).setTaxTotal(
+                                    new Amount(19, EUR)).setGrandTotal(
+                                          new Amount(119, EUR))));
+trade.addItem(
+      new Item().setProduct(
+            new Product().setName("Saddle").addOrigins(DE)));
 
-      trade.setDelivery(new Delivery().setEvent(new Event(tomorrow)));
-
-      trade.setSettlement(new Settlement()
-            .setPaymentReference("20131122-42")
-            .setCurrency(EUR)
-            .addPaymentMeans(
-                  new PaymentMeans().setPayerAccount(new FinancialAccount("DE01234..")).setPayerInstitution(
-                        new FinancialInstitution("GENO...")))
-            .setMonetarySummation(
-                  new MonetarySummation().setNetTotal(new Amount(100, EUR)).setTaxTotal(new Amount(19, EUR))
-                        .setGrandTotal(new Amount(119, EUR))));
-
-      trade.addItem(new Item().setProduct(new Product().setName("Saddle").addOrigins(DE)));
-
-      
-      return invoice;
+invoice.setTrade(trade);
+return invoice;
    }
 
    @Test
-   public void creatBasicInvoice() throws JAXBException, SAXException, IOException {
+   public void creatBasicInvoice() throws SAXException, IOException {
       //setup
       Invoice invoice = createMinimalValidInvoice();
-      Marshaller marshaller = InvoiceLoaderUtils.createZfMarshaller();
+      InvoiceTransformer transformer = new InvoiceTransformer();
 
-      ByteArrayOutputStream os = new ByteArrayOutputStream();
-      marshaller.marshal(invoice, os);
+      ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+      transformer.from(invoice, outputStream);
 
-      Files.write(os.toByteArray(), new File("target/minimal-invoice.xml"));
-//      System.out.println(os.toString());
+      Files.write(outputStream.toByteArray(), new File("target/minimal-invoice.xml"));
+      //      System.out.println(os.toString());
 
       //validate
-      getSchemaValidator().validate(new StreamSource(new StringReader(os.toString())));
+      getSchemaValidator().validate(new StreamSource(new StringReader(outputStream.toString())));
    }
+
 }

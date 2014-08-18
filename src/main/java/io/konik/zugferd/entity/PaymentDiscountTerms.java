@@ -18,9 +18,10 @@
 
 package io.konik.zugferd.entity;
 
+import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.DateTime;
 import io.konik.zugferd.unqualified.Measure;
+import io.konik.zugferd.unqualified.ZfDate;
 
 import java.math.BigDecimal;
 
@@ -29,18 +30,19 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * 
  * The Class PaymentDiscountTerm.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradePaymentDiscountTermsType", propOrder = { "reference", "maturityPeriod", "basisDiscount",
+@XmlType(name = "TradePaymentDiscountTermsType", propOrder = { "reference", "maturityPeriod", "basis",
       "calculationPercent", "actualDiscount" })
-public class PaymentDiscountTerm {
+public class PaymentDiscountTerms {
 
    @XmlElement(name = "BasisDateTime")
-   private DateTime reference;
+   private ZfDate reference;
 
    @Valid
    @XmlElement(name = "BasisPeriodMeasure")
@@ -48,9 +50,10 @@ public class PaymentDiscountTerm {
 
    @Valid
    @XmlElement(name = "BasisAmount")
-   private Amount basisDiscount;
+   private Amount basis;
 
    @XmlElement(name = "CalculationPercent")
+   @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
    private BigDecimal calculationPercent;
 
    @Valid
@@ -62,7 +65,7 @@ public class PaymentDiscountTerm {
     *
     * @return the reference
     */
-   public DateTime getReference() {
+   public ZfDate getReference() {
       return reference;
    }
 
@@ -72,7 +75,7 @@ public class PaymentDiscountTerm {
     * @param reference the reference
     * @return the payment discount term
     */
-   public PaymentDiscountTerm setReference(DateTime reference) {
+   public PaymentDiscountTerms setReference(ZfDate reference) {
       this.reference = reference;
       return this;
    }
@@ -92,7 +95,7 @@ public class PaymentDiscountTerm {
     * @param maturityPeriod the maturity period
     * @return the payment discount term
     */
-   public PaymentDiscountTerm setMaturityPeriod(Measure maturityPeriod) {
+   public PaymentDiscountTerms setMaturityPeriod(Measure maturityPeriod) {
       this.maturityPeriod = maturityPeriod;
       return this;
    }
@@ -102,8 +105,8 @@ public class PaymentDiscountTerm {
     *
     * @return the basis discount
     */
-   public Amount getBasisDiscount() {
-      return basisDiscount;
+   public Amount getBasis() {
+      return basis;
    }
 
    /**
@@ -112,8 +115,8 @@ public class PaymentDiscountTerm {
     * @param basisDiscount the basis discount
     * @return the payment discount term
     */
-   public PaymentDiscountTerm setBasisDiscount(Amount basisDiscount) {
-      this.basisDiscount = basisDiscount;
+   public PaymentDiscountTerms setBasis(Amount basisDiscount) {
+      this.basis = basisDiscount;
       return this;
    }
 
@@ -132,7 +135,7 @@ public class PaymentDiscountTerm {
     * @param calculationPercent the calculation percent
     * @return the payment discount term
     */
-   public PaymentDiscountTerm setCalculationPercent(BigDecimal calculationPercent) {
+   public PaymentDiscountTerms setCalculationPercent(BigDecimal calculationPercent) {
       this.calculationPercent = calculationPercent;
       return this;
    }
@@ -152,7 +155,7 @@ public class PaymentDiscountTerm {
     * @param actualDiscount the actual discount
     * @return the payment discount term
     */
-   public PaymentDiscountTerm setActualDiscount(Amount actualDiscount) {
+   public PaymentDiscountTerms setActualDiscount(Amount actualDiscount) {
       this.actualDiscount = actualDiscount;
       return this;
    }

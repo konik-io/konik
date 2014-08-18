@@ -18,9 +18,10 @@
 
 package io.konik.zugferd.entity;
 
+import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.DateTime;
 import io.konik.zugferd.unqualified.Measure;
+import io.konik.zugferd.unqualified.ZfDate;
 
 import java.math.BigDecimal;
 
@@ -29,6 +30,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * 
@@ -40,7 +42,7 @@ import javax.xml.bind.annotation.XmlType;
 public class PaymentPenaltyTerms {
 
    @XmlElement(name = "BasisDateTime")
-   private DateTime reference;
+   private ZfDate reference;
 
    @Valid
    @XmlElement(name = "BasisPeriodMeasure")
@@ -51,6 +53,7 @@ public class PaymentPenaltyTerms {
    private Amount basis;
 
    @XmlElement(name = "CalculationPercent")
+   @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
    private BigDecimal calculationPercent;
 
    @Valid
@@ -62,7 +65,7 @@ public class PaymentPenaltyTerms {
     *
     * @return the reference
     */
-   public DateTime getReference() {
+   public ZfDate getReference() {
       return reference;
    }
 
@@ -71,7 +74,7 @@ public class PaymentPenaltyTerms {
     *
     * @param reference the new reference
     */
-   public void setReference(DateTime reference) {
+   public void setReference(ZfDate reference) {
       this.reference = reference;
    }
 

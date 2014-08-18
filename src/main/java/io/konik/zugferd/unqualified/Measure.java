@@ -18,6 +18,8 @@
 
 package io.konik.zugferd.unqualified;
 
+import io.konik.jaxb.adapter.MeasureRoundingAdapter;
+
 import java.math.BigDecimal;
 
 import javax.validation.constraints.Min;
@@ -40,6 +42,7 @@ public class Measure {
 
    @XmlValue
    @NotNull @Min(0)
+   @XmlJavaTypeAdapter(MeasureRoundingAdapter.class)
    private BigDecimal value;
 
    /** The unit code. */

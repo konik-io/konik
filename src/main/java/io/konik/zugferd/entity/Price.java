@@ -17,17 +17,20 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.jaxb.adapter.AmountHighRoundingAdapter;
+import io.konik.validator.annotation.Comfort;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Quantity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -36,22 +39,38 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradePriceType", propOrder = { "chargeAmount", "basisQuantity", "allowanceCharges" })
+@XmlType(name = "TradePriceType", propOrder = { "chargeAmount", "basis", "allowanceCharges" })
 public class Price {
 
    @Valid
+   @NotNull(groups=Comfort.class)
 	@XmlElement(name = "ChargeAmount")
+   @XmlJavaTypeAdapter(value = AmountHighRoundingAdapter.class)
 	private Amount chargeAmount;
 
    @Valid
 	@XmlElement(name = "BasisQuantity")
-	private Quantity basisQuantity;
+	private Quantity basis;
 
    
 	@XmlElement(name = "AppliedTradeAllowanceCharge")
 	protected List<AllowanceCharge> allowanceCharges;
 
-	/**
+	
+	Price() {
+   }
+
+   /**
+    * Instantiates a new price.
+    *
+    * @param chargeAmount the charge amount
+    */
+	public Price(Amount chargeAmount) {
+      super();
+      this.chargeAmount = chargeAmount;
+   }
+
+   /**
 	 * Gets the charge amount.
 	 * 
 	 * @return the charge amount
@@ -76,8 +95,8 @@ public class Price {
 	 * 
 	 * @return the basis quantity
 	 */
-	public Quantity getBasisQuantity() {
-		return basisQuantity;
+	public Quantity getBasis() {
+		return basis;
 	}
 
 	/**
@@ -86,8 +105,8 @@ public class Price {
     * @param quantity the new basis quantity
     * @return the price
     */
-	public Price setBasisQuantity(Quantity quantity) {
-		this.basisQuantity = quantity;
+	public Price setBasis(Quantity quantity) {
+		this.basis = quantity;
 		return this;
 	}
 

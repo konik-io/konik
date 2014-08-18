@@ -18,7 +18,7 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.jaxb.adapter.UniversalCommunicationAdapter;
+import io.konik.jaxb.bindable.entity.UniversalCommunicationAdapter;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

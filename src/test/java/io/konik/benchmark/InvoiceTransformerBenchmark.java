@@ -28,6 +28,7 @@ import io.konik.utils.InvoiceLoaderUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.junit.Test;
 import org.openjdk.jmh.annotations.Benchmark;
@@ -48,17 +49,18 @@ public class InvoiceTransformerBenchmark extends DefaultBenchmark {
    
    @Setup
    public void setup() throws IOException {
-      invoice = toByteArray(InvoiceLoaderUtils.loadZfBasicXmlInvoiceAsStream());
+      InputStream is = getClass().getResourceAsStream(InvoiceLoaderUtils.ZF_MUSTERRECHNUNG_EINFACH_XML);
+      invoice = toByteArray(is);
       assertThat(invoice).isNotNull();
    }
 
    @Benchmark
-   public void from_inputStream() throws Exception {
+   public void xmlToModel() throws Exception {
       transformer.toModel(new ByteArrayInputStream(invoice));
    }
    
    @Test
-   public void benchmark_iTextPdfInvoiceAppender() throws RunnerException {
+   public void xmlToModel_Test() throws RunnerException {
       runDefault();
    }
 

@@ -17,6 +17,8 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.zugferd.unqualified.Amount;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,18 @@ import java.util.List;
  */
 public class GrossPrice extends Price {
 
+   GrossPrice() {
+      super();
+   }
+
+   /**
+    * Instantiates a new gross price.
+    *
+    * @param chargeAmount the charge amount
+    */
+   public GrossPrice(Amount chargeAmount) {
+      super(chargeAmount);
+   }
 
    /**
     * Gets the applied trade allowance charge.

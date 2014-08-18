@@ -17,22 +17,44 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
+import io.konik.jaxb.bindable.entity.AccountingAccountAdapter;
+import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
-import io.konik.zugferd.entity.AccountingAccount;
-import io.konik.zugferd.entity.MonetarySummation;
 import io.konik.zugferd.entity.Period;
-import io.konik.zugferd.entity.CommonSettlement;
+import io.konik.zugferd.entity.Settlement;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * = The Trade Item Settlement
  * 
  * Contains payment related information on an Item basis.
  */
-public class SpecifiedSettlement extends CommonSettlement<SpecifiedTax,MonetarySummation>{
+@XmlType(propOrder = {"tradeTax", "billingPeriod","bookingReference", "monetarySummation"})
+public class SpecifiedSettlement implements Settlement<SpecifiedTax,SpecifiedMonetarySummation>{
 
+   @Valid
+   @XmlElement(name = "ApplicableTradeTax")
+   private List<SpecifiedTax> tradeTax;
+
+   @Valid
+   @XmlElement(name = "BillingSpecifiedPeriod")
+   private Period billingPeriod;
+
+   @XmlElement(name = "SpecifiedTradeAccountingAccount")
+   @XmlJavaTypeAdapter(AccountingAccountAdapter.class)
+   private String bookingReference;
+   
+   @Valid
+   @XmlElement(name = "SpecifiedTradeSettlementMonetarySummation")   
+   private SpecifiedMonetarySummation monetarySummation;
+   
    /**
     * Gets the applicable trade tax.
     *
@@ -94,8 +116,8 @@ public class SpecifiedSettlement extends CommonSettlement<SpecifiedTax,MonetaryS
     * @return the specified booking reference
     */
    @Extended
-   public AccountingAccount getSpecifiedBookingReference() {
-      return specifiedBookingReference;
+   public String getBookingReference() {
+      return bookingReference;
    }
 
    /**
@@ -106,33 +128,30 @@ public class SpecifiedSettlement extends CommonSettlement<SpecifiedTax,MonetaryS
     * @param specifiedBookingReference the specified booking reference
     * @return 
     */
-   public SpecifiedSettlement setSpecifiedBookingReference(AccountingAccount specifiedBookingReference) {
-      this.specifiedBookingReference = specifiedBookingReference;
+   public SpecifiedSettlement setBookingReference(String specifiedBookingReference) {
+      this.bookingReference = specifiedBookingReference;
       return this;
    }
 
    /**
     * Gets the trade settlement monetary summation.
-    * 
-    * Profile:: BASIC
-    * 
-    * @return the specified trade settlement monetary summation
+    *
+    * @return the monetary summation
     */
    @Override
-   public MonetarySummation getMonetarySummation() {
+   @Comfort
+   public SpecifiedMonetarySummation getMonetarySummation() {
       return monetarySummation;
    }
 
    /**
     * Sets the trade settlement monetary summation.
     * 
-    * Profile:: BASIC
-    * 
     * @param monetarySummation the new monetary summation
     * @return the supply chain trade settlement
     */
    @Override
-   public SpecifiedSettlement setMonetarySummation(MonetarySummation monetarySummation) {
+   public SpecifiedSettlement setMonetarySummation(SpecifiedMonetarySummation monetarySummation) {
       this.monetarySummation = monetarySummation;
       return this;
    }

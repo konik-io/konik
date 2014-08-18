@@ -17,6 +17,8 @@
  */
 package io.konik.zugferd.entity;
 
+import static java.lang.Integer.valueOf;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,8 +77,8 @@ public class DocumentLine {
     *
     * @return the position number
     */
-	public int getPosition() {
-		return position.intValue();
+	public Integer getPosition() {
+		return position == null?null:position;
 	}
 
 	/**
@@ -88,7 +90,7 @@ public class DocumentLine {
     * @return the document line
     */
 	public DocumentLine setPosition(int position) {
-		this.position = Integer.valueOf(position);
+		this.position = valueOf(position);
 		return this;
 	}
 

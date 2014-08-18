@@ -17,10 +17,12 @@
  */
 package io.konik.zugferd.unqualified;
 
+import io.konik.jaxb.adapter.QuantityRoundingAdapter;
 import io.konik.zugferd.unece.codes.UnitOfMeasurement;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -42,6 +44,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class Quantity {
 
    @XmlValue
+   @NotNull
+   @XmlJavaTypeAdapter(QuantityRoundingAdapter.class)
    private BigDecimal value;
 
    @XmlAttribute(name = "unitCode")
@@ -110,11 +114,13 @@ public class Quantity {
 
    /**
     * Sets the value.
-    * 
+    *
     * @param value the new value
+    * @return the quantity
     */
-   public void setValue(BigDecimal value) {
+   public Quantity setValue(BigDecimal value) {
       this.value = value;
+      return this;
    }
    
    /**

@@ -17,36 +17,38 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.entity.trade.item.ReferencedDocumentLine;
+import io.konik.jaxb.bindable.entity.SupplyChainEventAdapter;
+import io.konik.zugferd.entity.trade.item.ReferencedDocumentItem;
+import io.konik.zugferd.unqualified.ZfDate;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * = The Common Delivery class.
  * 
- * @param <REF> The {@link ReferencedDocument} or the {@link ReferencedDocumentLine} that each Delivery might contain.
+ * @param <R> The {@link ReferencedDocument} or the {@link ReferencedDocumentItem} that each Delivery might contain.
  */
 @XmlTransient
-@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "SupplyChainTradeDeliveryType")
-//TODO: maybe make the model consistent having all protected fields here and implements the getter/setter in the subclass
-public abstract class CommonDelivery<REF extends ReferencedDocument>{
+public abstract class CommonDelivery<R extends ReferencedDocument>{
    
    @Valid
    @XmlElement(name = "ShipToTradeParty")
    private TradeParty shipTo;
+   
    @Valid
    @XmlElement(name = "UltimateShipToTradeParty")
    private TradeParty ultimateShipTo;
+   
    @Valid
    @XmlElement(name = "ActualDeliverySupplyChainEvent")
-   private Event actualDelivery;
-   
+   @XmlJavaTypeAdapter(value = SupplyChainEventAdapter.class)
+   private ZfDate actualDelivery;
+
    protected CommonDelivery() {
       super();
    }
@@ -67,7 +69,7 @@ public abstract class CommonDelivery<REF extends ReferencedDocument>{
     * @param shipTo the ship to
     * @return the delivery
     */
-   public CommonDelivery<REF> setShipTo(TradeParty shipTo) {
+   public CommonDelivery<R> setShipTo(TradeParty shipTo) {
       this.shipTo = shipTo;
       return this;
    }
@@ -88,7 +90,7 @@ public abstract class CommonDelivery<REF extends ReferencedDocument>{
     * @param ultimateShipTo the ultimate ship to
     * @return the delivery
     */
-   public CommonDelivery<REF> setUltimateShipTo(TradeParty ultimateShipTo) {
+   public CommonDelivery<R> setUltimateShipTo(TradeParty ultimateShipTo) {
       this.ultimateShipTo = ultimateShipTo;
       return this;
    }
@@ -98,7 +100,7 @@ public abstract class CommonDelivery<REF extends ReferencedDocument>{
     *
     * @return the actual event
     */
-   public Event getActualDelivery() {
+   public ZfDate getActualDelivery() {
       return actualDelivery;
    }
 
@@ -108,7 +110,7 @@ public abstract class CommonDelivery<REF extends ReferencedDocument>{
     * @param actualDelivery the actual delivery
     * @return the delivery
     */
-   public CommonDelivery<REF> setActualDelivery(Event actualDelivery) {
+   public CommonDelivery<R> setActualDelivery(ZfDate actualDelivery) {
       this.actualDelivery = actualDelivery;
       return this;
    }
@@ -118,7 +120,7 @@ public abstract class CommonDelivery<REF extends ReferencedDocument>{
     *
     * @return the despatch advice
     */
-   public abstract ReferencedDocument getDespatchAdvice();
+   public abstract R getDespatchAdvice() ;
    
    /**
     * Sets the despatch advice.
@@ -126,21 +128,21 @@ public abstract class CommonDelivery<REF extends ReferencedDocument>{
     * @param despatchAdvice the despatch advice
     * @return 
     */
-   public abstract  CommonDelivery<REF> setDespatchAdvice(REF despatchAdvice);
+   public abstract CommonDelivery<R> setDespatchAdvice(R despatchAdvice);
 
    /**
-    * Gets the note.
+    * Gets the delivery note.
     *
     * @return the note
     */
-   public abstract REF getNote();
+   public abstract R getDeliveryNote(); 
    
    /**
-    * Sets the note.
+    * Sets the delivery note.
     *
-    * @param note the note
+    * @param deliveryNote the delivery note
     * @return the delivery
     */
-   public abstract CommonDelivery<REF> setNote(REF note);
+   public abstract CommonDelivery<R> setDeliveryNote(R deliveryNote);
 
 }

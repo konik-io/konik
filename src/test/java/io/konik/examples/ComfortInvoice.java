@@ -20,37 +20,39 @@ package io.konik.examples;
 
 import static com.neovisionaries.i18n.CurrencyCode.EUR;
 import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
+import static io.konik.zugferd.profile.Profile.COMFORT;
 import static io.konik.zugferd.unece.codes.DocumentCode._380;
 import static io.konik.zugferd.unece.codes.Reference.FC;
 import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
 import static org.apache.commons.lang3.time.DateUtils.addDays;
+import static org.apache.commons.lang3.time.DateUtils.addMonths;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.util.Dates.tomorrow;
 import static org.custommonkey.xmlunit.XMLUnit.compareXML;
 import io.konik.InvoiceTransformer;
 import io.konik.PrittyPrintInvoiceTransformer;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.Address;
-import io.konik.zugferd.entity.Event;
 import io.konik.zugferd.entity.FinancialAccount;
 import io.konik.zugferd.entity.FinancialInstitution;
 import io.konik.zugferd.entity.Header;
 import io.konik.zugferd.entity.Item;
-import io.konik.zugferd.entity.MonetarySummation;
 import io.konik.zugferd.entity.PaymentMeans;
 import io.konik.zugferd.entity.Product;
 import io.konik.zugferd.entity.TaxRegistration;
 import io.konik.zugferd.entity.Trade;
 import io.konik.zugferd.entity.TradeParty;
-import io.konik.zugferd.entity.trade.Agreement;
-import io.konik.zugferd.entity.trade.Delivery;
+import io.konik.zugferd.entity.trade.TradeMonetarySummation;
+import io.konik.zugferd.entity.trade.TradeAgreement;
+import io.konik.zugferd.entity.trade.TradeDelivery;
 import io.konik.zugferd.entity.trade.TradeSettlement;
-import io.konik.zugferd.entity.trade.item.ReferencedDocumentLine;
+import io.konik.zugferd.entity.trade.item.ReferencedDocumentItem;
 import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
-import io.konik.zugferd.profile.ExtendedProfile;
 import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.DateTime;
 import io.konik.zugferd.unqualified.Quantity;
+import io.konik.zugferd.unqualified.ZfDate;
+import io.konik.zugferd.unqualified.ZfDateDay;
+import io.konik.zugferd.unqualified.ZfDateMonth;
+import io.konik.zugferd.unqualified.ZfDateWeek;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -74,23 +76,23 @@ import com.google.common.io.ByteSource;
 @SuppressWarnings("javadoc")
 public class ComfortInvoice {
 
-   DateTime now = new DateTime();
-   DateTime tomorrow = new DateTime(tomorrow());
-   DateTime feature = new DateTime(addDays(now.asDate(), 42));
+   ZfDate today = new ZfDateDay();
+   ZfDate nextMonth = new ZfDateMonth(addMonths(today, 1));
+   ZfDate inSixWeeks = new ZfDateWeek(addDays(today, 42));
 
    private Invoice createAllElementInvoiceModel() {
       
-      Invoice invoice = new Invoice(new ExtendedProfile());    // <1>
+      Invoice invoice = new Invoice(COMFORT);    // <1>
       invoice.setHeader(new Header()
          .setInvoiceNumber("20131122-42")
          .setCode(_380)
-         .setIssued(now)
+         .setIssued(today)
          .setName("Rechnung")
-         .setEffective(tomorrow));
+         .setContractualDueDate(inSixWeeks));
       
       Trade trade = new Trade();
-      trade.setAgreement(new Agreement()     // <2>
-            .setSellerTradeParty(new TradeParty()
+      trade.setAgreement(new TradeAgreement()     // <2>
+            .setSeller(new TradeParty()
                   .setName("Seller Inc.")
                   .setAddress(new Address("80331", "Marienplatz 1", "München", "DE"))
                   .addTaxRegistration(new TaxRegistration("DE122...", FC)))
@@ -99,7 +101,7 @@ public class ComfortInvoice {
                   .setAddress(new Address("50667", "Domkloster 4", "Köln", "DE"))
                   .addTaxRegistration(new TaxRegistration("DE123...", FC))));
       
-      trade.setDelivery(new Delivery(new Event(tomorrow)));
+      trade.setDelivery(new TradeDelivery(nextMonth));
       
       trade.setSettlement(new TradeSettlement()
             .setPaymentReference("20131122-42")
@@ -107,15 +109,15 @@ public class ComfortInvoice {
             .addPaymentMeans(new PaymentMeans()
                .setPayerAccount(new FinancialAccount("DE01234.."))
                   .setPayerInstitution(new FinancialInstitution("GENO...")))
-            .setMonetarySummation(new MonetarySummation()
-               .setNetTotal(new Amount(100, EUR))
+            .setMonetarySummation(new TradeMonetarySummation()
+               .setLineTotal(new Amount(100, EUR))
                .setTaxTotal(new Amount(19, EUR))
                .setGrandTotal(new Amount(119, EUR))));
       
       trade.addItem(new Item()
          .setProduct(new Product().setName("Saddle"))
          .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))
-            .setNote(new ReferencedDocumentLine(1,"DOC:0815"))));
+            .setDeliveryNote(new ReferencedDocumentItem(1,"DOC:0815"))));
       invoice.setTrade(trade);
       
       return invoice;

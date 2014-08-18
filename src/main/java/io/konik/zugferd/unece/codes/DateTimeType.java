@@ -50,7 +50,7 @@ public enum DateTimeType {
 //   /** The code "yyyyMMddPP" */
 //   _9("yyyyMMddPP"),
    /** The code " yyyyMMdd'T'HHmm". */
-   _10(" yyyyM'T'HHmm"),
+   _10(" yyyyMMdd'T'HHmm"),
    
    /** The code "yyMMdd". */
    _101("yyMMdd"),

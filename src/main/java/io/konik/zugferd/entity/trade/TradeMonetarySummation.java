@@ -15,13 +15,14 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
-package io.konik.zugferd.entity;
+package io.konik.zugferd.entity.trade;
 
+import io.konik.validator.annotation.Basic;
+import io.konik.zugferd.entity.CommonMonetarySummation;
 import io.konik.zugferd.unqualified.Amount;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -30,80 +31,71 @@ import javax.xml.bind.annotation.XmlType;
  * = The Monetary Summation
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeSettlementMonetarySummationType", propOrder = { "netTotal", "chargeTotal",
-		"allowanceTotal", "taxBasisTotal", "taxTotal", "grandTotal", "totalPrepaid", "totalAllowance","duePayable" })
-//TODO: trade.item.settlement.monetarySummation ONLY lineTotal, allowanceTotal 
-//TODO: trade.settlement.monetarySummation no allowanceTotal
-public class MonetarySummation {
+@XmlType(propOrder = { "lineTotal", "chargeTotal",
+		"allowanceTotal", "taxBasisTotal", "taxTotal", "grandTotal", "totalPrepaid", "duePayable" })
+public class TradeMonetarySummation  extends CommonMonetarySummation{
 
-	/** The "net total" amount. */
+   @Basic
    @Valid
-	@XmlElement(name = "LineTotalAmount")
-	private Amount netTotal;
-
-	/** The charges total amount. */
-   @Valid
+   @NotNull
 	@XmlElement(name = "ChargeTotalAmount")
 	private Amount chargeTotal;
 
-	/** The allowance total amount. */
+   @Basic
    @Valid
+   @NotNull
 	@XmlElement(name = "AllowanceTotalAmount")
 	private Amount allowanceTotal;
 
-	/** The tax basis total amount. The invoice net sum = netTotal + charges - allowance. */
-	@XmlElement(name = "TaxBasisTotalAmount")
-	@Valid
+   @Basic
+   @Valid
+   @NotNull
+   @XmlElement(name = "TaxBasisTotalAmount")
 	private Amount taxBasisTotal;
-
-	/** The total tax amount. */
-	@Valid
+   
+   @Basic
+   @Valid
+   @NotNull
 	@XmlElement(name = "TaxTotalAmount")
 	private Amount taxTotal;
 
-	/** The grand total amount. */
-	@Valid
+   @Basic
+   @Valid
+   @NotNull
 	@XmlElement(name = "GrandTotalAmount")
 	private Amount grandTotal;
-
-	/** The total prepaid amount. */
-	@Valid
+   
+   @Basic
+   @Valid
 	@XmlElement(name = "TotalPrepaidAmount")
 	private Amount totalPrepaid;
-
-   @XmlElement(name = "TotalAllowanceChargeAmount")
-   @Valid
-   private Amount totalAllowance;
    
-	/** The due payable amount. */
-	@Valid
+   @Basic
+   @Valid
 	@XmlElement(name = "DuePayableAmount")
 	private Amount duePayable;
 
 	/**
 	 * Gets the line total amount.
 	 * 
-	 * Profile:: BASIC
-	 * 
-	 * 
 	 * @return the line total amount
 	 */
-	public Amount getNetTotal() {
-		return netTotal;
+	@Override
+	@Basic
+	@NotNull
+   public Amount getLineTotal() {
+		return lineTotal;
 	}
 
 	/**
 	 * Sets the line total amount.
 	 * 
-	 * Profile:: BASIC
-	 * 
-	 * 
-	 * @param netTotal the new line total amount
+	 * @param lineTotal the new line total amount
 	 * @return the trade settlement monetary summation
 	 */
-	public MonetarySummation setNetTotal(Amount netTotal) {
-		this.netTotal = netTotal;
+	@Override
+   public TradeMonetarySummation setLineTotal(Amount lineTotal) {
+		this.lineTotal = lineTotal;
 		return this;
 	}
 
@@ -128,7 +120,7 @@ public class MonetarySummation {
 	 * @param chargeTotal the new charge total amount
 	 * @return the trade settlement monetary summation
 	 */
-	public MonetarySummation setChargeTotal(Amount chargeTotal) {
+	public TradeMonetarySummation setChargeTotal(Amount chargeTotal) {
 		this.chargeTotal = chargeTotal;
 		return this;
 	}
@@ -152,7 +144,7 @@ public class MonetarySummation {
 	 * @param allowanceTotal the new allowance total amount
 	 * @return the trade settlement monetary summation
 	 */
-	public MonetarySummation setAllowanceTotal(Amount allowanceTotal) {
+	public TradeMonetarySummation setAllowanceTotal(Amount allowanceTotal) {
 		this.allowanceTotal = allowanceTotal;
 		return this;
 	}
@@ -171,6 +163,7 @@ public class MonetarySummation {
 
 	/**
 	 * Sets the tax basis total amount.
+	 * 
 	 * The invoice net sum = netTotal + charges - allowence.
 	 * 
 	 * Profile:: BASIC
@@ -178,7 +171,7 @@ public class MonetarySummation {
 	 * @param taxBasisTotal the new tax basis total amount
 	 * @return the trade settlement monetary summation
 	 */
-	public MonetarySummation setTaxBasisTotal(Amount taxBasisTotal) {
+	public TradeMonetarySummation setTaxBasisTotal(Amount taxBasisTotal) {
 		this.taxBasisTotal = taxBasisTotal;
 		return this;
 	}
@@ -202,7 +195,7 @@ public class MonetarySummation {
 	 * @param taxTotal the new tax total amount
 	 * @return the trade settlement monetary summation
 	 */
-	public MonetarySummation setTaxTotal(Amount taxTotal) {
+	public TradeMonetarySummation setTaxTotal(Amount taxTotal) {
 		this.taxTotal = taxTotal;
 		return this;
 	}
@@ -227,7 +220,7 @@ public class MonetarySummation {
 	 * @param grandTotal the new grand total amount
 	 * @return the trade settlement monetary summation
 	 */
-	public MonetarySummation setGrandTotal(Amount grandTotal) {
+	public TradeMonetarySummation setGrandTotal(Amount grandTotal) {
 		this.grandTotal = grandTotal;
 		return this;
 	}
@@ -253,28 +246,11 @@ public class MonetarySummation {
 	 * @param totalPrepaid the new total prepaid amount
 	 * @return the trade settlement monetary summation
 	 */
-	public MonetarySummation setTotalPrepaid(Amount totalPrepaid) {
+	public TradeMonetarySummation setTotalPrepaid(Amount totalPrepaid) {
 		this.totalPrepaid = totalPrepaid;
 		return this;
 	}
 	
-	/**
-    * Gets the total allowance.
-    *
-    * @return the total allowance
-    */
-	public Amount getTotalAllowance() {
-      return totalAllowance;
-   }
-
-   /**
-    * Sets the total allowance.
-    *
-    * @param totalAllowance the total allowance
-    */
-   public void setTotalAllowance(Amount totalAllowance) {
-      this.totalAllowance = totalAllowance;
-   }
 
    /**
 	 * Gets the due payable amount.
@@ -295,7 +271,7 @@ public class MonetarySummation {
 	 * @param duePayable the new due payable amount
 	 * @return the trade settlement monetary summation
 	 */
-	public MonetarySummation setDuePayable(Amount duePayable) {
+	public TradeMonetarySummation setDuePayable(Amount duePayable) {
 		this.duePayable = duePayable;
 		return this;
 	}

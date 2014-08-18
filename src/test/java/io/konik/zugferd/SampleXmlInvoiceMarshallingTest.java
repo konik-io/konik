@@ -30,18 +30,18 @@ import org.junit.Test;
 @SuppressWarnings("javadoc")
 public class SampleXmlInvoiceMarshallingTest {
 
-	@Test
-	public void marshalSampleInvoice() throws JAXBException {
-	   //prep
-		Invoice invoice = InvoiceLoaderUtils.loadInvoice();
-
-		Marshaller marshaller = InvoiceLoaderUtils.createZfMarshaller();
-
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-		marshaller.marshal(new ObjectFactory().createInvoice(invoice), os);
-		String xmlString = os.toString();
-
-		assertTrue(xmlString.length() > 0);
-		// new FileOutputStream("out.xml").write(xmlString.getBytes());
-	}
+//	@Test
+//	public void marshalSampleInvoice() throws JAXBException {
+//	   //prep
+//		Invoice invoice = InvoiceLoaderUtils.loadInvoice();
+//
+//		Marshaller marshaller = InvoiceLoaderUtils.createZfMarshaller();
+//
+//		ByteArrayOutputStream os = new ByteArrayOutputStream();
+//		marshaller.marshal(new ObjectFactory().createInvoice(invoice), os);
+//		String xmlString = os.toString();
+//
+//		assertTrue(xmlString.length() > 0);
+//		// new FileOutputStream("out.xml").write(xmlString.getBytes());
+//	}
 }

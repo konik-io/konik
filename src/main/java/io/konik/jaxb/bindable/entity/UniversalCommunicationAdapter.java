@@ -16,11 +16,10 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package io.konik.jaxb.adapter;
+package io.konik.jaxb.bindable.entity;
 
 import static io.konik.util.Strings.isNotEmpty;
 import static io.konik.util.Strings.isNullOrEmpty;
-import io.konik.jaxb.bindable.entity.UniversalCommunication;
 
 import java.util.regex.Pattern;
 

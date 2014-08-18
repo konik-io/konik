@@ -19,9 +19,9 @@ package io.konik.zugferd.entity.trade;
 
 import io.konik.zugferd.entity.CommonDelivery;
 import io.konik.zugferd.entity.Consignment;
-import io.konik.zugferd.entity.Event;
 import io.konik.zugferd.entity.ReferencedDocument;
 import io.konik.zugferd.entity.TradeParty;
+import io.konik.zugferd.unqualified.ZfDate;
 
 import java.util.List;
 
@@ -35,8 +35,8 @@ import javax.xml.bind.annotation.XmlType;
  * = The trade delivery information.
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = { "relatedConsignment", "shipTo", "ultimateShipTo","shipFrom", "actualDelivery", "despatchAdvice", "note" })
-public class Delivery extends CommonDelivery<ReferencedDocument> {
+@XmlType(propOrder = { "relatedConsignment", "shipTo", "ultimateShipTo","shipFrom", "actualDelivery", "despatchAdvice", "deliveryNote" })
+public class TradeDelivery extends CommonDelivery<ReferencedDocument> {
 
    @Valid
    @XmlElement(name = "RelatedSupplyChainConsignment")
@@ -52,9 +52,9 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
    
    @Valid
    @XmlElement(name = "DeliveryNoteReferencedDocument")
-   private ReferencedDocument note;
+   private ReferencedDocument deliveryNote;
 
-   Delivery() {
+   TradeDelivery() {
       super();
    }
 
@@ -63,7 +63,7 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
     * 
     * @param actualDelivery
     */
-   public Delivery(Event actualDelivery) {
+   public TradeDelivery(ZfDate actualDelivery) {
       super();
       setActualDelivery(actualDelivery);
    }
@@ -83,7 +83,7 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
     * @param relatedConsignment the related consignment
     * @return the trade delivery
     */
-   public Delivery setRelatedConsignment(List<Consignment> relatedConsignment) {
+   public TradeDelivery setRelatedConsignment(List<Consignment> relatedConsignment) {
       this.relatedConsignment = relatedConsignment;
       return this;
    }
@@ -103,53 +103,35 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
     * @param shipFrom the ship from
     * @return the trade delivery
     */
-   public Delivery setShipFrom(TradeParty shipFrom) {
+   public TradeDelivery setShipFrom(TradeParty shipFrom) {
       this.shipFrom = shipFrom;
       return this;
    }
 
-   /**
-    * Gets the despatch advice.
-    *
-    * @return the despatch advice
-    */
+   
    @Override
    public ReferencedDocument getDespatchAdvice() {
       return despatchAdvice;
    }
 
-   /**
-    * Sets the despatch advice.
-    *
-    * @param despatchAdvice the despatch advice
-    * @return the trade delivery
-    */
+
    @Override
-   public Delivery setDespatchAdvice(ReferencedDocument despatchAdvice) {
+   public TradeDelivery setDespatchAdvice(ReferencedDocument despatchAdvice) {
       this.despatchAdvice = despatchAdvice;
       return this;
 
    }
 
-   /**
-    * Gets the note.
-    *
-    * @return the note
-    */
+   
    @Override
-   public ReferencedDocument getNote() {
-      return note;
+   public ReferencedDocument getDeliveryNote() {
+      return deliveryNote;
    }
 
-   /**
-    * Sets the note.
-    *
-    * @param note the note
-    * @return the trade delivery
-    */
+
    @Override
-   public Delivery setNote(ReferencedDocument note) {
-      this.note = note;
+   public TradeDelivery setDeliveryNote(ReferencedDocument deliveryNote) {
+      this.deliveryNote = deliveryNote;
       return this;
    }
 

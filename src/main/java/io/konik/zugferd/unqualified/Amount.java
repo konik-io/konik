@@ -46,7 +46,6 @@ public class Amount {
    @XmlAttribute(name = "currencyID")
    private CurrencyCode currency;
 
-   /** Instantiates a new amount. */
    Amount() {
    }
 

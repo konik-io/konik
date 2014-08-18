@@ -23,7 +23,6 @@ import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
-import io.konik.validator.NotBlankValidator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

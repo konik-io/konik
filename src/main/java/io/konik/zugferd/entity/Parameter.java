@@ -17,9 +17,8 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.NullableNotBlank;
+import io.konik.validator.annotation.NotBlank;
 
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -28,36 +27,32 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * The ZUGFeRD full Profile Name
- * 
- * Construction schema. namespace:version:[basic, comfort or extended]
- * 
- * Example:: urn:ferd:invoice:rce:extended
+ * The parameter type used in document context.
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentContextParameterType", propOrder = { "id" })
 public class Parameter {
 
-   @NotNull @NullableNotBlank
+   @NotBlank
    @XmlElement(name = "ID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private final String id;
    
    /**
-    * Instantiates a new profile.
+    * Instantiates a new parameter.
     */
    Parameter() {
       this.id = null;
    }
    
    /**
-    * Instantiates a new profile.
+    * Instantiates a new parameter.
     *
-    * @param value the text parameter
+    * @param parameterValue the text parameter
     */
-   public Parameter(String value) {
-      this.id = value;
+   public Parameter(String parameterValue) {
+      this.id = parameterValue;
    }
 
    /**
@@ -65,11 +60,7 @@ public class Parameter {
     *
     * @return the value
     */
-   public String getValue() {
+   public String getId() {
       return id;
    }
-
-  
- 
-
 }

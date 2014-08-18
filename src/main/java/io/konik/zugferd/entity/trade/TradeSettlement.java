@@ -17,18 +17,26 @@
  */
 package io.konik.zugferd.entity.trade;
 
-import io.konik.zugferd.entity.AccountingAccount;
-import io.konik.zugferd.entity.CommonSettlement;
+import io.konik.jaxb.bindable.entity.AccountingAccountAdapter;
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.LogisticsServiceCharge;
-import io.konik.zugferd.entity.MonetarySummation;
 import io.konik.zugferd.entity.PaymentMeans;
 import io.konik.zugferd.entity.PaymentTerm;
 import io.konik.zugferd.entity.Period;
+import io.konik.zugferd.entity.Settlement;
 import io.konik.zugferd.entity.SpecifiedAllowanceCharge;
 import io.konik.zugferd.entity.TradeParty;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import com.neovisionaries.i18n.CurrencyCode;
 
@@ -37,8 +45,58 @@ import com.neovisionaries.i18n.CurrencyCode;
  * 
  * Contains payment and price related information specific to a trade 
  */
-public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummation>{
+@XmlType(propOrder = { "paymentReference", "currency", "invoicee", "payee",
+      "paymentMeans", "tradeTax", "billingPeriod", "allowanceCharge", "serviceCharge", "paymentTerms",
+      "monetarySummation", "receivableBookingReference" })
+public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummation>{
+   
+   @XmlElement(name = "PaymentReference")
+   private String paymentReference; 
 
+   @XmlElement(name = "InvoiceCurrencyCode")
+   private CurrencyCode currency;
+
+   @Valid
+   @XmlElement(name = "InvoiceeTradeParty")
+   private TradeParty invoicee;
+   
+   @Valid
+   @XmlElement(name = "PayeeTradeParty")
+   private TradeParty payee;
+
+   @Valid
+   @XmlElement(name = "SpecifiedTradeSettlementPaymentMeans")
+   private List<PaymentMeans> paymentMeans;
+
+   @Valid
+   @XmlElement(name = "ApplicableTradeTax")
+   private List<TradeTax> tradeTax;
+
+   @Valid
+   @XmlElement(name = "BillingSpecifiedPeriod")
+   private Period billingPeriod;
+
+   @Valid
+   @XmlElement(name = "SpecifiedTradeAllowanceCharge")
+   private List<SpecifiedAllowanceCharge> allowanceCharge; 
+
+   @Valid
+   @XmlElement(name = "SpecifiedLogisticsServiceCharge")
+   private List<LogisticsServiceCharge> serviceCharge;
+
+   @Valid
+   @XmlElement(name = "SpecifiedTradePaymentTerms")
+   private List<PaymentTerm> paymentTerms;
+
+   @Valid
+   @XmlElement(name = "SpecifiedTradeSettlementMonetarySummation")
+   private TradeMonetarySummation monetarySummation;
+   
+   @XmlElement(name = "ReceivableSpecifiedTradeAccountingAccount")
+   @XmlJavaTypeAdapter(AccountingAccountAdapter.class)
+   private String receivableBookingReference;
+   
+   
    /**
     * Gets the payment reference.
     * 
@@ -72,17 +130,16 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
     /**
     * Gets the invoice currency code
     * specifiedBookingReference
-    * Profile:: BASIC.
     *
     * @return the +ISO 4217 3A+ currency code
     */
+   @Basic
    public CurrencyCode getCurrency() {
       return currency;
    }
 
    /**
     * Sets the invoice currency code.
-    * Profile:: BASIC
     *
     * @param currency the new currency
     * @return the trade settlement
@@ -96,11 +153,9 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
    /**
     * Gets the invoicee trade party.
     * 
-    * Profile:: COMFORT
-    * 
-    *
     * @return the invoicee trade party
     */
+   @Comfort
    public TradeParty getInvoicee() {
       return invoicee;
    }
@@ -109,7 +164,6 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
     * Sets the invoicee trade party.
     * 
     * Profile:: COMFORT
-    * 
     *
     * @param invoicee the new invoicee trade party
     * @return the supply chain trade settlement
@@ -191,11 +245,10 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
    /**
     * Gets the billing specified period.
     * 
-    * Profile:: COMFORT
-    * 
-    *
     * @return the billing specified period
     */
+   
+   @Comfort
    @Override
    public Period getBillingPeriod() {
       return billingPeriod;
@@ -204,9 +257,6 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
    /**
     * Sets the billing specified period.
     * 
-    * Profile:: COMFORT
-    * 
-    *
     * @param billingPeriod the new billing specified period
     * @return the supply chain trade settlement
     */
@@ -219,11 +269,9 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
    /**
     * Gets the trade allowance charge.
     * 
-    * Profile:: COMFORT
-    * 
-    *
     * @return the specified trade allowance charge
     */
+   @Comfort
    public List<SpecifiedAllowanceCharge> getAllowanceCharge() {
       if (allowanceCharge == null) {
          allowanceCharge = new ArrayList<SpecifiedAllowanceCharge>();
@@ -234,12 +282,10 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
    /**
     * Adds the trade allowance charge.
     * 
-    * Profile:: COMFORT
-    * 
-    *
     * @param additionalAllowanceCharge an additional allowance charge
     * @return the trade settlement
     */
+   @Comfort
    public TradeSettlement addAllowanceCharge(SpecifiedAllowanceCharge additionalAllowanceCharge) {
       getAllowanceCharge().add(additionalAllowanceCharge);
       return this;
@@ -248,11 +294,9 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
    /**
     * Gets the specified logistics service charge.
     * 
-    * Profile:: COMFORT
-    * 
-    *
     * @return the specified logistics service charge
     */
+   @Comfort
    public List<LogisticsServiceCharge> getServiceCharge() {
       if (serviceCharge == null) {
          serviceCharge = new ArrayList<LogisticsServiceCharge>();
@@ -263,12 +307,10 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
    /**
     * Adds the specified logistics service charge.
     * 
-    * Profile:: COMFORT
-    * 
-    *
     * @param logisticsServiceCharge the logistics service charge
     * @return the trade settlement
     */
+   @Comfort
    public TradeSettlement addServiceCharge(LogisticsServiceCharge logisticsServiceCharge) {
       getServiceCharge().add(logisticsServiceCharge);
       return this;
@@ -277,11 +319,9 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
    /**
     * Gets the specified trade payment terms.
     * 
-    * Profile:: COMFORT
-    * 
-    *
     * @return the specified trade payment terms
     */
+   @Comfort
    public List<PaymentTerm> getPaymentTerms() {
       if (paymentTerms == null) {
          paymentTerms = new ArrayList<PaymentTerm>();
@@ -291,11 +331,12 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
 
    /**
     * Adds a Payment Term
-    * Profile:: COMFORT.
+    * 
     *
     * @param additionalPaymentTerm the additional payment term
     * @return the trade settlement
     */
+   @Comfort
    public TradeSettlement addPaymentTerm(PaymentTerm additionalPaymentTerm) {
       getPaymentTerms().add(additionalPaymentTerm);
       return this;
@@ -304,38 +345,35 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
    /**
     * Gets the trade settlement monetary summation.
     * 
-    * Profile:: BASIC
-    * 
-    *
     * @return the specified trade settlement monetary summation
     */
+   @NotNull
+   @Basic
    @Override
-   public MonetarySummation getMonetarySummation() {
+   public TradeMonetarySummation getMonetarySummation() {
       return monetarySummation;
    }
 
    /**
     * Sets the trade settlement monetary summation.
     * 
-    * Profile:: BASIC
-    * 
-    *
     * @param monetarySummation the new monetary summation
     * @return the supply chain trade settlement
     */
+   @Basic
    @Override
-   public TradeSettlement setMonetarySummation(MonetarySummation monetarySummation) {
+   public TradeSettlement setMonetarySummation(TradeMonetarySummation monetarySummation) {
       this.monetarySummation = monetarySummation;
       return this;
    }
 
    /**
     * Gets the booking reference account.
-    * Profile:: EXTENDED
     *
     * @return the account of the booking reference
     */
-   public AccountingAccount getReceivableBookingReference() {
+   @Extended
+   public String getReceivableBookingReference() {
       return receivableBookingReference;
    }
 
@@ -346,7 +384,7 @@ public class TradeSettlement extends CommonSettlement<TradeTax, MonetarySummatio
     * @param bookingReference the booking reference account.
     * @return the trade
     */
-   public TradeSettlement setReceivableBookingReference(AccountingAccount bookingReference) {
+   public TradeSettlement setReceivableBookingReference(String bookingReference) {
       this.receivableBookingReference = bookingReference;
       return this;
    }

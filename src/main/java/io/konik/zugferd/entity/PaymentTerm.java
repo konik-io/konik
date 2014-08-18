@@ -18,7 +18,7 @@
 package io.konik.zugferd.entity;
 
 import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.DateTime;
+import io.konik.zugferd.unqualified.ZfDate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +42,7 @@ public class PaymentTerm {
 
 	@Valid
 	@XmlElement(name = "DueDateDateTime")
-	private DateTime due;
+	private ZfDate due;
 
    @XmlElement(name = "PartialPaymentAmount")
    @Valid
@@ -54,7 +54,7 @@ public class PaymentTerm {
 
    @Valid
    @XmlElement(name = "ApplicableTradePaymentDiscountTerms")
-   private PaymentDiscountTerm discount;
+   private PaymentDiscountTerms discount;
 
 	/**
 	 * Gets the description.
@@ -85,7 +85,7 @@ public class PaymentTerm {
 	 * 
 	 * @return the due date time
 	 */
-	public DateTime getDue() {
+	public ZfDate getDue() {
 		return due;
 	}
 
@@ -95,7 +95,7 @@ public class PaymentTerm {
     * @param due the new due date time
     * @return the payment term
     */
-	public PaymentTerm setDue(DateTime due) {
+	public PaymentTerm setDue(ZfDate due) {
 		this.due = due;
 		return this;
 	}
@@ -153,7 +153,7 @@ public class PaymentTerm {
     *
     * @return the discount
     */
-   public PaymentDiscountTerm getDiscount() {
+   public PaymentDiscountTerms getDiscount() {
       return discount;
    }
 
@@ -164,7 +164,7 @@ public class PaymentTerm {
     * @param discount the new discount
     * @return 
     */
-   public PaymentTerm setDiscount(PaymentDiscountTerm discount) {
+   public PaymentTerm setDiscount(PaymentDiscountTerms discount) {
       this.discount = discount;
       return this;
    }

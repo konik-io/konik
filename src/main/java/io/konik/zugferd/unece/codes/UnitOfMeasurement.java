@@ -65,7 +65,7 @@ public enum UnitOfMeasurement {
    MINUTE("MIN", "Minute (min)"),
 
    /** The square millimeter (mm2). */
-   MILLIMETER_SQUARE("MMK,", "square millimeter (mm2)"),
+   MILLIMETER_SQUARE("MMK", "square millimeter (mm2)"),
 
    /** The Millimeter (mm). */
    MILLIMETER("MMT", "Millimeter (mm)"),

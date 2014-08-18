@@ -25,13 +25,24 @@
       @XmlNs(prefix = "ram", namespaceURI = "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12") 
       }
 )
-@XmlJavaTypeAdapters({ @XmlJavaTypeAdapter(value = CountryAdapter.class, type = TradeCountry.class) })
+@XmlJavaTypeAdapters({ 
+   @XmlJavaTypeAdapter(value = CountryAdapter.class, type = TradeCountry.class), 
+   @XmlJavaTypeAdapter(value = DateTimeAdapter.class,type = DateTime.class),
+   @XmlJavaTypeAdapter(value = AmountLowRoundingAdapter.class, type = Amount.class),
+})
+@XmlAccessorType(NONE)
 package io.konik.zugferd.entity;
 
+import static javax.xml.bind.annotation.XmlAccessType.NONE;
 import static javax.xml.bind.annotation.XmlNsForm.QUALIFIED;
+import io.konik.jaxb.adapter.AmountLowRoundingAdapter;
 import io.konik.jaxb.adapter.CountryAdapter;
 import io.konik.jaxb.bindable.entity.TradeCountry;
+import io.konik.jaxb.bindable.unqualified.DateTime;
+import io.konik.jaxb.bindable.unqualified.DateTimeAdapter;
+import io.konik.zugferd.unqualified.Amount;
 
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlNs;
 import javax.xml.bind.annotation.XmlSchema;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;

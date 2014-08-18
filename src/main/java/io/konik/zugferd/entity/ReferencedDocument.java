@@ -18,15 +18,14 @@
 package io.konik.zugferd.entity;
 
 import io.konik.jaxb.adapter.IssueDateTimeAdapter;
-import io.konik.zugferd.entity.trade.item.ReferencedDocumentLine;
+import io.konik.validator.annotation.Comfort;
 
 import java.util.Date;
 
-import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -37,19 +36,16 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * References a external Document.
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(name = "ReferencedDocumentType",propOrder = { "issued", "linePos", "typeCode", "id", "referenceTypeCode" })
-@XmlSeeAlso({ReferencedDocumentLine.class})
+@XmlType(name = "ReferencedDocumentType",propOrder = { "issued", "linePos", "typeCode", "id", "referenceType" })
 public class ReferencedDocument {
 
    @XmlElement(name = "IssueDateTime")
    @XmlJavaTypeAdapter(value = IssueDateTimeAdapter.class)
    private Date issued;
 
-   @Valid
    @XmlElement(name = "LineID")
    protected String linePos;
 
-   @Valid
    @XmlElement(name = "TypeCode")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    protected String typeCode;
@@ -58,10 +54,9 @@ public class ReferencedDocument {
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String id;
 
-   @Valid
    @XmlElement(name = "ReferenceTypeCode")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-   protected String referenceTypeCode;
+   protected String referenceType;
 
    protected ReferencedDocument() {}
 
@@ -119,6 +114,7 @@ public class ReferencedDocument {
     * 
     * @return the id the identifier of the referenced document
     */
+   @NotNull(groups=Comfort.class)
    public String getId() {
       return id;
    }

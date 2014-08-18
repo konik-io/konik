@@ -18,6 +18,8 @@
  */
 package io.konik.zugferd.unece.codes;
 
+import static io.konik.util.Strings.isNullOrEmpty;
+
 /**
  * = The Reference code qualifier
  * 
@@ -6111,6 +6113,9 @@ public enum Reference {
     * @return the type by code
     */
    public static Reference getByCode(String enumCode) {
+      if (isNullOrEmpty(enumCode)) {
+         return null;
+      }
       return valueOf(enumCode);
    }
    

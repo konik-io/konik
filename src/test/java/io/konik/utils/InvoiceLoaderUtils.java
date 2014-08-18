@@ -50,25 +50,25 @@ public class InvoiceLoaderUtils {
    }
    
    
-   public static Invoice loadInvoice() throws JAXBException{
-      Unmarshaller unmarshaller = newInstance("io.konik.zugferd").createUnmarshaller();
-      JAXBElement<Invoice> invoice = unmarshaller.unmarshal(loadZfBasicXmlInvoice(), Invoice.class);
-      assertNotNull(invoice);
-      assertNotNull(invoice.getValue());
-      return invoice.getValue();
-   }
+//   public static Invoice loadInvoice() throws JAXBException{
+//      Unmarshaller unmarshaller = newInstance("io.konik.zugferd").createUnmarshaller();
+//      JAXBElement<Invoice> invoice = unmarshaller.unmarshal(loadZfBasicXmlInvoice(), Invoice.class);
+//      assertNotNull(invoice);
+//      assertNotNull(invoice.getValue());
+//      return invoice.getValue();
+//   }
    
-   public static InputStream loadZfBasicXmlInvoiceAsStream() {
-      InputStream is = InvoiceLoaderUtils.class.getResourceAsStream(ZF_MUSTERRECHNUNG_EINFACH_XML);
-      assertNotNull(is);
-      return is;
-   }
+//   public static InputStream loadZfBasicXmlInvoiceAsStream() {
+//      InputStream is = InvoiceLoaderUtils.class.getResourceAsStream(ZF_MUSTERRECHNUNG_EINFACH_XML);
+//      assertNotNull(is);
+//      return is;
+//   }
    
-   public static Source loadZfBasicXmlInvoice() {
-      Source source = new StreamSource(loadZfBasicXmlInvoiceAsStream());
-      assertNotNull(source);
-      return source;
-   }
+//   public static Source loadZfBasicXmlInvoice() {
+//      Source source = new StreamSource(loadZfBasicXmlInvoiceAsStream());
+//      assertNotNull(source);
+//      return source;
+//   }
    
    
    public static Validator getSchemaValidator() throws SAXException {

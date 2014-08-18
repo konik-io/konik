@@ -17,70 +17,31 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.validator.annotation.Comfort;
 import io.konik.zugferd.unece.codes.TaxCategory;
 import io.konik.zugferd.unece.codes.TaxCode;
-import io.konik.zugferd.unqualified.Amount;
 
 import java.math.BigDecimal;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * = The common trade tax
+ * = The trade tax
  * 
- * image::http://yuml.me/d4c0330a[Tax Class diagram,link="http://yuml.me/edit/d4c0330a"]
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeTaxType", propOrder = { "calculated", "type", "exemptionReason","basis", "lineTotal", "allowanceCharge", "category", "percentage" })
-//TODO: Comment
-/* 
-HIRACHY TOP DOWN
-as AppliedTradeTax|CategoryTradeTax only   TypeCode, CategoryCode, ApplicablePercent
-   as ApplicableTradeTax in ITEM             +CalculatedAmount, +ExemptionReason
-      as ApplicableTradeTax in TRADE            +BasisAmount, +LineTotalBasisAmount, +AllowanceChargeBasisAmount
- */
-public class Tax {
-
-	@XmlElement(name = "CalculatedAmount")
-	protected Amount calculated;
-
-   @Valid
-	@XmlElement(name = "TypeCode")
-	private TaxCode type;
-
-	@XmlElement(name = "ExemptionReason")
-	protected String exemptionReason;
-
-	@XmlElement(name = "BasisAmount")
-	protected Amount basis;
-	
-	@XmlElement(name = "LineTotalBasisAmount")
-	protected Amount lineTotal;
-	
-	@XmlElement(name = "AllowanceChargeBasisAmount")
-	protected Amount allowanceCharge;
-
-	@XmlElement(name = "CategoryCode")
-	private TaxCategory category;
-
-	@NotNull
-	@XmlElement(name = "ApplicablePercent")
-	private BigDecimal percentage;
-
+public class Tax extends CommonTax {
 
 	/**
 	 * Gets the UNCL 5153 tax type code.
 	 * 
-	 * Profile:: BASIC
+	 * Profile:: COMFORT
 	 * 
 	 * @return the type code
 	 */
+	@Override
+   @Comfort
+	@NotNull(groups=Comfort.class)
 	public TaxCode getType() {
 		return type;
 	}
@@ -94,8 +55,9 @@ public class Tax {
     * @return the tax
     * @see <a href="http://www.unece.org/trade/untdid/d98b/uncl/uncl5153.htm">UNCL 5153</a>
     */
-	public Tax setType(TaxCode taxTypeCode) {
-		this.type = taxTypeCode;
+	@Override
+   public Tax setType(TaxCode taxTypeCode) {
+		super.setType(taxTypeCode);
 		return this;
 	}
 
@@ -106,6 +68,9 @@ public class Tax {
 	 * 
 	 * @return the category code
 	 */
+	@Override
+   @Comfort
+	@NotNull(groups=Comfort.class)
 	public TaxCategory getCategory() {
 		return category;
 	}
@@ -118,19 +83,20 @@ public class Tax {
     * @param value the new category code
     * @return the tax
     */
-	public Tax setCategory(TaxCategory value) {
-		this.category = value;
-		return this;
+	@Override
+   public Tax setCategory(TaxCategory value) {
+		return (Tax) super.setCategory(value);
 	}
 
 	/**
 	 * Gets the applicable tax percentage.
 	 * 
-	 * Profile:: BASIC
-	 * 
+	 * Profile:: COMFORT
 	 * 
 	 * @return the applicable tax percentage
 	 */
+	@Override
+   @Comfort
 	public BigDecimal getPercentage() {
 		return percentage;
 	}
@@ -143,8 +109,8 @@ public class Tax {
     * @param applicablePercentage the new applicable tax percentage
     * @return the tax
     */
-	public Tax setPercentage(BigDecimal applicablePercentage) {
-		this.percentage = applicablePercentage;
-		return this;
+	@Override
+   public Tax setPercentage(BigDecimal applicablePercentage) {
+		return (Tax) super.setPercentage(applicablePercentage);
 	}
 }

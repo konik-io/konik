@@ -16,31 +16,29 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package io.konik.validator;
+package io.konik.jaxb.bindable.entity;
 
-import io.konik.validator.annotation.ValidAmount;
-import io.konik.zugferd.unqualified.Amount;
+import io.konik.zugferd.unqualified.ZfDate;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+
 
 /**
- * 
- * = The Amount Validator.
- * 
- * Validator for {@link ValidAmount} Annotations.
+ * = The CountryAdapter maps the JaxB trade countries to the Enum ZfDate.
  */
-public class AmountValidator implements ConstraintValidator<ValidAmount,Amount>{
-
+public class SupplyChainEventAdapter extends XmlAdapter<SupplyChainEvent, ZfDate> {
+   
    @Override
-   public void initialize(ValidAmount constraintAnnotation) {
-      // TODO Auto-generated method stub
+   public SupplyChainEvent marshal(ZfDate date) throws Exception {
+      if (date == null) return null;
+      SupplyChainEvent event = new SupplyChainEvent();
+      event.occurrence = date;
+      return event;
    }
 
    @Override
-   public boolean isValid(Amount value, ConstraintValidatorContext context) {
-      // TODO Auto-generated method stub
-      return false;
+   public ZfDate unmarshal(SupplyChainEvent event) throws Exception {
+      if (event == null) return null;
+      return event.occurrence;
    }
-
 }

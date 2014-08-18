@@ -18,8 +18,8 @@
 package io.konik.zugferd.entity.trade.item;
 
 import io.konik.zugferd.entity.CommonDelivery;
-import io.konik.zugferd.entity.Event;
 import io.konik.zugferd.unqualified.Quantity;
+import io.konik.zugferd.unqualified.ZfDate;
 
 import java.util.List;
 
@@ -35,9 +35,9 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * Profile:: EXTENDED
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = { "billed", "chargeFree","packageQuantity", "shipTo", "ultimateShipTo", "actualDelivery", "despatchAdvice","receivingAdvice", "note" })
-public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentLine>{
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = { "billed", "chargeFree","packageQuantity", "shipTo", "ultimateShipTo", "actualDelivery", "despatchAdvice","receivingAdvice", "deliveryNote" })
+public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem>{
 
    @Valid
    @NotNull
@@ -54,15 +54,15 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentLine>{
 
    @Valid
    @XmlElement(name = "DespatchAdviceReferencedDocument")
-   private ReferencedDocumentLine despatchAdvice;
-   
+   private ReferencedDocumentItem despatchAdvice;
+
    @Valid
    @XmlElement(name = "ReceivingAdviceReferencedDocument")
-   private List<ReferencedDocumentLine> receivingAdvice;
+   private List<ReferencedDocumentItem> receivingAdvice;
 
    @Valid
    @XmlElement(name = "DeliveryNoteReferencedDocument")
-   private ReferencedDocumentLine note;
+   private ReferencedDocumentItem deliveryNote;
 
    /** Instantiates a new trade delivery. */
    public SpecifiedDelivery() {
@@ -89,7 +89,7 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentLine>{
     * @param billed the billed
     * @param actualDelivery the actual delivery
     */
-   public SpecifiedDelivery(Quantity billed, Event actualDelivery)  {
+   public SpecifiedDelivery(Quantity billed, ZfDate actualDelivery)  {
       super();
       this.billed = billed;
       setActualDelivery(actualDelivery);
@@ -160,25 +160,14 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentLine>{
       return this;
    }
 
-   /**
-    * Gets the despatch advice.
-    *
-    * @return the despatch advice
-    */
    @Override
-   public ReferencedDocumentLine getDespatchAdvice() {
+   public ReferencedDocumentItem getDespatchAdvice() {
       return despatchAdvice;
    }
    
-   /**
-    * Sets the despatch advice.
-    *
-    * @param despatchAdvice the despatch advice
-    * @return the trade delivery
-    */
    @Override
-   public SpecifiedDelivery setDespatchAdvice(ReferencedDocumentLine despatchAdvice) {
-      this.despatchAdvice=despatchAdvice;
+   public SpecifiedDelivery setDespatchAdvice(ReferencedDocumentItem despatchAdvice) {
+      this.despatchAdvice = despatchAdvice;
       return this;
    }
    
@@ -187,7 +176,7 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentLine>{
     *
     * @return the receiving advice
     */
-   public List<ReferencedDocumentLine> getReceivingAdvice() {
+   public List<ReferencedDocumentItem> getReceivingAdvice() {
       return receivingAdvice;
    }
 
@@ -197,30 +186,19 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentLine>{
     * @param receivingAdvice the receiving advice
     * @return the item delivery
     */
-   public SpecifiedDelivery setReceivingAdvice(List<ReferencedDocumentLine> receivingAdvice) {
+   public SpecifiedDelivery setReceivingAdvice(List<ReferencedDocumentItem> receivingAdvice) {
       this.receivingAdvice = receivingAdvice;
       return this;
    }
 
-   /**
-    * Gets the note.
-    *
-    * @return the note
-    */
    @Override
-   public ReferencedDocumentLine getNote() {
-      return note;
+   public ReferencedDocumentItem getDeliveryNote() {
+      return deliveryNote;
    }
-   
-   /**
-    * Sets the note.
-    *
-    * @param note the note
-    * @return the trade delivery
-    */
+
    @Override
-   public SpecifiedDelivery setNote(ReferencedDocumentLine note) {
-      this.note=note;
+   public SpecifiedDelivery setDeliveryNote(ReferencedDocumentItem deliveryNote) {
+      this.deliveryNote = deliveryNote;
       return this;
    }
 }

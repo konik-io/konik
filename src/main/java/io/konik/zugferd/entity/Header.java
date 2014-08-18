@@ -18,10 +18,11 @@
 package io.konik.zugferd.entity;
 
 import io.konik.jaxb.adapter.PeriodCompleteToDateTimeAdapter;
+import io.konik.validator.annotation.Extended;
 import io.konik.validator.annotation.NullableNotBlank;
 import io.konik.zugferd.unece.codes.DocumentCode;
-import io.konik.zugferd.unqualified.DateTime;
 import io.konik.zugferd.unqualified.Indicator;
+import io.konik.zugferd.unqualified.ZfDate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ import com.neovisionaries.i18n.LanguageCode;
  * = The Invoice Document Header
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ExchangedDocumentType", propOrder = { "invoiceNumber", "name", "code", "issued", "copy","languages", "notes","effective" })
+@XmlType(name = "ExchangedDocumentType", propOrder = { "invoiceNumber", "name", "code", "issued", "copy","languages", "notes", "contractualDueDate" })
 public class Header {
    
    @NotNull @NullableNotBlank
@@ -59,7 +60,7 @@ public class Header {
 
    @XmlElement(name = "IssueDateTime")
    @NotNull @Valid
-   private DateTime issued;
+   private ZfDate issued;
    
    @XmlElement(name = "CopyIndicator")
    private Indicator copy;
@@ -71,10 +72,10 @@ public class Header {
    @XmlElement(name = "IncludedNote")
    private List<Note> notes;
 
-   @Valid
+   @Valid @Extended
    @XmlElement(name = "EffectiveSpecifiedPeriod")
    @XmlJavaTypeAdapter(value = PeriodCompleteToDateTimeAdapter.class)
-   protected DateTime effective;
+   private ZfDate contractualDueDate;
 
    /**
     * Gets the invoice number.
@@ -174,7 +175,7 @@ public class Header {
     * 
     * @return the issue date time
     */
-   public DateTime getIssued() {
+   public ZfDate getIssued() {
       return issued;
    }
 
@@ -187,7 +188,7 @@ public class Header {
     * @param issued the new issue date time
     * @return the exchanged document
     */
-   public Header setIssued(DateTime issued) {
+   public Header setIssued(ZfDate issued) {
       this.issued = issued;
       return this;
    }
@@ -218,17 +219,16 @@ public class Header {
    /**
     * Adds a invoice header note.
     * 
-    * Profile:: 
+    * Profile::
     * - {@link Note#getContent()}: BASIC
     * - {@link Note#getSubjectCode()}: COMFORT
     * 
-    * Example:: 
-    * - {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.}
-    * - {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
-    * 
-    * 
+    * Example::
+    * - {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.} -
+    * {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
+    *
     * @param note the note
-    * @return the exchanged document
+    * @return the header
     */
    public Header addNote(Note note) {
       getNotes().add(note);
@@ -236,22 +236,23 @@ public class Header {
    }
 
    /**
-    * Gets the effective or due date of the invoice
+    * Gets the contractual due date.
     *
-    * @return effective the effective or due date
+    * @return the contractual due date
     */
-   public DateTime getEffective() {
-      return effective;
+   public ZfDate getContractualDueDate() {
+      return contractualDueDate;
    }
 
+ 
    /**
-    * Sets the effective or due date of the invoice.
+    * Sets the contractual due date.
     *
-    * @param effective the effective or due date
+    * @param contractualDueDate the contractual due date
     * @return the header
     */
-   public Header setEffective(DateTime effective) {
-      this.effective = effective;
+   public Header setContractualDueDate(ZfDate contractualDueDate) {
+      this.contractualDueDate = contractualDueDate;
       return this;
    }
    

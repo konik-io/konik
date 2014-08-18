@@ -18,8 +18,8 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.entity.trade.Agreement;
-import io.konik.zugferd.entity.trade.Delivery;
+import io.konik.zugferd.entity.trade.TradeAgreement;
+import io.konik.zugferd.entity.trade.TradeDelivery;
 import io.konik.zugferd.entity.trade.TradeSettlement;
 
 import java.util.ArrayList;
@@ -44,11 +44,11 @@ public class Trade {
 
    @NotNull @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeAgreement")
-	private Agreement agreement;
+	private TradeAgreement agreement;
 
    @NotNull @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeDelivery")
-	private Delivery delivery;
+	private TradeDelivery delivery;
 
    @NotNull @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeSettlement")
@@ -63,7 +63,7 @@ public class Trade {
     *
     * @return the agreement
     */
-	public Agreement getAgreement() {
+	public TradeAgreement getAgreement() {
       return agreement;
    }
 
@@ -73,7 +73,7 @@ public class Trade {
     * @param agreement the new agreement
     * @return the trade
     */
-   public Trade setAgreement(Agreement agreement) {
+   public Trade setAgreement(TradeAgreement agreement) {
       this.agreement = agreement;
       return this;
    }
@@ -83,7 +83,7 @@ public class Trade {
 	 * 
 	 * @return the trade delivery
 	 */
-	public Delivery getDelivery() {
+	public TradeDelivery getDelivery() {
 		return delivery;
 	}
 
@@ -93,7 +93,7 @@ public class Trade {
 	 * @param delivery the new trade delivery
 	 * @return the trade 
 	 */
-	public Trade setDelivery(Delivery delivery) {
+	public Trade setDelivery(TradeDelivery delivery) {
 		this.delivery = delivery;
 		return this;
 	}

@@ -19,14 +19,16 @@ package io.konik.validator.annotation;
 
 import java.lang.annotation.Documented;
 
+import javax.validation.GroupSequence;
+import javax.validation.groups.Default;
+
 /**
  * 
  * Indicates that the property or method is only supported for Extended invoices.
  * 
  */
 @Documented
-@Basic
-@Comfort
-public @interface Extended {
+@GroupSequence({ Default.class, Comfort.class})
+public @interface Extended  {
 
 }

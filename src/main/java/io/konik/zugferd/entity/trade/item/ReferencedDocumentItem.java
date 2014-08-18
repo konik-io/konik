@@ -20,16 +20,14 @@ package io.konik.zugferd.entity.trade.item;
 import io.konik.zugferd.entity.ReferencedDocument;
 
 /**
- * =The Referenced Document with line position information.
- * 
- * References a external Document.
+ * = The external referenced document with line item position information.
  */
-public class ReferencedDocumentLine extends ReferencedDocument{
+public class ReferencedDocumentItem extends ReferencedDocument{
 
    /**
     * The JAXB Constructor.
     */
-   public ReferencedDocumentLine() {
+   public ReferencedDocumentItem() {
    }
    
    /**
@@ -38,13 +36,13 @@ public class ReferencedDocumentLine extends ReferencedDocument{
     * @param linePosition the line position number
     * @param identifier the identifier value this document refers to
     */
-   public ReferencedDocumentLine(int linePosition, String identifier) {
+   public ReferencedDocumentItem(int linePosition, String identifier) {
       super(identifier);
       setLinePos(String.valueOf(linePosition));
    }
    
    /**
-    * Gets the line pos.
+    * Gets the line position.
     *
     * @return the line id
     */
@@ -53,12 +51,12 @@ public class ReferencedDocumentLine extends ReferencedDocument{
    }
 
    /**
-    * Sets the line pos.
+    * Sets the line position.
     *
-    * @param linePos the line id
-    * @return 
+    * @param linePos the line position number
+    * @return the referenced document item
     */
-   public ReferencedDocumentLine setLinePos(String linePos) {
+   public ReferencedDocumentItem setLinePos(String linePos) {
       this.linePos = linePos;
       return this;
    }

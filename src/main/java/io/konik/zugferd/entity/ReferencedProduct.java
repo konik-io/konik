@@ -19,7 +19,6 @@
 package io.konik.zugferd.entity;
 
 import io.konik.validator.annotation.Extended;
-import io.konik.validator.annotation.NotBlank;
 import io.konik.validator.annotation.NotEmpty;
 import io.konik.zugferd.unqualified.ID;
 import io.konik.zugferd.unqualified.Quantity;

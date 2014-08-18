@@ -17,116 +17,68 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.jaxb.adapter.TradeDeliveryTermsAdapter;
-import io.konik.zugferd.entity.trade.Agreement;
+import io.konik.zugferd.entity.trade.TradeAgreement;
 
 import java.util.List;
 
-import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * = The Agreement
  * 
- * This base agreement class contain only fields. {@link CommonAgreement} and {@link Agreement} provide a different view on the underlying Data,
- * we have this common field structure class because otherwise we would have two +SupplyChainTradeAgreementType+s and this is not allowed in JaxB
+ * This base agreement class contain only fields. {@link CommonAgreement} and {@link TradeAgreement} provide a different view
+ * on the underlying Data,
+ * we have this common field structure class because otherwise we would have two +SupplyChainTradeAgreementType+s and
+ * this is not allowed in JaxB
+ * 
  * @param <REF> the different Referenced Document
+ * @param <ADDREF> additional Referenced Document
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(name = "SupplyChainTradeAgreementType", propOrder = { "buyerReference", "seller", "buyer","productEndUser","deliveryTerms",
-		"buyerOrder", "contract", "additional", "grossPrice", "netPrice", "customerOrder" })
-//@XmlSeeAlso({Agreement.class,SpecifiedAgreement.class})
-public abstract class CommonAgreement<REF extends ReferencedDocument> {
-
-	@XmlElement(name = "BuyerReference")
-	protected String buyerReference;// in trade.agreement only
-
-	@Valid
-	@XmlElement(name = "SellerTradeParty")
-	protected TradeParty seller;// in trade.agreement only
-
-	@Valid
-	@XmlElement(name = "BuyerTradeParty")
-	protected TradeParty buyer;// in trade.agreement only
-
-	@Valid
-	@XmlElement(name = "ProductEndUserTradeParty")
-   protected TradeParty productEndUser;// in trade.agreement only
-
-	@Valid
-	@XmlElement(name = "ApplicableTradeDeliveryTerms")
-	@XmlJavaTypeAdapter(value = TradeDeliveryTermsAdapter.class)
-   protected String deliveryTerms;// in trade.agreement only
-   
-	@Valid
-	@XmlElement(name = "BuyerOrderReferencedDocument",type=ReferencedDocument.class)
-	protected REF buyerOrder;// trade.agreement(IssueDateTime, ID) + item.agreement(LineID)
-
-	@Valid
-	@XmlElement(name = "ContractReferencedDocument", type=ReferencedDocument.class)// trade.agreement(IssueDateTime, ID) + item.agreement(LineID)
-	protected REF contract;
-
-	@Valid
-	@XmlElement(name = "AdditionalReferencedDocument", type=ReferencedDocument.class)
-   protected List<REF> additional;// trade.agreement(IssueDateTime, TypeCode, ID) != item.agreement(IssueDateTime,LineID,ID,ReferenceTypeCode)
-
-	@Valid
-	@XmlElement(name = "GrossPriceProductTradePrice")
-	protected GrossPrice grossPrice;// in item.agreement only
-
-	@Valid
-	@XmlElement(name = "NetPriceProductTradePrice")
-	protected Price netPrice;// in item.agreement only
-
-	@Valid
-	@XmlElement(name = "CustomerOrderReferencedDocument", type=ReferencedDocument.class)
-	protected REF customerOrder;//trade.agreement (IssueDateTime, ID) + item.agreement(LineID)
-
-	/**
-	 * Gets the buyer order referenced document.
-	 *
-	 * @return the buyer order referenced document
-	 */
-	public abstract REF getBuyerOrder();
+@XmlType(name = "SupplyChainTradeAgreementType")
+public interface CommonAgreement<REF extends ReferencedDocument, ADDREF extends ReferencedDocument> {
+   /**
+    * Gets the buyer order referenced document.
+    *
+    * @return the buyer order referenced document
+    */
+   public REF getBuyerOrder();
 
    /**
-	 * Sets the buyer order referenced document.
-	 *
-	 * @param buyerOrder the new buyer order referenced document
-	 * @return the supply chain trade agreement
-	 */
-	public abstract CommonAgreement<REF> setBuyerOrder(REF buyerOrder);
+    * Sets the buyer order referenced document.
+    *
+    * @param buyerOrder the new buyer order referenced document
+    * @return the supply chain trade agreement
+    */
+   public CommonAgreement<REF,ADDREF> setBuyerOrder(REF buyerOrder);
 
-	/**
-	 * Gets the contract referenced document.
-	 * 
-	 * Profile:: COMFORT 
-	 *
-	 * @return the contract referenced document
-	 */
-	public abstract  REF getContract();
+   /**
+    * Gets the contract referenced document.
+    * 
+    * Profile:: COMFORT
+    *
+    * @return the contract referenced document
+    */
+   public REF getContract();
 
-	/**
-	 * Sets the contract referenced document.
-	 * 
-	 * Profile:: COMFORT 
-	 *
-	 * @param contract the new contract referenced document
-	 * @return the supply chain trade agreement
-	 */
-	public abstract  CommonAgreement<REF> setContract(REF contract);
+   /**
+    * Sets the contract referenced document.
+    * 
+    * Profile:: COMFORT
+    *
+    * @param contract the new contract referenced document
+    * @return the supply chain trade agreement
+    */
+   public CommonAgreement<REF,ADDREF> setContract(REF contract);
 
-	/**
+   /**
     * Gets the additional referenced document
     *
     * @return the additional
     */
-	public abstract List<REF> getAdditional();
-	
+   public List<ADDREF> getAdditional();
 
    /**
     * Sets the additional referenced document.
@@ -134,26 +86,25 @@ public abstract class CommonAgreement<REF extends ReferencedDocument> {
     * @param additionalReference the additional reference
     * @return the common agreement
     */
-   public abstract CommonAgreement<REF> addAdditional(REF additionalReference);
-   
+   public CommonAgreement<REF,ADDREF> addAdditional(ADDREF additionalReference);
 
    /**
-	 * Gets the customer order referenced document.
-	 * 
-	 * Profile:: COMFORT 
-	 *
-	 * @return the customer order referenced document
-	 */
-	public abstract  REF getCustomerOrder();
+    * Gets the customer order referenced document.
+    * 
+    * Profile:: COMFORT
+    *
+    * @return the customer order referenced document
+    */
+   public REF getCustomerOrder();
 
-	/**
-	 * Sets the customer order referenced document.
-	 *  
-	 * Profile:: COMFORT 
-	 *
-	 * @param customerOrder the new customer order referenced document
-	 * @return the supply chain trade agreement
-	 */
-	public abstract  CommonAgreement<REF> setCustomerOrder(REF customerOrder);
+   /**
+    * Sets the customer order referenced document.
+    * 
+    * Profile:: COMFORT
+    *
+    * @param customerOrder the new customer order referenced document
+    * @return the supply chain trade agreement
+    */
+   public CommonAgreement<REF,ADDREF> setCustomerOrder(REF customerOrder);
 
 }

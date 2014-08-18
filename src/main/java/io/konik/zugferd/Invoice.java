@@ -20,8 +20,8 @@ package io.konik.zugferd;
 
 import io.konik.zugferd.entity.Context;
 import io.konik.zugferd.entity.Header;
-import io.konik.zugferd.entity.Parameter;
 import io.konik.zugferd.entity.Trade;
+import io.konik.zugferd.profile.Profile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -32,48 +32,39 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * = ZUGFeRD Invoice Model.
+ * = The Root of the ZUGFeRD Invoice Model.
  */
 @XmlRootElement(name = "CrossIndustryDocument")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = { "context", "header", "trade" })
 public class Invoice {
 
-   /** The context. Groups properties of the xml message. */
    @NotNull@Valid
    @XmlElement(name = "SpecifiedExchangedDocumentContext",required=true)
    private Context context;
 
-   /** The document related header information. */
    @NotNull@Valid
    @XmlElement(name = "HeaderExchangedDocument",required=true)
    private Header header;
 
-   /** The trade transactions. */
    @NotNull@Valid
    @XmlElement(name = "SpecifiedSupplyChainTradeTransaction",required=true)
    private Trade trade;
 
-   /**
-    * Creates a new invoice.
-    */
-   Invoice() {
-      this.context = new Context();
-      this.header = new Header();
+   Invoice() {     
    }
 
    /**
-    * Instantiates a new invoice with a invoice profile.
+    * Instantiates a new invoice with a profile.
     * 
     * @param profile the profile
     */
-   public Invoice(Parameter profile) {
+   public Invoice(Profile profile) {
       this.context = new Context(profile);
-      this.header = new Header();
    }
 
    /**
-    * Gets the specified exchanged document context.
+    * Gets the exchanged document context.
     * 
     * @return the exchanged document context
     */
@@ -113,7 +104,7 @@ public class Invoice {
    }
 
    /**
-    * Gets the trade.
+    * Gets the trade transaction.
     *
     * @return the trade
     */
@@ -122,7 +113,7 @@ public class Invoice {
    }
 
    /**
-    * Sets the trade.
+    * Sets the trade transaction.
     *
     * @param trade the new trade
     * @return the invoice
@@ -131,7 +122,4 @@ public class Invoice {
       this.trade = trade;
       return this;
    }
-
-
-
 }

@@ -20,7 +20,7 @@ package io.konik.zugferd.profile;
 /**
  * The latest Version Invoice Profiles.
  */
-public enum ProfileType {
+public enum Profile {
 
    /** The basic profile */
    BASIC,
@@ -37,7 +37,7 @@ public enum ProfileType {
    /**
     * Instantiates a new profile type.
     */
-   ProfileType() {
+   Profile() {
    }
 
    /**
@@ -101,12 +101,12 @@ public enum ProfileType {
     * @param fullName the full name
     * @return the profile
     */
-   public static ProfileType getProfile(String fullName) {
-      for (ProfileType v : values()) {
+   public static Profile getProfile(String fullName) {
+      for (Profile v : values()) {
          ProfileVersion version = ProfileVersion.extractVersion(fullName);
          if (v.fullName(version).equals(fullName)) { return v; }
       }
-      throw new EnumConstantNotPresentException(ProfileType.class, fullName);
+      throw new EnumConstantNotPresentException(Profile.class, fullName);
    }
 
    /**
@@ -115,11 +115,11 @@ public enum ProfileType {
     * @param name the simple name
     * @return the profile by name case independent
     */
-   public static ProfileType getProfileByName(String name) {
-      for (ProfileType v : values()) {
+   public static Profile getProfileByName(String name) {
+      for (Profile v : values()) {
          if (v.simpleName().equals(name.toLowerCase())) { return v; }
       }
-      throw new EnumConstantNotPresentException(ProfileType.class, name);
+      throw new EnumConstantNotPresentException(Profile.class, name);
    }
 
    /**

@@ -17,7 +17,7 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.unqualified.DateTime;
+import io.konik.zugferd.unqualified.ZfDate;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,20 +31,20 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SpecifiedPeriodType", propOrder = { "start", "end", "complete" })
+@XmlType(name = "SpecifiedPeriodType", propOrder = { "start", "end", "contractualDueDate" })
 public class Period {
 
    @Valid
 	@XmlElement(name = "StartDateTime")
-	private DateTime start;
+	private ZfDate start;
 
    @Valid
 	@XmlElement(name = "EndDateTime")
-	private DateTime end;
+	private ZfDate end;
 
    @Valid
    @XmlElement(name = "CompleteDateTime")
-   protected DateTime complete;//TODO only one place where this is used ￼￼is HeaderExchangedDocument
+   protected ZfDate contractualDueDate;//only place where this is used: HeaderExchangedDocument
 
    
 	/**
@@ -52,7 +52,7 @@ public class Period {
 	 * 
 	 * @return the start date time
 	 */
-	public DateTime getStart() {
+	public ZfDate getStart() {
 		return start;
 	}
 
@@ -62,7 +62,7 @@ public class Period {
     * @param start the new start date time
     * @return the period
     */
-	public Period setStart(DateTime start) {
+	public Period setStart(ZfDate start) {
 		this.start = start;
 		return this;
 	}
@@ -72,7 +72,7 @@ public class Period {
 	 * 
 	 * @return the end date time
 	 */
-	public DateTime getEnd() {
+	public ZfDate getEnd() {
 		return end;
 	}
 
@@ -82,31 +82,10 @@ public class Period {
     * @param end the new end date time
     * @return the period
     */
-	public Period setEnd(DateTime end) {
+	public Period setEnd(ZfDate end) {
 		this.end = end;
 		return this;
 	}
 
-   /**
-    * Gets the complete.
-    *
-    * @return the complete
-    */
-   public DateTime getComplete() {
-      return complete;
-   }
-
-   /**
-    * Sets the complete.
-    *
-    * @param complete the complete
-    * @return the period
-    */
-   public Period setComplete(DateTime complete) {
-      this.complete = complete;
-      return this;
-   }
-	
-	
 
 }

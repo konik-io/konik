@@ -79,6 +79,18 @@
          <artifactId>commons-lang3</artifactId>
          <scope>test</scope>
       </dependency>
+<!--       <dependency> -->
+<!--          <groupId>de.danielbechler</groupId> -->
+<!--          <artifactId>java-object-diff</artifactId> -->
+<!--          <version>0.90.RC1</version> -->
+<!--          <scope>test</scope> -->
+<!--       </dependency> -->
+      <dependency>
+         <groupId>org.unitils</groupId>
+         <artifactId>unitils-core</artifactId>
+         <version>3.3</version>
+         <scope>test</scope>
+      </dependency>
       <!-- Benchmark dependencies -->
       <dependency>
          <groupId>org.openjdk.jmh</groupId>

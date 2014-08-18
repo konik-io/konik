@@ -35,13 +35,7 @@ public class IssueDateTimeAdapter extends XmlAdapter<String, Date>{
    private final ThreadLocal<SimpleDateFormat> dateTimeFormatter = new ThreadLocal<SimpleDateFormat>() {
       @Override
       protected SimpleDateFormat initialValue() {
-         return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");//2013-08-05T00:00:00
-      }
-   };
-   private final ThreadLocal<SimpleDateFormat> dateFormatter = new ThreadLocal<SimpleDateFormat>() {
-      @Override
-      protected SimpleDateFormat initialValue() {
-         return new SimpleDateFormat("");
+         return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");// 2013-08-05T00:00:00
       }
    };
    
@@ -50,7 +44,7 @@ public class IssueDateTimeAdapter extends XmlAdapter<String, Date>{
       if (Strings.isNullOrEmpty(date)) {
          return null;
       }
-      return dateTimeFormatter.get().parse(date);
+      return dateTimeFormatter.get().parse(date.trim());
    }
 
    @Override

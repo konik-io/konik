@@ -17,6 +17,8 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.jaxb.adapter.ParameterProfileAdapter;
+import io.konik.zugferd.profile.Profile;
 import io.konik.zugferd.unqualified.Indicator;
 
 import javax.validation.Valid;
@@ -25,6 +27,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * = The Exchanged Document Context
@@ -45,7 +48,8 @@ public class Context {
    @NotNull
    @Valid
    @XmlElement(name = "GuidelineSpecifiedDocumentContextParameter", required = true)
-   private Parameter guideline;
+   @XmlJavaTypeAdapter(ParameterProfileAdapter.class)
+   private Profile guideline;
 
    /**
     * Instantiates a new context.
@@ -54,12 +58,12 @@ public class Context {
    }
 
    /**
-    * Instantiates a new context with a profile
-    * 
-    * @param guideline the profile
+    * Instantiates a new context with a profile.
+    *
+    * @param profile the profile
     */
-   public Context(Parameter guideline) {
-      this.guideline = guideline;
+   public Context(Profile profile) {
+      this.guideline = profile;
    }
 
    /**
@@ -128,7 +132,7 @@ public class Context {
     * @return the business process
     */
    public String getBusinessProcess() {
-      return businessProcess.getValue();
+      return businessProcess == null?null:businessProcess.getId();
    }
 
    /**
@@ -155,7 +159,7 @@ public class Context {
     * 
     * @return the profile
     */
-   public Parameter getGuideline() {
+   public Profile getGuideline() {
       return this.guideline;
    }
 
@@ -169,7 +173,7 @@ public class Context {
     * @param guideline the new profile
     * @return the context
     */
-   public Context setGuideline(Parameter guideline) {
+   public Context setGuideline(Profile guideline) {
       this.guideline = guideline;
       return this;
    }

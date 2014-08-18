@@ -18,15 +18,48 @@
 package io.konik.zugferd.entity.trade;
 
 import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
+import io.konik.zugferd.entity.trade.item.SpecifiedTax;
+import io.konik.zugferd.unece.codes.TaxCategory;
+import io.konik.zugferd.unece.codes.TaxCode;
 import io.konik.zugferd.unqualified.Amount;
 
+import java.math.BigDecimal;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 /**
  * = The tax applied to a trade.
  */
-public class TradeTax extends  io.konik.zugferd.entity.trade.item.SpecifiedTax {
+public class TradeTax extends SpecifiedTax {
 
+   @Basic
+   @NotNull
+   @Override
+   public Amount getCalculated() {
+      return super.getCalculated();
+   }
+
+   @Basic
+   @Override
+   public TradeTax setCalculated(Amount calculatedAmount) {
+      return (TradeTax) super.setCalculated(calculatedAmount);
+   }
+
+   @Basic
+   @NotNull
+   @Override
+   public TaxCode getType() {
+      return super.getType();
+   }
+
+   @Basic
+   @Override
+   public TradeTax setType(TaxCode taxTypeCode) {
+      return (TradeTax) super.setType(taxTypeCode);
+   }
 
    /**
     * Gets the basis amount for tax calculation.
@@ -36,6 +69,8 @@ public class TradeTax extends  io.konik.zugferd.entity.trade.item.SpecifiedTax {
     * @return the basis amount
     */
    @Basic
+   @Valid
+   @NotNull
    public Amount getBasis() {
       return basis;
    }
@@ -52,7 +87,7 @@ public class TradeTax extends  io.konik.zugferd.entity.trade.item.SpecifiedTax {
       this.basis = basisAmount;
       return this;
    }
-   
+
    /**
     * Gets the line total.
     *
@@ -77,6 +112,7 @@ public class TradeTax extends  io.konik.zugferd.entity.trade.item.SpecifiedTax {
     *
     * @return the allowance charge
     */
+   @Valid
    @Extended
    public Amount getAllowanceCharge() {
       return allowanceCharge;
@@ -89,6 +125,41 @@ public class TradeTax extends  io.konik.zugferd.entity.trade.item.SpecifiedTax {
     */
    public void setAllowanceCharge(Amount allowanceCharge) {
       this.allowanceCharge = allowanceCharge;
+   }
+
+   @Comfort
+   @Override
+   public TaxCategory getCategory() {
+      return super.getCategory();
+   }
+
+   @Override
+   public TradeTax setCategory(TaxCategory value) {
+      return (TradeTax) super.setCategory(value);
+   }
+
+   @NotNull
+   @Basic
+   @Override
+   public BigDecimal getPercentage() {
+      return super.getPercentage();
+   }
+
+   @Basic
+   @Override
+   public TradeTax setPercentage(BigDecimal applicablePercentage) {
+      return (TradeTax) super.setPercentage(applicablePercentage);
+   }
+
+   @Override
+   public String getExemptionReason() {
+      return super.getExemptionReason();
+   }
+
+   @Override
+   public TradeTax setExemptionReason(String exemptionReason) {
+      super.setExemptionReason(exemptionReason);
+      return this;
    }
 
 }

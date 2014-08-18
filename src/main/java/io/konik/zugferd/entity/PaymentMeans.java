@@ -18,6 +18,7 @@
 package io.konik.zugferd.entity;
 
 import io.konik.zugferd.unece.codes.PaymentMeansCode;
+import io.konik.zugferd.unqualified.ExtendedID;
 import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
@@ -36,9 +37,8 @@ import javax.xml.bind.annotation.XmlType;
  * Detailed information on the means of payment.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeSettlementPaymentMeansType", propOrder = { "code", "informations","clientCreditorId", "payerAccount", "payeeAccount",
+@XmlType(name = "TradeSettlementPaymentMeansType", propOrder = { "code", "informations","mandateReferenceId", "payerAccount", "payeeAccount",
       "payerInstitution", "payeeInstitution" })
-@ValidateOnExecution
 public class PaymentMeans {
 
    @XmlElement(name = "TypeCode")
@@ -48,7 +48,7 @@ public class PaymentMeans {
    private List<String> informations;
 
    @Valid @XmlElement(name = "ID")
-   protected ID clientCreditorId; //TODO: only place for schemeAgencyID
+   private ExtendedID mandateReferenceId;
    
    @Valid
    @XmlElement(name = "PayerPartyDebtorFinancialAccount")
@@ -130,7 +130,7 @@ public class PaymentMeans {
     * @return the client creditor id
     */
    public ID getClientCreditorId() {
-      return clientCreditorId;
+      return mandateReferenceId;
    }
 
    /**
@@ -138,8 +138,8 @@ public class PaymentMeans {
     *
     * @param clientCreditorId the new client creditor id
     */
-   public void setClientCreditorId(ID clientCreditorId) {
-      this.clientCreditorId = clientCreditorId;
+   public void setClientCreditorId(ExtendedID clientCreditorId) {
+      this.mandateReferenceId = clientCreditorId;
    }
 
    /**

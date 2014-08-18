@@ -19,6 +19,9 @@ package io.konik.zugferd.entity;
 
 import static io.konik.zugferd.unqualified.Indicator.falseIndicator;
 import static io.konik.zugferd.unqualified.Indicator.trueIndicator;
+import io.konik.jaxb.adapter.AmountHighRoundingAdapter;
+import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
+import io.konik.validator.annotation.Comfort;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Indicator;
 import io.konik.zugferd.unqualified.Quantity;
@@ -26,6 +29,7 @@ import io.konik.zugferd.unqualified.Quantity;
 import java.math.BigDecimal;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -40,30 +44,35 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * Represents trade surcharges and discounts as well as a reason.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeAllowanceChargeType", propOrder = { "surcharge","sequence","calculationPercent", "basisAmount", "basisQuantity","actualAmount",
+@XmlType(name = "TradeAllowanceChargeType", propOrder = { "surcharge","sequence","calculationPercent", "basis", "basisQuantity","actual",
 		"reasonCode", "reason", "category" })
 public class AllowanceCharge {
 
 	@XmlElement(name = "ChargeIndicator")
+	@NotNull(groups=Comfort.class)
 	private Indicator surcharge;
 
    @XmlElement(name = "SequenceNumeric")
    private BigDecimal sequence;
    
    @XmlElement(name = "CalculationPercent")
+   @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
    private BigDecimal calculationPercent;
    
 	@Valid
 	@XmlElement(name = "BasisAmount")
-	private Amount basisAmount;
+	@XmlJavaTypeAdapter(value = AmountHighRoundingAdapter.class)
+	private Amount basis;
 
 	@Valid
 	@XmlElement(name = "BasisQuantity")
 	private Quantity basisQuantity;
    
 	@Valid
+	@NotNull(groups=Comfort.class)
 	@XmlElement(name = "ActualAmount")
-	private Amount actualAmount;
+	@XmlJavaTypeAdapter(value = AmountHighRoundingAdapter.class)
+	private Amount actual;
 
    @XmlElement(name = "ReasonCode")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -124,8 +133,8 @@ public class AllowanceCharge {
 	 * 
 	 * @return the basis amount
 	 */
-	public Amount getBasisAmount() {
-		return basisAmount;
+	public Amount getBasis() {
+		return basis;
 	}
 
 	/**
@@ -134,8 +143,8 @@ public class AllowanceCharge {
     * @param basisAmount the new basis amount
     * @return the allowance charge
     */
-	public AllowanceCharge setBasisAmount(Amount basisAmount) {
-		this.basisAmount = basisAmount;
+	public AllowanceCharge setBasis(Amount basisAmount) {
+		this.basis = basisAmount;
 		return this;
 	}
 
@@ -144,8 +153,8 @@ public class AllowanceCharge {
 	 * 
 	 * @return the actual amount
 	 */
-	public Amount getActualAmount() {
-		return actualAmount;
+	public Amount getActual() {
+		return actual;
 	}
 
 	/**
@@ -154,8 +163,8 @@ public class AllowanceCharge {
     * @param actualAmount the new actual amount
     * @return the allowance charge
     */
-	public AllowanceCharge setActualAmount(Amount actualAmount) {
-		this.actualAmount = actualAmount;
+	public AllowanceCharge setActual(Amount actualAmount) {
+		this.actual = actualAmount;
 		return this;
 	}
 

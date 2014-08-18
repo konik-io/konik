@@ -24,23 +24,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
 @SuppressWarnings("javadoc")
-public class ProfileTypeTest {
+public class ProfileTest {
 
    @Test
    public void getProfile_Basic() throws Exception {
-      ProfileType profile = ProfileType.getProfile("urn:ferd:CrossIndustryDocument:invoice:1p0:basic");
+      Profile profile = Profile.getProfile("urn:ferd:CrossIndustryDocument:invoice:1p0:basic");
       assertThat(profile.simpleName()).isEqualTo("basic");
       assertThat(extractVersion(profile.fullName()).version()).isEqualTo("1p0");
    }
 
    @Test
    public void getProfileByName_Basic() throws Exception {
-      ProfileType.getProfileByName("basic");
+      Profile.getProfileByName("basic");
    }
    
    @Test
    public void hasThreeEntries() throws Exception {
-      ProfileType[] enumConstants = ProfileType.class.getEnumConstants();
+      Profile[] enumConstants = Profile.class.getEnumConstants();
       assertThat(enumConstants).hasSize(3);
    }
    

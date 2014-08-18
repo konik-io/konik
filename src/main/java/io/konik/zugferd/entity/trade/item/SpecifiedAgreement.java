@@ -24,13 +24,28 @@ import io.konik.zugferd.entity.Price;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * = The Agreement on trade item level.
  */
-public class SpecifiedAgreement extends CommonAgreement<ReferencedDocumentLine> {
+@XmlType(propOrder = {"buyerOrder", "contract", "additional", "grossPrice", "netPrice", "customerOrder" })
+public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentItem,ReferencedDocumentItemAdditional> {
+   @Valid
+   private ReferencedDocumentItem buyerOrder;
+   @Valid
+   private ReferencedDocumentItem contract;
+   @Valid
+   private List<ReferencedDocumentItemAdditional> additional;
+   @Valid
+   private GrossPrice grossPrice;
+   @Valid
+   private Price netPrice;
+   @Valid
+   private ReferencedDocumentItem customerOrder;
 
    /**
     * Gets the buyer order referenced document.
@@ -38,8 +53,8 @@ public class SpecifiedAgreement extends CommonAgreement<ReferencedDocumentLine> 
     * @return the buyer order referenced document
     */
    @Override
-   @XmlElement(type=ReferencedDocumentLine.class)
-   public ReferencedDocumentLine getBuyerOrder() {
+   @XmlElement(name = "BuyerOrderReferencedDocument")
+   public ReferencedDocumentItem getBuyerOrder() {
       return buyerOrder;
    }
 
@@ -51,7 +66,7 @@ public class SpecifiedAgreement extends CommonAgreement<ReferencedDocumentLine> 
     * @return the supply chain trade agreement
     */
    @Override
-   public SpecifiedAgreement setBuyerOrder(ReferencedDocumentLine buyerOrder) {
+   public SpecifiedAgreement setBuyerOrder(ReferencedDocumentItem buyerOrder) {
       this.buyerOrder = buyerOrder;
       return this;
    }
@@ -64,8 +79,8 @@ public class SpecifiedAgreement extends CommonAgreement<ReferencedDocumentLine> 
     * @return the contract referenced document
     */
    @Override
-   @XmlElement(type=ReferencedDocumentLine.class)// trade.agreement(IssueDateTime, ID) + item.agreement(LineID)
-   public ReferencedDocumentLine getContract() {
+   @XmlElement(name = "ContractReferencedDocument")
+   public ReferencedDocumentItem getContract() {
       return contract;
    }
 
@@ -78,22 +93,22 @@ public class SpecifiedAgreement extends CommonAgreement<ReferencedDocumentLine> 
     * @return the supply chain trade agreement
     */
    @Override
-   public SpecifiedAgreement setContract(ReferencedDocumentLine contract) {
+   public SpecifiedAgreement setContract(ReferencedDocumentItem contract) {
       this.contract = contract;
       return this;
    }
    
    @Override
-   @XmlElement(type=ReferencedDocumentLine.class)
-   public List<ReferencedDocumentLine> getAdditional() {
+   @XmlElement(name = "AdditionalReferencedDocument")
+   public List<ReferencedDocumentItemAdditional> getAdditional() {
       if (additional == null) {
-         additional = new ArrayList<ReferencedDocumentLine>();
+         additional = new ArrayList<ReferencedDocumentItemAdditional>();
       }
       return additional;
    }
    
    @Override
-   public CommonAgreement<ReferencedDocumentLine> addAdditional(ReferencedDocumentLine additionalReference) {
+   public SpecifiedAgreement addAdditional(ReferencedDocumentItemAdditional additionalReference) {
       getAdditional().add(additionalReference);
       return this;
    }
@@ -103,7 +118,8 @@ public class SpecifiedAgreement extends CommonAgreement<ReferencedDocumentLine> 
     *
     * @return the gross price product trade price
     */
-   public GrossPrice getGrossPriceProduct() {
+   @XmlElement(name = "GrossPriceProductTradePrice")
+   public GrossPrice getGrossPrice() {
       return grossPrice;
    }
 
@@ -113,7 +129,7 @@ public class SpecifiedAgreement extends CommonAgreement<ReferencedDocumentLine> 
     * @param grossPrice the new gross price product trade price
     * @return the supply chain trade agreement
     */
-   public SpecifiedAgreement setGrossPriceProduct(GrossPrice grossPrice) {
+   public SpecifiedAgreement setGrossPrice(GrossPrice grossPrice) {
       this.grossPrice = grossPrice;
       return this;
    }
@@ -123,7 +139,8 @@ public class SpecifiedAgreement extends CommonAgreement<ReferencedDocumentLine> 
     *
     * @return the net price product trade price
     */
-   public Price getNetPriceProduct() {
+   @XmlElement(name = "NetPriceProductTradePrice")
+   public Price getNetPrice() {
       return netPrice;
    }
 
@@ -133,7 +150,7 @@ public class SpecifiedAgreement extends CommonAgreement<ReferencedDocumentLine> 
     * @param netPrice the new net price product trade price
     * @return the supply chain trade agreement
     */
-   public SpecifiedAgreement setNetPriceProduct(Price netPrice) {
+   public SpecifiedAgreement setNetPrice(Price netPrice) {
       this.netPrice = netPrice;
       return this;
    }
@@ -146,8 +163,8 @@ public class SpecifiedAgreement extends CommonAgreement<ReferencedDocumentLine> 
     * @return the customer order referenced document
     */
    @Override
-   @XmlElement(type=ReferencedDocumentLine.class)
-   public ReferencedDocumentLine getCustomerOrder() {
+   @XmlElement(name = "CustomerOrderReferencedDocument")
+   public ReferencedDocumentItem getCustomerOrder() {
       return customerOrder;
    }
 
@@ -160,7 +177,7 @@ public class SpecifiedAgreement extends CommonAgreement<ReferencedDocumentLine> 
     * @return the supply chain trade agreement
     */
    @Override
-   public SpecifiedAgreement setCustomerOrder(ReferencedDocumentLine customerOrder) {
+   public SpecifiedAgreement setCustomerOrder(ReferencedDocumentItem customerOrder) {
       this.customerOrder = customerOrder;
       return this;
    }

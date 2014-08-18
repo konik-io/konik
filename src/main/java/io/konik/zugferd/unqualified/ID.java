@@ -17,8 +17,8 @@
  */
 package io.konik.zugferd.unqualified;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import io.konik.validator.annotation.NotBlank;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
@@ -27,12 +27,12 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * = The ID.
+ * = The Identifier.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IDType", propOrder = { "value" })
 public class ID {
 
+   @NotBlank
 	@XmlValue
 	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
 	@XmlSchemaType(name = "token")
@@ -42,11 +42,6 @@ public class ID {
 	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
 	@XmlSchemaType(name = "token")
 	private String schemeId;
-	
-   @XmlAttribute(name = "schemeAgencyID")
-   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-   private String schemeAgencyID;
-
 
 	/** Instantiates a new id. */
 	public ID() {
@@ -107,25 +102,4 @@ public class ID {
 	public void setSchemeId(String schemeId) {
 		this.schemeId = schemeId;
 	}
-
-   /**
-    * Gets the scheme agency id.
-    *
-    * @return the scheme agency id
-    */
-   public String getSchemeAgencyID() {
-      return schemeAgencyID;
-   }
-
-   /**
-    * Sets the scheme agency id.
-    *
-    * @param schemeAgencyID the new scheme agency id
-    */
-   public void setSchemeAgencyID(String schemeAgencyID) {
-      this.schemeAgencyID = schemeAgencyID;
-   }
-	
-	
-
 }

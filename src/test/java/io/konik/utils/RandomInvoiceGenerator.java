@@ -19,11 +19,15 @@
 package io.konik.utils;
 
 import static java.lang.Boolean.TRUE;
+import static java.lang.reflect.Modifier.isAbstract;
 import static org.apache.commons.lang3.ClassUtils.isAssignable;
 import static org.apache.commons.lang3.ClassUtils.isPrimitiveOrWrapper;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.apache.commons.lang3.reflect.MethodUtils.getAccessibleMethod;
 import static org.apache.commons.lang3.reflect.MethodUtils.invokeMethod;
+import io.konik.zugferd.entity.CommonTax;
+import io.konik.zugferd.unqualified.ZfDate;
+import io.konik.zugferd.unqualified.ZfDateFactory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -40,6 +44,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 public class RandomInvoiceGenerator {
    LoremIpsum jlorem = new LoremIpsum();
    Random random = new Random();
+   String[] supportedDateFormatts = new String[] {"102","610","616"};
    
 
    @SuppressWarnings({ "unchecked" })
@@ -66,12 +71,13 @@ public class RandomInvoiceGenerator {
       rootObj = createNewInstance(root);
 
       // get method and populate each of them
-      Method[] rootDeclaredMethods = root.getDeclaredMethods();
+      Method[] rootDeclaredMethods = root.getMethods();
       for (Method method : rootDeclaredMethods) {
+         int modifiers = method.getModifiers();
          Class<?> methodType;
-         if (method.getName().startsWith("add")) 
+         if (method.getName().startsWith("add") && !isAbstract(modifiers)) 
             methodType = method.getParameterTypes()[0];
-         else if (method.getName().startsWith("get") && !Collection.class.isAssignableFrom(method.getReturnType())) {
+         else if (method.getName().startsWith("get") && !Collection.class.isAssignableFrom(method.getReturnType()) && !method.getName().startsWith("getClass") && !isAbstract(modifiers)) {
             methodType = method.getReturnType();
          }else continue;// next on setter
          //
@@ -95,6 +101,13 @@ public class RandomInvoiceGenerator {
          }
          return biggestConstructor.newInstance(constructorParameterObjects);
       }
+      catch (InstantiationException e) {
+         if(root.equals(CommonTax.class)){
+//            return ZfDateFactory.create(supportedDateFormatts[random.nextInt(3)]);
+         }
+//         throw e;
+         return null;
+      }
    }
 
    private Constructor<?> findBiggestConstructor(Class<?> root) {
@@ -114,25 +127,31 @@ public class RandomInvoiceGenerator {
    
    
    private void setValue(Object entity, Method entityMethod, Object paramValue) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException  {
+      if(paramValue == null || entity == null)return;
       String methodToCall = entityMethod.getName().replace("get", "set");
-      int repeadAdder = 1;
+//      int repeadAdder = 1;
       if (entityMethod.getName().startsWith("add")) { 
          Collection.class.isAssignableFrom(entityMethod.getReturnType());
          methodToCall = entityMethod.getName();//overwrite
-         repeadAdder += random.nextInt(5);//repeat call for adder
+//         repeadAdder += random.nextInt(5);//repeat call for adder
       }
       Method setterOrAdder = getAccessibleMethod(entity.getClass(), methodToCall, paramValue.getClass());
+      if (setterOrAdder == null) {
+         setterOrAdder = getAccessibleMethod(entity.getClass(), methodToCall, paramValue.getClass().getSuperclass());
+      }
       if (setterOrAdder == null) {
          System.out.println("Could not find setter on Class Instnace :"+entity.getClass().getSimpleName() + " Getter :" + entityMethod.getName() + " has no setter. Ignoring value:" + paramValue.toString());
          return; 
       }
-      //repeat a few times for adder
-      for (int i = 0; i < repeadAdder; i++) {
+      //repeat a 2 times for adder
+      for (int i = 0; i < 2; i++) {
          invokeMethod(entity, setterOrAdder.getName(), paramValue);   
       }
    }
 
    private boolean isLeafType(Class<?> type) {
+     if (type.equals(Class.class))return true;
+     if (isAssignable(ZfDate.class,type)) return true;
      if (isAssignable(Date.class,type)) return true;
      if (isAssignable(String.class,type)) return true;
      if (BigDecimal.class.isAssignableFrom(type)) return true;
@@ -141,12 +160,14 @@ public class RandomInvoiceGenerator {
    }
 
    private Object generatePrimitveValue(Class<?> type, String methodName) {
+      if (methodName.equals("getClass")) return type;
       if (String.class.isAssignableFrom(type)) return generateStringBasedOnName(methodName);
-      if (BigDecimal.class.isAssignableFrom(type)) return new BigDecimal(randomNumeric(6));
+      if (BigDecimal.class.isAssignableFrom(type)) return new BigDecimal(randomNumeric(3)+"."+randomNumeric(6));
       if (isAssignable(type,Boolean.class,true)) return TRUE;
-      if (isAssignable(type,Integer.class,true)) return random.nextInt(100);
+      if (isAssignable(type,Integer.class,true)) return Integer.valueOf(random.nextInt(100));
       if (type.isEnum()) return getEnum(type);
-      if (isAssignable(type,Date.class,true)) return new Date();
+      if (isAssignable(type,ZfDate.class,true)) return ZfDateFactory.create(supportedDateFormatts[random.nextInt(3)]);
+      if (isAssignable(type,Date.class,true)) return new Date();      
       throw new IllegalArgumentException("Type " + type + " was not found");
    }
    private Object getEnum(Class<?> type) {

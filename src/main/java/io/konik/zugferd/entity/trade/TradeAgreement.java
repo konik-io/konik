@@ -17,6 +17,7 @@
  */
 package io.konik.zugferd.entity.trade;
 
+import io.konik.jaxb.bindable.entity.TradeDeliveryTermsAdapter;
 import io.konik.zugferd.entity.CommonAgreement;
 import io.konik.zugferd.entity.ReferencedDocument;
 import io.konik.zugferd.entity.TradeParty;
@@ -24,13 +25,39 @@ import io.konik.zugferd.entity.TradeParty;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 
 /**
  * 
  * = The Trade Agreement.
  * 
  */
-public class Agreement extends CommonAgreement<ReferencedDocument>{
+@XmlType(propOrder = { "buyerReference", "seller", "buyer","productEndUser","deliveryTerms",
+      "buyerOrder", "contract", "additional", "customerOrder" })
+public class TradeAgreement implements CommonAgreement<ReferencedDocument,ReferencedDocumentAdditional>{
+   
+   private String buyerReference;
+   @Valid
+   private TradeParty seller;
+   @Valid
+   private TradeParty buyer;
+   @Valid
+   private TradeParty productEndUser;
+   @Valid
+   private String deliveryTerms;
+   @Valid
+   private ReferencedDocument buyerOrder;
+   @Valid
+   private ReferencedDocument contract;
+   @Valid
+   private List<ReferencedDocumentAdditional> additional;
+   @Valid
+   private ReferencedDocument customerOrder;
+
    
    /**
     * Gets the buyer reference.
@@ -41,6 +68,7 @@ public class Agreement extends CommonAgreement<ReferencedDocument>{
     * 
     * @return the buyer reference
     */
+   @XmlElement(name = "BuyerReference")
    public String getBuyerReference() {
       return buyerReference;
    }
@@ -55,28 +83,51 @@ public class Agreement extends CommonAgreement<ReferencedDocument>{
     * @param buyerReference the new buyer reference
     * @return the trade agreement
     */
-   public Agreement setBuyerReference(String buyerReference) {
+   public TradeAgreement setBuyerReference(String buyerReference) {
       this.buyerReference = buyerReference;
       return this;
    }
+   
 
    /**
-    * Gets the seller trade party.
+    * Gets the seller.
     *
-    * @return the seller trade party
+    * @return the seller
     */
-   public TradeParty getSellerTradeParty() {
+   @XmlElement(name = "SellerTradeParty")
+   public TradeParty getSeller() {
       return seller;
    }
 
    /**
-    * Sets the seller trade party.
+    * Sets the seller.
     *
-    * @param seller the new seller trade party
-    * @return the trade agreement
+    * @param seller the seller
+    * @return the agreement
     */
-   public Agreement setSellerTradeParty(TradeParty seller) {
+   public TradeAgreement setSeller(TradeParty seller) {
       this.seller = seller;
+      return this;
+   }
+
+   /**
+    * Gets the product end user.
+    *
+    * @return the product end user
+    */
+   @XmlElement(name = "ProductEndUserTradeParty")
+   public TradeParty getProductEndUser() {
+      return productEndUser;
+   }
+
+   /**
+    * Sets the product end user.
+    *
+    * @param productEndUser the new product end user
+    * @return the agreement
+    */
+   public TradeAgreement setProductEndUser(TradeParty productEndUser) {
+      this.productEndUser = productEndUser;
       return this;
    }
 
@@ -85,6 +136,7 @@ public class Agreement extends CommonAgreement<ReferencedDocument>{
     *
     * @return the buyer trade party
     */
+   @XmlElement(name = "BuyerTradeParty")
    public TradeParty getBuyer() {
       return buyer;
    }
@@ -95,7 +147,7 @@ public class Agreement extends CommonAgreement<ReferencedDocument>{
     * @param buyer the new buyer trade party
     * @return the supply chain trade agreement
     */
-   public Agreement setBuyer(TradeParty buyer) {
+   public TradeAgreement setBuyer(TradeParty buyer) {
       this.buyer = buyer;
       return this;
    }
@@ -107,6 +159,8 @@ public class Agreement extends CommonAgreement<ReferencedDocument>{
     *
     * @return the delivery terms
     */
+   @XmlElement(name = "ApplicableTradeDeliveryTerms")
+   @XmlJavaTypeAdapter(value = TradeDeliveryTermsAdapter.class)
    public String getDeliveryTerms() {
       return deliveryTerms;
    }
@@ -128,6 +182,7 @@ public class Agreement extends CommonAgreement<ReferencedDocument>{
     * @return the buyer order referenced document
     */
    @Override
+   @XmlElement(name = "BuyerOrderReferencedDocument")
    public ReferencedDocument getBuyerOrder() {
       return buyerOrder;
    }
@@ -140,7 +195,7 @@ public class Agreement extends CommonAgreement<ReferencedDocument>{
     * @return the supply chain trade agreement
     */
    @Override
-   public Agreement setBuyerOrder(ReferencedDocument buyerOrder) {
+   public TradeAgreement setBuyerOrder(ReferencedDocument buyerOrder) {
       this.buyerOrder = buyerOrder;
       return this;
    }
@@ -153,6 +208,7 @@ public class Agreement extends CommonAgreement<ReferencedDocument>{
     * @return the contract referenced document
     */
    @Override
+   @XmlElement(name = "ContractReferencedDocument")
    public ReferencedDocument getContract() {
       return contract;
    }
@@ -166,22 +222,34 @@ public class Agreement extends CommonAgreement<ReferencedDocument>{
     * @return the supply chain trade agreement
     */
    @Override
-   public Agreement setContract(ReferencedDocument contract) {
+   public TradeAgreement setContract(ReferencedDocument contract) {
       this.contract = contract;
       return this;
    }
    
+   /**
+    * Gets the additional.
+    *
+    * @return the additional
+    */
    @Override
-   public List<ReferencedDocument> getAdditional() {
+   @XmlElement(name = "AdditionalReferencedDocument")
+   public List<ReferencedDocumentAdditional> getAdditional() {
       if (additional == null) {
-         additional = new ArrayList<ReferencedDocument>();
+         additional = new ArrayList<ReferencedDocumentAdditional>();
       }
       return additional;
    }
    
 
+   /**
+    * Adds the additional.
+    *
+    * @param additionalReference the additional reference
+    * @return the common agreement
+    */
    @Override
-   public CommonAgreement<ReferencedDocument> addAdditional(ReferencedDocument additionalReference) {
+   public TradeAgreement addAdditional(ReferencedDocumentAdditional additionalReference) {
       getAdditional().add(additionalReference);
       return this;
    }
@@ -194,6 +262,7 @@ public class Agreement extends CommonAgreement<ReferencedDocument>{
     * @return the customer order referenced document
     */
    @Override
+   @XmlElement(name = "CustomerOrderReferencedDocument")
    public ReferencedDocument getCustomerOrder() {
       return customerOrder;
    }
@@ -207,10 +276,8 @@ public class Agreement extends CommonAgreement<ReferencedDocument>{
     * @return the supply chain trade agreement
     */
    @Override
-   public Agreement setCustomerOrder(ReferencedDocument customerOrder) {
+   public TradeAgreement setCustomerOrder(ReferencedDocument customerOrder) {
       this.customerOrder = customerOrder;
       return this;
    }
-   
-   
 }

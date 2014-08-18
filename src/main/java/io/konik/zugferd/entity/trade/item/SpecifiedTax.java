@@ -18,27 +18,50 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
-import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Comfort;
-import io.konik.zugferd.entity.Tax;
+import io.konik.validator.annotation.Extended;
+import io.konik.zugferd.entity.CommonTax;
+import io.konik.zugferd.unece.codes.TaxCategory;
+import io.konik.zugferd.unece.codes.TaxCode;
 import io.konik.zugferd.unqualified.Amount;
 
-import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 /**
  * = The trade tax on an item basis.
  */
-public class SpecifiedTax extends Tax {
+public class SpecifiedTax extends CommonTax {
+
+   @Comfort
+   @Override
+   public TaxCode getType() {
+      return super.getType();
+   }
+
+   @Override
+   public SpecifiedTax setType(TaxCode taxTypeCode) {
+       super.setType(taxTypeCode);
+       return this;
+   }
+
+   @Comfort
+   @Override
+   public TaxCategory getCategory() {
+      return super.getCategory();
+   }
+
+   @Override
+   public SpecifiedTax setCategory(TaxCategory value) {
+      super.setCategory(value);
+      return this;
+   }
 
    /**
     * Gets the calculated amount.
     * 
-    * Profile:: BASIC
-    * 
     * @return the calculated amount
     */
-   @Basic 
-   @NotNull 
+   @Extended
    public Amount getCalculated() {
       return calculated;
    }
@@ -51,7 +74,7 @@ public class SpecifiedTax extends Tax {
     * @param calculatedAmount the new calculated amount
     * @return the tax
     */
-   public SpecifiedTax setCalculatedAmount(Amount calculatedAmount) {
+   public SpecifiedTax setCalculated(Amount calculatedAmount) {
       this.calculated = calculatedAmount;
       return this;
    }
@@ -80,5 +103,17 @@ public class SpecifiedTax extends Tax {
       this.exemptionReason = exemptionReason;
       return this;
    }
+   
+   @Override
+   
+   public BigDecimal getPercentage() {
+      return super.getPercentage();
+   }
+   
+   @Override
+   public SpecifiedTax setPercentage(BigDecimal applicablePercentage) {
+      return (SpecifiedTax) super.setPercentage(applicablePercentage);
+   }
+   
 
 }

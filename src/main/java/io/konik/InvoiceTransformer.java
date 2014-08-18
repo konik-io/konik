@@ -27,7 +27,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 import javax.xml.XMLConstants;
@@ -71,8 +70,7 @@ public class InvoiceTransformer {
     *
     * @param jaxbContext the JAXB context
     */
-   @Inject
-   public InvoiceTransformer(JAXBContext jaxbContext) {
+   InvoiceTransformer(JAXBContext jaxbContext) {
       this.jaxbContext = jaxbContext;
    }
    

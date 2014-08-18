@@ -190,7 +190,7 @@
          </ram:ApplicableTradeTax>
          <ram:BillingSpecifiedPeriod>
             <ram:StartDateTime>
-               <udt:DateTimeString format="102">20139102</udt:DateTimeString>
+               <udt:DateTimeString format="102">20130910</udt:DateTimeString>
             </ram:StartDateTime>
             <ram:EndDateTime>
                <udt:DateTimeString format="102">20130930</udt:DateTimeString>

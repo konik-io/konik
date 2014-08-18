@@ -48,7 +48,7 @@ public class LogisticsServiceCharge {
 
 	@Valid
 	@XmlElement(name = "AppliedTradeTax")
-	private List<Tax> tradeTax;
+	private List<AppliedTax> tradeTax;
 
 	/**
 	 * Gets the description.
@@ -95,9 +95,9 @@ public class LogisticsServiceCharge {
 	 * 
 	 * @return the applied trade tax
 	 */
-	public List<Tax> getTradeTax() {
+	public List<AppliedTax> getTradeTax() {
 		if (tradeTax == null) {
-			tradeTax = new ArrayList<Tax>();
+			tradeTax = new ArrayList<AppliedTax>();
 		}
 		return this.tradeTax;
 	}
@@ -109,7 +109,7 @@ public class LogisticsServiceCharge {
     * @param additionalTradeTax the additional trade tax
     * @return the logistics service charge
     */
-	public LogisticsServiceCharge addTradeTax(Tax additionalTradeTax) {
+	public LogisticsServiceCharge addTradeTax(AppliedTax additionalTradeTax) {
 		getTradeTax().add(additionalTradeTax);
 		return this;
 	}

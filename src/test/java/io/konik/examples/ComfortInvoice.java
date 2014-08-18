@@ -35,16 +35,16 @@ import io.konik.zugferd.entity.Address;
 import io.konik.zugferd.entity.FinancialAccount;
 import io.konik.zugferd.entity.FinancialInstitution;
 import io.konik.zugferd.entity.Header;
-import io.konik.zugferd.entity.Item;
 import io.konik.zugferd.entity.PaymentMeans;
 import io.konik.zugferd.entity.Product;
 import io.konik.zugferd.entity.TaxRegistration;
-import io.konik.zugferd.entity.Trade;
 import io.konik.zugferd.entity.TradeParty;
-import io.konik.zugferd.entity.trade.TradeMonetarySummation;
-import io.konik.zugferd.entity.trade.TradeAgreement;
-import io.konik.zugferd.entity.trade.TradeDelivery;
-import io.konik.zugferd.entity.trade.TradeSettlement;
+import io.konik.zugferd.entity.trade.MonetarySummation;
+import io.konik.zugferd.entity.trade.Agreement;
+import io.konik.zugferd.entity.trade.Delivery;
+import io.konik.zugferd.entity.trade.Settlement;
+import io.konik.zugferd.entity.trade.Trade;
+import io.konik.zugferd.entity.trade.item.Item;
 import io.konik.zugferd.entity.trade.item.ReferencedDocumentItem;
 import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
 import io.konik.zugferd.unqualified.Amount;
@@ -91,7 +91,7 @@ public class ComfortInvoice {
          .setContractualDueDate(inSixWeeks));
       
       Trade trade = new Trade();
-      trade.setAgreement(new TradeAgreement()     // <2>
+      trade.setAgreement(new Agreement()     // <2>
             .setSeller(new TradeParty()
                   .setName("Seller Inc.")
                   .setAddress(new Address("80331", "Marienplatz 1", "München", "DE"))
@@ -101,15 +101,15 @@ public class ComfortInvoice {
                   .setAddress(new Address("50667", "Domkloster 4", "Köln", "DE"))
                   .addTaxRegistration(new TaxRegistration("DE123...", FC))));
       
-      trade.setDelivery(new TradeDelivery(nextMonth));
+      trade.setDelivery(new Delivery(nextMonth));
       
-      trade.setSettlement(new TradeSettlement()
+      trade.setSettlement(new Settlement()
             .setPaymentReference("20131122-42")
             .setCurrency(EUR)
             .addPaymentMeans(new PaymentMeans()
                .setPayerAccount(new FinancialAccount("DE01234.."))
                   .setPayerInstitution(new FinancialInstitution("GENO...")))
-            .setMonetarySummation(new TradeMonetarySummation()
+            .setMonetarySummation(new MonetarySummation()
                .setLineTotal(new Amount(100, EUR))
                .setTaxTotal(new Amount(19, EUR))
                .setGrandTotal(new Amount(119, EUR))));

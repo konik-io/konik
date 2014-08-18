@@ -30,7 +30,7 @@ import javax.validation.constraints.NotNull;
  * = The trade tax
  * 
  */
-public class Tax extends CommonTax {
+public class AppliedTax extends CommonTax {
 
 	/**
 	 * Gets the UNCL 5153 tax type code.
@@ -56,7 +56,7 @@ public class Tax extends CommonTax {
     * @see <a href="http://www.unece.org/trade/untdid/d98b/uncl/uncl5153.htm">UNCL 5153</a>
     */
 	@Override
-   public Tax setType(TaxCode taxTypeCode) {
+   public AppliedTax setType(TaxCode taxTypeCode) {
 		super.setType(taxTypeCode);
 		return this;
 	}
@@ -84,8 +84,8 @@ public class Tax extends CommonTax {
     * @return the tax
     */
 	@Override
-   public Tax setCategory(TaxCategory value) {
-		return (Tax) super.setCategory(value);
+   public AppliedTax setCategory(TaxCategory value) {
+		return (AppliedTax) super.setCategory(value);
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class Tax extends CommonTax {
     * @return the tax
     */
 	@Override
-   public Tax setPercentage(BigDecimal applicablePercentage) {
-		return (Tax) super.setPercentage(applicablePercentage);
+   public AppliedTax setPercentage(BigDecimal applicablePercentage) {
+		return (AppliedTax) super.setPercentage(applicablePercentage);
 	}
 }

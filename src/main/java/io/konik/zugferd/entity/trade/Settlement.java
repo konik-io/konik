@@ -25,7 +25,7 @@ import io.konik.zugferd.entity.LogisticsServiceCharge;
 import io.konik.zugferd.entity.PaymentMeans;
 import io.konik.zugferd.entity.PaymentTerm;
 import io.konik.zugferd.entity.Period;
-import io.konik.zugferd.entity.Settlement;
+import io.konik.zugferd.entity.CommonSettlement;
 import io.konik.zugferd.entity.SpecifiedAllowanceCharge;
 import io.konik.zugferd.entity.TradeParty;
 
@@ -48,7 +48,7 @@ import com.neovisionaries.i18n.CurrencyCode;
 @XmlType(propOrder = { "paymentReference", "currency", "invoicee", "payee",
       "paymentMeans", "tradeTax", "billingPeriod", "allowanceCharge", "serviceCharge", "paymentTerms",
       "monetarySummation", "receivableBookingReference" })
-public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummation>{
+public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>{
    
    @XmlElement(name = "PaymentReference")
    private String paymentReference; 
@@ -90,7 +90,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
 
    @Valid
    @XmlElement(name = "SpecifiedTradeSettlementMonetarySummation")
-   private TradeMonetarySummation monetarySummation;
+   private MonetarySummation monetarySummation;
    
    @XmlElement(name = "ReceivableSpecifiedTradeAccountingAccount")
    @XmlJavaTypeAdapter(AccountingAccountAdapter.class)
@@ -122,7 +122,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
     * @param referenceText the reference text
     * @return the trade settlement
     */
-   public TradeSettlement setPaymentReference(String referenceText) {
+   public Settlement setPaymentReference(String referenceText) {
       this.paymentReference = referenceText;
       return this;
    }
@@ -145,7 +145,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
     * @return the trade settlement
     */
 
-   public TradeSettlement setCurrency(CurrencyCode currency) {
+   public Settlement setCurrency(CurrencyCode currency) {
       this.currency = currency;
       return this;
    }
@@ -168,7 +168,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
     * @param invoicee the new invoicee trade party
     * @return the supply chain trade settlement
     */
-   public TradeSettlement setInvoicee(TradeParty invoicee) {
+   public Settlement setInvoicee(TradeParty invoicee) {
       this.invoicee = invoicee;
       return this;
    }
@@ -189,7 +189,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
     * @param payee the payee
     * @return the settlement
     */
-   public TradeSettlement setPayee(TradeParty payee) {
+   public Settlement setPayee(TradeParty payee) {
       this.payee = payee;
       return this;
    }
@@ -212,7 +212,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
     * @param newPaymentMethod the new payment method
     * @return the supply chain trade settlement
     */
-   public TradeSettlement addPaymentMeans(PaymentMeans newPaymentMethod) {
+   public Settlement addPaymentMeans(PaymentMeans newPaymentMethod) {
       getPaymentMeans().add(newPaymentMethod);
       return this;
    }
@@ -237,7 +237,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
     * @return the trade settlement
     */
    @Override
-   public TradeSettlement addTradeTax(TradeTax additionalTradeTax) {
+   public Settlement addTradeTax(TradeTax additionalTradeTax) {
       getTradeTax().add(additionalTradeTax);
       return this;
    }
@@ -261,7 +261,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
     * @return the supply chain trade settlement
     */
    @Override
-   public TradeSettlement setBillingPeriod(Period billingPeriod) {
+   public Settlement setBillingPeriod(Period billingPeriod) {
       this.billingPeriod = billingPeriod;
       return this;
    }
@@ -286,7 +286,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
     * @return the trade settlement
     */
    @Comfort
-   public TradeSettlement addAllowanceCharge(SpecifiedAllowanceCharge additionalAllowanceCharge) {
+   public Settlement addAllowanceCharge(SpecifiedAllowanceCharge additionalAllowanceCharge) {
       getAllowanceCharge().add(additionalAllowanceCharge);
       return this;
    }
@@ -311,7 +311,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
     * @return the trade settlement
     */
    @Comfort
-   public TradeSettlement addServiceCharge(LogisticsServiceCharge logisticsServiceCharge) {
+   public Settlement addServiceCharge(LogisticsServiceCharge logisticsServiceCharge) {
       getServiceCharge().add(logisticsServiceCharge);
       return this;
    }
@@ -337,7 +337,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
     * @return the trade settlement
     */
    @Comfort
-   public TradeSettlement addPaymentTerm(PaymentTerm additionalPaymentTerm) {
+   public Settlement addPaymentTerm(PaymentTerm additionalPaymentTerm) {
       getPaymentTerms().add(additionalPaymentTerm);
       return this;
    }
@@ -350,7 +350,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
    @NotNull
    @Basic
    @Override
-   public TradeMonetarySummation getMonetarySummation() {
+   public MonetarySummation getMonetarySummation() {
       return monetarySummation;
    }
 
@@ -362,7 +362,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
     */
    @Basic
    @Override
-   public TradeSettlement setMonetarySummation(TradeMonetarySummation monetarySummation) {
+   public Settlement setMonetarySummation(MonetarySummation monetarySummation) {
       this.monetarySummation = monetarySummation;
       return this;
    }
@@ -384,7 +384,7 @@ public class TradeSettlement implements Settlement<TradeTax, TradeMonetarySummat
     * @param bookingReference the booking reference account.
     * @return the trade
     */
-   public TradeSettlement setReceivableBookingReference(String bookingReference) {
+   public Settlement setReceivableBookingReference(String bookingReference) {
       this.receivableBookingReference = bookingReference;
       return this;
    }

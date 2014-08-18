@@ -82,7 +82,7 @@ public class AllowanceCharge {
 	private String reason;
 
 	@XmlElement(name = "CategoryTradeTax")
-	protected Tax category;
+	protected AppliedTax category;
 	
 	/**
     * Instantiates a new allowance charge.

@@ -16,11 +16,10 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package io.konik.zugferd.entity;
+package io.konik.zugferd.entity.trade.item;
 
-import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
-import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
-import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
+import io.konik.zugferd.entity.DocumentLine;
+import io.konik.zugferd.entity.Product;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;

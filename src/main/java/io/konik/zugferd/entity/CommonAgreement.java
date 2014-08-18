@@ -17,18 +17,17 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.entity.trade.TradeAgreement;
+import io.konik.zugferd.entity.trade.Agreement;
 
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
  * = The Agreement
  * 
- * This base agreement class contain only fields. {@link CommonAgreement} and {@link TradeAgreement} provide a different view
+ * This base agreement class contain only fields. {@link CommonAgreement} and {@link Agreement} provide a different view
  * on the underlying Data,
  * we have this common field structure class because otherwise we would have two +SupplyChainTradeAgreementType+s and
  * this is not allowed in JaxB
@@ -36,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  * @param <REF> the different Referenced Document
  * @param <ADDREF> additional Referenced Document
  */
-@XmlAccessorType(XmlAccessType.NONE)
+@XmlTransient
 @XmlType(name = "SupplyChainTradeAgreementType")
 public interface CommonAgreement<REF extends ReferencedDocument, ADDREF extends ReferencedDocument> {
    /**

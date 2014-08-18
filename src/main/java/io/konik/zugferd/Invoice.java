@@ -20,7 +20,7 @@ package io.konik.zugferd;
 
 import io.konik.zugferd.entity.Context;
 import io.konik.zugferd.entity.Header;
-import io.konik.zugferd.entity.Trade;
+import io.konik.zugferd.entity.trade.Trade;
 import io.konik.zugferd.profile.Profile;
 
 import javax.validation.Valid;

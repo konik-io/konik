@@ -17,8 +17,6 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.entity.trade.item.SpecifiedTax;
-
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlTransient;
@@ -34,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlTransient
 @XmlType(name = "SupplyChainTradeSettlementType")
-public interface Settlement<T extends SpecifiedTax, M extends CommonMonetarySummation> {
+public interface CommonSettlement<T extends CommonTax, M extends CommonMonetarySummation> {
 
    /**
     * Gets the billing specified period.
@@ -54,7 +52,7 @@ public interface Settlement<T extends SpecifiedTax, M extends CommonMonetarySumm
     * @param billingPeriod the new billing specified period
     * @return the supply chain trade settlement
     */
-   public Settlement<T, M> setBillingPeriod(Period billingPeriod);
+   public CommonSettlement<T, M> setBillingPeriod(Period billingPeriod);
 
    /**
     * Gets the applicable trade tax.
@@ -69,7 +67,7 @@ public interface Settlement<T extends SpecifiedTax, M extends CommonMonetarySumm
     * @param additionalTradeTax
     * @return the trade settlement
     */
-   public Settlement<T, M> addTradeTax(T additionalTradeTax);
+   public CommonSettlement<T, M> addTradeTax(T additionalTradeTax);
 
    /**
     * Gets the trade settlement monetary summation.
@@ -88,6 +86,6 @@ public interface Settlement<T extends SpecifiedTax, M extends CommonMonetarySumm
     * @param monetarySummation the new monetary summation
     * @return the supply chain trade settlement
     */
-   public Settlement<T, M> setMonetarySummation(M monetarySummation);
+   public CommonSettlement<T, M> setMonetarySummation(M monetarySummation);
 
 }

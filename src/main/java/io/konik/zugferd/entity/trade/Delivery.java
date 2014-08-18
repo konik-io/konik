@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = { "relatedConsignment", "shipTo", "ultimateShipTo","shipFrom", "actualDelivery", "despatchAdvice", "deliveryNote" })
-public class TradeDelivery extends CommonDelivery<ReferencedDocument> {
+public class Delivery extends CommonDelivery<ReferencedDocument> {
 
    @Valid
    @XmlElement(name = "RelatedSupplyChainConsignment")
@@ -54,7 +54,7 @@ public class TradeDelivery extends CommonDelivery<ReferencedDocument> {
    @XmlElement(name = "DeliveryNoteReferencedDocument")
    private ReferencedDocument deliveryNote;
 
-   TradeDelivery() {
+   Delivery() {
       super();
    }
 
@@ -63,7 +63,7 @@ public class TradeDelivery extends CommonDelivery<ReferencedDocument> {
     * 
     * @param actualDelivery
     */
-   public TradeDelivery(ZfDate actualDelivery) {
+   public Delivery(ZfDate actualDelivery) {
       super();
       setActualDelivery(actualDelivery);
    }
@@ -83,7 +83,7 @@ public class TradeDelivery extends CommonDelivery<ReferencedDocument> {
     * @param relatedConsignment the related consignment
     * @return the trade delivery
     */
-   public TradeDelivery setRelatedConsignment(List<Consignment> relatedConsignment) {
+   public Delivery setRelatedConsignment(List<Consignment> relatedConsignment) {
       this.relatedConsignment = relatedConsignment;
       return this;
    }
@@ -103,7 +103,7 @@ public class TradeDelivery extends CommonDelivery<ReferencedDocument> {
     * @param shipFrom the ship from
     * @return the trade delivery
     */
-   public TradeDelivery setShipFrom(TradeParty shipFrom) {
+   public Delivery setShipFrom(TradeParty shipFrom) {
       this.shipFrom = shipFrom;
       return this;
    }
@@ -116,7 +116,7 @@ public class TradeDelivery extends CommonDelivery<ReferencedDocument> {
 
 
    @Override
-   public TradeDelivery setDespatchAdvice(ReferencedDocument despatchAdvice) {
+   public Delivery setDespatchAdvice(ReferencedDocument despatchAdvice) {
       this.despatchAdvice = despatchAdvice;
       return this;
 
@@ -130,7 +130,7 @@ public class TradeDelivery extends CommonDelivery<ReferencedDocument> {
 
 
    @Override
-   public TradeDelivery setDeliveryNote(ReferencedDocument deliveryNote) {
+   public Delivery setDeliveryNote(ReferencedDocument deliveryNote) {
       this.deliveryNote = deliveryNote;
       return this;
    }

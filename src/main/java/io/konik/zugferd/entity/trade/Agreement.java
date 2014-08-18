@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlType(propOrder = { "buyerReference", "seller", "buyer","productEndUser","deliveryTerms",
       "buyerOrder", "contract", "additional", "customerOrder" })
-public class TradeAgreement implements CommonAgreement<ReferencedDocument,ReferencedDocumentAdditional>{
+public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedDocumentAdditional>{
    
    private String buyerReference;
    @Valid
@@ -83,7 +83,7 @@ public class TradeAgreement implements CommonAgreement<ReferencedDocument,Refere
     * @param buyerReference the new buyer reference
     * @return the trade agreement
     */
-   public TradeAgreement setBuyerReference(String buyerReference) {
+   public Agreement setBuyerReference(String buyerReference) {
       this.buyerReference = buyerReference;
       return this;
    }
@@ -105,7 +105,7 @@ public class TradeAgreement implements CommonAgreement<ReferencedDocument,Refere
     * @param seller the seller
     * @return the agreement
     */
-   public TradeAgreement setSeller(TradeParty seller) {
+   public Agreement setSeller(TradeParty seller) {
       this.seller = seller;
       return this;
    }
@@ -126,7 +126,7 @@ public class TradeAgreement implements CommonAgreement<ReferencedDocument,Refere
     * @param productEndUser the new product end user
     * @return the agreement
     */
-   public TradeAgreement setProductEndUser(TradeParty productEndUser) {
+   public Agreement setProductEndUser(TradeParty productEndUser) {
       this.productEndUser = productEndUser;
       return this;
    }
@@ -147,7 +147,7 @@ public class TradeAgreement implements CommonAgreement<ReferencedDocument,Refere
     * @param buyer the new buyer trade party
     * @return the supply chain trade agreement
     */
-   public TradeAgreement setBuyer(TradeParty buyer) {
+   public Agreement setBuyer(TradeParty buyer) {
       this.buyer = buyer;
       return this;
    }
@@ -195,7 +195,7 @@ public class TradeAgreement implements CommonAgreement<ReferencedDocument,Refere
     * @return the supply chain trade agreement
     */
    @Override
-   public TradeAgreement setBuyerOrder(ReferencedDocument buyerOrder) {
+   public Agreement setBuyerOrder(ReferencedDocument buyerOrder) {
       this.buyerOrder = buyerOrder;
       return this;
    }
@@ -222,7 +222,7 @@ public class TradeAgreement implements CommonAgreement<ReferencedDocument,Refere
     * @return the supply chain trade agreement
     */
    @Override
-   public TradeAgreement setContract(ReferencedDocument contract) {
+   public Agreement setContract(ReferencedDocument contract) {
       this.contract = contract;
       return this;
    }
@@ -249,7 +249,7 @@ public class TradeAgreement implements CommonAgreement<ReferencedDocument,Refere
     * @return the common agreement
     */
    @Override
-   public TradeAgreement addAdditional(ReferencedDocumentAdditional additionalReference) {
+   public Agreement addAdditional(ReferencedDocumentAdditional additionalReference) {
       getAdditional().add(additionalReference);
       return this;
    }
@@ -276,7 +276,7 @@ public class TradeAgreement implements CommonAgreement<ReferencedDocument,Refere
     * @return the supply chain trade agreement
     */
    @Override
-   public TradeAgreement setCustomerOrder(ReferencedDocument customerOrder) {
+   public Agreement setCustomerOrder(ReferencedDocument customerOrder) {
       this.customerOrder = customerOrder;
       return this;
    }

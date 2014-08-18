@@ -16,11 +16,9 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package io.konik.zugferd.entity;
+package io.konik.zugferd.entity.trade;
 
-import io.konik.zugferd.entity.trade.TradeAgreement;
-import io.konik.zugferd.entity.trade.TradeDelivery;
-import io.konik.zugferd.entity.trade.TradeSettlement;
+import io.konik.zugferd.entity.trade.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,15 +42,15 @@ public class Trade {
 
    @NotNull @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeAgreement")
-	private TradeAgreement agreement;
+	private Agreement agreement;
 
    @NotNull @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeDelivery")
-	private TradeDelivery delivery;
+	private Delivery delivery;
 
    @NotNull @Valid
 	@XmlElement(name = "ApplicableSupplyChainTradeSettlement")
-	private TradeSettlement settlement;
+	private Settlement settlement;
 
    @NotNull @Valid
 	@XmlElement(name = "IncludedSupplyChainTradeLineItem")
@@ -63,7 +61,7 @@ public class Trade {
     *
     * @return the agreement
     */
-	public TradeAgreement getAgreement() {
+	public Agreement getAgreement() {
       return agreement;
    }
 
@@ -73,7 +71,7 @@ public class Trade {
     * @param agreement the new agreement
     * @return the trade
     */
-   public Trade setAgreement(TradeAgreement agreement) {
+   public Trade setAgreement(Agreement agreement) {
       this.agreement = agreement;
       return this;
    }
@@ -83,7 +81,7 @@ public class Trade {
 	 * 
 	 * @return the trade delivery
 	 */
-	public TradeDelivery getDelivery() {
+	public Delivery getDelivery() {
 		return delivery;
 	}
 
@@ -93,7 +91,7 @@ public class Trade {
 	 * @param delivery the new trade delivery
 	 * @return the trade 
 	 */
-	public Trade setDelivery(TradeDelivery delivery) {
+	public Trade setDelivery(Delivery delivery) {
 		this.delivery = delivery;
 		return this;
 	}
@@ -103,7 +101,7 @@ public class Trade {
 	 * 
 	 * @return the trade settlement
 	 */
-	public TradeSettlement getSettlement() {
+	public Settlement getSettlement() {
 		return settlement;
 	}
 
@@ -113,7 +111,7 @@ public class Trade {
     * @param tradeSettlement the new trade settlement
     * @return the trade
     */
-	public Trade setSettlement(TradeSettlement tradeSettlement) {
+	public Trade setSettlement(Settlement tradeSettlement) {
 		this.settlement = tradeSettlement;
 		return this;
 	}

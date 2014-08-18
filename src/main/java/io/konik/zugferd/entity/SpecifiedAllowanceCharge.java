@@ -28,7 +28,7 @@ public class SpecifiedAllowanceCharge extends AllowanceCharge {
     *
     * @return the category
     */
-   public Tax getCategory() {
+   public AppliedTax getCategory() {
       return category;
    }
 
@@ -38,7 +38,7 @@ public class SpecifiedAllowanceCharge extends AllowanceCharge {
     * @param category the new category
     * @return the allowance charge
     */
-   public SpecifiedAllowanceCharge setCategory(Tax category) {
+   public SpecifiedAllowanceCharge setCategory(AppliedTax category) {
       this.category = category;
       return this;
    }

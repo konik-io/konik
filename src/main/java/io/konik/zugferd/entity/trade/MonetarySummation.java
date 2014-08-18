@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(propOrder = { "lineTotal", "chargeTotal",
 		"allowanceTotal", "taxBasisTotal", "taxTotal", "grandTotal", "totalPrepaid", "duePayable" })
-public class TradeMonetarySummation  extends CommonMonetarySummation{
+public class MonetarySummation  extends CommonMonetarySummation{
 
    @Basic
    @Valid
@@ -94,7 +94,7 @@ public class TradeMonetarySummation  extends CommonMonetarySummation{
 	 * @return the trade settlement monetary summation
 	 */
 	@Override
-   public TradeMonetarySummation setLineTotal(Amount lineTotal) {
+   public MonetarySummation setLineTotal(Amount lineTotal) {
 		this.lineTotal = lineTotal;
 		return this;
 	}
@@ -120,7 +120,7 @@ public class TradeMonetarySummation  extends CommonMonetarySummation{
 	 * @param chargeTotal the new charge total amount
 	 * @return the trade settlement monetary summation
 	 */
-	public TradeMonetarySummation setChargeTotal(Amount chargeTotal) {
+	public MonetarySummation setChargeTotal(Amount chargeTotal) {
 		this.chargeTotal = chargeTotal;
 		return this;
 	}
@@ -144,7 +144,7 @@ public class TradeMonetarySummation  extends CommonMonetarySummation{
 	 * @param allowanceTotal the new allowance total amount
 	 * @return the trade settlement monetary summation
 	 */
-	public TradeMonetarySummation setAllowanceTotal(Amount allowanceTotal) {
+	public MonetarySummation setAllowanceTotal(Amount allowanceTotal) {
 		this.allowanceTotal = allowanceTotal;
 		return this;
 	}
@@ -171,7 +171,7 @@ public class TradeMonetarySummation  extends CommonMonetarySummation{
 	 * @param taxBasisTotal the new tax basis total amount
 	 * @return the trade settlement monetary summation
 	 */
-	public TradeMonetarySummation setTaxBasisTotal(Amount taxBasisTotal) {
+	public MonetarySummation setTaxBasisTotal(Amount taxBasisTotal) {
 		this.taxBasisTotal = taxBasisTotal;
 		return this;
 	}
@@ -195,7 +195,7 @@ public class TradeMonetarySummation  extends CommonMonetarySummation{
 	 * @param taxTotal the new tax total amount
 	 * @return the trade settlement monetary summation
 	 */
-	public TradeMonetarySummation setTaxTotal(Amount taxTotal) {
+	public MonetarySummation setTaxTotal(Amount taxTotal) {
 		this.taxTotal = taxTotal;
 		return this;
 	}
@@ -220,7 +220,7 @@ public class TradeMonetarySummation  extends CommonMonetarySummation{
 	 * @param grandTotal the new grand total amount
 	 * @return the trade settlement monetary summation
 	 */
-	public TradeMonetarySummation setGrandTotal(Amount grandTotal) {
+	public MonetarySummation setGrandTotal(Amount grandTotal) {
 		this.grandTotal = grandTotal;
 		return this;
 	}
@@ -246,7 +246,7 @@ public class TradeMonetarySummation  extends CommonMonetarySummation{
 	 * @param totalPrepaid the new total prepaid amount
 	 * @return the trade settlement monetary summation
 	 */
-	public TradeMonetarySummation setTotalPrepaid(Amount totalPrepaid) {
+	public MonetarySummation setTotalPrepaid(Amount totalPrepaid) {
 		this.totalPrepaid = totalPrepaid;
 		return this;
 	}
@@ -271,7 +271,7 @@ public class TradeMonetarySummation  extends CommonMonetarySummation{
 	 * @param duePayable the new due payable amount
 	 * @return the trade settlement monetary summation
 	 */
-	public TradeMonetarySummation setDuePayable(Amount duePayable) {
+	public MonetarySummation setDuePayable(Amount duePayable) {
 		this.duePayable = duePayable;
 		return this;
 	}

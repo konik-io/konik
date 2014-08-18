@@ -21,7 +21,7 @@ import io.konik.jaxb.bindable.entity.AccountingAccountAdapter;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.Period;
-import io.konik.zugferd.entity.Settlement;
+import io.konik.zugferd.entity.CommonSettlement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * Contains payment related information on an Item basis.
  */
 @XmlType(propOrder = {"tradeTax", "billingPeriod","bookingReference", "monetarySummation"})
-public class SpecifiedSettlement implements Settlement<SpecifiedTax,SpecifiedMonetarySummation>{
+public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax,SpecifiedMonetarySummation>{
 
    @Valid
    @XmlElement(name = "ApplicableTradeTax")

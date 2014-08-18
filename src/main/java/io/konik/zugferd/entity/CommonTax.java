@@ -28,6 +28,7 @@ import java.math.BigDecimal;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -40,6 +41,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * The complexity of this hierarchy is also result of the validation path, we can not override constraints.
  */
+@XmlTransient
 @XmlType(name = "TradeTaxType", propOrder = { "calculated", "type", "exemptionReason","basis", "lineTotal", "allowanceCharge", "category", "percentage" })
 /* 
 HIRACHY TOP DOWN

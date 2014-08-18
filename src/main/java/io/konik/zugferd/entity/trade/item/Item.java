@@ -18,7 +18,7 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
-import io.konik.zugferd.entity.DocumentLine;
+import io.konik.zugferd.entity.Document;
 import io.konik.zugferd.entity.Product;
 
 import javax.validation.Valid;
@@ -32,12 +32,12 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SupplyChainTradeLineItemType", propOrder = { "position", "agreement", "delivery","settlement", "product" })
+@XmlType(name = "SupplyChainTradeLineItemType", propOrder = { "lineDocument", "agreement", "delivery","settlement", "product" })
 public class Item {
 
    @Valid
 	@XmlElement(name = "AssociatedDocumentLineDocument")
-	private DocumentLine position;
+	private Document lineDocument;
 
    @Valid
 	@XmlElement(name = "SpecifiedSupplyChainTradeAgreement")
@@ -60,18 +60,18 @@ public class Item {
     *
     * @return the position
     */
-	public DocumentLine getPosition() {
-		return position;
+	public Document getLineDocument() {
+		return lineDocument;
 	}
 
 	/**
-    * Sets the item position document.
+    * Sets the new item line document.
     *
-    * @param position the new position
+    * @param newLineDocument the new position
     * @return the item
     */
-	public Item setPosition(DocumentLine position) {
-		this.position = position;
+	public Item setLineDocument(Document newLineDocument) {
+		this.lineDocument = newLineDocument;
 		return this;
 	}
 

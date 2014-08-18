@@ -20,8 +20,8 @@ package io.konik.zugferd.entity.trade.item;
 import io.konik.jaxb.bindable.entity.AccountingAccountAdapter;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
-import io.konik.zugferd.entity.Period;
 import io.konik.zugferd.entity.CommonSettlement;
+import io.konik.zugferd.entity.Period;
 
 import java.util.ArrayList;
 import java.util.List;

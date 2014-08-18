@@ -17,10 +17,10 @@
  */
 package io.konik.zugferd.entity.trade;
 
-import javax.validation.constraints.NotNull;
-
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.ReferencedDocument;
+
+import javax.validation.constraints.NotNull;
 
 
 /**

@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * = The Agreement
  * 
- * This base agreement class contain only fields. {@link CommonAgreement} and {@link Agreement} provide a different view
+ * This base agreement class contain only fields. {@link Agreement} and {@link SpecifiedAgreement} provide a different view
  * on the underlying Data,
  * we have this common field structure class because otherwise we would have two +SupplyChainTradeAgreementType+s and
  * this is not allowed in JaxB

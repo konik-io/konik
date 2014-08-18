@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentLineDocumentType", propOrder = { "position", "notes" })
-public class DocumentLine {
+public class Document {
 
 	@XmlElement(name = "LineID")
 	private Integer position;
@@ -46,7 +46,7 @@ public class DocumentLine {
 	/**
     * Instantiates a new document line.
     */
-	public DocumentLine() {
+	public Document() {
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class DocumentLine {
     *
     * @param position the position number
     */
-	public DocumentLine(int position) {
+	public Document(int position) {
       super();
       this.position = Integer.valueOf(position);
    }
@@ -65,7 +65,7 @@ public class DocumentLine {
     * @param position the position
     * @param notes the notes
     */
-	public DocumentLine(int position, List<Note> notes) {
+	public Document(int position, List<Note> notes) {
       this(position);
       this.notes = notes;
    }
@@ -89,7 +89,7 @@ public class DocumentLine {
     * @param position the position
     * @return the document line
     */
-	public DocumentLine setPosition(int position) {
+	public Document setPosition(int position) {
 		this.position = valueOf(position);
 		return this;
 	}
@@ -120,7 +120,7 @@ public class DocumentLine {
 	 * @param note the note
 	 * @return the document line document
 	 */
-	public DocumentLine addNote(Note note) {
+	public Document addNote(Note note) {
 		getNotes().add(note);
 		return this;
 	}

@@ -34,7 +34,7 @@ import io.konik.PrittyPrintInvoiceTransformer;
 import io.konik.validation.InvoiceValidator;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.Address;
-import io.konik.zugferd.entity.DocumentLine;
+import io.konik.zugferd.entity.Document;
 import io.konik.zugferd.entity.FinancialAccount;
 import io.konik.zugferd.entity.FinancialInstitution;
 import io.konik.zugferd.entity.GrossPrice;
@@ -139,7 +139,7 @@ public class AllElementsInvoiceTest {
                ));
       
       trade.addItem(new Item()
-         .setPosition(new DocumentLine(1))
+         .setLineDocument(new Document(1))
          .setAgreement(new SpecifiedAgreement()
                .setBuyerOrder(new ReferencedDocumentItem(1, "BuyerOrder1"))
                .setContract(new ReferencedDocumentItem(1, "ContractPos1"))

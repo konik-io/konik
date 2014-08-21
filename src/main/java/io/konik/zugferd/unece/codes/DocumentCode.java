@@ -4741,10 +4741,10 @@ public enum DocumentCode {
    public static final String PREFIX = "_";
 
    /** The code. */
-   final private String code;
+   private final String code;
 
    /** the description for the code. */
-   final private String description;
+   private final String description;
 
    /**
     * Instantiates a new document name code.

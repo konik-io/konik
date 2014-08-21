@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SpecifiedPeriodType", propOrder = { "start", "end", "contractualDueDate" })
+@XmlType(name = "SpecifiedPeriodType", propOrder = { "start", "end" })
 public class Period {
 
    @Valid
@@ -41,9 +41,6 @@ public class Period {
    @XmlElement(name = "EndDateTime")
    private ZfDate end;
 
-   @Valid
-   @XmlElement(name = "CompleteDateTime")
-   protected ZfDate contractualDueDate;//only place where this is used: HeaderExchangedDocument
 
    /**
     * Gets the start date time.

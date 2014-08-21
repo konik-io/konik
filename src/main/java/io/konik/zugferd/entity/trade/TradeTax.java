@@ -152,11 +152,6 @@ public class TradeTax extends SpecifiedTax {
    }
 
    @Override
-   public String getExemptionReason() {
-      return super.getExemptionReason();
-   }
-
-   @Override
    public TradeTax setExemptionReason(String exemptionReason) {
       super.setExemptionReason(exemptionReason);
       return this;

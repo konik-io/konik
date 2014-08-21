@@ -33,7 +33,7 @@ public interface InvoiceExtractor {
     * @param pdf the pdf
     * @return the extracted invoice model.
     */
-   public Invoice extract(final byte[] pdf);
+   Invoice extract(final byte[] pdf);
 
    /**
     * Extract invoice from PDF stream.
@@ -41,6 +41,6 @@ public interface InvoiceExtractor {
     * @param pdf the pdf
     * @return the extracted invoice model.
     */
-   public Invoice extract(final InputStream pdf);
+   Invoice extract(final InputStream pdf);
 
 }

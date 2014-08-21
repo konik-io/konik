@@ -753,7 +753,7 @@ public enum PaymentMeansCode {
    public static final String PREFIX = "_";
 
    /** the description for the code. */
-   final private String description;
+   private final String description;
 
    PaymentMeansCode(String descirption) {
       this.description = descirption;

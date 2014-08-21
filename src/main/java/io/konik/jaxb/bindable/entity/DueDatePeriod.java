@@ -17,13 +17,22 @@
  */
 package io.konik.jaxb.bindable.entity;
 
+import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
 import io.konik.zugferd.entity.Period;
 import io.konik.zugferd.unqualified.ZfDate;
 
 /**
- * = The period of time
+ * = The period of time adapter. 
  */
-public class AdapterPeriod extends Period {
+@XmlType(propOrder = { "contractualDueDate" })
+public class DueDatePeriod extends Period {
+
+   @Valid
+   @XmlElement(name = "CompleteDateTime")
+   protected ZfDate contractualDueDate;
 
    /**
     * Gets the contractual due date.
@@ -40,7 +49,7 @@ public class AdapterPeriod extends Period {
     * @param contractualDueDate the contractual due date
     * @return the period
     */
-   public AdapterPeriod setContractualDueDate(ZfDate contractualDueDate) {
+   public DueDatePeriod setContractualDueDate(ZfDate contractualDueDate) {
       this.contractualDueDate = contractualDueDate;
       return this;
    }

@@ -67,7 +67,7 @@ public abstract class ZfDate extends Date {
     *
     * @return the format code
     */
-   abstract public String getFormatCode();
+   public abstract String getFormatCode();
 
    /**
     * Gets the formatter.

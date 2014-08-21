@@ -105,11 +105,6 @@ public class SpecifiedTax extends CommonTax {
    }
 
    @Override
-   public BigDecimal getPercentage() {
-      return super.getPercentage();
-   }
-
-   @Override
    public SpecifiedTax setPercentage(BigDecimal applicablePercentage) {
       return (SpecifiedTax) super.setPercentage(applicablePercentage);
    }

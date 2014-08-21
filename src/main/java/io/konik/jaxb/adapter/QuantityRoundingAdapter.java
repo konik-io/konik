@@ -53,8 +53,8 @@ public class QuantityRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> 
     */
    public QuantityRoundingAdapter() {
       String name = this.getClass().getName();
-      scale = parseInt(getProperty(name+".scale",getDefaultScale()));
-      roundingMode = valueOf(getProperty(name+".roundingMode",getDefaultRoundingMode()));
+      scale = parseInt(getProperty(name+".scale",DEFAULT_SCALE));
+      roundingMode = valueOf(getProperty(name+".roundingMode",DEFAULT_ROUNDING_MODE));
    }
    
    @Override
@@ -67,15 +67,4 @@ public class QuantityRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> 
       if (amount==null) {return null;}
       return amount.setScale(scale, roundingMode).stripTrailingZeros();
    }
-   
-   
-   protected String getDefaultRoundingMode() {
-      return DEFAULT_ROUNDING_MODE;
-   }
-
-
-   protected String getDefaultScale() {
-      return DEFAULT_SCALE;
-   }
-
 }

@@ -32,8 +32,6 @@ public enum Profile {
    private static final String DELIMITED = ":";
    private final static String NS = "urn:ferd:CrossIndustryDocument:invoice";
 
-   //   private final String fullName;
-
    /**
     * Instantiates a new profile type.
     */

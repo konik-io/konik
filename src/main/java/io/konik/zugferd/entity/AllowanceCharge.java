@@ -30,8 +30,6 @@ import java.math.BigDecimal;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -43,9 +41,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * Represents trade surcharges and discounts as well as a reason.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradeAllowanceChargeType", propOrder = { "surcharge","sequence","calculationPercent", "basis", "basisQuantity","actual",
-		"reasonCode", "reason", "category" })
+		"reasonCode", "reason" })
 public class AllowanceCharge {
 
 	@XmlElement(name = "ChargeIndicator")
@@ -80,9 +77,6 @@ public class AllowanceCharge {
 
 	@XmlElement(name = "Reason")
 	private String reason;
-
-	@XmlElement(name = "CategoryTradeTax")
-	protected AppliedTax category;
 	
 	/**
     * Instantiates a new allowance charge.
@@ -127,8 +121,45 @@ public class AllowanceCharge {
       this.surcharge = falseIndicator();
       return this;
    }
-
+   
 	/**
+    * Gets the sequence.
+    *
+    * @return the sequence
+    */
+	public BigDecimal getSequence() {
+      return sequence;
+   }
+   
+   /**
+    * Sets the sequence.
+    *
+    * @param sequence the new sequence
+    */
+   public void setSequence(BigDecimal sequence) {
+      this.sequence = sequence;
+   }
+   
+   
+   
+   /**
+    * Gets the calculation percent.
+    *
+    * @return the calculation percent
+    */
+   public BigDecimal getCalculationPercent() {
+      return calculationPercent;
+   }
+   
+   /**
+    * Sets the calculation percent.
+    *
+    * @param calculationPercent the new calculation percent
+    */
+   public void setCalculationPercent(BigDecimal calculationPercent) {
+      this.calculationPercent = calculationPercent;
+   }
+   /**
 	 * Gets the basis amount.
 	 * 
 	 * @return the basis amount
@@ -147,8 +178,26 @@ public class AllowanceCharge {
 		this.basis = basisAmount;
 		return this;
 	}
+	
 
 	/**
+    * Gets the basis quantity.
+    *
+    * @return the basis quantity
+    */
+	public Quantity getBasisQuantity() {
+      return basisQuantity;
+   }
+   
+   /**
+    * Sets the basis quantity.
+    *
+    * @param basisQuantity the new basis quantity
+    */
+   public void setBasisQuantity(Quantity basisQuantity) {
+      this.basisQuantity = basisQuantity;
+   }
+   /**
 	 * Gets the actual amount.
 	 * 
 	 * @return the actual amount
@@ -167,8 +216,26 @@ public class AllowanceCharge {
 		this.actual = actualAmount;
 		return this;
 	}
+	
 
 	/**
+    * Gets the reason code.
+    *
+    * @return the reason code
+    */
+	public String getReasonCode() {
+      return reasonCode;
+   }
+   
+   /**
+    * Sets the reason code.
+    *
+    * @param reasonCode the new reason code
+    */
+   public void setReasonCode(String reasonCode) {
+      this.reasonCode = reasonCode;
+   }
+   /**
 	 * Gets the reason.
 	 * 
 	 * @return the reason
@@ -187,6 +254,7 @@ public class AllowanceCharge {
 		this.reason = reason;
 		return this;
 	}
+	
 }
 
 

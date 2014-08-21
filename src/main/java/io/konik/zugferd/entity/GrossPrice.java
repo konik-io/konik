@@ -20,6 +20,7 @@ package io.konik.zugferd.entity;
 import io.konik.zugferd.unqualified.Amount;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -54,13 +55,13 @@ public class GrossPrice extends Price {
    }
    
    /**
-    * Adds the allowance charge.
+    * Adds additional allowance charges.
     *
-    * @param allowanceCharge the allowance charge
-    * @return the new net price
+    * @param additionalAllowanceCharges the additional allowance charges
+    * @return the price
     */
-   public Price addAllowanceCharge(AllowanceCharge allowanceCharge) {
-      getAllowanceCharges().add(allowanceCharge);
+   public Price addAllowanceCharge(AllowanceCharge... additionalAllowanceCharges) {
+      Collections.addAll(getAllowanceCharges(),additionalAllowanceCharges);
       return this;
    }
 }

@@ -48,7 +48,7 @@ public class DateTime {
     */
    @XmlAccessorType(XmlAccessType.FIELD)
    @XmlType(name = "", propOrder = { "value" })
-   public static class DateTimeString {
+   static class DateTimeString {
 
       @XmlValue
       final String value;

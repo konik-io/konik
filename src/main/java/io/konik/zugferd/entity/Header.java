@@ -66,7 +66,7 @@ public class Header {
    private Indicator copy;
 
    @XmlElement(name = "LanguageID")
-   protected List<LanguageCode> languages;
+   private List<LanguageCode> languages;
 
    @Valid
    @XmlElement(name = "IncludedNote")
@@ -191,6 +191,46 @@ public class Header {
    public Header setIssued(ZfDate issued) {
       this.issued = issued;
       return this;
+   }
+
+   
+   /**
+    * Checks if is copy.
+    *
+    * @return the indicator
+    */
+   public boolean isCopy() {
+      return copy.getIndicator();
+   }
+
+   /**
+    * Sets the copy.
+    *
+    * @param copy the new copy
+    */
+   public void setCopy(boolean copy) {
+      this.copy = new Indicator(copy);
+   }
+
+   /**
+    * Gets the languages.
+    *
+    * @return the languages
+    */
+   public List<LanguageCode> getLanguages() {
+      if(languages == null) {
+         languages = new ArrayList<LanguageCode>();
+      }
+      return languages;
+   }
+
+   /**
+    * Adds the language.
+    *
+    * @param language the language
+    */
+   public void addLanguage(LanguageCode language) {
+      getLanguages().add(language);
    }
 
    /**

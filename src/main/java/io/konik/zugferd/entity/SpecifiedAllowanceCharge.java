@@ -17,11 +17,18 @@
  */
 package io.konik.zugferd.entity;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * 
  * = The Specified Allowance Charge.
  */
+@XmlType(propOrder = { "category" })
 public class SpecifiedAllowanceCharge extends AllowanceCharge {
+
+   @XmlElement(name = "CategoryTradeTax")
+   protected AppliedTax category;
 
    /**
     * Gets the category.

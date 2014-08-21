@@ -43,11 +43,12 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  */
 public class AmountLowRoundingAdapter extends XmlAdapter<Amount, Amount> {
 
-   private static final String DEFAULT_ROUNDING_MODE = "HALF_UP";
-   private static final String DEFAULT_SCALE = "2";
    
-   final int scale;
-   final RoundingMode roundingMode;
+   private static final String DEFAULT_SCALE = "2";
+   private static final String DEFAULT_ROUNDING_MODE = "HALF_UP";
+   
+   private final int scale;
+   private final RoundingMode roundingMode;
    
    /**
     * Instantiates a new amount rounding adapter.
@@ -55,7 +56,11 @@ public class AmountLowRoundingAdapter extends XmlAdapter<Amount, Amount> {
    public AmountLowRoundingAdapter() {
       String name = this.getClass().getName();
       scale = parseInt(getProperty(name+".scale",getDefaultScale()));
-      roundingMode = valueOf(getProperty(name+".roundingMode",getDefaultRoundingMode()));
+      roundingMode = valueOf(getProperty(name+".roundingMode",DEFAULT_ROUNDING_MODE));
+   }
+   
+   protected String getDefaultScale() {
+      return DEFAULT_SCALE;
    }
    
    @Override
@@ -66,18 +71,11 @@ public class AmountLowRoundingAdapter extends XmlAdapter<Amount, Amount> {
    @Override
    public Amount marshal(Amount amount) throws Exception {
       if (amount==null || amount.getValue()==null) {return amount;}
-      BigDecimal roundedValue = amount.getValue().setScale(scale, roundingMode);//.stripTrailingZeros();
+      BigDecimal roundedValue = amount.getValue().setScale(scale, roundingMode).stripTrailingZeros();
       return amount.setValue(roundedValue);
    }
    
-   
-   protected String getDefaultRoundingMode() {
-      return DEFAULT_ROUNDING_MODE;
-   }
 
 
-   protected String getDefaultScale() {
-      return DEFAULT_SCALE;
-   }
 
 }

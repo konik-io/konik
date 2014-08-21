@@ -7,7 +7,7 @@ import org.custommonkey.xmlunit.DifferenceListener;
 import org.w3c.dom.Node;
 
 @SuppressWarnings("javadoc")
-public class NumberDifferenceXmlComparisson implements DifferenceListener {
+public class NumberDifferenceXmlComparison implements DifferenceListener {
    
    @Override
    public int differenceFound(Difference difference) {

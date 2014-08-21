@@ -6081,7 +6081,7 @@ public enum Reference {
    ZZZ("Mutually defined reference number");
 
    /** the description for the code. */
-   final private String description;
+   private final String description;
 
    private Reference(String description) {
       this.description = description;

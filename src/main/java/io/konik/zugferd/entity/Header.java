@@ -27,7 +27,6 @@ import io.konik.zugferd.unqualified.Indicator;
 import io.konik.zugferd.unqualified.ZfDate;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;

@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import io.konik.InvoiceTransformer;
 import io.konik.PrittyPrintInvoiceTransformer;
 import io.konik.utils.InvoiceLoaderUtils;
-import io.konik.utils.NumberDifferenceXmlComparisson;
+import io.konik.utils.NumberDifferenceXmlComparison;
 import io.konik.validator.NotBlankValidator;
 import io.konik.zugferd.profile.Profile;
 
@@ -146,7 +146,7 @@ public class AllSampleXmlInvoicesTest {
       Files.write(remarshalledInvoice.getBytes(), new File("./target/test_"+testFileName));
 //      System.out.println(remarshalledInvoice);
       Diff diff = new Diff(testFileContent, remarshalledInvoice);
-      diff. overrideDifferenceListener(new NumberDifferenceXmlComparisson());
+      diff.overrideDifferenceListener(new NumberDifferenceXmlComparison());
       XMLAssert.assertXMLEqual(diff, true);
   }
 }

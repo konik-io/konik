@@ -18,7 +18,6 @@
 package io.konik.zugferd.entity;
 
 import io.konik.jaxb.adapter.CountryAdapter;
-import io.konik.jaxb.bindable.entity.TradeCountry;
 import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;

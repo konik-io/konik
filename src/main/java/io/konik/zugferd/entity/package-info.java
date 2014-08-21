@@ -29,8 +29,6 @@ package io.konik.zugferd.entity;
 import static javax.xml.bind.annotation.XmlAccessType.NONE;
 import static javax.xml.bind.annotation.XmlNsForm.QUALIFIED;
 import io.konik.jaxb.adapter.AmountLowRoundingAdapter;
-import io.konik.jaxb.adapter.CountryAdapter;
-import io.konik.jaxb.bindable.entity.TradeCountry;
 import io.konik.jaxb.bindable.unqualified.DateTime;
 import io.konik.jaxb.bindable.unqualified.DateTimeAdapter;
 import io.konik.zugferd.unqualified.Amount;

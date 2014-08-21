@@ -18,6 +18,7 @@
 package io.konik.zugferd.entity;
 
 import io.konik.zugferd.entity.trade.Agreement;
+import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
 
 import java.util.List;
 

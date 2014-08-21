@@ -22,18 +22,13 @@ import static java.lang.Boolean.TRUE;
 import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
 import static javax.xml.bind.JAXBContext.newInstance;
 import static org.apache.commons.lang3.Validate.notNull;
-import static org.junit.Assert.assertNotNull;
 import io.konik.zugferd.Invoice;
 
-import java.io.InputStream;
 import java.net.URL;
 
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;

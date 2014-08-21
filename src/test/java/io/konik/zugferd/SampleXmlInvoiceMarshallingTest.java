@@ -18,15 +18,6 @@
  */
 package io.konik.zugferd;
 
-import static org.junit.Assert.assertTrue;
-import io.konik.utils.InvoiceLoaderUtils;
-
-import java.io.ByteArrayOutputStream;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-
-import org.junit.Test;
 @SuppressWarnings("javadoc")
 public class SampleXmlInvoiceMarshallingTest {
 

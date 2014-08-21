@@ -17,12 +17,12 @@
  */
 package io.konik.jaxb.bindable.entity;
 
+import io.konik.zugferd.entity.Period;
+import io.konik.zugferd.unqualified.ZfDate;
+
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import io.konik.zugferd.entity.Period;
-import io.konik.zugferd.unqualified.ZfDate;
 
 /**
  * = The period of time adapter. 

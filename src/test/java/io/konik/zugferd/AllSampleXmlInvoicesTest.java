@@ -26,11 +26,7 @@ import io.konik.InvoiceTransformer;
 import io.konik.PrittyPrintInvoiceTransformer;
 import io.konik.utils.InvoiceLoaderUtils;
 import io.konik.utils.NumberDifferenceXmlComparisson;
-import io.konik.validation.InvoiceValidator;
 import io.konik.validator.NotBlankValidator;
-import io.konik.validator.annotation.Basic;
-import io.konik.validator.annotation.Comfort;
-import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.profile.Profile;
 
 import java.io.File;
@@ -42,7 +38,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import javax.validation.groups.Default;
 import javax.xml.transform.stream.StreamSource;
 
 import org.custommonkey.xmlunit.Diff;
@@ -137,7 +132,7 @@ public class AllSampleXmlInvoicesTest {
 
 
    @Test
-   public void marshallBackInvoiceModelAndDiff() throws Exception {
+   public void marshallBackInvoiceModelAndDiffXml() throws Exception {
       //setup
       String testFileContent = Files.toString(testFile, forName(UTF_8));
       Invoice model = transformer.toModel(testFile);

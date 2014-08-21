@@ -18,21 +18,6 @@
  */
 package io.konik.zugferd;
 
-import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
-import io.konik.utils.InvoiceLoaderUtils;
-
-import java.io.IOException;
-import java.io.StringReader;
-import java.io.StringWriter;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Validator;
-
-import org.junit.Test;
-import org.xml.sax.SAXException;
 
 
 @SuppressWarnings("javadoc")

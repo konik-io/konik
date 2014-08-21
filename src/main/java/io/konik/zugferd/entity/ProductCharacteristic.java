@@ -18,8 +18,10 @@
 
 package io.konik.zugferd.entity;
 
+import io.konik.validator.annotation.Extended;
 import io.konik.validator.annotation.NotBlank;
 import io.konik.validator.annotation.NotEmpty;
+import io.konik.validator.annotation.NullableNotBlank;
 import io.konik.zugferd.unqualified.Measure;
 
 import java.util.List;
@@ -49,9 +51,10 @@ public class ProductCharacteristic {
    @XmlElement(name = "ValueMeasure")
    private Measure measurand;
 
-   @Valid
+   @Extended
+   @NullableNotBlank
    @XmlElement(name = "Value")
-   private List<String> value;
+   private String value;
 
    /**
     * Gets the type code.
@@ -112,7 +115,7 @@ public class ProductCharacteristic {
     *
     * @return the value
     */
-   public List<String> getValue() {
+   public String getValue() {
       return value;
    }
 
@@ -121,7 +124,7 @@ public class ProductCharacteristic {
     *
     * @param value the value
     */
-   public void setValue(List<String> value) {
+   public void setValue(String value) {
       this.value = value;
    }
 

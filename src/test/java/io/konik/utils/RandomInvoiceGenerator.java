@@ -19,7 +19,6 @@
 package io.konik.utils;
 
 import static java.lang.Boolean.TRUE;
-import static java.lang.reflect.Modifier.isAbstract;
 import static org.apache.commons.lang3.ClassUtils.isAssignable;
 import static org.apache.commons.lang3.ClassUtils.isPrimitiveOrWrapper;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
@@ -29,9 +28,11 @@ import io.konik.zugferd.entity.CommonTax;
 import io.konik.zugferd.unqualified.ZfDate;
 import io.konik.zugferd.unqualified.ZfDateFactory;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
@@ -74,14 +75,19 @@ public class RandomInvoiceGenerator {
       Method[] rootDeclaredMethods = root.getMethods();
       for (Method method : rootDeclaredMethods) {
          int modifiers = method.getModifiers();
-         Class<?> methodType;
-         if (method.getName().startsWith("add") && !isAbstract(modifiers)) 
-            methodType = method.getParameterTypes()[0];
-         else if (method.getName().startsWith("get") && !Collection.class.isAssignableFrom(method.getReturnType()) && !method.getName().startsWith("getClass") && !isAbstract(modifiers)) {
-            methodType = method.getReturnType();
-         }else continue;// next on setter
-         //
-         Object popultedData = populteData(methodType,method.getName());
+         Class<?> methodParameter = null;
+         if (method.getName().startsWith("add") && !Modifier.isAbstract(modifiers)) {
+            methodParameter = method.getParameterTypes()[0];
+            if (methodParameter != null && !methodParameter.isArray() && (methodParameter.isInterface() || Modifier.isAbstract(methodParameter.getModifiers()))) {
+               continue;
+            }
+         }
+         else if (method.getName().startsWith("get") && !Collection.class.isAssignableFrom(method.getReturnType()) && !method.getName().startsWith("getClass") && !Modifier.isAbstract(modifiers)) {
+            methodParameter = method.getReturnType();
+         }else {
+            continue;// next on setter
+         }
+         Object popultedData = populteData(methodParameter,method.getName());
          setValue(rootObj,method,popultedData);
       }
       return rootObj;
@@ -89,6 +95,12 @@ public class RandomInvoiceGenerator {
    
    private Object createNewInstance(Class<?> root) throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
       try {
+         if (root.isArray()) {
+            Object[] array = (Object[])Array.newInstance(root.getComponentType(),1);
+            Class<?> componentType = root.getComponentType();
+            array[0] = populteData(componentType,componentType.getName());
+            return array;
+         }
          return root.newInstance();
       }catch(IllegalAccessException e) {
          Constructor<?> biggestConstructor = findBiggestConstructor(root);
@@ -106,6 +118,7 @@ public class RandomInvoiceGenerator {
 //            return ZfDateFactory.create(supportedDateFormatts[random.nextInt(3)]);
          }
 //         throw e;
+         e.printStackTrace();
          return null;
       }
    }

@@ -17,6 +17,8 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.jaxb.adapter.CountryAdapter;
+import io.konik.jaxb.bindable.entity.TradeCountry;
 import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
@@ -56,22 +58,23 @@ public class Product {
 
    @XmlElement(name = "Description")
    private String description;
-
-   @XmlElement(name = "ApplicableProductCharacteristic")
+   
    @Valid
-   protected List<ProductCharacteristic> characteristics;
+   @XmlElement(name = "ApplicableProductCharacteristic")
+   private List<ProductCharacteristic> characteristics;
 
    @XmlElement(name = "DesignatedProductClassification")
    @Valid
-   protected List<ProductClassification> classifications;
+   private List<ProductClassification> classifications;
 
    @Valid
    @XmlElement(name = "OriginTradeCountry")
+   @XmlJavaTypeAdapter(value = CountryAdapter.class)
    private List<CountryCode> origins;
 
    @XmlElement(name = "IncludedReferencedProduct")
    @Valid
-   protected List<ReferencedProduct> containedProducts;
+   private List<ReferencedProduct> containedProducts;
 
    /**
     * Gets the global id.

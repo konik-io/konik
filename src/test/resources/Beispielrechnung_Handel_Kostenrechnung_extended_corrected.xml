@@ -127,8 +127,8 @@
          </ram:ContractReferencedDocument>
          <ram:AdditionalReferencedDocument>
             <ram:IssueDateTime>2014-04-02T00:00:00</ram:IssueDateTime>
-            <ram:ID>A777123</ram:ID>
-            <ram:ReferenceTypeCode>VN</ram:ReferenceTypeCode>
+            <ram:TypeCode>VN</ram:TypeCode>
+            <ram:ID>A777123</ram:ID>            
          </ram:AdditionalReferencedDocument>
       </ram:ApplicableSupplyChainTradeAgreement>
       <ram:ApplicableSupplyChainTradeDelivery>

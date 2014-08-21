@@ -21,6 +21,8 @@ package io.konik.zugferd.entity;
 import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -37,8 +39,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * Applies to a buyer, seller, order recipient or invoice recipient.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradePartyType", propOrder = { "id", "globalId", "name", "contact", "address", "taxRegistration" })
+@XmlType(name = "TradePartyType", propOrder = { "id", "globalId", "name", "contact", "address", "taxRegistrations" })
 public class TradeParty {
 
    /** The vendor number or customer number */
@@ -68,7 +69,7 @@ public class TradeParty {
    /** The tax registration. */
    @Valid
    @XmlElement(name = "SpecifiedTaxRegistration")
-   private List<TaxRegistration> taxRegistration;
+   private List<TaxRegistration> taxRegistrations;
 
    /**
     * Gets the id.
@@ -220,11 +221,11 @@ public class TradeParty {
     * 
     * @return the specified tax registration
     */
-   public List<TaxRegistration> getTaxRegistration() {
-      if (taxRegistration == null) {
-         taxRegistration = new ArrayList<TaxRegistration>();
+   public List<TaxRegistration> getTaxRegistrations() {
+      if (taxRegistrations == null) {
+         taxRegistrations = new ArrayList<TaxRegistration>();
       }
-      return this.taxRegistration;
+      return this.taxRegistrations;
    }
 
    /**
@@ -236,8 +237,8 @@ public class TradeParty {
     * @param additionalTaxRegistration an additional Tax Registration
     * @return the trade party
     */
-   public TradeParty addTaxRegistration(TaxRegistration additionalTaxRegistration) {
-      getTaxRegistration().add(additionalTaxRegistration);
+   public TradeParty addTaxRegistrations(TaxRegistration... additionalTaxRegistration) {
+      Collections.addAll(getTaxRegistrations(), additionalTaxRegistration);
       return this;
    }
 

@@ -18,9 +18,11 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.unece.codes.Reference;
 import io.konik.zugferd.unqualified.ID;
 
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -37,9 +39,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "TaxRegistrationType", propOrder = { "id" })
 public class TaxRegistration {
 
-   /** The id. */
    @XmlElement(name = "ID")
-   private final ID id;
+   private ID id;
 
    /** Instantiates a new tax registration. */
    public TaxRegistration() {
@@ -68,27 +69,24 @@ public class TaxRegistration {
    /**
     * Gets the tax number.
     * 
-    * Profile:: BASIC
-    * 
     * Example:: {@code DE234567891}
     * 
     * @return the number
     */
-   public String getNumber() {
+   @NotBlank
+   public String getTaxNumber() {
       return id.getValue();
    }
 
    /**
     * Sets the tax number.
     * 
-    * Profile:: BASIC
-    * 
     * Example:: {@code DE234567891}
     *
     * @param taxNumber the new value
     * @return the tax registration
     */
-   public TaxRegistration setNumber(String taxNumber) {
+   public TaxRegistration setTaxNumber(String taxNumber) {
       this.id.setValue(taxNumber);
       return this;
    }
@@ -96,12 +94,11 @@ public class TaxRegistration {
    /**
     * Gets the tax type. The UNCL 1153 tax type.
     * 
-    * Profile:: BASIC
-    * 
     * Example:: {@code VA}
     *
     * @return the type
     */
+   @NotNull
    public Reference getType() {
       return Reference.getByCode(id.getSchemeId());
    }
@@ -109,15 +106,13 @@ public class TaxRegistration {
    /**
     * Sets the UNCL 1153 tax type.
     * 
-    * Profile:: BASIC
-    * 
     * Example:: {@code VA}
     *
     * @param taxType the new type
     * @return the tax registration
     */
    public TaxRegistration setType(Reference taxType) {
-      this.id.setValue(taxType.getCode());
+      this.id.setSchemeId(taxType.getCode());
       return this;
    }
 

@@ -34,7 +34,7 @@ import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
 
 /**
- * Validate that if a string is not null it should be not empty or consists of only whitespaces.
+ * When a String is not null it should not be empty nor consists of only whitespaces.
  * Compared to {@code NotEmpty} this validator will not accept whitespaces as valid.
  * Compared to {@code NotBlank} this validator will accept null as valid.
  */

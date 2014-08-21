@@ -20,15 +20,12 @@
  * Contains the model entities that are part of invoice->trade
  */
 @XmlSchema(elementFormDefault = QUALIFIED, namespace = "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12", xmlns = { @XmlNs(prefix = "ram", namespaceURI = "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12") })
-@XmlJavaTypeAdapters({ @XmlJavaTypeAdapter(value = CountryAdapter.class, type = TradeCountry.class),
-      @XmlJavaTypeAdapter(value = AmountLowRoundingAdapter.class, type = Amount.class) })
+@XmlJavaTypeAdapters({ @XmlJavaTypeAdapter(value = AmountLowRoundingAdapter.class, type = Amount.class) })
 @XmlAccessorType(XmlAccessType.NONE)
 package io.konik.zugferd.entity.trade;
 
 import static javax.xml.bind.annotation.XmlNsForm.QUALIFIED;
 import io.konik.jaxb.adapter.AmountLowRoundingAdapter;
-import io.konik.jaxb.adapter.CountryAdapter;
-import io.konik.jaxb.bindable.entity.TradeCountry;
 import io.konik.zugferd.unqualified.Amount;
 
 import javax.xml.bind.annotation.XmlAccessType;

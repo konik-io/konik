@@ -20,7 +20,7 @@
  * ZUGFeRD entities.  
  */
 @XmlSchema(elementFormDefault = QUALIFIED, namespace = "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12", xmlns = { @XmlNs(prefix = "ram", namespaceURI = "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12") })
-@XmlJavaTypeAdapters({ @XmlJavaTypeAdapter(value = CountryAdapter.class, type = TradeCountry.class),
+@XmlJavaTypeAdapters({
       @XmlJavaTypeAdapter(value = DateTimeAdapter.class, type = DateTime.class),
       @XmlJavaTypeAdapter(value = AmountLowRoundingAdapter.class, type = Amount.class), })
 @XmlAccessorType(NONE)

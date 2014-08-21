@@ -1,20 +1,19 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
 
@@ -25,13 +24,15 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.neovisionaries.i18n.CountryCode;
+
 /**
  * = The Address
  * 
  * The postal address of an entity.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeAddressType", propOrder = { "postcode", "lineOne", "lineTwo", "city", "countryCode" })
+@XmlType(name = "TradeAddressType", propOrder = { "postcode", "lineOne", "lineTwo", "city", "country" })
 public class Address {
 
    @XmlElement(name = "PostcodeCode")
@@ -48,8 +49,7 @@ public class Address {
    private String city;
 
    @XmlElement(name = "CountryID")
-   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-   private String countryCode;
+   private CountryCode country;
 
    /** Instantiates a new trade address. */
    public Address() {
@@ -64,13 +64,13 @@ public class Address {
     * @param cityName the city name
     * @param countryCode the ISO 3166-2A country code
     */
-   public Address(String postcode, String lineOne, String lineTwo, String cityName, String countryCode) {
+   public Address(String postcode, String lineOne, String lineTwo, String cityName, CountryCode countryCode) {
       super();
       this.postcode = postcode;
       this.lineOne = lineOne;
       this.lineTwo = lineTwo;
       this.city = cityName;
-      this.countryCode = countryCode;
+      this.country = countryCode;
    }
 
    /**
@@ -81,12 +81,12 @@ public class Address {
     * @param cityName the city name
     * @param countryCode the ISO 3166-2A country code
     */
-   public Address(String postcode, String lineOne, String cityName, String countryCode) {
+   public Address(String postcode, String lineOne, String cityName, CountryCode countryCode) {
       super();
       this.postcode = postcode;
       this.lineOne = lineOne;
       this.city = cityName;
-      this.countryCode = countryCode;
+      this.country = countryCode;
    }
 
    /**
@@ -202,7 +202,7 @@ public class Address {
    }
 
    /**
-    * Gets the country id.
+    * Gets the country.
     * 
     * Two-letter country codes defined in ISO 3166-1,
     * 
@@ -210,15 +210,15 @@ public class Address {
     * 
     * Example:: {@code CH}
     *
-    * @return the ISO 3166-2A country code
+    * @return the ISO 3166-2A country
     * @see <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-2A Country Codes</a>
     */
-   public String getCountryId() {
-      return countryCode;
+   public CountryCode getCountry() {
+      return country;
    }
 
    /**
-    * Sets the country code.
+    * Sets the country.
     * 
     * Two-letter country codes defined in ISO 3166-1,
     * 
@@ -226,12 +226,12 @@ public class Address {
     * 
     * Example:: {@code CH}
     *
-    * @param countryCode the country code
+    * @param country the country
     * @return the trade address
     * @see <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-2A Country Codes</a>
     */
-   public Address setCountryId(String countryCode) {
-      this.countryCode = countryCode;
+   public Address setCountry(CountryCode country) {
+      this.country = country;
       return this;
    }
 }

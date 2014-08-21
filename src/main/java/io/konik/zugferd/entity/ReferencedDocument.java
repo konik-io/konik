@@ -35,7 +35,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * References a external Document.
  */
-@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "ReferencedDocumentType", propOrder = { "issued", "linePos", "typeCode", "id", "referenceType" })
 public class ReferencedDocument {
 
@@ -74,8 +73,6 @@ public class ReferencedDocument {
    /**
     * Gets the issue date time.
     * 
-    * Profile:: COMFORT
-    * 
     * @return the issue date time
     */
    public Date getIssued() {
@@ -85,8 +82,6 @@ public class ReferencedDocument {
    /**
     * Sets the issue date time.
     * 
-    * Profile:: COMFORT
-    *
     * @param issued the new issue date time
     * @return the referenced document
     */

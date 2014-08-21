@@ -17,14 +17,17 @@
  */
 package io.konik.zugferd.entity;
 
+import static java.util.Collections.addAll;
 import io.konik.jaxb.adapter.PeriodCompleteToDateTimeAdapter;
 import io.konik.validator.annotation.Extended;
+import io.konik.validator.annotation.NotEmpty;
 import io.konik.validator.annotation.NullableNotBlank;
 import io.konik.zugferd.unece.codes.DocumentCode;
 import io.konik.zugferd.unqualified.Indicator;
 import io.konik.zugferd.unqualified.ZfDate;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -42,7 +45,7 @@ import com.neovisionaries.i18n.LanguageCode;
  * = The Invoice Document Header
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ExchangedDocumentType", propOrder = { "invoiceNumber", "name", "code", "issued", "copy", "languages",
+@XmlType(name = "HeaderExchangedDocument", propOrder = { "invoiceNumber", "name", "code", "issued", "copy", "languages",
       "notes", "contractualDueDate" })
 public class Header {
 
@@ -73,6 +76,7 @@ public class Header {
    private List<LanguageCode> languages;
 
    @Valid
+   @NotEmpty
    @XmlElement(name = "IncludedNote")
    private List<Note> notes;
 
@@ -268,11 +272,11 @@ public class Header {
     * - {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.} -
     * {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
     *
-    * @param note the note
+    * @param additionalNote the additional note
     * @return the header
     */
-   public Header addNote(Note note) {
-      getNotes().add(note);
+   public Header addNote(Note... additionalNote) {
+      addAll(getNotes(), additionalNote);
       return this;
    }
 

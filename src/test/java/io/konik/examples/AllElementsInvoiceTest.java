@@ -39,6 +39,7 @@ import io.konik.zugferd.entity.FinancialAccount;
 import io.konik.zugferd.entity.FinancialInstitution;
 import io.konik.zugferd.entity.GrossPrice;
 import io.konik.zugferd.entity.Header;
+import io.konik.zugferd.entity.Note;
 import io.konik.zugferd.entity.PaymentMeans;
 import io.konik.zugferd.entity.Price;
 import io.konik.zugferd.entity.Product;
@@ -103,18 +104,19 @@ public class AllElementsInvoiceTest {
          .setCode(_380)
          .setIssued(today)
          .setName("Rechnung")
-         .setContractualDueDate(inSixWeeks));
+         .setContractualDueDate(inSixWeeks)
+         .addNote(new Note("Mandatory Invoice Note")));
       
       Trade trade = new Trade();
       trade.setAgreement(new Agreement()     // <2>
             .setSeller(new TradeParty()
                   .setName("Seller Inc.")
                   .setAddress(new Address("80331", "Marienplatz 1", "München", "DE"))
-                  .addTaxRegistration(new TaxRegistration("DE122...", FC)))
+                  .addTaxRegistrations(new TaxRegistration("DE122...", FC)))
             .setBuyer(new TradeParty()
                   .setName("Buyer Inc.")
                   .setAddress(new Address("50667", "Domkloster 4", "Köln", "DE"))
-                  .addTaxRegistration(new TaxRegistration("DE123...", FC))));
+                  .addTaxRegistrations(new TaxRegistration("DE123...", FC))));
       
       trade.setDelivery(new Delivery(nextMonth));
       

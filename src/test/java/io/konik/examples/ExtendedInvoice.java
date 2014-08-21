@@ -18,6 +18,8 @@
  */
 package io.konik.examples;
 
+
+import static com.neovisionaries.i18n.CountryCode.DE;
 import static com.neovisionaries.i18n.CurrencyCode.EUR;
 import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
 import static io.konik.zugferd.profile.Profile.EXTENDED;
@@ -84,11 +86,11 @@ public class ExtendedInvoice {
       trade.setAgreement(new Agreement()     // <2>
             .setSeller(new TradeParty()
                   .setName("Seller Inc.")
-                  .setAddress(new Address("80331", "Marienplatz 1", "München", "DE"))
+                  .setAddress(new Address("80331", "Marienplatz 1", "München", DE))
                   .addTaxRegistrations(new TaxRegistration("DE122...", FC)))
             .setBuyer(new TradeParty()
                   .setName("Buyer Inc.")
-                  .setAddress(new Address("50667", "Domkloster 4", "Köln", "DE"))
+                  .setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
                   .addTaxRegistrations(new TaxRegistration("DE123...", FC))));
       
       trade.setDelivery(new Delivery(nextMonth));

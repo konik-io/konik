@@ -32,7 +32,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * = The Price
  * 
@@ -43,21 +42,19 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class Price {
 
    @Valid
-   @NotNull(groups=Comfort.class)
-	@XmlElement(name = "ChargeAmount")
+   @NotNull(groups = Comfort.class)
+   @XmlElement(name = "ChargeAmount")
    @XmlJavaTypeAdapter(value = AmountHighRoundingAdapter.class)
-	private Amount chargeAmount;
+   private Amount chargeAmount;
 
    @Valid
-	@XmlElement(name = "BasisQuantity")
-	private Quantity basis;
+   @XmlElement(name = "BasisQuantity")
+   private Quantity basis;
 
-   
-	@XmlElement(name = "AppliedTradeAllowanceCharge")
-	protected List<AllowanceCharge> allowanceCharges;
+   @XmlElement(name = "AppliedTradeAllowanceCharge")
+   protected List<AllowanceCharge> allowanceCharges;
 
-	
-	Price() {
+   Price() {
    }
 
    /**
@@ -65,49 +62,49 @@ public class Price {
     *
     * @param chargeAmount the charge amount
     */
-	public Price(Amount chargeAmount) {
+   public Price(Amount chargeAmount) {
       super();
       this.chargeAmount = chargeAmount;
    }
 
    /**
-	 * Gets the charge amount.
-	 * 
-	 * @return the charge amount
-	 */
-	public Amount getChargeAmount() {
-		return chargeAmount;
-	}
+    * Gets the charge amount.
+    * 
+    * @return the charge amount
+    */
+   public Amount getChargeAmount() {
+      return chargeAmount;
+   }
 
-	/**
+   /**
     * Sets the charge amount.
     *
     * @param chargeAmount the new charge amount
     * @return the price
     */
-	public Price setChargeAmount(Amount chargeAmount) {
-		this.chargeAmount = chargeAmount;
-		return this;
-	}
+   public Price setChargeAmount(Amount chargeAmount) {
+      this.chargeAmount = chargeAmount;
+      return this;
+   }
 
-	/**
-	 * Gets the basis quantity.
-	 * 
-	 * @return the basis quantity
-	 */
-	public Quantity getBasis() {
-		return basis;
-	}
+   /**
+    * Gets the basis quantity.
+    * 
+    * @return the basis quantity
+    */
+   public Quantity getBasis() {
+      return basis;
+   }
 
-	/**
+   /**
     * Sets the basis quantity.
     *
     * @param quantity the new basis quantity
     * @return the price
     */
-	public Price setBasis(Quantity quantity) {
-		this.basis = quantity;
-		return this;
-	}
+   public Price setBasis(Quantity quantity) {
+      this.basis = quantity;
+      return this;
+   }
 
 }

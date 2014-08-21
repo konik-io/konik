@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "IndicatorType", propOrder = { "indicator" })
 public class Indicator {
 
-   @XmlElement(name = "Indicator", required=true)
+   @XmlElement(name = "Indicator", required = true)
    private boolean indicator;
 
    /**
@@ -42,7 +42,7 @@ public class Indicator {
    public static Indicator trueIndicator() {
       return new Indicator(true);
    }
-   
+
    /**
     * Creates False indicator.
     *
@@ -51,10 +51,10 @@ public class Indicator {
    public static Indicator falseIndicator() {
       return new Indicator(false);
    }
-   
-   Indicator() {} 
-   
-   
+
+   Indicator() {
+   }
+
    /**
     * The Constructor.
     *
@@ -64,7 +64,6 @@ public class Indicator {
       super();
       this.indicator = indicator;
    }
-
 
    /**
     * Gets the indicator.

@@ -22,14 +22,14 @@ import io.konik.zugferd.entity.ReferencedDocument;
 /**
  * = The external referenced document with line item position information.
  */
-public class ReferencedDocumentItem extends ReferencedDocument{
+public class ReferencedDocumentItem extends ReferencedDocument {
 
    /**
     * The JAXB Constructor.
     */
    public ReferencedDocumentItem() {
    }
-   
+
    /**
     * The Constructor.
     *
@@ -40,7 +40,7 @@ public class ReferencedDocumentItem extends ReferencedDocument{
       super(identifier);
       setLinePos(String.valueOf(linePosition));
    }
-   
+
    /**
     * Gets the line position.
     *
@@ -60,5 +60,5 @@ public class ReferencedDocumentItem extends ReferencedDocument{
       this.linePos = linePos;
       return this;
    }
-	
+
 }

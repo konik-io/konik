@@ -30,38 +30,41 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
  * = The Trade transaction.
- *  
- * A Trade contains "global" agreements, delivery and settlement. On Item basis those parameters  can be refined.
+ * 
+ * A Trade contains "global" agreements, delivery and settlement. On Item basis those parameters can be refined.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreement", "delivery", "settlement","items" })
+@XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreement", "delivery", "settlement", "items" })
 public class Trade {
 
-   @NotNull @Valid
-	@XmlElement(name = "ApplicableSupplyChainTradeAgreement")
-	private Agreement agreement;
+   @NotNull
+   @Valid
+   @XmlElement(name = "ApplicableSupplyChainTradeAgreement")
+   private Agreement agreement;
 
-   @NotNull @Valid
-	@XmlElement(name = "ApplicableSupplyChainTradeDelivery")
-	private Delivery delivery;
+   @NotNull
+   @Valid
+   @XmlElement(name = "ApplicableSupplyChainTradeDelivery")
+   private Delivery delivery;
 
-   @NotNull @Valid
-	@XmlElement(name = "ApplicableSupplyChainTradeSettlement")
-	private Settlement settlement;
+   @NotNull
+   @Valid
+   @XmlElement(name = "ApplicableSupplyChainTradeSettlement")
+   private Settlement settlement;
 
-   @NotNull @Valid
-	@XmlElement(name = "IncludedSupplyChainTradeLineItem")
-	private List<Item> items;
+   @NotNull
+   @Valid
+   @XmlElement(name = "IncludedSupplyChainTradeLineItem")
+   private List<Item> items;
 
-	/**
+   /**
     * Gets the trade agreement.
     *
     * @return the agreement
     */
-	public Agreement getAgreement() {
+   public Agreement getAgreement() {
       return agreement;
    }
 
@@ -77,66 +80,66 @@ public class Trade {
    }
 
    /**
-	 * Gets the trade delivery.
-	 * 
-	 * @return the trade delivery
-	 */
-	public Delivery getDelivery() {
-		return delivery;
-	}
+    * Gets the trade delivery.
+    * 
+    * @return the trade delivery
+    */
+   public Delivery getDelivery() {
+      return delivery;
+   }
 
-	/**
-	 * Sets the trade delivery.
-	 * 
-	 * @param delivery the new trade delivery
-	 * @return the trade 
-	 */
-	public Trade setDelivery(Delivery delivery) {
-		this.delivery = delivery;
-		return this;
-	}
+   /**
+    * Sets the trade delivery.
+    * 
+    * @param delivery the new trade delivery
+    * @return the trade
+    */
+   public Trade setDelivery(Delivery delivery) {
+      this.delivery = delivery;
+      return this;
+   }
 
-	/**
-	 * Gets the trade settlement.
-	 * 
-	 * @return the trade settlement
-	 */
-	public Settlement getSettlement() {
-		return settlement;
-	}
+   /**
+    * Gets the trade settlement.
+    * 
+    * @return the trade settlement
+    */
+   public Settlement getSettlement() {
+      return settlement;
+   }
 
-	/**
+   /**
     * Sets the trade settlement.
     *
     * @param tradeSettlement the new trade settlement
     * @return the trade
     */
-	public Trade setSettlement(Settlement tradeSettlement) {
-		this.settlement = tradeSettlement;
-		return this;
-	}
+   public Trade setSettlement(Settlement tradeSettlement) {
+      this.settlement = tradeSettlement;
+      return this;
+   }
 
-	/**
-	 * Gets the item.
-	 * 
-	 * @return the items
-	 */
-	public List<Item> getItems() {
-		if (items == null) {
-			items = new ArrayList<Item>();
-		}
-		return this.items;
-	}
+   /**
+    * Gets the item.
+    * 
+    * @return the items
+    */
+   public List<Item> getItems() {
+      if (items == null) {
+         items = new ArrayList<Item>();
+      }
+      return this.items;
+   }
 
-	/**
-	 * Adds an item.
-	 * 
-	 * @param item the item
-	 * @return the trade 
-	 */
-	public Trade addItem(Item item) {
-		getItems().add(item);
-		return this;
-	}
+   /**
+    * Adds an item.
+    * 
+    * @param item the item
+    * @return the trade
+    */
+   public Trade addItem(Item item) {
+      getItems().add(item);
+      return this;
+   }
 
 }

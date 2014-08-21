@@ -42,26 +42,30 @@ import com.neovisionaries.i18n.LanguageCode;
  * = The Invoice Document Header
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ExchangedDocumentType", propOrder = { "invoiceNumber", "name", "code", "issued", "copy","languages", "notes", "contractualDueDate" })
+@XmlType(name = "ExchangedDocumentType", propOrder = { "invoiceNumber", "name", "code", "issued", "copy", "languages",
+      "notes", "contractualDueDate" })
 public class Header {
-   
-   @NotNull @NullableNotBlank
+
+   @NotNull
+   @NullableNotBlank
    @XmlElement(name = "ID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String invoiceNumber;
-   
-   @NotNull @NullableNotBlank
+
+   @NotNull
+   @NullableNotBlank
    @XmlElement(name = "Name")
    private String name;
- 
+
    @NotNull
    @XmlElement(name = "TypeCode")
    private DocumentCode code;
 
    @XmlElement(name = "IssueDateTime")
-   @NotNull @Valid
+   @NotNull
+   @Valid
    private ZfDate issued;
-   
+
    @XmlElement(name = "CopyIndicator")
    private Indicator copy;
 
@@ -72,7 +76,8 @@ public class Header {
    @XmlElement(name = "IncludedNote")
    private List<Note> notes;
 
-   @Valid @Extended
+   @Valid
+   @Extended
    @XmlElement(name = "EffectiveSpecifiedPeriod")
    @XmlJavaTypeAdapter(value = PeriodCompleteToDateTimeAdapter.class)
    private ZfDate contractualDueDate;
@@ -134,7 +139,6 @@ public class Header {
       return this;
    }
 
-
    /**
     * Gets +UNCL 1001+ Document Name Code.
     * 
@@ -148,7 +152,7 @@ public class Header {
    public DocumentCode getCode() {
       return code;
    }
-   
+
    /**
     * Sets the +UNCL 1001+ Document Name Code.
     * 
@@ -165,7 +169,6 @@ public class Header {
       this.code = code;
       return this;
    }
-   
 
    /**
     * Gets the invoice issue date time.
@@ -193,7 +196,6 @@ public class Header {
       return this;
    }
 
-   
    /**
     * Checks if is copy.
     *
@@ -218,7 +220,7 @@ public class Header {
     * @return the languages
     */
    public List<LanguageCode> getLanguages() {
-      if(languages == null) {
+      if (languages == null) {
          languages = new ArrayList<LanguageCode>();
       }
       return languages;
@@ -236,16 +238,15 @@ public class Header {
    /**
     * Gets the invoice header notes.
     * 
-    * Profile:: 
+    * Profile::
     * - {@link Note#getContent()}: BASIC
     * - {@link Note#getSubjectCode()}: COMFORT
     * 
-    * Example:: 
-    * {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.}
+    * Example:: {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.}
     * 
-    * Example:: 
-    * - {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.}
-    * - {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
+    * Example::
+    * - {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.} -
+    * {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
     * 
     * @return the included note
     */
@@ -284,7 +285,6 @@ public class Header {
       return contractualDueDate;
    }
 
- 
    /**
     * Sets the contractual due date.
     *
@@ -295,7 +295,5 @@ public class Header {
       this.contractualDueDate = contractualDueDate;
       return this;
    }
-   
-   
 
 }

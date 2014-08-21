@@ -34,8 +34,9 @@ public class TradeDeliveryTerms {
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String deliveryTypeCode;
 
-   TradeDeliveryTerms() {}
-   
+   TradeDeliveryTerms() {
+   }
+
    public TradeDeliveryTerms(String deliveryTypeCode) {
       this.deliveryTypeCode = deliveryTypeCode;
    }

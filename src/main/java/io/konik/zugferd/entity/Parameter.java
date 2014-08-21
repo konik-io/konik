@@ -38,14 +38,14 @@ public class Parameter {
    @XmlElement(name = "ID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private final String id;
-   
+
    /**
     * Instantiates a new parameter.
     */
    Parameter() {
       this.id = null;
    }
-   
+
    /**
     * Instantiates a new parameter.
     *

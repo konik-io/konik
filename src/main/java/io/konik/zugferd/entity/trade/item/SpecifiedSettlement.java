@@ -36,8 +36,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * Contains payment related information on an Item basis.
  */
-@XmlType(propOrder = {"tradeTax", "billingPeriod","bookingReference", "monetarySummation"})
-public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax,SpecifiedMonetarySummation>{
+@XmlType(propOrder = { "tradeTax", "billingPeriod", "bookingReference", "monetarySummation" })
+public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax, SpecifiedMonetarySummation> {
 
    @Valid
    @XmlElement(name = "ApplicableTradeTax")
@@ -50,11 +50,11 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax,Specif
    @XmlElement(name = "SpecifiedTradeAccountingAccount")
    @XmlJavaTypeAdapter(AccountingAccountAdapter.class)
    private String bookingReference;
-   
+
    @Valid
-   @XmlElement(name = "SpecifiedTradeSettlementMonetarySummation")   
+   @XmlElement(name = "SpecifiedTradeSettlementMonetarySummation")
    private SpecifiedMonetarySummation monetarySummation;
-   
+
    /**
     * Gets the applicable trade tax.
     *
@@ -107,7 +107,6 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax,Specif
       return this;
    }
 
-
    /**
     * Gets the specified booking reference.
     * 
@@ -126,7 +125,7 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax,Specif
     * Profile:: EXTENDED
     *
     * @param specifiedBookingReference the specified booking reference
-    * @return 
+    * @return
     */
    public SpecifiedSettlement setBookingReference(String specifiedBookingReference) {
       this.bookingReference = specifiedBookingReference;

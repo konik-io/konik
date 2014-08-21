@@ -28,12 +28,11 @@ import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
  * = The Agreement on trade item level.
  */
-@XmlType(propOrder = {"buyerOrder", "contract", "additional", "grossPrice", "netPrice", "customerOrder" })
-public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentItem,ReferencedDocumentItemAdditional> {
+@XmlType(propOrder = { "buyerOrder", "contract", "additional", "grossPrice", "netPrice", "customerOrder" })
+public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentItem, ReferencedDocumentItemAdditional> {
    @Valid
    private ReferencedDocumentItem buyerOrder;
    @Valid
@@ -58,7 +57,6 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
       return buyerOrder;
    }
 
-
    /**
     * Sets the buyer order referenced document.
     *
@@ -74,7 +72,7 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    /**
     * Gets the contract referenced document.
     * 
-    * Profile:: COMFORT 
+    * Profile:: COMFORT
     *
     * @return the contract referenced document
     */
@@ -87,7 +85,7 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    /**
     * Sets the contract referenced document.
     * 
-    * Profile:: COMFORT 
+    * Profile:: COMFORT
     *
     * @param contract the new contract referenced document
     * @return the supply chain trade agreement
@@ -97,7 +95,7 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
       this.contract = contract;
       return this;
    }
-   
+
    @Override
    @XmlElement(name = "AdditionalReferencedDocument")
    public List<ReferencedDocumentItemAdditional> getAdditional() {
@@ -106,7 +104,7 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
       }
       return additional;
    }
-   
+
    @Override
    public SpecifiedAgreement addAdditional(ReferencedDocumentItemAdditional additionalReference) {
       getAdditional().add(additionalReference);
@@ -158,7 +156,7 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    /**
     * Gets the customer order referenced document.
     * 
-    * Profile:: COMFORT 
+    * Profile:: COMFORT
     *
     * @return the customer order referenced document
     */
@@ -170,8 +168,8 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
 
    /**
     * Sets the customer order referenced document.
-    *  
-    * Profile:: COMFORT 
+    * 
+    * Profile:: COMFORT
     *
     * @param customerOrder the new customer order referenced document
     * @return the supply chain trade agreement
@@ -181,7 +179,5 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
       this.customerOrder = customerOrder;
       return this;
    }
-
-
 
 }

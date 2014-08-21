@@ -25,28 +25,27 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 
-
 /**
  * = The trade tax
  * 
  */
 public class AppliedTax extends CommonTax {
 
-	/**
-	 * Gets the UNCL 5153 tax type code.
-	 * 
-	 * Profile:: COMFORT
-	 * 
-	 * @return the type code
-	 */
-	@Override
+   /**
+    * Gets the UNCL 5153 tax type code.
+    * 
+    * Profile:: COMFORT
+    * 
+    * @return the type code
+    */
+   @Override
    @Comfort
-	@NotNull(groups=Comfort.class)
-	public TaxCode getType() {
-		return type;
-	}
+   @NotNull(groups = Comfort.class)
+   public TaxCode getType() {
+      return type;
+   }
 
-	/**
+   /**
     * Sets the UNCL 5153 tax type code.
     * 
     * Profile:: BASIC
@@ -55,27 +54,27 @@ public class AppliedTax extends CommonTax {
     * @return the tax
     * @see <a href="http://www.unece.org/trade/untdid/d98b/uncl/uncl5153.htm">UNCL 5153</a>
     */
-	@Override
+   @Override
    public AppliedTax setType(TaxCode taxTypeCode) {
-		super.setType(taxTypeCode);
-		return this;
-	}
+      super.setType(taxTypeCode);
+      return this;
+   }
 
-	/**
-	 * Gets the tax category.
-	 * 
-	 * Profile:: COMFORT
-	 * 
-	 * @return the category code
-	 */
-	@Override
+   /**
+    * Gets the tax category.
+    * 
+    * Profile:: COMFORT
+    * 
+    * @return the category code
+    */
+   @Override
    @Comfort
-	@NotNull(groups=Comfort.class)
-	public TaxCategory getCategory() {
-		return category;
-	}
+   @NotNull(groups = Comfort.class)
+   public TaxCategory getCategory() {
+      return category;
+   }
 
-	/**
+   /**
     * Sets the tax category.
     * 
     * Profile:: COMFORT
@@ -83,25 +82,25 @@ public class AppliedTax extends CommonTax {
     * @param value the new category code
     * @return the tax
     */
-	@Override
+   @Override
    public AppliedTax setCategory(TaxCategory value) {
-		return (AppliedTax) super.setCategory(value);
-	}
+      return (AppliedTax) super.setCategory(value);
+   }
 
-	/**
-	 * Gets the applicable tax percentage.
-	 * 
-	 * Profile:: COMFORT
-	 * 
-	 * @return the applicable tax percentage
-	 */
-	@Override
+   /**
+    * Gets the applicable tax percentage.
+    * 
+    * Profile:: COMFORT
+    * 
+    * @return the applicable tax percentage
+    */
+   @Override
    @Comfort
-	public BigDecimal getPercentage() {
-		return percentage;
-	}
+   public BigDecimal getPercentage() {
+      return percentage;
+   }
 
-	/**
+   /**
     * Sets the applicable tax percentage.
     * 
     * Profile:: BASIC
@@ -109,8 +108,8 @@ public class AppliedTax extends CommonTax {
     * @param applicablePercentage the new applicable tax percentage
     * @return the tax
     */
-	@Override
+   @Override
    public AppliedTax setPercentage(BigDecimal applicablePercentage) {
-		return (AppliedTax) super.setPercentage(applicablePercentage);
-	}
+      return (AppliedTax) super.setPercentage(applicablePercentage);
+   }
 }

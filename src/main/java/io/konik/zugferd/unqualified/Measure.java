@@ -41,7 +41,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class Measure {
 
    @XmlValue
-   @NotNull @Min(0)
+   @NotNull
+   @Min(0)
    @XmlJavaTypeAdapter(MeasureRoundingAdapter.class)
    private BigDecimal value;
 

@@ -44,7 +44,7 @@ import javax.validation.ReportAsSingleViolation;
 @Retention(RUNTIME)
 @ReportAsSingleViolation
 public @interface NullableNotBlank {
-   
+
    /**
     * Message.
     *
@@ -57,14 +57,14 @@ public @interface NullableNotBlank {
     *
     * @return the class<?>[]
     */
-   Class<?>[] groups() default { };
+   Class<?>[] groups() default {};
 
    /**
     * Payload.
     *
     * @return the class<? extends payload>[]
     */
-   Class<? extends Payload>[] payload() default { };
+   Class<? extends Payload>[] payload() default {};
 
    /**
     * Multiple {@code @NotBlank} annotations on the same element.
@@ -73,7 +73,7 @@ public @interface NullableNotBlank {
    @Retention(RUNTIME)
    @Documented
    public @interface List {
-      
+
       /**
        * Value.
        *

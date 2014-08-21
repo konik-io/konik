@@ -25,11 +25,11 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 /**
  * = The Event to ZUGFeRD Date Adapter.
  */
-public class DateTimeAdapter extends XmlAdapter<DateTime, ZfDate>{
+public class DateTimeAdapter extends XmlAdapter<DateTime, ZfDate> {
 
    @Override
    public ZfDate unmarshal(DateTime dateTime) throws Exception {
-      if (dateTime == null) { return null;}
+      if (dateTime == null) { return null; }
       ZfDate zfDate = ZfDateFactory.create(dateTime.dateTimeString.format);
       zfDate.setDate(dateTime.dateTimeString.value);
       return zfDate;
@@ -37,12 +37,8 @@ public class DateTimeAdapter extends XmlAdapter<DateTime, ZfDate>{
 
    @Override
    public DateTime marshal(ZfDate date) throws Exception {
-      if (date == null) { return null;}
-      return new DateTime(date.toString(),date.getFormatCode());
+      if (date == null) { return null; }
+      return new DateTime(date.toString(), date.getFormatCode());
    }
-
-  
-
-   
 
 }

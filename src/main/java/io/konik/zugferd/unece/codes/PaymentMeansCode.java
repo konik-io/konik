@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * = The Payment Means Code 
+ * = The Payment Means Code
  * 
  * Represents payment code according to +UNCL 4461+.
  * 
@@ -748,17 +748,17 @@ public enum PaymentMeansCode {
     **/
    @XmlEnumValue("ZZZ")
    _ZZZ("Mutually defined");
-   
+
    /** prefix before the code in this Enumeration. */
    public static final String PREFIX = "_";
 
    /** the description for the code. */
    final private String description;
-   
+
    PaymentMeansCode(String descirption) {
       this.description = descirption;
    }
-   
+
    /**
     * Gets the code.
     *
@@ -767,7 +767,7 @@ public enum PaymentMeansCode {
    public String getCode() {
       return name().substring(1);
    }
-   
+
    /**
     * Gets the description.
     *
@@ -794,9 +794,9 @@ public enum PaymentMeansCode {
     * @return true, if is known code
     */
    public static boolean isKnownCode(final String code) {
-     return KonikEnum.isKnownCode(PaymentMeansCode.class, code);
+      return KonikEnum.isKnownCode(PaymentMeansCode.class, code);
    }
-   
+
    @Override
    public String toString() {
       return new StringBuilder().append("[").append(getCode()).append("] ").append(description).toString();

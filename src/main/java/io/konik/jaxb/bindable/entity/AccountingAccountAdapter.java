@@ -22,23 +22,18 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 /**
  * = The Accounting Account to String Id Adapter.
  */
-public class AccountingAccountAdapter extends XmlAdapter<AccountingAccount, String>{
+public class AccountingAccountAdapter extends XmlAdapter<AccountingAccount, String> {
 
    @Override
    public String unmarshal(AccountingAccount aa) throws Exception {
-     if (aa==null) {return null;}
+      if (aa == null) { return null; }
       return aa.id;
    }
 
    @Override
    public AccountingAccount marshal(String accountingAccount) throws Exception {
-      if (accountingAccount==null) {
-         return null;
-      }
+      if (accountingAccount == null) { return null; }
       return new AccountingAccount(accountingAccount);
    }
-
-
-   
 
 }

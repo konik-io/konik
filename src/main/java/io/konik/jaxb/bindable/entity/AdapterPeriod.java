@@ -20,13 +20,10 @@ package io.konik.jaxb.bindable.entity;
 import io.konik.zugferd.entity.Period;
 import io.konik.zugferd.unqualified.ZfDate;
 
-
 /**
  * = The period of time
  */
-public class AdapterPeriod extends Period{
-
-
+public class AdapterPeriod extends Period {
 
    /**
     * Gets the contractual due date.
@@ -37,7 +34,6 @@ public class AdapterPeriod extends Period{
       return contractualDueDate;
    }
 
- 
    /**
     * Sets the contractual due date.
     *
@@ -48,6 +44,5 @@ public class AdapterPeriod extends Period{
       this.contractualDueDate = contractualDueDate;
       return this;
    }
-	
 
 }

@@ -26,10 +26,10 @@ import java.util.Date;
 public class ZfDateDay extends ZfDate {
 
    private static final long serialVersionUID = -467516960528526434L;
-   
+
    /** The code format. */
    public static final String CODE = "102";
-   
+
    /** The date pattern. */
    public static final String DATE_PATTERN = "yyyyMMdd";
    private static final ThreadLocal<SimpleDateFormat> formatter = new ThreadLocal<SimpleDateFormat>() {
@@ -38,7 +38,7 @@ public class ZfDateDay extends ZfDate {
          return new SimpleDateFormat(DATE_PATTERN);
       }
    };
-   
+
    /**
     * Instantiates a new zf date day.
     */

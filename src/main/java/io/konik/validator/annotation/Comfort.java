@@ -17,12 +17,11 @@
  */
 package io.konik.validator.annotation;
 
-
 /**
  * 
  * The Interface Comfort.
  */
 //@GroupSequence({ Default.class})
-public @interface Comfort{
+public @interface Comfort {
 
 }

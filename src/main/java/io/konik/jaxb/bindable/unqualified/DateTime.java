@@ -33,14 +33,14 @@ public class DateTime {
 
    @XmlElement(name = "DateTimeString")
    final DateTime.DateTimeString dateTimeString;
-   
+
    DateTime(String formattedDate, String formatCode) {
       super();
-      this.dateTimeString = new DateTimeString(formattedDate,formatCode);
+      this.dateTimeString = new DateTimeString(formattedDate, formatCode);
    }
 
    DateTime() {
-      this.dateTimeString=null;
+      this.dateTimeString = null;
    }
 
    /**
@@ -55,7 +55,7 @@ public class DateTime {
 
       @XmlAttribute(name = "format")
       final String format;
-      
+
       DateTimeString() {
          this.value = null;
          this.format = null;
@@ -67,7 +67,6 @@ public class DateTime {
          this.format = format;
       }
 
-      
    }
 
 }

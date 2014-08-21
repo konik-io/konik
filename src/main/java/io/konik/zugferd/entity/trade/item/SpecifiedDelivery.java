@@ -36,13 +36,14 @@ import javax.xml.bind.annotation.XmlType;
  * Profile:: EXTENDED
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = { "billed", "chargeFree","packageQuantity", "shipTo", "ultimateShipTo", "actualDelivery", "despatchAdvice","receivingAdvice", "deliveryNote" })
-public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem>{
+@XmlType(propOrder = { "billed", "chargeFree", "packageQuantity", "shipTo", "ultimateShipTo", "actualDelivery",
+      "despatchAdvice", "receivingAdvice", "deliveryNote" })
+public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
 
    @Valid
    @NotNull
    @XmlElement(name = "BilledQuantity")
-   private Quantity billed; 
+   private Quantity billed;
 
    @Valid
    @XmlElement(name = "ChargeFreeQuantity")
@@ -50,7 +51,7 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem>{
 
    @Valid
    @XmlElement(name = "PackageQuantity")
-   private Quantity packageQuantity; 
+   private Quantity packageQuantity;
 
    @Valid
    @XmlElement(name = "DespatchAdviceReferencedDocument")
@@ -75,12 +76,11 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem>{
     *
     * @param billed the billed
     */
-   public SpecifiedDelivery(Quantity billed)  {
+   public SpecifiedDelivery(Quantity billed) {
       super();
       this.billed = billed;
    }
 
-   
    /**
     * The Constructor.
     *
@@ -89,12 +89,11 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem>{
     * @param billed the billed
     * @param actualDelivery the actual delivery
     */
-   public SpecifiedDelivery(Quantity billed, ZfDate actualDelivery)  {
+   public SpecifiedDelivery(Quantity billed, ZfDate actualDelivery) {
       super();
       this.billed = billed;
       setActualDelivery(actualDelivery);
    }
-
 
    /**
     * Gets the billed quantity.
@@ -164,13 +163,13 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem>{
    public ReferencedDocumentItem getDespatchAdvice() {
       return despatchAdvice;
    }
-   
+
    @Override
    public SpecifiedDelivery setDespatchAdvice(ReferencedDocumentItem despatchAdvice) {
       this.despatchAdvice = despatchAdvice;
       return this;
    }
-   
+
    /**
     * Gets the receiving advice.
     *

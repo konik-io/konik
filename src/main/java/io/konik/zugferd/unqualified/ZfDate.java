@@ -52,7 +52,7 @@ public abstract class ZfDate extends Date {
    public ZfDate(long date) {
       super(date);
    }
-   
+
    /**
     * Instantiates a new zf date with the formatted date string
     *

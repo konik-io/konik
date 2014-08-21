@@ -42,7 +42,7 @@ public class Amount {
    @XmlValue
    private BigDecimal value;
 
-   @NotNull 
+   @NotNull
    @XmlAttribute(name = "currencyID")
    private CurrencyCode currency;
 
@@ -115,7 +115,7 @@ public class Amount {
    public CurrencyCode getCurrency() {
       return currency;
    }
-   
+
    /**
     * Sets the currency code.
     *

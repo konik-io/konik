@@ -25,10 +25,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SupplyChainEventType", propOrder = { "occurrence" })
 class SupplyChainEvent {
-	@XmlElement(name = "OccurrenceDateTime")
-	ZfDate occurrence;
+   @XmlElement(name = "OccurrenceDateTime")
+   ZfDate occurrence;
 }

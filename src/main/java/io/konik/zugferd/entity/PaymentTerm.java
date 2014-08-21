@@ -29,38 +29,37 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
  * = The payment terms of a trade.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradePaymentTermsType", propOrder = { "descriptions", "due","partialPayments","penalty","discount" })
+@XmlType(name = "TradePaymentTermsType", propOrder = { "descriptions", "due", "partialPayments", "penalty", "discount" })
 public class PaymentTerm {
 
-	@XmlElement(name = "Description")
-	 protected List<String> descriptions;
+   @XmlElement(name = "Description")
+   protected List<String> descriptions;
 
-	@Valid
-	@XmlElement(name = "DueDateDateTime")
-	private ZfDate due;
+   @Valid
+   @XmlElement(name = "DueDateDateTime")
+   private ZfDate due;
 
    @XmlElement(name = "PartialPaymentAmount")
    @Valid
    private List<Amount> partialPayments;
 
-   
-   @Valid @XmlElement(name = "ApplicableTradePaymentPenaltyTerms")
+   @Valid
+   @XmlElement(name = "ApplicableTradePaymentPenaltyTerms")
    private PaymentPenaltyTerms penalty;
 
    @Valid
    @XmlElement(name = "ApplicableTradePaymentDiscountTerms")
    private PaymentDiscountTerms discount;
 
-	/**
-	 * Gets the description.
-	 * 
-	 * @return the description
-	 */
+   /**
+    * Gets the description.
+    * 
+    * @return the description
+    */
    public List<String> getDescriptions() {
       if (descriptions == null) {
          descriptions = new ArrayList<String>();
@@ -68,38 +67,36 @@ public class PaymentTerm {
       return this.descriptions;
    }
 
-
-	/**
+   /**
     * Sets the description.
     *
     * @param description the new description
     * @return the payment term
     */
-	public PaymentTerm addDescription(String description) {
-		getDescriptions().add(description);
-		return this;
-	}
+   public PaymentTerm addDescription(String description) {
+      getDescriptions().add(description);
+      return this;
+   }
 
-	/**
-	 * Gets the due date time.
-	 * 
-	 * @return the due date time
-	 */
-	public ZfDate getDue() {
-		return due;
-	}
+   /**
+    * Gets the due date time.
+    * 
+    * @return the due date time
+    */
+   public ZfDate getDue() {
+      return due;
+   }
 
-	/**
+   /**
     * Sets the due date time.
     *
     * @param due the new due date time
     * @return the payment term
     */
-	public PaymentTerm setDue(ZfDate due) {
-		this.due = due;
-		return this;
-	}
-
+   public PaymentTerm setDue(ZfDate due) {
+      this.due = due;
+      return this;
+   }
 
    /**
     * Gets the partial payments.
@@ -107,12 +104,11 @@ public class PaymentTerm {
     * @return the partial payments
     */
    public List<Amount> getPartialPayments() {
-      if( partialPayments == null) {
+      if (partialPayments == null) {
          this.partialPayments = new ArrayList<Amount>();
       }
       return partialPayments;
    }
-
 
    /**
     * Sets the partial payments.
@@ -125,7 +121,6 @@ public class PaymentTerm {
       return this;
    }
 
-
    /**
     * Gets the payment penalty terms.
     *
@@ -135,18 +130,16 @@ public class PaymentTerm {
       return penalty;
    }
 
-
    /**
     * Sets the payment penalty terms..
     *
     * @param penalty the new penalty
-    * @return 
+    * @return
     */
    public PaymentTerm setPenalty(PaymentPenaltyTerms penalty) {
       this.penalty = penalty;
       return this;
    }
-
 
    /**
     * Gets the discount.
@@ -157,12 +150,11 @@ public class PaymentTerm {
       return discount;
    }
 
-
    /**
     * Sets the discount.
     *
     * @param discount the new discount
-    * @return 
+    * @return
     */
    public PaymentTerm setDiscount(PaymentDiscountTerms discount) {
       this.discount = discount;

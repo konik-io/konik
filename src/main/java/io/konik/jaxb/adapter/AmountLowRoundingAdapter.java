@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  * 
  * Adapter to round the amount during marshalling to two decimals after the period.
  * 
- * The scale and rounding mode can be overridden via the configuration. 
+ * The scale and rounding mode can be overridden via the configuration.
  * 
  * Defaults::
  * 
@@ -43,26 +43,25 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  */
 public class AmountLowRoundingAdapter extends XmlAdapter<Amount, Amount> {
 
-   
    private static final String DEFAULT_SCALE = "2";
    private static final String DEFAULT_ROUNDING_MODE = "HALF_UP";
-   
+
    private final int scale;
    private final RoundingMode roundingMode;
-   
+
    /**
     * Instantiates a new amount rounding adapter.
     */
    public AmountLowRoundingAdapter() {
       String name = this.getClass().getName();
-      scale = parseInt(getProperty(name+".scale",getDefaultScale()));
-      roundingMode = valueOf(getProperty(name+".roundingMode",DEFAULT_ROUNDING_MODE));
+      scale = parseInt(getProperty(name + ".scale", getDefaultScale()));
+      roundingMode = valueOf(getProperty(name + ".roundingMode", DEFAULT_ROUNDING_MODE));
    }
-   
+
    protected String getDefaultScale() {
       return DEFAULT_SCALE;
    }
-   
+
    @Override
    public Amount unmarshal(Amount amount) throws Exception {
       return amount;
@@ -70,12 +69,9 @@ public class AmountLowRoundingAdapter extends XmlAdapter<Amount, Amount> {
 
    @Override
    public Amount marshal(Amount amount) throws Exception {
-      if (amount==null || amount.getValue()==null) {return amount;}
+      if (amount == null || amount.getValue() == null) { return amount; }
       BigDecimal roundedValue = amount.getValue().setScale(scale, roundingMode).stripTrailingZeros();
       return amount.setValue(roundedValue);
    }
-   
-
-
 
 }

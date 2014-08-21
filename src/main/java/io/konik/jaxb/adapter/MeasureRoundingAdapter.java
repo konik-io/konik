@@ -34,19 +34,19 @@ public class MeasureRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> {
 
    private static final String DEFAULT_ROUNDING_MODE = "HALF_UP";
    private static final String DEFAULT_SCALE = "2";
-   
+
    final int scale;
    final RoundingMode roundingMode;
-   
+
    /**
     * Instantiates a new amount rounding adapter.
     */
    public MeasureRoundingAdapter() {
       String name = this.getClass().getName();
-      scale = parseInt(getProperty(name+".scale",DEFAULT_SCALE));
-      roundingMode = valueOf(getProperty(name+".roundingMode",DEFAULT_ROUNDING_MODE));
+      scale = parseInt(getProperty(name + ".scale", DEFAULT_SCALE));
+      roundingMode = valueOf(getProperty(name + ".roundingMode", DEFAULT_ROUNDING_MODE));
    }
-   
+
    @Override
    public BigDecimal unmarshal(BigDecimal v) throws Exception {
       return v;
@@ -54,7 +54,7 @@ public class MeasureRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> {
 
    @Override
    public BigDecimal marshal(BigDecimal v) throws Exception {
-      if(v==null) {return null;}
+      if (v == null) { return null; }
       return v.setScale(scale, roundingMode).stripTrailingZeros();
    }
 

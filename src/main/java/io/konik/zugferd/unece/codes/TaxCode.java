@@ -296,16 +296,17 @@ public enum TaxCode {
     * cycle.
     */
    VAT("Value added tax"),
-   
+
    /** The zf insurance tax, which is temporary */
    ZF_INSURANCE_TAX("Insurance Tax");
 
    /** The description for the tax code */
    private final String description;
-   
+
    private TaxCode(String description) {
       this.description = description;
    }
+
    /**
     * Gets the code.
     *
@@ -314,7 +315,7 @@ public enum TaxCode {
    public String getCode() {
       return name();
    }
-   
+
    /**
     * Gets the description.
     *
@@ -323,6 +324,7 @@ public enum TaxCode {
    public String getDescription() {
       return description;
    }
+
    /**
     * Gets the type by code.
     *

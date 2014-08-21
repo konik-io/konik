@@ -30,16 +30,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  * = The Trade Agreement.
  * 
  */
-@XmlType(propOrder = { "buyerReference", "seller", "buyer","productEndUser","deliveryTerms",
-      "buyerOrder", "contract", "additional", "customerOrder" })
-public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedDocumentAdditional>{
-   
+@XmlType(propOrder = { "buyerReference", "seller", "buyer", "productEndUser", "deliveryTerms", "buyerOrder",
+      "contract", "additional", "customerOrder" })
+public class Agreement implements CommonAgreement<ReferencedDocument, ReferencedDocumentAdditional> {
+
    private String buyerReference;
    @Valid
    private TradeParty seller;
@@ -58,7 +57,6 @@ public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedD
    @Valid
    private ReferencedDocument customerOrder;
 
-   
    /**
     * Gets the buyer reference.
     * 
@@ -74,7 +72,7 @@ public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedD
    }
 
    /**
-    * Sets the buyer reference. 
+    * Sets the buyer reference.
     * 
     * The reference to ease the attribution for the buyer
     * 
@@ -87,7 +85,6 @@ public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedD
       this.buyerReference = buyerReference;
       return this;
    }
-   
 
    /**
     * Gets the seller.
@@ -151,7 +148,7 @@ public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedD
       this.buyer = buyer;
       return this;
    }
-   
+
    /**
     * Gets the delivery terms.
     *
@@ -175,7 +172,7 @@ public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedD
    public void setDeliveryTerms(String deliveryTerms) {
       this.deliveryTerms = deliveryTerms;
    }
-   
+
    /**
     * Gets the buyer order referenced document.
     *
@@ -186,7 +183,6 @@ public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedD
    public ReferencedDocument getBuyerOrder() {
       return buyerOrder;
    }
-
 
    /**
     * Sets the buyer order referenced document.
@@ -203,7 +199,7 @@ public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedD
    /**
     * Gets the contract referenced document.
     * 
-    * Profile:: COMFORT 
+    * Profile:: COMFORT
     *
     * @return the contract referenced document
     */
@@ -216,7 +212,7 @@ public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedD
    /**
     * Sets the contract referenced document.
     * 
-    * Profile:: COMFORT 
+    * Profile:: COMFORT
     *
     * @param contract the new contract referenced document
     * @return the supply chain trade agreement
@@ -226,7 +222,7 @@ public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedD
       this.contract = contract;
       return this;
    }
-   
+
    /**
     * Gets the additional.
     *
@@ -240,7 +236,6 @@ public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedD
       }
       return additional;
    }
-   
 
    /**
     * Adds the additional.
@@ -253,11 +248,11 @@ public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedD
       getAdditional().add(additionalReference);
       return this;
    }
-   
+
    /**
     * Gets the customer order referenced document.
     * 
-    * Profile:: COMFORT 
+    * Profile:: COMFORT
     *
     * @return the customer order referenced document
     */
@@ -269,8 +264,8 @@ public class Agreement implements CommonAgreement<ReferencedDocument,ReferencedD
 
    /**
     * Sets the customer order referenced document.
-    *  
-    * Profile:: COMFORT 
+    * 
+    * Profile:: COMFORT
     *
     * @param customerOrder the new customer order referenced document
     * @return the supply chain trade agreement

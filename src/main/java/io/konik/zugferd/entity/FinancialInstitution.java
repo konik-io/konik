@@ -25,7 +25,6 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * = The Financial Institution.
  */
@@ -33,18 +32,18 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "", propOrder = { "bic", "germanBankleitzahl", "name" })
 public class FinancialInstitution {
 
-	@XmlElement(name = "BICID")
-	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-	private String bic;
+   @XmlElement(name = "BICID")
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   private String bic;
 
-	@XmlElement(name = "GermanBankleitzahlID")
-	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-	private String germanBankleitzahl;
+   @XmlElement(name = "GermanBankleitzahlID")
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   private String germanBankleitzahl;
 
-	@XmlElement(name = "Name")
-	private String name;
+   @XmlElement(name = "Name")
+   private String name;
 
-	FinancialInstitution() {
+   FinancialInstitution() {
       super();
    }
 
@@ -53,69 +52,69 @@ public class FinancialInstitution {
     *
     * @param bic the bic
     */
-	public FinancialInstitution(String bic) {
+   public FinancialInstitution(String bic) {
       super();
       setBic(bic);
    }
 
    /**
-	 * Gets the BIC.
-	 * 
-	 * @return the bic
-	 */
-	public String getBic() {
-		return bic;
-	}
+    * Gets the BIC.
+    * 
+    * @return the bic
+    */
+   public String getBic() {
+      return bic;
+   }
 
-	/**
+   /**
     * Sets the BIC.
     *
     * @param bic the new bic
     * @return the financial institution
     */
-	public FinancialInstitution setBic(String bic) {
-		this.bic = bic;
-		return this;
-	}
+   public FinancialInstitution setBic(String bic) {
+      this.bic = bic;
+      return this;
+   }
 
-	/**
-	 * Gets the German bankleitzahl.
-	 * 
-	 * @return the german bankleitzahl
-	 */
-	public String getGermanBankleitzahl() {
-		return germanBankleitzahl;
-	}
+   /**
+    * Gets the German bankleitzahl.
+    * 
+    * @return the german bankleitzahl
+    */
+   public String getGermanBankleitzahl() {
+      return germanBankleitzahl;
+   }
 
-	/**
+   /**
     * Sets the German bankleitzahl.
     *
     * @param germanBankleitzahl the new german bankleitzahl
     * @return the financial institution
     */
-	public FinancialInstitution setGermanBankleitzahl(String germanBankleitzahl) {
-		this.germanBankleitzahl = germanBankleitzahl;
-		return this;
-	}
+   public FinancialInstitution setGermanBankleitzahl(String germanBankleitzahl) {
+      this.germanBankleitzahl = germanBankleitzahl;
+      return this;
+   }
 
-	/**
-	 * Gets the name.
-	 * 
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
+   /**
+    * Gets the name.
+    * 
+    * @return the name
+    */
+   public String getName() {
+      return name;
+   }
 
-	/**
+   /**
     * Sets the name.
     *
     * @param name the new name
     * @return the financial institution
     */
-	public FinancialInstitution setName(String name) {
-		this.name = name;
-		return this;
-	}
+   public FinancialInstitution setName(String name) {
+      this.name = name;
+      return this;
+   }
 
 }

@@ -4742,7 +4742,7 @@ public enum DocumentCode {
 
    /** The code. */
    final private String code;
-   
+
    /** the description for the code. */
    final private String description;
 
@@ -4755,7 +4755,7 @@ public enum DocumentCode {
       this.code = name().substring(1);
       this.description = description;
    }
-   
+
    /**
     * Gets the code.
     *
@@ -4764,7 +4764,7 @@ public enum DocumentCode {
    public String getCode() {
       return name().substring(1);
    }
-   
+
    /**
     * Gets the description.
     *
@@ -4793,7 +4793,7 @@ public enum DocumentCode {
    public static boolean isKnownCode(final String code) {
       return KonikEnum.isKnownCode(DocumentCode.class, code);
    }
-   
+
    @Override
    public String toString() {
       return new StringBuilder().append("[").append(code).append("] ").append(description).toString();

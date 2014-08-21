@@ -27,7 +27,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
  * = The Item Line Document
  * 
@@ -37,35 +36,35 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "DocumentLineDocumentType", propOrder = { "position", "notes" })
 public class Document {
 
-	@XmlElement(name = "LineID")
-	private Integer position;
+   @XmlElement(name = "LineID")
+   private Integer position;
 
-	@XmlElement(name = "IncludedNote")
-	private List<Note> notes;
+   @XmlElement(name = "IncludedNote")
+   private List<Note> notes;
 
-	/**
+   /**
     * Instantiates a new document line.
     */
-	public Document() {
-	}
+   public Document() {
+   }
 
-	/**
+   /**
     * Instantiates a new document line.
     *
     * @param position the position number
     */
-	public Document(int position) {
+   public Document(int position) {
       super();
       this.position = Integer.valueOf(position);
    }
 
-	/**
+   /**
     * Instantiates a new document line.
     *
     * @param position the position
     * @param notes the notes
     */
-	public Document(int position, List<Note> notes) {
+   public Document(int position, List<Note> notes) {
       this(position);
       this.notes = notes;
    }
@@ -77,11 +76,11 @@ public class Document {
     *
     * @return the position number
     */
-	public Integer getPosition() {
-		return position == null?null:position;
-	}
+   public Integer getPosition() {
+      return position == null ? null : position;
+   }
 
-	/**
+   /**
     * Sets the line position
     * 
     * Profile:: COMFORT.
@@ -89,40 +88,40 @@ public class Document {
     * @param position the position
     * @return the document line
     */
-	public Document setPosition(int position) {
-		this.position = valueOf(position);
-		return this;
-	}
+   public Document setPosition(int position) {
+      this.position = valueOf(position);
+      return this;
+   }
 
-	/**
-	 * Gets the included note.
-	 * 
-	 * Profile:: 
-	 * - Note.content COMFORT
-	 * - Note.subjectCode EXTENDED
-	 * 
-	 * @return the included note
-	 */
-	public List<Note> getNotes() {
-		if (notes == null) {
-			notes = new ArrayList<Note>();
-		}
-		return this.notes;
-	}
+   /**
+    * Gets the included note.
+    * 
+    * Profile::
+    * - Note.content COMFORT
+    * - Note.subjectCode EXTENDED
+    * 
+    * @return the included note
+    */
+   public List<Note> getNotes() {
+      if (notes == null) {
+         notes = new ArrayList<Note>();
+      }
+      return this.notes;
+   }
 
-	/**
-	 * Adds the note.
-	 * 
-	 * Profile:: 
-	 * - Note.content COMFORT
-	 * - Note.subjectCode EXTENDED
-	 *
-	 * @param note the note
-	 * @return the document line document
-	 */
-	public Document addNote(Note note) {
-		getNotes().add(note);
-		return this;
-	}
+   /**
+    * Adds the note.
+    * 
+    * Profile::
+    * - Note.content COMFORT
+    * - Note.subjectCode EXTENDED
+    *
+    * @param note the note
+    * @return the document line document
+    */
+   public Document addNote(Note note) {
+      getNotes().add(note);
+      return this;
+   }
 
 }

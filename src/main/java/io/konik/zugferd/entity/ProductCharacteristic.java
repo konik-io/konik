@@ -36,22 +36,22 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProductCharacteristicType", propOrder = { "typeCode", "description", "measurand", "value" })
 public class ProductCharacteristic {
-   
+
    @NotBlank
    @XmlElement(name = "TypeCode")
-   private  String typeCode;
+   private String typeCode;
 
    @NotEmpty
    @XmlElement(name = "Description")
-   private  List<String> description;
+   private List<String> description;
 
    @Valid
    @XmlElement(name = "ValueMeasure")
-   private  Measure measurand;
+   private Measure measurand;
 
    @Valid
    @XmlElement(name = "Value")
-   private  List<String> value;
+   private List<String> value;
 
    /**
     * Gets the type code.
@@ -124,11 +124,5 @@ public class ProductCharacteristic {
    public void setValue(List<String> value) {
       this.value = value;
    }
-
-
-
-
-
-
 
 }

@@ -26,11 +26,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
  * = The Tax Registration
  * 
- * Represents the tax number and its type. 
+ * Represents the tax number and its type.
  * The {@link ID#getValue()} is value added tax identification number
  * The {@link ID#getSchemeId()} is the Tax payer's number or VAT number according to (UNCL 1153) eg. FC or VA
  */
@@ -38,48 +37,48 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "TaxRegistrationType", propOrder = { "id" })
 public class TaxRegistration {
 
-	/** The id. */
-	@XmlElement(name = "ID")
-	private final ID id;
+   /** The id. */
+   @XmlElement(name = "ID")
+   private final ID id;
 
-	/** Instantiates a new tax registration. */
-	public TaxRegistration() {
-	   this.id = new ID();
-	}
+   /** Instantiates a new tax registration. */
+   public TaxRegistration() {
+      this.id = new ID();
+   }
 
-	/**
-	 * Instantiates a new tax registration without a type.
-	 * 
-	 * @param taxNumber the id
-	 */
-	public TaxRegistration(String taxNumber) {
-		this.id = new ID(taxNumber);
-	}
+   /**
+    * Instantiates a new tax registration without a type.
+    * 
+    * @param taxNumber the id
+    */
+   public TaxRegistration(String taxNumber) {
+      this.id = new ID(taxNumber);
+   }
 
-	/**
-	 * Instantiates a new tax registration.
-	 * 
-	 * @param taxNumber the tax id
-	 * @param typeOfTax the scheme id
-	 */
-	public TaxRegistration(String taxNumber, Reference typeOfTax) {
-		this.id = new ID(taxNumber, typeOfTax.getCode());
-	}
+   /**
+    * Instantiates a new tax registration.
+    * 
+    * @param taxNumber the tax id
+    * @param typeOfTax the scheme id
+    */
+   public TaxRegistration(String taxNumber, Reference typeOfTax) {
+      this.id = new ID(taxNumber, typeOfTax.getCode());
+   }
 
-	/**
-	 * Gets the tax number.
-	 * 
-	 * Profile:: BASIC
-	 * 
-	 * Example:: {@code DE234567891}
-	 * 
-	 * @return the number
-	 */
-	public String getNumber() {
-		return id.getValue();
-	}
+   /**
+    * Gets the tax number.
+    * 
+    * Profile:: BASIC
+    * 
+    * Example:: {@code DE234567891}
+    * 
+    * @return the number
+    */
+   public String getNumber() {
+      return id.getValue();
+   }
 
-	/**
+   /**
     * Sets the tax number.
     * 
     * Profile:: BASIC
@@ -89,12 +88,12 @@ public class TaxRegistration {
     * @param taxNumber the new value
     * @return the tax registration
     */
-	public TaxRegistration setNumber(String taxNumber) {
-		this.id.setValue(taxNumber);
-		return this;
-	}
+   public TaxRegistration setNumber(String taxNumber) {
+      this.id.setValue(taxNumber);
+      return this;
+   }
 
-	/**
+   /**
     * Gets the tax type. The UNCL 1153 tax type.
     * 
     * Profile:: BASIC
@@ -103,11 +102,11 @@ public class TaxRegistration {
     *
     * @return the type
     */
-	public Reference getType() {
-		return Reference.getByCode(id.getSchemeId());
-	}
+   public Reference getType() {
+      return Reference.getByCode(id.getSchemeId());
+   }
 
-	/**
+   /**
     * Sets the UNCL 1153 tax type.
     * 
     * Profile:: BASIC
@@ -117,9 +116,9 @@ public class TaxRegistration {
     * @param taxType the new type
     * @return the tax registration
     */
-	public TaxRegistration setType(Reference taxType) {
-		this.id.setValue(taxType.getCode());
-		return this;
-	}
+   public TaxRegistration setType(Reference taxType) {
+      this.id.setValue(taxType.getCode());
+      return this;
+   }
 
 }

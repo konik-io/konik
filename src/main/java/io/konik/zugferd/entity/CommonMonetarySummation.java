@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  * The Class Common Monetary Summation.
  */
 @XmlTransient
-@XmlType(name = "TradeSettlementMonetarySummationType",propOrder = { "lineTotal"} )
+@XmlType(name = "TradeSettlementMonetarySummationType", propOrder = { "lineTotal" })
 public class CommonMonetarySummation {
-   
+
    @Valid
    @XmlElement(name = "LineTotalAmount")
    protected Amount lineTotal;
@@ -55,7 +55,5 @@ public class CommonMonetarySummation {
       this.lineTotal = lineTotal;
       return this;
    }
-   
-   
-   
+
 }

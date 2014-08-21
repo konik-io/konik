@@ -38,14 +38,14 @@ import javax.validation.constraints.NotNull;
  * Compared to {@code NullableNotBlank} this validator will not accept null values as valid.
  */
 @Documented
-@Constraint(validatedBy = { })
+@Constraint(validatedBy = {})
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 @ReportAsSingleViolation
 @NotNull
 @NullableNotBlank
 public @interface NotBlank {
-   
+
    /**
     * Message.
     *
@@ -58,14 +58,14 @@ public @interface NotBlank {
     *
     * @return the class<?>[]
     */
-   Class<?>[] groups() default { };
+   Class<?>[] groups() default {};
 
    /**
     * Payload.
     *
     * @return the class<? extends payload>[]
     */
-   Class<? extends Payload>[] payload() default { };
+   Class<? extends Payload>[] payload() default {};
 
    /**
     * Multiple {@code @NotBlank} annotations on the same element.
@@ -74,7 +74,7 @@ public @interface NotBlank {
    @Retention(RUNTIME)
    @Documented
    public @interface List {
-      
+
       /**
        * Value.
        *

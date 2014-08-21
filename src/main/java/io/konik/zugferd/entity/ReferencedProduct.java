@@ -35,24 +35,23 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * = The Referenced Product which is a included part of another product. 
+ * = The Referenced Product which is a included part of another product.
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ReferencedProductType", propOrder = { "globalIds", "sellerAssignedId", "buyerAssignedId", "names","descriptions", "units" })
+@XmlType(name = "ReferencedProductType", propOrder = { "globalIds", "sellerAssignedId", "buyerAssignedId", "names",
+      "descriptions", "units" })
 @Extended
 public class ReferencedProduct {
 
    @Valid
    @XmlElement(name = "GlobalID")
    protected List<ID> globalIds;
-   
-   
+
    @XmlElement(name = "SellerAssignedID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    protected String sellerAssignedId;
 
-   
    @XmlElement(name = "BuyerAssignedID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    protected String buyerAssignedId;
@@ -61,7 +60,6 @@ public class ReferencedProduct {
    @XmlElement(name = "Name")
    protected List<String> names;
 
-   
    @XmlElement(name = "Description")
    protected List<String> descriptions;
 
@@ -80,7 +78,7 @@ public class ReferencedProduct {
       }
       return this.globalIds;
    }
-   
+
    /**
     * Adds the global ids.
     *
@@ -91,7 +89,6 @@ public class ReferencedProduct {
       getGlobalIds().add(globarId);
       return this;
    }
-   
 
    /**
     * Gets the seller assigned id.
@@ -140,14 +137,14 @@ public class ReferencedProduct {
       }
       return this.names;
    }
-   
+
    /**
     * Adds the names.
     *
     * @param name the name
     * @return the referenced product
     */
-   public ReferencedProduct addNames(String name){
+   public ReferencedProduct addNames(String name) {
       getNames().add(name);
       return this;
    }
@@ -163,14 +160,14 @@ public class ReferencedProduct {
       }
       return this.descriptions;
    }
-   
+
    /**
     * Adds the description.
     *
     * @param description the description
     * @return the referenced product
     */
-   public ReferencedProduct addDescription(String description){
+   public ReferencedProduct addDescription(String description) {
       getDescriptions().add(description);
       return this;
    }
@@ -186,14 +183,14 @@ public class ReferencedProduct {
       }
       return this.units;
    }
-   
+
    /**
     * Adds the units.
     *
     * @param unit the unit
     * @return the referenced product
     */
-   public ReferencedProduct addUnits(Quantity unit){
+   public ReferencedProduct addUnits(Quantity unit) {
       getUnits().add(unit);
       return this;
    }

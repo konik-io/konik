@@ -74,7 +74,7 @@ public class ProductClassification {
       }
       return this.classNames;
    }
-   
+
    /**
     * Adds the class names.
     *

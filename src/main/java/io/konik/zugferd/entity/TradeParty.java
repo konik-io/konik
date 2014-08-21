@@ -103,8 +103,8 @@ public class TradeParty {
     * Profile:: COMFORT when part of Trade.agreements.seller
     * 
     * Example::
-    * - {@link ID#getValue()} {@code  GENODED1SPK, 4000001000005 }
-    * - {@link ID#getSchemeId()} the ISO 6523 code {@code 0021, 0088, 0060, 0177 }
+    * - {@link ID#getValue()} {@code  GENODED1SPK, 4000001000005 } - {@link ID#getSchemeId()} the ISO 6523 code
+    * {@code 0021, 0088, 0060, 0177 }
     * 
     * @return the global id
     */
@@ -116,13 +116,13 @@ public class TradeParty {
    }
 
    /**
-    * Adds the global id. 
+    * Adds the global id.
     * 
     * Profile:: COMFORT when part of Trade.agreements.seller
     * 
     * Example::
-    * - {@link ID#getValue()} {@code  GENODED1SPK, 4000001000005 }
-    * - {@link ID#getSchemeId()} the ISO 6523 code {@code 0021, 0088, 0060, 0177 }
+    * - {@link ID#getValue()} {@code  GENODED1SPK, 4000001000005 } - {@link ID#getSchemeId()} the ISO 6523 code
+    * {@code 0021, 0088, 0060, 0177 }
     * 
     * @param additionalGlobalId the additional global id
     * @return the trade party

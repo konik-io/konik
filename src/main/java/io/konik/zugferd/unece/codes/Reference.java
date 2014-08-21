@@ -25,7 +25,7 @@ import static io.konik.util.Strings.isNullOrEmpty;
  * 
  * Code qualifying a reference.
  * 
- * @see http://www.unece.org/trade/untdid/d13b/tred/tred1153.htm[UN/EDIFACT 1153  Reference code qualifier]
+ * @see http://www.unece.org/trade/untdid/d13b/tred/tred1153.htm[UN/EDIFACT 1153 Reference code qualifier]
  */
 public enum Reference {
    /**
@@ -6083,11 +6083,10 @@ public enum Reference {
    /** the description for the code. */
    final private String description;
 
-   
    private Reference(String description) {
       this.description = description;
    }
-   
+
    /**
     * Gets the code.
     *
@@ -6096,7 +6095,7 @@ public enum Reference {
    public String getCode() {
       return name();
    }
-   
+
    /**
     * Gets the description.
     *
@@ -6105,7 +6104,7 @@ public enum Reference {
    public String getDescription() {
       return description;
    }
-   
+
    /**
     * Gets the type by code.
     *
@@ -6113,12 +6112,10 @@ public enum Reference {
     * @return the type by code
     */
    public static Reference getByCode(String enumCode) {
-      if (isNullOrEmpty(enumCode)) {
-         return null;
-      }
+      if (isNullOrEmpty(enumCode)) { return null; }
       return valueOf(enumCode);
    }
-   
+
    @Override
    public String toString() {
       return new StringBuilder().append("[").append(getCode()).append("] ").append(description).toString();

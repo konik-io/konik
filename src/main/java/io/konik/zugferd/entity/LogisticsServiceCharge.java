@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
  * = The Logistics Service Charge
  * 
@@ -39,79 +38,78 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "LogisticsServiceChargeType", propOrder = { "description", "amount", "tradeTax" })
 public class LogisticsServiceCharge {
 
-	@XmlElement(name = "Description")
-	private String description;
-	
-	@Valid
-	@XmlElement(name = "AppliedAmount")
-	private Amount amount;
+   @XmlElement(name = "Description")
+   private String description;
 
-	@Valid
-	@XmlElement(name = "AppliedTradeTax")
-	private List<AppliedTax> tradeTax;
+   @Valid
+   @XmlElement(name = "AppliedAmount")
+   private Amount amount;
 
-	/**
-	 * Gets the description.
-	 * 
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
+   @Valid
+   @XmlElement(name = "AppliedTradeTax")
+   private List<AppliedTax> tradeTax;
 
-	/**
-	 * Sets the description.
-	 * 
-	 * @param description the new description
-	 * @return the logistics service charge
-	 */
-	public LogisticsServiceCharge setDescription(String description) {
-		this.description = description;
-		return this;
-	}
+   /**
+    * Gets the description.
+    * 
+    * @return the description
+    */
+   public String getDescription() {
+      return description;
+   }
 
-	/**
-	 * Gets the applied amount.
-	 * 
-	 * @return the applied amount
-	 */
-	public Amount getAmount() {
-		return amount;
-	}
+   /**
+    * Sets the description.
+    * 
+    * @param description the new description
+    * @return the logistics service charge
+    */
+   public LogisticsServiceCharge setDescription(String description) {
+      this.description = description;
+      return this;
+   }
 
-	/**
+   /**
+    * Gets the applied amount.
+    * 
+    * @return the applied amount
+    */
+   public Amount getAmount() {
+      return amount;
+   }
+
+   /**
     * Sets the applied amount.
     *
     * @param amount the new applied amount
     * @return the logistics service charge
     */
-	public LogisticsServiceCharge setAmount(Amount amount) {
-		this.amount = amount;
-		return this;
-	}
+   public LogisticsServiceCharge setAmount(Amount amount) {
+      this.amount = amount;
+      return this;
+   }
 
-	/**
-	 * Gets the applied trade tax.
-	 * 
-	 * @return the applied trade tax
-	 */
-	public List<AppliedTax> getTradeTax() {
-		if (tradeTax == null) {
-			tradeTax = new ArrayList<AppliedTax>();
-		}
-		return this.tradeTax;
-	}
+   /**
+    * Gets the applied trade tax.
+    * 
+    * @return the applied trade tax
+    */
+   public List<AppliedTax> getTradeTax() {
+      if (tradeTax == null) {
+         tradeTax = new ArrayList<AppliedTax>();
+      }
+      return this.tradeTax;
+   }
 
-
-	/**
+   /**
     * Adds a trade tax.
     *
     * @param additionalTradeTax the additional trade tax
     * @return the logistics service charge
     */
-	public LogisticsServiceCharge addTradeTax(AppliedTax additionalTradeTax) {
-		getTradeTax().add(additionalTradeTax);
-		return this;
-	}
+   public LogisticsServiceCharge addTradeTax(AppliedTax additionalTradeTax) {
+      getTradeTax().add(additionalTradeTax);
+      return this;
+   }
 
 }

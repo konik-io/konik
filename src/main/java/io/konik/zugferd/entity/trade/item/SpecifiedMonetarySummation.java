@@ -30,25 +30,25 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * The specified per item monetary summation.
  */
-@XmlType( propOrder = { "lineTotal", "totalAllowanceCharge"})
-public class SpecifiedMonetarySummation extends CommonMonetarySummation{
+@XmlType(propOrder = { "lineTotal", "totalAllowanceCharge" })
+public class SpecifiedMonetarySummation extends CommonMonetarySummation {
 
    @Valid
    @XmlElement(name = "TotalAllowanceChargeAmount")
    private Amount totalAllowanceCharge;
 
    @Override
-   @NotNull(groups=Comfort.class)
+   @NotNull(groups = Comfort.class)
    public Amount getLineTotal() {
       return super.getLineTotal();
    }
-   
+
    @Override
    public SpecifiedMonetarySummation setLineTotal(Amount lineTotal) {
       super.setLineTotal(lineTotal);
       return this;
    }
-   
+
    /**
     * Gets the total allowance charge.
     *
@@ -62,7 +62,7 @@ public class SpecifiedMonetarySummation extends CommonMonetarySummation{
     * Sets the total allowance charge.
     *
     * @param totalAllowanceCharge the new total allowance charge
-    * @return 
+    * @return
     */
    public SpecifiedMonetarySummation setTotalAllowanceCharge(Amount totalAllowanceCharge) {
       this.totalAllowanceCharge = totalAllowanceCharge;

@@ -29,27 +29,27 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-	/** The Constant QNAME. */
-	private final static QName QNAME = new QName("urn:ferd:CrossIndustryDocument:invoice:1p0", "CrossIndustryDocument");
+   /** The Constant QNAME. */
+   private static final QName QNAME = new QName("urn:ferd:CrossIndustryDocument:invoice:1p0", "CrossIndustryDocument");
 
-	/**
+   /**
     * Creates a new Object object.
     *
     * @return the invoice
     */
-	public Invoice createInvoice() {
-		return new Invoice();
-	}
+   public Invoice createInvoice() {
+      return new Invoice();
+   }
 
-	/**
+   /**
     * Creates a new Object object.
     *
     * @param invoice the invoice
-    * @return the JAXB element 
+    * @return the JAXB element
     */
-	@XmlElementDecl(namespace = "urn:ferd:CrossIndustryDocument:invoice:1p0", name = "CrossIndustryDocument")
-	public JAXBElement<Invoice> createInvoice(Invoice invoice) {
-		return new JAXBElement<Invoice>(QNAME, Invoice.class, null, invoice);
-	}
+   @XmlElementDecl(namespace = "urn:ferd:CrossIndustryDocument:invoice:1p0", name = "CrossIndustryDocument")
+   public JAXBElement<Invoice> createInvoice(Invoice invoice) {
+      return new JAXBElement<Invoice>(QNAME, Invoice.class, null, invoice);
+   }
 
 }

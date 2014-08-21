@@ -17,7 +17,6 @@
  */
 package io.konik.jaxb.adapter;
 
-
 /**
  * 
  * Adapter to round the amount during marshalling to four decimals after the period.
@@ -34,7 +33,7 @@ package io.konik.jaxb.adapter;
 public class AmountHighRoundingAdapter extends AmountLowRoundingAdapter {
 
    private static final String DEFAULT_SCALE = "4";
-   
+
    @Override
    protected String getDefaultScale() {
       return DEFAULT_SCALE;

@@ -19,31 +19,66 @@ package io.konik.validation;
 
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
+import io.konik.zugferd.Invoice;
 import io.konik.zugferd.profile.Profile;
 
+import java.util.Set;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import javax.validation.groups.Default;
 
 /**
  * Validates the invoice against the declared invoice profile.
  */
+@Named
+@Singleton
 public class InvoiceValidator {
 
-  /**
+   private Validator validator;
+
+   /**
+    * Instantiates a new invoice validator.
+    *
+    * @param validator the validator
+    */
+   @Inject
+   public InvoiceValidator(Validator validator) {
+      super();
+      this.validator = validator;
+   }
+
+   /**
+    * Validate the invoice
+    *
+    * @param invoice the invoice
+    * @return the sets the
+    */
+   public Set<ConstraintViolation<Invoice>> validate(Invoice invoice) {
+      Profile profile = invoice.getContext().getGuideline();
+      Class<?>[] validationGroups = resolveIntoValidationGroups(profile);
+      return validator.validate(invoice, validationGroups);
+   }
+
+   /**
     * Resolve the given profile into bean validation groups.
     *
     * @param profile the given profile
     * @return the class[] list of validation group classes
     */
-  public static Class<?>[] resolveIntoValidationGroups(Profile profile) {
+   public static Class<?>[] resolveIntoValidationGroups(Profile profile) {
       switch (profile) {
       case BASIC:
-         return new Class[] {Default.class};
+         return new Class[] { Default.class };
       case COMFORT:
-         return new Class[] {Default.class,Comfort.class};
+         return new Class[] { Default.class, Comfort.class };
       case EXTENDED:
-         return new Class[] {Default.class,Comfort.class,Extended.class};
+         return new Class[] { Default.class, Comfort.class, Extended.class };
       default:
-         throw new IllegalArgumentException("Provided Profile:"+profile+"not covered");
+         throw new IllegalArgumentException("Provided Profile:" + profile + "not covered");
       }
    }
 }

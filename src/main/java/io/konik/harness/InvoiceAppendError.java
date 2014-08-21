@@ -18,9 +18,9 @@
  */
 package io.konik.harness;
 
-
 /**
- * The Invoice Append Runtime Exception is thrown whenever something goes wrong during the invoice to PDF appending process. 
+ * The Invoice Append Runtime Exception is thrown whenever something goes wrong during the invoice to PDF appending
+ * process.
  * 
  */
 public class InvoiceAppendError extends RuntimeException {
@@ -44,6 +44,6 @@ public class InvoiceAppendError extends RuntimeException {
     * @param e the e
     */
    public InvoiceAppendError(String msg, Throwable e) {
-    super(msg, e);
+      super(msg, e);
    }
 }

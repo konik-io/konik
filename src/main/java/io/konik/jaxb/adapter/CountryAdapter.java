@@ -28,10 +28,10 @@ import com.neovisionaries.i18n.CountryCode;
  * = The CountryAdapter maps the JaxB trade countries to the Enum CountryCode.
  */
 public class CountryAdapter extends XmlAdapter<TradeCountry, CountryCode> {
-   
+
    @Override
    public TradeCountry marshal(CountryCode country) throws Exception {
-      return new TradeCountry(country.getAlpha2()) ;
+      return new TradeCountry(country.getAlpha2());
    }
 
    @Override

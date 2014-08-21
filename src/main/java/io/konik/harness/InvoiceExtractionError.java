@@ -18,7 +18,6 @@
  */
 package io.konik.harness;
 
-
 /**
  * 
  * The Class InvoiceExtractionError.
@@ -43,6 +42,6 @@ public class InvoiceExtractionError extends RuntimeException {
     * @param e the e
     */
    public InvoiceExtractionError(String msg, Throwable e) {
-    super(msg, e);
+      super(msg, e);
    }
 }

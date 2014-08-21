@@ -30,13 +30,13 @@ public class ParameterProfileAdapter extends XmlAdapter<Parameter, Profile> {
 
    @Override
    public Profile unmarshal(Parameter p) throws Exception {
-      if (p==null) {return null;}
+      if (p == null) { return null; }
       return Profile.getProfile(p.getId());
    }
 
    @Override
    public Parameter marshal(Profile profile) throws Exception {
-      if (profile == null) {return null;}
+      if (profile == null) { return null; }
       return new Parameter(profile.fullName());
    }
 }

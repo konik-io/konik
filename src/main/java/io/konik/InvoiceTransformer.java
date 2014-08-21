@@ -50,8 +50,10 @@ import org.xml.sax.SAXException;
 @Singleton
 public class InvoiceTransformer {
 
+   private static final String MARSHALLING_ERROR = "Marshalling error";
+
    private static final String KONIK_CONTEXT = "io.konik.zugferd";
-  
+
    private final JAXBContext jaxbContext;
 
    /**
@@ -64,7 +66,7 @@ public class InvoiceTransformer {
          throw new TransformationException("Could not instantiate JaxB Context", e);
       }
    }
-   
+
    /**
     * Instantiates a new invoice transformer providing a JAXB Context
     *
@@ -73,7 +75,7 @@ public class InvoiceTransformer {
    InvoiceTransformer(JAXBContext jaxbContext) {
       this.jaxbContext = jaxbContext;
    }
-   
+
    /**
     * Transform from XML input stream to the invoice model.
     * 
@@ -85,7 +87,7 @@ public class InvoiceTransformer {
          Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
          return unmarshaller.unmarshal(new StreamSource(xmlInputStream), Invoice.class).getValue();
       } catch (JAXBException e) {
-         throw new TransformationException("Marshalling error", e);
+         throw new TransformationException(MARSHALLING_ERROR, e);
       }
    }
 
@@ -101,9 +103,10 @@ public class InvoiceTransformer {
          Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
          return ((JAXBElement<Invoice>) unmarshaller.unmarshal(file)).getValue();
       } catch (JAXBException e) {
-         throw new TransformationException("Marshalling error", e);
+         throw new TransformationException(MARSHALLING_ERROR, e);
       }
    }
+
    /**
     * Transform from Invoice model to xml byte array.
     * 
@@ -116,11 +119,11 @@ public class InvoiceTransformer {
          Marshaller marshaller = createMarshaller();
          marshaller.marshal(invoice, outputStream);
       } catch (JAXBException e) {
-         throw new TransformationException("Marshalling error", e);
+         throw new TransformationException(MARSHALLING_ERROR, e);
       }
       return outputStream.toByteArray();
    }
-   
+
    /**
     * Transform from Invoice model to output stream.
     *
@@ -130,13 +133,11 @@ public class InvoiceTransformer {
    public void fromModel(Invoice invoice, OutputStream outputStream) {
       try {
          Marshaller marshaller = createMarshaller();
-         marshaller.marshal(invoice, outputStream );
+         marshaller.marshal(invoice, outputStream);
       } catch (JAXBException e) {
-         throw new TransformationException("Marshalling error", e);
+         throw new TransformationException(MARSHALLING_ERROR, e);
       }
    }
-
-
 
    /**
     * Gets the ZUGFeRD schema Validator.
@@ -150,16 +151,15 @@ public class InvoiceTransformer {
       Schema invoiceSchema = sf.newSchema(schemaInvoice);
       return invoiceSchema.newValidator();
    }
-   
-   
+
    private Marshaller createMarshaller() throws JAXBException {
-       Marshaller marshaller = jaxbContext.createMarshaller();
-       marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, formatXmlOutput());
-       return marshaller;
+      Marshaller marshaller = jaxbContext.createMarshaller();
+      marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, formatXmlOutput());
+      return marshaller;
    }
 
    protected Boolean formatXmlOutput() {
       return Boolean.FALSE;
    }
-   
+
 }

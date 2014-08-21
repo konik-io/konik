@@ -17,25 +17,23 @@
  */
 package io.konik.zugferd.profile;
 
-
 /**
  * = The known ZUGFeRD profile versions.
  */
 public enum ProfileVersion {
-   
+
    /** The release candidate. */
    RC("rc"),
-   
+
    /** The release candidate extended. */
    RCE("rce"),
-   
+
    /** The version 1.0 */
    V1p0("1p0");
-   
-   
+
    private static final String DELIMITER = ":";
    private final String version;
-   
+
    private ProfileVersion(String version) {
       this.version = version;
    }
@@ -45,33 +43,32 @@ public enum ProfileVersion {
     *
     * @return the string
     */
-   public String version(){
+   public String version() {
       return version;
    }
+
    /**
     * Latest version of the ZUGFeRD Specification.
     *
     * @return the string
     */
    public static ProfileVersion latestVersion() {
-      return ProfileVersion.values()[ProfileVersion.values().length-1];
+      return ProfileVersion.values()[ProfileVersion.values().length - 1];
    }
 
    /**
     * Parses the given version string
     *
     * @param version the version
-    * @return the profile version or IllegalArgumentException if provided version is not known. 
+    * @return the profile version or IllegalArgumentException if provided version is not known.
     */
-   public static ProfileVersion parse(String version){
+   public static ProfileVersion parse(String version) {
       for (ProfileVersion profileVersion : ProfileVersion.values()) {
-         if( profileVersion.version().equals(version)) {
-            return profileVersion;
-         }
+         if (profileVersion.version().equals(version)) { return profileVersion; }
       }
-      throw new IllegalArgumentException("The provided version: ["+ version +"] is not known");
+      throw new IllegalArgumentException("The provided version: [" + version + "] is not known");
    }
-   
+
    /**
     * Extract version from full name.
     *
@@ -84,7 +81,7 @@ public enum ProfileVersion {
       if (tokens.length < 5) { return null; }
       return parse(tokens[4]);
    }
-   
+
    @Override
    public String toString() {
       return version();

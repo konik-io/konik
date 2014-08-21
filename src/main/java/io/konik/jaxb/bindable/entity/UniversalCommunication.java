@@ -23,7 +23,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
  * = The Universal Communication
  */
@@ -31,60 +30,60 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "UniversalCommunicationType", propOrder = { "email", "number" })
 public class UniversalCommunication {
 
-	@XmlElement(name = "URIID")
-	private String email;
+   @XmlElement(name = "URIID")
+   private String email;
 
-	@XmlElement(name = "CompleteNumber")
-	private String number;
+   @XmlElement(name = "CompleteNumber")
+   private String number;
 
-	/**
-	 * Instantiates a new universal communication.
-	 * 
-	 * @param scheme the scheme
-	 * @param email the uri
-	 */
-	public UniversalCommunication(String email) {
-		this.email = email;
-	}
-	
-	/** Instantiates a new universal communication. */
-	public UniversalCommunication() {
-	}
+   /**
+    * Instantiates a new universal communication.
+    * 
+    * @param scheme the scheme
+    * @param email the uri
+    */
+   public UniversalCommunication(String email) {
+      this.email = email;
+   }
 
-	/**
+   /** Instantiates a new universal communication. */
+   public UniversalCommunication() {
+   }
+
+   /**
     * Gets the mail.
     *
     * @return the mail
     */
-	public String getMail() {
-		return email;
-	}
+   public String getMail() {
+      return email;
+   }
 
-	/**
+   /**
     * Sets the mail.
     *
     * @param uriid the new mail
     */
-	public void setMail(String uriid) {
-		this.email = uriid;
-	}
+   public void setMail(String uriid) {
+      this.email = uriid;
+   }
 
-	/**
-	 * Gets the complete number.
-	 * 
-	 * @return the complete number
-	 */
-	public String getCompleteNumber() {
-		return number;
-	}
+   /**
+    * Gets the complete number.
+    * 
+    * @return the complete number
+    */
+   public String getCompleteNumber() {
+      return number;
+   }
 
-	/**
-	 * Sets the complete number.
-	 * 
-	 * @param uri the new complete number
-	 */
-	public void setCompleteNumber(String uri) {
-		this.number = uri;
-	}
+   /**
+    * Sets the complete number.
+    * 
+    * @param uri the new complete number
+    */
+   public void setCompleteNumber(String uri) {
+      this.number = uri;
+   }
 
 }

@@ -38,6 +38,7 @@ public class NotBlankValidator implements ConstraintValidator<NullableNotBlank, 
     */
    @Override
    public void initialize(NullableNotBlank annotation) {
+      //no special initialization needed
    }
 
    /**

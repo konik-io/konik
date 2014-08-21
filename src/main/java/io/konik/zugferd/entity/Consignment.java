@@ -35,10 +35,10 @@ import javax.xml.bind.annotation.XmlType;
 public class Consignment {
 
    /** The specified logistics transport movement. */
-   @Valid@XmlElement(name = "SpecifiedLogisticsTransportMovement")
+   @Valid
+   @XmlElement(name = "SpecifiedLogisticsTransportMovement")
    private LogisticsTransportMovement shippingMethod;
 
-   
    /**
     * The Constructor.
     */
@@ -55,7 +55,6 @@ public class Consignment {
       return shippingMethod;
    }
 
-
    /**
     * Sets the shipping method.
     *
@@ -64,9 +63,5 @@ public class Consignment {
    public void setShippingMethod(LogisticsTransportMovement shippingMethod) {
       this.shippingMethod = shippingMethod;
    }
-
-
-
-
 
 }

@@ -110,7 +110,7 @@ public enum UnitOfMeasurement {
       this.code = code;
       this.description = description;
    }
-   
+
    /**
     * Gets the code.
     *
@@ -119,7 +119,7 @@ public enum UnitOfMeasurement {
    public String getCode() {
       return code;
    }
-   
+
    /**
     * Gets the description.
     *
@@ -137,11 +137,11 @@ public enum UnitOfMeasurement {
     */
    public static UnitOfMeasurement getByCode(String code) {
       for (UnitOfMeasurement v : values()) {
-         if (v.getCode().intern() == code.intern()) return v;
+         if (v.getCode().intern() == code.intern()) { return v; }
       }
       return null;
    }
-   
+
    @Override
    public String toString() {
       return new StringBuilder().append("[").append(getCode()).append("] ").append(description).toString();

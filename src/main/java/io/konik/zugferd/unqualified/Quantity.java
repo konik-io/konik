@@ -33,9 +33,9 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * = The Quantity 
+ * = The Quantity
  * 
- * Defined by the amount and Unit 
+ * Defined by the amount and Unit
  * 
  * Units are based on Recommendation N°. 20 - Codes for Units of Measure Used in International Trade
  */
@@ -54,7 +54,8 @@ public class Quantity {
    private String unitCode;
 
    /** Instantiates a new quantity. */
-   public Quantity() {}
+   public Quantity() {
+   }
 
    /**
     * Instantiates a new quantity.
@@ -67,7 +68,7 @@ public class Quantity {
       this.value = BigDecimal.valueOf(value);
       this.unitCode = unitCode;
    }
-   
+
    /**
     * Instantiates a new quantity.
     * 
@@ -91,7 +92,7 @@ public class Quantity {
       this.value = value;
       this.unitCode = unit.getCode();
    }
-   
+
    /**
     * Instantiates a new quantity.
     *
@@ -100,9 +101,10 @@ public class Quantity {
     */
    public Quantity(int value, UnitOfMeasurement unit) {
       super();
-      this.value = BigDecimal.valueOf(value);;
+      this.value = BigDecimal.valueOf(value);
       this.unitCode = unit.getCode();
    }
+
    /**
     * Gets the value.
     * 
@@ -122,22 +124,22 @@ public class Quantity {
       this.value = value;
       return this;
    }
-   
+
    /**
     * Gets the unit.
     *
     * @return the unit or null if unit is not known.
     */
-   public UnitOfMeasurement getUnit(){
+   public UnitOfMeasurement getUnit() {
       return UnitOfMeasurement.getByCode(unitCode);
    }
-   
+
    /**
     * Sets the unit.
     *
     * @param unit the new unit
     */
-   public void setUnit(UnitOfMeasurement unit){
+   public void setUnit(UnitOfMeasurement unit) {
       unitCode = unit.getCode();
    }
 

@@ -20,7 +20,7 @@ package io.konik.validator.annotation;
 import io.konik.zugferd.unqualified.ID;
 
 /**
- * = The Valid Identifier. 
+ * = The Valid Identifier.
  * Verifies that both the {@link ID#getValue()} and {@link ID#getSchemeId()} are not blank and not null
  * 
  */

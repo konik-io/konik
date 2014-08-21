@@ -81,9 +81,7 @@ public class Context {
     * @return true if this invoice is for testing purpose only
     */
    public boolean isTest() {
-      if (test == null) {
-         return false;
-      }
+      if (test == null) { return false; }
       return test.getIndicator();
    }
 
@@ -118,7 +116,7 @@ public class Context {
     * @return the context
     */
    public Context setNotTest() {
-      this.test = Indicator.falseIndicator();; 
+      this.test = Indicator.falseIndicator();
       return this;
    }
 
@@ -132,7 +130,7 @@ public class Context {
     * @return the business process
     */
    public String getBusinessProcess() {
-      return businessProcess == null?null:businessProcess.getId();
+      return businessProcess == null ? null : businessProcess.getId();
    }
 
    /**

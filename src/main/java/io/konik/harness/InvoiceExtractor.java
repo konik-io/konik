@@ -22,27 +22,25 @@ import io.konik.zugferd.Invoice;
 
 import java.io.InputStream;
 
-
 /**
  * The Invoice Extractor interface. A PDF Carriage implement this interface to extract a Invoice model from a PDF.
  */
 public interface InvoiceExtractor {
 
-
-	/**
+   /**
     * Extract invoice from a PDF.
     *
     * @param pdf the pdf
     * @return the extracted invoice model.
     */
-	public Invoice extract(final byte[] pdf);
+   public Invoice extract(final byte[] pdf);
 
-	/**
+   /**
     * Extract invoice from PDF stream.
     *
     * @param pdf the pdf
     * @return the extracted invoice model.
     */
-	public Invoice extract(final InputStream pdf);
+   public Invoice extract(final InputStream pdf);
 
 }

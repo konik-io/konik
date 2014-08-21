@@ -8,6 +8,7 @@ import org.w3c.dom.Node;
 
 @SuppressWarnings("javadoc")
 public class NumberDifferenceXmlComparisson implements DifferenceListener {
+   
    @Override
    public int differenceFound(Difference difference) {
       String nodeName = difference.getControlNodeDetail().getNode().getParentNode().getLocalName();

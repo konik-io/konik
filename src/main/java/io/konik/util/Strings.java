@@ -20,10 +20,10 @@ package io.konik.util;
 
 /**
  * 
- * The Strings helper class. We can avoid importing Guava or Apache commons for now. 
+ * The Strings helper class. We can avoid importing Guava or Apache commons for now.
  */
 public class Strings {
-   
+
    private Strings() {
    }
 
@@ -36,7 +36,7 @@ public class Strings {
    public static String nullToEmpty(String string) {
       return (string == null) ? "" : string;
    }
-   
+
    /**
     * Empty to null.
     *
@@ -54,8 +54,9 @@ public class Strings {
     * @return true, if is null or empty
     */
    public static boolean isNullOrEmpty(String string) {
-      return string == null || string.isEmpty(); 
+      return string == null || string.isEmpty();
    }
+
    /**
     * Checks if is not null or empty.
     *
@@ -66,5 +67,3 @@ public class Strings {
       return !isNullOrEmpty(string);
    }
 }
-
-

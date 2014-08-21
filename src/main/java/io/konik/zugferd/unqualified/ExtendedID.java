@@ -28,13 +28,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * The scheme agency aware identifier.
  */
 public class ExtendedID extends ID {
-   
+
    @NotBlank
    @XmlAttribute(name = "schemeAgencyID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String schemeAgencyId;
 
-   
    /**
     * Instantiates a new extended id.
     *
@@ -50,7 +49,6 @@ public class ExtendedID extends ID {
       super();
    }
 
-
    /**
     * Gets the scheme agency id.
     *
@@ -64,14 +62,11 @@ public class ExtendedID extends ID {
     * Sets the scheme agency id.
     *
     * @param schemeAgencyId the new scheme agency id
-    * @return 
+    * @return
     */
    public ExtendedID setSchemeAgencyId(String schemeAgencyId) {
       this.schemeAgencyId = schemeAgencyId;
       return this;
    }
-   
-   
-   
 
 }

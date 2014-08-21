@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * References a external Document.
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(name = "ReferencedDocumentType",propOrder = { "issued", "linePos", "typeCode", "id", "referenceType" })
+@XmlType(name = "ReferencedDocumentType", propOrder = { "issued", "linePos", "typeCode", "id", "referenceType" })
 public class ReferencedDocument {
 
    @XmlElement(name = "IssueDateTime")
@@ -58,12 +58,13 @@ public class ReferencedDocument {
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    protected String referenceType;
 
-   protected ReferencedDocument() {}
+   protected ReferencedDocument() {
+   }
 
    /**
     * The Constructor.
     *
-    * @param identifier the id value of the referenced document 
+    * @param identifier the id value of the referenced document
     */
    public ReferencedDocument(String identifier) {
       super();
@@ -78,7 +79,7 @@ public class ReferencedDocument {
     * @return the issue date time
     */
    public Date getIssued() {
-      return issued;
+      return new Date(issued.getTime());
    }
 
    /**
@@ -90,7 +91,7 @@ public class ReferencedDocument {
     * @return the referenced document
     */
    public ReferencedDocument setIssued(Date issued) {
-      this.issued = issued;
+      this.issued = new Date(issued.getTime());
       return this;
    }
 
@@ -110,11 +111,11 @@ public class ReferencedDocument {
    /**
     * Gets the identifier.
     * 
-    * Examples:: Order number, document number, number of customer order, delivery note numbers 
+    * Examples:: Order number, document number, number of customer order, delivery note numbers
     * 
     * @return the id the identifier of the referenced document
     */
-   @NotNull(groups=Comfort.class)
+   @NotNull(groups = Comfort.class)
    public String getId() {
       return id;
    }

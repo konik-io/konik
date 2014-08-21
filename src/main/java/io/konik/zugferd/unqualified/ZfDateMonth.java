@@ -35,8 +35,7 @@ public class ZfDateMonth extends ZfDate {
          return new SimpleDateFormat(DATE_PATTERN);
       }
    };
-   
-   
+
    /**
     * Instantiates a new zf date with current year and month
     */
@@ -44,16 +43,14 @@ public class ZfDateMonth extends ZfDate {
       super();
    }
 
-
    /**
-    * Instantiates a new zf date with current year and month 
+    * Instantiates a new zf date with current year and month
     *
     * @param date the date
     */
    public ZfDateMonth(Date date) {
       super(date);
    }
-
 
    /**
     * Instantiates a new zf date month.
@@ -64,7 +61,6 @@ public class ZfDateMonth extends ZfDate {
       super(date);
    }
 
-
    /**
     * Instantiates a new zf date month.
     *
@@ -73,7 +69,6 @@ public class ZfDateMonth extends ZfDate {
    public ZfDateMonth(String formattedDate) {
       super(formattedDate);
    }
-
 
    /**
     * Gets the format code.
@@ -84,7 +79,6 @@ public class ZfDateMonth extends ZfDate {
    public String getFormatCode() {
       return CODE;
    }
-
 
    @Override
    SimpleDateFormat getFormatter() {

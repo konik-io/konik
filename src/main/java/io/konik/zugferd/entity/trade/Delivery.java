@@ -35,7 +35,8 @@ import javax.xml.bind.annotation.XmlType;
  * = The trade delivery information.
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = { "relatedConsignment", "shipTo", "ultimateShipTo","shipFrom", "actualDelivery", "despatchAdvice", "deliveryNote" })
+@XmlType(propOrder = { "relatedConsignment", "shipTo", "ultimateShipTo", "shipFrom", "actualDelivery",
+      "despatchAdvice", "deliveryNote" })
 public class Delivery extends CommonDelivery<ReferencedDocument> {
 
    @Valid
@@ -45,11 +46,11 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
    @Valid
    @XmlElement(name = "ShipFromTradeParty")
    private TradeParty shipFrom;
- 
+
    @Valid
    @XmlElement(name = "DespatchAdviceReferencedDocument")
    private ReferencedDocument despatchAdvice;
-   
+
    @Valid
    @XmlElement(name = "DeliveryNoteReferencedDocument")
    private ReferencedDocument deliveryNote;
@@ -108,12 +109,10 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
       return this;
    }
 
-   
    @Override
    public ReferencedDocument getDespatchAdvice() {
       return despatchAdvice;
    }
-
 
    @Override
    public Delivery setDespatchAdvice(ReferencedDocument despatchAdvice) {
@@ -122,12 +121,10 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
 
    }
 
-   
    @Override
    public ReferencedDocument getDeliveryNote() {
       return deliveryNote;
    }
-
 
    @Override
    public Delivery setDeliveryNote(ReferencedDocument deliveryNote) {

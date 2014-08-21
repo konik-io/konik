@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  * 
  * Adapter to round the BigDecimal for marshalling to four decimals after the period.
  * 
- * The scale and rounding mode can be overridden via the configuration. 
+ * The scale and rounding mode can be overridden via the configuration.
  * 
  * Defaults::
  * 
@@ -44,19 +44,19 @@ public class QuantityRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> 
 
    private static final String DEFAULT_ROUNDING_MODE = "HALF_UP";
    private static final String DEFAULT_SCALE = "4";
-   
+
    final int scale;
    final RoundingMode roundingMode;
-   
+
    /**
     * Instantiates a new amount rounding adapter.
     */
    public QuantityRoundingAdapter() {
       String name = this.getClass().getName();
-      scale = parseInt(getProperty(name+".scale",DEFAULT_SCALE));
-      roundingMode = valueOf(getProperty(name+".roundingMode",DEFAULT_ROUNDING_MODE));
+      scale = parseInt(getProperty(name + ".scale", DEFAULT_SCALE));
+      roundingMode = valueOf(getProperty(name + ".roundingMode", DEFAULT_ROUNDING_MODE));
    }
-   
+
    @Override
    public BigDecimal unmarshal(BigDecimal amount) throws Exception {
       return amount;
@@ -64,7 +64,7 @@ public class QuantityRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> 
 
    @Override
    public BigDecimal marshal(BigDecimal amount) throws Exception {
-      if (amount==null) {return null;}
+      if (amount == null) { return null; }
       return amount.setScale(scale, roundingMode).stripTrailingZeros();
    }
 }

@@ -33,73 +33,73 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class ID {
 
    @NotBlank
-	@XmlValue
-	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-	@XmlSchemaType(name = "token")
-	private String value;
+   @XmlValue
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   @XmlSchemaType(name = "token")
+   private String value;
 
-	@XmlAttribute(name = "schemeID")
-	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-	@XmlSchemaType(name = "token")
-	private String schemeId;
+   @XmlAttribute(name = "schemeID")
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   @XmlSchemaType(name = "token")
+   private String schemeId;
 
-	/** Instantiates a new id. */
-	public ID() {
-	}
+   /** Instantiates a new id. */
+   public ID() {
+   }
 
-	/**
+   /**
     * Instantiates a new id with value and a null scheme.
     *
     * @param value the value
     */
-	public ID(String value) {
-		this.value = value;
-	}
+   public ID(String value) {
+      this.value = value;
+   }
 
-	/**
-	 * Instantiates a new id with value and scheme id.
-	 * 
-	 * @param value the value
-	 * @param schemeId the scheme id
-	 */
-	public ID(String value, String schemeId) {
-		this.value = value;
-		this.schemeId = schemeId;
-	}
+   /**
+    * Instantiates a new id with value and scheme id.
+    * 
+    * @param value the value
+    * @param schemeId the scheme id
+    */
+   public ID(String value, String schemeId) {
+      this.value = value;
+      this.schemeId = schemeId;
+   }
 
-	/**
-	 * Gets the value.
-	 * 
-	 * @return the value
-	 */
-	public String getValue() {
-		return value;
-	}
+   /**
+    * Gets the value.
+    * 
+    * @return the value
+    */
+   public String getValue() {
+      return value;
+   }
 
-	/**
-	 * Sets the value.
-	 * 
-	 * @param value the new value
-	 */
-	public void setValue(String value) {
-		this.value = value;
-	}
+   /**
+    * Sets the value.
+    * 
+    * @param value the new value
+    */
+   public void setValue(String value) {
+      this.value = value;
+   }
 
-	/**
-	 * Gets the scheme id.
-	 * 
-	 * @return the scheme id
-	 */
-	public String getSchemeId() {
-		return schemeId;
-	}
+   /**
+    * Gets the scheme id.
+    * 
+    * @return the scheme id
+    */
+   public String getSchemeId() {
+      return schemeId;
+   }
 
-	/**
-	 * Sets the scheme id.
-	 * 
-	 * @param schemeId the new scheme id
-	 */
-	public void setSchemeId(String schemeId) {
-		this.schemeId = schemeId;
-	}
+   /**
+    * Sets the scheme id.
+    * 
+    * @param schemeId the new scheme id
+    */
+   public void setSchemeId(String schemeId) {
+      this.schemeId = schemeId;
+   }
 }

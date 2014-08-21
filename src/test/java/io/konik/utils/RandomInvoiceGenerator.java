@@ -167,7 +167,8 @@ public class RandomInvoiceGenerator {
       if (isAssignable(type,Integer.class,true)) return Integer.valueOf(random.nextInt(100));
       if (type.isEnum()) return getEnum(type);
       if (isAssignable(type,ZfDate.class,true)) return ZfDateFactory.create(supportedDateFormatts[random.nextInt(3)]);
-      if (isAssignable(type,Date.class,true)) return new Date();      
+      if (isAssignable(type,Date.class,true)) return new Date();
+      if (isAssignable(type,Long.class,true)) return Long.valueOf(random.nextInt(100));
       throw new IllegalArgumentException("Type " + type + " was not found");
    }
    private Object getEnum(Class<?> type) {

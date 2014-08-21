@@ -32,7 +32,6 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * = The common trade tax
  * 
@@ -42,7 +41,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * The complexity of this hierarchy is also result of the validation path, we can not override constraints.
  */
 @XmlTransient
-@XmlType(name = "TradeTaxType", propOrder = { "calculated", "type", "exemptionReason","basis", "lineTotal", "allowanceCharge", "category", "percentage" })
+@XmlType(name = "TradeTaxType", propOrder = { "calculated", "type", "exemptionReason", "basis", "lineTotal",
+      "allowanceCharge", "category", "percentage" })
 /* 
 HIRACHY TOP DOWN
 as AppliedTradeTax|CategoryTradeTax only   TypeCode, CategoryCode, ApplicablePercent
@@ -52,94 +52,93 @@ as AppliedTradeTax|CategoryTradeTax only   TypeCode, CategoryCode, ApplicablePer
 public abstract class CommonTax {
 
    @Valid
-	@XmlElement(name = "CalculatedAmount")
-	protected Amount calculated;
+   @XmlElement(name = "CalculatedAmount")
+   protected Amount calculated;
 
-	@XmlElement(name = "TypeCode")
-	protected TaxCode type;
+   @XmlElement(name = "TypeCode")
+   protected TaxCode type;
 
-	@XmlElement(name = "ExemptionReason")
-	protected String exemptionReason;
-	
-	@Valid
-	@XmlElement(name = "BasisAmount")
-	protected Amount basis;
-	
-	@Valid
-	@XmlElement(name = "LineTotalBasisAmount")
-	protected Amount lineTotal;
-	
-	@Valid
-	@XmlElement(name = "AllowanceChargeBasisAmount")
-	protected Amount allowanceCharge;
+   @XmlElement(name = "ExemptionReason")
+   protected String exemptionReason;
 
-	@XmlElement(name = "CategoryCode")
-	protected TaxCategory category;
+   @Valid
+   @XmlElement(name = "BasisAmount")
+   protected Amount basis;
 
-	@XmlElement(name = "ApplicablePercent")
-	@XmlJavaTypeAdapter(PercentRoundingAdapter.class)
-	protected BigDecimal percentage;
+   @Valid
+   @XmlElement(name = "LineTotalBasisAmount")
+   protected Amount lineTotal;
 
+   @Valid
+   @XmlElement(name = "AllowanceChargeBasisAmount")
+   protected Amount allowanceCharge;
 
-	/**
-	 * Gets the UNCL 5153 tax type code.
-	 * 
-	 * @return the type code
-	 */
-	public TaxCode getType() {
-		return type;
-	}
+   @XmlElement(name = "CategoryCode")
+   protected TaxCategory category;
 
-	/**
+   @XmlElement(name = "ApplicablePercent")
+   @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
+   protected BigDecimal percentage;
+
+   /**
+    * Gets the UNCL 5153 tax type code.
+    * 
+    * @return the type code
+    */
+   public TaxCode getType() {
+      return type;
+   }
+
+   /**
     * Sets the UNCL 5153 tax type code.
     * 
     * @param taxTypeCode the tax type code
     * @return the tax
     * @see <a href="http://www.unece.org/trade/untdid/d98b/uncl/uncl5153.htm">UNCL 5153</a>
     */
-	public CommonTax setType(TaxCode taxTypeCode) {
-		this.type = taxTypeCode;
-		return  this;
-	}
+   public CommonTax setType(TaxCode taxTypeCode) {
+      this.type = taxTypeCode;
+      return this;
+   }
 
-	/**
-	 * Gets the tax category.
-	 * 
-	 * @return the category code
-	 */
-	public TaxCategory getCategory() {
-		return category;
-	}
+   /**
+    * Gets the tax category.
+    * 
+    * @return the category code
+    */
+   public TaxCategory getCategory() {
+      return category;
+   }
 
-	/**
+   /**
     * Sets the tax category.
     * 
     * @param value the new category code
     * @return the tax
     */
-	public CommonTax setCategory(TaxCategory value) {
-		this.category = value;
-		return this;
-	}
+   public CommonTax setCategory(TaxCategory value) {
+      this.category = value;
+      return this;
+   }
 
-	/**
-	 * Gets the applicable tax percentage.
-	 * 
-	 * @return the applicable tax percentage
-	 */
-	@NotNull(groups=Comfort.class)
-	public BigDecimal getPercentage() {
-		return percentage;
-	}
+   /**
+    * Gets the applicable tax percentage.
+    * 
+    * @return the applicable tax percentage
+    */
+   @NotNull(groups = Comfort.class)
+   public BigDecimal getPercentage() {
+      return percentage;
+   }
 
-	/**
+   /**
     * Sets the applicable tax percentage.
     * 
     * @param applicablePercentage the new applicable tax percentage
     * @return the tax
     */
    public CommonTax setPercentage(BigDecimal applicablePercentage) {
-		this.percentage = applicablePercentage;
-		return this;
-	}
+      this.percentage = applicablePercentage;
+      return this;
+   }
 }

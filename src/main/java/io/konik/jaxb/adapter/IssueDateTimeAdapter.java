@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  * Two types are allowed:
  * 
  */
-public class IssueDateTimeAdapter extends XmlAdapter<String, Date>{
+public class IssueDateTimeAdapter extends XmlAdapter<String, Date> {
 
    private final ThreadLocal<SimpleDateFormat> dateTimeFormatter = new ThreadLocal<SimpleDateFormat>() {
       @Override
@@ -38,20 +38,16 @@ public class IssueDateTimeAdapter extends XmlAdapter<String, Date>{
          return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");// 2013-08-05T00:00:00
       }
    };
-   
+
    @Override
    public Date unmarshal(String date) throws Exception {
-      if (Strings.isNullOrEmpty(date)) {
-         return null;
-      }
+      if (Strings.isNullOrEmpty(date)) { return null; }
       return dateTimeFormatter.get().parse(date.trim());
    }
 
    @Override
    public String marshal(Date date) throws Exception {
-      if(date == null) {
-         return null;
-      }
+      if (date == null) { return null; }
       return dateTimeFormatter.get().format(date);
    }
 

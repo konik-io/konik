@@ -36,8 +36,8 @@ import javax.xml.bind.annotation.XmlType;
  * Detailed information on the means of payment.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeSettlementPaymentMeansType", propOrder = { "code", "informations","mandateReferenceId", "payerAccount", "payeeAccount",
-      "payerInstitution", "payeeInstitution" })
+@XmlType(name = "TradeSettlementPaymentMeansType", propOrder = { "code", "informations", "mandateReferenceId",
+      "payerAccount", "payeeAccount", "payerInstitution", "payeeInstitution" })
 public class PaymentMeans {
 
    @XmlElement(name = "TypeCode")
@@ -46,9 +46,10 @@ public class PaymentMeans {
    @XmlElement(name = "Information")
    private List<String> informations;
 
-   @Valid @XmlElement(name = "ID")
+   @Valid
+   @XmlElement(name = "ID")
    private ExtendedID mandateReferenceId;
-   
+
    @Valid
    @XmlElement(name = "PayerPartyDebtorFinancialAccount")
    private FinancialAccount payerAccount;
@@ -122,7 +123,6 @@ public class PaymentMeans {
       return this;
    }
 
-   
    /**
     * Gets the client creditor id.
     *

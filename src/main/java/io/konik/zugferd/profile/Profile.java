@@ -30,7 +30,7 @@ public enum Profile {
    EXTENDED;
 
    private static final String DELIMITED = ":";
-   private final static String NS = "urn:ferd:CrossIndustryDocument:invoice";
+   private static final String NS = "urn:ferd:CrossIndustryDocument:invoice";
 
    /**
     * Instantiates a new profile type.
@@ -52,13 +52,13 @@ public enum Profile {
    }
 
    /**
-    * constructs the full name with the given version. 
+    * constructs the full name with the given version.
     * Full name consists of namespace:version:profile
     * 
     * Example:: urn:ferd:CrossIndustryDocument:invoice:1p0:basic
     *
     * @param version the version
-    * @return the string the full name 
+    * @return the string the full name
     */
    public String fullName(ProfileVersion version) {
       StringBuilder fullName = new StringBuilder();
@@ -115,7 +115,7 @@ public enum Profile {
     */
    public static Profile getProfileByName(String name) {
       for (Profile v : values()) {
-         if (v.simpleName().equals(name.toLowerCase())) { return v; }
+         if (v.simpleName().equalsIgnoreCase(name)) { return v; }
       }
       throw new EnumConstantNotPresentException(Profile.class, name);
    }
@@ -149,6 +149,5 @@ public enum Profile {
    public static boolean isExtended(String fullName) {
       return fullName.endsWith(EXTENDED.simpleName());
    }
-
 
 }

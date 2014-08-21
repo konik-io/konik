@@ -22,9 +22,9 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * = The Tax Category Code.
  *
- * Based on 5305  Duty or tax or fee category code
+ * Based on 5305 Duty or tax or fee category code
  * 
- * @see http://www.unece.org/trade/untdid/d13b/tred/tred5305.htm[UN/EDIFACT 5305  Duty or tax or fee category code^]
+ * @see http://www.unece.org/trade/untdid/d13b/tred/tred5305.htm[UN/EDIFACT 5305 Duty or tax or fee category code^]
  * 
  */
 @XmlType(name = "TaxCategoryCodeType")
@@ -50,7 +50,8 @@ public enum TaxCategory {
     * A tax category code indicating the item is tax exempt
     * when the item is bought for future resale.
     **/
-   AB("Exempt for resale", "A tax category code indicating the item is tax exempt when the item is bought for future resale."),
+   AB("Exempt for resale",
+         "A tax category code indicating the item is tax exempt when the item is bought for future resale."),
 
    /**
     * Value Added Tax (VAT) not now due for payment
@@ -59,7 +60,9 @@ public enum TaxCategory {
     * which is due on the current invoice is to be paid on
     * receipt of a separate VAT payment request.
     **/
-   AC("Value Added Tax (VAT) not now due for payment"," A code to indicate that the Value Added Tax (VAT) amount which is due on the current invoice is to be paid on receipt of a separate VAT payment request."),
+   AC(
+         "Value Added Tax (VAT) not now due for payment",
+         " A code to indicate that the Value Added Tax (VAT) amount which is due on the current invoice is to be paid on receipt of a separate VAT payment request."),
 
    /**
     * Value Added Tax (VAT) due from a previous invoice
@@ -67,7 +70,8 @@ public enum TaxCategory {
     * A code to indicate that the Value Added Tax (VAT) amount
     * of a previous invoice is to be paid.
     **/
-   AD("Value Added Tax (VAT) due from a previous invoice","A code to indicate that the Value Added Tax (VAT) amount of a previous invoice is to be paid."),
+   AD("Value Added Tax (VAT) due from a previous invoice",
+         "A code to indicate that the Value Added Tax (VAT) amount of a previous invoice is to be paid."),
 
    /**
     * VAT Reverse Charge
@@ -91,7 +95,8 @@ public enum TaxCategory {
     * Duty associated with shipment of goods is paid by the
     * supplier; customer receives goods with duty paid.
     **/
-   C("Duty paid by supplier","Duty associated with shipment of goods is paid by the supplier; customer receives goods with duty paid."),
+   C("Duty paid by supplier",
+         "Duty associated with shipment of goods is paid by the supplier; customer receives goods with duty paid."),
 
    /**
     * Exempt from tax
@@ -145,7 +150,7 @@ public enum TaxCategory {
       this.description = description;
       this.detailedDescription = detailedDescription;
    }
-   
+
    /**
     * Gets the code.
     *
@@ -154,7 +159,7 @@ public enum TaxCategory {
    public String getCode() {
       return name();
    }
-   
+
    /**
     * Gets the description.
     *
@@ -163,8 +168,7 @@ public enum TaxCategory {
    public String getDescription() {
       return description;
    }
-   
-   
+
    /**
     * Gets the detailed description.
     *
@@ -180,10 +184,10 @@ public enum TaxCategory {
     * @param code the code
     * @return the by code
     */
-   public static TaxCategory getByCode(String code){
+   public static TaxCategory getByCode(String code) {
       return valueOf(code);
    }
-   
+
    @Override
    public String toString() {
       return new StringBuilder().append("[").append(getCode()).append("] ").append(description).toString();

@@ -25,7 +25,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
  * = The period of time
  * 
@@ -35,57 +34,55 @@ import javax.xml.bind.annotation.XmlType;
 public class Period {
 
    @Valid
-	@XmlElement(name = "StartDateTime")
-	private ZfDate start;
+   @XmlElement(name = "StartDateTime")
+   private ZfDate start;
 
    @Valid
-	@XmlElement(name = "EndDateTime")
-	private ZfDate end;
+   @XmlElement(name = "EndDateTime")
+   private ZfDate end;
 
    @Valid
    @XmlElement(name = "CompleteDateTime")
    protected ZfDate contractualDueDate;//only place where this is used: HeaderExchangedDocument
 
-   
-	/**
-	 * Gets the start date time.
-	 * 
-	 * @return the start date time
-	 */
-	public ZfDate getStart() {
-		return start;
-	}
+   /**
+    * Gets the start date time.
+    * 
+    * @return the start date time
+    */
+   public ZfDate getStart() {
+      return start;
+   }
 
-	/**
+   /**
     * Sets the start date time.
     *
     * @param start the new start date time
     * @return the period
     */
-	public Period setStart(ZfDate start) {
-		this.start = start;
-		return this;
-	}
+   public Period setStart(ZfDate start) {
+      this.start = start;
+      return this;
+   }
 
-	/**
-	 * Gets the end date time.
-	 * 
-	 * @return the end date time
-	 */
-	public ZfDate getEnd() {
-		return end;
-	}
+   /**
+    * Gets the end date time.
+    * 
+    * @return the end date time
+    */
+   public ZfDate getEnd() {
+      return end;
+   }
 
-	/**
+   /**
     * Sets the end date time.
     *
     * @param end the new end date time
     * @return the period
     */
-	public Period setEnd(ZfDate end) {
-		this.end = end;
-		return this;
-	}
-
+   public Period setEnd(ZfDate end) {
+      this.end = end;
+      return this;
+   }
 
 }

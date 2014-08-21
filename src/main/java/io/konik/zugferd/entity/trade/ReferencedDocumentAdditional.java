@@ -22,7 +22,6 @@ import io.konik.zugferd.entity.ReferencedDocument;
 
 import javax.validation.constraints.NotNull;
 
-
 /**
  * 
  * The Additional Referenced Document
@@ -34,7 +33,7 @@ public class ReferencedDocumentAdditional extends ReferencedDocument {
     *
     * @return the type code
     */
-   @NotNull(groups=Extended.class)
+   @NotNull(groups = Extended.class)
    public String getTypeCode() {
       return typeCode;
    }
@@ -47,6 +46,5 @@ public class ReferencedDocumentAdditional extends ReferencedDocument {
    public void setTypeCode(String typeCode) {
       this.typeCode = typeCode;
    }
-   
-   
+
 }

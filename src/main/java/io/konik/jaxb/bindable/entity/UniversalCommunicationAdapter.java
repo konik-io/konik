@@ -47,9 +47,7 @@ public class UniversalCommunicationAdapter extends XmlAdapter<UniversalCommunica
 
    @Override
    public String unmarshal(UniversalCommunication communication) throws Exception {
-      if (isNotEmpty(communication.getCompleteNumber())) {
-         return communication.getCompleteNumber();   
-      }
+      if (isNotEmpty(communication.getCompleteNumber())) { return communication.getCompleteNumber(); }
       return communication.getMail();
    }
 }

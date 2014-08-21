@@ -33,8 +33,10 @@ class AccountingAccount {
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    final String id;
 
-   AccountingAccount() {this.id=null;}
-   
+   AccountingAccount() {
+      this.id = null;
+   }
+
    /**
     * Instantiates a new account.
     *

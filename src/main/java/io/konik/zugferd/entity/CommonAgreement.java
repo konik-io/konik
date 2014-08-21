@@ -27,23 +27,24 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * = The Agreement
  * 
- * This base agreement class contain only fields. {@link Agreement} and {@link SpecifiedAgreement} provide a different view
+ * This base agreement class contain only fields. {@link Agreement} and {@link SpecifiedAgreement} provide a different
+ * view
  * on the underlying Data,
  * we have this common field structure class because otherwise we would have two +SupplyChainTradeAgreementType+s and
  * this is not allowed in JaxB
  * 
- * @param <REF> the different Referenced Document
- * @param <ADDREF> additional Referenced Document
+ * @param <R> the different Referenced Document
+ * @param <A> additional Referenced Document
  */
 @XmlTransient
 @XmlType(name = "SupplyChainTradeAgreementType")
-public interface CommonAgreement<REF extends ReferencedDocument, ADDREF extends ReferencedDocument> {
+public interface CommonAgreement<R extends ReferencedDocument, A extends ReferencedDocument> {
    /**
     * Gets the buyer order referenced document.
     *
     * @return the buyer order referenced document
     */
-   public REF getBuyerOrder();
+   R getBuyerOrder();
 
    /**
     * Sets the buyer order referenced document.
@@ -51,7 +52,7 @@ public interface CommonAgreement<REF extends ReferencedDocument, ADDREF extends 
     * @param buyerOrder the new buyer order referenced document
     * @return the supply chain trade agreement
     */
-   public CommonAgreement<REF,ADDREF> setBuyerOrder(REF buyerOrder);
+   CommonAgreement<R, A> setBuyerOrder(R buyerOrder);
 
    /**
     * Gets the contract referenced document.
@@ -60,7 +61,7 @@ public interface CommonAgreement<REF extends ReferencedDocument, ADDREF extends 
     *
     * @return the contract referenced document
     */
-   public REF getContract();
+   R getContract();
 
    /**
     * Sets the contract referenced document.
@@ -70,14 +71,14 @@ public interface CommonAgreement<REF extends ReferencedDocument, ADDREF extends 
     * @param contract the new contract referenced document
     * @return the supply chain trade agreement
     */
-   public CommonAgreement<REF,ADDREF> setContract(REF contract);
+   CommonAgreement<R, A> setContract(R contract);
 
    /**
     * Gets the additional referenced document
     *
     * @return the additional
     */
-   public List<ADDREF> getAdditional();
+   List<A> getAdditional();
 
    /**
     * Sets the additional referenced document.
@@ -85,7 +86,7 @@ public interface CommonAgreement<REF extends ReferencedDocument, ADDREF extends 
     * @param additionalReference the additional reference
     * @return the common agreement
     */
-   public CommonAgreement<REF,ADDREF> addAdditional(ADDREF additionalReference);
+   CommonAgreement<R, A> addAdditional(A additionalReference);
 
    /**
     * Gets the customer order referenced document.
@@ -94,7 +95,7 @@ public interface CommonAgreement<REF extends ReferencedDocument, ADDREF extends 
     *
     * @return the customer order referenced document
     */
-   public REF getCustomerOrder();
+   R getCustomerOrder();
 
    /**
     * Sets the customer order referenced document.
@@ -104,6 +105,6 @@ public interface CommonAgreement<REF extends ReferencedDocument, ADDREF extends 
     * @param customerOrder the new customer order referenced document
     * @return the supply chain trade agreement
     */
-   public CommonAgreement<REF,ADDREF> setCustomerOrder(REF customerOrder);
+   CommonAgreement<R, A> setCustomerOrder(R customerOrder);
 
 }

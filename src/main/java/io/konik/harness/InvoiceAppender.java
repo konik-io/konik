@@ -29,31 +29,31 @@ import java.io.OutputStream;
  */
 public interface InvoiceAppender {
 
-	/**
+   /**
     * Append invoice to a PDF.
     * 
     * @param invoice the invoice
     * @param inputPdf the input pdf.
     * @return the resulting PDF.
     */
-	public byte[] append(Invoice invoice, byte[] inputPdf);
+   byte[] append(Invoice invoice, byte[] inputPdf);
 
-	/**
+   /**
     * Append invoice to a PDF.
     * 
     * @param invoice the invoice
     * @param inputPdf the input pdf
     * @param resultingPdf the resulting pdf
     */
-	public void append(Invoice invoice, InputStream inputPdf, OutputStream resultingPdf);
-   
-	/**
+   void append(Invoice invoice, InputStream inputPdf, OutputStream resultingPdf);
+
+   /**
     * Append invoice to a PDF.
     *
     * @param invoice the invoice
     * @param inputStreamPdf the input stream pdf file
-    * @return the byte[] of the resulting pdf 
+    * @return the byte[] of the resulting pdf
     */
-   public byte[] append(Invoice invoice, InputStream inputStreamPdf);
+   byte[] append(Invoice invoice, InputStream inputStreamPdf);
 
 }

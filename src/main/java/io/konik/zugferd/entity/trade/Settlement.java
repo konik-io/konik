@@ -43,15 +43,15 @@ import com.neovisionaries.i18n.CurrencyCode;
 /**
  * = The Trade Settlement
  * 
- * Contains payment and price related information specific to a trade 
+ * Contains payment and price related information specific to a trade
  */
-@XmlType(propOrder = { "paymentReference", "currency", "invoicee", "payee",
-      "paymentMeans", "tradeTax", "billingPeriod", "allowanceCharge", "serviceCharge", "paymentTerms",
-      "monetarySummation", "receivableBookingReference" })
-public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>{
-   
+@XmlType(propOrder = { "paymentReference", "currency", "invoicee", "payee", "paymentMeans", "tradeTax",
+      "billingPeriod", "allowanceCharge", "serviceCharge", "paymentTerms", "monetarySummation",
+      "receivableBookingReference" })
+public class Settlement implements CommonSettlement<TradeTax, MonetarySummation> {
+
    @XmlElement(name = "PaymentReference")
-   private String paymentReference; 
+   private String paymentReference;
 
    @XmlElement(name = "InvoiceCurrencyCode")
    private CurrencyCode currency;
@@ -59,7 +59,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
    @Valid
    @XmlElement(name = "InvoiceeTradeParty")
    private TradeParty invoicee;
-   
+
    @Valid
    @XmlElement(name = "PayeeTradeParty")
    private TradeParty payee;
@@ -78,7 +78,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
 
    @Valid
    @XmlElement(name = "SpecifiedTradeAllowanceCharge")
-   private List<SpecifiedAllowanceCharge> allowanceCharge; 
+   private List<SpecifiedAllowanceCharge> allowanceCharge;
 
    @Valid
    @XmlElement(name = "SpecifiedLogisticsServiceCharge")
@@ -91,12 +91,11 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
    @Valid
    @XmlElement(name = "SpecifiedTradeSettlementMonetarySummation")
    private MonetarySummation monetarySummation;
-   
+
    @XmlElement(name = "ReceivableSpecifiedTradeAccountingAccount")
    @XmlJavaTypeAdapter(AccountingAccountAdapter.class)
    private String receivableBookingReference;
-   
-   
+
    /**
     * Gets the payment reference.
     * 
@@ -127,7 +126,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
       return this;
    }
 
-    /**
+   /**
     * Gets the invoice currency code
     * specifiedBookingReference
     *
@@ -172,7 +171,6 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
       this.invoicee = invoicee;
       return this;
    }
-   
 
    /**
     * Gets the payee.
@@ -247,7 +245,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * 
     * @return the billing specified period
     */
-   
+
    @Comfort
    @Override
    public Period getBillingPeriod() {

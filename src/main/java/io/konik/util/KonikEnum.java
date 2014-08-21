@@ -27,10 +27,12 @@ import static java.lang.Enum.valueOf;
  */
 public class KonikEnum {
 
-   private KonikEnum(){
+   private KonikEnum() {
    }
+
    /**
     * Checks if the given code is contained in the Enumeration.
+    * 
     * @param <E>
     *
     * @param type the type
@@ -39,12 +41,11 @@ public class KonikEnum {
     */
    public static <E extends Enum<E>> boolean isKnownCode(Class<E> type, final String code) {
       try {
-         valueOf(type,code);
+         valueOf(type, code);
          return true;
       } catch (IllegalArgumentException e) {
          return false;
       }
    }
 
-   
 }

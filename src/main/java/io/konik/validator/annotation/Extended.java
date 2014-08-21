@@ -28,7 +28,7 @@ import javax.validation.groups.Default;
  * 
  */
 @Documented
-@GroupSequence({ Default.class, Comfort.class})
-public @interface Extended  {
+@GroupSequence({ Default.class, Comfort.class })
+public @interface Extended {
 
 }

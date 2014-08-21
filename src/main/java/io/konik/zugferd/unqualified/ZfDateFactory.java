@@ -17,11 +17,13 @@
  */
 package io.konik.zugferd.unqualified;
 
-
 /**
  * A factory for creating ZfDate instanced based on format code.
  */
 public class ZfDateFactory {
+
+   private ZfDateFactory() {
+   }
 
    /**
     * Creates a new ZfDate object from the given date time format code.
@@ -29,16 +31,10 @@ public class ZfDateFactory {
     * @param formatCode the format code
     * @return the zf date
     */
-   public static ZfDate create(String formatCode){
-      if(ZfDateDay.CODE.equals(formatCode)) {
-         return new ZfDateDay();
-      }
-      if (ZfDateMonth.CODE.equals(formatCode)) {
-         return new ZfDateMonth();
-      }
-      if (ZfDateWeek.CODE.equals(formatCode)) {
-         return new ZfDateWeek();
-      }
+   public static ZfDate create(String formatCode) {
+      if (ZfDateDay.CODE.equals(formatCode)) { return new ZfDateDay(); }
+      if (ZfDateMonth.CODE.equals(formatCode)) { return new ZfDateMonth(); }
+      if (ZfDateWeek.CODE.equals(formatCode)) { return new ZfDateWeek(); }
       throw new IllegalArgumentException("Can not create a ZfDate for the given code" + formatCode);
    }
 }

@@ -41,7 +41,7 @@ public interface CommonSettlement<T extends CommonTax, M extends CommonMonetaryS
     *
     * @return the billing specified period
     */
-   public Period getBillingPeriod();
+   Period getBillingPeriod();
 
    /**
     * Sets the billing specified period.
@@ -52,14 +52,14 @@ public interface CommonSettlement<T extends CommonTax, M extends CommonMonetaryS
     * @param billingPeriod the new billing specified period
     * @return the supply chain trade settlement
     */
-   public CommonSettlement<T, M> setBillingPeriod(Period billingPeriod);
+   CommonSettlement<T, M> setBillingPeriod(Period billingPeriod);
 
    /**
     * Gets the applicable trade tax.
     *
     * @return the applicable trade tax
     */
-   public List<T> getTradeTax();
+   List<T> getTradeTax();
 
    /**
     * Adds a trade tax.
@@ -67,7 +67,7 @@ public interface CommonSettlement<T extends CommonTax, M extends CommonMonetaryS
     * @param additionalTradeTax
     * @return the trade settlement
     */
-   public CommonSettlement<T, M> addTradeTax(T additionalTradeTax);
+   CommonSettlement<T, M> addTradeTax(T additionalTradeTax);
 
    /**
     * Gets the trade settlement monetary summation.
@@ -76,7 +76,7 @@ public interface CommonSettlement<T extends CommonTax, M extends CommonMonetaryS
     *
     * @return the specified trade settlement monetary summation
     */
-   public M getMonetarySummation();
+   M getMonetarySummation();
 
    /**
     * Sets the trade settlement monetary summation.
@@ -86,6 +86,6 @@ public interface CommonSettlement<T extends CommonTax, M extends CommonMonetaryS
     * @param monetarySummation the new monetary summation
     * @return the supply chain trade settlement
     */
-   public CommonSettlement<T, M> setMonetarySummation(M monetarySummation);
+   CommonSettlement<T, M> setMonetarySummation(M monetarySummation);
 
 }

@@ -34,16 +34,16 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlTransient
 @XmlType(name = "SupplyChainTradeDeliveryType")
-public abstract class CommonDelivery<R extends ReferencedDocument>{
-   
+public abstract class CommonDelivery<R extends ReferencedDocument> {
+
    @Valid
    @XmlElement(name = "ShipToTradeParty")
    private TradeParty shipTo;
-   
+
    @Valid
    @XmlElement(name = "UltimateShipToTradeParty")
    private TradeParty ultimateShipTo;
-   
+
    @Valid
    @XmlElement(name = "ActualDeliverySupplyChainEvent")
    @XmlJavaTypeAdapter(value = SupplyChainEventAdapter.class)
@@ -58,7 +58,7 @@ public abstract class CommonDelivery<R extends ReferencedDocument>{
     *
     * @return the ship to
     */
-   
+
    public TradeParty getShipTo() {
       return shipTo;
    }
@@ -79,7 +79,7 @@ public abstract class CommonDelivery<R extends ReferencedDocument>{
     *
     * @return the ultimate ship to
     */
- 
+
    public TradeParty getUltimateShipTo() {
       return ultimateShipTo;
    }
@@ -120,13 +120,13 @@ public abstract class CommonDelivery<R extends ReferencedDocument>{
     *
     * @return the despatch advice
     */
-   public abstract R getDespatchAdvice() ;
-   
+   public abstract R getDespatchAdvice();
+
    /**
     * Sets the despatch advice.
     *
     * @param despatchAdvice the despatch advice
-    * @return 
+    * @return
     */
    public abstract CommonDelivery<R> setDespatchAdvice(R despatchAdvice);
 
@@ -135,8 +135,8 @@ public abstract class CommonDelivery<R extends ReferencedDocument>{
     *
     * @return the note
     */
-   public abstract R getDeliveryNote(); 
-   
+   public abstract R getDeliveryNote();
+
    /**
     * Sets the delivery note.
     *

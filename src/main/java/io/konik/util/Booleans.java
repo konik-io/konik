@@ -22,19 +22,23 @@ package io.konik.util;
  * = The Boolean Utils.
  */
 public class Booleans {
+
+   private Booleans() {
+   }
+
    /**
     * Converts a Boolean to a boolean handling {@code null} by returning {@code false}
     *
     * +++
-    *   BooleanUtils.toBoolean(Boolean.TRUE)  = true
-    *   BooleanUtils.toBoolean(Boolean.FALSE) = false
-    *   BooleanUtils.toBoolean(null)          = false
+    * BooleanUtils.toBoolean(Boolean.TRUE) = true
+    * BooleanUtils.toBoolean(Boolean.FALSE) = false
+    * BooleanUtils.toBoolean(null) = false
     * +++
     *
     * @param value the boolean to convert
     * @return {@code true} or {@code false}, {@code null} returns {@code false}
     */
    public static boolean toBoolean(final Boolean value) {
-       return value != null && value.booleanValue();
+      return value != null && value.booleanValue();
    }
 }

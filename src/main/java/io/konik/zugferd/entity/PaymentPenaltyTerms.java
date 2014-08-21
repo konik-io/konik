@@ -150,5 +150,4 @@ public class PaymentPenaltyTerms {
       this.actualPenalty = actualPenalty;
    }
 
-   
 }

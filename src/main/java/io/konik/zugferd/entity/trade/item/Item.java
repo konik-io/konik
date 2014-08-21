@@ -32,126 +32,127 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SupplyChainTradeLineItemType", propOrder = { "lineDocument", "agreement", "delivery","settlement", "product" })
+@XmlType(name = "SupplyChainTradeLineItemType", propOrder = { "lineDocument", "agreement", "delivery", "settlement",
+      "product" })
 public class Item {
 
    @Valid
-	@XmlElement(name = "AssociatedDocumentLineDocument")
-	private Document lineDocument;
+   @XmlElement(name = "AssociatedDocumentLineDocument")
+   private Document lineDocument;
 
    @Valid
-	@XmlElement(name = "SpecifiedSupplyChainTradeAgreement")
-	private SpecifiedAgreement agreement;
+   @XmlElement(name = "SpecifiedSupplyChainTradeAgreement")
+   private SpecifiedAgreement agreement;
 
    @Valid
-	@XmlElement(name = "SpecifiedSupplyChainTradeDelivery")
-	private SpecifiedDelivery delivery;
+   @XmlElement(name = "SpecifiedSupplyChainTradeDelivery")
+   private SpecifiedDelivery delivery;
 
    @Valid
-	@XmlElement(name = "SpecifiedSupplyChainTradeSettlement")
-	private SpecifiedSettlement settlement;
+   @XmlElement(name = "SpecifiedSupplyChainTradeSettlement")
+   private SpecifiedSettlement settlement;
 
    @Valid
-	@XmlElement(name = "SpecifiedTradeProduct")
-	private Product product;
+   @XmlElement(name = "SpecifiedTradeProduct")
+   private Product product;
 
    /**
     * Gets the item position document.
     *
     * @return the position
     */
-	public Document getLineDocument() {
-		return lineDocument;
-	}
+   public Document getLineDocument() {
+      return lineDocument;
+   }
 
-	/**
+   /**
     * Sets the new item line document.
     *
     * @param newLineDocument the new position
     * @return the item
     */
-	public Item setLineDocument(Document newLineDocument) {
-		this.lineDocument = newLineDocument;
-		return this;
-	}
+   public Item setLineDocument(Document newLineDocument) {
+      this.lineDocument = newLineDocument;
+      return this;
+   }
 
-	/**
-	 * Gets the specified supply chain trade agreement.
-	 *
-	 * @return the specified supply chain trade agreement
-	 */
-	public SpecifiedAgreement getAgreement() {
-		return agreement;
-	}
+   /**
+    * Gets the specified supply chain trade agreement.
+    *
+    * @return the specified supply chain trade agreement
+    */
+   public SpecifiedAgreement getAgreement() {
+      return agreement;
+   }
 
-	/**
-	 * Sets the specified supply chain trade agreement.
-	 *
-	 * @param agreement the new specified supply chain trade agreement
-	 * @return the item
-	 */
-	public Item setAgreement(SpecifiedAgreement agreement) {
-		this.agreement = agreement;
-		return this;
-	}
+   /**
+    * Sets the specified supply chain trade agreement.
+    *
+    * @param agreement the new specified supply chain trade agreement
+    * @return the item
+    */
+   public Item setAgreement(SpecifiedAgreement agreement) {
+      this.agreement = agreement;
+      return this;
+   }
 
-	/**
-	 * Gets the specified supply chain trade delivery.
-	 *
-	 * @return the specified supply chain trade delivery
-	 */
-	public SpecifiedDelivery getDelivery() {
-		return delivery;
-	}
+   /**
+    * Gets the specified supply chain trade delivery.
+    *
+    * @return the specified supply chain trade delivery
+    */
+   public SpecifiedDelivery getDelivery() {
+      return delivery;
+   }
 
-	/**
-	 * Sets the specified supply chain trade delivery.
-	 *
-	 * @param delivery the new specified supply chain trade delivery
-	 * @return the item
-	 */
-	public Item setDelivery(SpecifiedDelivery delivery) {
-		this.delivery = delivery;
-		return this;
-	}
+   /**
+    * Sets the specified supply chain trade delivery.
+    *
+    * @param delivery the new specified supply chain trade delivery
+    * @return the item
+    */
+   public Item setDelivery(SpecifiedDelivery delivery) {
+      this.delivery = delivery;
+      return this;
+   }
 
-	/**
-	 * Gets the specified supply chain trade settlement.
-	 *
-	 * @return the specified supply chain trade settlement
-	 */
-	public SpecifiedSettlement getSettlement() {
-		return settlement;
-	}
+   /**
+    * Gets the specified supply chain trade settlement.
+    *
+    * @return the specified supply chain trade settlement
+    */
+   public SpecifiedSettlement getSettlement() {
+      return settlement;
+   }
 
-	/**
-	 * Sets the specified supply chain trade settlement.
-	 *
-	 * @param settlement the new specified supply chain trade settlement
-	 * @return the item
-	 */
-	public Item setSettlement(SpecifiedSettlement settlement) {
-		this.settlement = settlement;
-		return this;
-	}
+   /**
+    * Sets the specified supply chain trade settlement.
+    *
+    * @param settlement the new specified supply chain trade settlement
+    * @return the item
+    */
+   public Item setSettlement(SpecifiedSettlement settlement) {
+      this.settlement = settlement;
+      return this;
+   }
 
-	/**
-	 * Gets the specified trade product.
-	 *
-	 * @return the specified trade product
-	 */
-	public Product getProduct() {
-		return product;
-	}
+   /**
+    * Gets the specified trade product.
+    *
+    * @return the specified trade product
+    */
+   public Product getProduct() {
+      return product;
+   }
 
-	/**
-	 * Sets the specified trade product.
-	 *
-	 * @param product the product
-	 * @return the item
-	 */
-	public Item setProduct(Product product) {
-		this.product = product;
-		return this;
-	}
+   /**
+    * Sets the specified trade product.
+    *
+    * @param product the product
+    * @return the item
+    */
+   public Item setProduct(Product product) {
+      this.product = product;
+      return this;
+   }
 }

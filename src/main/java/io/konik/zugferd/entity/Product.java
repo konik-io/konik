@@ -172,8 +172,6 @@ public class Product {
       this.description = description;
       return this;
    }
-   
-   
 
    /**
     * Gets the characteristics.
@@ -181,7 +179,7 @@ public class Product {
     * @return the characteristics
     */
    public List<ProductCharacteristic> getCharacteristics() {
-      if(characteristics == null) {
+      if (characteristics == null) {
          characteristics = new ArrayList<ProductCharacteristic>();
       }
       return characteristics;
@@ -204,7 +202,7 @@ public class Product {
     * @return the classifications
     */
    public List<ProductClassification> getClassifications() {
-      if(classifications == null) {
+      if (classifications == null) {
          classifications = new ArrayList<ProductClassification>();
       }
       return classifications;
@@ -220,8 +218,6 @@ public class Product {
       getClassifications().add(classification);
       return this;
    }
-
-
 
    /**
     * Gets the origin trade country.
@@ -245,14 +241,14 @@ public class Product {
       getOrigins().add(originCountry);
       return this;
    }
-   
+
    /**
     * Gets the contained products.
     *
     * @return the contained products
     */
    public List<ReferencedProduct> getContainedProducts() {
-      if(containedProducts == null) {
+      if (containedProducts == null) {
          containedProducts = new ArrayList<ReferencedProduct>();
       }
       return containedProducts;
@@ -265,7 +261,7 @@ public class Product {
     * @return the product
     */
    public Product addContainedProducts(ReferencedProduct containedProduct) {
-         getContainedProducts().add(containedProduct);   
+      getContainedProducts().add(containedProduct);
       return this;
    }
 

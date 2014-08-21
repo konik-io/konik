@@ -21,20 +21,18 @@ import io.konik.validator.annotation.Extended;
 
 import javax.validation.constraints.NotNull;
 
-
 /**
  * 
  * The Referenced Document document with Additional reference type.
  */
 public class ReferencedDocumentItemAdditional extends ReferencedDocumentItem {
 
-
    /**
     * Gets the reference type code.
     *
     * @return the reference type code
     */
-   @NotNull(groups=Extended.class)
+   @NotNull(groups = Extended.class)
    public String getReferenceType() {
       return referenceType;
    }
@@ -47,7 +45,5 @@ public class ReferencedDocumentItemAdditional extends ReferencedDocumentItem {
    public void setReferenceType(String referenceTypeCode) {
       this.referenceType = referenceTypeCode;
    }
-   
-   
-   
+
 }

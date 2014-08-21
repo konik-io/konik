@@ -19,16 +19,8 @@
 /**
  * ZUGFeRD unqualified data types. 
  */
-@XmlSchema(elementFormDefault = QUALIFIED, 
-namespace = "urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15", 
-xmlns = { 
-      @XmlNs(prefix = "udt", namespaceURI = "urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15") 
-      }
-)
-
-@XmlJavaTypeAdapters({ 
-   @XmlJavaTypeAdapter(value = AmountLowRoundingAdapter.class, type = Amount.class) 
-})
+@XmlSchema(elementFormDefault = QUALIFIED, namespace = "urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15", xmlns = { @XmlNs(prefix = "udt", namespaceURI = "urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15") })
+@XmlJavaTypeAdapters({ @XmlJavaTypeAdapter(value = AmountLowRoundingAdapter.class, type = Amount.class) })
 @XmlAccessorType(NONE)
 package io.konik.zugferd.unqualified;
 

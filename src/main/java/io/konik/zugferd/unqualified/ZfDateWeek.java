@@ -26,8 +26,8 @@ import java.util.Date;
 public class ZfDateWeek extends ZfDate {
 
    private static final long serialVersionUID = 8855185120284648974L;
-   
-   /** The date format code.*/
+
+   /** The date format code. */
    public static final String CODE = "616";
    private static final String DATE_PATTERN = "yyyyww";
    private static final ThreadLocal<SimpleDateFormat> formatter = new ThreadLocal<SimpleDateFormat>() {
@@ -37,7 +37,6 @@ public class ZfDateWeek extends ZfDate {
       }
    };
 
-   
    /**
     * Instantiates a new zf date week.
     */

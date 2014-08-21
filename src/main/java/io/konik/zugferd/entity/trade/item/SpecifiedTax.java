@@ -40,8 +40,8 @@ public class SpecifiedTax extends CommonTax {
 
    @Override
    public SpecifiedTax setType(TaxCode taxTypeCode) {
-       super.setType(taxTypeCode);
-       return this;
+      super.setType(taxTypeCode);
+      return this;
    }
 
    @Comfort
@@ -103,17 +103,15 @@ public class SpecifiedTax extends CommonTax {
       this.exemptionReason = exemptionReason;
       return this;
    }
-   
+
    @Override
-   
    public BigDecimal getPercentage() {
       return super.getPercentage();
    }
-   
+
    @Override
    public SpecifiedTax setPercentage(BigDecimal applicablePercentage) {
       return (SpecifiedTax) super.setPercentage(applicablePercentage);
    }
-   
 
 }

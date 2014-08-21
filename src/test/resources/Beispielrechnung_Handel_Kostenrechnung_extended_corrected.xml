@@ -310,11 +310,6 @@
                <ram:CategoryCode>S</ram:CategoryCode>
                <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
             </ram:ApplicableTradeTax>
-            <ram:BillingSpecifiedPeriod>
-               <ram:CompleteDateTime>
-                  <udt:DateTimeString format="616">201338</udt:DateTimeString>
-               </ram:CompleteDateTime>
-            </ram:BillingSpecifiedPeriod>
             <ram:SpecifiedTradeSettlementMonetarySummation>
                <ram:LineTotalAmount currencyID="EUR">205.00</ram:LineTotalAmount>
             </ram:SpecifiedTradeSettlementMonetarySummation>
@@ -352,11 +347,6 @@
                <ram:CategoryCode>S</ram:CategoryCode>
                <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
             </ram:ApplicableTradeTax>
-            <ram:BillingSpecifiedPeriod>
-               <ram:CompleteDateTime>
-                  <udt:DateTimeString format="616">201336</udt:DateTimeString>
-               </ram:CompleteDateTime>
-            </ram:BillingSpecifiedPeriod>
             <ram:SpecifiedTradeAccountingAccount>
                <ram:ID>5465-8876</ram:ID>
             </ram:SpecifiedTradeAccountingAccount>

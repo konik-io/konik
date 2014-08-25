@@ -17,6 +17,11 @@
  */
 package io.konik.jaxb.adapter;
 
+import static java.util.logging.Level.WARNING;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import io.konik.zugferd.entity.Parameter;
 import io.konik.zugferd.profile.ConformanceLevel;
 import io.konik.zugferd.profile.Profile;
@@ -29,6 +34,8 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  * JaxB Adapter for mapping Parameter to Profile Enum.
  */
 public class ParameterProfileAdapter extends XmlAdapter<Parameter, Profile> {
+   private final static Logger LOG = Logger.getLogger(ParameterProfileAdapter.class.getName());
+
    private static final String DELIMITER = ":";
 
    @Override
@@ -41,7 +48,7 @@ public class ParameterProfileAdapter extends XmlAdapter<Parameter, Profile> {
          String ns = getNamespace(fullName);
          return new Profile(ns, version, conformanceLevel);
       } catch (RuntimeException e) {
-         System.err.println("Could not parse the guideline profile:"+e.getMessage() +". Fallback to latest basic");
+         LOG.log(WARNING, "Could not parse the profile. Fallback to BASIC latest version", e);
          return new Profile(ConformanceLevel.BASIC);
       }
    }

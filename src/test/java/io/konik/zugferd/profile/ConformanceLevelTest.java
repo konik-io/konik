@@ -18,32 +18,23 @@
  */
 package io.konik.zugferd.profile;
 
-import static io.konik.zugferd.profile.ProfileVersion.extractVersion;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
 @SuppressWarnings("javadoc")
-public class ProfileTest {
+public class ConformanceLevelTest {
 
-   @Test
-   public void getProfile_Basic() throws Exception {
-      Profile profile = Profile.getProfile("urn:ferd:CrossIndustryDocument:invoice:1p0:basic");
-      assertThat(profile.simpleName()).isEqualTo("basic");
-      assertThat(extractVersion(profile.fullName()).version()).isEqualTo("1p0");
-   }
-
-   @Test
-   public void getProfileByName_Basic() throws Exception {
-      Profile.getProfileByName("basic");
-   }
-   
    @Test
    public void hasThreeEntries() throws Exception {
-      Profile[] enumConstants = Profile.class.getEnumConstants();
+      ConformanceLevel[] enumConstants = ConformanceLevel.class.getEnumConstants();
       assertThat(enumConstants).hasSize(3);
    }
-   
-   
+
+   @Test
+      public void extractConformanceLevel() throws Exception {
+         ConformanceLevel level = ConformanceLevel.extractConformanceLevel("urn:ferd:CrossIndustryDocument:invoice:1p0:basic");
+         assertThat(level).isEqualTo(ConformanceLevel.BASIC);
+      }   
 
 }

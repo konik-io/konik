@@ -25,6 +25,8 @@ import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.apache.commons.lang3.reflect.MethodUtils.getAccessibleMethod;
 import static org.apache.commons.lang3.reflect.MethodUtils.invokeMethod;
 import io.konik.zugferd.entity.CommonTax;
+import io.konik.zugferd.profile.ConformanceLevel;
+import io.konik.zugferd.profile.Profile;
 import io.konik.zugferd.unqualified.ZfDate;
 import io.konik.zugferd.unqualified.ZfDateFactory;
 
@@ -139,7 +141,7 @@ public class RandomInvoiceGenerator {
    }
    
    
-   private void setValue(Object entity, Method entityMethod, Object paramValue) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException  {
+   private static void setValue(Object entity, Method entityMethod, Object paramValue) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException  {
       if(paramValue == null || entity == null)return;
       String methodToCall = entityMethod.getName().replace("get", "set");
 //      int repeadAdder = 1;
@@ -162,13 +164,14 @@ public class RandomInvoiceGenerator {
       }
    }
 
-   private boolean isLeafType(Class<?> type) {
+   private static boolean isLeafType(Class<?> type) {
      if (type.equals(Class.class))return true;
      if (isAssignable(ZfDate.class,type)) return true;
      if (isAssignable(Date.class,type)) return true;
      if (isAssignable(String.class,type)) return true;
      if (BigDecimal.class.isAssignableFrom(type)) return true;
      if (type.isEnum()) return true;
+     if (type.equals(Profile.class)) return true;
      return isPrimitiveOrWrapper(type);
    }
 
@@ -182,6 +185,7 @@ public class RandomInvoiceGenerator {
       if (isAssignable(type,ZfDate.class,true)) return ZfDateFactory.create(supportedDateFormatts[random.nextInt(3)]);
       if (isAssignable(type,Date.class,true)) return new Date();
       if (isAssignable(type,Long.class,true)) return Long.valueOf(random.nextInt(100));
+      if (Profile.class.equals(type)) return new Profile(ConformanceLevel.EXTENDED);
       throw new IllegalArgumentException("Type " + type + " was not found");
    }
    private Object getEnum(Class<?> type) {

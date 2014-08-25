@@ -20,7 +20,7 @@ package io.konik.validation;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.Invoice;
-import io.konik.zugferd.profile.Profile;
+import io.konik.zugferd.profile.ConformanceLevel;
 
 import java.util.Set;
 
@@ -58,19 +58,19 @@ public class InvoiceValidator {
     * @return the sets the
     */
    public Set<ConstraintViolation<Invoice>> validate(Invoice invoice) {
-      Profile profile = invoice.getContext().getGuideline();
-      Class<?>[] validationGroups = resolveIntoValidationGroups(profile);
+      ConformanceLevel conformanceLevel = invoice.getContext().getGuideline().getConformanceLevel();
+      Class<?>[] validationGroups = resolveIntoValidationGroups(conformanceLevel);
       return validator.validate(invoice, validationGroups);
    }
 
    /**
     * Resolve the given profile into bean validation groups.
     *
-    * @param profile the given profile
+    * @param conformanceLevel the given profile
     * @return the class[] list of validation group classes
     */
-   public static Class<?>[] resolveIntoValidationGroups(Profile profile) {
-      switch (profile) {
+   public static Class<?>[] resolveIntoValidationGroups(ConformanceLevel conformanceLevel) {
+      switch (conformanceLevel) {
       case BASIC:
          return new Class[] { Default.class };
       case COMFORT:
@@ -78,7 +78,7 @@ public class InvoiceValidator {
       case EXTENDED:
          return new Class[] { Default.class, Comfort.class, Extended.class };
       default:
-         throw new IllegalArgumentException("Provided Profile:" + profile + "not covered");
+         throw new IllegalArgumentException("Provided Profile:" + conformanceLevel + "not covered");
       }
    }
 }

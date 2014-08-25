@@ -18,6 +18,9 @@
 package io.konik.zugferd.entity;
 
 import io.konik.jaxb.adapter.ParameterProfileAdapter;
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Extended;
+import io.konik.zugferd.profile.ConformanceLevel;
 import io.konik.zugferd.profile.Profile;
 import io.konik.zugferd.unqualified.Indicator;
 
@@ -58,12 +61,12 @@ public class Context {
    }
 
    /**
-    * Instantiates a new context with a profile.
+    * Instantiates a new context with a latest version profile.
     *
-    * @param profile the profile
+    * @param conformanceLevel the profile
     */
-   public Context(Profile profile) {
-      this.guideline = profile;
+   public Context(ConformanceLevel conformanceLevel) {
+      this.guideline = new Profile(conformanceLevel);
    }
 
    /**
@@ -80,6 +83,7 @@ public class Context {
     * 
     * @return true if this invoice is for testing purpose only
     */
+   @Basic
    public boolean isTest() {
       if (test == null) { return false; }
       return test.getIndicator();
@@ -129,6 +133,7 @@ public class Context {
     *
     * @return the business process
     */
+   @Extended
    public String getBusinessProcess() {
       return businessProcess == null ? null : businessProcess.getId();
    }
@@ -157,6 +162,7 @@ public class Context {
     * 
     * @return the profile
     */
+   @Basic
    public Profile getGuideline() {
       return this.guideline;
    }

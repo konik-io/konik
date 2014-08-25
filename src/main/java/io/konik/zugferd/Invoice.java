@@ -21,7 +21,7 @@ package io.konik.zugferd;
 import io.konik.zugferd.entity.Context;
 import io.konik.zugferd.entity.Header;
 import io.konik.zugferd.entity.trade.Trade;
-import io.konik.zugferd.profile.Profile;
+import io.konik.zugferd.profile.ConformanceLevel;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -62,7 +62,7 @@ public class Invoice {
     * 
     * @param profile the profile
     */
-   public Invoice(Profile profile) {
+   public Invoice(ConformanceLevel profile) {
       this.context = new Context(profile);
    }
 

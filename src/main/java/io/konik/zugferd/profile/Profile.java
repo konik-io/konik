@@ -18,136 +18,118 @@
 package io.konik.zugferd.profile;
 
 /**
- * The latest Version Invoice Profiles.
+ * 
+ * The ZUGFeRD Profile consists of three parts. The namespace the version and the conformance level.
  */
-public enum Profile {
-
-   /** The basic profile */
-   BASIC,
-   /** The comfort profile */
-   COMFORT,
-   /** The extended profile */
-   EXTENDED;
-
-   private static final String DELIMITED = ":";
-   private static final String NS = "urn:ferd:CrossIndustryDocument:invoice";
-
+public class Profile {
+   private static final String DELIMITER = ":";
+   private static final String NS = "urn:ferd:CrossIndustryDocument:invoice:";
+   
+   private String namespace;
+   private ProfileVersion version;
+   private ConformanceLevel conformanceLevel;
+   
    /**
-    * Instantiates a new profile type.
+    * Instantiates a new profile.
     */
-   Profile() {
+   public Profile() {}
+   
+   /**
+    * Instantiates a new profile with the latest version
+    *
+    * @param conformanceLevel the conformance level
+    */
+   public Profile(ConformanceLevel conformanceLevel) {
+      super();
+      this.namespace = NS;
+      this.version = ProfileVersion.latestVersion();
+      this.conformanceLevel = conformanceLevel;
    }
 
    /**
-    * Gets the full name with the latest version.
-    * 
-    * Full name consists of namespace:version:profile
-    * 
-    * Example:: urn:ferd:CrossIndustryDocument:invoice:1p0:basic
+    * Instantiates a new profile.
+    *
+    * @param namespace the namespace
+    * @param version the version
+    * @param conformanceLevel the conformance level
+    */
+   public Profile(String namespace, ProfileVersion version, ConformanceLevel conformanceLevel) {
+      super();
+      this.namespace = namespace;
+      this.version = version;
+      this.conformanceLevel = conformanceLevel;
+   }
+
+   /**
+    * Gets the namespace.
+    *
+    * @return the namespace
+    */
+   public String getNamespace() {
+      return namespace;
+   }
+   
+   /**
+    * Sets the namespace.
+    *
+    * @param namespace the namespace
+    * @return the profile
+    */
+   public Profile setNamespace(String namespace) {
+      this.namespace = namespace;
+      return this;
+   }
+   
+   /**
+    * Gets the version.
+    *
+    * @return the version
+    */
+   public ProfileVersion getVersion() {
+      return version;
+   }
+   
+   /**
+    * Sets the version.
+    *
+    * @param version the new version
+    * @return the profile
+    */
+   public Profile setVersion(ProfileVersion version) {
+      this.version = version;
+      return this;
+   }
+   
+   /**
+    * Gets the conformance level.
+    *
+    * @return the conformance level
+    */
+   public ConformanceLevel getConformanceLevel() {
+      return conformanceLevel;
+   }
+   
+   /**
+    * Sets the conformance level.
+    *
+    * @param conformanceLevel the new conformance level
+    * @return the profile
+    */
+   public Profile setConformanceLevel(ConformanceLevel conformanceLevel) {
+      this.conformanceLevel = conformanceLevel;
+      return this;
+   }
+   
+   
+   /**
+    * Gets the full name consisting of the namespace, version, conformance level.
     *
     * @return the full name
     */
-   public String fullName() {
-      return fullName(ProfileVersion.latestVersion());
+   public String fullName(){
+      return namespace+version.toString()+DELIMITER+conformanceLevel.toString();
    }
-
-   /**
-    * constructs the full name with the given version.
-    * Full name consists of namespace:version:profile
-    * 
-    * Example:: urn:ferd:CrossIndustryDocument:invoice:1p0:basic
-    *
-    * @param version the version
-    * @return the string the full name
-    */
-   public String fullName(ProfileVersion version) {
-      StringBuilder fullName = new StringBuilder();
-      fullName.append(NS).append(DELIMITED).append(version.version()).append(DELIMITED).append(simpleName());
-      return fullName.toString();
-   }
-
-   /**
-    * Gets the simple name.
-    * 
-    * Simple may be basic, comfort or extended.
-    * 
-    * Example:: basic, comfort, extended
-    * 
-    * @return the simple name basic, comfort or extended.
-    */
-   public String simpleName() {
-      return name().toLowerCase();
-   }
-
-   /**
-    * Gets the conformance level.
-    * 
-    * Is the {@link #simpleName()} in capital or {@link #name()}
-    * 
-    * Example:: BASIC, COMFORT, EXTENDED
-    * 
-    * @see #simpleName()
-    * @return the conformance level
-    */
-   public String getConformanceLevel() {
-      return name();
-   }
-
-   /**
-    * Get a profile by full name.
-    *
-    * @param fullName the full name
-    * @return the profile
-    */
-   public static Profile getProfile(String fullName) {
-      for (Profile v : values()) {
-         ProfileVersion version = ProfileVersion.extractVersion(fullName);
-         if (v.fullName(version).equals(fullName)) { return v; }
-      }
-      throw new EnumConstantNotPresentException(Profile.class, fullName);
-   }
-
-   /**
-    * Gets the profile by name.
-    *
-    * @param name the simple name
-    * @return the profile by name case independent
-    */
-   public static Profile getProfileByName(String name) {
-      for (Profile v : values()) {
-         if (v.simpleName().equalsIgnoreCase(name)) { return v; }
-      }
-      throw new EnumConstantNotPresentException(Profile.class, name);
-   }
-
-   /**
-    * Checks if is basic.
-    *
-    * @param fullName the full name
-    * @return true, if is basic
-    */
-   public static boolean isBasic(String fullName) {
-      return fullName.endsWith(BASIC.simpleName());
-   }
-
-   /**
-    * Checks if is comfort.
-    *
-    * @param fullName the full name
-    * @return true, if is comfort
-    */
-   public static boolean isComfort(String fullName) {
-      return fullName.endsWith(COMFORT.simpleName());
-   }
-
-   /**
-    * Checks if is extended.
-    *
-    * @param fullName the full name
-    * @return true, if is extended
-    */
-   public static boolean isExtended(String fullName) {
-      return fullName.endsWith(EXTENDED.simpleName());
-   }
-
+   
+   
+   
 }

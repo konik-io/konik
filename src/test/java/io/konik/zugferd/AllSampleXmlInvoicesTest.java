@@ -27,7 +27,7 @@ import io.konik.PrittyPrintInvoiceTransformer;
 import io.konik.utils.InvoiceLoaderUtils;
 import io.konik.utils.NumberDifferenceXmlComparison;
 import io.konik.validator.NotBlankValidator;
-import io.konik.zugferd.profile.Profile;
+import io.konik.zugferd.profile.ConformanceLevel;
 
 import java.io.File;
 import java.io.IOException;
@@ -97,6 +97,7 @@ public class AllSampleXmlInvoicesTest {
       return result;
    }
 
+   public static int unmarshallCounter = 0;
    @Test
    public void unmarshalInvoice() {
       //execute
@@ -104,19 +105,23 @@ public class AllSampleXmlInvoicesTest {
 
       //verify
       assertThat(invoice).isNotNull();
+      System.out.println("can unmarshall " + ++unmarshallCounter);
    }
 
+   public static int schemaValidationCounter = 0;
    @Test
    public void validateInvoiceAgainstSchema() throws SAXException, IOException {
       InvoiceLoaderUtils.getSchemaValidator().validate(new StreamSource(testFile));
+      System.out.println("dont fail schema validation " + ++schemaValidationCounter);
    }
+   
    
    @Test
    public void validateInvoiceModel() {
       //setup
       Invoice invoice = transformer.toModel(testFile);
-      Profile profile = invoice.getContext().getGuideline();
-      Class<?>[] validationGroups = resolveIntoValidationGroups(profile);
+      ConformanceLevel conformanceLevel = invoice.getContext().getGuideline().getConformanceLevel();
+      Class<?>[] validationGroups = resolveIntoValidationGroups(conformanceLevel);
 
       //execute
       Set<ConstraintViolation<Invoice>> validationResult = validator.validate(invoice,validationGroups);
@@ -130,7 +135,7 @@ public class AllSampleXmlInvoicesTest {
    }
 
 
-
+   public static int marshallBackCounter = 0;
    @Test
    public void marshallBackInvoiceModelAndDiffXml() throws Exception {
       //setup
@@ -148,5 +153,6 @@ public class AllSampleXmlInvoicesTest {
       Diff diff = new Diff(testFileContent, remarshalledInvoice);
       diff.overrideDifferenceListener(new NumberDifferenceXmlComparison());
       XMLAssert.assertXMLEqual(diff, true);
+      System.out.println("Marshall baclk " + ++marshallBackCounter);
   }
 }

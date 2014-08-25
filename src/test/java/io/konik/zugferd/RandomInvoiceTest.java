@@ -109,11 +109,10 @@ public class RandomInvoiceTest {
       getSchemaValidator().validate(new StreamSource(reader));
    }
 
-   
    @Test
    public void validateRandomInvoice(){
       //setup
-      Class<?>[] validationGroups = InvoiceValidator.resolveIntoValidationGroups(invoice.getContext().getGuideline());
+      Class<?>[] validationGroups = InvoiceValidator.resolveIntoValidationGroups(invoice.getContext().getGuideline().getConformanceLevel());
 
       //execute
       Set<ConstraintViolation<Invoice>> validationResult = validator.validate(invoice,validationGroups);

@@ -17,6 +17,8 @@
  */
 package io.konik.zugferd.profile;
 
+import io.konik.util.Strings;
+
 /**
  * = The known ZUGFeRD profile versions.
  */
@@ -29,7 +31,7 @@ public enum ProfileVersion {
    RCE("rce"),
 
    /** The version 1.0 */
-   V1p0("1p0");
+   V1P0("1p0");
 
    private static final String DELIMITER = ":";
    private final String version;
@@ -66,7 +68,7 @@ public enum ProfileVersion {
       for (ProfileVersion profileVersion : ProfileVersion.values()) {
          if (profileVersion.version().equals(version)) { return profileVersion; }
       }
-      throw new IllegalArgumentException("The provided version: [" + version + "] is not known");
+      throw new EnumConstantNotPresentException(ProfileVersion.class, version);
    }
 
    /**
@@ -76,10 +78,11 @@ public enum ProfileVersion {
     * @return the version of provided in the full name or empty string
     */
    public static ProfileVersion extractVersion(String fullName) {
-      if (fullName == null || fullName.isEmpty()) { return null; }
+      if (Strings.isNullOrEmpty(fullName)) { return null; }
       String[] tokens = fullName.split(DELIMITER);
-      if (tokens.length < 5) { return null; }
-      return parse(tokens[4]);
+      int versionTokenPosition = tokens.length-2;
+      String version = tokens[versionTokenPosition];
+      return parse(version);
    }
 
    @Override

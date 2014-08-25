@@ -18,7 +18,9 @@
 package io.konik.jaxb.adapter;
 
 import io.konik.zugferd.entity.Parameter;
+import io.konik.zugferd.profile.ConformanceLevel;
 import io.konik.zugferd.profile.Profile;
+import io.konik.zugferd.profile.ProfileVersion;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
@@ -27,11 +29,30 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  * JaxB Adapter for mapping Parameter to Profile Enum.
  */
 public class ParameterProfileAdapter extends XmlAdapter<Parameter, Profile> {
+   private static final String DELIMITER = ":";
 
    @Override
    public Profile unmarshal(Parameter p) throws Exception {
       if (p == null) { return null; }
-      return Profile.getProfile(p.getId());
+      String fullName = p.getId();
+      try {
+         ProfileVersion version = ProfileVersion.extractVersion(fullName);
+         ConformanceLevel conformanceLevel = ConformanceLevel.extractConformanceLevel(fullName);
+         String ns = getNamespace(fullName);
+         return new Profile(ns, version, conformanceLevel);
+      } catch (RuntimeException e) {
+         System.err.println("Could not parse the guideline profile:"+e.getMessage() +". Fallback to latest basic");
+         return new Profile(ConformanceLevel.BASIC);
+      }
+   }
+
+   private static String getNamespace(String fullName) {
+      String[] tokens = fullName.split(DELIMITER);
+      StringBuilder ns = new StringBuilder();
+      for (int i = 0; i < tokens.length - 2; i++) {
+         ns.append(tokens[i]).append(DELIMITER);
+      }
+      return ns.toString();
    }
 
    @Override

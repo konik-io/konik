@@ -21,7 +21,7 @@ package io.konik.examples;
 import static com.neovisionaries.i18n.CountryCode.DE;
 import static com.neovisionaries.i18n.CurrencyCode.EUR;
 import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
-import static io.konik.zugferd.profile.Profile.EXTENDED;
+import static io.konik.zugferd.profile.ConformanceLevel.EXTENDED;
 import static io.konik.zugferd.unece.codes.DocumentCode._380;
 import static io.konik.zugferd.unece.codes.Reference.FC;
 import static io.konik.zugferd.unece.codes.TaxCode.VAT;
@@ -194,7 +194,7 @@ public class AllElementsInvoiceTest {
    public void validateInvoiceModel() {
       //setup
       Invoice invoice = createAllElementInvoiceModel();
-      Class<?>[] validationGroups = InvoiceValidator.resolveIntoValidationGroups(invoice.getContext().getGuideline());
+      Class<?>[] validationGroups = InvoiceValidator.resolveIntoValidationGroups(invoice.getContext().getGuideline().getConformanceLevel());
       //execute
       Set<ConstraintViolation<Invoice>> validationResult = validator.validate(invoice,validationGroups);
       
@@ -225,7 +225,7 @@ public class AllElementsInvoiceTest {
    }
 
 
-   private void printOutIfNotIdentical(String invoice, String invoiceCompare, Diff xmlDiff) {
+   private static void printOutIfNotIdentical(String invoice, String invoiceCompare, Diff xmlDiff) {
       if (!xmlDiff.identical()) {
          System.out.println("Initial Invoice\n" + invoice);
          System.out.println("Second round Marshalling\n" + invoiceCompare);

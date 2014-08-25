@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Set;
 
+import javax.print.attribute.standard.SheetCollate;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -43,6 +44,7 @@ import javax.xml.transform.stream.StreamSource;
 import org.custommonkey.xmlunit.Diff;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -72,6 +74,11 @@ public class AllSampleXmlInvoicesTest {
    
    InvoiceTransformer transformer = new PrittyPrintInvoiceTransformer();
    
+   static int unmarshallCounter;
+   static int schemaValidationCounter;
+   static int marshallBackCounter;
+   static int modelValidationCounter;
+   
    @BeforeClass
    public static void setup() {
       XMLUnit.setIgnoreWhitespace(true);
@@ -82,6 +89,18 @@ public class AllSampleXmlInvoicesTest {
       NotBlankValidator notBlankValidator = factory.getConstraintValidatorFactory().getInstance(NotBlankValidator.class);
       assertThat(notBlankValidator).isNotNull();
       validator = factory.getValidator();
+   }
+   
+   @AfterClass
+   public static void printStatistics() {
+      System.out.println("Statistics:");
+      System.out.println("Unmarshalled:            " + unmarshallCounter);
+      System.out.println("Schema validated:        " + schemaValidationCounter);
+      System.out.println("Model validated:         " + modelValidationCounter);
+      System.out.println("Round trip marshalled:   " + marshallBackCounter);
+      System.out.println("*************************");
+      
+      
    }
    
    @Parameters(name = "{1}")
@@ -97,7 +116,7 @@ public class AllSampleXmlInvoicesTest {
       return result;
    }
 
-   public static int unmarshallCounter = 0;
+   
    @Test
    public void unmarshalInvoice() {
       //execute
@@ -105,14 +124,14 @@ public class AllSampleXmlInvoicesTest {
 
       //verify
       assertThat(invoice).isNotNull();
-      System.out.println("can unmarshall " + ++unmarshallCounter);
+      unmarshallCounter++;
    }
 
-   public static int schemaValidationCounter = 0;
+   
    @Test
    public void validateInvoiceAgainstSchema() throws SAXException, IOException {
       InvoiceLoaderUtils.getSchemaValidator().validate(new StreamSource(testFile));
-      System.out.println("dont fail schema validation " + ++schemaValidationCounter);
+      schemaValidationCounter++;
    }
    
    
@@ -131,11 +150,13 @@ public class AllSampleXmlInvoicesTest {
          ConstraintViolation<Invoice> violation = validationResult.iterator().next();
 //         assertThat(validationResult).as(violation.getMessage()+"value %s, path %s",violation.getInvalidValue(),violation.getPropertyPath().toString()).isEmpty();
          assertThat(validationResult).as(violation.getMessage()).isEmpty();
+      }else {
+         modelValidationCounter++;
       }
    }
 
 
-   public static int marshallBackCounter = 0;
+   
    @Test
    public void marshallBackInvoiceModelAndDiffXml() throws Exception {
       //setup
@@ -153,6 +174,6 @@ public class AllSampleXmlInvoicesTest {
       Diff diff = new Diff(testFileContent, remarshalledInvoice);
       diff.overrideDifferenceListener(new NumberDifferenceXmlComparison());
       XMLAssert.assertXMLEqual(diff, true);
-      System.out.println("Marshall baclk " + ++marshallBackCounter);
+      marshallBackCounter++;
   }
 }

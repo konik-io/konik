@@ -1,8 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <artifactId>konik</artifactId>
-   <name>konik</name>
-   <description>Konik the ZUGFeRD processing framework</description>
+   <name>Konik Library</name>
+   <description>Konik the ZUGFeRD processing library</description>
    <url>http://konik.io</url>
 
    <parent>
@@ -10,27 +11,6 @@
       <artifactId>parent</artifactId>
       <version>0.8.0-SNAPSHOT</version>
    </parent>
-
-   <organization>
-      <name>konik.io</name>
-      <url>http://konik.io</url>
-   </organization>
-
-   <licenses>
-      <license>
-         <name>AGPL</name>
-         <url>https://www.gnu.org/licenses/agpl-3.0.html</url>
-         <distribution>repo</distribution>
-      </license>
-   </licenses>
-
-   <developers>
-      <developer>
-         <id>Vad1mo</id>
-         <name>Vadim Bauer</name>
-         <email>vb@konik.io</email>
-      </developer>
-   </developers>
 
    <dependencies>
       <dependency>
@@ -176,4 +156,5 @@
          </dependencies>
       </profile>
    </profiles>
+
 </project>

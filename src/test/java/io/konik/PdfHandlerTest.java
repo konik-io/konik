@@ -33,14 +33,31 @@ public class PdfHandlerTest {
 //      throw new RuntimeException("not yet implemented");
 //   }
 
-   @Test
-   public void getInvoice() throws Exception {
-      InputStream is = getClass().getResourceAsStream("/Musterrechnung_Einfach_Basic.pdf");
+   
 
-      Invoice invoice = pdfHandler.getInvoice(is);
-      
-      assertThat(invoice).isNotNull();
-      assertThat(invoice.getHeader().getInvoiceNumber()).isEqualTo("471102");
-   }
+   //   @Test
+   //   public void PdfHandlerFileAppenderFileExtractorInvoiceTransformer() throws Exception {
+   //      throw new RuntimeException("not yet implemented");
+   //   }
+   //
+   //   @Test
+   //   public void PdfHandler() throws Exception {
+   //      throw new RuntimeException("not yet implemented");
+   //   }
+   //
+   //   @Test
+   //   public void attachInvoice() throws Exception {
+   //      throw new RuntimeException("not yet implemented");
+   //   }
+   
+      @Test
+      public void extractInvoice() throws Exception {
+         InputStream is = getClass().getResourceAsStream("/Musterrechnung_Einfach_Basic.pdf");
+   
+         Invoice invoice = pdfHandler.extractInvoice(is);
+         
+         assertThat(invoice).isNotNull();
+         assertThat(invoice.getHeader().getInvoiceNumber()).isEqualTo("471102");
+      }
 
 }

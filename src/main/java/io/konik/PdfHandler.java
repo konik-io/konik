@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ServiceLoader;
 
 import javax.inject.Inject;
@@ -46,71 +47,63 @@ public class PdfHandler {
 
    private static final String MARSHALLING_ERROR = "Marshalling error";
 
-   private static final String KONIK_CONTEXT = "io.konik.zugferd";
-
-   private final JAXBContext jaxbContext;
-
    private FileAppender fileAppender;
    private FileExtractor fileExtractor;
    private InvoiceTransformer transformer;
 
    /**
-    * Instantiates a new pdf handler.
+    * Instantiates a new PDF handler.
     *
     * @param fileAppender the file appender
     * @param fileExtractor the file extractor
     * @param transformer the invoice model transformer
     */
    @Inject
-   public PdfHandler(FileAppender fileAppender, FileExtractor fileExtractor,InvoiceTransformer transformer) {
-      try {
-         this.jaxbContext = newInstance(KONIK_CONTEXT);
-      } catch (JAXBException e) {
-         throw new TransformationException("Could not instantiate JaxB Context", e);
-      }
-      if (fileAppender == null || fileExtractor == null || transformer == null) {
-//         this.fileAppender = ServiceLoader.load(FileAppender.class).iterator().next();
-         this.fileExtractor = ServiceLoader.load(FileExtractor.class).iterator().next();
-         this.transformer = new InvoiceTransformer();
-      } else {
-         this.fileAppender = fileAppender;
-         this.fileExtractor = fileExtractor;
-         this.transformer = transformer;
-      }
-      
+   public PdfHandler(FileAppender fileAppender, FileExtractor fileExtractor, InvoiceTransformer transformer) {
+      this.fileAppender = fileAppender;
+      this.fileExtractor = fileExtractor;
+      this.transformer = transformer;
    }
 
    /**
-    * Instantiates a default invoice transformer.
+    * Instantiates a default invoice transformer using the Service loader to inject an pdf carriage on the classpath
     */
    public PdfHandler() {
-      this(null,null,null);
+      this.fileAppender = ServiceLoader.load(FileAppender.class).iterator().next();
+      this.fileExtractor = ServiceLoader.load(FileExtractor.class).iterator().next();
+      this.transformer = new InvoiceTransformer();
    }
 
-   public void attachInvoice(Invoice invoice){
-      
-   }
-   
-   
    /**
-    * Gets the invoice.
+    * Append invoice to an pdf.
+    *
+    * @param invoice the invoice
+    * @param inputPdf the pdf to attach the invoice to
+    * @param finalOutputPdf the resulting pdf with the attachment
+    */
+   public void appendInvoice(Invoice invoice, InputStream inputPdf, OutputStream finalOutputPdf) {
+
+   }
+
+   /**
+    * Extract invoice from given pdf file
     *
     * @param pdfFile the pdf file
     * @return the invoice
     * @throws FileNotFoundException the file not found exception
     */
-   public Invoice getInvoice(File pdfFile) throws FileNotFoundException {
+   public Invoice extractInvoice(File pdfFile) throws FileNotFoundException {
       byte[] xmlInvoice = fileExtractor.extract(new FileInputStream(pdfFile));
       return transformer.toModel(new ByteArrayInputStream(xmlInvoice));
    }
-   
+
    /**
-    * Gets the invoice.
+    * Extract invoice from given pdf file
     *
     * @param pdfInputStream the pdf input stream
     * @return the invoice
     */
-   public Invoice getInvoice(InputStream pdfInputStream) {
+   public Invoice extractInvoice(InputStream pdfInputStream) {
       byte[] xmlInvoice = fileExtractor.extract(pdfInputStream);
       return transformer.toModel(new ByteArrayInputStream(xmlInvoice));
    }

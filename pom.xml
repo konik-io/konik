@@ -29,6 +29,11 @@
          <artifactId>nv-i18n</artifactId>
          <version>1.12</version>
       </dependency>
+      <dependency>
+         <groupId>io.konik</groupId>
+         <artifactId>harness</artifactId>
+         <version>0.0.2-SNAPSHOT</version>
+      </dependency>
 
       <!-- TEST dependencies -->
       <dependency>
@@ -63,6 +68,20 @@
          <version>3.3</version>
          <scope>test</scope>
       </dependency>
+      <dependency>
+         <groupId>xmlunit</groupId>
+         <artifactId>xmlunit</artifactId>
+         <version>1.5</version>
+         <scope>test</scope>
+      </dependency>
+      <!-- A Test PDF Carriage  -->
+      <dependency>
+         <groupId>io.konik.zugferd</groupId>
+         <artifactId>pdfbox-carriage</artifactId>
+         <version>0.0.2-SNAPSHOT</version>
+<!--          <scope>test</scope> -->
+      </dependency>
+
       <!-- Benchmark dependencies -->
       <dependency>
          <groupId>org.openjdk.jmh</groupId>
@@ -76,17 +95,12 @@
          <scope>provided</scope>
       </dependency>
 
-      <dependency>
-         <groupId>xmlunit</groupId>
-         <artifactId>xmlunit</artifactId>
-         <version>1.5</version>
-         <scope>test</scope>
-      </dependency>
 
+      <!-- Hibernate Validation for test -->
       <dependency>
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-validator</artifactId>
-         <version>5.1.1.Final</version>
+         <version>5.1.2.Final</version>
          <scope>test</scope>
       </dependency>
       <dependency>
@@ -104,15 +118,19 @@
       <dependency>
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-validator-cdi</artifactId>
-         <version>5.1.1.Final</version>
+         <version>5.1.2.Final</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-validator-annotation-processor</artifactId>
-         <version>5.1.1.Final</version>
+         <version>5.1.2.Final</version>
          <scope>provided</scope>
+         <!-- validated that annotations are correct set in model -->
       </dependency>
+      
+      
+      
    </dependencies>
 
    <build>

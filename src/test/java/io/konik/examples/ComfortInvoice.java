@@ -173,7 +173,7 @@ public class ComfortInvoice {
    }
 
 
-   private void printOutIfNotIdentical(String invoice, String invoiceCompare, Diff xmlDiff) {
+   private static void printOutIfNotIdentical(String invoice, String invoiceCompare, Diff xmlDiff) {
       if (!xmlDiff.identical()) {
          System.out.println("Initial Invoice\n" + invoice);
          System.out.println("Second round Marshalling\n" + invoiceCompare);

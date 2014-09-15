@@ -121,11 +121,11 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax, Speci
 
    /**
     * Sets the specified booking reference.
-    *
+    * 
     * Profile:: EXTENDED
     *
     * @param specifiedBookingReference the specified booking reference
-    * @return
+    * @return the specified settlement
     */
    public SpecifiedSettlement setBookingReference(String specifiedBookingReference) {
       this.bookingReference = specifiedBookingReference;

@@ -1,20 +1,19 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
 
@@ -91,9 +90,9 @@ public class Contact {
     * Sets the contact person name.
     * 
     * Profile:: EXTENDED
-    * 
+    *
     * @param name the new person name
-    * @return
+    * @return the contact
     */
    public Contact setName(String name) {
       this.name = name;
@@ -115,9 +114,9 @@ public class Contact {
     * Sets the department name.
     * 
     * Profile:: EXTENDED
-    * 
+    *
     * @param department the new department name
-    * @return
+    * @return the contact
     */
    public Contact setDepartment(String department) {
       this.department = department;
@@ -143,9 +142,9 @@ public class Contact {
     * Profile:: EXTENDED
     * 
     * Example:: +{plus}49 (123) 456789-999+
-    * 
+    *
     * @param telephone the new telephone universal communication
-    * @return
+    * @return the contact
     */
    public Contact setTelephone(String telephone) {
       this.telephone = telephone;

@@ -62,7 +62,7 @@ public class SpecifiedMonetarySummation extends CommonMonetarySummation {
     * Sets the total allowance charge.
     *
     * @param totalAllowanceCharge the new total allowance charge
-    * @return
+    * @return the specified monetary summation
     */
    public SpecifiedMonetarySummation setTotalAllowanceCharge(Amount totalAllowanceCharge) {
       this.totalAllowanceCharge = totalAllowanceCharge;

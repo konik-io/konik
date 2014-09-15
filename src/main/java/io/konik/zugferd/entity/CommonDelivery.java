@@ -126,7 +126,7 @@ public abstract class CommonDelivery<R extends ReferencedDocument> {
     * Sets the despatch advice.
     *
     * @param despatchAdvice the despatch advice
-    * @return
+    * @return the common delivery
     */
    public abstract CommonDelivery<R> setDespatchAdvice(R despatchAdvice);
 

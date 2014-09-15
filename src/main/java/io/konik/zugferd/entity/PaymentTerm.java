@@ -134,7 +134,7 @@ public class PaymentTerm {
     * Sets the payment penalty terms..
     *
     * @param penalty the new penalty
-    * @return
+    * @return the payment term
     */
    public PaymentTerm setPenalty(PaymentPenaltyTerms penalty) {
       this.penalty = penalty;
@@ -154,7 +154,7 @@ public class PaymentTerm {
     * Sets the discount.
     *
     * @param discount the new discount
-    * @return
+    * @return the payment term
     */
    public PaymentTerm setDiscount(PaymentDiscountTerms discount) {
       this.discount = discount;

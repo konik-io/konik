@@ -23,9 +23,11 @@ import io.konik.zugferd.Invoice;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.logging.Logger;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -50,6 +52,8 @@ import org.xml.sax.SAXException;
 @Singleton
 public class InvoiceTransformer {
 
+   Logger LOG = Logger.getLogger(InvoiceTransformer.class.getName());
+   
    private static final String MARSHALLING_ERROR = "Marshalling error";
 
    private static final String KONIK_CONTEXT = "io.konik.zugferd";
@@ -138,9 +142,9 @@ public class InvoiceTransformer {
          throw new TransformationException(MARSHALLING_ERROR, e);
       }
    }
-   
+
    /**
-    * From model Async. 
+    * From model Async.
     * 
     * Will start a new Thread for the transformation.
     *
@@ -152,6 +156,12 @@ public class InvoiceTransformer {
          @Override
          public void run() {
             fromModel(invoice, outputStream);
+            try {
+               outputStream.flush();
+               outputStream.close();
+            } catch (IOException e) {
+
+            }
          }
       }).start();
    }

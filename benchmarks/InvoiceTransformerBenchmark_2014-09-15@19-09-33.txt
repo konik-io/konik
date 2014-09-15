@@ -1,0 +1,2 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit"
+"io.konik.benchmark.InvoiceTransformerBenchmark.xmlToModel","thrpt",1,20,1648.8172163835363,307.8781008590453,"ops/s"

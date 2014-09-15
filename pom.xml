@@ -14,6 +14,11 @@
 
    <dependencies>
       <dependency>
+         <groupId>io.konik</groupId>
+         <artifactId>harness</artifactId>
+         <version>0.8.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
          <groupId>javax.validation</groupId>
          <artifactId>validation-api</artifactId>
          <version>1.1.0.Final</version>
@@ -29,11 +34,7 @@
          <artifactId>nv-i18n</artifactId>
          <version>1.12</version>
       </dependency>
-      <dependency>
-         <groupId>io.konik</groupId>
-         <artifactId>harness</artifactId>
-         <version>0.8.0-SNAPSHOT</version>
-      </dependency>
+
 
       <!-- TEST dependencies -->
       <dependency>
@@ -85,9 +86,9 @@
 
       <!-- PDFBox for Test -->
       <dependency>
-         <groupId>io.konik.zugferd</groupId>
+         <groupId>io.konik</groupId>
          <artifactId>pdfbox-carriage</artifactId>
-         <version>0.0.2-SNAPSHOT</version>
+         <version>0.7.1-SNAPSHOT</version>
          <scope>test</scope>
       </dependency>
 

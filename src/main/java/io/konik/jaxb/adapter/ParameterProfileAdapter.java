@@ -18,14 +18,12 @@
 package io.konik.jaxb.adapter;
 
 import static java.util.logging.Level.WARNING;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import io.konik.zugferd.entity.Parameter;
 import io.konik.zugferd.profile.ConformanceLevel;
 import io.konik.zugferd.profile.Profile;
 import io.konik.zugferd.profile.ProfileVersion;
+
+import java.util.logging.Logger;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
@@ -34,8 +32,8 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  * JaxB Adapter for mapping Parameter to Profile Enum.
  */
 public class ParameterProfileAdapter extends XmlAdapter<Parameter, Profile> {
-   private final static Logger LOG = Logger.getLogger(ParameterProfileAdapter.class.getName());
-
+   
+   private static final Logger LOG = Logger.getLogger(ParameterProfileAdapter.class.getName());
    private static final String DELIMITER = ":";
 
    @Override

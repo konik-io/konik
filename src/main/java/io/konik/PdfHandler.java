@@ -34,7 +34,6 @@ import java.io.OutputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.util.ServiceLoader;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -42,7 +41,7 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 
 /**
- * Transforms invoices from one representation to another. In other words marshaling and unmarshalling.
+ * Transforms and attaches or extracts the invoices to PDFs.
  * 
  */
 @Named
@@ -70,7 +69,9 @@ public class PdfHandler {
    }
 
    /**
-    * Instantiates a default invoice transformer using the Service loader to inject an pdf carriage on the classpath
+    * Instantiates a default invoice transformer using the Service loader to inject an PDF carriage that should be on the classpath.
+    * 
+    * If error is thrown check you have a Konik PDF Carriage on the classpath.
     */
    public PdfHandler() {
       this.fileAppender = ServiceLoader.load(FileAppender.class).iterator().next();
@@ -103,10 +104,8 @@ public class PdfHandler {
          DefaultAppendParameter parameter = new DefaultAppendParameter(inputPdf, pipedInputStream, resultingPdf,
                version, confomanceLevel);
          fileAppender.append(parameter);
-         pipedOutputStream.flush();
       } finally {
          pipedInputStream.close();
-         pipedOutputStream.close();
       }
    }
 
@@ -129,9 +128,9 @@ public class PdfHandler {
     * @return the invoice
     */
    public Invoice extractInvoice(InputStream pdfInputStream) {
-      InputStream stream = fileExtractor.extractToStream(pdfInputStream);
-      Invoice invoiceModel = transformer.toModel(stream);
-      closeQuietly(stream);
+      InputStream invoiceInputStream = fileExtractor.extractToStream(pdfInputStream);
+      Invoice invoiceModel = transformer.toModel(invoiceInputStream);
+      closeQuietly(invoiceInputStream);
       return invoiceModel;
       
    }

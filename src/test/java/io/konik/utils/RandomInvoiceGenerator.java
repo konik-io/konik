@@ -125,7 +125,7 @@ public class RandomInvoiceGenerator {
       }
    }
 
-   private Constructor<?> findBiggestConstructor(Class<?> root) {
+   private static Constructor<?> findBiggestConstructor(Class<?> root) {
       Constructor<?>[] constructors = root.getConstructors();
       Constructor<?> biggestConstructor = null;
       for (Constructor<?> constructor : constructors) {

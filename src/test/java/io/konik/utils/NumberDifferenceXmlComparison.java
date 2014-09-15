@@ -21,7 +21,7 @@ public class NumberDifferenceXmlComparison implements DifferenceListener {
       return RETURN_ACCEPT_DIFFERENCE;
    }
 
-   private String getNodeName(Difference difference) {
+   private static String getNodeName(Difference difference) {
       Node parentNode = difference.getControlNodeDetail().getNode().getParentNode();
       if (parentNode == null) {return "";}
       return parentNode.getLocalName();

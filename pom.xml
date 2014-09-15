@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <artifactId>konik</artifactId>
    <name>Konik Library</name>
@@ -31,7 +32,7 @@
       <dependency>
          <groupId>io.konik</groupId>
          <artifactId>harness</artifactId>
-         <version>0.0.2-SNAPSHOT</version>
+         <version>0.8.0-SNAPSHOT</version>
       </dependency>
 
       <!-- TEST dependencies -->
@@ -73,13 +74,23 @@
          <version>1.5</version>
          <scope>test</scope>
       </dependency>
-      <!-- A Test PDF Carriage  -->
+
+      <!-- Oval Validator can be used for production as well -->
+      <dependency>
+         <groupId>org.apache.bval</groupId>
+         <artifactId>bval-jsr303</artifactId>
+         <version>0.5</version>
+         <scope>test</scope>
+      </dependency>
+
+      <!-- PDFBox for Test -->
       <dependency>
          <groupId>io.konik.zugferd</groupId>
          <artifactId>pdfbox-carriage</artifactId>
          <version>0.0.2-SNAPSHOT</version>
-<!--          <scope>test</scope> -->
+         <scope>test</scope>
       </dependency>
+
 
       <!-- Benchmark dependencies -->
       <dependency>
@@ -93,43 +104,6 @@
          <artifactId>jmh-generator-annprocess</artifactId>
          <scope>provided</scope>
       </dependency>
-
-
-      <!-- Hibernate Validation for test -->
-      <dependency>
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-validator</artifactId>
-         <version>5.1.2.Final</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <groupId>javax.el</groupId>
-         <artifactId>javax.el-api</artifactId>
-         <version>2.2.4</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <groupId>org.glassfish.web</groupId>
-         <artifactId>javax.el</artifactId>
-         <version>2.2.4</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-validator-cdi</artifactId>
-         <version>5.1.2.Final</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-validator-annotation-processor</artifactId>
-         <version>5.1.2.Final</version>
-         <scope>provided</scope>
-         <!-- validated that annotations are correct set in model -->
-      </dependency>
-      
-      
-      
    </dependencies>
 
    <build>

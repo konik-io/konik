@@ -25,28 +25,39 @@ import io.konik.util.Strings;
 public enum ProfileVersion {
 
    /** The release candidate. */
-   RC("rc"),
+   RC("rc","rc"),
 
    /** The release candidate extended. */
-   RCE("rce"),
+   RCE("rce","rce"),
 
    /** The version 1.0 */
-   V1P0("1p0");
+   V1P0("1p0","1.0");
 
    private static final String DELIMITER = ":";
    private final String version;
-
-   private ProfileVersion(String version) {
+   private final String versionAlt;
+   
+   private ProfileVersion(String version, String versionAlt) {
       this.version = version;
+      this.versionAlt = versionAlt;
    }
 
    /**
     * Version.
     *
-    * @return the string
+    * @return the version string
     */
    public String version() {
       return version;
+   }
+   
+   /**
+    * alternative representation of the version with the .(dot).
+    *
+    * @return the alternative representation of the version
+    */
+   public String versionAlt() {
+      return versionAlt;
    }
 
    /**
@@ -66,7 +77,8 @@ public enum ProfileVersion {
     */
    public static ProfileVersion parse(String version) {
       for (ProfileVersion profileVersion : ProfileVersion.values()) {
-         if (profileVersion.version().equals(version)) { return profileVersion; }
+         if (profileVersion.versionAlt().equals(version) ||
+               profileVersion.version().equals(version)) { return profileVersion; }
       }
       throw new EnumConstantNotPresentException(ProfileVersion.class, version);
    }

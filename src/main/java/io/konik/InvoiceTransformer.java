@@ -138,6 +138,23 @@ public class InvoiceTransformer {
          throw new TransformationException(MARSHALLING_ERROR, e);
       }
    }
+   
+   /**
+    * From model Async. 
+    * 
+    * Will start a new Thread for the transformation.
+    *
+    * @param invoice the invoice
+    * @param outputStream the output stream
+    */
+   public void fromModelAsync(final Invoice invoice, final OutputStream outputStream) {
+      new Thread(new Runnable() {
+         @Override
+         public void run() {
+            fromModel(invoice, outputStream);
+         }
+      }).start();
+   }
 
    /**
     * Gets the ZUGFeRD schema Validator.

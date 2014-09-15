@@ -17,25 +17,29 @@
  */
 package io.konik;
 
-import static javax.xml.bind.JAXBContext.newInstance;
-import io.konik.exception.TransformationException;
+import static java.util.logging.Level.WARNING;
 import io.konik.harness.FileAppender;
 import io.konik.harness.FileExtractor;
+import io.konik.harness.appender.DefaultAppendParameter;
+import io.konik.harness.exception.InvoiceAppendError;
 import io.konik.zugferd.Invoice;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 import java.util.ServiceLoader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 
 /**
  * Transforms invoices from one representation to another. In other words marshaling and unmarshalling.
@@ -45,11 +49,11 @@ import javax.xml.bind.JAXBException;
 @Singleton
 public class PdfHandler {
 
-   private static final String MARSHALLING_ERROR = "Marshalling error";
-
-   private FileAppender fileAppender;
-   private FileExtractor fileExtractor;
-   private InvoiceTransformer transformer;
+   private static final Logger LOG = Logger.getLogger(PdfHandler.class.getName());
+   
+   private final FileAppender fileAppender;
+   private final FileExtractor fileExtractor;
+   private final InvoiceTransformer transformer;
 
    /**
     * Instantiates a new PDF handler.
@@ -79,10 +83,31 @@ public class PdfHandler {
     *
     * @param invoice the invoice
     * @param inputPdf the pdf to attach the invoice to
-    * @param finalOutputPdf the resulting pdf with the attachment
+    * @param resultingPdf the resulting pdf
     */
-   public void appendInvoice(Invoice invoice, InputStream inputPdf, OutputStream finalOutputPdf) {
+   public void appendInvoice(final Invoice invoice, InputStream inputPdf, OutputStream resultingPdf) {
+      try {
+         append(invoice, inputPdf, resultingPdf);
+      } catch (IOException e) {
+         throw new InvoiceAppendError("Not able to append invoice to PDF", e);
+      }
+   }
 
+   private void append(final Invoice invoice, InputStream inputPdf, OutputStream resultingPdf) throws IOException {
+      PipedOutputStream pipedOutputStream = new PipedOutputStream();
+      PipedInputStream pipedInputStream = new PipedInputStream(pipedOutputStream, 65536);
+      try {
+         String version = invoice.getContext().getGuideline().getVersion().toString();
+         String confomanceLevel = invoice.getContext().getGuideline().getConformanceLevel().name();
+         transformer.fromModelAsync(invoice, pipedOutputStream);
+         DefaultAppendParameter parameter = new DefaultAppendParameter(inputPdf, pipedInputStream, resultingPdf,
+               version, confomanceLevel);
+         fileAppender.append(parameter);
+         pipedOutputStream.flush();
+      } finally {
+         pipedInputStream.close();
+         pipedOutputStream.close();
+      }
    }
 
    /**
@@ -104,7 +129,20 @@ public class PdfHandler {
     * @return the invoice
     */
    public Invoice extractInvoice(InputStream pdfInputStream) {
-      byte[] xmlInvoice = fileExtractor.extract(pdfInputStream);
-      return transformer.toModel(new ByteArrayInputStream(xmlInvoice));
+      InputStream stream = fileExtractor.extractToStream(pdfInputStream);
+      Invoice invoiceModel = transformer.toModel(stream);
+      closeQuietly(stream);
+      return invoiceModel;
+      
+   }
+
+   private static void closeQuietly(InputStream stream) {
+      try {
+         if (stream != null) {
+            stream.close();
+         }
+      }catch(IOException e) {
+         LOG.log(WARNING, "Could not close InputStream. This can be a memory leak as the PDF might still be open.", e);
+      }
    }
 }

@@ -36,6 +36,12 @@ public class ProfileVersionTest {
       ProfileVersion profileVersion = ProfileVersion.parse("1p0");
       assertThat(profileVersion).isEqualTo(ProfileVersion.V1P0);
    }
+   
+   @Test
+   public void parse_1_0() throws Exception {
+      ProfileVersion profileVersion = ProfileVersion.parse("1.0");
+      assertThat(profileVersion).isEqualTo(ProfileVersion.V1P0);
+   }
 
    @Test
    public void extractVersion_rc() throws Exception {
@@ -52,6 +58,16 @@ public class ProfileVersionTest {
    @Test
    public void toStringTest() throws Exception {
       assertThat(ProfileVersion.RC.toString()).isEqualTo("rc");
+   }
+
+   @Test
+   public void versiontoString() throws Exception {
+      assertThat(ProfileVersion.V1P0.toString()).isEqualTo("1p0");
+   }
+   
+   @Test
+   public void versionAlt() throws Exception {
+      assertThat(ProfileVersion.V1P0.versionAlt()).isEqualTo("1.0");
    }
 
 }

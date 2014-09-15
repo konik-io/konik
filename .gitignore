@@ -1,0 +1,6 @@
+/target/
+.settings
+.classpath
+.factorypath
+.project
+infinitest.filters

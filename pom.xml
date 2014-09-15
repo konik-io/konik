@@ -22,20 +22,19 @@
          <groupId>javax.validation</groupId>
          <artifactId>validation-api</artifactId>
          <version>1.1.0.Final</version>
-         <optional>true</optional>
       </dependency>
+      <dependency>
+         <groupId>com.neovisionaries</groupId>
+         <artifactId>nv-i18n</artifactId>
+         <version>1.13</version>
+      </dependency>
+      <!-- Optional -->
       <dependency>
          <groupId>javax.inject</groupId>
          <artifactId>javax.inject</artifactId>
          <optional>true</optional>
       </dependency>
-      <dependency>
-         <groupId>com.neovisionaries</groupId>
-         <artifactId>nv-i18n</artifactId>
-         <version>1.12</version>
-      </dependency>
-
-
+      
       <!-- TEST dependencies -->
       <dependency>
          <groupId>junit</groupId>
@@ -66,7 +65,7 @@
       <dependency>
          <groupId>org.unitils</groupId>
          <artifactId>unitils-core</artifactId>
-         <version>3.3</version>
+         <version>3.4.2</version>
          <scope>test</scope>
       </dependency>
       <dependency>
@@ -75,24 +74,19 @@
          <version>1.5</version>
          <scope>test</scope>
       </dependency>
-
-      <!-- Oval Validator can be used for production as well -->
+      <!-- this test dependencies can be used also at runtime -->
       <dependency>
          <groupId>org.apache.bval</groupId>
          <artifactId>bval-jsr303</artifactId>
          <version>0.5</version>
          <scope>test</scope>
       </dependency>
-
-      <!-- PDFBox for Test -->
       <dependency>
          <groupId>io.konik</groupId>
          <artifactId>pdfbox-carriage</artifactId>
-         <version>0.7.1-SNAPSHOT</version>
+         <version>0.8.0-SNAPSHOT</version>
          <scope>test</scope>
       </dependency>
-
-
       <!-- Benchmark dependencies -->
       <dependency>
          <groupId>org.openjdk.jmh</groupId>

@@ -3,6 +3,7 @@
    <modelVersion>4.0.0</modelVersion>
   
    <artifactId>konik</artifactId>
+   <version>0.8.0-SNAPSHOT</version>
    <name>Konik Library</name>
    <description>Konik the ZUGFeRD processing library</description>
    <url>http://konik.io</url>
@@ -154,4 +155,5 @@
       </profile>
    </profiles>
 
+   
 </project>

@@ -84,7 +84,7 @@
       <dependency>
          <groupId>io.konik</groupId>
          <artifactId>pdfbox-carriage</artifactId>
-         <version>0.8.0-SNAPSHOT</version>
+         <version>0.8.0</version>
          <scope>test</scope>
       </dependency>
       <!-- Benchmark dependencies -->

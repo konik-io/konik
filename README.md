@@ -18,7 +18,7 @@ Quick overview of the different modules.
  - ```konik``` Contains the ZUGFeRD data model. 
  - ```harness``` API connecting the the Konik library to a PDF-Carriage.
  - ```itext-carriage```	The PDF provider iText which can be used together with the Konik library.
-  - ```pdfbox-carriage```	The PDF provider which can be used together with the Konik library.
+ - ```pdfbox-carriage```	The PDF provider which can be used together with the Konik library.
  - ```distribution``` Zip distribution package. For those who are not using maven.
  - ```project``` content related to the project like Scripts, Formatting rules, dictionary.  (Not a Maven module). 
  
@@ -29,4 +29,8 @@ Fancy project badges
 
 [![Build Status](http://ci.konik.io/job/konik/badge/icon)](http://ci.konik.io/job/konik/)
 
-[![Dependency Status](https://www.versioneye.com/user/projects/54175d6769b273246a000151/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54175d6769b273246a000151)
+Development Branch  
+[![Dependency Status](https://www.versioneye.com/user/projects/5418643d9185981b52000004/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5418643d9185981b52000004)
+
+Master Branch  
+[![Dependency Status](https://www.versioneye.com/user/projects/5418644d918598866a000008/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5418644d918598866a000008)

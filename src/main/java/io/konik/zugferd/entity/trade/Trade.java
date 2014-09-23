@@ -18,6 +18,7 @@
  */
 package io.konik.zugferd.entity.trade;
 
+import io.konik.builder.Builder;
 import io.konik.zugferd.entity.trade.item.Item;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import net.karneim.pojobuilder.GeneratePojoBuilder;
+
 /**
  * = The Trade transaction.
  * 
@@ -37,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreement", "delivery", "settlement", "items" })
+@GeneratePojoBuilder(withBuilderInterface = Builder.class, withBuilderProperties = true)
 public class Trade {
 
    @NotNull

@@ -41,7 +41,11 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 
 /**
- * Transforms and attaches or extracts the invoices to PDFs.
+ * The connection between PDF File and Invoice Model.
+ * 
+ * The PDF Handler is capable of two things::
+ * - Transforms Invoice model to XML and attaches the invoice file to the PDF using a PDF Carriage which is in the classpath.
+ * - Transforms Invoice XML to model after extracting the XML file from the PDF using a PDF Carriage which is in the classpath.
  * 
  */
 @Named

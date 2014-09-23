@@ -18,6 +18,7 @@
  */
 package io.konik.zugferd;
 
+import io.konik.builder.Builder;
 import io.konik.zugferd.entity.Context;
 import io.konik.zugferd.entity.Header;
 import io.konik.zugferd.entity.trade.Trade;
@@ -31,12 +32,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import net.karneim.pojobuilder.GeneratePojoBuilder;
+
 /**
  * = The Root of the ZUGFeRD Invoice Model.
  */
 @XmlRootElement(name = "CrossIndustryDocument")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = { "context", "header", "trade" })
+@GeneratePojoBuilder(withBuilderInterface = Builder.class, withBuilderProperties = true)
 public class Invoice {
 
    @NotNull

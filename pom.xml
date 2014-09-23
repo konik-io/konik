@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
-  
+
    <artifactId>konik</artifactId>
    <version>0.8.1-SNAPSHOT</version>
    <name>Konik Library</name>
@@ -22,7 +22,7 @@
       <system>GitHub Issues</system>
       <url>https://github.com/konik-io/konik/issues</url>
    </issueManagement>
-   
+
    <dependencies>
       <dependency>
          <groupId>io.konik</groupId>
@@ -45,7 +45,12 @@
          <artifactId>javax.inject</artifactId>
          <optional>true</optional>
       </dependency>
-      
+      <dependency>
+         <groupId>net.karneim</groupId>
+         <artifactId>pojobuilder</artifactId>
+         <version>3.2.0-SNAPSHOT</version>
+         <!-- <optional>true</optional> -->
+      </dependency>
       <!-- TEST dependencies -->
       <dependency>
          <groupId>junit</groupId>
@@ -115,6 +120,13 @@
    <build>
       <plugins>
          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+               <compilerArgument>-Anet.karneim.pojobuilder.methodnameprefix</compilerArgument>
+            </configuration>
+         </plugin>
+         <plugin>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
             <version>1.2.0</version>
@@ -123,6 +135,26 @@
                   <param>io.konik</param>
                </packages>
             </configuration>
+         </plugin>
+         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>properties-maven-plugin</artifactId>
+            <version>1.0-alpha-2</version>
+            <executions>
+               <execution>
+                  <goals>
+                     <goal>set-system-properties</goal>
+                  </goals>
+                  <configuration>
+                     <properties>
+                        <property>
+                           <name>net.karneim.pojobuilder.methodnameprefix</name>
+                           <value>miau</value>
+                        </property>
+                     </properties>
+                  </configuration>
+               </execution>
+            </executions>
          </plugin>
       </plugins>
    </build>
@@ -154,5 +186,5 @@
       </profile>
    </profiles>
 
-   
+
 </project>

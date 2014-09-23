@@ -18,6 +18,7 @@
 package io.konik.zugferd.entity;
 
 import static java.util.Collections.addAll;
+import io.konik.builder.Builder;
 import io.konik.jaxb.adapter.PeriodCompleteToDateTimeAdapter;
 import io.konik.validator.annotation.Extended;
 import io.konik.validator.annotation.NotEmpty;
@@ -38,6 +39,8 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import net.karneim.pojobuilder.GeneratePojoBuilder;
+
 import com.neovisionaries.i18n.LanguageCode;
 
 /**
@@ -46,6 +49,7 @@ import com.neovisionaries.i18n.LanguageCode;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "HeaderExchangedDocument", propOrder = { "invoiceNumber", "name", "code", "issued", "copy", "languages",
       "notes", "contractualDueDate" })
+@GeneratePojoBuilder(withBuilderInterface = Builder.class, withBuilderProperties = true)
 public class Header {
 
    @NotNull

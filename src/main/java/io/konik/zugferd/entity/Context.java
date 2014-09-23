@@ -17,6 +17,7 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.builder.Builder;
 import io.konik.jaxb.adapter.ParameterProfileAdapter;
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Extended;
@@ -32,6 +33,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import net.karneim.pojobuilder.GeneratePojoBuilder;
+
 /**
  * = The Exchanged Document Context
  * 
@@ -39,6 +42,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ExchangedDocumentContextType", propOrder = { "test", "businessProcess", "guideline" })
+@GeneratePojoBuilder(withBuilderInterface = Builder.class, withBuilderProperties = true)
 public class Context {
 
    @XmlElement(name = "TestIndicator")
@@ -177,8 +181,8 @@ public class Context {
     * @param guideline the new profile
     * @return the context
     */
-   public Context setGuideline(Profile guideline) {
+   public void setGuideline(Profile guideline) {
       this.guideline = guideline;
-      return this;
+//      return this;
    }
 }

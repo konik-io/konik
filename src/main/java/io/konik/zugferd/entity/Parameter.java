@@ -17,6 +17,7 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.builder.Builder;
 import io.konik.validator.annotation.NotBlank;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -26,12 +27,15 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import net.karneim.pojobuilder.GeneratePojoBuilder;
+
 /**
  * The parameter type used in document context.
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentContextParameterType", propOrder = { "id" })
+@GeneratePojoBuilder(withBuilderInterface = Builder.class, withBuilderProperties = true)
 public class Parameter {
 
    @NotBlank

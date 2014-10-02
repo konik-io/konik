@@ -41,7 +41,7 @@ public class SpecifiedTax extends CommonTax {
    @Override
    public SpecifiedTax setType(TaxCode taxTypeCode) {
       super.setType(taxTypeCode);
-      return this;
+      
    }
 
    @Comfort
@@ -53,7 +53,7 @@ public class SpecifiedTax extends CommonTax {
    @Override
    public SpecifiedTax setCategory(TaxCategory value) {
       super.setCategory(value);
-      return this;
+      
    }
 
    /**
@@ -72,11 +72,10 @@ public class SpecifiedTax extends CommonTax {
     * Profile:: BASIC
     *
     * @param calculatedAmount the new calculated amount
-    * @return the tax
     */
-   public SpecifiedTax setCalculated(Amount calculatedAmount) {
+   public void setCalculated(Amount calculatedAmount) {
       this.calculated = calculatedAmount;
-      return this;
+      
    }
 
    /**
@@ -97,11 +96,10 @@ public class SpecifiedTax extends CommonTax {
     * Profile:: COMFORT
     *
     * @param exemptionReason the new exemption reason
-    * @return the tax
     */
-   public SpecifiedTax setExemptionReason(String exemptionReason) {
+   public void setExemptionReason(String exemptionReason) {
       this.exemptionReason = exemptionReason;
-      return this;
+      
    }
 
    @Override

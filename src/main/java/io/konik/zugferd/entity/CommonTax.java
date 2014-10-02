@@ -93,12 +93,11 @@ public abstract class CommonTax {
     * Sets the UNCL 5153 tax type code.
     * 
     * @param taxTypeCode the tax type code
-    * @return the tax
     * @see <a href="http://www.unece.org/trade/untdid/d98b/uncl/uncl5153.htm">UNCL 5153</a>
     */
-   public CommonTax setType(TaxCode taxTypeCode) {
+   public void setType(TaxCode taxTypeCode) {
       this.type = taxTypeCode;
-      return this;
+      
    }
 
    /**
@@ -114,11 +113,10 @@ public abstract class CommonTax {
     * Sets the tax category.
     * 
     * @param value the new category code
-    * @return the tax
     */
-   public CommonTax setCategory(TaxCategory value) {
+   public void setCategory(TaxCategory value) {
       this.category = value;
-      return this;
+      
    }
 
    /**
@@ -135,10 +133,9 @@ public abstract class CommonTax {
     * Sets the applicable tax percentage.
     * 
     * @param applicablePercentage the new applicable tax percentage
-    * @return the tax
     */
-   public CommonTax setPercentage(BigDecimal applicablePercentage) {
+   public void setPercentage(BigDecimal applicablePercentage) {
       this.percentage = applicablePercentage;
-      return this;
+      
    }
 }

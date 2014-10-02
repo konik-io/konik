@@ -43,10 +43,9 @@ public class SpecifiedAllowanceCharge extends AllowanceCharge {
     * Sets the category.
     *
     * @param category the new category
-    * @return the allowance charge
     */
-   public SpecifiedAllowanceCharge setCategory(AppliedTax category) {
+   public void setCategory(AppliedTax category) {
       this.category = category;
-      return this;
+      
    }
 }

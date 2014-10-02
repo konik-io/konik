@@ -67,11 +67,10 @@ public abstract class CommonDelivery<R extends ReferencedDocument> {
     * Sets the ship to.
     *
     * @param shipTo the ship to
-    * @return the delivery
     */
-   public CommonDelivery<R> setShipTo(TradeParty shipTo) {
+   public void setShipTo(TradeParty shipTo) {
       this.shipTo = shipTo;
-      return this;
+      
    }
 
    /**
@@ -88,11 +87,10 @@ public abstract class CommonDelivery<R extends ReferencedDocument> {
     * Sets the ultimate ship to.
     *
     * @param ultimateShipTo the ultimate ship to
-    * @return the delivery
     */
-   public CommonDelivery<R> setUltimateShipTo(TradeParty ultimateShipTo) {
+   public void setUltimateShipTo(TradeParty ultimateShipTo) {
       this.ultimateShipTo = ultimateShipTo;
-      return this;
+      
    }
 
    /**
@@ -108,11 +106,10 @@ public abstract class CommonDelivery<R extends ReferencedDocument> {
     * Sets the actual delivery event.
     *
     * @param actualDelivery the actual delivery
-    * @return the delivery
     */
-   public CommonDelivery<R> setActualDelivery(ZfDate actualDelivery) {
+   public void setActualDelivery(ZfDate actualDelivery) {
       this.actualDelivery = actualDelivery;
-      return this;
+      
    }
 
    /**

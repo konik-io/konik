@@ -96,11 +96,10 @@ public class Note {
     * Adds content
     *
     * @param content the additional content
-    * @return the note
     */
-   public Note addContent(String content) {
+   public void addContent(String content) {
       getContents().add(content);
-      return this;
+      
    }
 
    /**
@@ -116,11 +115,10 @@ public class Note {
     * Sets the subject code.
     *
     * @param subjectCode the new subject code
-    * @return the note
     */
-   public Note setSubjectCode(String subjectCode) {
+   public void setSubjectCode(String subjectCode) {
       this.subjectCode = subjectCode;
-      return this;
+      
    }
 
    /**
@@ -137,11 +135,10 @@ public class Note {
     * Sets the content code.
     * 
     * @param contentCode the content code
-    * @return the note
     */
-   public Note setContentCode(String contentCode) {
+   public void setContentCode(String contentCode) {
       this.contentCode = contentCode;
-      return this;
+      
    }
 
 }

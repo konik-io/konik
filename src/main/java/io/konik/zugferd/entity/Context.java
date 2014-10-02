@@ -101,12 +101,10 @@ public class Context {
     * Profile:: BASIC
     * 
     * Default:: +false+
-    *
-    * @return the context
     */
-   public Context setTest() {
+   public void setTest() {
       this.test = Indicator.trueIndicator();
-      return this;
+      
    }
 
    /**
@@ -120,12 +118,10 @@ public class Context {
     * Profile:: BASIC
     * 
     * Default:: +false+
-    *
-    * @return the context
     */
-   public Context setNotTest() {
+   public void setNotTest() {
       this.test = Indicator.falseIndicator();
-      return this;
+      
    }
 
    /**
@@ -150,11 +146,10 @@ public class Context {
     * Example:: production Materials, other Materials, freight Invoices
     * 
     * @param businessProcess the new business process
-    * @return the context
     */
-   public Context setBusinessProcess(String businessProcess) {
+   public void setBusinessProcess(String businessProcess) {
       this.businessProcess = new Parameter(businessProcess);
-      return this;
+      
    }
 
    /**
@@ -183,6 +178,6 @@ public class Context {
     */
    public void setGuideline(Profile guideline) {
       this.guideline = guideline;
-//      return this;
+//      
    }
 }

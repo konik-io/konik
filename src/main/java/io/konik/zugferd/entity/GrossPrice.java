@@ -58,10 +58,9 @@ public class GrossPrice extends Price {
     * Adds additional allowance charges.
     *
     * @param additionalAllowanceCharges the additional allowance charges
-    * @return the price
     */
-   public Price addAllowanceCharge(AllowanceCharge... additionalAllowanceCharges) {
+   public void addAllowanceCharge(AllowanceCharge... additionalAllowanceCharges) {
       Collections.addAll(getAllowanceCharges(), additionalAllowanceCharges);
-      return this;
+      
    }
 }

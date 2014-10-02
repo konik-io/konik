@@ -84,11 +84,10 @@ public class TaxRegistration {
     * Example:: {@code DE234567891}
     *
     * @param taxNumber the new value
-    * @return the tax registration
     */
-   public TaxRegistration setTaxNumber(String taxNumber) {
+   public void setTaxNumber(String taxNumber) {
       this.id.setValue(taxNumber);
-      return this;
+      
    }
 
    /**
@@ -109,11 +108,10 @@ public class TaxRegistration {
     * Example:: {@code VA}
     *
     * @param taxType the new type
-    * @return the tax registration
     */
-   public TaxRegistration setType(Reference taxType) {
+   public void setType(Reference taxType) {
       this.id.setSchemeId(taxType.getCode());
-      return this;
+      
    }
 
 }

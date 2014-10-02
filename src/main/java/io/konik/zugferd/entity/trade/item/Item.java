@@ -69,11 +69,10 @@ public class Item {
     * Sets the new item line document.
     *
     * @param newLineDocument the new position
-    * @return the item
     */
-   public Item setLineDocument(Document newLineDocument) {
+   public void setLineDocument(Document newLineDocument) {
       this.lineDocument = newLineDocument;
-      return this;
+      
    }
 
    /**
@@ -89,11 +88,10 @@ public class Item {
     * Sets the specified supply chain trade agreement.
     *
     * @param agreement the new specified supply chain trade agreement
-    * @return the item
     */
-   public Item setAgreement(SpecifiedAgreement agreement) {
+   public void setAgreement(SpecifiedAgreement agreement) {
       this.agreement = agreement;
-      return this;
+      
    }
 
    /**
@@ -109,11 +107,10 @@ public class Item {
     * Sets the specified supply chain trade delivery.
     *
     * @param delivery the new specified supply chain trade delivery
-    * @return the item
     */
-   public Item setDelivery(SpecifiedDelivery delivery) {
+   public void setDelivery(SpecifiedDelivery delivery) {
       this.delivery = delivery;
-      return this;
+      
    }
 
    /**
@@ -129,11 +126,10 @@ public class Item {
     * Sets the specified supply chain trade settlement.
     *
     * @param settlement the new specified supply chain trade settlement
-    * @return the item
     */
-   public Item setSettlement(SpecifiedSettlement settlement) {
+   public void setSettlement(SpecifiedSettlement settlement) {
       this.settlement = settlement;
-      return this;
+      
    }
 
    /**
@@ -149,10 +145,9 @@ public class Item {
     * Sets the specified trade product.
     *
     * @param product the product
-    * @return the item
     */
-   public Item setProduct(Product product) {
+   public void setProduct(Product product) {
       this.product = product;
-      return this;
+      
    }
 }

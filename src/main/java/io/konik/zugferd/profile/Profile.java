@@ -77,11 +77,10 @@ public class Profile {
     * Sets the namespace.
     *
     * @param namespace the namespace
-    * @return the profile
     */
-   public Profile setNamespace(String namespace) {
+   public void setNamespace(String namespace) {
       this.namespace = namespace;
-      return this;
+      
    }
    
    /**
@@ -97,11 +96,10 @@ public class Profile {
     * Sets the version.
     *
     * @param version the new version
-    * @return the profile
     */
-   public Profile setVersion(ProfileVersion version) {
+   public void setVersion(ProfileVersion version) {
       this.version = version;
-      return this;
+      
    }
    
    /**
@@ -117,11 +115,10 @@ public class Profile {
     * Sets the conformance level.
     *
     * @param conformanceLevel the new conformance level
-    * @return the profile
     */
-   public Profile setConformanceLevel(ConformanceLevel conformanceLevel) {
+   public void setConformanceLevel(ConformanceLevel conformanceLevel) {
       this.conformanceLevel = conformanceLevel;
-      return this;
+      
    }
    
    

@@ -83,11 +83,10 @@ public class Invoice {
     * Sets the exchanged document context.
     * 
     * @param context the new exchanged document context
-    * @return the invoice
     */
-   public Invoice setContext(Context context) {
+   public void setContext(Context context) {
       this.context = context;
-      return this;
+      
    }
 
    /**
@@ -103,11 +102,10 @@ public class Invoice {
     * Sets the header.
     * 
     * @param header the new exchange document header
-    * @return the invoice
     */
-   public Invoice setHeader(Header header) {
+   public void setHeader(Header header) {
       this.header = header;
-      return this;
+      
    }
 
    /**
@@ -123,10 +121,9 @@ public class Invoice {
     * Sets the trade transaction.
     *
     * @param trade the new trade
-    * @return the invoice
     */
-   public Invoice setTrade(Trade trade) {
+   public void setTrade(Trade trade) {
       this.trade = trade;
-      return this;
+      
    }
 }

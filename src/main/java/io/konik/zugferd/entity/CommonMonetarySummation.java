@@ -49,11 +49,10 @@ public class CommonMonetarySummation {
     * Sets the line total.
     *
     * @param lineTotal the line total
-    * @return the common monetary summation
     */
-   public CommonMonetarySummation setLineTotal(Amount lineTotal) {
+   public void setLineTotal(Amount lineTotal) {
       this.lineTotal = lineTotal;
-      return this;
+      
    }
 
 }

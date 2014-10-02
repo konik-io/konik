@@ -100,11 +100,10 @@ public class Amount {
     * Sets the amount value.
     *
     * @param value the new value
-    * @return the amount
     */
-   public Amount setValue(BigDecimal value) {
+   public void setValue(BigDecimal value) {
       this.value = value;
-      return this;
+      
    }
 
    /**
@@ -120,11 +119,10 @@ public class Amount {
     * Sets the currency code.
     *
     * @param currency the new +ISO 4217 3A+ currency code
-    * @return the amount
     */
-   public Amount setCurrency(CurrencyCode currency) {
+   public void setCurrency(CurrencyCode currency) {
       this.currency = currency;
-      return this;
+      
    }
 
 }

@@ -71,11 +71,10 @@ public class PaymentTerm {
     * Sets the description.
     *
     * @param description the new description
-    * @return the payment term
     */
-   public PaymentTerm addDescription(String description) {
+   public void addDescription(String description) {
       getDescriptions().add(description);
-      return this;
+      
    }
 
    /**
@@ -91,11 +90,10 @@ public class PaymentTerm {
     * Sets the due date time.
     *
     * @param due the new due date time
-    * @return the payment term
     */
-   public PaymentTerm setDue(ZfDate due) {
+   public void setDue(ZfDate due) {
       this.due = due;
-      return this;
+      
    }
 
    /**
@@ -114,11 +112,10 @@ public class PaymentTerm {
     * Sets the partial payments.
     *
     * @param partialPayment the partial payment
-    * @return the payment term
     */
-   public PaymentTerm addPartialPayments(Amount partialPayment) {
+   public void addPartialPayments(Amount partialPayment) {
       getPartialPayments().add(partialPayment);
-      return this;
+      
    }
 
    /**
@@ -134,11 +131,10 @@ public class PaymentTerm {
     * Sets the payment penalty terms..
     *
     * @param penalty the new penalty
-    * @return the payment term
     */
-   public PaymentTerm setPenalty(PaymentPenaltyTerms penalty) {
+   public void setPenalty(PaymentPenaltyTerms penalty) {
       this.penalty = penalty;
-      return this;
+      
    }
 
    /**
@@ -154,10 +150,9 @@ public class PaymentTerm {
     * Sets the discount.
     *
     * @param discount the new discount
-    * @return the payment term
     */
-   public PaymentTerm setDiscount(PaymentDiscountTerms discount) {
+   public void setDiscount(PaymentDiscountTerms discount) {
       this.discount = discount;
-      return this;
+      
    }
 }

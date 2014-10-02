@@ -119,11 +119,10 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * 
     *
     * @param referenceText the reference text
-    * @return the trade settlement
     */
-   public Settlement setPaymentReference(String referenceText) {
+   public void setPaymentReference(String referenceText) {
       this.paymentReference = referenceText;
-      return this;
+      
    }
 
    /**
@@ -141,12 +140,11 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * Sets the invoice currency code.
     *
     * @param currency the new currency
-    * @return the trade settlement
     */
 
-   public Settlement setCurrency(CurrencyCode currency) {
+   public void setCurrency(CurrencyCode currency) {
       this.currency = currency;
-      return this;
+      
    }
 
    /**
@@ -165,11 +163,10 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * Profile:: COMFORT
     *
     * @param invoicee the new invoicee trade party
-    * @return the supply chain trade settlement
     */
-   public Settlement setInvoicee(TradeParty invoicee) {
+   public void setInvoicee(TradeParty invoicee) {
       this.invoicee = invoicee;
-      return this;
+      
    }
 
    /**
@@ -185,11 +182,10 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * Sets the payee.
     *
     * @param payee the payee
-    * @return the settlement
     */
-   public Settlement setPayee(TradeParty payee) {
+   public void setPayee(TradeParty payee) {
       this.payee = payee;
-      return this;
+      
    }
 
    /**
@@ -208,11 +204,10 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * Adds the payment method.
     *
     * @param newPaymentMethod the new payment method
-    * @return the supply chain trade settlement
     */
-   public Settlement addPaymentMeans(PaymentMeans newPaymentMethod) {
+   public void addPaymentMeans(PaymentMeans newPaymentMethod) {
       getPaymentMeans().add(newPaymentMethod);
-      return this;
+      
    }
 
    /**
@@ -232,12 +227,11 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * Adds a trade tax.
     * 
     * @param additionalTradeTax
-    * @return the trade settlement
     */
    @Override
-   public Settlement addTradeTax(TradeTax additionalTradeTax) {
+   public void addTradeTax(TradeTax additionalTradeTax) {
       getTradeTax().add(additionalTradeTax);
-      return this;
+      
    }
 
    /**
@@ -256,12 +250,11 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * Sets the billing specified period.
     * 
     * @param billingPeriod the new billing specified period
-    * @return the supply chain trade settlement
     */
    @Override
-   public Settlement setBillingPeriod(Period billingPeriod) {
+   public void setBillingPeriod(Period billingPeriod) {
       this.billingPeriod = billingPeriod;
-      return this;
+      
    }
 
    /**
@@ -281,12 +274,11 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * Adds the trade allowance charge.
     * 
     * @param additionalAllowanceCharge an additional allowance charge
-    * @return the trade settlement
     */
    @Comfort
-   public Settlement addAllowanceCharge(SpecifiedAllowanceCharge additionalAllowanceCharge) {
+   public void addAllowanceCharge(SpecifiedAllowanceCharge additionalAllowanceCharge) {
       getAllowanceCharge().add(additionalAllowanceCharge);
-      return this;
+      
    }
 
    /**
@@ -306,12 +298,11 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * Adds the specified logistics service charge.
     * 
     * @param logisticsServiceCharge the logistics service charge
-    * @return the trade settlement
     */
    @Comfort
-   public Settlement addServiceCharge(LogisticsServiceCharge logisticsServiceCharge) {
+   public void addServiceCharge(LogisticsServiceCharge logisticsServiceCharge) {
       getServiceCharge().add(logisticsServiceCharge);
-      return this;
+      
    }
 
    /**
@@ -332,12 +323,11 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * 
     *
     * @param additionalPaymentTerm the additional payment term
-    * @return the trade settlement
     */
    @Comfort
-   public Settlement addPaymentTerm(PaymentTerm additionalPaymentTerm) {
+   public void addPaymentTerm(PaymentTerm additionalPaymentTerm) {
       getPaymentTerms().add(additionalPaymentTerm);
-      return this;
+      
    }
 
    /**
@@ -356,13 +346,12 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * Sets the trade settlement monetary summation.
     * 
     * @param monetarySummation the new monetary summation
-    * @return the supply chain trade settlement
     */
    @Basic
    @Override
-   public Settlement setMonetarySummation(MonetarySummation monetarySummation) {
+   public void setMonetarySummation(MonetarySummation monetarySummation) {
       this.monetarySummation = monetarySummation;
-      return this;
+      
    }
 
    /**
@@ -380,11 +369,10 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * Profile:: EXTENDED
     *
     * @param bookingReference the booking reference account.
-    * @return the trade
     */
-   public Settlement setReceivableBookingReference(String bookingReference) {
+   public void setReceivableBookingReference(String bookingReference) {
       this.receivableBookingReference = bookingReference;
-      return this;
+      
    }
 
 }

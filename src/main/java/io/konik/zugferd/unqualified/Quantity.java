@@ -118,11 +118,10 @@ public class Quantity {
     * Sets the value.
     *
     * @param value the new value
-    * @return the quantity
     */
-   public Quantity setValue(BigDecimal value) {
+   public void setValue(BigDecimal value) {
       this.value = value;
-      return this;
+      
    }
 
    /**

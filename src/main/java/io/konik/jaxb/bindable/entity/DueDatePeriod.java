@@ -47,11 +47,10 @@ public class DueDatePeriod extends Period {
     * Sets the contractual due date.
     *
     * @param contractualDueDate the contractual due date
-    * @return the period
     */
-   public DueDatePeriod setContractualDueDate(ZfDate contractualDueDate) {
+   public void setContractualDueDate(ZfDate contractualDueDate) {
       this.contractualDueDate = contractualDueDate;
-      return this;
+      
    }
 
 }

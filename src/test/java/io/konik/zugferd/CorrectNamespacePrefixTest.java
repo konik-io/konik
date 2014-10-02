@@ -26,7 +26,6 @@ import java.io.UnsupportedEncodingException;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-@SuppressWarnings("javadoc")
 public class CorrectNamespacePrefixTest {
    
    static String xmlInvoice;

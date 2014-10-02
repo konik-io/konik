@@ -88,11 +88,10 @@ public class TradeParty {
     * Example:: {@code The supplier number given by the customer/buyer }
     *
     * @param id the new id
-    * @return the trade party
     */
-   public TradeParty setId(String id) {
+   public void setId(String id) {
       this.id = id;
-      return this;
+      
    }
 
    /**
@@ -123,11 +122,10 @@ public class TradeParty {
     * {@code 0021, 0088, 0060, 0177 }
     * 
     * @param additionalGlobalId the additional global id
-    * @return the trade party
     */
-   public TradeParty addGlobalId(ID additionalGlobalId) {
+   public void addGlobalId(ID additionalGlobalId) {
       getGlobalId().add(additionalGlobalId);
-      return this;
+      
    }
 
    /**
@@ -151,11 +149,10 @@ public class TradeParty {
     * Example:: {@code  ACME Inc.}
     * 
     * @param name the name
-    * @return the trade party
     */
-   public TradeParty setName(String name) {
+   public void setName(String name) {
       this.name = name;
-      return this;
+      
    }
 
    /**
@@ -177,11 +174,10 @@ public class TradeParty {
     * 
     * 
     * @param contact the new defined trade contact
-    * @return the trade party
     */
-   public TradeParty setContact(Contact contact) {
+   public void setContact(Contact contact) {
       this.contact = contact;
-      return this;
+      
    }
 
    /**
@@ -203,11 +199,10 @@ public class TradeParty {
     * 
     * 
     * @param postalAddress the new postal trade address
-    * @return the trade party
     */
-   public TradeParty setAddress(Address postalAddress) {
+   public void setAddress(Address postalAddress) {
       this.address = postalAddress;
-      return this;
+      
    }
 
    /**
@@ -232,11 +227,10 @@ public class TradeParty {
     * 
     * 
     * @param additionalTaxRegistration an additional Tax Registration
-    * @return the trade party
     */
-   public TradeParty addTaxRegistrations(TaxRegistration... additionalTaxRegistration) {
+   public void addTaxRegistrations(TaxRegistration... additionalTaxRegistration) {
       Collections.addAll(getTaxRegistrations(), additionalTaxRegistration);
-      return this;
+      
    }
 
 }

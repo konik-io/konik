@@ -95,7 +95,7 @@ public class MonetarySummation extends CommonMonetarySummation {
    @Override
    public MonetarySummation setLineTotal(Amount lineTotal) {
       this.lineTotal = lineTotal;
-      return this;
+      
    }
 
    /**
@@ -117,11 +117,10 @@ public class MonetarySummation extends CommonMonetarySummation {
     * 
     * 
     * @param chargeTotal the new charge total amount
-    * @return the trade settlement monetary summation
     */
-   public MonetarySummation setChargeTotal(Amount chargeTotal) {
+   public void setChargeTotal(Amount chargeTotal) {
       this.chargeTotal = chargeTotal;
-      return this;
+      
    }
 
    /**
@@ -141,11 +140,10 @@ public class MonetarySummation extends CommonMonetarySummation {
     * Profile:: BASIC
     * 
     * @param allowanceTotal the new allowance total amount
-    * @return the trade settlement monetary summation
     */
-   public MonetarySummation setAllowanceTotal(Amount allowanceTotal) {
+   public void setAllowanceTotal(Amount allowanceTotal) {
       this.allowanceTotal = allowanceTotal;
-      return this;
+      
    }
 
    /**
@@ -168,11 +166,10 @@ public class MonetarySummation extends CommonMonetarySummation {
     * Profile:: BASIC
     * 
     * @param taxBasisTotal the new tax basis total amount
-    * @return the trade settlement monetary summation
     */
-   public MonetarySummation setTaxBasisTotal(Amount taxBasisTotal) {
+   public void setTaxBasisTotal(Amount taxBasisTotal) {
       this.taxBasisTotal = taxBasisTotal;
-      return this;
+      
    }
 
    /**
@@ -192,11 +189,10 @@ public class MonetarySummation extends CommonMonetarySummation {
     * Profile:: BASIC
     * 
     * @param taxTotal the new tax total amount
-    * @return the trade settlement monetary summation
     */
-   public MonetarySummation setTaxTotal(Amount taxTotal) {
+   public void setTaxTotal(Amount taxTotal) {
       this.taxTotal = taxTotal;
-      return this;
+      
    }
 
    /**
@@ -217,11 +213,10 @@ public class MonetarySummation extends CommonMonetarySummation {
     * 
     * 
     * @param grandTotal the new grand total amount
-    * @return the trade settlement monetary summation
     */
-   public MonetarySummation setGrandTotal(Amount grandTotal) {
+   public void setGrandTotal(Amount grandTotal) {
       this.grandTotal = grandTotal;
-      return this;
+      
    }
 
    /**
@@ -243,11 +238,10 @@ public class MonetarySummation extends CommonMonetarySummation {
     * 
     * 
     * @param totalPrepaid the new total prepaid amount
-    * @return the trade settlement monetary summation
     */
-   public MonetarySummation setTotalPrepaid(Amount totalPrepaid) {
+   public void setTotalPrepaid(Amount totalPrepaid) {
       this.totalPrepaid = totalPrepaid;
-      return this;
+      
    }
 
    /**
@@ -267,11 +261,10 @@ public class MonetarySummation extends CommonMonetarySummation {
     * Profile:: COMFORT
     * 
     * @param duePayable the new due payable amount
-    * @return the trade settlement monetary summation
     */
-   public MonetarySummation setDuePayable(Amount duePayable) {
+   public void setDuePayable(Amount duePayable) {
       this.duePayable = duePayable;
-      return this;
+      
    }
 
 }

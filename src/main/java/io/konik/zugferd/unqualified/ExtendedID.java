@@ -62,11 +62,10 @@ public class ExtendedID extends ID {
     * Sets the scheme agency id.
     *
     * @param schemeAgencyId the new scheme agency id
-    * @return
     */
-   public ExtendedID setSchemeAgencyId(String schemeAgencyId) {
+   public void setSchemeAgencyId(String schemeAgencyId) {
       this.schemeAgencyId = schemeAgencyId;
-      return this;
+      
    }
 
 }

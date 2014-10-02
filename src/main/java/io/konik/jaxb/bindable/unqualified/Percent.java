@@ -36,9 +36,9 @@ class Percent {
       return value;
    }
 
-   public Percent setValue(BigDecimal value) {
+   public void setValue(BigDecimal value) {
       this.value = value;
-      return this;
+      
    }
 
 }

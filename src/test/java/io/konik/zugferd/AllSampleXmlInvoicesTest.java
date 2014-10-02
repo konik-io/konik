@@ -55,7 +55,6 @@ import org.xml.sax.SAXException;
 import com.google.common.collect.Lists;
 import com.google.common.io.Files;
 
-@SuppressWarnings("javadoc")
 @RunWith(Parameterized.class)
 public class AllSampleXmlInvoicesTest {
    

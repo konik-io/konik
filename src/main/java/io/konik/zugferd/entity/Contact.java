@@ -92,11 +92,10 @@ public class Contact {
     * Profile:: EXTENDED
     *
     * @param name the new person name
-    * @return the contact
     */
-   public Contact setName(String name) {
+   public void setName(String name) {
       this.name = name;
-      return this;
+      
    }
 
    /**
@@ -116,11 +115,10 @@ public class Contact {
     * Profile:: EXTENDED
     *
     * @param department the new department name
-    * @return the contact
     */
-   public Contact setDepartment(String department) {
+   public void setDepartment(String department) {
       this.department = department;
-      return this;
+      
    }
 
    /**
@@ -144,11 +142,10 @@ public class Contact {
     * Example:: +{plus}49 (123) 456789-999+
     *
     * @param telephone the new telephone universal communication
-    * @return the contact
     */
-   public Contact setTelephone(String telephone) {
+   public void setTelephone(String telephone) {
       this.telephone = telephone;
-      return this;
+      
    }
 
    /**
@@ -172,11 +169,10 @@ public class Contact {
     * Example:: +{plus}49 (123) 456789-999+
     *
     * @param faxNumber the new fax number
-    * @return the contact
     */
-   public Contact setFax(String faxNumber) {
+   public void setFax(String faxNumber) {
       this.fax = faxNumber;
-      return this;
+      
    }
 
    /**
@@ -200,10 +196,9 @@ public class Contact {
     * Example:: +example@konik.io+
     *
     * @param email the new email
-    * @return the contact
     */
-   public Contact setEmail(String email) {
+   public void setEmail(String email) {
       this.email = email;
-      return this;
+      
    }
 }

@@ -72,12 +72,11 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax, Speci
     * Adds a trade tax.
     * 
     * @param additionalTradeTax
-    * @return the trade settlement
     */
    @Override
-   public SpecifiedSettlement addTradeTax(SpecifiedTax additionalTradeTax) {
+   public void addTradeTax(SpecifiedTax additionalTradeTax) {
       getTradeTax().add(additionalTradeTax);
-      return this;
+      
    }
 
    /**
@@ -99,12 +98,11 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax, Speci
     * 
     *
     * @param billingPeriod the new billing specified period
-    * @return the supply chain trade settlement
     */
    @Override
-   public SpecifiedSettlement setBillingPeriod(Period billingPeriod) {
+   public void setBillingPeriod(Period billingPeriod) {
       this.billingPeriod = billingPeriod;
-      return this;
+      
    }
 
    /**
@@ -125,11 +123,10 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax, Speci
     * Profile:: EXTENDED
     *
     * @param specifiedBookingReference the specified booking reference
-    * @return the specified settlement
     */
-   public SpecifiedSettlement setBookingReference(String specifiedBookingReference) {
+   public void setBookingReference(String specifiedBookingReference) {
       this.bookingReference = specifiedBookingReference;
-      return this;
+      
    }
 
    /**
@@ -147,11 +144,10 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax, Speci
     * Sets the trade settlement monetary summation.
     * 
     * @param monetarySummation the new monetary summation
-    * @return the supply chain trade settlement
     */
    @Override
-   public SpecifiedSettlement setMonetarySummation(SpecifiedMonetarySummation monetarySummation) {
+   public void setMonetarySummation(SpecifiedMonetarySummation monetarySummation) {
       this.monetarySummation = monetarySummation;
-      return this;
+      
    }
 }

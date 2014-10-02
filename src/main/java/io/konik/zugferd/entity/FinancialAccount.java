@@ -70,11 +70,10 @@ public class FinancialAccount {
     * Sets the iban.
     *
     * @param iban the new iban
-    * @return the financial account
     */
-   public FinancialAccount setIban(String iban) {
+   public void setIban(String iban) {
       this.iban = iban;
-      return this;
+      
    }
 
    /**
@@ -90,11 +89,10 @@ public class FinancialAccount {
     * Sets the proprietary id.
     *
     * @param proprietaryId the new proprietary id
-    * @return the financial account
     */
-   public FinancialAccount setProprietaryID(String proprietaryId) {
+   public void setProprietaryID(String proprietaryId) {
       this.proprietaryId = proprietaryId;
-      return this;
+      
    }
 
 }

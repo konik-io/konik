@@ -79,11 +79,10 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     * Profile:: COMFORT
     *
     * @param buyerReference the new buyer reference
-    * @return the trade agreement
     */
-   public Agreement setBuyerReference(String buyerReference) {
+   public void setBuyerReference(String buyerReference) {
       this.buyerReference = buyerReference;
-      return this;
+      
    }
 
    /**
@@ -100,11 +99,10 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     * Sets the seller.
     *
     * @param seller the seller
-    * @return the agreement
     */
-   public Agreement setSeller(TradeParty seller) {
+   public void setSeller(TradeParty seller) {
       this.seller = seller;
-      return this;
+      
    }
 
    /**
@@ -121,11 +119,10 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     * Sets the product end user.
     *
     * @param productEndUser the new product end user
-    * @return the agreement
     */
-   public Agreement setProductEndUser(TradeParty productEndUser) {
+   public void setProductEndUser(TradeParty productEndUser) {
       this.productEndUser = productEndUser;
-      return this;
+      
    }
 
    /**
@@ -142,11 +139,10 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     * Sets the buyer trade party.
     *
     * @param buyer the new buyer trade party
-    * @return the supply chain trade agreement
     */
-   public Agreement setBuyer(TradeParty buyer) {
+   public void setBuyer(TradeParty buyer) {
       this.buyer = buyer;
-      return this;
+      
    }
 
    /**
@@ -188,12 +184,10 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     * Sets the buyer order referenced document.
     *
     * @param buyerOrder the new buyer order referenced document
-    * @return the supply chain trade agreement
     */
    @Override
-   public Agreement setBuyerOrder(ReferencedDocument buyerOrder) {
+   public void setBuyerOrder(ReferencedDocument buyerOrder) {
       this.buyerOrder = buyerOrder;
-      return this;
    }
 
    /**
@@ -215,12 +209,11 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     * Profile:: COMFORT
     *
     * @param contract the new contract referenced document
-    * @return the supply chain trade agreement
     */
    @Override
-   public Agreement setContract(ReferencedDocument contract) {
+   public void setContract(ReferencedDocument contract) {
       this.contract = contract;
-      return this;
+      
    }
 
    /**
@@ -241,12 +234,11 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     * Adds the additional.
     *
     * @param additionalReference the additional reference
-    * @return the common agreement
     */
    @Override
-   public Agreement addAdditional(ReferencedDocumentAdditional additionalReference) {
+   public void addAdditional(ReferencedDocumentAdditional additionalReference) {
       getAdditional().add(additionalReference);
-      return this;
+      
    }
 
    /**
@@ -268,11 +260,10 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     * Profile:: COMFORT
     *
     * @param customerOrder the new customer order referenced document
-    * @return the supply chain trade agreement
     */
    @Override
-   public Agreement setCustomerOrder(ReferencedDocument customerOrder) {
+   public void setCustomerOrder(ReferencedDocument customerOrder) {
       this.customerOrder = customerOrder;
-      return this;
+      
    }
 }

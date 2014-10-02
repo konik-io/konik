@@ -70,11 +70,10 @@ public class FinancialInstitution {
     * Sets the BIC.
     *
     * @param bic the new bic
-    * @return the financial institution
     */
-   public FinancialInstitution setBic(String bic) {
+   public void setBic(String bic) {
       this.bic = bic;
-      return this;
+      
    }
 
    /**
@@ -90,11 +89,10 @@ public class FinancialInstitution {
     * Sets the German bankleitzahl.
     *
     * @param germanBankleitzahl the new german bankleitzahl
-    * @return the financial institution
     */
-   public FinancialInstitution setGermanBankleitzahl(String germanBankleitzahl) {
+   public void setGermanBankleitzahl(String germanBankleitzahl) {
       this.germanBankleitzahl = germanBankleitzahl;
-      return this;
+      
    }
 
    /**
@@ -110,11 +108,10 @@ public class FinancialInstitution {
     * Sets the name.
     *
     * @param name the new name
-    * @return the financial institution
     */
-   public FinancialInstitution setName(String name) {
+   public void setName(String name) {
       this.name = name;
-      return this;
+      
    }
 
 }

@@ -110,11 +110,10 @@ public class Header {
     * Example:: {@code 2012-12345}
     *
     * @param invoiceNumber the invoice number
-    * @return the header document
     */
-   public Header setInvoiceNumber(String invoiceNumber) {
+   public void setInvoiceNumber(String invoiceNumber) {
       this.invoiceNumber = invoiceNumber;
-      return this;
+      
    }
 
    /**
@@ -138,12 +137,11 @@ public class Header {
     * Example:: {@code invoice, credit advice, debit note, pro forma invoice}
     *
     * @param name the new name
-    * @return the exchanged document
     * @see #getName()
     */
-   public Header setName(String name) {
+   public void setName(String name) {
       this.name = name;
-      return this;
+      
    }
 
    /**
@@ -168,13 +166,12 @@ public class Header {
     * Example:: {@code 380, 381, 383, 389, 261}
     *
     * @param code the new document name code
-    * @return the header document
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred1001.htm[UN/EDIFACT 1001 Document name coe^]
     */
 
-   public Header setCode(DocumentCode code) {
+   public void setCode(DocumentCode code) {
       this.code = code;
-      return this;
+      
    }
 
    /**
@@ -196,11 +193,10 @@ public class Header {
     * 
     * 
     * @param issued the new issue date time
-    * @return the exchanged document
     */
-   public Header setIssued(ZfDate issued) {
+   public void setIssued(ZfDate issued) {
       this.issued = issued;
-      return this;
+      
    }
 
    /**
@@ -276,11 +272,10 @@ public class Header {
     * {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
     *
     * @param additionalNote the additional note
-    * @return the header
     */
-   public Header addNote(Note... additionalNote) {
+   public void addNote(Note... additionalNote) {
       addAll(getNotes(), additionalNote);
-      return this;
+      
    }
 
    /**
@@ -296,11 +291,10 @@ public class Header {
     * Sets the contractual due date.
     *
     * @param contractualDueDate the contractual due date
-    * @return the header
     */
-   public Header setContractualDueDate(ZfDate contractualDueDate) {
+   public void setContractualDueDate(ZfDate contractualDueDate) {
       this.contractualDueDate = contractualDueDate;
-      return this;
+      
    }
 
 }

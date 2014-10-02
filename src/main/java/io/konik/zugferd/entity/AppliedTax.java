@@ -51,13 +51,12 @@ public class AppliedTax extends CommonTax {
     * Profile:: BASIC
     *
     * @param taxTypeCode the tax type code
-    * @return the tax
     * @see <a href="http://www.unece.org/trade/untdid/d98b/uncl/uncl5153.htm">UNCL 5153</a>
     */
    @Override
-   public AppliedTax setType(TaxCode taxTypeCode) {
+   public void setType(TaxCode taxTypeCode) {
       super.setType(taxTypeCode);
-      return this;
+      
    }
 
    /**

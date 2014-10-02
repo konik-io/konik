@@ -76,11 +76,10 @@ public class Trade {
     * Sets the trade agreement.
     *
     * @param agreement the new agreement
-    * @return the trade
     */
-   public Trade setAgreement(Agreement agreement) {
+   public void setAgreement(Agreement agreement) {
       this.agreement = agreement;
-      return this;
+      
    }
 
    /**
@@ -96,11 +95,10 @@ public class Trade {
     * Sets the trade delivery.
     * 
     * @param delivery the new trade delivery
-    * @return the trade
     */
-   public Trade setDelivery(Delivery delivery) {
+   public void setDelivery(Delivery delivery) {
       this.delivery = delivery;
-      return this;
+      
    }
 
    /**
@@ -116,11 +114,10 @@ public class Trade {
     * Sets the trade settlement.
     *
     * @param tradeSettlement the new trade settlement
-    * @return the trade
     */
-   public Trade setSettlement(Settlement tradeSettlement) {
+   public void setSettlement(Settlement tradeSettlement) {
       this.settlement = tradeSettlement;
-      return this;
+      
    }
 
    /**
@@ -139,11 +136,10 @@ public class Trade {
     * Adds an item.
     * 
     * @param item the item
-    * @return the trade
     */
-   public Trade addItem(Item item) {
+   public void addItem(Item item) {
       getItems().add(item);
-      return this;
+      
    }
 
 }

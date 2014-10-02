@@ -82,11 +82,10 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
     * Sets the related consignment.
     *
     * @param relatedConsignment the related consignment
-    * @return the trade delivery
     */
-   public Delivery setRelatedConsignment(List<Consignment> relatedConsignment) {
+   public void setRelatedConsignment(List<Consignment> relatedConsignment) {
       this.relatedConsignment = relatedConsignment;
-      return this;
+      
    }
 
    /**
@@ -102,11 +101,10 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
     * Sets the ship from.
     *
     * @param shipFrom the ship from
-    * @return the trade delivery
     */
-   public Delivery setShipFrom(TradeParty shipFrom) {
+   public void setShipFrom(TradeParty shipFrom) {
       this.shipFrom = shipFrom;
-      return this;
+      
    }
 
    @Override
@@ -115,9 +113,9 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
    }
 
    @Override
-   public Delivery setDespatchAdvice(ReferencedDocument despatchAdvice) {
+   public void setDespatchAdvice(ReferencedDocument despatchAdvice) {
       this.despatchAdvice = despatchAdvice;
-      return this;
+      
 
    }
 
@@ -127,9 +125,9 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
    }
 
    @Override
-   public Delivery setDeliveryNote(ReferencedDocument deliveryNote) {
+   public void setDeliveryNote(ReferencedDocument deliveryNote) {
       this.deliveryNote = deliveryNote;
-      return this;
+      
    }
 
 }

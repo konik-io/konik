@@ -86,11 +86,10 @@ public class Document {
     * Profile:: COMFORT.
     *
     * @param position the position
-    * @return the document line
     */
-   public Document setPosition(int position) {
+   public void setPosition(int position) {
       this.position = valueOf(position);
-      return this;
+      
    }
 
    /**
@@ -117,11 +116,10 @@ public class Document {
     * - Note.subjectCode EXTENDED
     *
     * @param note the note
-    * @return the document line document
     */
-   public Document addNote(Note note) {
+   public void addNote(Note note) {
       getNotes().add(note);
-      return this;
+      
    }
 
 }

@@ -44,9 +44,9 @@ public class SpecifiedMonetarySummation extends CommonMonetarySummation {
    }
 
    @Override
-   public SpecifiedMonetarySummation setLineTotal(Amount lineTotal) {
+   public void setLineTotal(Amount lineTotal) {
       super.setLineTotal(lineTotal);
-      return this;
+      
    }
 
    /**
@@ -62,10 +62,9 @@ public class SpecifiedMonetarySummation extends CommonMonetarySummation {
     * Sets the total allowance charge.
     *
     * @param totalAllowanceCharge the new total allowance charge
-    * @return the specified monetary summation
     */
-   public SpecifiedMonetarySummation setTotalAllowanceCharge(Amount totalAllowanceCharge) {
+   public void setTotalAllowanceCharge(Amount totalAllowanceCharge) {
       this.totalAllowanceCharge = totalAllowanceCharge;
-      return this;
+      
    }
 }

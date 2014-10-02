@@ -80,11 +80,10 @@ public class Price {
     * Sets the charge amount.
     *
     * @param chargeAmount the new charge amount
-    * @return the price
     */
-   public Price setChargeAmount(Amount chargeAmount) {
+   public void setChargeAmount(Amount chargeAmount) {
       this.chargeAmount = chargeAmount;
-      return this;
+      
    }
 
    /**
@@ -100,11 +99,10 @@ public class Price {
     * Sets the basis quantity.
     *
     * @param quantity the new basis quantity
-    * @return the price
     */
-   public Price setBasis(Quantity quantity) {
+   public void setBasis(Quantity quantity) {
       this.basis = quantity;
-      return this;
+      
    }
 
 }

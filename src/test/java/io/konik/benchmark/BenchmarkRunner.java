@@ -31,7 +31,6 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
  * 
  * The Benchmark Runner.
  */
-@SuppressWarnings("javadoc")
 public class BenchmarkRunner {
    
    public static void main(String... args) throws RunnerException {

@@ -61,12 +61,11 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
     * Sets the buyer order referenced document.
     *
     * @param buyerOrder the new buyer order referenced document
-    * @return the supply chain trade agreement
     */
    @Override
-   public SpecifiedAgreement setBuyerOrder(ReferencedDocumentItem buyerOrder) {
+   public void setBuyerOrder(ReferencedDocumentItem buyerOrder) {
       this.buyerOrder = buyerOrder;
-      return this;
+      
    }
 
    /**
@@ -88,12 +87,11 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
     * Profile:: COMFORT
     *
     * @param contract the new contract referenced document
-    * @return the supply chain trade agreement
     */
    @Override
-   public SpecifiedAgreement setContract(ReferencedDocumentItem contract) {
+   public void setContract(ReferencedDocumentItem contract) {
       this.contract = contract;
-      return this;
+      
    }
 
    @Override
@@ -106,9 +104,9 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    }
 
    @Override
-   public SpecifiedAgreement addAdditional(ReferencedDocumentItemAdditional additionalReference) {
+   public void addAdditional(ReferencedDocumentItemAdditional additionalReference) {
       getAdditional().add(additionalReference);
-      return this;
+      
    }
 
    /**
@@ -125,11 +123,10 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
     * Sets the gross price product trade price.
     *
     * @param grossPrice the new gross price product trade price
-    * @return the supply chain trade agreement
     */
-   public SpecifiedAgreement setGrossPrice(GrossPrice grossPrice) {
+   public void setGrossPrice(GrossPrice grossPrice) {
       this.grossPrice = grossPrice;
-      return this;
+      
    }
 
    /**
@@ -146,11 +143,10 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
     * Sets the net price product trade price.
     *
     * @param netPrice the new net price product trade price
-    * @return the supply chain trade agreement
     */
-   public SpecifiedAgreement setNetPrice(Price netPrice) {
+   public void setNetPrice(Price netPrice) {
       this.netPrice = netPrice;
-      return this;
+      
    }
 
    /**
@@ -172,12 +168,11 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
     * Profile:: COMFORT
     *
     * @param customerOrder the new customer order referenced document
-    * @return the supply chain trade agreement
     */
    @Override
-   public SpecifiedAgreement setCustomerOrder(ReferencedDocumentItem customerOrder) {
+   public void setCustomerOrder(ReferencedDocumentItem customerOrder) {
       this.customerOrder = customerOrder;
-      return this;
+      
    }
 
 }

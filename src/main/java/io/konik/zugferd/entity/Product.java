@@ -88,11 +88,10 @@ public class Product {
     * Sets the global id.
     *
     * @param productGlobalId the product global id
-    * @return the trade product
     */
-   public Product setGlobalId(ID productGlobalId) {
+   public void setGlobalId(ID productGlobalId) {
       this.globalId = productGlobalId;
-      return this;
+      
    }
 
    /**
@@ -108,11 +107,10 @@ public class Product {
     * Sets the seller assigned id.
     *
     * @param sellerAssignedId the new seller assigned id
-    * @return the trade product
     */
-   public Product setSellerAssignedId(String sellerAssignedId) {
+   public void setSellerAssignedId(String sellerAssignedId) {
       this.sellerAssignedId = sellerAssignedId;
-      return this;
+      
    }
 
    /**
@@ -128,11 +126,10 @@ public class Product {
     * Sets the buyer assigned id.
     *
     * @param buyerAssignedId the new buyer assigned id
-    * @return the trade product
     */
-   public Product setBuyerAssignedId(String buyerAssignedId) {
+   public void setBuyerAssignedId(String buyerAssignedId) {
       this.buyerAssignedId = buyerAssignedId;
-      return this;
+      
    }
 
    /**
@@ -148,11 +145,10 @@ public class Product {
     * Sets the name.
     *
     * @param name the new name
-    * @return the trade product
     */
-   public Product setName(String name) {
+   public void setName(String name) {
       this.name = name;
-      return this;
+      
    }
 
    /**
@@ -168,11 +164,10 @@ public class Product {
     * Sets the description.
     *
     * @param description the new description
-    * @return the product
     */
-   public Product setDescription(String description) {
+   public void setDescription(String description) {
       this.description = description;
-      return this;
+      
    }
 
    /**
@@ -191,11 +186,10 @@ public class Product {
     * Sets the characteristics.
     *
     * @param characteristic the characteristics
-    * @return the product
     */
-   public Product setCharacteristics(ProductCharacteristic characteristic) {
+   public void setCharacteristics(ProductCharacteristic characteristic) {
       getCharacteristics().add(characteristic);
-      return this;
+      
    }
 
    /**
@@ -214,11 +208,10 @@ public class Product {
     * Sets the classifications.
     *
     * @param classification the classifications
-    * @return the product
     */
-   public Product setClassifications(ProductClassification classification) {
+   public void setClassifications(ProductClassification classification) {
       getClassifications().add(classification);
-      return this;
+      
    }
 
    /**
@@ -237,11 +230,10 @@ public class Product {
     * Adds a origin trade country.
     *
     * @param originCountry the additional origin country
-    * @return the trade product
     */
-   public Product addOrigins(CountryCode originCountry) {
+   public void addOrigins(CountryCode originCountry) {
       getOrigins().add(originCountry);
-      return this;
+      
    }
 
    /**
@@ -260,11 +252,10 @@ public class Product {
     * Additional contained products.
     *
     * @param containedProduct the contained product
-    * @return the product
     */
-   public Product addContainedProducts(ReferencedProduct containedProduct) {
+   public void addContainedProducts(ReferencedProduct containedProduct) {
       getContainedProducts().add(containedProduct);
-      return this;
+      
    }
 
 }

@@ -84,12 +84,11 @@ public class PaymentMeans {
     * Profile:: *COMFORT*
     * 
     * @param paymentMeansCode the new UNCL 4461 payment means code
-    * @return the trade settlement payment means
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred4461.htm[UN/EDIFACT 4461 Payment means code^]
     */
-   public PaymentMeans setCode(PaymentMeansCode paymentMeansCode) {
+   public void setCode(PaymentMeansCode paymentMeansCode) {
       this.code = paymentMeansCode;
-      return this;
+      
    }
 
    /**
@@ -116,11 +115,10 @@ public class PaymentMeans {
     * Example:: +Cash, Credit Card+
     *
     * @param additionalInformation the additional information
-    * @return the payment means
     */
-   public PaymentMeans addInformation(String additionalInformation) {
+   public void addInformation(String additionalInformation) {
       getInformations().add(additionalInformation);
-      return this;
+      
    }
 
    /**
@@ -160,11 +158,10 @@ public class PaymentMeans {
     * 
     * 
     * @param payerAccount the payer account
-    * @return the trade settlement payment means
     */
-   public PaymentMeans setPayerAccount(FinancialAccount payerAccount) {
+   public void setPayerAccount(FinancialAccount payerAccount) {
       this.payerAccount = payerAccount;
-      return this;
+      
    }
 
    /**
@@ -186,11 +183,10 @@ public class PaymentMeans {
     * 
     * 
     * @param payeeAccount the payee account
-    * @return the trade settlement payment means
     */
-   public PaymentMeans setPayeeAccount(FinancialAccount payeeAccount) {
+   public void setPayeeAccount(FinancialAccount payeeAccount) {
       this.payeeAccount = payeeAccount;
-      return this;
+      
    }
 
    /**
@@ -212,11 +208,10 @@ public class PaymentMeans {
     * 
     * 
     * @param payerInstitution the payer institution
-    * @return the trade settlement payment means
     */
-   public PaymentMeans setPayerInstitution(FinancialInstitution payerInstitution) {
+   public void setPayerInstitution(FinancialInstitution payerInstitution) {
       this.payerInstitution = payerInstitution;
-      return this;
+      
    }
 
    /**
@@ -238,11 +233,10 @@ public class PaymentMeans {
     * 
     * 
     * @param payeeInstitution the payee institution
-    * @return the trade settlement payment means
     */
-   public PaymentMeans setPayeeInstitution(FinancialInstitution payeeInstitution) {
+   public void setPayeeInstitution(FinancialInstitution payeeInstitution) {
       this.payeeInstitution = payeeInstitution;
-      return this;
+      
    }
 
 }

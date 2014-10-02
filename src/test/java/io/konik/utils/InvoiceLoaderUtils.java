@@ -34,7 +34,6 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 import org.xml.sax.SAXException;
-@SuppressWarnings("javadoc")
 public class InvoiceLoaderUtils {
 
    private static final String ZF_1_SCHEMA_XSD = "/zfSchema/ZUGFeRD_1p0.xsd";

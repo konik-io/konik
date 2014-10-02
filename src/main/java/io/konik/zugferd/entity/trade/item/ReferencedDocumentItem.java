@@ -54,11 +54,10 @@ public class ReferencedDocumentItem extends ReferencedDocument {
     * Sets the line position.
     *
     * @param linePos the line position number
-    * @return the referenced document item
     */
-   public ReferencedDocumentItem setLinePos(String linePos) {
+   public void setLinePos(String linePos) {
       this.linePos = linePos;
-      return this;
+      
    }
 
 }

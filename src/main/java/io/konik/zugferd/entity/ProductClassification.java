@@ -79,11 +79,10 @@ public class ProductClassification {
     * Adds the class names.
     *
     * @param className the class name
-    * @return the product classification
     */
-   public ProductClassification addClassNames(String className) {
+   public void addClassNames(String className) {
       getClassNames().add(className);
-      return this;
+      
    }
 
 }

@@ -81,11 +81,10 @@ public class ReferencedDocument {
     * Sets the issue date time.
     * 
     * @param issued the new issue date time
-    * @return the referenced document
     */
-   public ReferencedDocument setIssued(Date issued) {
+   public void setIssued(Date issued) {
       this.issued = new Date(issued.getTime());
-      return this;
+      
    }
 
    /**
@@ -94,11 +93,10 @@ public class ReferencedDocument {
     * Examples:: Order number, document number, number of customer order, delivery note numbers
     *
     * @param referenceDocumentIdentifier the id of the document
-    * @return the referenced document
     */
-   public ReferencedDocument setId(String referenceDocumentIdentifier) {
+   public void setId(String referenceDocumentIdentifier) {
       id = referenceDocumentIdentifier;
-      return this;
+      
    }
 
    /**

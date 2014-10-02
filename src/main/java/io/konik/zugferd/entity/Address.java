@@ -110,11 +110,10 @@ public class Address {
     * Example:: {@code DE-123456}
     * 
     * @param postcode the postcode
-    * @return the trade address
     */
-   public Address setPostcode(String postcode) {
+   public void setPostcode(String postcode) {
       this.postcode = postcode;
-      return this;
+      
    }
 
    /**
@@ -138,11 +137,10 @@ public class Address {
     * Example:: {@code Elm Street 13}
     *
     * @param lineOne the new line one
-    * @return the trade address
     */
-   public Address setLineOne(String lineOne) {
+   public void setLineOne(String lineOne) {
       this.lineOne = lineOne;
-      return this;
+      
    }
 
    /**
@@ -166,11 +164,10 @@ public class Address {
     * Example:: {@code Department of broken dreams}
     *
     * @param lineTwo the new line two
-    * @return the trade address
     */
-   public Address setLineTwo(String lineTwo) {
+   public void setLineTwo(String lineTwo) {
       this.lineTwo = lineTwo;
-      return this;
+      
    }
 
    /**
@@ -194,11 +191,10 @@ public class Address {
     * Example:: {@code Zürich}
     *
     * @param cityName the new city name
-    * @return the trade address
     */
-   public Address setCity(String cityName) {
+   public void setCity(String cityName) {
       this.city = cityName;
-      return this;
+      
    }
 
    /**
@@ -227,11 +223,10 @@ public class Address {
     * Example:: {@code CH}
     *
     * @param country the country
-    * @return the trade address
     * @see <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-2A Country Codes</a>
     */
-   public Address setCountry(CountryCode country) {
+   public void setCountry(CountryCode country) {
       this.country = country;
-      return this;
+      
    }
 }

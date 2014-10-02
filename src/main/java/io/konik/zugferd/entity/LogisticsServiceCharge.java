@@ -62,11 +62,10 @@ public class LogisticsServiceCharge {
     * Sets the description.
     * 
     * @param description the new description
-    * @return the logistics service charge
     */
-   public LogisticsServiceCharge setDescription(String description) {
+   public void setDescription(String description) {
       this.description = description;
-      return this;
+      
    }
 
    /**
@@ -82,11 +81,10 @@ public class LogisticsServiceCharge {
     * Sets the applied amount.
     *
     * @param amount the new applied amount
-    * @return the logistics service charge
     */
-   public LogisticsServiceCharge setAmount(Amount amount) {
+   public void setAmount(Amount amount) {
       this.amount = amount;
-      return this;
+      
    }
 
    /**
@@ -105,11 +103,10 @@ public class LogisticsServiceCharge {
     * Adds a trade tax.
     *
     * @param additionalTradeTax the additional trade tax
-    * @return the logistics service charge
     */
-   public LogisticsServiceCharge addTradeTax(AppliedTax additionalTradeTax) {
+   public void addTradeTax(AppliedTax additionalTradeTax) {
       getTradeTax().add(additionalTradeTax);
-      return this;
+      
    }
 
 }

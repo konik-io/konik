@@ -44,7 +44,7 @@ public class TradeTax extends SpecifiedTax {
 
    @Basic
    @Override
-   public TradeTax setCalculated(Amount calculatedAmount) {
+   public void setCalculated(Amount calculatedAmount) {
       return (TradeTax) super.setCalculated(calculatedAmount);
    }
 
@@ -81,11 +81,10 @@ public class TradeTax extends SpecifiedTax {
     * Profile:: BASIC
     *
     * @param basisAmount the new basis amount
-    * @return the tax
     */
-   public TradeTax setBasis(Amount basisAmount) {
+   public void setBasis(Amount basisAmount) {
       this.basis = basisAmount;
-      return this;
+      
    }
 
    /**
@@ -152,9 +151,8 @@ public class TradeTax extends SpecifiedTax {
    }
 
    @Override
-   public TradeTax setExemptionReason(String exemptionReason) {
+   public void setExemptionReason(String exemptionReason) {
       super.setExemptionReason(exemptionReason);
-      return this;
    }
 
 }

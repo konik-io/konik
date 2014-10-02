@@ -73,11 +73,10 @@ public class PaymentDiscountTerms {
     * Sets the reference.
     *
     * @param reference the reference
-    * @return the payment discount term
     */
-   public PaymentDiscountTerms setReference(ZfDate reference) {
+   public void setReference(ZfDate reference) {
       this.reference = reference;
-      return this;
+      
    }
 
    /**
@@ -93,11 +92,10 @@ public class PaymentDiscountTerms {
     * Sets the maturity period.
     *
     * @param maturityPeriod the maturity period
-    * @return the payment discount term
     */
-   public PaymentDiscountTerms setMaturityPeriod(Measure maturityPeriod) {
+   public void setMaturityPeriod(Measure maturityPeriod) {
       this.maturityPeriod = maturityPeriod;
-      return this;
+      
    }
 
    /**
@@ -113,11 +111,10 @@ public class PaymentDiscountTerms {
     * Sets the basis discount.
     *
     * @param basisDiscount the basis discount
-    * @return the payment discount term
     */
-   public PaymentDiscountTerms setBasis(Amount basisDiscount) {
+   public void setBasis(Amount basisDiscount) {
       this.basis = basisDiscount;
-      return this;
+      
    }
 
    /**
@@ -133,11 +130,10 @@ public class PaymentDiscountTerms {
     * Sets the calculation percent.
     *
     * @param calculationPercent the calculation percent
-    * @return the payment discount term
     */
-   public PaymentDiscountTerms setCalculationPercent(BigDecimal calculationPercent) {
+   public void setCalculationPercent(BigDecimal calculationPercent) {
       this.calculationPercent = calculationPercent;
-      return this;
+      
    }
 
    /**
@@ -153,11 +149,10 @@ public class PaymentDiscountTerms {
     * Sets the actual discount.
     *
     * @param actualDiscount the actual discount
-    * @return the payment discount term
     */
-   public PaymentDiscountTerms setActualDiscount(Amount actualDiscount) {
+   public void setActualDiscount(Amount actualDiscount) {
       this.actualDiscount = actualDiscount;
-      return this;
+      
    }
 
 }

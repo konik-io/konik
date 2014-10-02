@@ -112,11 +112,10 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
     * Profile:: BASIC
     *
     * @param billedQuantity the new billed quantity
-    * @return the delivery
     */
-   public SpecifiedDelivery setBilled(Quantity billedQuantity) {
+   public void setBilled(Quantity billedQuantity) {
       this.billed = billedQuantity;
-      return this;
+      
    }
 
    /**
@@ -132,11 +131,10 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
     * Sets the charge free.
     *
     * @param chargeFree the charge free
-    * @return the item delivery
     */
-   public SpecifiedDelivery setChargeFree(Quantity chargeFree) {
+   public void setChargeFree(Quantity chargeFree) {
       this.chargeFree = chargeFree;
-      return this;
+      
    }
 
    /**
@@ -152,11 +150,10 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
     * Sets the package quantity.
     *
     * @param packageQuantity the package quantity
-    * @return the item delivery
     */
-   public SpecifiedDelivery setPackageQuantity(Quantity packageQuantity) {
+   public void setPackageQuantity(Quantity packageQuantity) {
       this.packageQuantity = packageQuantity;
-      return this;
+      
    }
 
    @Override
@@ -165,9 +162,9 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
    }
 
    @Override
-   public SpecifiedDelivery setDespatchAdvice(ReferencedDocumentItem despatchAdvice) {
+   public void setDespatchAdvice(ReferencedDocumentItem despatchAdvice) {
       this.despatchAdvice = despatchAdvice;
-      return this;
+      
    }
 
    /**
@@ -183,11 +180,10 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
     * Sets the receiving advice.
     *
     * @param receivingAdvice the receiving advice
-    * @return the item delivery
     */
-   public SpecifiedDelivery setReceivingAdvice(List<ReferencedDocumentItem> receivingAdvice) {
+   public void setReceivingAdvice(List<ReferencedDocumentItem> receivingAdvice) {
       this.receivingAdvice = receivingAdvice;
-      return this;
+      
    }
 
    @Override
@@ -196,8 +192,8 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
    }
 
    @Override
-   public SpecifiedDelivery setDeliveryNote(ReferencedDocumentItem deliveryNote) {
+   public void setDeliveryNote(ReferencedDocumentItem deliveryNote) {
       this.deliveryNote = deliveryNote;
-      return this;
+      
    }
 }

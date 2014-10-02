@@ -104,22 +104,18 @@ public class AllowanceCharge {
 
    /**
     * Sets amount to be a surcharge.
-    *
-    * @return the allowance charge
     */
-   public AllowanceCharge setSurcharge() {
+   public void setSurcharge() {
       this.surcharge = trueIndicator();
-      return this;
+      
    }
 
    /**
     * Sets the amount to be a discount.
-    *
-    * @return the allowance charge
     */
-   public AllowanceCharge setDiscount() {
+   public void setDiscount() {
       this.surcharge = falseIndicator();
-      return this;
+      
    }
 
    /**
@@ -171,11 +167,10 @@ public class AllowanceCharge {
     * Sets the basis amount.
     *
     * @param basisAmount the new basis amount
-    * @return the allowance charge
     */
-   public AllowanceCharge setBasis(Amount basisAmount) {
+   public void setBasis(Amount basisAmount) {
       this.basis = basisAmount;
-      return this;
+      
    }
 
    /**
@@ -209,11 +204,10 @@ public class AllowanceCharge {
     * Sets the actual amount.
     *
     * @param actualAmount the new actual amount
-    * @return the allowance charge
     */
-   public AllowanceCharge setActual(Amount actualAmount) {
+   public void setActual(Amount actualAmount) {
       this.actual = actualAmount;
-      return this;
+      
    }
 
    /**
@@ -247,11 +241,10 @@ public class AllowanceCharge {
     * Sets the reason.
     *
     * @param reason the new reason
-    * @return the allowance charge
     */
-   public AllowanceCharge setReason(String reason) {
+   public void setReason(String reason) {
       this.reason = reason;
-      return this;
+      
    }
 
 }

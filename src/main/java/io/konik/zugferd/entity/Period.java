@@ -55,11 +55,10 @@ public class Period {
     * Sets the start date time.
     *
     * @param start the new start date time
-    * @return the period
     */
-   public Period setStart(ZfDate start) {
+   public void setStart(ZfDate start) {
       this.start = start;
-      return this;
+      
    }
 
    /**
@@ -75,11 +74,10 @@ public class Period {
     * Sets the end date time.
     *
     * @param end the new end date time
-    * @return the period
     */
-   public Period setEnd(ZfDate end) {
+   public void setEnd(ZfDate end) {
       this.end = end;
-      return this;
+      
    }
 
 }

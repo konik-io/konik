@@ -59,11 +59,10 @@ public class LogisticsTransportMovement {
     * Sets the shpping mode code.
     *
     * @param modeCode the mode code
-    * @return the logistics transport movement
     */
-   public LogisticsTransportMovement setModeCode(String modeCode) {
+   public void setModeCode(String modeCode) {
       this.modeCode = modeCode;
-      return this;
+      
    }
 
    /**
@@ -79,11 +78,10 @@ public class LogisticsTransportMovement {
     * Sets the shpping id.
     *
     * @param shippingId the id
-    * @return the logistics transport movement
     */
-   public LogisticsTransportMovement setShppingId(ID shippingId) {
+   public void setShppingId(ID shippingId) {
       this.shippingId = shippingId;
-      return this;
+      
    }
 
 }

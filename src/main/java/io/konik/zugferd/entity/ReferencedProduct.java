@@ -82,12 +82,10 @@ public class ReferencedProduct {
    /**
     * Adds the global ids.
     *
-    * @param globarId the globar id
-    * @return the referenced product
+    * @param globalId the global identifier
     */
-   public ReferencedProduct addGlobalIds(ID globarId) {
-      getGlobalIds().add(globarId);
-      return this;
+   public void addGlobalIds(ID globalId) {
+      getGlobalIds().add(globalId);
    }
 
    /**
@@ -142,11 +140,10 @@ public class ReferencedProduct {
     * Adds the names.
     *
     * @param name the name
-    * @return the referenced product
     */
-   public ReferencedProduct addNames(String name) {
+   public void addNames(String name) {
       getNames().add(name);
-      return this;
+      
    }
 
    /**
@@ -165,11 +162,10 @@ public class ReferencedProduct {
     * Adds the description.
     *
     * @param description the description
-    * @return the referenced product
     */
-   public ReferencedProduct addDescription(String description) {
+   public void addDescription(String description) {
       getDescriptions().add(description);
-      return this;
+      
    }
 
    /**
@@ -188,11 +184,10 @@ public class ReferencedProduct {
     * Adds the units.
     *
     * @param unit the unit
-    * @return the referenced product
     */
-   public ReferencedProduct addUnits(Quantity unit) {
+   public void addUnits(Quantity unit) {
       getUnits().add(unit);
-      return this;
+      
    }
 
 }

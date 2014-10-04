@@ -17,7 +17,8 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.builder.Builder;
+import io.konik.builder.GenerateBuilder;
+import io.konik.builder.PojoBuilder;
 import io.konik.validator.annotation.NotBlank;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -35,7 +36,7 @@ import net.karneim.pojobuilder.GeneratePojoBuilder;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentContextParameterType", propOrder = { "id" })
-@GeneratePojoBuilder(withBuilderInterface = Builder.class, withBuilderProperties = true)
+@GenerateBuilder
 public class Parameter {
 
    @NotBlank

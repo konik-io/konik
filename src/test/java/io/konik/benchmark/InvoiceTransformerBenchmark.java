@@ -41,7 +41,6 @@ import org.openjdk.jmh.runner.RunnerException;
 @State(Thread)
 @BenchmarkMode(Throughput)
 @OutputTimeUnit(SECONDS)
-@SuppressWarnings("javadoc")
 public class InvoiceTransformerBenchmark extends DefaultBenchmark {
 
    private final InvoiceTransformer transformer = new InvoiceTransformer();

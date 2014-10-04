@@ -18,7 +18,8 @@
  */
 package io.konik.zugferd.entity.trade;
 
-import io.konik.builder.Builder;
+import io.konik.builder.GenerateBuilder;
+import io.konik.builder.PojoBuilder;
 import io.konik.zugferd.entity.trade.item.Item;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ import net.karneim.pojobuilder.GeneratePojoBuilder;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreement", "delivery", "settlement", "items" })
-@GeneratePojoBuilder(withBuilderInterface = Builder.class, withBuilderProperties = true)
+@GenerateBuilder
 public class Trade {
 
    @NotNull
@@ -52,7 +53,7 @@ public class Trade {
    @Valid
    @XmlElement(name = "ApplicableSupplyChainTradeDelivery")
    private Delivery delivery;
-
+   
    @NotNull
    @Valid
    @XmlElement(name = "ApplicableSupplyChainTradeSettlement")
@@ -130,6 +131,10 @@ public class Trade {
          items = new ArrayList<Item>();
       }
       return this.items;
+   }
+   
+   public void setItems(List<Item> items) {
+	   this.items = items;
    }
 
    /**

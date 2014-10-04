@@ -43,7 +43,6 @@ import java.util.Random;
 import net._01001111.text.LoremIpsum;
 
 import org.apache.commons.lang3.RandomStringUtils;
-@SuppressWarnings("javadoc")
 public class RandomInvoiceGenerator {
    LoremIpsum jlorem = new LoremIpsum();
    Random random = new Random();

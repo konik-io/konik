@@ -39,9 +39,8 @@ public class SpecifiedTax extends CommonTax {
    }
 
    @Override
-   public SpecifiedTax setType(TaxCode taxTypeCode) {
+   public void setType(TaxCode taxTypeCode) {
       super.setType(taxTypeCode);
-      
    }
 
    @Comfort
@@ -51,9 +50,8 @@ public class SpecifiedTax extends CommonTax {
    }
 
    @Override
-   public SpecifiedTax setCategory(TaxCategory value) {
+   public void setCategory(TaxCategory value) {
       super.setCategory(value);
-      
    }
 
    /**
@@ -69,8 +67,6 @@ public class SpecifiedTax extends CommonTax {
    /**
     * Sets the calculated amount.
     * 
-    * Profile:: BASIC
-    *
     * @param calculatedAmount the new calculated amount
     */
    public void setCalculated(Amount calculatedAmount) {
@@ -103,8 +99,8 @@ public class SpecifiedTax extends CommonTax {
    }
 
    @Override
-   public SpecifiedTax setPercentage(BigDecimal applicablePercentage) {
-      return (SpecifiedTax) super.setPercentage(applicablePercentage);
+   public void setPercentage(BigDecimal applicablePercentage) {
+      super.setPercentage(applicablePercentage);
    }
 
 }

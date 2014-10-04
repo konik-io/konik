@@ -8,15 +8,12 @@ import io.konik.zugferd.Invoice;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
 import java.util.ServiceLoader;
 
 import org.apache.pdfbox.io.IOUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-@SuppressWarnings("javadoc")
 public class PdfHandlerTest {
 
    PdfHandler pdfHandler;

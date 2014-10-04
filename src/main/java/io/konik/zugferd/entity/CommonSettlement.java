@@ -50,9 +50,8 @@ public interface CommonSettlement<T extends CommonTax, M extends CommonMonetaryS
     * 
     *
     * @param billingPeriod the new billing specified period
-    * @return the supply chain trade settlement
     */
-   CommonSettlement<T, M> setBillingPeriod(Period billingPeriod);
+   void setBillingPeriod(Period billingPeriod);
 
    /**
     * Gets the applicable trade tax.
@@ -65,9 +64,8 @@ public interface CommonSettlement<T extends CommonTax, M extends CommonMonetaryS
     * Adds a trade tax.
     * 
     * @param additionalTradeTax
-    * @return the trade settlement
     */
-   CommonSettlement<T, M> addTradeTax(T additionalTradeTax);
+   void addTradeTax(T additionalTradeTax);
 
    /**
     * Gets the trade settlement monetary summation.
@@ -84,8 +82,7 @@ public interface CommonSettlement<T extends CommonTax, M extends CommonMonetaryS
     * Profile:: BASIC
     *
     * @param monetarySummation the new monetary summation
-    * @return the supply chain trade settlement
     */
-   CommonSettlement<T, M> setMonetarySummation(M monetarySummation);
+   void setMonetarySummation(M monetarySummation);
 
 }

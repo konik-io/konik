@@ -23,7 +23,7 @@ package io.konik.builder;
  *
  * @param <P> the generic type
  */
-public interface Builder<P> {
+public interface PojoBuilder<P> {
   
   /**
     * Builds 

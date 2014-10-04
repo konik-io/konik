@@ -29,10 +29,14 @@ import static org.apache.commons.lang3.time.DateUtils.addMonths;
 import io.konik.InvoiceTransformer;
 import io.konik.PdfHandler;
 import io.konik.zugferd.Invoice;
+import io.konik.zugferd.InvoiceBuilder;
 import io.konik.zugferd.entity.Address;
+import io.konik.zugferd.entity.Context;
+import io.konik.zugferd.entity.ContextBuilder;
 import io.konik.zugferd.entity.FinancialAccount;
 import io.konik.zugferd.entity.FinancialInstitution;
 import io.konik.zugferd.entity.Header;
+import io.konik.zugferd.entity.HeaderBuilder;
 import io.konik.zugferd.entity.PaymentMeans;
 import io.konik.zugferd.entity.Product;
 import io.konik.zugferd.entity.TaxRegistration;
@@ -42,8 +46,12 @@ import io.konik.zugferd.entity.trade.Delivery;
 import io.konik.zugferd.entity.trade.MonetarySummation;
 import io.konik.zugferd.entity.trade.Settlement;
 import io.konik.zugferd.entity.trade.Trade;
+import io.konik.zugferd.entity.trade.TradeBuilder;
 import io.konik.zugferd.entity.trade.item.Item;
+import io.konik.zugferd.entity.trade.item.ItemBuilder;
 import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
+import io.konik.zugferd.profile.ConformanceLevel;
+import io.konik.zugferd.profile.ProfileBuilder;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Quantity;
 import io.konik.zugferd.unqualified.ZfDate;
@@ -73,35 +81,36 @@ public class MinimalInvoice {
 
    private Invoice createMinimalInvoiceModel() {
 
-      Invoice invoice = new Invoice(BASIC); // <1>
-      invoice
-            .setHeader(new Header().setInvoiceNumber("20131122-42").setCode(_380).setIssued(today).setName("Rechnung"));
-
-      Trade trade = new Trade();
-      trade.setAgreement(new Agreement() // <2>
-            .setSeller(
-                  new TradeParty().setName("Seller Inc.")
-                        .setAddress(new Address("80331", "Marienplatz 1", "München", DE))
-                        .addTaxRegistrations(new TaxRegistration("DE122...", FC))).setBuyer(
-                  new TradeParty().setName("Buyer Inc.").setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
-                        .addTaxRegistrations(new TaxRegistration("DE123...", FC))));
-
-      trade.setDelivery(new Delivery(nextMonth));
-
-      trade.setSettlement(new Settlement()
-            .setPaymentReference("20131122-42")
-            .setCurrency(EUR)
-            .addPaymentMeans(
-                  new PaymentMeans().setPayerAccount(new FinancialAccount("DE01234..")).setPayerInstitution(
-                        new FinancialInstitution("GENO...")))
-            .setMonetarySummation(
-                  new MonetarySummation().setLineTotal(new Amount(100, EUR)).setTaxTotal(new Amount(19, EUR))
-                        .setGrandTotal(new Amount(119, EUR))));
-
-      trade.addItem(new Item().setProduct(new Product().setName("Saddle")).setDelivery(
-            new SpecifiedDelivery(new Quantity(1, UNIT))));
-      invoice.setTrade(trade);
-
+////	  InvoiceBuilder invoice = new InvoiceBuilder().withContext(new ContextBuilder().withGuideline(new ProfileBuilder().withConformanceLevel(BASIC))); // <1>
+	  Invoice invoice = new Invoice(BASIC);
+//      invoice.setHeader(new HeaderBuilder().withInvoiceNumber("20131122-42").withCode(_380).withIssued(today).withName("Rechnung").build());
+//
+//      TradeBuilder trade = new TradeBuilder();
+//      trade.setAgreement(new Agreement() // <2>
+//            .setSeller(
+//                  new TradePartyBuilder().setName("Seller Inc.")
+//                        .setAddress(new Address("80331", "Marienplatz 1", "München", DE))
+//                        .addTaxRegistrations(new TaxRegistration("DE122...", FC))).setBuyer(
+//                  new TradePartyBuilder().setName("Buyer Inc.").setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
+//                        .addTaxRegistrations(new TaxRegistration("DE123...", FC))));
+//
+//      trade.setDelivery(new Delivery(nextMonth));
+//
+//      trade.setSettlement(new Settlement()
+//            .setPaymentReference("20131122-42")
+//            .setCurrency(EUR)
+//            .addPaymentMeans(
+//                  new PaymentMeans().setPayerAccount(new FinancialAccount("DE01234..")).setPayerInstitution(
+//                        new FinancialInstitution("GENO...")))
+//            .setMonetarySummation(
+//                  new MonetarySummation().setLineTotal(new Amount(100, EUR)).setTaxTotal(new Amount(19, EUR))
+//                        .setGrandTotal(new Amount(119, EUR))));
+//
+//      trade.withItems(new ItemBuilder().withProduct(null));
+//      new Product().setName("Saddle")).setDelivery(
+//            new SpecifiedDelivery(new Quantity(1, UNIT))));
+//      invoice.setTrade(trade);
+//
       return invoice;
    }
 

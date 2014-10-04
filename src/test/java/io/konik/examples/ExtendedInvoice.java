@@ -76,40 +76,40 @@ public class ExtendedInvoice {
    private Invoice createMinimalInvoiceModel() {
       
       Invoice invoice = new Invoice(EXTENDED);    // <1>
-      invoice.setHeader(new Header()
-         .setInvoiceNumber("20131122-42")
-         .setCode(_380)
-         .setIssued(today)
-         .setName("Rechnung"));
-      
-      Trade trade = new Trade();
-      trade.setAgreement(new Agreement()     // <2>
-            .setSeller(new TradeParty()
-                  .setName("Seller Inc.")
-                  .setAddress(new Address("80331", "Marienplatz 1", "München", DE))
-                  .addTaxRegistrations(new TaxRegistration("DE122...", FC)))
-            .setBuyer(new TradeParty()
-                  .setName("Buyer Inc.")
-                  .setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
-                  .addTaxRegistrations(new TaxRegistration("DE123...", FC))));
-      
-      trade.setDelivery(new Delivery(nextMonth));
-      
-      trade.setSettlement(new Settlement()
-            .setPaymentReference("20131122-42")
-            .setCurrency(EUR)
-            .addPaymentMeans(new PaymentMeans()
-               .setPayerAccount(new FinancialAccount("DE01234.."))
-                  .setPayerInstitution(new FinancialInstitution("GENO...")))
-            .setMonetarySummation(new MonetarySummation()
-               .setLineTotal(new Amount(100, EUR))
-               .setTaxTotal(new Amount(19, EUR))
-               .setGrandTotal(new Amount(119, EUR))));
-      
-      trade.addItem(new Item()
-         .setProduct(new Product().setName("Saddle"))
-         .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))));
-      invoice.setTrade(trade);
+//      invoice.setHeader(new Header()
+//         .setInvoiceNumber("20131122-42")
+//         .setCode(_380)
+//         .setIssued(today)
+//         .setName("Rechnung"));
+//      
+//      Trade trade = new Trade();
+//      trade.setAgreement(new Agreement()     // <2>
+//            .setSeller(new TradeParty()
+//                  .setName("Seller Inc.")
+//                  .setAddress(new Address("80331", "Marienplatz 1", "München", DE))
+//                  .addTaxRegistrations(new TaxRegistration("DE122...", FC)))
+//            .setBuyer(new TradeParty()
+//                  .setName("Buyer Inc.")
+//                  .setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
+//                  .addTaxRegistrations(new TaxRegistration("DE123...", FC))));
+//      
+//      trade.setDelivery(new Delivery(nextMonth));
+//      
+//      trade.setSettlement(new Settlement()
+//            .setPaymentReference("20131122-42")
+//            .setCurrency(EUR)
+//            .addPaymentMeans(new PaymentMeans()
+//               .setPayerAccount(new FinancialAccount("DE01234.."))
+//                  .setPayerInstitution(new FinancialInstitution("GENO...")))
+//            .setMonetarySummation(new MonetarySummation()
+//               .setLineTotal(new Amount(100, EUR))
+//               .setTaxTotal(new Amount(19, EUR))
+//               .setGrandTotal(new Amount(119, EUR))));
+//      
+//      trade.addItem(new Item()
+//         .setProduct(new Product().setName("Saddle"))
+//         .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))));
+//      invoice.setTrade(trade);
       
       return invoice;
    }

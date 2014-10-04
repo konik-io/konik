@@ -51,9 +51,8 @@ public interface CommonAgreement<R extends ReferencedDocument, A extends Referen
     * Sets the buyer order referenced document.
     *
     * @param buyerOrder the new buyer order referenced document
-    * @return the supply chain trade agreement
     */
-   CommonAgreement<R, A> setBuyerOrder(R buyerOrder);
+   void setBuyerOrder(R buyerOrder);
 
    /**
     * Gets the contract referenced document.
@@ -70,9 +69,8 @@ public interface CommonAgreement<R extends ReferencedDocument, A extends Referen
     * Profile:: COMFORT
     *
     * @param contract the new contract referenced document
-    * @return the supply chain trade agreement
     */
-   CommonAgreement<R, A> setContract(R contract);
+   void setContract(R contract);
 
    /**
     * Gets the additional referenced document
@@ -85,9 +83,8 @@ public interface CommonAgreement<R extends ReferencedDocument, A extends Referen
     * Sets the additional referenced document.
     *
     * @param additionalReference the additional reference
-    * @return the common agreement
     */
-   CommonAgreement<R, A> addAdditional(A additionalReference);
+   void addAdditional(A additionalReference);
 
    /**
     * Gets the customer order referenced document.
@@ -104,8 +101,7 @@ public interface CommonAgreement<R extends ReferencedDocument, A extends Referen
     * Profile:: COMFORT
     *
     * @param customerOrder the new customer order referenced document
-    * @return the supply chain trade agreement
     */
-   CommonAgreement<R, A> setCustomerOrder(R customerOrder);
+   void setCustomerOrder(R customerOrder);
 
 }

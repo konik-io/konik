@@ -18,7 +18,8 @@
 
 package io.konik.zugferd.unqualified;
 
-import io.konik.builder.Builder;
+import io.konik.builder.GenerateBuilder;
+import io.konik.builder.PojoBuilder;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -33,7 +34,7 @@ import net.karneim.pojobuilder.GeneratePojoBuilder;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IndicatorType", propOrder = { "indicator" })
-@GeneratePojoBuilder(withBuilderInterface = Builder.class, withBuilderProperties = true)
+@GenerateBuilder
 public class Indicator {
 
    @XmlElement(name = "Indicator", required = true)

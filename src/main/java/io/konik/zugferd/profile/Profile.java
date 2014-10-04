@@ -17,14 +17,15 @@
  */
 package io.konik.zugferd.profile;
 
-import io.konik.builder.Builder;
+import io.konik.builder.GenerateBuilder;
+import io.konik.builder.PojoBuilder;
 import net.karneim.pojobuilder.GeneratePojoBuilder;
 
 /**
  * 
  * The ZUGFeRD Profile consists of three parts. The namespace the version and the conformance level.
  */
-@GeneratePojoBuilder(withBuilderInterface = Builder.class, withBuilderProperties = true)
+@GenerateBuilder
 public class Profile {
    private static final String DELIMITER = ":";
    private static final String NS = "urn:ferd:CrossIndustryDocument:invoice:";

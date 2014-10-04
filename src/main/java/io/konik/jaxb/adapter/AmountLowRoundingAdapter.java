@@ -71,7 +71,8 @@ public class AmountLowRoundingAdapter extends XmlAdapter<Amount, Amount> {
    public Amount marshal(Amount amount) throws Exception {
       if (amount == null || amount.getValue() == null) { return amount; }
       BigDecimal roundedValue = amount.getValue().setScale(scale, roundingMode).stripTrailingZeros();
-      return amount.setValue(roundedValue);
+      amount.setValue(roundedValue);
+      return amount;
    }
 
 }

@@ -39,8 +39,7 @@ public class UniversalCommunication {
    /**
     * Instantiates a new universal communication.
     * 
-    * @param scheme the scheme
-    * @param email the uri
+    * @param email the email address
     */
    public UniversalCommunication(String email) {
       this.email = email;

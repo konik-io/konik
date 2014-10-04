@@ -45,7 +45,7 @@ public class TradeTax extends SpecifiedTax {
    @Basic
    @Override
    public void setCalculated(Amount calculatedAmount) {
-      return (TradeTax) super.setCalculated(calculatedAmount);
+      super.setCalculated(calculatedAmount);
    }
 
    @Basic
@@ -57,8 +57,8 @@ public class TradeTax extends SpecifiedTax {
 
    @Basic
    @Override
-   public TradeTax setType(TaxCode taxTypeCode) {
-      return (TradeTax) super.setType(taxTypeCode);
+   public void setType(TaxCode taxTypeCode) {
+      super.setType(taxTypeCode);
    }
 
    /**
@@ -133,8 +133,8 @@ public class TradeTax extends SpecifiedTax {
    }
 
    @Override
-   public TradeTax setCategory(TaxCategory value) {
-      return (TradeTax) super.setCategory(value);
+   public void setCategory(TaxCategory value) {
+      super.setCategory(value);
    }
 
    @NotNull
@@ -146,8 +146,8 @@ public class TradeTax extends SpecifiedTax {
 
    @Basic
    @Override
-   public TradeTax setPercentage(BigDecimal applicablePercentage) {
-      return (TradeTax) super.setPercentage(applicablePercentage);
+   public void setPercentage(BigDecimal applicablePercentage) {
+      super.setPercentage(applicablePercentage);
    }
 
    @Override

@@ -90,6 +90,28 @@
          <version>1.5</version>
          <scope>test</scope>
       </dependency>
+      <!-- Graph Navigator -->
+      <dependency>
+		 <groupId>org.yaml</groupId>
+  		 <artifactId>snakeyaml</artifactId>
+  		 <version>1.9</version>
+	  </dependency>
+	  <dependency>
+    <groupId>org.st-js</groupId>
+    <artifactId>shared</artifactId>
+    <version>3.0.3</version>
+</dependency>
+<!-- 	  <dependency> -->
+<!-- 	  		<groupId>org.st-js</groupId> -->
+<!-- 			<artifactId>js-lib</artifactId> -->
+<!-- 			<version>3.0.3</version> -->
+<!-- 	  </dependency> -->
+<!-- 	  <dependency> -->
+<!--     <groupId>org.st-js.bridge</groupId> -->
+<!--     <artifactId>html</artifactId> -->
+<!--     <version>5.0.bv2</version> -->
+<!-- </dependency> -->
+
       <!-- this test dependencies can be used also at runtime -->
       <dependency>
          <groupId>org.apache.bval</groupId>
@@ -119,6 +141,21 @@
 
    <build>
       <plugins>
+      <plugin>
+    <groupId>org.st-js</groupId>
+    <artifactId>maven-plugin</artifactId>
+    <version>3.0.3</version>
+    <executions>
+        <execution>
+        <id>main</id>
+        <phase>install</phase>
+        <goals>
+            <goal>generate</goal>
+        </goals>
+        </execution>
+    </executions>
+</plugin>
+
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>

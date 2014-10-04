@@ -37,7 +37,7 @@ public class PeriodCompleteToDateTimeAdapter extends XmlAdapter<DueDatePeriod, Z
    @Override
    public DueDatePeriod marshal(ZfDate complete) throws Exception {
       if (complete == null) { return null; }
-      return new DueDatePeriod().setContractualDueDate(complete);
+      return new DueDatePeriod(complete);
    }
 
 }

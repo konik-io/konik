@@ -90,10 +90,9 @@ public class MonetarySummation extends CommonMonetarySummation {
     * Sets the line total amount.
     * 
     * @param lineTotal the new line total amount
-    * @return the trade settlement monetary summation
     */
    @Override
-   public MonetarySummation setLineTotal(Amount lineTotal) {
+   public void setLineTotal(Amount lineTotal) {
       this.lineTotal = lineTotal;
       
    }

@@ -1,6 +1,5 @@
 package io.konik;
 
-@SuppressWarnings("javadoc")
 public class PrittyPrintInvoiceTransformer extends InvoiceTransformer {
 
    @Override

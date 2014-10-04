@@ -79,11 +79,10 @@ public class AppliedTax extends CommonTax {
     * Profile:: COMFORT
     *
     * @param value the new category code
-    * @return the tax
     */
    @Override
-   public AppliedTax setCategory(TaxCategory value) {
-      return (AppliedTax) super.setCategory(value);
+   public void setCategory(TaxCategory value) {
+      super.setCategory(value);
    }
 
    /**
@@ -105,10 +104,9 @@ public class AppliedTax extends CommonTax {
     * Profile:: BASIC
     *
     * @param applicablePercentage the new applicable tax percentage
-    * @return the tax
     */
    @Override
-   public AppliedTax setPercentage(BigDecimal applicablePercentage) {
-      return (AppliedTax) super.setPercentage(applicablePercentage);
+   public void setPercentage(BigDecimal applicablePercentage) {
+      super.setPercentage(applicablePercentage);
    }
 }

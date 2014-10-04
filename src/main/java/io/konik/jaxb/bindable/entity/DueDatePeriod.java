@@ -25,32 +25,36 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * = The period of time adapter. 
+ * = The period of time adapter.
  */
 @XmlType(propOrder = { "contractualDueDate" })
 public class DueDatePeriod extends Period {
 
-   @Valid
-   @XmlElement(name = "CompleteDateTime")
-   protected ZfDate contractualDueDate;
+	@Valid
+	@XmlElement(name = "CompleteDateTime")
+	protected ZfDate contractualDueDate;
 
-   /**
-    * Gets the contractual due date.
-    *
-    * @return the contractual due date
-    */
-   public ZfDate getContractualDueDate() {
-      return contractualDueDate;
-   }
+	public DueDatePeriod(ZfDate contractualDueDate) {
+		this.contractualDueDate = contractualDueDate;
+	}
 
-   /**
-    * Sets the contractual due date.
-    *
-    * @param contractualDueDate the contractual due date
-    */
-   public void setContractualDueDate(ZfDate contractualDueDate) {
-      this.contractualDueDate = contractualDueDate;
-      
-   }
+	/**
+	 * Gets the contractual due date.
+	 *
+	 * @return the contractual due date
+	 */
+	public ZfDate getContractualDueDate() {
+		return contractualDueDate;
+	}
+
+	/**
+	 * Sets the contractual due date.
+	 *
+	 * @param contractualDueDate the contractual due date
+	 */
+	public void setContractualDueDate(ZfDate contractualDueDate) {
+		this.contractualDueDate = contractualDueDate;
+
+	}
 
 }

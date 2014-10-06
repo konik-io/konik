@@ -34,6 +34,17 @@ public class DueDatePeriod extends Period {
    @XmlElement(name = "CompleteDateTime")
    protected ZfDate contractualDueDate;
 
+   DueDatePeriod() {}
+
+   /**
+    * Instantiates a new due date period.
+    *
+    * @param contractualDueDate the contractual due date
+    */
+   public DueDatePeriod(ZfDate contractualDueDate) {
+      this.contractualDueDate = contractualDueDate;
+   }
+
    /**
     * Gets the contractual due date.
     *
@@ -53,5 +64,4 @@ public class DueDatePeriod extends Period {
       this.contractualDueDate = contractualDueDate;
       return this;
    }
-
 }

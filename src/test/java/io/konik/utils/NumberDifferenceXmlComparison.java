@@ -1,5 +1,8 @@
 package io.konik.utils;
 
+import static io.konik.util.Strings.isNotEmpty;
+import io.konik.util.Strings;
+
 import java.math.BigDecimal;
 
 import org.custommonkey.xmlunit.Difference;
@@ -14,7 +17,7 @@ public class NumberDifferenceXmlComparison implements DifferenceListener {
       String nodeName = getNodeName(difference);
       String controlValue = difference.getControlNodeDetail().getValue();
       String testValue = difference.getTestNodeDetail().getValue();
-      if (nodeName.endsWith("Amount") || nodeName.endsWith("Quantity")|| nodeName.endsWith("Measure")|| nodeName.endsWith("Percent")) {
+      if (isNotEmpty(nodeName) &&( nodeName.endsWith("Amount") || nodeName.endsWith("Quantity")|| nodeName.endsWith("Measure")|| nodeName.endsWith("Percent"))) {
          int result = new BigDecimal(controlValue).compareTo(new BigDecimal(testValue));
          if (result == 0) { return RETURN_IGNORE_DIFFERENCE_NODES_SIMILAR; }
       }

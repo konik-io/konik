@@ -1,7 +1,6 @@
 package io.konik.utils;
 
 import static io.konik.util.Strings.isNotEmpty;
-import io.konik.util.Strings;
 
 import java.math.BigDecimal;
 

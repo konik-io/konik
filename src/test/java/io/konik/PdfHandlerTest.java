@@ -8,8 +8,6 @@ import io.konik.zugferd.Invoice;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
 import java.util.ServiceLoader;
 
 import org.apache.pdfbox.io.IOUtils;

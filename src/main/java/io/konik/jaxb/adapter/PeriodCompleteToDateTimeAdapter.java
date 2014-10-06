@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  */
 public class PeriodCompleteToDateTimeAdapter extends XmlAdapter<DueDatePeriod, ZfDate> {
 
-   Logger LOG = Logger.getLogger(PeriodCompleteToDateTimeAdapter.class.getName()); 
+   private static final Logger LOG = Logger.getLogger(PeriodCompleteToDateTimeAdapter.class.getName()); 
    
    @Override
    public ZfDate unmarshal(DueDatePeriod period) throws Exception {

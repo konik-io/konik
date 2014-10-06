@@ -17,6 +17,7 @@
  */
 package io.konik;
 
+import static java.util.logging.Level.WARNING;
 import static javax.xml.bind.JAXBContext.newInstance;
 import io.konik.exception.TransformationException;
 import io.konik.zugferd.Invoice;
@@ -27,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Named;
@@ -52,7 +54,7 @@ import org.xml.sax.SAXException;
 @Singleton
 public class InvoiceTransformer {
 
-   Logger LOG = Logger.getLogger(InvoiceTransformer.class.getName());
+   private static final Logger LOG = Logger.getLogger(InvoiceTransformer.class.getName());
    
    private static final String MARSHALLING_ERROR = "Marshalling error";
 
@@ -160,7 +162,7 @@ public class InvoiceTransformer {
                outputStream.flush();
                outputStream.close();
             } catch (IOException e) {
-
+               LOG.log(WARNING, "Faild to Transform Model", e);
             }
          }
       }).start();

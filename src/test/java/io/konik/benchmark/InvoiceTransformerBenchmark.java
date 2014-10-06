@@ -25,18 +25,26 @@ import static org.openjdk.jmh.annotations.Mode.Throughput;
 import static org.openjdk.jmh.annotations.Scope.Thread;
 import io.konik.InvoiceTransformer;
 import io.konik.utils.InvoiceLoaderUtils;
+import io.konik.zugferd.Invoice;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.junit.Test;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.Threads;
 import org.openjdk.jmh.runner.RunnerException;
+import org.openjdk.jmh.util.Utils;
+
+import com.google.common.io.Files;
 
 @State(Thread)
 @BenchmarkMode(Throughput)
@@ -46,12 +54,16 @@ public class InvoiceTransformerBenchmark extends DefaultBenchmark {
 
    private final InvoiceTransformer transformer = new InvoiceTransformer();
    private byte[] invoice;
+   Invoice invoiceModel;
+   File tempDir;
    
    @Setup
    public void setup() throws IOException {
       InputStream is = getClass().getResourceAsStream(InvoiceLoaderUtils.ZF_MUSTERRECHNUNG_EINFACH_XML);
       invoice = toByteArray(is);
+      invoiceModel = transformer.toModel(new ByteArrayInputStream(invoice));
       assertThat(invoice).isNotNull();
+      tempDir = Files.createTempDir();
    }
 
    @Benchmark
@@ -59,8 +71,19 @@ public class InvoiceTransformerBenchmark extends DefaultBenchmark {
       transformer.toModel(new ByteArrayInputStream(invoice));
    }
    
+   @Benchmark
+   public void fromModelAsync() throws Exception {
+      transformer.fromModelAsync(invoiceModel,new FileOutputStream(new File(tempDir,System.currentTimeMillis()+".xml")));
+   }
+   
+   @Benchmark
+   @Threads(4)
+   public void fromModelAsyncThreads() throws Exception {
+      transformer.fromModelAsync(invoiceModel,new FileOutputStream(new File(tempDir,System.currentTimeMillis()+".xml")));
+   }
+   
    @Test
-   public void xmlToModel_Test() throws RunnerException {
+   public void runInvoiceTransformerBenchmark() throws RunnerException {
       runDefault();
    }
 

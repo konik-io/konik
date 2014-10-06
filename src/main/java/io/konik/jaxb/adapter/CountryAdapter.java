@@ -33,7 +33,7 @@ import com.neovisionaries.i18n.CountryCode;
  */
 public class CountryAdapter extends XmlAdapter<TradeCountry, CountryCode> {
    
-   Logger LOG = Logger.getLogger(CountryAdapter.class.getName()); 
+   private static final Logger LOG = Logger.getLogger(CountryAdapter.class.getName()); 
 
    @Override
    public TradeCountry marshal(CountryCode country) throws Exception {

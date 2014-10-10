@@ -19,14 +19,11 @@
 package io.konik.zugferd.unqualified;
 
 import io.konik.builder.GenerateBuilder;
-import io.konik.builder.PojoBuilder;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import net.karneim.pojobuilder.GeneratePojoBuilder;
 
 /**
  * 

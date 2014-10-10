@@ -18,8 +18,6 @@
 package io.konik.zugferd.profile;
 
 import io.konik.builder.GenerateBuilder;
-import io.konik.builder.PojoBuilder;
-import net.karneim.pojobuilder.GeneratePojoBuilder;
 
 /**
  * 

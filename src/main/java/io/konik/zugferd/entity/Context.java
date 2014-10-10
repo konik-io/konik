@@ -17,16 +17,15 @@
  */
 package io.konik.zugferd.entity;
 
-import java.beans.ConstructorProperties;
-
 import io.konik.builder.GenerateBuilder;
-import io.konik.builder.PojoBuilder;
 import io.konik.jaxb.adapter.ParameterProfileAdapter;
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.profile.ConformanceLevel;
 import io.konik.zugferd.profile.Profile;
 import io.konik.zugferd.unqualified.Indicator;
+
+import java.beans.ConstructorProperties;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -36,16 +35,14 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import net.karneim.pojobuilder.GeneratePojoBuilder;
-
 /**
  * = The Exchanged Document Context
  * 
  * Grouping of the properties of the message.
  */
+@GenerateBuilder
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ExchangedDocumentContextType", propOrder = { "test", "businessProcess", "guideline" })
-@GenerateBuilder
 public class Context {
 
    @XmlElement(name = "TestIndicator")

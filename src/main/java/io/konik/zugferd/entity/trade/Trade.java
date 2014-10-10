@@ -19,7 +19,6 @@
 package io.konik.zugferd.entity.trade;
 
 import io.konik.builder.GenerateBuilder;
-import io.konik.builder.PojoBuilder;
 import io.konik.zugferd.entity.trade.item.Item;
 
 import java.util.ArrayList;
@@ -31,8 +30,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import net.karneim.pojobuilder.GeneratePojoBuilder;
 
 /**
  * = The Trade transaction.

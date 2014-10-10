@@ -19,7 +19,6 @@ package io.konik.zugferd.entity;
 
 import static java.util.Collections.addAll;
 import io.konik.builder.GenerateBuilder;
-import io.konik.builder.PojoBuilder;
 import io.konik.jaxb.adapter.PeriodCompleteToDateTimeAdapter;
 import io.konik.validator.annotation.Extended;
 import io.konik.validator.annotation.NotEmpty;
@@ -39,8 +38,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import net.karneim.pojobuilder.GeneratePojoBuilder;
 
 import com.neovisionaries.i18n.LanguageCode;
 

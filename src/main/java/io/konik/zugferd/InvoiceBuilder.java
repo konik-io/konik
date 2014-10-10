@@ -17,7 +17,6 @@
  */
 package io.konik.zugferd;
 
-import io.konik.zugferd.AbstractInvoiceBuilder;
 import io.konik.zugferd.entity.ContextBuilder;
 import io.konik.zugferd.profile.ConformanceLevel;
 import io.konik.zugferd.profile.ProfileBuilder;
@@ -25,25 +24,24 @@ import io.konik.zugferd.profile.ProfileBuilder;
 import javax.annotation.Generated;
 
 /**
- * The {@link InvoiceBuilder} is a Builder for {@link Invoice} objects.
+ * The {@link $Invoice} is a Builder for {@link Invoice} objects.
  */
 @Generated("PojoBuilder")
-public class InvoiceBuilder extends AbstractInvoiceBuilder
-    implements Cloneable {
+public class InvoiceBuilder extends AbstractInvoiceBuilder{
 
   /**
-    * Creates a new {@link InvoiceBuilder}.
+    * Creates a new {@link $Invoice}.
     *
     * @param conformanceLevel the conformance level
     */
-  public InvoiceBuilder(ConformanceLevel conformanceLevel) {
-     ContextBuilder context = new ContextBuilder().guideline(new ProfileBuilder().conformanceLevel(conformanceLevel));
-     this.context(context);
+  public InvoiceBuilder $Invoice(ConformanceLevel conformanceLevel) {
+     this.context(new ContextBuilder().guideline(new ProfileBuilder().conformanceLevel(conformanceLevel)));
+     return this;
   }
   
   /**
     * Instantiates a new invoice builder.
     */
-  public InvoiceBuilder() {
+  public $Invoice() {
   }
 }

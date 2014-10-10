@@ -6,7 +6,7 @@ import java.lang.annotation.Target;
 
 import net.karneim.pojobuilder.GeneratePojoBuilder;
 
-@GeneratePojoBuilder(withBuilderInterface = PojoBuilder.class, withBuilderProperties = true, withSetterNamePattern="*")
+@GeneratePojoBuilder(withBuilderInterface = PojoBuilder.class, withBuilderProperties = true, withSetterNamePattern="*",withGenerationGap=true)
 @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 @Documented
 public @interface GenerateBuilder {

@@ -20,6 +20,7 @@ package io.konik.jaxb.adapter;
 import static java.lang.Integer.parseInt;
 import static java.lang.System.getProperty;
 import static java.math.RoundingMode.valueOf;
+import io.konik.Configuration;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -47,6 +48,7 @@ public class QuantityRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> 
 
    final int scale;
    final RoundingMode roundingMode;
+   private final boolean stripTrailingZeros;
 
    /**
     * Instantiates a new amount rounding adapter.
@@ -55,6 +57,7 @@ public class QuantityRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> 
       String name = this.getClass().getName();
       scale = parseInt(getProperty(name + ".scale", DEFAULT_SCALE));
       roundingMode = valueOf(getProperty(name + ".roundingMode", DEFAULT_ROUNDING_MODE));
+      stripTrailingZeros = Configuration.INSTANCE.stripTrailingZeros();
    }
 
    @Override
@@ -65,6 +68,10 @@ public class QuantityRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> 
    @Override
    public BigDecimal marshal(BigDecimal amount) throws Exception {
       if (amount == null) { return null; }
-      return amount.setScale(scale, roundingMode).stripTrailingZeros();
+      BigDecimal roundedValue = amount.setScale(scale, roundingMode);
+      if (stripTrailingZeros) {
+			return roundedValue.stripTrailingZeros();
+		}
+      return roundedValue;
    }
 }

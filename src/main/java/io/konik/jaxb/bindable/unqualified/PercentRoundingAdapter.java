@@ -17,10 +17,7 @@
  */
 package io.konik.jaxb.bindable.unqualified;
 
-import static io.konik.Configuration.INSTANCE;
-import static java.lang.Boolean.getBoolean;
 import static java.lang.Integer.parseInt;
-import static java.lang.System.getProperty;
 import static java.math.RoundingMode.valueOf;
 import io.konik.Configuration;
 
@@ -46,8 +43,8 @@ public class PercentRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> {
     */
    public PercentRoundingAdapter() {
       String name = this.getClass().getName();
-      scale = parseInt(getProperty(name + ".scale", DEFAULT_SCALE));
-      roundingMode = valueOf(getProperty(name + ".roundingMode", DEFAULT_ROUNDING_MODE));
+      scale = parseInt(Configuration.INSTANCE.getProperty(name + ".scale", DEFAULT_SCALE));
+      roundingMode = valueOf(Configuration.INSTANCE.getProperty(name + ".roundingMode", DEFAULT_ROUNDING_MODE));
       stripTrailingZeros = Configuration.INSTANCE.stripTrailingZeros();
    }
 

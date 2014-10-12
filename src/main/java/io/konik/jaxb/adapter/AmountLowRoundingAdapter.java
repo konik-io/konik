@@ -18,7 +18,6 @@
 package io.konik.jaxb.adapter;
 
 import static java.lang.Integer.parseInt;
-import static java.lang.System.getProperty;
 import static java.math.RoundingMode.valueOf;
 import io.konik.Configuration;
 import io.konik.zugferd.unqualified.Amount;
@@ -55,8 +54,8 @@ public class AmountLowRoundingAdapter extends XmlAdapter<Amount, Amount> {
 	 */
 	public AmountLowRoundingAdapter() {
 		String name = this.getClass().getName();
-		scale = parseInt(getProperty(name + ".scale", getDefaultScale()));
-		roundingMode = valueOf(getProperty(name + ".roundingMode", DEFAULT_ROUNDING_MODE));
+		scale = parseInt(Configuration.INSTANCE.getProperty(name + ".scale", getDefaultScale()));
+		roundingMode = valueOf(Configuration.INSTANCE.getProperty(name + ".roundingMode", DEFAULT_ROUNDING_MODE));
 		stripTrailingZeros = Configuration.INSTANCE.stripTrailingZeros();
 	}
 

@@ -18,11 +18,11 @@
  */
 package io.konik.jaxb.adapter;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import io.konik.jaxb.bindable.entity.TradeCountry;
 import io.konik.util.Strings;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 

@@ -35,52 +35,48 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  * 
  * Defaults::
  * 
- * ---- 
+ * ----
  * io.konik.jaxb.adapter.AmountLowRoundingAdapter.scale=2
- * io.konik.jaxb.adapter.AmountLowRoundingAdapter.roundingMode=HALF_UP 
+ * io.konik.jaxb.adapter.AmountLowRoundingAdapter.roundingMode=HALF_UP
  * ----
  */
 public class AmountLowRoundingAdapter extends XmlAdapter<Amount, Amount> {
 
-	private static final String DEFAULT_SCALE = "2";
-	private static final String DEFAULT_ROUNDING_MODE = "HALF_UP";
+   private static final String DEFAULT_SCALE = "2";
+   private static final String DEFAULT_ROUNDING_MODE = "HALF_UP";
 
-	private final int scale;
-	private final RoundingMode roundingMode;
-	private boolean stripTrailingZeros;
+   private final int scale;
+   private final RoundingMode roundingMode;
+   private boolean stripTrailingZeros;
 
-	/**
-	 * Instantiates a new amount rounding adapter.
-	 */
-	public AmountLowRoundingAdapter() {
-		String name = this.getClass().getName();
-		scale = parseInt(Configuration.INSTANCE.getProperty(name + ".scale", getDefaultScale()));
-		roundingMode = valueOf(Configuration.INSTANCE.getProperty(name + ".roundingMode", DEFAULT_ROUNDING_MODE));
-		stripTrailingZeros = Configuration.INSTANCE.stripTrailingZeros();
-	}
+   /**
+    * Instantiates a new amount rounding adapter.
+    */
+   public AmountLowRoundingAdapter() {
+      String name = this.getClass().getName();
+      scale = parseInt(Configuration.INSTANCE.getProperty(name + ".scale", getDefaultScale()));
+      roundingMode = valueOf(Configuration.INSTANCE.getProperty(name + ".roundingMode", DEFAULT_ROUNDING_MODE));
+      stripTrailingZeros = Configuration.INSTANCE.stripTrailingZeros();
+   }
 
-	protected String getDefaultScale() {
-		return DEFAULT_SCALE;
-	}
+   protected String getDefaultScale() {
+      return DEFAULT_SCALE;
+   }
 
-	@Override
-	public Amount unmarshal(Amount amount) throws Exception {
-		return amount;
-	}
+   @Override
+   public Amount unmarshal(Amount amount) throws Exception {
+      return amount;
+   }
 
-	@Override
-	public Amount marshal(Amount amount) throws Exception {
-		if (amount == null || amount.getValue() == null) {
-			return amount;
-		}
-		return amount.setValue(round(amount));
-	}
+   @Override
+   public Amount marshal(Amount amount) throws Exception {
+      if (amount == null || amount.getValue() == null) { return amount; }
+      return amount.setValue(round(amount));
+   }
 
-	private BigDecimal round(Amount amount) {
-		BigDecimal rounded = amount.getValue().setScale(scale, roundingMode);
-		if (stripTrailingZeros) {
-			return rounded.stripTrailingZeros();
-		}
-		return rounded;
-	}
+   private BigDecimal round(Amount amount) {
+      BigDecimal rounded = amount.getValue().setScale(scale, roundingMode);
+      if (stripTrailingZeros) { return rounded.stripTrailingZeros(); }
+      return rounded;
+   }
 }

@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  * JaxB Adapter for mapping Parameter to Profile Enum.
  */
 public class ParameterProfileAdapter extends XmlAdapter<Parameter, Profile> {
-   
+
    private static final Logger LOG = Logger.getLogger(ParameterProfileAdapter.class.getName());
    private static final String DELIMITER = ":";
 

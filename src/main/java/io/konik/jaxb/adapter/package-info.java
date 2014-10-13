@@ -17,7 +17,7 @@
  * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * JaxB Adapter to map Unmappable Konik classes to XML ZUGFeRD Model 
+ * JaxB Adapter to map Unmappable Konik classes to XML ZUGFeRD Model
  */
 package io.konik.jaxb.adapter;
 

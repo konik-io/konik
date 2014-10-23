@@ -17,8 +17,6 @@
  */
 package io.konik.zugferd.entity;
 
-import static java.lang.Integer.valueOf;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,92 +34,102 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "DocumentLineDocumentType", propOrder = { "position", "notes" })
 public class Document {
 
-   @XmlElement(name = "LineID")
-   private Integer position;
+    @XmlElement(name = "LineID")
+    private String position;
 
-   @XmlElement(name = "IncludedNote")
-   private List<Note> notes;
+    @XmlElement(name = "IncludedNote")
+    private List<Note> notes;
 
-   /**
-    * Instantiates a new document line.
-    */
-   public Document() {
-   }
+    /**
+     * Instantiates a new document line.
+     */
+    public Document() {
+    }
 
-   /**
-    * Instantiates a new document line.
-    *
-    * @param position the position number
-    */
-   public Document(int position) {
-      super();
-      this.position = Integer.valueOf(position);
-   }
+    /**
+     * Instantiates a new document line.
+     *
+     * @param position the position number
+     */
+    public Document(String position) {
+        super();
+        this.position = position;
+    }
 
-   /**
-    * Instantiates a new document line.
-    *
-    * @param position the position
-    * @param notes the notes
-    */
-   public Document(int position, List<Note> notes) {
-      this(position);
-      this.notes = notes;
-   }
+    /**
+     * Instantiates a new document line.
+     *
+     * @param position the position
+     * @param notes the notes
+     */
+    public Document(String position, List<Note> notes) {
+        this(position);
+        this.notes = notes;
+    }
 
-   /**
-    * Gets the line position.
-    * 
-    * Profile:: COMFORT
-    *
-    * @return the position number
-    */
-   public Integer getPosition() {
-      return position == null ? null : position;
-   }
+    public Document(int position) {
+        super();
+        this.position = Integer.toString(position);
+    }
 
-   /**
-    * Sets the line position
-    * 
-    * Profile:: COMFORT.
-    *
-    * @param position the position
-    * @return the document line
-    */
-   public Document setPosition(int position) {
-      this.position = valueOf(position);
-      return this;
-   }
+    /**
+     * Instantiates a new document line.
+     *
+     * @param position the position
+     * @param notes the notes
+     */
+    public Document(int position, List<Note> notes) {
+        this(position);
+        this.notes = notes;
+    }
 
-   /**
-    * Gets the included note.
-    * 
-    * Profile::
-    * - Note.content COMFORT
-    * - Note.subjectCode EXTENDED
-    * 
-    * @return the included note
-    */
-   public List<Note> getNotes() {
-      if (notes == null) {
-         notes = new ArrayList<Note>();
-      }
-      return this.notes;
-   }
+    /**
+     * Gets the line position.
+     * 
+     * Profile:: COMFORT
+     *
+     * @return the position number
+     */
+    public String getPosition() {
+        return position;
+    }
 
-   /**
-    * Adds the note.
-    * 
-    * Profile::
-    * - Note.content COMFORT
-    * - Note.subjectCode EXTENDED
-    *
-    * @param note the note
-    * @return the document line document
-    */
-   public Document addNote(Note note) {
-      getNotes().add(note);
-      return this;
-   }
+    /**
+     * Sets the line position
+     * 
+     * Profile:: COMFORT.
+     *
+     * @param position the position
+     */
+    public void setPosition(String position) {
+        this.position = position;
+
+    }
+
+    /**
+     * Gets the included note.
+     * 
+     * Profile:: - Note.content COMFORT - Note.subjectCode EXTENDED
+     * 
+     * @return the included note
+     */
+    public List<Note> getNotes() {
+        if (notes == null) {
+            notes = new ArrayList<Note>();
+        }
+        return this.notes;
+    }
+
+    /**
+     * Adds the note.
+     * 
+     * Profile:: - Note.content COMFORT - Note.subjectCode EXTENDED
+     *
+     * @param note the note
+     */
+    public void addNote(Note note) {
+        getNotes().add(note);
+
+    }
 
 }

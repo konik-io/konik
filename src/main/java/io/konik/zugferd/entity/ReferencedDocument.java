@@ -19,10 +19,10 @@ package io.konik.zugferd.entity;
 
 import io.konik.jaxb.adapter.IssueDateTimeAdapter;
 import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.NotEmpty;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -73,6 +73,7 @@ public class ReferencedDocument {
     * 
     * @return the issue date time
     */
+   @Comfort
    public Date getIssued() {
       return new Date(issued.getTime());
    }
@@ -108,7 +109,8 @@ public class ReferencedDocument {
     * 
     * @return the id the identifier of the referenced document
     */
-   @NotNull(groups = Comfort.class)
+   @Comfort
+   @NotEmpty(groups = Comfort.class)
    public String getId() {
       return id;
    }

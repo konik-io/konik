@@ -39,23 +39,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreement", "delivery", "settlement", "items" })
 public class Trade {
 
-   @NotNull
-   @Valid
    @XmlElement(name = "ApplicableSupplyChainTradeAgreement")
    private Agreement agreement;
 
-   @NotNull
-   @Valid
    @XmlElement(name = "ApplicableSupplyChainTradeDelivery")
    private Delivery delivery;
 
-   @NotNull
-   @Valid
    @XmlElement(name = "ApplicableSupplyChainTradeSettlement")
    private Settlement settlement;
 
-   @NotNull
-   @Valid
    @XmlElement(name = "IncludedSupplyChainTradeLineItem")
    private List<Item> items;
 
@@ -64,6 +56,8 @@ public class Trade {
     *
     * @return the agreement
     */
+   @Valid
+   @NotNull
    public Agreement getAgreement() {
       return agreement;
    }
@@ -84,6 +78,8 @@ public class Trade {
     * 
     * @return the trade delivery
     */
+   @Valid
+   @NotNull
    public Delivery getDelivery() {
       return delivery;
    }
@@ -104,6 +100,8 @@ public class Trade {
     * 
     * @return the trade settlement
     */
+   @Valid
+   @NotNull
    public Settlement getSettlement() {
       return settlement;
    }
@@ -124,6 +122,8 @@ public class Trade {
     * 
     * @return the items
     */
+   @Valid
+   @NotNull
    public List<Item> getItems() {
       if (items == null) {
          items = new ArrayList<Item>();

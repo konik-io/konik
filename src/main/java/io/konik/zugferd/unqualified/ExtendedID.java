@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 public class ExtendedID extends ID {
 
-   @NotBlank
    @XmlAttribute(name = "schemeAgencyID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String schemeAgencyId;
@@ -37,11 +36,11 @@ public class ExtendedID extends ID {
    /**
     * Instantiates a new extended id.
     *
-    * @param idValue the id value
+    * @param idContent the id value
     * @param schemeAgencyId the scheme agency id
     */
-   public ExtendedID(String idValue, String schemeAgencyId) {
-      super(idValue);
+   public ExtendedID(String idContent, String schemeAgencyId) {
+      super(idContent);
       this.schemeAgencyId = schemeAgencyId;
    }
 
@@ -54,6 +53,7 @@ public class ExtendedID extends ID {
     *
     * @return the scheme agency id
     */
+   @NotBlank
    public String getSchemeAgencyId() {
       return schemeAgencyId;
    }

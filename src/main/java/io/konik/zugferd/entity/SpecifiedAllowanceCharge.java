@@ -17,6 +17,8 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.validator.annotation.Comfort;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -35,6 +37,7 @@ public class SpecifiedAllowanceCharge extends AllowanceCharge {
     *
     * @return the category
     */
+   @Comfort
    public AppliedTax getCategory() {
       return category;
    }

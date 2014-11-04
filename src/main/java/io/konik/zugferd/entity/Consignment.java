@@ -18,26 +18,25 @@
 
 package io.konik.zugferd.entity;
 
+import static java.util.Collections.addAll;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
  * = The Consignment.
  * 
- * Profile:: EXTENDED
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SupplyChainConsignmentType", propOrder = { "shippingMethod" })
+@XmlType(name = "SupplyChainConsignmentType", propOrder = { "shippingMethods" })
 public class Consignment {
 
-   /** The specified logistics transport movement. */
    @Valid
    @XmlElement(name = "SpecifiedLogisticsTransportMovement")
-   private LogisticsTransportMovement shippingMethod;
+   private List<LogisticsTransportMovement> shippingMethods;
 
    /**
     * The Constructor.
@@ -51,17 +50,22 @@ public class Consignment {
     *
     * @return the shipping method
     */
-   public LogisticsTransportMovement getShippingMethod() {
-      return shippingMethod;
+   public List<LogisticsTransportMovement> getShippingMethods() {
+      if (shippingMethods == null) {
+         shippingMethods = new ArrayList<LogisticsTransportMovement>();
+      }
+      return shippingMethods;
    }
 
    /**
-    * Sets the shipping method.
+    * adds shipping methods.
     *
-    * @param shippingMethod the shipping method
+    * @param additionalShippingMethod the additional shipping method
+    * @return the consignment
     */
-   public void setShippingMethod(LogisticsTransportMovement shippingMethod) {
-      this.shippingMethod = shippingMethod;
+   public Consignment addShippingMethod(LogisticsTransportMovement ...additionalShippingMethod) {
+      addAll(getShippingMethods(), additionalShippingMethod);
+      return this;
    }
 
 }

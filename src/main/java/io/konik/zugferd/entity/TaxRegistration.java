@@ -23,8 +23,6 @@ import io.konik.zugferd.unece.codes.Reference;
 import io.konik.zugferd.unqualified.ID;
 
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -35,7 +33,6 @@ import javax.xml.bind.annotation.XmlType;
  * The {@link ID#getValue()} is value added tax identification number
  * The {@link ID#getSchemeId()} is the Tax payer's number or VAT number according to (UNCL 1153) eg. FC or VA
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TaxRegistrationType", propOrder = { "id" })
 public class TaxRegistration {
 

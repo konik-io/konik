@@ -18,6 +18,10 @@
 package io.konik.zugferd.entity.trade;
 
 import io.konik.jaxb.bindable.entity.TradeDeliveryTermsAdapter;
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
+import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.entity.CommonAgreement;
 import io.konik.zugferd.entity.ReferencedDocument;
 import io.konik.zugferd.entity.TradeParty;
@@ -26,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -40,21 +45,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class Agreement implements CommonAgreement<ReferencedDocument, ReferencedDocumentAdditional> {
 
    private String buyerReference;
-   @Valid
    private TradeParty seller;
-   @Valid
    private TradeParty buyer;
-   @Valid
    private TradeParty productEndUser;
-   @Valid
    private String deliveryTerms;
-   @Valid
    private ReferencedDocument buyerOrder;
-   @Valid
    private ReferencedDocument contract;
-   @Valid
    private List<ReferencedDocumentAdditional> additional;
-   @Valid
    private ReferencedDocument customerOrder;
 
    /**
@@ -62,10 +59,9 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     * 
     * The reference to ease the attribution for the buyer
     * 
-    * Profile:: COMFORT
-    * 
     * @return the buyer reference
     */
+   @Comfort
    @XmlElement(name = "BuyerReference")
    public String getBuyerReference() {
       return buyerReference;
@@ -76,8 +72,6 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     * 
     * The reference to ease the attribution for the buyer
     * 
-    * Profile:: COMFORT
-    *
     * @param buyerReference the new buyer reference
     * @return the trade agreement
     */
@@ -87,17 +81,20 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
    }
 
    /**
-    * Gets the seller.
+    * Gets the seller trade party
     *
     * @return the seller
     */
+   @NotNull
+   @Valid
+   @Basic
    @XmlElement(name = "SellerTradeParty")
    public TradeParty getSeller() {
       return seller;
    }
 
    /**
-    * Sets the seller.
+    * Sets the seller trade party
     *
     * @param seller the seller
     * @return the agreement
@@ -112,6 +109,7 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     *
     * @return the product end user
     */
+   @Extended
    @XmlElement(name = "ProductEndUserTradeParty")
    public TradeParty getProductEndUser() {
       return productEndUser;
@@ -150,12 +148,12 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
    }
 
    /**
-    * Gets the delivery terms.
+    * Gets the delivery terms Incoterms code.
     *
-    * Profile:: EXTENDED
-    *
-    * @return the delivery terms
+    * @return the delivery terms Incoterms code
     */
+   @Extended
+   @NotBlank(groups=Extended.class)
    @XmlElement(name = "ApplicableTradeDeliveryTerms")
    @XmlJavaTypeAdapter(value = TradeDeliveryTermsAdapter.class)
    public String getDeliveryTerms() {
@@ -163,11 +161,9 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
    }
 
    /**
-    * Sets the delivery terms.
+    * Sets the delivery terms Incoterms code.
     *
-    * Profile:: EXTENDED
-    *
-    * @param deliveryTerms the delivery terms
+    * @param deliveryTerms the delivery Incoterms terms
     */
    public void setDeliveryTerms(String deliveryTerms) {
       this.deliveryTerms = deliveryTerms;
@@ -178,6 +174,7 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     *
     * @return the buyer order referenced document
     */
+   @Comfort
    @Override
    @XmlElement(name = "BuyerOrderReferencedDocument")
    public ReferencedDocument getBuyerOrder() {
@@ -199,10 +196,9 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
    /**
     * Gets the contract referenced document.
     * 
-    * Profile:: COMFORT
-    *
     * @return the contract referenced document
     */
+   @Comfort
    @Override
    @XmlElement(name = "ContractReferencedDocument")
    public ReferencedDocument getContract() {
@@ -212,8 +208,6 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
    /**
     * Sets the contract referenced document.
     * 
-    * Profile:: COMFORT
-    *
     * @param contract the new contract referenced document
     * @return the supply chain trade agreement
     */
@@ -228,6 +222,7 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     *
     * @return the additional
     */
+   @Extended
    @Override
    @XmlElement(name = "AdditionalReferencedDocument")
    public List<ReferencedDocumentAdditional> getAdditional() {
@@ -252,10 +247,9 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
    /**
     * Gets the customer order referenced document.
     * 
-    * Profile:: COMFORT
-    *
     * @return the customer order referenced document
     */
+   @Comfort
    @Override
    @XmlElement(name = "CustomerOrderReferencedDocument")
    public ReferencedDocument getCustomerOrder() {
@@ -265,8 +259,6 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
    /**
     * Sets the customer order referenced document.
     * 
-    * Profile:: COMFORT
-    *
     * @param customerOrder the new customer order referenced document
     * @return the supply chain trade agreement
     */

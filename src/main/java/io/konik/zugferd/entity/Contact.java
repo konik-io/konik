@@ -18,9 +18,10 @@
 package io.konik.zugferd.entity;
 
 import io.konik.jaxb.bindable.entity.UniversalCommunicationAdapter;
+import io.konik.validator.annotation.Email;
+import io.konik.validator.annotation.Extended;
+import io.konik.validator.annotation.ValidContact;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -30,8 +31,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * An individual with contact information.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradeContactType", propOrder = { "name", "department", "telephone", "fax", "email" })
+@ValidContact
 public class Contact {
 
    @XmlElement(name = "PersonName")
@@ -78,10 +79,9 @@ public class Contact {
    /**
     * Gets the contact person name.
     * 
-    * Profile:: EXTENDED
-    * 
     * @return the person name
     */
+   @Extended
    public String getName() {
       return name;
    }
@@ -89,8 +89,6 @@ public class Contact {
    /**
     * Sets the contact person name.
     * 
-    * Profile:: EXTENDED
-    *
     * @param name the new person name
     * @return the contact
     */
@@ -102,10 +100,9 @@ public class Contact {
    /**
     * Gets the department name.
     * 
-    * Profile:: EXTENDED
-    * 
     * @return the department name
     */
+   @Extended
    public String getDepartment() {
       return department;
    }
@@ -113,8 +110,6 @@ public class Contact {
    /**
     * Sets the department name.
     * 
-    * Profile:: EXTENDED
-    *
     * @param department the new department name
     * @return the contact
     */
@@ -126,20 +121,17 @@ public class Contact {
    /**
     * Gets the telephone number.
     * 
-    * Profile:: EXTENDED
-    * 
     * Example:: +{plus}49 (123) 456789-999+
     * 
     * @return the telephone universal communication
     */
+   @Extended
    public String getTelephone() {
       return telephone;
    }
 
    /**
     * Sets the telephone number providing the string only.
-    * 
-    * Profile:: EXTENDED
     * 
     * Example:: +{plus}49 (123) 456789-999+
     *
@@ -154,20 +146,17 @@ public class Contact {
    /**
     * Gets the Fax number.
     * 
-    * Profile:: EXTENDED
-    * 
     * Example:: +{plus}49 (123) 456789-999+
     * 
     * @return the Fax number
     */
+   @Extended
    public String getFax() {
       return fax;
    }
 
    /**
     * Sets the telephone number providing the string only.
-    * 
-    * Profile:: EXTENDED
     * 
     * Example:: +{plus}49 (123) 456789-999+
     *
@@ -182,20 +171,18 @@ public class Contact {
    /**
     * Gets the email contacts E-mail address.
     * 
-    * Profile:: EXTENDED
-    * 
     * Example:: +example@konik.io+
     * 
     * @return the email address
     */
+   @Email
+   @Extended
    public String getEmail() {
       return email;
    }
 
    /**
     * Sets the email contacts E-mail address.
-    * 
-    * Profile:: EXTENDED.
     * 
     * Example:: +example@konik.io+
     *

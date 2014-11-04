@@ -18,10 +18,10 @@
 package io.konik.zugferd.entity;
 
 import io.konik.jaxb.bindable.entity.SupplyChainEventAdapter;
+import io.konik.validator.annotation.Basic;
 import io.konik.zugferd.entity.trade.item.ReferencedDocumentItem;
 import io.konik.zugferd.unqualified.ZfDate;
 
-import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
@@ -36,15 +36,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "SupplyChainTradeDeliveryType")
 public abstract class CommonDelivery<R extends ReferencedDocument> {
 
-   @Valid
    @XmlElement(name = "ShipToTradeParty")
    private TradeParty shipTo;
 
-   @Valid
    @XmlElement(name = "UltimateShipToTradeParty")
    private TradeParty ultimateShipTo;
 
-   @Valid
    @XmlElement(name = "ActualDeliverySupplyChainEvent")
    @XmlJavaTypeAdapter(value = SupplyChainEventAdapter.class)
    private ZfDate actualDelivery;
@@ -100,6 +97,7 @@ public abstract class CommonDelivery<R extends ReferencedDocument> {
     *
     * @return the actual event
     */
+   @Basic
    public ZfDate getActualDelivery() {
       return actualDelivery;
    }

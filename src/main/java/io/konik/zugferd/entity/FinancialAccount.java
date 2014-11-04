@@ -18,53 +18,18 @@
  */
 package io.konik.zugferd.entity;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * = The Financial Account.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "iban", "proprietaryId" })
-public class FinancialAccount {
-
-   @XmlElement(name = "IBANID")
-   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-   private String iban;
-
-   @XmlElement(name = "ProprietaryID")
-   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-   private String proprietaryId;
-
-   /**
-    * Instantiates a new financial account.
-    */
-   FinancialAccount() {
-      super();
-   }
-
-   /**
-    * Instantiates a new financial account.
-    *
-    * @param iban the iban
-    */
-   public FinancialAccount(String iban) {
-      super();
-      setIban(iban);
-   }
+interface FinancialAccount {
 
    /**
     * Gets the iban.
     * 
     * @return the iban
     */
-   public String getIban() {
-      return iban;
-   }
+   String getIban();
 
    /**
     * Sets the iban.
@@ -72,19 +37,14 @@ public class FinancialAccount {
     * @param iban the new iban
     * @return the financial account
     */
-   public FinancialAccount setIban(String iban) {
-      this.iban = iban;
-      return this;
-   }
+   FinancialAccount setIban(String iban);
 
    /**
     * Gets the proprietary id.
     * 
     * @return the proprietary id
     */
-   public String getProprietaryID() {
-      return proprietaryId;
-   }
+   String getProprietaryId();
 
    /**
     * Sets the proprietary id.
@@ -92,9 +52,6 @@ public class FinancialAccount {
     * @param proprietaryId the new proprietary id
     * @return the financial account
     */
-   public FinancialAccount setProprietaryID(String proprietaryId) {
-      this.proprietaryId = proprietaryId;
-      return this;
-   }
+   FinancialAccount setProprietaryId(String proprietaryId);
 
 }

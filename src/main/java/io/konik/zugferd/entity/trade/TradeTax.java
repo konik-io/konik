@@ -37,12 +37,12 @@ public class TradeTax extends SpecifiedTax {
 
    @Basic
    @NotNull
+   @Valid
    @Override
    public Amount getCalculated() {
-      return super.getCalculated();
+      return calculated;
    }
 
-   @Basic
    @Override
    public TradeTax setCalculated(Amount calculatedAmount) {
       return (TradeTax) super.setCalculated(calculatedAmount);
@@ -52,19 +52,17 @@ public class TradeTax extends SpecifiedTax {
    @NotNull
    @Override
    public TaxCode getType() {
-      return super.getType();
+      return type;
    }
 
-   @Basic
    @Override
    public TradeTax setType(TaxCode taxTypeCode) {
-      return (TradeTax) super.setType(taxTypeCode);
+      this.type = taxTypeCode;
+      return this;
    }
 
    /**
     * Gets the basis amount for tax calculation.
-    * 
-    * Profile:: BASIC
     * 
     * @return the basis amount
     */
@@ -78,8 +76,6 @@ public class TradeTax extends SpecifiedTax {
    /**
     * Sets the basis amount for tax calculation.
     * 
-    * Profile:: BASIC
-    *
     * @param basisAmount the new basis amount
     * @return the tax
     */
@@ -93,6 +89,7 @@ public class TradeTax extends SpecifiedTax {
     *
     * @return the line total
     */
+   @Valid
    @Extended
    public Amount getLineTotal() {
       return lineTotal;
@@ -138,14 +135,14 @@ public class TradeTax extends SpecifiedTax {
       return (TradeTax) super.setCategory(value);
    }
 
-   @NotNull
+   
    @Basic
+   @NotNull
    @Override
    public BigDecimal getPercentage() {
       return super.getPercentage();
    }
 
-   @Basic
    @Override
    public TradeTax setPercentage(BigDecimal applicablePercentage) {
       return (TradeTax) super.setPercentage(applicablePercentage);
@@ -156,5 +153,4 @@ public class TradeTax extends SpecifiedTax {
       super.setExemptionReason(exemptionReason);
       return this;
    }
-
 }

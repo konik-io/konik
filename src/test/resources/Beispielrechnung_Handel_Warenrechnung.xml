@@ -97,6 +97,7 @@
             <ram:GlobalID schemeID="0088">4333741000005</ram:GlobalID>
             <ram:Name>MUSTERLIEFERANT GMBH</ram:Name>
             <ram:DefinedTradeContact>
+               <ram:PersonName>Max Mustermann</ram:PersonName>
                <ram:TelephoneUniversalCommunication>
                   <ram:CompleteNumber>+49 932 431 500</ram:CompleteNumber>
                </ram:TelephoneUniversalCommunication>

@@ -19,7 +19,7 @@ package io.konik.zugferd.entity;
 
 import io.konik.zugferd.unqualified.ZfDate;
 
-import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -33,11 +33,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "SpecifiedPeriodType", propOrder = { "start", "end" })
 public class Period {
 
-   @Valid
    @XmlElement(name = "StartDateTime")
    private ZfDate start;
 
-   @Valid
    @XmlElement(name = "EndDateTime")
    private ZfDate end;
 
@@ -47,6 +45,7 @@ public class Period {
     * 
     * @return the start date time
     */
+   @NotNull
    public ZfDate getStart() {
       return start;
    }
@@ -67,6 +66,7 @@ public class Period {
     * 
     * @return the end date time
     */
+   @NotNull
    public ZfDate getEnd() {
       return end;
    }

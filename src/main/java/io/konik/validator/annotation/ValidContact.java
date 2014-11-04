@@ -18,11 +18,9 @@
 package io.konik.validator.annotation;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
-import static java.lang.annotation.ElementType.CONSTRUCTOR;
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import io.konik.validator.ValidContactValidator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -30,35 +28,28 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.ReportAsSingleViolation;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
- * = The NotEmpty Annotation
- * 
- * Checks that the annotated +string+, +collection+, +map+ or +array+ is not +null+ or empty.
+ *  
+ * Asserts that the Contact has either a name or department.
  */
-@Documented
-@Constraint(validatedBy = {})
-@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
+@Target({ TYPE, ANNOTATION_TYPE })
 @Retention(RUNTIME)
-@ReportAsSingleViolation
-@NotNull
-@Size(min = 1)
-public @interface NotEmpty {
-
+@Constraint(validatedBy = { ValidContactValidator.class })
+@Documented
+public @interface ValidContact {
+   
    /**
     * Message.
     *
     * @return the string
     */
-   String message() default "{io.konik.validator.notempty.message}";
+   String message() default "{io.konik.validation.constraints.ValidContact.message}";
 
    /**
     * Groups.
     *
-    * @return the class<?>[]
+    * @return the class[]
     */
    Class<?>[] groups() default {};
 
@@ -68,20 +59,4 @@ public @interface NotEmpty {
     * @return the class<? extends payload>[]
     */
    Class<? extends Payload>[] payload() default {};
-
-   /**
-    * Defines several {@code @NotEmpty} annotations on the same element.
-    */
-   @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
-   @Retention(RUNTIME)
-   @Documented
-   public @interface List {
-
-      /**
-       * Value.
-       *
-       * @return the not empty[]
-       */
-      NotEmpty[] value();
-   }
 }

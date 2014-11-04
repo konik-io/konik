@@ -27,7 +27,6 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * = The Indicator.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IndicatorType", propOrder = { "indicator" })
 public class Indicator {
 

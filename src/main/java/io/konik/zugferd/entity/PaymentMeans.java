@@ -17,16 +17,16 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.ValidId;
 import io.konik.zugferd.unece.codes.PaymentMeansCode;
 import io.konik.zugferd.unqualified.ExtendedID;
-import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -35,8 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * Detailed information on the means of payment.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeSettlementPaymentMeansType", propOrder = { "code", "informations", "mandateReferenceId",
+@XmlType(name = "TradeSettlementPaymentMeansType", propOrder = { "code", "informations", "mandateReference",
       "payerAccount", "payeeAccount", "payerInstitution", "payeeInstitution" })
 public class PaymentMeans {
 
@@ -46,34 +45,29 @@ public class PaymentMeans {
    @XmlElement(name = "Information")
    private List<String> informations;
 
-   @Valid
    @XmlElement(name = "ID")
-   private ExtendedID mandateReferenceId;
+   private ExtendedID mandateReference;
 
-   @Valid
    @XmlElement(name = "PayerPartyDebtorFinancialAccount")
-   private FinancialAccount payerAccount;
+   private DebtorFinancialAccount payerAccount;
 
-   @Valid
    @XmlElement(name = "PayeePartyCreditorFinancialAccount")
-   private FinancialAccount payeeAccount;
+   private CreditorFinancialAccount payeeAccount;
 
-   @Valid
    @XmlElement(name = "PayerSpecifiedDebtorFinancialInstitution")
    private FinancialInstitution payerInstitution;
 
-   @Valid
    @XmlElement(name = "PayeeSpecifiedCreditorFinancialInstitution")
    private FinancialInstitution payeeInstitution;
 
    /**
     * Gets the +UNCL 4461+ type code.
     * 
-    * Profile:: COMFORT
-    * 
     * @return the UNCL 4461 type code
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred4461.htm[UN/EDIFACT 4461 Payment means code^]
     */
+   @Valid
+   @Comfort
    public PaymentMeansCode getCode() {
       return code;
    }
@@ -81,8 +75,6 @@ public class PaymentMeans {
    /**
     * Sets the +UNCL 4461+ code.
     *
-    * Profile:: *COMFORT*
-    * 
     * @param paymentMeansCode the new UNCL 4461 payment means code
     * @return the trade settlement payment means
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred4461.htm[UN/EDIFACT 4461 Payment means code^]
@@ -95,12 +87,12 @@ public class PaymentMeans {
    /**
     * Gets the free text payment method information.
     * 
-    * Profile:: COMFORT
-    * 
     * Example:: +Cash, Credit Card+
     * 
     * @return the information
     */
+   @Valid
+   @Comfort
    public List<String> getInformations() {
       if (informations == null) {
          informations = new ArrayList<String>();
@@ -111,11 +103,10 @@ public class PaymentMeans {
    /**
     * Adds the free text payment method information.
     * 
-    * Profile:: COMFORT
-    * 
     * Example:: +Cash, Credit Card+
     *
     * @param additionalInformation the additional information
+    * 
     * @return the payment means
     */
    public PaymentMeans addInformation(String additionalInformation) {
@@ -124,71 +115,69 @@ public class PaymentMeans {
    }
 
    /**
-    * Gets the client creditor id.
+    * Gets the mandate reference and client creditor id.
     *
-    * @return the client creditor id
+    * {@link http://de.wikipedia.org/wiki/Mandatsreferenz}
+    * 
+    * @return the mandate reference and client creditor id
     */
-   public ID getClientCreditorId() {
-      return mandateReferenceId;
+   @ValidId
+   @Basic
+   public ExtendedID getMandateReference() {
+      return mandateReference;
    }
 
    /**
-    * Sets the client creditor id.
+    * Sets the mandate reference and client creditor id.
+    * 
+    * {@link http://de.wikipedia.org/wiki/Mandatsreferenz}
     *
-    * @param clientCreditorId the new client creditor id
+    * @param mandateReference the new mandate reference and client creditor id
     */
-   public void setClientCreditorId(ExtendedID clientCreditorId) {
-      this.mandateReferenceId = clientCreditorId;
+   public void setMandateReference(ExtendedID mandateReference) {
+      this.mandateReference = mandateReference;
    }
 
    /**
-    * Gets the payer/buyer debtor financial account.
+    * Gets the payer/buyer financial account.
     * 
-    * Profile:: COMFORT
-    * 
-    * 
-    * @return the payer party debtor financial account
+    * @return the payer financial account
     */
-   public FinancialAccount getPayerAccount() {
+   @Valid
+   @Comfort
+   public DebtorFinancialAccount getPayerAccount() {
       return payerAccount;
    }
 
    /**
-    * Sets the payer/buyer party debtor financial account.
-    * 
-    * Profile:: COMFORT
-    * 
-    * 
+    * Sets the payer/buyer financial account.
+    *
     * @param payerAccount the payer account
-    * @return the trade settlement payment means
+    * @return the payment means
     */
-   public PaymentMeans setPayerAccount(FinancialAccount payerAccount) {
+   public PaymentMeans setPayerAccount(DebtorFinancialAccount payerAccount) {
       this.payerAccount = payerAccount;
       return this;
    }
 
    /**
-    * Gets the payee/seller party creditor financial account.
+    * Gets the payee/seller financial account.
     * 
-    * Profile:: BASIC
-    * 
-    * 
-    * @return the payee party creditor financial account
+    * @return the payee financial account
     */
-   public FinancialAccount getPayeeAccount() {
+   @Valid
+   @Basic
+   public CreditorFinancialAccount getPayeeAccount() {
       return payeeAccount;
    }
 
    /**
     * Sets the payee/seller party creditor financial account.
     * 
-    * Profile:: BASIC
-    * 
-    * 
     * @param payeeAccount the payee account
     * @return the trade settlement payment means
     */
-   public PaymentMeans setPayeeAccount(FinancialAccount payeeAccount) {
+   public PaymentMeans setPayeeAccount(CreditorFinancialAccount payeeAccount) {
       this.payeeAccount = payeeAccount;
       return this;
    }
@@ -196,20 +185,16 @@ public class PaymentMeans {
    /**
     * Gets the payer/buyer specified debtor financial institution.
     * 
-    * Profile:: COMFORT
-    * 
-    * 
     * @return the payer specified debtor financial institution
     */
+   @Valid
+   @Comfort
    public FinancialInstitution getPayerInstitution() {
       return payerInstitution;
    }
 
    /**
     * Sets the payer/buyer specified debtor financial institution.
-    * 
-    * Profile:: COMFORT
-    * 
     * 
     * @param payerInstitution the payer institution
     * @return the trade settlement payment means
@@ -222,20 +207,16 @@ public class PaymentMeans {
    /**
     * Gets the payee/seller specified creditor financial institution.
     * 
-    * Profile:: BASIC
-    * 
-    * 
     * @return the payee specified creditor financial institution
     */
+   @Valid
+   @Basic
    public FinancialInstitution getPayeeInstitution() {
       return payeeInstitution;
    }
 
    /**
     * Sets the payee/seller specified creditor financial institution.
-    * 
-    * Profile:: BASIC
-    * 
     * 
     * @param payeeInstitution the payee institution
     * @return the trade settlement payment means

@@ -22,6 +22,7 @@ import static io.konik.zugferd.unqualified.Indicator.trueIndicator;
 import io.konik.jaxb.adapter.AmountHighRoundingAdapter;
 import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Indicator;
 import io.konik.zugferd.unqualified.Quantity;
@@ -45,7 +46,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class AllowanceCharge {
 
    @XmlElement(name = "ChargeIndicator")
-   @NotNull(groups = Comfort.class)
    private Indicator surcharge;
 
    @XmlElement(name = "SequenceNumeric")
@@ -55,17 +55,13 @@ public class AllowanceCharge {
    @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
    private BigDecimal calculationPercent;
 
-   @Valid
    @XmlElement(name = "BasisAmount")
    @XmlJavaTypeAdapter(value = AmountHighRoundingAdapter.class)
    private Amount basis;
 
-   @Valid
    @XmlElement(name = "BasisQuantity")
    private Quantity basisQuantity;
 
-   @Valid
-   @NotNull(groups = Comfort.class)
    @XmlElement(name = "ActualAmount")
    @XmlJavaTypeAdapter(value = AmountHighRoundingAdapter.class)
    private Amount actual;
@@ -87,8 +83,9 @@ public class AllowanceCharge {
    /**
     * Checks if is a surcharge.
     *
-    * @return true if charge otherwise discount
+    * @return true if charge
     */
+   @NotNull(groups = Comfort.class)
    public boolean isSurcharge() {
       return surcharge.getIndicator();
    }
@@ -96,7 +93,7 @@ public class AllowanceCharge {
    /**
     * Checks if is discount.
     *
-    * @return true if discount otherwise charge
+    * @return true if is discount
     */
    public boolean isDiscount() {
       return !surcharge.getIndicator();
@@ -127,6 +124,7 @@ public class AllowanceCharge {
     *
     * @return the sequence
     */
+   @Extended//if specified
    public BigDecimal getSequence() {
       return sequence;
    }
@@ -163,6 +161,7 @@ public class AllowanceCharge {
     * 
     * @return the basis amount
     */
+   @Valid
    public Amount getBasis() {
       return basis;
    }
@@ -183,6 +182,7 @@ public class AllowanceCharge {
     *
     * @return the basis quantity
     */
+   @Valid
    public Quantity getBasisQuantity() {
       return basisQuantity;
    }
@@ -201,6 +201,8 @@ public class AllowanceCharge {
     * 
     * @return the actual amount
     */
+   @Valid
+   @NotNull(groups = Comfort.class)
    public Amount getActual() {
       return actual;
    }

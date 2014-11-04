@@ -58,7 +58,6 @@ public interface CommonAgreement<R extends ReferencedDocument, A extends Referen
    /**
     * Gets the contract referenced document.
     * 
-    * Profile:: COMFORT
     *
     * @return the contract referenced document
     */
@@ -67,7 +66,6 @@ public interface CommonAgreement<R extends ReferencedDocument, A extends Referen
    /**
     * Sets the contract referenced document.
     * 
-    * Profile:: COMFORT
     *
     * @param contract the new contract referenced document
     * @return the supply chain trade agreement
@@ -92,7 +90,6 @@ public interface CommonAgreement<R extends ReferencedDocument, A extends Referen
    /**
     * Gets the customer order referenced document.
     * 
-    * Profile:: COMFORT
     *
     * @return the customer order referenced document
     */
@@ -101,7 +98,6 @@ public interface CommonAgreement<R extends ReferencedDocument, A extends Referen
    /**
     * Sets the customer order referenced document.
     * 
-    * Profile:: COMFORT
     *
     * @param customerOrder the new customer order referenced document
     * @return the supply chain trade agreement

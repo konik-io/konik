@@ -18,6 +18,10 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
+import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
@@ -25,7 +29,6 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -36,54 +39,42 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * Applies to a buyer, seller, order recipient or invoice recipient.
  */
-@XmlType(name = "TradePartyType", propOrder = { "id", "globalId", "name", "contact", "address", "taxRegistrations" })
+@XmlType(name = "TradePartyType", propOrder = { "id", "globalIds", "name", "contact", "address", "taxRegistrations" })
 public class TradeParty {
 
-   /** The vendor number or customer number */
    @XmlElement(name = "ID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String id;
 
-   /** The global vendor number or customer number id */
    @XmlElement(name = "GlobalID")
-   private List<ID> globalId;
+   private List<ID> globalIds;
 
-   /** The name of the trade party. */
-   @NotNull
    @XmlElement(name = "Name")
    private String name;
 
-   /** The contact person. */
-   @Valid
    @XmlElement(name = "DefinedTradeContact")
    private Contact contact;
 
-   /** The postal address. */
-   @Valid
    @XmlElement(name = "PostalTradeAddress")
    private Address address;
 
-   /** The tax registration. */
-   @Valid
    @XmlElement(name = "SpecifiedTaxRegistration")
    private List<TaxRegistration> taxRegistrations;
 
    /**
-    * Gets the id.
-    * 
-    * Profile:: COMFORT when part of Trade.agreements.seller
+    * Gets the vendor, customer or recipient number.
     * 
     * Example:: {@code The supplier number given by the customer/buyer }
     * 
     * @return the id
     */
+   @Comfort
    public String getId() {
       return id;
    }
 
    /**
-    * Sets the id.
-    * Profile:: COMFORT when part of Trade.agreements.seller
+    * Sets the the vendor, customer or recipient number.
     * 
     * Example:: {@code The supplier number given by the customer/buyer }
     *
@@ -96,49 +87,50 @@ public class TradeParty {
    }
 
    /**
-    * Gets the trade party global id. (GLN, DUNS, BIC, ODETTE)
+    * Gets the global vendor number or customer number ids. 
     * 
-    * Profile:: COMFORT when part of Trade.agreements.seller
+    * Example:: GLN, DUNS, BIC, ODETTE
     * 
     * Example::
-    * - {@link ID#getValue()} {@code  GENODED1SPK, 4000001000005 } - {@link ID#getSchemeId()} the ISO 6523 code
-    * {@code 0021, 0088, 0060, 0177 }
+    * - {@link ID#getValue()} {@code  GENODED1SPK, 4000001000005 } 
+    * - {@link ID#getSchemeId()} the ISO 6523 code {@code 0021, 0088, 0060, 0177 }
     * 
     * @return the global id
     */
-   public List<ID> getGlobalId() {
-      if (globalId == null) {
-         globalId = new ArrayList<ID>();
+   @Comfort
+   public List<ID> getGlobalIds() {
+      if (globalIds == null) {
+         globalIds = new ArrayList<ID>();
       }
-      return this.globalId;
+      return this.globalIds;
    }
 
    /**
-    * Adds the global id.
+    * Adds the global vendor number or customer number ids.
     * 
-    * Profile:: COMFORT when part of Trade.agreements.seller
+    * Example:: GLN, DUNS, BIC, ODETTE
     * 
     * Example::
-    * - {@link ID#getValue()} {@code  GENODED1SPK, 4000001000005 } - {@link ID#getSchemeId()} the ISO 6523 code
-    * {@code 0021, 0088, 0060, 0177 }
+    * - {@link ID#getValue()} {@code  GENODED1SPK, 4000001000005 } 
+    * - {@link ID#getSchemeId()} the ISO 6523 code {@code 0021, 0088, 0060, 0177 }
     * 
     * @param additionalGlobalId the additional global id
     * @return the trade party
     */
    public TradeParty addGlobalId(ID additionalGlobalId) {
-      getGlobalId().add(additionalGlobalId);
+      getGlobalIds().add(additionalGlobalId);
       return this;
    }
 
    /**
     * Gets the trade party name. Usually the Company name.
     * 
-    * Profile:: BASIC when part of Trade.agreements.seller/buyer.
-    * 
     * Example:: {@code  ACME Inc.}
     * 
-    * @return the name
+    * @return the trade party or company name
     */
+   @Basic
+   @NotBlank
    public String getName() {
       return name;
    }
@@ -146,11 +138,9 @@ public class TradeParty {
    /**
     * Sets the trade party name. Usually the Company name.
     * 
-    * Profile:: BASIC when part of Trade.agreements.seller/buyer.
-    * 
     * Example:: {@code  ACME Inc.}
     * 
-    * @param name the name
+    * @param name the trade party or company name
     * @return the trade party
     */
    public TradeParty setName(String name) {
@@ -159,48 +149,39 @@ public class TradeParty {
    }
 
    /**
-    * Gets the contact person.
+    * Gets the contact individual or department of the trade party
     * 
-    * Profile:: BASIC when part of Trade.agreements.seller/buyer.
-    * 
-    * 
-    * @return the defined trade contact
+    * @return the trade party contact individual/department
     */
+   @Valid
+   @Extended
    public Contact getContact() {
       return contact;
    }
 
    /**
-    * Sets the contact person.
+    * Sets the contact individual or department of the trade party
     * 
-    * Profile:: BASIC when part of Trade.agreements.seller/buyer.
-    * 
-    * 
-    * @param contact the new defined trade contact
+    * @param newContact the trade party contact individual/department
     * @return the trade party
     */
-   public TradeParty setContact(Contact contact) {
-      this.contact = contact;
+   public TradeParty setContact(Contact newContact) {
+      this.contact = newContact;
       return this;
    }
 
    /**
     * Gets the postal trade address.
     * 
-    * Profile:: BASIC when part of Trade.agreements.seller/buyer.
-    * 
-    * 
     * @return the postal trade address
     */
+   @Valid
    public Address getAddress() {
       return address;
    }
 
    /**
     * Sets the postal trade address.
-    * 
-    * Profile:: BASIC when part of Trade.agreements.seller/buyer.
-    * 
     * 
     * @param postalAddress the new postal trade address
     * @return the trade party
@@ -213,11 +194,9 @@ public class TradeParty {
    /**
     * Gets the specified tax registration.
     * 
-    * Profile:: BASIC
-    * 
-    * 
     * @return the specified tax registration
     */
+   @Valid
    public List<TaxRegistration> getTaxRegistrations() {
       if (taxRegistrations == null) {
          taxRegistrations = new ArrayList<TaxRegistration>();
@@ -227,9 +206,6 @@ public class TradeParty {
 
    /**
     * Adds the tax registration.
-    * 
-    * Profile:: BASIC
-    * 
     * 
     * @param additionalTaxRegistration an additional Tax Registration
     * @return the trade party

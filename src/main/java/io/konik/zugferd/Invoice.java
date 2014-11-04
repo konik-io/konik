@@ -39,18 +39,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = { "context", "header", "trade" })
 public class Invoice {
 
-   @NotNull
-   @Valid
    @XmlElement(name = "SpecifiedExchangedDocumentContext", required = true)
    private Context context;
-
-   @NotNull
-   @Valid
    @XmlElement(name = "HeaderExchangedDocument", required = true)
    private Header header;
-
-   @NotNull
-   @Valid
    @XmlElement(name = "SpecifiedSupplyChainTradeTransaction", required = true)
    private Trade trade;
 
@@ -71,6 +63,8 @@ public class Invoice {
     * 
     * @return the exchanged document context
     */
+   @NotNull
+   @Valid
    public Context getContext() {
       return context;
    }
@@ -91,6 +85,8 @@ public class Invoice {
     * 
     * @return the exchange document header
     */
+   @NotNull
+   @Valid
    public Header getHeader() {
       return header;
    }
@@ -111,6 +107,8 @@ public class Invoice {
     *
     * @return the trade
     */
+   @NotNull
+   @Valid
    public Trade getTrade() {
       return trade;
    }

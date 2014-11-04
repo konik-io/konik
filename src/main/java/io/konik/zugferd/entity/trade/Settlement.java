@@ -56,39 +56,30 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
    @XmlElement(name = "InvoiceCurrencyCode")
    private CurrencyCode currency;
 
-   @Valid
    @XmlElement(name = "InvoiceeTradeParty")
    private TradeParty invoicee;
 
-   @Valid
    @XmlElement(name = "PayeeTradeParty")
    private TradeParty payee;
 
-   @Valid
    @XmlElement(name = "SpecifiedTradeSettlementPaymentMeans")
    private List<PaymentMeans> paymentMeans;
 
-   @Valid
    @XmlElement(name = "ApplicableTradeTax")
    private List<TradeTax> tradeTax;
 
-   @Valid
    @XmlElement(name = "BillingSpecifiedPeriod")
    private Period billingPeriod;
 
-   @Valid
    @XmlElement(name = "SpecifiedTradeAllowanceCharge")
    private List<SpecifiedAllowanceCharge> allowanceCharge;
 
-   @Valid
    @XmlElement(name = "SpecifiedLogisticsServiceCharge")
    private List<LogisticsServiceCharge> serviceCharge;
 
-   @Valid
    @XmlElement(name = "SpecifiedTradePaymentTerms")
    private List<PaymentTerm> paymentTerms;
 
-   @Valid
    @XmlElement(name = "SpecifiedTradeSettlementMonetarySummation")
    private MonetarySummation monetarySummation;
 
@@ -101,11 +92,9 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * 
     * Can be same as invoice number.
     * 
-    * Profile:: BASIC
-    * 
-    *
     * @return the payment reference
     */
+   @Basic
    public String getPaymentReference() {
       return paymentReference;
    }
@@ -115,9 +104,6 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * 
     * Can be same as invoice number.
     * 
-    * Profile:: BASIC
-    * 
-    *
     * @param referenceText the reference text
     * @return the trade settlement
     */
@@ -133,6 +119,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * @return the +ISO 4217 3A+ currency code
     */
    @Basic
+   @NotNull
    public CurrencyCode getCurrency() {
       return currency;
    }
@@ -143,7 +130,6 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * @param currency the new currency
     * @return the trade settlement
     */
-
    public Settlement setCurrency(CurrencyCode currency) {
       this.currency = currency;
       return this;
@@ -154,6 +140,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * 
     * @return the invoicee trade party
     */
+   @Valid
    @Comfort
    public TradeParty getInvoicee() {
       return invoicee;
@@ -177,6 +164,8 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     *
     * @return the payee
     */
+   @Valid
+   @Extended
    public TradeParty getPayee() {
       return payee;
    }
@@ -197,6 +186,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     *
     * @return the specified trade settlement payment means
     */
+   @Valid
    public List<PaymentMeans> getPaymentMeans() {
       if (paymentMeans == null) {
          paymentMeans = new ArrayList<PaymentMeans>();
@@ -245,7 +235,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * 
     * @return the billing specified period
     */
-
+   @Valid
    @Comfort
    @Override
    public Period getBillingPeriod() {

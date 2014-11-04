@@ -32,7 +32,7 @@ import io.konik.PdfHandler;
 import io.konik.validation.InvoiceValidator;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.Address;
-import io.konik.zugferd.entity.FinancialAccount;
+import io.konik.zugferd.entity.DebtorFinancialAccount;
 import io.konik.zugferd.entity.FinancialInstitution;
 import io.konik.zugferd.entity.Header;
 import io.konik.zugferd.entity.Note;
@@ -104,7 +104,7 @@ public class MinimalInvoice {
             .setPaymentReference("20131122-42")
             .setCurrency(EUR)
             .addPaymentMeans(new PaymentMeans()
-               .setPayerAccount(new FinancialAccount("DE01234.."))
+               .setPayerAccount(new DebtorFinancialAccount("DE01234.."))
                   .setPayerInstitution(new FinancialInstitution("GENO...")))
             .setMonetarySummation(new MonetarySummation()
                .setLineTotal(new Amount(100, EUR))

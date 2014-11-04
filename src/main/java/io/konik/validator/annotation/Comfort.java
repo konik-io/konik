@@ -23,5 +23,10 @@ package io.konik.validator.annotation;
  */
 //@GroupSequence({ Default.class})
 public @interface Comfort {
-
+   /**
+    * Restriction indicating that this Profile applies when used with in these parent classes. 
+    *
+    * @return the class[]
+    */
+   Class<?>[] ifParent() default {};
 }

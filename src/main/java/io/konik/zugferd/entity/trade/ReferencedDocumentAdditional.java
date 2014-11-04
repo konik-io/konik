@@ -26,6 +26,7 @@ import javax.validation.constraints.NotNull;
  * 
  * The Additional Referenced Document
  */
+@Extended
 public class ReferencedDocumentAdditional extends ReferencedDocument {
 
    /**

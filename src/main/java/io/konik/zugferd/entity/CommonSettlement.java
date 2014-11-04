@@ -37,16 +37,12 @@ public interface CommonSettlement<T extends CommonTax, M extends CommonMonetaryS
    /**
     * Gets the billing specified period.
     * 
-    * Profile:: COMFORT
-    *
     * @return the billing specified period
     */
    Period getBillingPeriod();
 
    /**
     * Sets the billing specified period.
-    * 
-    * Profile:: COMFORT
     * 
     *
     * @param billingPeriod the new billing specified period
@@ -72,8 +68,6 @@ public interface CommonSettlement<T extends CommonTax, M extends CommonMonetaryS
    /**
     * Gets the trade settlement monetary summation.
     * 
-    * Profile:: BASIC
-    *
     * @return the specified trade settlement monetary summation
     */
    M getMonetarySummation();
@@ -81,8 +75,6 @@ public interface CommonSettlement<T extends CommonTax, M extends CommonMonetaryS
    /**
     * Sets the trade settlement monetary summation.
     * 
-    * Profile:: BASIC
-    *
     * @param monetarySummation the new monetary summation
     * @return the supply chain trade settlement
     */

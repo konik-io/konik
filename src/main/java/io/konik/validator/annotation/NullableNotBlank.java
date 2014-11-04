@@ -50,7 +50,7 @@ public @interface NullableNotBlank {
     *
     * @return the string
     */
-   String message() default "{io.konik.validator.NotBlank.message}";
+   String message() default "{io.konik.validator.NullableNotBlank.message}";
 
    /**
     * Groups.

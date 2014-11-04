@@ -18,6 +18,7 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
+import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonTax;
@@ -26,6 +27,8 @@ import io.konik.zugferd.unece.codes.TaxCode;
 import io.konik.zugferd.unqualified.Amount;
 
 import java.math.BigDecimal;
+
+import javax.validation.Valid;
 
 /**
  * = The trade tax on an item basis.
@@ -61,6 +64,7 @@ public class SpecifiedTax extends CommonTax {
     * 
     * @return the calculated amount
     */
+   @Valid
    @Extended
    public Amount getCalculated() {
       return calculated;
@@ -69,8 +73,6 @@ public class SpecifiedTax extends CommonTax {
    /**
     * Sets the calculated amount.
     * 
-    * Profile:: BASIC
-    *
     * @param calculatedAmount the new calculated amount
     * @return the tax
     */
@@ -82,8 +84,6 @@ public class SpecifiedTax extends CommonTax {
    /**
     * Gets the tax exemption reason.
     * 
-    * Profile:: COMFORT
-    * 
     * @return the exemption reason
     */
    @Comfort
@@ -94,8 +94,6 @@ public class SpecifiedTax extends CommonTax {
    /**
     * Sets the tax exemption reason.
     * 
-    * Profile:: COMFORT
-    *
     * @param exemptionReason the new exemption reason
     * @return the tax
     */

@@ -43,14 +43,16 @@ public class Note {
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String contentCode;
 
-   @Basic
+   @Basic(ifParent=Note.class)
+   @Comfort(ifParent=Document.class)
    @NotEmpty
    @XmlElement(name = "Content")
    private List<String> contents;
 
-   @Comfort
-   @XmlElement(name = "SubjectCode")
+   @Comfort(ifParent=Note.class)
+   @Extended(ifParent=Document.class)
    @NullableNotBlank
+   @XmlElement(name = "SubjectCode")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String subjectCode;
 

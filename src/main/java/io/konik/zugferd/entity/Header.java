@@ -19,9 +19,10 @@ package io.konik.zugferd.entity;
 
 import static java.util.Collections.addAll;
 import io.konik.jaxb.adapter.PeriodCompleteToDateTimeAdapter;
+import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Extended;
+import io.konik.validator.annotation.NotBlank;
 import io.konik.validator.annotation.NotEmpty;
-import io.konik.validator.annotation.NullableNotBlank;
 import io.konik.zugferd.unece.codes.DocumentCode;
 import io.konik.zugferd.unqualified.Indicator;
 import io.konik.zugferd.unqualified.ZfDate;
@@ -44,28 +45,21 @@ import com.neovisionaries.i18n.LanguageCode;
  * = The Invoice Document Header
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "HeaderExchangedDocument", propOrder = { "invoiceNumber", "name", "code", "issued", "copy", "languages",
-      "notes", "contractualDueDate" })
+@XmlType(name = "HeaderExchangedDocument", propOrder = { "invoiceNumber", "name", "code", "issued", "copy",
+      "languages", "notes", "contractualDueDate" })
 public class Header {
 
-   @NotNull
-   @NullableNotBlank
    @XmlElement(name = "ID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String invoiceNumber;
 
-   @NotNull
-   @NullableNotBlank
    @XmlElement(name = "Name")
    private String name;
 
-   @NotNull
    @XmlElement(name = "TypeCode")
    private DocumentCode code;
 
    @XmlElement(name = "IssueDateTime")
-   @NotNull
-   @Valid
    private ZfDate issued;
 
    @XmlElement(name = "CopyIndicator")
@@ -74,13 +68,9 @@ public class Header {
    @XmlElement(name = "LanguageID")
    private List<LanguageCode> languages;
 
-   @Valid
-   @NotEmpty
    @XmlElement(name = "IncludedNote")
    private List<Note> notes;
 
-   @Valid
-   @Extended
    @XmlElement(name = "EffectiveSpecifiedPeriod")
    @XmlJavaTypeAdapter(value = PeriodCompleteToDateTimeAdapter.class)
    private ZfDate contractualDueDate;
@@ -88,20 +78,18 @@ public class Header {
    /**
     * Gets the invoice number.
     * 
-    * Profile:: BASIC
-    * 
     * Example:: {@code 2012-12345}
     *
     * @return the invoice number
     */
+   @Basic
+   @NotBlank
    public String getInvoiceNumber() {
       return invoiceNumber;
    }
 
    /**
     * Sets the invoice number.
-    * 
-    * Profile:: BASIC
     * 
     * Example:: {@code 2012-12345}
     *
@@ -116,20 +104,18 @@ public class Header {
    /**
     * Gets the free text invoice name.
     * 
-    * Profile:: BASIC
-    * 
     * Example:: {@code invoice, credit advice, debit note, pro forma invoice}
     * 
     * @return the invoice name
     */
+   @Basic
+   @NotBlank
    public String getName() {
       return this.name;
    }
 
    /**
     * Adds a free text invoice name.
-    * 
-    * Profile:: BASIC
     * 
     * Example:: {@code invoice, credit advice, debit note, pro forma invoice}
     *
@@ -145,21 +131,19 @@ public class Header {
    /**
     * Gets +UNCL 1001+ Document Name Code.
     * 
-    * Profile:: BASIC
-    * 
     * Example:: {@code 380, 381, 383, 389, 261}
     * 
     * @return the document name code
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred1001.htm[UN/EDIFACT 1001 Document name coe^]
     */
+   @Basic
+   @NotNull
    public DocumentCode getCode() {
       return code;
    }
 
    /**
     * Sets the +UNCL 1001+ Document Name Code.
-    * 
-    * Profile:: BASIC
     * 
     * Example:: {@code 380, 381, 383, 389, 261}
     *
@@ -176,19 +160,17 @@ public class Header {
    /**
     * Gets the invoice issue date time.
     * 
-    * Profile:: BASIC
-    * 
-    * 
     * @return the issue date time
     */
+   @Basic
+   @Valid
+   @NotNull
    public ZfDate getIssued() {
       return issued;
    }
 
    /**
     * Sets the invoice issue date time.
-    * 
-    * Profile:: BASIC
     * 
     * 
     * @param issued the new issue date time
@@ -204,6 +186,7 @@ public class Header {
     *
     * @return the indicator
     */
+   @Extended
    public boolean isCopy() {
       return copy.getIndicator();
    }
@@ -222,6 +205,7 @@ public class Header {
     *
     * @return the languages
     */
+   @Extended
    public List<LanguageCode> getLanguages() {
       if (languages == null) {
          languages = new ArrayList<LanguageCode>();
@@ -241,18 +225,15 @@ public class Header {
    /**
     * Gets the invoice header notes.
     * 
-    * Profile::
-    * - {@link Note#getContent()}: BASIC
-    * - {@link Note#getSubjectCode()}: COMFORT
-    * 
-    * Example:: {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.}
-    * 
     * Example::
     * - {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.} -
-    * {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
+    * - {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
     * 
     * @return the included note
     */
+   @Basic
+   @Valid
+   @NotEmpty
    public List<Note> getNotes() {
       if (notes == null) {
          notes = new ArrayList<Note>();
@@ -263,13 +244,9 @@ public class Header {
    /**
     * Adds a invoice header note.
     * 
-    * Profile::
-    * - {@link Note#getContent()}: BASIC
-    * - {@link Note#getSubjectCode()}: COMFORT
-    * 
     * Example::
     * - {@code note content: }{@link Note#getContent() Invoice like agreed on the telephone with Mr.X.} -
-    * {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
+    * - {@code note subject code as UNCL 4451: }{@link Note#getSubjectCode() AAK}
     *
     * @param additionalNote the additional note
     * @return the header
@@ -284,6 +261,7 @@ public class Header {
     *
     * @return the contractual due date
     */
+   @Extended
    public ZfDate getContractualDueDate() {
       return contractualDueDate;
    }

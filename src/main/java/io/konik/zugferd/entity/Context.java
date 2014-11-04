@@ -26,8 +26,6 @@ import io.konik.zugferd.unqualified.Indicator;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -37,19 +35,15 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * Grouping of the properties of the message.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ExchangedDocumentContextType", propOrder = { "test", "businessProcess", "guideline" })
 public class Context {
 
    @XmlElement(name = "TestIndicator")
    private Indicator test;
 
-   @Valid
    @XmlElement(name = "BusinessProcessSpecifiedDocumentContextParameter")
    private Parameter businessProcess;
 
-   @NotNull
-   @Valid
    @XmlElement(name = "GuidelineSpecifiedDocumentContextParameter", required = true)
    @XmlJavaTypeAdapter(ParameterProfileAdapter.class)
    private Profile guideline;
@@ -61,7 +55,7 @@ public class Context {
    }
 
    /**
-    * Instantiates a new context with a latest version profile.
+    * Instantiates a new context with a latest ZUGFeRD profile version.
     *
     * @param conformanceLevel the profile
     */
@@ -70,14 +64,8 @@ public class Context {
    }
 
    /**
-    * The test indicator.
+    * Checks if that invoice is for test purposes only and should not be processed in the target system.
     * 
-    * Flags the invoice such that it should not be processed in the target system.
-    * 
-    * The sales tax liability does not arise. This flag is used in particular in the introductory period of new business
-    * relationships.
-    * 
-    * Profile:: BASIC
     * 
     * Default:: +false+
     * 
@@ -90,11 +78,9 @@ public class Context {
    }
 
    /**
-    * The test indicator.
-    * 
     * Flags the invoice such that it should not be processed in the target system.
-    * 
-    * Profile:: BASIC
+    * The sales tax liability does **NOT** arise. 
+    * This flag is used in particular in the introductory period of new business relationships.
     * 
     * Default:: +false+
     *
@@ -106,14 +92,10 @@ public class Context {
    }
 
    /**
-    * The test indicator.
+    * Flags the invoice such that it should be processed in the target system.
     * 
-    * Flags the invoice such that it should not be processed in the target system.
-    * 
-    * The sales tax liability does not arise. This flag is used in particular in the introductory period of new business
-    * relationships.
-    * 
-    * Profile:: BASIC
+    * The sales tax liability **does** arise. 
+    * This flag is used in particular in the introductory period of new business relationships.
     * 
     * Default:: +false+
     *
@@ -127,8 +109,6 @@ public class Context {
    /**
     * Gets the business process.
     *
-    * Profile:: EXTENDED
-    *
     * Example:: production Materials, other Materials, freight Invoices
     *
     * @return the business process
@@ -140,8 +120,6 @@ public class Context {
 
    /**
     * Sets the business process.
-    * 
-    * Profile:: EXTENDED
     * 
     * Example:: production Materials, other Materials, freight Invoices
     * 
@@ -156,21 +134,19 @@ public class Context {
    /**
     * Gets the guideline or profile of the invoice
     * 
-    * Profile:: BASIC
-    * 
     * Example:: +urn:ferd:CrossIndustryDocument:invoice:1p0:extended+
     * 
     * @return the profile
     */
    @Basic
+   @NotNull
+   @Valid
    public Profile getGuideline() {
       return this.guideline;
    }
 
    /**
     * Sets the guideline or profile of the invoice
-    * 
-    * Profile:: BASIC
     * 
     * Example:: +urn:ferd:CrossIndustryDocument:invoice:1p0:extended+
     *

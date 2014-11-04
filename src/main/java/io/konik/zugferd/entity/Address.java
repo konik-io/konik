@@ -17,6 +17,8 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.validator.annotation.Basic;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -31,7 +33,6 @@ import com.neovisionaries.i18n.CountryCode;
  * 
  * The postal address of an entity.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradeAddressType", propOrder = { "postcode", "lineOne", "lineTwo", "city", "country" })
 public class Address {
 
@@ -58,7 +59,7 @@ public class Address {
    /**
     * Instantiates a new trade address.
     *
-    * @param postcode the postcode
+    * @param postcode the post code
     * @param lineOne the line one
     * @param lineTwo the line two
     * @param cityName the city name
@@ -90,20 +91,21 @@ public class Address {
    }
 
    /**
-    * Gets the postcode.
+    * Gets the post code.
     * 
     * Profile:: BASIC when part of Trade.agreements.seller.
     * 
     * Example:: {@code DE-123456}
     *
-    * @return the postcode
+    * @return the post code
     */
+   @Basic
    public String getPostcode() {
       return postcode;
    }
 
    /**
-    * Sets the postcode code.
+    * Sets the post code.
     * 
     * Profile:: BASIC when part of Trade.agreements.seller.
     * 
@@ -126,6 +128,7 @@ public class Address {
     *
     * @return the line one
     */
+   @Basic
    public String getLineOne() {
       return lineOne;
    }
@@ -154,6 +157,7 @@ public class Address {
     *
     * @return the line two
     */
+   @Basic
    public String getLineTwo() {
       return lineTwo;
    }
@@ -182,6 +186,7 @@ public class Address {
     *
     * @return the city name
     */
+   @Basic
    public String getCity() {
       return city;
    }
@@ -213,6 +218,7 @@ public class Address {
     * @return the ISO 3166-2A country
     * @see <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-2A Country Codes</a>
     */
+   @Basic
    public CountryCode getCountry() {
       return country;
    }

@@ -19,8 +19,6 @@ package io.konik.zugferd.entity;
 
 import io.konik.validator.annotation.NotBlank;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -28,13 +26,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * The parameter type used in document context.
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentContextParameterType", propOrder = { "id" })
 public class Parameter {
-
-   @NotBlank
+   
    @XmlElement(name = "ID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private final String id;
@@ -56,7 +51,7 @@ public class Parameter {
    }
 
    /**
-    * Gets the value.
+    * Gets the the parameter id
     *
     * @return the value
     */

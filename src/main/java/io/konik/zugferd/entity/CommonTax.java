@@ -51,7 +51,6 @@ as AppliedTradeTax|CategoryTradeTax only   TypeCode, CategoryCode, ApplicablePer
  */
 public abstract class CommonTax {
 
-   @Valid
    @XmlElement(name = "CalculatedAmount")
    protected Amount calculated;
 

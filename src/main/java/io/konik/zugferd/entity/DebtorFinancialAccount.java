@@ -18,11 +18,6 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.Extended;
-import io.konik.validator.annotation.NullableNotBlank;
-import io.konik.validator.annotation.ValidId;
-import io.konik.zugferd.unqualified.ID;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -31,62 +26,54 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * = The Logistics Transport Movement.
- * 
+ *  
+ * = The Debtor Financial Account.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "LogisticsTransportMovementType", propOrder = { "modeCode", "shippingId" })
-public class LogisticsTransportMovement {
-
-   @XmlElement(name = "ModeCode")
+@XmlType(name = "DebtorFinancialAccountType", propOrder = { "iban", "proprietaryId" })
+public class DebtorFinancialAccount implements FinancialAccount{
+   
+   @XmlElement(name = "IBANID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-   private String modeCode;
+   private String iban;
 
-   @XmlElement(name = "ID")
-   private ID shippingId;
+   @XmlElement(name = "ProprietaryID")
+   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+   private String proprietaryId;
 
    /**
-    * Gets the shpping mode code.
-    *
-    * @return the mode code
+    * Instantiates a new debtor financial account.
     */
-   @NullableNotBlank
-   @Extended
-   public String getModeCode() {
-      return modeCode;
+   public DebtorFinancialAccount() {
+   }
+   /**
+    * Instantiates a new debtor financial account.
+    *
+    * @param iban the iban
+    */
+   public DebtorFinancialAccount(String iban) {
+      this.iban = iban;
+   }
+   
+   @Override
+   public String getIban() {
+      return iban;
    }
 
-   /**
-    * Sets the shpping mode code.
-    *
-    * @param modeCode the mode code
-    * @return the logistics transport movement
-    */
-   public LogisticsTransportMovement setModeCode(String modeCode) {
-      this.modeCode = modeCode;
+   @Override
+   public DebtorFinancialAccount setIban(String iban) {
+      this.iban = iban;
       return this;
    }
-
-   /**
-    * Gets the shpping id.
-    *
-    * @return the id
-    */
-   @ValidId
-   @Extended
-   public ID getShppingId() {
-      return shippingId;
+   
+   @Override
+   public String getProprietaryId() {
+      return proprietaryId;
    }
-
-   /**
-    * Sets the shpping id.
-    *
-    * @param shippingId the id
-    * @return the logistics transport movement
-    */
-   public LogisticsTransportMovement setShppingId(ID shippingId) {
-      this.shippingId = shippingId;
+   
+   @Override
+   public DebtorFinancialAccount setProprietaryId(String proprietaryId) {
+      this.proprietaryId = proprietaryId;
       return this;
    }
-
 }

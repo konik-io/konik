@@ -32,7 +32,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "IDType", propOrder = { "value" })
 public class ID {
 
-   @NotBlank
    @XmlValue
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    @XmlSchemaType(name = "token")
@@ -72,6 +71,7 @@ public class ID {
     * 
     * @return the value
     */
+   @NotBlank
    public String getValue() {
       return value;
    }

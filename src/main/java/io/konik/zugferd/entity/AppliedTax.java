@@ -34,8 +34,6 @@ public class AppliedTax extends CommonTax {
    /**
     * Gets the UNCL 5153 tax type code.
     * 
-    * Profile:: COMFORT
-    * 
     * @return the type code
     */
    @Override
@@ -48,8 +46,6 @@ public class AppliedTax extends CommonTax {
    /**
     * Sets the UNCL 5153 tax type code.
     * 
-    * Profile:: BASIC
-    *
     * @param taxTypeCode the tax type code
     * @return the tax
     * @see <a href="http://www.unece.org/trade/untdid/d98b/uncl/uncl5153.htm">UNCL 5153</a>
@@ -63,8 +59,6 @@ public class AppliedTax extends CommonTax {
    /**
     * Gets the tax category.
     * 
-    * Profile:: COMFORT
-    * 
     * @return the category code
     */
    @Override
@@ -77,8 +71,6 @@ public class AppliedTax extends CommonTax {
    /**
     * Sets the tax category.
     * 
-    * Profile:: COMFORT
-    *
     * @param value the new category code
     * @return the tax
     */
@@ -90,12 +82,11 @@ public class AppliedTax extends CommonTax {
    /**
     * Gets the applicable tax percentage.
     * 
-    * Profile:: COMFORT
-    * 
     * @return the applicable tax percentage
     */
    @Override
    @Comfort
+   @NotNull(groups = Comfort.class)
    public BigDecimal getPercentage() {
       return percentage;
    }
@@ -103,8 +94,6 @@ public class AppliedTax extends CommonTax {
    /**
     * Sets the applicable tax percentage.
     * 
-    * Profile:: BASIC
-    *
     * @param applicablePercentage the new applicable tax percentage
     * @return the tax
     */

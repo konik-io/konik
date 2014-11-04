@@ -17,13 +17,14 @@
  */
 package io.konik.zugferd.entity.trade;
 
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonDelivery;
 import io.konik.zugferd.entity.Consignment;
 import io.konik.zugferd.entity.ReferencedDocument;
 import io.konik.zugferd.entity.TradeParty;
 import io.konik.zugferd.unqualified.ZfDate;
-
-import java.util.List;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -38,20 +39,16 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = { "relatedConsignment", "shipTo", "ultimateShipTo", "shipFrom", "actualDelivery",
       "despatchAdvice", "deliveryNote" })
 public class Delivery extends CommonDelivery<ReferencedDocument> {
-
-   @Valid
+  
    @XmlElement(name = "RelatedSupplyChainConsignment")
-   private List<Consignment> relatedConsignment;
+   private Consignment relatedConsignment;
 
-   @Valid
    @XmlElement(name = "ShipFromTradeParty")
    private TradeParty shipFrom;
 
-   @Valid
    @XmlElement(name = "DespatchAdviceReferencedDocument")
    private ReferencedDocument despatchAdvice;
 
-   @Valid
    @XmlElement(name = "DeliveryNoteReferencedDocument")
    private ReferencedDocument deliveryNote;
 
@@ -74,7 +71,9 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
     *
     * @return the related consignment
     */
-   public List<Consignment> getRelatedConsignment() {
+   @Valid
+   @Extended
+   public Consignment getRelatedConsignment() {
       return relatedConsignment;
    }
 
@@ -84,16 +83,31 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
     * @param relatedConsignment the related consignment
     * @return the trade delivery
     */
-   public Delivery setRelatedConsignment(List<Consignment> relatedConsignment) {
+   public Delivery setRelatedConsignment(Consignment relatedConsignment) {
       this.relatedConsignment = relatedConsignment;
       return this;
    }
 
+   @Valid
+   @Extended
+   @Override
+   public TradeParty getShipTo() {
+      return super.getShipTo();
+   }
+
+   @Valid
+   @Extended
+   @Override
+   public TradeParty getUltimateShipTo() {
+      return super.getUltimateShipTo();
+   }
    /**
     * Gets the ship from.
     *
     * @return the ship from
     */
+   @Valid
+   @Extended
    public TradeParty getShipFrom() {
       return shipFrom;
    }
@@ -108,7 +122,9 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
       this.shipFrom = shipFrom;
       return this;
    }
-
+   
+   @Valid
+   @Extended
    @Override
    public ReferencedDocument getDespatchAdvice() {
       return despatchAdvice;
@@ -118,9 +134,10 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
    public Delivery setDespatchAdvice(ReferencedDocument despatchAdvice) {
       this.despatchAdvice = despatchAdvice;
       return this;
-
    }
 
+   @Valid
+   @Comfort
    @Override
    public ReferencedDocument getDeliveryNote() {
       return deliveryNote;

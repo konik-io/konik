@@ -35,7 +35,6 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * The Class ProductCharacteristic.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProductCharacteristicType", propOrder = { "typeCode", "description", "measurand", "value" })
 public class ProductCharacteristic {
 

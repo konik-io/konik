@@ -193,7 +193,7 @@ public class Product {
     * @param characteristic the characteristics
     * @return the product
     */
-   public Product setCharacteristics(ProductCharacteristic characteristic) {
+   public Product addCharacteristic(ProductCharacteristic characteristic) {
       getCharacteristics().add(characteristic);
       return this;
    }

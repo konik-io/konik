@@ -211,12 +211,12 @@ public class Product {
    }
 
    /**
-    * Sets the classifications.
+    * Add an additional classifications.
     *
-    * @param classification the classifications
+    * @param classification the additional classifications
     * @return the product
     */
-   public Product setClassifications(ProductClassification classification) {
+   public Product addClassification(ProductClassification classification) {
       getClassifications().add(classification);
       return this;
    }

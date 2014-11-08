@@ -88,7 +88,7 @@ public class MinimalInvoice {
          .setName("Rechnung"));
       
       Trade trade = new Trade();
-      trade.setAgreement(new Agreement()     // <2>
+      trade.setAgreement(new Agreement()    // <2>
             .setSeller(new TradeParty()
                   .setName("Seller Inc.")
                   .setAddress(new Address("80331", "Marienplatz 1", "München", DE))
@@ -126,9 +126,9 @@ public class MinimalInvoice {
 
    // tag::transformInvoiceToXml[]
    public void transformInvoiceToXml(Invoice invoice) throws IOException {
-      InvoiceTransformer transformer = new InvoiceTransformer(); // <1>
+      InvoiceTransformer transformer = new InvoiceTransformer();   // <1>
       FileOutputStream outputStream = new FileOutputStream("target/minimal-invoice.xml");
-      transformer.fromModel(invoice, outputStream); // <2>
+      transformer.fromModel(invoice, outputStream);   // <2>
    }
    // end::transformInvoiceToXml[]
    
@@ -143,15 +143,15 @@ public class MinimalInvoice {
    public void validateInvoiceAgainstSchema() throws IOException, SAXException {
       //setup
       Invoice invoice = createInvoice();
-      InvoiceTransformer transformer = new InvoiceTransformer();// <1>
+      InvoiceTransformer transformer = new InvoiceTransformer();
 
       
       //execute
-      byte[] xmlInvoice = transformer.fromModel(invoice);// <2>
+      byte[] xmlInvoice = transformer.fromModel(invoice);
 
       //verify
       InputStream is = ByteSource.wrap(xmlInvoice).openBufferedStream();
-      getSchemaValidator().validate(new StreamSource(is)); // <2>
+      getSchemaValidator().validate(new StreamSource(is)); 
    }
    
    
@@ -160,13 +160,13 @@ public class MinimalInvoice {
    public void validateInvoice() {
       //setup
       Invoice invoice = createInvoice();
-      InvoiceValidator invoiceValidator = new InvoiceValidator();// <1>
+      InvoiceValidator invoiceValidator = new InvoiceValidator();   // <1>
 
       //execute
-      Set<ConstraintViolation<Invoice>> violations = invoiceValidator.validate(invoice);// <2>
+      Set<ConstraintViolation<Invoice>> violations = invoiceValidator.validate(invoice);   // <2>
 
       //verify
-      assertThat(violations.size()).isZero();// <3>
+      assertThat(violations.size()).isZero();   // <3>
    }
    // end::validateInvoice[]
 
@@ -175,10 +175,10 @@ public class MinimalInvoice {
    // tag::appendInvoiceToPdf[]
    public void appendInvoiceToPdf() throws IOException {
       Invoice invoice = createInvoice();
-      PdfHandler handler = new PdfHandler(); // <1>
+      PdfHandler handler = new PdfHandler();   // <1>
       InputStream inputPdf = getClass().getResourceAsStream("/acme_invoice-42.pdf");
       OutputStream resultingPdf = new FileOutputStream("target/acme_invoice-42_ZUGFeRD.pdf");
-      handler.appendInvoice(invoice, inputPdf, resultingPdf); // <2>
+      handler.appendInvoice(invoice, inputPdf, resultingPdf);   // <2>
    }
    // end::appendInvoiceToPdf[]
    
@@ -186,9 +186,9 @@ public class MinimalInvoice {
    @Test
    // tag::extracInvoiceFromPdf[]
    public void extracInvoiceFromPdf() {
-      PdfHandler handler = new PdfHandler(); // <1>
+      PdfHandler handler = new PdfHandler();   // <1>
       InputStream inputZugferdPdfStream = getClass().getResourceAsStream("/acme_invoice-42_ZUGFeRD.pdf");
-      Invoice invoice = handler.extractInvoice(inputZugferdPdfStream);// <1>
+      Invoice invoice = handler.extractInvoice(inputZugferdPdfStream);   // <2>
       assertThat(invoice).isNotNull();
    }
    // end::extracInvoiceFromPdf[]

@@ -166,7 +166,7 @@ public class MinimalInvoice {
       Set<ConstraintViolation<Invoice>> violations = invoiceValidator.validate(invoice);// <2>
 
       //verify
-      assertThat(violations.size()).isZero();// <2>
+      assertThat(violations.size()).isZero();// <3>
    }
    // end::validateInvoice[]
 

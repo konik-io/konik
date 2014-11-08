@@ -28,7 +28,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
 import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import javax.validation.groups.Default;
 
 /**
@@ -50,6 +52,16 @@ public class InvoiceValidator {
       super();
       this.validator = validator;
    }
+
+   
+   /**
+    * Instantiates a new default invoice validator, based on the Bean Validation provider
+    */
+   public InvoiceValidator() {
+      ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+      this.validator = factory.getValidator();
+   }
+
 
    /**
     * Validate the invoice

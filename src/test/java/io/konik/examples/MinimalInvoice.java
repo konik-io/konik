@@ -26,12 +26,16 @@ import static io.konik.zugferd.unece.codes.DocumentCode._380;
 import static io.konik.zugferd.unece.codes.Reference.FC;
 import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;
+import static org.assertj.core.api.Assertions.assertThat;
 import io.konik.InvoiceTransformer;
+import io.konik.PdfHandler;
+import io.konik.validation.InvoiceValidator;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.Address;
 import io.konik.zugferd.entity.FinancialAccount;
 import io.konik.zugferd.entity.FinancialInstitution;
 import io.konik.zugferd.entity.Header;
+import io.konik.zugferd.entity.Note;
 import io.konik.zugferd.entity.PaymentMeans;
 import io.konik.zugferd.entity.Product;
 import io.konik.zugferd.entity.TaxRegistration;
@@ -52,7 +56,10 @@ import io.konik.zugferd.unqualified.ZfDateMonth;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Set;
 
+import javax.validation.ConstraintViolation;
 import javax.xml.transform.stream.StreamSource;
 
 import org.junit.Test;
@@ -69,13 +76,15 @@ public class MinimalInvoice {
    ZfDate today = new ZfDateDay();
    ZfDate nextMonth = new ZfDateMonth(addMonths(today, 1));
 
-   private Invoice createMinimalInvoiceModel() {
+   // tag::createInvoice[]
+   private Invoice createInvoice() {
       
       Invoice invoice = new Invoice(BASIC);    // <1>
       invoice.setHeader(new Header()
          .setInvoiceNumber("20131122-42")
          .setCode(_380)
          .setIssued(today)
+         .addNote(new Note("MFG"))
          .setName("Rechnung"));
       
       Trade trade = new Trade();
@@ -99,7 +108,10 @@ public class MinimalInvoice {
                   .setPayerInstitution(new FinancialInstitution("GENO...")))
             .setMonetarySummation(new MonetarySummation()
                .setLineTotal(new Amount(100, EUR))
-               .setTaxTotal(new Amount(19, EUR))
+               .setChargeTotal(new Amount(0,EUR))
+               .setAllowanceTotal(new Amount(0, EUR))
+               .setTaxBasisTotal(new Amount(100, EUR))
+               .setTaxTotal(new Amount(19, EUR))               
                .setGrandTotal(new Amount(119, EUR))));
       
       trade.addItem(new Item()
@@ -109,35 +121,76 @@ public class MinimalInvoice {
       
       return invoice;
    }
+   // end::createInvoice[]
+   
 
-   
-   public void createXmlFromModel(Invoice invoice) throws IOException {
-      InvoiceTransformer transformer = new InvoiceTransformer();     // <1>
+   // tag::transformInvoiceToXml[]
+   public void transformInvoiceToXml(Invoice invoice) throws IOException {
+      InvoiceTransformer transformer = new InvoiceTransformer(); // <1>
       FileOutputStream outputStream = new FileOutputStream("target/minimal-invoice.xml");
-      transformer.fromModel(invoice, outputStream);      // <2>
+      transformer.fromModel(invoice, outputStream); // <2>
    }
-   
+   // end::transformInvoiceToXml[]
    
    @Test
    public void creatMinimalInvoice() throws IOException {
-      //setup
-      Invoice invoice = createMinimalInvoiceModel();
-      createXmlFromModel(invoice);
+      Invoice invoice = createInvoice();
+      transformInvoiceToXml(invoice);
    }
    
+   
    @Test
-   public void validateMinimalInvoice() throws IOException, SAXException {
+   public void validateInvoiceAgainstSchema() throws IOException, SAXException {
       //setup
-      Invoice invoice = createMinimalInvoiceModel();
-      InvoiceTransformer transformer = new InvoiceTransformer();
+      Invoice invoice = createInvoice();
+      InvoiceTransformer transformer = new InvoiceTransformer();// <1>
 
+      
       //execute
-      byte[] xmlInvoice = transformer.fromModel(invoice);
+      byte[] xmlInvoice = transformer.fromModel(invoice);// <2>
 
       //verify
       InputStream is = ByteSource.wrap(xmlInvoice).openBufferedStream();
-      getSchemaValidator().validate(new StreamSource(is));
-   
+      getSchemaValidator().validate(new StreamSource(is)); // <2>
    }
+   
+   
+   @Test
+   // tag::validateInvoice[]
+   public void validateInvoice() {
+      //setup
+      Invoice invoice = createInvoice();
+      InvoiceValidator invoiceValidator = new InvoiceValidator();// <1>
 
+      //execute
+      Set<ConstraintViolation<Invoice>> violations = invoiceValidator.validate(invoice);// <2>
+
+      //verify
+      assertThat(violations.size()).isZero();// <2>
+   }
+   // end::validateInvoice[]
+
+   
+   @Test
+   // tag::appendInvoiceToPdf[]
+   public void appendInvoiceToPdf() throws IOException {
+      Invoice invoice = createInvoice();
+      PdfHandler handler = new PdfHandler(); // <1>
+      InputStream inputPdf = getClass().getResourceAsStream("/acme_invoice-42.pdf");
+      OutputStream resultingPdf = new FileOutputStream("target/acme_invoice-42_ZUGFeRD.pdf");
+      handler.appendInvoice(invoice, inputPdf, resultingPdf); // <2>
+   }
+   // end::appendInvoiceToPdf[]
+   
+   
+   @Test
+   // tag::extracInvoiceFromPdf[]
+   public void extracInvoiceFromPdf() {
+      PdfHandler handler = new PdfHandler(); // <1>
+      InputStream inputZugferdPdfStream = getClass().getResourceAsStream("/acme_invoice-42_ZUGFeRD.pdf");
+      Invoice invoice = handler.extractInvoice(inputZugferdPdfStream);// <1>
+      assertThat(invoice).isNotNull();
+   }
+   // end::extracInvoiceFromPdf[]
+   
 }

@@ -41,8 +41,7 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 
 /**
- * Transforms and attaches or extracts the invoices to PDFs.
- * 
+ * Transforms, appends or extracts invoices to PDFs.
  */
 @Named
 @Singleton
@@ -80,13 +79,15 @@ public class PdfHandler {
    }
 
    /**
-    * Append invoice to an pdf.
-    *
-    * @param invoice the invoice
-    * @param inputPdf the pdf to attach the invoice to
-    * @param resultingPdf the resulting pdf
+    * Append an invoice to a PDF.  
+    * 
+    * The resulting Pdf Output is based on the input PDF, but might be converted to PDF/A-3 when needed.
+    * 
+    * @param invoice that should be attached to the pdf.
+    * @param inputPdf to witch we are going to append the invoice to, input will not be modified
+    * @param resultingPdf is the modified copy of the input PDF with the invoice.
     */
-   public void appendInvoice(final Invoice invoice, InputStream inputPdf, OutputStream resultingPdf) {
+   public void appendInvoice(final Invoice invoice, final InputStream inputPdf, final OutputStream resultingPdf) {
       try {
          append(invoice, inputPdf, resultingPdf);
       } catch (IOException e) {
@@ -94,7 +95,7 @@ public class PdfHandler {
       }
    }
 
-   private void append(final Invoice invoice, InputStream inputPdf, OutputStream resultingPdf) throws IOException {
+   private void append(final Invoice invoice, final InputStream inputPdf, final OutputStream resultingPdf) throws IOException {
       PipedOutputStream pipedOutputStream = new PipedOutputStream();
       PipedInputStream pipedInputStream = new PipedInputStream(pipedOutputStream, 65536);
       try {
@@ -112,9 +113,9 @@ public class PdfHandler {
    /**
     * Extract invoice from given pdf file
     *
-    * @param pdfFile the pdf file
-    * @return the invoice
-    * @throws FileNotFoundException the file not found exception
+    * @param pdfFile the pdf file containing the ZUGFeRD XML File 
+    * @return the transformed ZUGFeRD invoice
+    * @throws FileNotFoundException if the pdf is not found 
     */
    public Invoice extractInvoice(File pdfFile) throws FileNotFoundException {
       byte[] xmlInvoice = fileExtractor.extract(new FileInputStream(pdfFile));
@@ -122,10 +123,10 @@ public class PdfHandler {
    }
 
    /**
-    * Extract invoice from given pdf file
+    * Extract invoice from given pdf stream
     *
     * @param pdfInputStream the pdf input stream
-    * @return the invoice
+    * @return the transformed ZUGFeRD invoice
     */
    public Invoice extractInvoice(InputStream pdfInputStream) {
       InputStream invoiceInputStream = fileExtractor.extractToStream(pdfInputStream);

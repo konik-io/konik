@@ -164,9 +164,11 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     * Sets the delivery terms Incoterms code.
     *
     * @param deliveryTerms the delivery Incoterms terms
+    * @return 
     */
-   public void setDeliveryTerms(String deliveryTerms) {
+   public Agreement setDeliveryTerms(String deliveryTerms) {
       this.deliveryTerms = deliveryTerms;
+      return this;
    }
 
    /**

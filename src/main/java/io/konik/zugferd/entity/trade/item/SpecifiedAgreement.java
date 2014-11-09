@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * = The Agreement on trade item level.
+ * = The Agreement used on the trade item level.
  */
 @XmlType(propOrder = { "buyerOrder", "contract", "additional", "grossPrice", "netPrice", "customerOrder" })
 public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentItem, ReferencedDocumentItemAdditional> {

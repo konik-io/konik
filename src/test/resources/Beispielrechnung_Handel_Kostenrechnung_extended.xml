@@ -68,7 +68,8 @@
       </ram:IncludedNote>
       <ram:IncludedNote>
          <ram:ContentCode>EEV</ram:ContentCode>
-         <ram:Content>Der Verkäufer bleibt Eigentümer der Waren bis zur vollständigen Erfüllung der Kaufpreisforderung.</ram:Content>
+         <ram:Content>Der Verkäufer bleibt Eigentümer der Waren bis zur vollständigen Erfüllung der Kaufpreisforderung.
+         </ram:Content>
          <ram:SubjectCode>AAJ</ram:SubjectCode>
       </ram:IncludedNote>
       <ram:IncludedNote>
@@ -77,12 +78,15 @@
             99199 MUSTERHAUSEN
             Geschäftsführung:
             Max Mustermann
-            USt-IdNr: DE123456789
+            USt-IdNr:
+            DE123456789
             Telefon: +49 932 431 0
             www.musterlieferant.de
             HRB Nr. 372876
             Amtsgericht Musterstadt
-            GLN 4304171000002</ram:Content>
+            GLN
+            4304171000002
+         </ram:Content>
          <ram:SubjectCode>REG</ram:SubjectCode>
       </ram:IncludedNote>
    </rsm:HeaderExchangedDocument>
@@ -122,6 +126,9 @@
                <ram:CountryID>DE</ram:CountryID>
             </ram:PostalTradeAddress>
          </ram:BuyerTradeParty>
+         <ram:ApplicableTradeDeliveryTerms>
+            <ram:DeliveryTypeCode>DDP</ram:DeliveryTypeCode>
+         </ram:ApplicableTradeDeliveryTerms>
          <ram:ContractReferencedDocument>
             <ram:IssueDateTime>2013-04-01T00:00:00</ram:IssueDateTime>
             <ram:ID>V88456789</ram:ID>
@@ -129,7 +136,7 @@
          <ram:AdditionalReferencedDocument>
             <ram:IssueDateTime>2014-04-02T00:00:00</ram:IssueDateTime>
             <ram:TypeCode>VN</ram:TypeCode>
-            <ram:ID>A777123</ram:ID>            
+            <ram:ID>A777123</ram:ID>
          </ram:AdditionalReferencedDocument>
       </ram:ApplicableSupplyChainTradeAgreement>
       <ram:ApplicableSupplyChainTradeDelivery>
@@ -185,7 +192,8 @@
             <ram:TypeCode>VAT</ram:TypeCode>
             <ram:BasisAmount currencyID="EUR">1056.05</ram:BasisAmount>
             <ram:LineTotalBasisAmount currencyID="EUR">1062.60</ram:LineTotalBasisAmount>
-            <ram:AllowanceChargeBasisAmount currencyID="EUR">-6.55</ram:AllowanceChargeBasisAmount>
+            <ram:AllowanceChargeBasisAmount currencyID="EUR">-6.55
+            </ram:AllowanceChargeBasisAmount>
             <ram:CategoryCode>S</ram:CategoryCode>
             <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
          </ram:ApplicableTradeTax>
@@ -248,7 +256,8 @@
          <ram:AssociatedDocumentLineDocument>
             <ram:IncludedNote>
                <ram:Content>Wichtige Information: Bei Bestellungen bis zum 19.12. ist die Auslieferung bis spätestens
-                  23.12. garantiert.</ram:Content>
+                  23.12. garantiert.
+               </ram:Content>
             </ram:IncludedNote>
          </ram:AssociatedDocumentLineDocument>
       </ram:IncludedSupplyChainTradeLineItem>

@@ -117,7 +117,8 @@ public class AllElementsInvoiceTest {
             .setBuyer(new TradeParty()
                   .setName("Buyer Inc.")
                   .setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
-                  .addTaxRegistrations(new TaxRegistration("DE123...", FC))));
+                  .addTaxRegistrations(new TaxRegistration("DE123...", FC)))
+            .setDeliveryTerms("Delivery Terms"));
       
       trade.setDelivery(new Delivery(nextMonth));
       
@@ -146,6 +147,7 @@ public class AllElementsInvoiceTest {
          .setAgreement(new SpecifiedAgreement()
                .setBuyerOrder(new ReferencedDocumentItem(1, "BuyerOrder1"))
                .setContract(new ReferencedDocumentItem(1, "ContractPos1"))
+               
                .setCustomerOrder(new ReferencedDocumentItem(1, "CustomerOder1"))
                .setGrossPrice(new GrossPrice(new Amount(119, EUR)))
                .setNetPrice(new Price(new Amount(100, EUR))))

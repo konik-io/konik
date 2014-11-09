@@ -126,6 +126,9 @@
                <ram:CountryID>DE</ram:CountryID>
             </ram:PostalTradeAddress>
          </ram:BuyerTradeParty>
+         <ram:ApplicableTradeDeliveryTerms>
+            <ram:DeliveryTypeCode>DDP</ram:DeliveryTypeCode>
+         </ram:ApplicableTradeDeliveryTerms>
          <ram:BuyerOrderReferencedDocument>
             <ram:IssueDateTime>2013-08-01T00:00:00</ram:IssueDateTime>
             <ram:ID>B123456789</ram:ID>

@@ -27,7 +27,7 @@ import io.konik.InvoiceTransformer;
 import io.konik.PrittyPrintInvoiceTransformer;
 import io.konik.utils.RandomInvoiceGenerator;
 import io.konik.validation.InvoiceValidator;
-import io.konik.validator.NotBlankValidator;
+import io.konik.validator.NullableNotBlankValidator;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

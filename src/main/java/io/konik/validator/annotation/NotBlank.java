@@ -23,6 +23,7 @@ import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import io.konik.validator.NotBlankValidator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -38,7 +39,7 @@ import javax.validation.constraints.NotNull;
  * Compared to {@code NullableNotBlank} this validator will not accept null values as valid.
  */
 @Documented
-@Constraint(validatedBy = {})
+@Constraint(validatedBy = {NotBlankValidator.class})
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 @ReportAsSingleViolation
@@ -50,7 +51,7 @@ public @interface NotBlank {
     *
     * @return the string
     */
-   String message() default "{io.konik.validator.NotBlank.message}";
+   String message() default "{io.konik.validation.constraints.notblank.message}";
 
    /**
     * Groups.

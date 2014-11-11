@@ -44,7 +44,7 @@ public @interface ValidContact {
     *
     * @return the string
     */
-   String message() default "{io.konik.validation.constraints.ValidContact.message}";
+   String message() default "{io.konik.validation.constraints.validcontact.message}";
 
    /**
     * Groups.

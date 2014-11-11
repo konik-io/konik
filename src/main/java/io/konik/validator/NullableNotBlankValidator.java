@@ -17,7 +17,6 @@
  */
 package io.konik.validator;
 
-import io.konik.validator.annotation.NotBlank;
 import io.konik.validator.annotation.NullableNotBlank;
 
 import javax.validation.ConstraintValidator;
@@ -26,11 +25,11 @@ import javax.validation.ConstraintValidatorContext;
 /**
  * = The Not Blank Validator.
  * 
- * Validator for the {@link NotBlank} annotation.
+ * Validator for the {@link NullableNotBlank} annotation.
  * 
- * @see {@link NotBlank}
+ * @see {@link NullableNotBlank}
  */
-public class NotBlankValidator implements ConstraintValidator<NotBlank, CharSequence> {
+public class NullableNotBlankValidator implements ConstraintValidator<NullableNotBlank, CharSequence> {
 
    /**
     * Initialize.
@@ -38,7 +37,7 @@ public class NotBlankValidator implements ConstraintValidator<NotBlank, CharSequ
     * @param annotation the annotation
     */
    @Override
-   public void initialize(NotBlank annotation) {
+   public void initialize(NullableNotBlank annotation) {
       //no special initialization needed
    }
 

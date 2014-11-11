@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * @see http://www.unece.org/trade/untdid/d13b/tred/tred4461.htm[UN/EDIFACT 4461 Payment means code^]
  */
-@XmlType(name = "PaymentMeansCodeType")
 @XmlEnum
+@XmlType(name = "PaymentMeansCodeType")
 public enum PaymentMeansCode {
    /**
     * Instrument not defined

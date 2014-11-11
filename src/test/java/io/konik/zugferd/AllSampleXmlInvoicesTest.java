@@ -26,7 +26,7 @@ import io.konik.InvoiceTransformer;
 import io.konik.PrittyPrintInvoiceTransformer;
 import io.konik.utils.InvoiceLoaderUtils;
 import io.konik.utils.NumberDifferenceXmlComparison;
-import io.konik.validator.NotBlankValidator;
+import io.konik.validator.NullableNotBlankValidator;
 import io.konik.zugferd.profile.ConformanceLevel;
 
 import java.io.File;
@@ -85,7 +85,7 @@ public class AllSampleXmlInvoicesTest {
       XMLUnit.setIgnoreComments(true);
       //validator
       ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-      NotBlankValidator notBlankValidator = factory.getConstraintValidatorFactory().getInstance(NotBlankValidator.class);
+      NullableNotBlankValidator notBlankValidator = factory.getConstraintValidatorFactory().getInstance(NullableNotBlankValidator.class);
       assertThat(notBlankValidator).isNotNull();
       validator = factory.getValidator();
    }

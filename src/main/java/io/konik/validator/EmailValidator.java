@@ -17,7 +17,6 @@
  */
 package io.konik.validator;
 
-import static io.konik.util.Strings.isNullOrEmpty;
 import io.konik.validator.annotation.Email;
 
 import java.util.regex.Pattern;
@@ -30,16 +29,20 @@ import javax.validation.ConstraintValidatorContext;
  * The Email Validator for the @Email Annotation
  */
 public class EmailValidator implements ConstraintValidator<Email, String> {
-   private final static String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+   private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
    
-   private final static Pattern EMAIL_COMPILED_PATTERN = Pattern.compile(EMAIL_PATTERN);
+   private static final Pattern EMAIL_COMPILED_PATTERN = Pattern.compile(EMAIL_PATTERN);
 
    @Override
-   public void initialize(Email constraintAnnotation) {}
+   public void initialize(Email constraintAnnotation) {
+      
+   }
 
    @Override
    public boolean isValid(String email, ConstraintValidatorContext context) {
-      if (isNullOrEmpty(email)) return true;
+      if (email==null) {
+         return true;
+      }
       return EMAIL_COMPILED_PATTERN.matcher(email).matches();
    }
 }

@@ -53,7 +53,7 @@ public @interface NotEmpty {
     *
     * @return the string
     */
-   String message() default "{io.konik.validator.notempty.message}";
+   String message() default "{io.konik.validation.constraints.NotEmpty.message}";
 
    /**
     * Groups.

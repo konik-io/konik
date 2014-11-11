@@ -21,7 +21,7 @@ import java.lang.annotation.Documented;
 
 /**
  * 
- * Every invoice should fulfill the minimum requirement and conaint all basic fields
+ * Every invoice should fulfill the minimum requirement and contain all mandatory basic fields
  */
 @Documented
 public @interface Basic {

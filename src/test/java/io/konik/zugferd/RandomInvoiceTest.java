@@ -27,7 +27,6 @@ import io.konik.InvoiceTransformer;
 import io.konik.PrittyPrintInvoiceTransformer;
 import io.konik.utils.RandomInvoiceGenerator;
 import io.konik.validation.InvoiceValidator;
-import io.konik.validator.NullableNotBlankValidator;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -37,9 +36,6 @@ import java.nio.charset.Charset;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 import javax.xml.transform.stream.StreamSource;
 
 import org.apache.commons.lang3.StringUtils;

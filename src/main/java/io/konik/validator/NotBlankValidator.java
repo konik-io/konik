@@ -18,7 +18,6 @@
 package io.konik.validator;
 
 import io.konik.validator.annotation.NotBlank;
-import io.konik.validator.annotation.NullableNotBlank;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

@@ -27,51 +27,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * = The Referenced Product which is a included part of another product.
+ * = The Referenced Product which is a included or part of another product.
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
+@Extended
 @XmlType(name = "ReferencedProductType", propOrder = { "globalIds", "sellerAssignedId", "buyerAssignedId", "names",
       "descriptions", "units" })
-@Extended
 public class ReferencedProduct {
 
-   @Valid
+   
    @XmlElement(name = "GlobalID")
-   protected List<ID> globalIds;
+   private List<ID> globalIds;
 
    @XmlElement(name = "SellerAssignedID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-   protected String sellerAssignedId;
+   private String sellerAssignedId;
 
    @XmlElement(name = "BuyerAssignedID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-   protected String buyerAssignedId;
+   private String buyerAssignedId;
 
-   @NotEmpty
    @XmlElement(name = "Name")
-   protected List<String> names;
+   private List<String> names;
 
    @XmlElement(name = "Description")
-   protected List<String> descriptions;
+   private List<String> descriptions;
 
-   @Valid
    @XmlElement(name = "UnitQuantity")
-   protected List<Quantity> units;
+   private List<Quantity> units;
 
    /**
     * Gets the global ids.
     *
     * @return the global ids
     */
+   @Valid
    public List<ID> getGlobalIds() {
       if (globalIds == null) {
          globalIds = new ArrayList<ID>();
@@ -131,6 +127,7 @@ public class ReferencedProduct {
     *
     * @return the names
     */
+   @NotEmpty
    public List<String> getNames() {
       if (names == null) {
          names = new ArrayList<String>();
@@ -177,6 +174,7 @@ public class ReferencedProduct {
     *
     * @return the units
     */
+   @Valid
    public List<Quantity> getUnits() {
       if (units == null) {
          units = new ArrayList<Quantity>();

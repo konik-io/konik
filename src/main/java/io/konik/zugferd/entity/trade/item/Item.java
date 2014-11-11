@@ -1,24 +1,24 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity.trade.item;
 
-import io.konik.zugferd.entity.Document;
+import io.konik.validator.annotation.Comfort;
+import io.konik.zugferd.entity.PositionDocument;
 import io.konik.zugferd.entity.Product;
 
 import javax.validation.Valid;
@@ -32,27 +32,22 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SupplyChainTradeLineItemType", propOrder = { "lineDocument", "agreement", "delivery", "settlement",
+@XmlType(name = "SupplyChainTradeLineItemType", propOrder = { "position", "agreement", "delivery", "settlement",
       "product" })
 public class Item {
 
-   @Valid
    @XmlElement(name = "AssociatedDocumentLineDocument")
-   private Document lineDocument;
+   private PositionDocument position;
 
-   @Valid
    @XmlElement(name = "SpecifiedSupplyChainTradeAgreement")
    private SpecifiedAgreement agreement;
 
-   @Valid
    @XmlElement(name = "SpecifiedSupplyChainTradeDelivery")
    private SpecifiedDelivery delivery;
 
-   @Valid
    @XmlElement(name = "SpecifiedSupplyChainTradeSettlement")
    private SpecifiedSettlement settlement;
 
-   @Valid
    @XmlElement(name = "SpecifiedTradeProduct")
    private Product product;
 
@@ -61,98 +56,104 @@ public class Item {
     *
     * @return the position
     */
-   public Document getLineDocument() {
-      return lineDocument;
+   @Comfort
+   @Valid
+   public PositionDocument getPosition() {
+      return position;
    }
 
    /**
-    * Sets the new item line document.
+    * Sets the new item position document.
     *
-    * @param newLineDocument the new position
-    * @return the item
+    * @param newPosition the new position
+    * @return the trade item
     */
-   public Item setLineDocument(Document newLineDocument) {
-      this.lineDocument = newLineDocument;
+   public Item setPosition(PositionDocument newPosition) {
+      this.position = newPosition;
       return this;
    }
 
    /**
-    * Gets the specified supply chain trade agreement.
+    * Gets the item level agreement.
     *
-    * @return the specified supply chain trade agreement
+    * @return the item level agreement
     */
+   @Valid
    public SpecifiedAgreement getAgreement() {
       return agreement;
    }
 
    /**
-    * Sets the specified supply chain trade agreement.
+    * Sets the item level agreement.
     *
-    * @param agreement the new specified supply chain trade agreement
-    * @return the item
+    * @param newItemAgreement the new the item level agreement.
+    * @return the trade item
     */
-   public Item setAgreement(SpecifiedAgreement agreement) {
-      this.agreement = agreement;
+   public Item setAgreement(SpecifiedAgreement newItemAgreement) {
+      this.agreement = newItemAgreement;
       return this;
    }
 
    /**
-    * Gets the specified supply chain trade delivery.
+    * Gets item level delivery.
     *
-    * @return the specified supply chain trade delivery
+    * @return the item level delivery
     */
+   @Valid
    public SpecifiedDelivery getDelivery() {
       return delivery;
    }
 
    /**
-    * Sets the specified supply chain trade delivery.
+    * Sets item level delivery.
     *
-    * @param delivery the new specified supply chain trade delivery
-    * @return the item
+    * @param newItemDelivery the new item level delivery
+    * @return the trade item
     */
-   public Item setDelivery(SpecifiedDelivery delivery) {
-      this.delivery = delivery;
+   public Item setDelivery(SpecifiedDelivery newItemDelivery) {
+      this.delivery = newItemDelivery;
       return this;
    }
 
    /**
-    * Gets the specified supply chain trade settlement.
+    * Gets the item level settlement.
     *
-    * @return the specified supply chain trade settlement
+    * @return the item level settlement
     */
+   @Valid
    public SpecifiedSettlement getSettlement() {
       return settlement;
    }
 
    /**
-    * Sets the specified supply chain trade settlement.
+    * Sets the item level settlement.
     *
-    * @param settlement the new specified supply chain trade settlement
-    * @return the item
+    * @param newItemSettlement the new item level settlement
+    * @return the trade item
     */
-   public Item setSettlement(SpecifiedSettlement settlement) {
-      this.settlement = settlement;
+   public Item setSettlement(SpecifiedSettlement newItemSettlement) {
+      this.settlement = newItemSettlement;
       return this;
    }
 
    /**
-    * Gets the specified trade product.
+    * Gets the trade product.
     *
-    * @return the specified trade product
+    * @return the product
     */
+   @Valid
    public Product getProduct() {
       return product;
    }
 
    /**
-    * Sets the specified trade product.
+    * Sets the trade product.
     *
-    * @param product the product
-    * @return the item
+    * @param newProduct the product
+    * @return the trade item
     */
-   public Item setProduct(Product product) {
-      this.product = product;
+   public Item setProduct(Product newProduct) {
+      this.product = newProduct;
       return this;
    }
 }

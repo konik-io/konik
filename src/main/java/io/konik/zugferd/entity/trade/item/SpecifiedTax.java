@@ -18,7 +18,6 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
-import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonTax;
@@ -34,30 +33,6 @@ import javax.validation.Valid;
  * = The trade tax on an item basis.
  */
 public class SpecifiedTax extends CommonTax {
-
-   @Comfort
-   @Override
-   public TaxCode getType() {
-      return super.getType();
-   }
-
-   @Override
-   public SpecifiedTax setType(TaxCode taxTypeCode) {
-      super.setType(taxTypeCode);
-      return this;
-   }
-
-   @Comfort
-   @Override
-   public TaxCategory getCategory() {
-      return super.getCategory();
-   }
-
-   @Override
-   public SpecifiedTax setCategory(TaxCategory value) {
-      super.setCategory(value);
-      return this;
-   }
 
    /**
     * Gets the calculated amount.
@@ -80,7 +55,19 @@ public class SpecifiedTax extends CommonTax {
       this.calculated = calculatedAmount;
       return this;
    }
+   
+   @Comfort
+   @Override
+   public TaxCode getType() {
+      return super.getType();
+   }
 
+   @Override
+   public SpecifiedTax setType(TaxCode taxTypeCode) {
+      super.setType(taxTypeCode);
+      return this;
+   }
+   
    /**
     * Gets the tax exemption reason.
     * 
@@ -101,6 +88,22 @@ public class SpecifiedTax extends CommonTax {
       this.exemptionReason = exemptionReason;
       return this;
    }
+
+   @Comfort
+   @Override
+   public TaxCategory getCategory() {
+      return super.getCategory();
+   }
+
+   @Override
+   public SpecifiedTax setCategory(TaxCategory value) {
+      super.setCategory(value);
+      return this;
+   }
+
+
+
+
 
    @Override
    public SpecifiedTax setPercentage(BigDecimal applicablePercentage) {

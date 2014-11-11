@@ -17,6 +17,9 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
+import io.konik.validator.annotation.NotEmpty;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.ZfDate;
 
@@ -24,42 +27,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * = The payment terms of a trade.
+ * = The trade settlement terms of payment.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradePaymentTermsType", propOrder = { "descriptions", "due", "partialPayments", "penalty", "discount" })
 public class PaymentTerm {
 
    @XmlElement(name = "Description")
    protected List<String> descriptions;
 
-   @Valid
    @XmlElement(name = "DueDateDateTime")
    private ZfDate due;
 
    @XmlElement(name = "PartialPaymentAmount")
-   @Valid
    private List<Amount> partialPayments;
 
-   @Valid
    @XmlElement(name = "ApplicableTradePaymentPenaltyTerms")
    private PaymentPenaltyTerms penalty;
 
-   @Valid
    @XmlElement(name = "ApplicableTradePaymentDiscountTerms")
    private PaymentDiscountTerms discount;
 
    /**
-    * Gets the description.
+    * Gets the human readable description of the terms of payment.
     * 
-    * @return the description
+    * @return the terms of payment description
     */
+   @Comfort
+   @NotEmpty
    public List<String> getDescriptions() {
       if (descriptions == null) {
          descriptions = new ArrayList<String>();
@@ -68,9 +66,9 @@ public class PaymentTerm {
    }
 
    /**
-    * Sets the description.
+    * Adds a human readable description of the terms of payment.
     *
-    * @param description the new description
+    * @param description the new terms of payment description
     * @return the payment term
     */
    public PaymentTerm addDescription(String description) {
@@ -79,18 +77,19 @@ public class PaymentTerm {
    }
 
    /**
-    * Gets the due date time.
+    * Gets the due date of the payment.
     * 
-    * @return the due date time
+    * @return the due date
     */
+   @Comfort
    public ZfDate getDue() {
       return due;
    }
 
    /**
-    * Sets the due date time.
+    * Sets the new due date of the payment.
     *
-    * @param due the new due date time
+    * @param due the new due date of the payment
     * @return the payment term
     */
    public PaymentTerm setDue(ZfDate due) {
@@ -99,10 +98,12 @@ public class PaymentTerm {
    }
 
    /**
-    * Gets the partial payments.
+    * Gets the amount of the partial payment.
     *
-    * @return the partial payments
+    * @return the partial payment amounts
     */
+   @Extended
+   @Valid
    public List<Amount> getPartialPayments() {
       if (partialPayments == null) {
          this.partialPayments = new ArrayList<Amount>();
@@ -111,9 +112,9 @@ public class PaymentTerm {
    }
 
    /**
-    * Sets the partial payments.
+    * Adds an amount of the partial payment.
     *
-    * @param partialPayment the partial payment
+    * @param partialPayment the partial payment amount
     * @return the payment term
     */
    public PaymentTerm addPartialPayments(Amount partialPayment) {
@@ -142,7 +143,7 @@ public class PaymentTerm {
    }
 
    /**
-    * Gets the discount.
+    * Gets the payment discount terms.
     *
     * @return the discount
     */
@@ -151,9 +152,9 @@ public class PaymentTerm {
    }
 
    /**
-    * Sets the discount.
+    * Sets the the payment discount terms.
     *
-    * @param discount the new discount
+    * @param discount the new payment discount terms.
     * @return the payment term
     */
    public PaymentTerm setDiscount(PaymentDiscountTerms discount) {

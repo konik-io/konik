@@ -39,11 +39,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(propOrder = { "tradeTax", "billingPeriod", "bookingReference", "monetarySummation" })
 public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax, SpecifiedMonetarySummation> {
 
-   @Valid
    @XmlElement(name = "ApplicableTradeTax")
    private List<SpecifiedTax> tradeTax;
 
-   @Valid
    @XmlElement(name = "BillingSpecifiedPeriod")
    private Period billingPeriod;
 
@@ -51,15 +49,11 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax, Speci
    @XmlJavaTypeAdapter(AccountingAccountAdapter.class)
    private String bookingReference;
 
-   @Valid
+   
    @XmlElement(name = "SpecifiedTradeSettlementMonetarySummation")
    private SpecifiedMonetarySummation monetarySummation;
 
-   /**
-    * Gets the applicable trade tax.
-    *
-    * @return the applicable trade tax
-    */
+   @Valid
    @Override
    public List<SpecifiedTax> getTradeTax() {
       if (tradeTax == null) {
@@ -68,39 +62,19 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax, Speci
       return this.tradeTax;
    }
 
-   /**
-    * Adds a trade tax.
-    * 
-    * @param additionalTradeTax
-    * @return the trade settlement
-    */
    @Override
    public SpecifiedSettlement addTradeTax(SpecifiedTax additionalTradeTax) {
       getTradeTax().add(additionalTradeTax);
       return this;
    }
 
-   /**
-    * Gets the billing specified period.
-    * 
-    * Profile:: COMFORT
-    *
-    * @return the billing specified period
-    */
+   @Extended
+   @Valid
    @Override
    public Period getBillingPeriod() {
       return billingPeriod;
    }
 
-   /**
-    * Sets the billing specified period.
-    * 
-    * Profile:: COMFORT
-    * 
-    *
-    * @param billingPeriod the new billing specified period
-    * @return the supply chain trade settlement
-    */
    @Override
    public SpecifiedSettlement setBillingPeriod(Period billingPeriod) {
       this.billingPeriod = billingPeriod;
@@ -110,8 +84,6 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax, Speci
    /**
     * Gets the specified booking reference.
     * 
-    * Profile:: EXTENDED
-    *
     * @return the specified booking reference
     */
    @Extended
@@ -122,8 +94,6 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax, Speci
    /**
     * Sets the specified booking reference.
     * 
-    * Profile:: EXTENDED
-    *
     * @param specifiedBookingReference the specified booking reference
     * @return the specified settlement
     */
@@ -132,23 +102,12 @@ public class SpecifiedSettlement implements CommonSettlement<SpecifiedTax, Speci
       return this;
    }
 
-   /**
-    * Gets the trade settlement monetary summation.
-    *
-    * @return the monetary summation
-    */
    @Override
    @Comfort
    public SpecifiedMonetarySummation getMonetarySummation() {
       return monetarySummation;
    }
 
-   /**
-    * Sets the trade settlement monetary summation.
-    * 
-    * @param monetarySummation the new monetary summation
-    * @return the supply chain trade settlement
-    */
    @Override
    public SpecifiedSettlement setMonetarySummation(SpecifiedMonetarySummation monetarySummation) {
       this.monetarySummation = monetarySummation;

@@ -20,8 +20,6 @@ package io.konik.zugferd.unqualified;
 
 import io.konik.validator.annotation.NotBlank;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
@@ -32,32 +30,30 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 /**
  * = The classification code
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CodeType", propOrder = { "value" })
 public class Code {
 
-   @NotBlank
    @XmlValue
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    @XmlSchemaType(name = "token")
-   protected String value;
+   private String value;
 
-   @NotBlank
    @XmlAttribute(name = "listID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    @XmlSchemaType(name = "token")
-   protected String listId;
+   private String listId;
 
    @XmlAttribute(name = "listVersionID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    @XmlSchemaType(name = "token")
-   protected String listVersionId;
+   private String listVersionId;
 
    /**
     * Gets the value.
     *
     * @return the value
     */
+   @NotBlank
    public String getValue() {
       return value;
    }
@@ -76,6 +72,7 @@ public class Code {
     *
     * @return the list id
     */
+   @NotBlank
    public String getListID() {
       return listId;
    }

@@ -63,12 +63,12 @@ public class RandomInvoiceTest {
    
    private static Invoice invoice;
    private static String xmlInvoice;
-   private static Validator validator;
+   private static InvoiceValidator validator;
 
    @BeforeClass
    public static void setup() {
       initXmlDiff();
-      createBeanValidator();
+      validator = new InvoiceValidator();
       createInvoiceContent();
    }
 
@@ -86,15 +86,6 @@ public class RandomInvoiceTest {
       XMLUnit.setIgnoreComments(true);
    }
 
-   static void createBeanValidator() {
-      //validator
-      ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-      NotBlankValidator notBlankValidator = factory.getConstraintValidatorFactory()
-            .getInstance(NotBlankValidator.class);
-      assertThat(notBlankValidator).isNotNull();
-      validator = factory.getValidator();
-   }
-
    @Test
    public void writeRandomInvoiceToFileSystem() throws IOException {
       File xmlInvoiceOutputfile = new File(TARGET_RANDOM_ZF_INVOICE_XML);
@@ -110,20 +101,21 @@ public class RandomInvoiceTest {
       getSchemaValidator().validate(new StreamSource(reader));
    }
 
-   @Test@Ignore("Until Random Generator is correct.")
+   @Test
+//   @Ignore("Until Random Generator is correct.")
    public void validateRandomInvoice(){
       //setup
-      Class<?>[] validationGroups = InvoiceValidator.resolveIntoValidationGroups(invoice.getContext().getGuideline().getConformanceLevel());
+//      Class<?>[] validationGroups = InvoiceValidator.resolveIntoValidationGroups(invoice.getContext().getGuideline().getConformanceLevel());
 
       //execute
-      Set<ConstraintViolation<Invoice>> validationResult = validator.validate(invoice,validationGroups);
+      Set<ConstraintViolation<Invoice>> validationResult = validator.validate(invoice);
       
       //verify
       if (!validationResult.isEmpty()) {
          System.out.println("Validation Errors:"); 
          for (ConstraintViolation<Invoice> constraintViolation : validationResult) {
             String left = StringUtils.rightPad(constraintViolation.getPropertyPath().toString(), 100);
-          System.out.println(left + constraintViolation.getMessage() ); 
+          System.out.println(left + constraintViolation.getMessage() + " invalid value is: " + constraintViolation.getInvalidValue()); 
          }
          assertThat(validationResult).as("See System out for details").isEmpty();
       }

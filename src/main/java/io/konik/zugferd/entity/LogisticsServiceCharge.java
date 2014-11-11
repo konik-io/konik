@@ -1,31 +1,30 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
- * This file is part of Konik library.
+ * This file is part of the Konik library.
  *
- * Konik library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * Konik library is distributed in the hope that it will be useful,
+ * The Konik library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with Konik library.  If not, see <http://www.gnu.org/licenses/>.
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.zugferd.entity;
 
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.unqualified.Amount;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -34,32 +33,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * Represents the transport and packaging costs.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
+@Comfort
 @XmlType(name = "LogisticsServiceChargeType", propOrder = { "description", "amount", "tradeTax" })
 public class LogisticsServiceCharge {
 
    @XmlElement(name = "Description")
    private String description;
-
-   @Valid
+   
    @XmlElement(name = "AppliedAmount")
    private Amount amount;
 
-   @Valid
    @XmlElement(name = "AppliedTradeTax")
    private List<AppliedTax> tradeTax;
 
    /**
-    * Gets the description.
+    * Gets human readable description of the charge type
+    * 
+    * Example:: Shipping and handling charges
     * 
     * @return the description
     */
+   @NotBlank   
    public String getDescription() {
       return description;
    }
 
    /**
-    * Sets the description.
+    * Sets human readable description of the charge type
+    * 
+    * Example:: Shipping and handling charges
     * 
     * @param description the new description
     * @return the logistics service charge
@@ -70,18 +72,19 @@ public class LogisticsServiceCharge {
    }
 
    /**
-    * Gets the applied amount.
+    * Gets amount of the logistics service charge.
     * 
-    * @return the applied amount
+    * @return the logistics service charge amount
     */
+   @Valid
    public Amount getAmount() {
       return amount;
    }
 
    /**
-    * Sets the applied amount.
+    * Sets amount of the logistics service charge.
     *
-    * @param amount the new applied amount
+    * @param amount the new logistics service charge amount
     * @return the logistics service charge
     */
    public LogisticsServiceCharge setAmount(Amount amount) {
@@ -90,10 +93,11 @@ public class LogisticsServiceCharge {
    }
 
    /**
-    * Gets the applied trade tax.
+    * Gets the applied trade tax for the logistics service charge amount
     * 
     * @return the applied trade tax
     */
+   @Valid
    public List<AppliedTax> getTradeTax() {
       if (tradeTax == null) {
          tradeTax = new ArrayList<AppliedTax>();
@@ -102,7 +106,7 @@ public class LogisticsServiceCharge {
    }
 
    /**
-    * Adds a trade tax.
+    * Adds a trade tax for the logistics service charge amount
     *
     * @param additionalTradeTax the additional trade tax
     * @return the logistics service charge

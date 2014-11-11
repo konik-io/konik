@@ -17,22 +17,19 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.validator.annotation.Comfort;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * = The Item Line Document
- * 
- * For Item position and notes
+ * = The item position Document
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentLineDocumentType", propOrder = { "position", "notes" })
-public class Document {
+public class PositionDocument {
 
     @XmlElement(name = "LineID")
     private String position;
@@ -40,45 +37,46 @@ public class Document {
     @XmlElement(name = "IncludedNote")
     private List<Note> notes;
 
-    /**
-     * Instantiates a new document line.
-     */
-    public Document() {
-    }
+    PositionDocument() {}
 
     /**
-     * Instantiates a new document line.
+     * Instantiates a new item position document.
      *
      * @param position the position number
      */
-    public Document(String position) {
+    public PositionDocument(String position) {
         super();
         this.position = position;
     }
 
     /**
-     * Instantiates a new document line.
+     * Instantiates a new item position document.
      *
      * @param position the position
      * @param notes the notes
      */
-    public Document(String position, List<Note> notes) {
+    public PositionDocument(String position, List<Note> notes) {
         this(position);
         this.notes = notes;
     }
-
-    public Document(int position) {
+    
+   /**
+    * Instantiates a new item position document.
+    *
+    * @param position the position number
+    */
+   public PositionDocument(int position) {
         super();
         this.position = Integer.toString(position);
     }
 
     /**
-     * Instantiates a new document line.
+     * Instantiates a new item position document.
      *
      * @param position the position
      * @param notes the notes
      */
-    public Document(int position, List<Note> notes) {
+    public PositionDocument(int position, List<Note> notes) {
         this(position);
         this.notes = notes;
     }
@@ -86,10 +84,9 @@ public class Document {
     /**
      * Gets the line position.
      * 
-     * Profile:: COMFORT
-     *
      * @return the position number
      */
+    @Comfort
     public String getPosition() {
         return position;
     }
@@ -97,8 +94,6 @@ public class Document {
     /**
      * Sets the line position
      * 
-     * Profile:: COMFORT.
-     *
      * @param position the position
      */
     public void setPosition(String position) {
@@ -108,8 +103,6 @@ public class Document {
 
     /**
      * Gets the included note.
-     * 
-     * Profile:: - Note.content COMFORT - Note.subjectCode EXTENDED
      * 
      * @return the included note
      */
@@ -123,8 +116,6 @@ public class Document {
     /**
      * Adds the note.
      * 
-     * Profile:: - Note.content COMFORT - Note.subjectCode EXTENDED
-     *
      * @param note the note
      */
     public void addNote(Note note) {

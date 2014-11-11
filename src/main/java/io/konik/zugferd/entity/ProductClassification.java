@@ -25,31 +25,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
  * = The product classification.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProductClassificationType", propOrder = { "classCode", "classNames" })
 public class ProductClassification {
-
-   @Valid
+   
    @XmlElement(name = "ClassCode")
-   protected Code classCode;
+   private Code classCode;
 
-   @NotEmpty
    @XmlElement(name = "ClassName")
-   protected List<String> classNames;
+   private List<String> classNames;
 
    /**
     * Gets the class code.
     *
     * @return the class code
     */
+   @Valid
+   @NotNull
    public Code getClassCode() {
       return classCode;
    }
@@ -58,9 +56,11 @@ public class ProductClassification {
     * Sets the class code.
     *
     * @param value the class code
+    * @return the product classification
     */
-   public void setClassCode(Code value) {
+   public ProductClassification setClassCode(Code value) {
       this.classCode = value;
+      return this;
    }
 
    /**
@@ -68,6 +68,7 @@ public class ProductClassification {
     *
     * @return the class names
     */
+   @NotEmpty
    public List<String> getClassNames() {
       if (classNames == null) {
          classNames = new ArrayList<String>();

@@ -37,21 +37,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "NoteType", propOrder = { "contentCode", "contents", "subjectCode" })
 public class Note {
 
-   @Extended
-   @NullableNotBlank
    @XmlElement(name = "ContentCode")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String contentCode;
 
-   @Basic(ifParent=Note.class)
-   @Comfort(ifParent=Document.class)
-   @NotEmpty
    @XmlElement(name = "Content")
    private List<String> contents;
 
-   @Comfort(ifParent=Note.class)
-   @Extended(ifParent=Document.class)
-   @NullableNotBlank
    @XmlElement(name = "SubjectCode")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String subjectCode;
@@ -83,10 +75,35 @@ public class Note {
    }
 
    /**
-    * Gets the content.
+    * Gets the code related to the contend text
+    *
+    * @return the content code related to content free text
+    */
+   @Extended
+   @NullableNotBlank
+   public String getContentCode() {
+      return contentCode;
+   }
+
+   /**
+    * Sets the code related to the contend text
+    * 
+    * @param contentCode the content code related to content free text
+    * @return the note
+    */
+   public Note setContentCode(String contentCode) {
+      this.contentCode = contentCode;
+      return this;
+   }
+
+   /**
+    * Gets the human readable content.
     *
     * @return the content
     */
+   @Basic(ifParent = Header.class)
+   @Comfort(ifParent = PositionDocument.class)
+   @NotEmpty
    public List<String> getContents() {
       if (contents == null) {
          this.contents = new ArrayList<String>();
@@ -95,7 +112,7 @@ public class Note {
    }
 
    /**
-    * Adds content
+    * Adds the free text content.
     *
     * @param content the additional content
     * @return the note
@@ -110,6 +127,9 @@ public class Note {
     * 
     * @return the subject code
     */
+   @Comfort(ifParent = Header.class)
+   @Extended(ifParent = PositionDocument.class)
+   @NullableNotBlank
    public String getSubjectCode() {
       return subjectCode;
    }
@@ -122,27 +142,6 @@ public class Note {
     */
    public Note setSubjectCode(String subjectCode) {
       this.subjectCode = subjectCode;
-      return this;
-   }
-
-   /**
-    * Gets the content code.
-    * 
-    *
-    * @return the content code
-    */
-   public String getContentCode() {
-      return contentCode;
-   }
-
-   /**
-    * Sets the content code.
-    * 
-    * @param contentCode the content code
-    * @return the note
-    */
-   public Note setContentCode(String contentCode) {
-      this.contentCode = contentCode;
       return this;
    }
 

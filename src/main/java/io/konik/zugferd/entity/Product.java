@@ -1,3 +1,4 @@
+
 /* Copyright (C) 2014 konik.io
  *
  * This file is part of the Konik library.
@@ -18,14 +19,16 @@
 package io.konik.zugferd.entity;
 
 import io.konik.jaxb.adapter.CountryAdapter;
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
+import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.unqualified.ID;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -36,7 +39,6 @@ import com.neovisionaries.i18n.CountryCode;
 /**
  * = The Trade Product
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradeProductType", propOrder = { "globalId", "sellerAssignedId", "buyerAssignedId", "name",
       "description", "characteristics", "classifications", "origins", "containedProducts" })
 public class Product {
@@ -80,6 +82,8 @@ public class Product {
     *
     * @return the global id
     */
+   @Comfort
+   @Valid
    public ID getGlobalId() {
       return globalId;
    }
@@ -100,6 +104,7 @@ public class Product {
     *
     * @return the seller assigned id
     */
+   @Comfort
    public String getSellerAssignedId() {
       return sellerAssignedId;
    }
@@ -120,6 +125,7 @@ public class Product {
     *
     * @return the buyer assigned id
     */
+   @Comfort
    public String getBuyerAssignedId() {
       return buyerAssignedId;
    }
@@ -136,16 +142,18 @@ public class Product {
    }
 
    /**
-    * Gets the name.
+    * Gets the product name.
     *
     * @return the name
     */
+   @Basic
+   @NotBlank
    public String getName() {
       return name;
    }
 
    /**
-    * Sets the name.
+    * Sets the product name.
     *
     * @param name the new name
     * @return the trade product
@@ -160,6 +168,7 @@ public class Product {
     *
     * @return the description
     */
+   @Comfort
    public String getDescription() {
       return description;
    }
@@ -180,6 +189,8 @@ public class Product {
     *
     * @return the characteristics
     */
+   @Extended
+   @Valid
    public List<ProductCharacteristic> getCharacteristics() {
       if (characteristics == null) {
          characteristics = new ArrayList<ProductCharacteristic>();
@@ -203,6 +214,8 @@ public class Product {
     *
     * @return the classifications
     */
+   @Extended
+   @Valid
    public List<ProductClassification> getClassifications() {
       if (classifications == null) {
          classifications = new ArrayList<ProductClassification>();
@@ -226,6 +239,7 @@ public class Product {
     *
     * @return the origin trade country
     */
+   @Extended
    public List<CountryCode> getOrigins() {
       if (origins == null) {
          origins = new ArrayList<CountryCode>();
@@ -249,6 +263,8 @@ public class Product {
     *
     * @return the contained products
     */
+   @Extended
+   @Valid
    public List<ReferencedProduct> getContainedProducts() {
       if (containedProducts == null) {
          containedProducts = new ArrayList<ReferencedProduct>();
@@ -257,7 +273,7 @@ public class Product {
    }
 
    /**
-    * Additional contained products.
+    * add an contained products.
     *
     * @param containedProduct the contained product
     * @return the product

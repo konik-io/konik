@@ -43,6 +43,7 @@ import java.util.Random;
 import net._01001111.text.LoremIpsum;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.reflect.MethodUtils;
 @SuppressWarnings("javadoc")
 public class RandomInvoiceGenerator {
    LoremIpsum jlorem = new LoremIpsum();
@@ -74,27 +75,32 @@ public class RandomInvoiceGenerator {
       rootObj = createNewInstance(root);
 
       // get method and populate each of them
-      Method[] rootDeclaredMethods = root.getMethods();
-      for (Method method : rootDeclaredMethods) {
-         int modifiers = method.getModifiers();
+      Method[] methods = root.getMethods();
+      for (Method method : methods) {
+         int methodModifiers = method.getModifiers();
          Class<?> methodParameter = null;
-         if (method.getName().startsWith("add") && !Modifier.isAbstract(modifiers)) {
+         if (Modifier.isAbstract(methodModifiers) || method.isSynthetic()) continue;
+         if (method.getName().startsWith("add")) {
             methodParameter = method.getParameterTypes()[0];
             if (methodParameter != null && !methodParameter.isArray() && (methodParameter.isInterface() || Modifier.isAbstract(methodParameter.getModifiers()))) {
                continue;
             }
          }
-         else if (method.getName().startsWith("get") && !Collection.class.isAssignableFrom(method.getReturnType()) && !method.getName().startsWith("getClass") && !Modifier.isAbstract(modifiers)) {
+         //getter
+         else if (method.getName().startsWith("get") && !Collection.class.isAssignableFrom(method.getReturnType()) && !method.getName().equals("getClass") && !Modifier.isAbstract(methodModifiers)) {
             methodParameter = method.getReturnType();
          }else {
             continue;// next on setter
+         }
+         if (methodParameter==null || methodParameter.isInterface()){
+            continue;
          }
          Object popultedData = populteData(methodParameter,method.getName());
          setValue(rootObj,method,popultedData);
       }
       return rootObj;
    }
-   
+
    private Object createNewInstance(Class<?> root) throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
       try {
          if (root.isArray()) {
@@ -145,12 +151,12 @@ public class RandomInvoiceGenerator {
       if(paramValue == null || entity == null)return;
       String methodToCall = entityMethod.getName().replace("get", "set");
 //      int repeadAdder = 1;
-      if (entityMethod.getName().startsWith("add")) { 
+      if (entityMethod.getName().startsWith("add")) {
          Collection.class.isAssignableFrom(entityMethod.getReturnType());
          methodToCall = entityMethod.getName();//overwrite
 //         repeadAdder += random.nextInt(5);//repeat call for adder
       }
-      Method setterOrAdder = getAccessibleMethod(entity.getClass(), methodToCall, paramValue.getClass());
+      Method setterOrAdder = MethodUtils.getMatchingAccessibleMethod(entity.getClass(), methodToCall, paramValue.getClass());
       if (setterOrAdder == null) {
          setterOrAdder = getAccessibleMethod(entity.getClass(), methodToCall, paramValue.getClass().getSuperclass());
       }

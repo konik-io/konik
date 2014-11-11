@@ -19,7 +19,7 @@ package io.konik.zugferd.entity;
 
 import io.konik.jaxb.adapter.IssueDateTimeAdapter;
 import io.konik.validator.annotation.Comfort;
-import io.konik.validator.annotation.NotEmpty;
+import io.konik.validator.annotation.NotBlank;
 
 import java.util.Date;
 
@@ -110,7 +110,7 @@ public class ReferencedDocument {
     * @return the id the identifier of the referenced document
     */
    @Comfort
-   @NotEmpty(groups = Comfort.class)
+   @NotBlank(groups = Comfort.class)
    public String getId() {
       return id;
    }

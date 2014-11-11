@@ -18,6 +18,7 @@
 package io.konik.zugferd.entity.trade.item;
 
 import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonMonetarySummation;
 import io.konik.zugferd.unqualified.Amount;
 
@@ -33,10 +34,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = { "lineTotal", "totalAllowanceCharge" })
 public class SpecifiedMonetarySummation extends CommonMonetarySummation {
 
-   @Valid
    @XmlElement(name = "TotalAllowanceChargeAmount")
    private Amount totalAllowanceCharge;
 
+   @Comfort
    @Override
    @NotNull(groups = Comfort.class)
    public Amount getLineTotal() {
@@ -54,6 +55,8 @@ public class SpecifiedMonetarySummation extends CommonMonetarySummation {
     *
     * @return the total allowance charge
     */
+   @Extended
+   @Valid
    public Amount getTotalAllowanceCharge() {
       return totalAllowanceCharge;
    }

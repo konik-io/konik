@@ -20,8 +20,6 @@ package io.konik.zugferd.entity;
 import io.konik.zugferd.unqualified.ZfDate;
 
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -29,7 +27,6 @@ import javax.xml.bind.annotation.XmlType;
  * = The period of time
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SpecifiedPeriodType", propOrder = { "start", "end" })
 public class Period {
 

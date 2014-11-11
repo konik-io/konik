@@ -18,6 +18,7 @@
  */
 package io.konik.zugferd.entity.trade;
 
+import io.konik.validator.annotation.NotEmpty;
 import io.konik.zugferd.entity.trade.item.Item;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * = The Trade transaction.
  * 
- * A Trade contains "global" agreements, delivery and settlement. On Item basis those parameters can be refined.
+ * A Trade contains "global" agreements, delivery and settlement part and an item based part.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SupplyChainTradeTransactionType", propOrder = { "agreement", "delivery", "settlement", "items" })
@@ -118,12 +119,12 @@ public class Trade {
    }
 
    /**
-    * Gets the item.
+    * Gets the trade items.
     * 
     * @return the items
     */
    @Valid
-   @NotNull
+   @NotEmpty
    public List<Item> getItems() {
       if (items == null) {
          items = new ArrayList<Item>();
@@ -132,7 +133,7 @@ public class Trade {
    }
 
    /**
-    * Adds an item.
+    * Adds an trade item.
     * 
     * @param item the item
     * @return the trade

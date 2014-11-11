@@ -29,6 +29,7 @@ import javax.validation.constraints.NotNull;
  * = The trade tax
  * 
  */
+@Comfort
 public class AppliedTax extends CommonTax {
 
    /**
@@ -37,7 +38,6 @@ public class AppliedTax extends CommonTax {
     * @return the type code
     */
    @Override
-   @Comfort
    @NotNull(groups = Comfort.class)
    public TaxCode getType() {
       return type;
@@ -62,7 +62,6 @@ public class AppliedTax extends CommonTax {
     * @return the category code
     */
    @Override
-   @Comfort
    @NotNull(groups = Comfort.class)
    public TaxCategory getCategory() {
       return category;
@@ -85,7 +84,6 @@ public class AppliedTax extends CommonTax {
     * @return the applicable tax percentage
     */
    @Override
-   @Comfort
    @NotNull(groups = Comfort.class)
    public BigDecimal getPercentage() {
       return percentage;

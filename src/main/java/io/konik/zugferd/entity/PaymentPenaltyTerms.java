@@ -18,136 +18,29 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.Measure;
-import io.konik.zugferd.unqualified.ZfDate;
 
-import java.math.BigDecimal;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * 
- * = The trades payment penalty terms and conditions
+ * = The payment penalty terms and conditions of a trade
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradePaymentPenaltyTermsType", propOrder = { "reference", "maturityPeriod", "basis",
       "calculationPercent", "actualPenalty" })
-public class PaymentPenaltyTerms {
+public class PaymentPenaltyTerms extends DiscountOrPenaltyTerm {
 
-   @XmlElement(name = "BasisDateTime")
-   private ZfDate reference;
-
-   @Valid
-   @XmlElement(name = "BasisPeriodMeasure")
-   private Measure maturityPeriod;
-
-   @Valid
-   @XmlElement(name = "BasisAmount")
-   private Amount basis;
-
-   @XmlElement(name = "CalculationPercent")
-   @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
-   private BigDecimal calculationPercent;
-
-   @Valid
    @XmlElement(name = "ActualPenaltyAmount")
    private Amount actualPenalty;
 
-   /**
-    * Gets the reference.
-    *
-    * @return the reference
-    */
-   public ZfDate getReference() {
-      return reference;
-   }
-
-   /**
-    * Sets the reference.
-    *
-    * @param reference the new reference
-    */
-   public void setReference(ZfDate reference) {
-      this.reference = reference;
-   }
-
-   /**
-    * Gets the maturity period.
-    *
-    * @return the maturity period
-    */
-   public Measure getMaturityPeriod() {
-      return maturityPeriod;
-   }
-
-   /**
-    * Sets the maturity period.
-    *
-    * @param maturityPeriod the new maturity period
-    */
-   public void setMaturityPeriod(Measure maturityPeriod) {
-      this.maturityPeriod = maturityPeriod;
-   }
-
-   /**
-    * Gets the basis.
-    *
-    * @return the basis
-    */
-   public Amount getBasis() {
-      return basis;
-   }
-
-   /**
-    * Sets the basis.
-    *
-    * @param basis the new basis
-    */
-   public void setBasis(Amount basis) {
-      this.basis = basis;
-   }
-
-   /**
-    * Gets the calculation percent.
-    *
-    * @return the calculation percent
-    */
-   public BigDecimal getCalculationPercent() {
-      return calculationPercent;
-   }
-
-   /**
-    * Sets the calculation percent.
-    *
-    * @param calculationPercent the new calculation percent
-    */
-   public void setCalculationPercent(BigDecimal calculationPercent) {
-      this.calculationPercent = calculationPercent;
-   }
-
-   /**
-    * Gets the actual penalty.
-    *
-    * @return the actual penalty
-    */
-   public Amount getActualPenalty() {
+   @Override
+   public Amount getAmount() {
       return actualPenalty;
    }
 
-   /**
-    * Sets the actual penalty.
-    *
-    * @param actualPenalty the new actual penalty
-    */
-   public void setActualPenalty(Amount actualPenalty) {
-      this.actualPenalty = actualPenalty;
+   @Override
+   public PaymentPenaltyTerms setAmount(Amount actualPenaltyAmount) {
+      this.actualPenalty = actualPenaltyAmount;
+      return this;
    }
-
 }

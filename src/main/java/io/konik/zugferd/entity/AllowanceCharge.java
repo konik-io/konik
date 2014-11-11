@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 /**
  * = The Allowance Charge
  * 
- * Represents trade surcharges and discounts as well as a reason.
+ * Represents a trade surcharge or discount and contains reason information for that.
  */
 @XmlType(name = "TradeAllowanceChargeType", propOrder = { "surcharge", "sequence", "calculationPercent", "basis",
       "basisQuantity", "actual", "reasonCode", "reason" })
@@ -95,6 +95,7 @@ public class AllowanceCharge {
     *
     * @return true if is discount
     */
+   @NotNull(groups = Comfort.class)
    public boolean isDiscount() {
       return !surcharge.getIndicator();
    }
@@ -102,7 +103,7 @@ public class AllowanceCharge {
    /**
     * Sets amount to be a surcharge.
     *
-    * @return the allowance charge
+    * @return the allowance charge to be true
     */
    public AllowanceCharge setSurcharge() {
       this.surcharge = trueIndicator();
@@ -112,7 +113,7 @@ public class AllowanceCharge {
    /**
     * Sets the amount to be a discount.
     *
-    * @return the allowance charge
+    * @return the allowance discount to be true
     */
    public AllowanceCharge setDiscount() {
       this.surcharge = falseIndicator();
@@ -120,54 +121,60 @@ public class AllowanceCharge {
    }
 
    /**
-    * Gets the sequence.
+    * Gets the sequence number of the allowance charge
     *
     * @return the sequence
     */
-   @Extended//if specified
+   @Extended
    public BigDecimal getSequence() {
       return sequence;
    }
 
    /**
-    * Sets the sequence.
+    * Sets the sequence number of the allowance charge.
     *
     * @param sequence the new sequence
+    * @return the allowance charge
     */
-   public void setSequence(BigDecimal sequence) {
+   public AllowanceCharge setSequence(BigDecimal sequence) {
       this.sequence = sequence;
+      return this;
    }
 
    /**
-    * Gets the calculation percent.
+    * Gets the calculation percent of the allowance charge
     *
     * @return the calculation percent
     */
+   @Extended
    public BigDecimal getCalculationPercent() {
       return calculationPercent;
    }
 
    /**
-    * Sets the calculation percent.
+    * Sets the calculation percent of the allowance charge.
     *
     * @param calculationPercent the new calculation percent
+    * @return the allowance charge
     */
-   public void setCalculationPercent(BigDecimal calculationPercent) {
+   public AllowanceCharge setCalculationPercent(BigDecimal calculationPercent) {
       this.calculationPercent = calculationPercent;
+      return this;
    }
 
    /**
-    * Gets the basis amount.
+    * Gets the basis amount of the allowance charge.
     * 
     * @return the basis amount
     */
    @Valid
+   @Extended
    public Amount getBasis() {
       return basis;
    }
 
    /**
-    * Sets the basis amount.
+    * Sets the basis amount of the allowance charge.
     *
     * @param basisAmount the new basis amount
     * @return the allowance charge
@@ -182,6 +189,7 @@ public class AllowanceCharge {
     *
     * @return the basis quantity
     */
+   @Extended
    @Valid
    public Quantity getBasisQuantity() {
       return basisQuantity;
@@ -191,9 +199,11 @@ public class AllowanceCharge {
     * Sets the basis quantity.
     *
     * @param basisQuantity the new basis quantity
+    * @return the allowance charge
     */
-   public void setBasisQuantity(Quantity basisQuantity) {
+   public AllowanceCharge setBasisQuantity(Quantity basisQuantity) {
       this.basisQuantity = basisQuantity;
+      return this;
    }
 
    /**
@@ -219,34 +229,38 @@ public class AllowanceCharge {
    }
 
    /**
-    * Gets the reason code.
+    * Gets the reason code for the reason content.
     *
     * @return the reason code
     */
+   @Extended
    public String getReasonCode() {
       return reasonCode;
    }
 
    /**
-    * Sets the reason code.
+    * Sets the reason code for the reason content.
     *
     * @param reasonCode the new reason code
+    * @return the allowance charge
     */
-   public void setReasonCode(String reasonCode) {
+   public AllowanceCharge setReasonCode(String reasonCode) {
       this.reasonCode = reasonCode;
+      return this;
    }
 
    /**
-    * Gets the reason.
+    * Gets the reason free text
     * 
     * @return the reason
     */
+   @Comfort
    public String getReason() {
       return reason;
    }
 
    /**
-    * Sets the reason.
+    * Sets the reason free text
     *
     * @param reason the new reason
     * @return the allowance charge

@@ -44,13 +44,11 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class Quantity {
 
    @XmlValue
-   @NotNull
    @XmlJavaTypeAdapter(QuantityRoundingAdapter.class)
    private BigDecimal value;
 
    @XmlAttribute(name = "unitCode")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-   @Size(min = 1, max = 3)
    private String unitCode;
 
    /** Instantiates a new quantity. */
@@ -110,6 +108,7 @@ public class Quantity {
     * 
     * @return the value
     */
+   @NotNull
    public BigDecimal getValue() {
       return value;
    }
@@ -148,6 +147,7 @@ public class Quantity {
     * 
     * @return the unit code
     */
+   @Size(min = 1, max = 3)
    public String getUnitCode() {
       return unitCode;
    }

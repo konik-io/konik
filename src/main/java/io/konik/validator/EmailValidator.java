@@ -18,10 +18,9 @@
 package io.konik.validator;
 
 import static io.konik.util.Strings.isNullOrEmpty;
+import io.konik.validator.annotation.Email;
 
 import java.util.regex.Pattern;
-
-import io.konik.validator.annotation.Email;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

@@ -25,7 +25,7 @@ import java.util.List;
 
 /**
  * 
- * The Class GrossPrice.
+ * The Item GrossPrice.
  */
 public class GrossPrice extends Price {
 

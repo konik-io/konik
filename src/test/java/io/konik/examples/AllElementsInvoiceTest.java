@@ -36,7 +36,7 @@ import io.konik.validation.InvoiceValidator;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.Address;
 import io.konik.zugferd.entity.DebtorFinancialAccount;
-import io.konik.zugferd.entity.Document;
+import io.konik.zugferd.entity.PositionDocument;
 import io.konik.zugferd.entity.FinancialInstitution;
 import io.konik.zugferd.entity.GrossPrice;
 import io.konik.zugferd.entity.Header;
@@ -143,7 +143,7 @@ public class AllElementsInvoiceTest {
                ));
       
       trade.addItem(new Item()
-         .setLineDocument(new Document(1))
+         .setPosition(new PositionDocument(1))
          .setAgreement(new SpecifiedAgreement()
                .setBuyerOrder(new ReferencedDocumentItem(1, "BuyerOrder1"))
                .setContract(new ReferencedDocumentItem(1, "ContractPos1"))

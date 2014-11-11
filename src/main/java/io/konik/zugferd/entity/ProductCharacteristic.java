@@ -18,17 +18,14 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.Extended;
 import io.konik.validator.annotation.NotBlank;
 import io.konik.validator.annotation.NotEmpty;
-import io.konik.validator.annotation.NullableNotBlank;
 import io.konik.zugferd.unqualified.Measure;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -38,20 +35,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ProductCharacteristicType", propOrder = { "typeCode", "description", "measurand", "value" })
 public class ProductCharacteristic {
 
-   @NotBlank
    @XmlElement(name = "TypeCode")
    private String typeCode;
 
-   @NotEmpty
    @XmlElement(name = "Description")
    private List<String> description;
 
-   @Valid
    @XmlElement(name = "ValueMeasure")
    private Measure measurand;
 
-   @Extended
-   @NullableNotBlank
    @XmlElement(name = "Value")
    private String value;
 
@@ -60,6 +52,7 @@ public class ProductCharacteristic {
     *
     * @return the type code
     */
+   @NotBlank
    public String getTypeCode() {
       return typeCode;
    }
@@ -68,9 +61,11 @@ public class ProductCharacteristic {
     * Sets the type code.
     *
     * @param typeCode the type code
+    * @return the product characteristic
     */
-   public void setTypeCode(String typeCode) {
+   public ProductCharacteristic setTypeCode(String typeCode) {
       this.typeCode = typeCode;
+      return this;
    }
 
    /**
@@ -78,17 +73,23 @@ public class ProductCharacteristic {
     *
     * @return the description
     */
+   @NotEmpty
    public List<String> getDescription() {
+      if (description == null) {
+         description = new ArrayList<String>();
+      }
       return description;
    }
 
    /**
     * Sets the description.
     *
-    * @param description the description
+    * @param additionalDescription the description
+    * @return the product characteristic
     */
-   public void setDescription(List<String> description) {
-      this.description = description;
+   public ProductCharacteristic addDescription(String additionalDescription) {
+      this.getDescription().add(additionalDescription);
+      return this;
    }
 
    /**
@@ -96,6 +97,7 @@ public class ProductCharacteristic {
     *
     * @return the measurand
     */
+   @Valid
    public Measure getMeasurand() {
       return measurand;
    }
@@ -104,9 +106,11 @@ public class ProductCharacteristic {
     * Sets the measurand.
     *
     * @param measurand the measurand
+    * @return the product characteristic
     */
-   public void setMeasurand(Measure measurand) {
+   public ProductCharacteristic setMeasurand(Measure measurand) {
       this.measurand = measurand;
+      return this;
    }
 
    /**
@@ -122,9 +126,11 @@ public class ProductCharacteristic {
     * Sets the value.
     *
     * @param value the value
+    * @return the product characteristic
     */
-   public void setValue(String value) {
+   public ProductCharacteristic setValue(String value) {
       this.value = value;
+      return this;
    }
 
 }

@@ -43,7 +43,6 @@ import javax.validation.constraints.NotNull;
 @Retention(RUNTIME)
 @ReportAsSingleViolation
 @NotNull
-@NullableNotBlank
 public @interface NotBlank {
 
    /**

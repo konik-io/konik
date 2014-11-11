@@ -17,6 +17,7 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
+import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonAgreement;
 import io.konik.zugferd.entity.GrossPrice;
 import io.konik.zugferd.entity.Price;
@@ -33,69 +34,47 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(propOrder = { "buyerOrder", "contract", "additional", "grossPrice", "netPrice", "customerOrder" })
 public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentItem, ReferencedDocumentItemAdditional> {
-   @Valid
+
    private ReferencedDocumentItem buyerOrder;
-   @Valid
    private ReferencedDocumentItem contract;
-   @Valid
    private List<ReferencedDocumentItemAdditional> additional;
-   @Valid
    private GrossPrice grossPrice;
-   @Valid
    private Price netPrice;
-   @Valid
    private ReferencedDocumentItem customerOrder;
 
-   /**
-    * Gets the buyer order referenced document.
-    *
-    * @return the buyer order referenced document
-    */
+  
+   @Valid
+   @Extended
    @Override
    @XmlElement(name = "BuyerOrderReferencedDocument")
    public ReferencedDocumentItem getBuyerOrder() {
       return buyerOrder;
    }
 
-   /**
-    * Sets the buyer order referenced document.
-    *
-    * @param buyerOrder the new buyer order referenced document
-    * @return the supply chain trade agreement
-    */
    @Override
    public SpecifiedAgreement setBuyerOrder(ReferencedDocumentItem buyerOrder) {
       this.buyerOrder = buyerOrder;
       return this;
    }
 
-   /**
-    * Gets the contract referenced document.
-    * 
-    * Profile:: COMFORT
-    *
-    * @return the contract referenced document
-    */
+   @Valid
+   @Extended
    @Override
    @XmlElement(name = "ContractReferencedDocument")
    public ReferencedDocumentItem getContract() {
       return contract;
    }
-
-   /**
-    * Sets the contract referenced document.
-    * 
-    * Profile:: COMFORT
-    *
-    * @param contract the new contract referenced document
-    * @return the supply chain trade agreement
-    */
+   
+   @Valid
+   @Extended
    @Override
    public SpecifiedAgreement setContract(ReferencedDocumentItem contract) {
       this.contract = contract;
       return this;
    }
 
+   @Valid
+   @Extended
    @Override
    @XmlElement(name = "AdditionalReferencedDocument")
    public List<ReferencedDocumentItemAdditional> getAdditional() {
@@ -112,20 +91,21 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    }
 
    /**
-    * Gets the gross price product trade price.
+    * Gets item gross price.
     *
-    * @return the gross price product trade price
+    * @return the item gross price
     */
+   @Valid
    @XmlElement(name = "GrossPriceProductTradePrice")
    public GrossPrice getGrossPrice() {
       return grossPrice;
    }
 
    /**
-    * Sets the gross price product trade price.
+    * Sets item gross price.
     *
-    * @param grossPrice the new gross price product trade price
-    * @return the supply chain trade agreement
+    * @param grossPrice the new  the item gross price
+    * @return the specified agreement
     */
    public SpecifiedAgreement setGrossPrice(GrossPrice grossPrice) {
       this.grossPrice = grossPrice;
@@ -133,10 +113,11 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    }
 
    /**
-    * Gets the net price product trade price.
+    * Gets the net price item price.
     *
     * @return the net price product trade price
     */
+   @Valid
    @XmlElement(name = "NetPriceProductTradePrice")
    public Price getNetPrice() {
       return netPrice;
@@ -156,10 +137,9 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    /**
     * Gets the customer order referenced document.
     * 
-    * Profile:: COMFORT
-    *
     * @return the customer order referenced document
     */
+   @Extended
    @Override
    @XmlElement(name = "CustomerOrderReferencedDocument")
    public ReferencedDocumentItem getCustomerOrder() {
@@ -169,8 +149,6 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    /**
     * Sets the customer order referenced document.
     * 
-    * Profile:: COMFORT
-    *
     * @param customerOrder the new customer order referenced document
     * @return the supply chain trade agreement
     */

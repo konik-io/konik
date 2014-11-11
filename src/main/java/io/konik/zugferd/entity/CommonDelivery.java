@@ -55,7 +55,6 @@ public abstract class CommonDelivery<R extends ReferencedDocument> {
     *
     * @return the ship to
     */
-
    public TradeParty getShipTo() {
       return shipTo;
    }

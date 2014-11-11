@@ -41,13 +41,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "TradePriceType", propOrder = { "chargeAmount", "basis", "allowanceCharges" })
 public class Price {
 
-   @Valid
-   @NotNull(groups = Comfort.class)
    @XmlElement(name = "ChargeAmount")
    @XmlJavaTypeAdapter(value = AmountHighRoundingAdapter.class)
    private Amount chargeAmount;
 
-   @Valid
    @XmlElement(name = "BasisQuantity")
    private Quantity basis;
 
@@ -72,6 +69,8 @@ public class Price {
     * 
     * @return the charge amount
     */
+   @Valid
+   @NotNull(groups = Comfort.class)
    public Amount getChargeAmount() {
       return chargeAmount;
    }
@@ -92,6 +91,8 @@ public class Price {
     * 
     * @return the basis quantity
     */
+   @Valid
+   @Comfort
    public Quantity getBasis() {
       return basis;
    }

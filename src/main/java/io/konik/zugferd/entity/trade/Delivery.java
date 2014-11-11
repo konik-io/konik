@@ -17,7 +17,6 @@
  */
 package io.konik.zugferd.entity.trade;
 
-import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonDelivery;

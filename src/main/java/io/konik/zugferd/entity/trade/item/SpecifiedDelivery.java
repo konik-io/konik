@@ -17,51 +17,41 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonDelivery;
+import io.konik.zugferd.entity.TradeParty;
 import io.konik.zugferd.unqualified.Quantity;
 import io.konik.zugferd.unqualified.ZfDate;
 
-import java.util.List;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
  * = The Trade Delivery
  * 
- * Profile:: EXTENDED
  */
-@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = { "billed", "chargeFree", "packageQuantity", "shipTo", "ultimateShipTo", "actualDelivery",
       "despatchAdvice", "receivingAdvice", "deliveryNote" })
 public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
 
-   @Valid
-   @NotNull
    @XmlElement(name = "BilledQuantity")
    private Quantity billed;
 
-   @Valid
    @XmlElement(name = "ChargeFreeQuantity")
    private Quantity chargeFree;
 
-   @Valid
    @XmlElement(name = "PackageQuantity")
    private Quantity packageQuantity;
 
-   @Valid
    @XmlElement(name = "DespatchAdviceReferencedDocument")
    private ReferencedDocumentItem despatchAdvice;
 
-   @Valid
    @XmlElement(name = "ReceivingAdviceReferencedDocument")
-   private List<ReferencedDocumentItem> receivingAdvice;
+   private ReferencedDocumentItem receivingAdvice;
 
-   @Valid
    @XmlElement(name = "DeliveryNoteReferencedDocument")
    private ReferencedDocumentItem deliveryNote;
 
@@ -72,8 +62,6 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
    /**
     * The Constructor.
     *
-    * Profile:: BASIC
-    *
     * @param billed the billed
     */
    public SpecifiedDelivery(Quantity billed) {
@@ -83,8 +71,6 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
 
    /**
     * The Constructor.
-    *
-    * Profile:: EXTENDED
     *
     * @param billed the billed
     * @param actualDelivery the actual delivery
@@ -98,10 +84,11 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
    /**
     * Gets the billed quantity.
     * 
-    * Profile:: BASIC
-    *
     * @return the billed quantity
     */
+   @Basic
+   @Valid
+   @NotNull
    public Quantity getBilled() {
       return billed;
    }
@@ -109,8 +96,6 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
    /**
     * Sets the billed quantity.
     * 
-    * Profile:: BASIC
-    *
     * @param billedQuantity the new billed quantity
     * @return the delivery
     */
@@ -124,6 +109,8 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
     *
     * @return the charge free
     */
+   @Extended
+   @Valid
    public Quantity getChargeFree() {
       return chargeFree;
    }
@@ -144,10 +131,12 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
     *
     * @return the package quantity
     */
+   @Extended
+   @Valid
    public Quantity getPackageQuantity() {
       return packageQuantity;
    }
-
+   
    /**
     * Sets the package quantity.
     *
@@ -158,7 +147,29 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
       this.packageQuantity = packageQuantity;
       return this;
    }
+   
+   @Extended
+   @Valid
+   @Override
+   public TradeParty getShipTo() {
+      return super.getShipTo();
+   }
+   
+   @Extended
+   @Valid
+   @Override
+   public TradeParty getUltimateShipTo() {
+      return super.getUltimateShipTo();
+   }
 
+   @Extended
+   @Override
+   public ZfDate getActualDelivery() {
+      return super.getActualDelivery();
+   }
+   
+   @Extended
+   @Valid
    @Override
    public ReferencedDocumentItem getDespatchAdvice() {
       return despatchAdvice;
@@ -175,7 +186,9 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
     *
     * @return the receiving advice
     */
-   public List<ReferencedDocumentItem> getReceivingAdvice() {
+   @Extended
+   @Valid
+   public ReferencedDocumentItem getReceivingAdvice() {
       return receivingAdvice;
    }
 
@@ -185,11 +198,13 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
     * @param receivingAdvice the receiving advice
     * @return the item delivery
     */
-   public SpecifiedDelivery setReceivingAdvice(List<ReferencedDocumentItem> receivingAdvice) {
+   public SpecifiedDelivery setReceivingAdvice(ReferencedDocumentItem receivingAdvice) {
       this.receivingAdvice = receivingAdvice;
       return this;
    }
 
+   @Extended
+   @Valid
    @Override
    public ReferencedDocumentItem getDeliveryNote() {
       return deliveryNote;

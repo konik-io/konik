@@ -47,7 +47,7 @@ import com.neovisionaries.i18n.CurrencyCode;
  */
 @XmlType(propOrder = { "paymentReference", "currency", "invoicee", "payee", "paymentMeans", "tradeTax",
       "billingPeriod", "allowanceCharge", "serviceCharge", "paymentTerms", "monetarySummation",
-      "constCenter" })
+      "costCenter" })
 public class Settlement implements CommonSettlement<TradeTax, MonetarySummation> {
 
    @XmlElement(name = "PaymentReference")
@@ -85,7 +85,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
 
    @XmlElement(name = "ReceivableSpecifiedTradeAccountingAccount")
    @XmlJavaTypeAdapter(AccountingAccountAdapter.class)
-   private String constCenter;
+   private String costCenter;
 
    /**
     * Gets the payment reference.
@@ -361,7 +361,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     */
    @Extended
    public String getCostCenter() {
-      return constCenter;
+      return costCenter;
    }
 
    
@@ -372,7 +372,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * @return the trade settlement
     */
    public Settlement setCostCenter(String costCenter) {
-      this.constCenter = costCenter;
+      this.costCenter = costCenter;
       return this;
    }
 

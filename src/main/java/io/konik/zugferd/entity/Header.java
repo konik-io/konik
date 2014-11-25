@@ -188,7 +188,7 @@ public class Header {
     */
    @Extended
    public boolean isCopy() {
-      return copy.getIndicator();
+      return copy == null?false:copy.getIndicator();
    }
 
    /**

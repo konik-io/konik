@@ -17,13 +17,17 @@
  */
 package io.konik.validator.annotation;
 
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
 
 /**
  * 
  * Every invoice should fulfill the minimum requirement and contain all mandatory basic fields
  */
 @Documented
+@Retention(RUNTIME)
 public @interface Basic {
    /**
     * Restriction indicating that this Profile applies when used with in these parent classes. 

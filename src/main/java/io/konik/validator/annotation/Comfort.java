@@ -17,11 +17,17 @@
  */
 package io.konik.validator.annotation;
 
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+
 /**
  * 
- * The Interface Comfort.
+ *  Indicates that the property or method is only supported in the compfort profile.
  */
-//@GroupSequence({ Default.class})
+@Documented
+@Retention(RUNTIME)
 public @interface Comfort {
    /**
     * Restriction indicating that this Profile applies when used with in these parent classes. 

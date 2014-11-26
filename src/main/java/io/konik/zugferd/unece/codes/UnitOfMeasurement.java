@@ -136,8 +136,10 @@ public enum UnitOfMeasurement {
     * @return the type by code
     */
    public static UnitOfMeasurement getByCode(String code) {
-      for (UnitOfMeasurement v : values()) {
-         if (v.getCode().intern() == code.intern()) { return v; }
+      if (code != null) {
+         for (UnitOfMeasurement v : values()) {
+            if (v.getCode().intern() == code.intern()) { return v; }
+         }
       }
       return null;
    }

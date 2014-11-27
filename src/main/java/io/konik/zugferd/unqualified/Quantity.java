@@ -88,7 +88,7 @@ public class Quantity {
    public Quantity(BigDecimal value, UnitOfMeasurement unit) {
       super();
       this.value = value;
-      this.unitCode = unit.getCode();
+      this.unitCode = unit != null ? unit.getCode() : null;
    }
 
    /**
@@ -139,7 +139,7 @@ public class Quantity {
     * @param unit the new unit
     */
    public void setUnit(UnitOfMeasurement unit) {
-      unitCode = unit.getCode();
+      unitCode = unit != null ? unit.getCode() : null;
    }
 
    /**

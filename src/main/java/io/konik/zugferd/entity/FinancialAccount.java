@@ -40,14 +40,14 @@ interface FinancialAccount {
    FinancialAccount setIban(String iban);
 
    /**
-    * Gets the proprietary id.
+    * Gets the german account number.
     * 
     * @return the proprietary id
     */
    String getProprietaryId();
 
    /**
-    * Sets the proprietary id.
+    * Sets the  german account number.
     *
     * @param proprietaryId the new proprietary id
     * @return the financial account

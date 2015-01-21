@@ -84,7 +84,7 @@ public class CreditorFinancialAccount implements FinancialAccount{
    }
    
    /**
-    * Gets the account name.
+    * Gets the account owner name.
     *
     * @return the account name
     */
@@ -93,7 +93,7 @@ public class CreditorFinancialAccount implements FinancialAccount{
    }
 
    /**
-    * Sets the account name.
+    * Sets the account owner name.
     *
     * @param value the value
     * @return the creditor financial account

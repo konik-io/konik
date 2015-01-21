@@ -57,8 +57,8 @@ public class RandomInvoiceTest {
 
    private final static InvoiceTransformer transformer = new PrittyPrintInvoiceTransformer();
    
-   private static Invoice invoice;
-   private static String xmlInvoice;
+   private static Invoice randomInvoice;
+   private static String randomInvoiceAsXml;
    private static InvoiceValidator validator;
 
    @BeforeClass
@@ -69,11 +69,11 @@ public class RandomInvoiceTest {
    }
 
    private static void createInvoiceContent() {
-      invoice = new RandomInvoiceGenerator().generate(Invoice.class);
-      assertNotNull(invoice);
-      byte[] xmlFromModel = transformer.fromModel(invoice);
-      xmlInvoice = new String(xmlFromModel,utf8);
-      assertNotNull(xmlInvoice);
+      randomInvoice = new RandomInvoiceGenerator().generate(Invoice.class);
+      assertNotNull(randomInvoice);
+      byte[] xmlFromModel = transformer.fromModel(randomInvoice);
+      randomInvoiceAsXml = new String(xmlFromModel,utf8);
+      assertNotNull(randomInvoiceAsXml);
    }
 
    private static void initXmlDiff() {
@@ -85,7 +85,7 @@ public class RandomInvoiceTest {
    @Test
    public void writeRandomInvoiceToFileSystem() throws IOException {
       File xmlInvoiceOutputfile = new File(TARGET_RANDOM_ZF_INVOICE_XML);
-      Files.write(xmlInvoice, xmlInvoiceOutputfile, utf8);
+      Files.write(randomInvoiceAsXml, xmlInvoiceOutputfile, utf8);
       String firstLine = Files.readFirstLine(xmlInvoiceOutputfile, utf8);
       assertThat(firstLine).startsWith("<?xml version=");
    }
@@ -93,7 +93,7 @@ public class RandomInvoiceTest {
    @Test
    public void validateRandomInvoiceAgainstSchema() throws  SAXException, IOException {
       //validate
-      StringReader reader = new StringReader(xmlInvoice);
+      StringReader reader = new StringReader(randomInvoiceAsXml);
       getSchemaValidator().validate(new StreamSource(reader));
    }
 
@@ -104,7 +104,7 @@ public class RandomInvoiceTest {
 //      Class<?>[] validationGroups = InvoiceValidator.resolveIntoValidationGroups(invoice.getContext().getGuideline().getConformanceLevel());
 
       //execute
-      Set<ConstraintViolation<Invoice>> validationResult = validator.validate(invoice);
+      Set<ConstraintViolation<Invoice>> validationResult = validator.validate(randomInvoice);
       
       //verify
       if (!validationResult.isEmpty()) {
@@ -120,13 +120,13 @@ public class RandomInvoiceTest {
    
    @Test
    public void compareXMLFileForDifferences() throws SAXException, IOException {
-      Invoice invoice2 = transformer.toModel(new ByteArrayInputStream(xmlInvoice.getBytes()));
-      byte[] toModel = transformer.fromModel(invoice2);
+      Invoice controlInvoice = transformer.toModel(new ByteArrayInputStream(randomInvoiceAsXml.getBytes()));
+      byte[] toModel = transformer.fromModel(controlInvoice);
       Files.write(toModel, new File(TARGET_RANDOM_ZF_INVOICE_XML_2ND));
-      String xmlInvoice2 = new String(toModel,utf8);
+      String controlInvoiceAsXml = new String(toModel,utf8);
       
       //Verify
-      Diff diff = new Diff(xmlInvoice, xmlInvoice2);
+      Diff diff = new Diff(randomInvoiceAsXml, controlInvoiceAsXml);
       assertThat(diff.identical()).as(diff.toString()).isTrue();
    }
    
@@ -134,8 +134,8 @@ public class RandomInvoiceTest {
    @Test
    @Ignore("rounding is indicated as error")
    public void compareInvoiceModels()  {
-      Invoice invoice2 = transformer.toModel(new ByteArrayInputStream(xmlInvoice.getBytes()));
-      ReflectionAssert.assertReflectionEquals(invoice,invoice2,IGNORE_DEFAULTS,LENIENT_DATES);
+      Invoice invoice2 = transformer.toModel(new ByteArrayInputStream(randomInvoiceAsXml.getBytes()));
+      ReflectionAssert.assertReflectionEquals(randomInvoice,invoice2,IGNORE_DEFAULTS,LENIENT_DATES);
    }
    
 

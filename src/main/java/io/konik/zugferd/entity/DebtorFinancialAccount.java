@@ -18,8 +18,6 @@
 
 package io.konik.zugferd.entity;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -29,7 +27,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *  
  * = The Debtor Financial Account.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DebtorFinancialAccountType", propOrder = { "iban", "proprietaryId" })
 public class DebtorFinancialAccount implements FinancialAccount{
    

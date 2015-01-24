@@ -70,8 +70,6 @@ public class CreditorFinancialAccount implements FinancialAccount{
       this.accountName = accountName;
    }
 
-
-
    @Override
    public String getIban() {
       return iban;

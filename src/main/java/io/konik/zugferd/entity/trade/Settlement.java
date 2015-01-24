@@ -334,8 +334,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * 
     * @return the specified trade settlement monetary summation
     */
-   @NotNull
-   @Basic
+   @Basic@Valid@NotNull   
    @Override
    public MonetarySummation getMonetarySummation() {
       return monetarySummation;

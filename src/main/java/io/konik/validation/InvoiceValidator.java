@@ -17,6 +17,7 @@
  */
 package io.konik.validation;
 
+import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.Invoice;
@@ -84,7 +85,7 @@ public class InvoiceValidator {
    public static Class<?>[] resolveIntoValidationGroups(ConformanceLevel conformanceLevel) {
       switch (conformanceLevel) {
       case BASIC:
-         return new Class[] { Default.class };
+         return new Class[] { Default.class};
       case COMFORT:
          return new Class[] { Default.class, Comfort.class };
       case EXTENDED:

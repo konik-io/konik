@@ -17,23 +17,31 @@
  */
 package io.konik.validator.annotation;
 
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import io.konik.validator.ValidFinancialAccountValidator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
+import javax.validation.Constraint;
+import javax.validation.Payload;
 
 /**
- * 
- * Every invoice should fulfill the minimum requirement and contain all mandatory basic fields
+ *  
+ * The Financial Account will is considered correct when it has an IBAN or a proprietary id.
  */
-@Documented
+@Target({ TYPE, ANNOTATION_TYPE })
 @Retention(RUNTIME)
-public @interface Basic {
-   /**
-    * Restriction indicating that this Profile applies when used with in these parent classes. 
-    *
-    * @return the class[]
-    */
-   Class<?>[] ifParent() default {};
+@Constraint(validatedBy = { ValidFinancialAccountValidator.class })
+@Documented
+public @interface ValidFinancialAccount {
+
+    String message() default "{io.konik.validation.constraints.financialaccount.message}";
+
+    Class<?>[] groups() default { };
+
+    Class<? extends Payload>[] payload() default { };
 }

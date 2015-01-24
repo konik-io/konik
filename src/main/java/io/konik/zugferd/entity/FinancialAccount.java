@@ -18,11 +18,14 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.validator.annotation.ValidFinancialAccount;
+
 
 /**
  * = The Financial Account.
  */
-interface FinancialAccount {
+@ValidFinancialAccount
+public interface FinancialAccount {
 
    /**
     * Gets the iban.

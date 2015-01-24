@@ -139,6 +139,7 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
     * 
     * @return the customer order referenced document
     */
+   @Valid
    @Extended
    @Override
    @XmlElement(name = "CustomerOrderReferencedDocument")

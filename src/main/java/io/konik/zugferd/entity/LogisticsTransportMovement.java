@@ -20,9 +20,9 @@ package io.konik.zugferd.entity;
 
 import io.konik.validator.annotation.Extended;
 import io.konik.validator.annotation.NullableNotBlank;
-import io.konik.validator.annotation.ValidId;
 import io.konik.zugferd.unqualified.ID;
 
+import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -34,7 +34,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * = The Logistics Transport Movement.
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LogisticsTransportMovementType", propOrder = { "modeCode", "shippingId" })
 public class LogisticsTransportMovement {
 
@@ -72,7 +71,7 @@ public class LogisticsTransportMovement {
     *
     * @return the id
     */
-   @ValidId
+   @Valid
    @Extended
    public ID getShppingId() {
       return shippingId;

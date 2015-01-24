@@ -56,12 +56,11 @@ public class MonetarySummation extends CommonMonetarySummation {
    @XmlElement(name = "DuePayableAmount")
    private Amount duePayable;
 
-   
    @Override
    public Amount getLineTotal() {
       return lineTotal;
    }
-   
+
    @Override
    public MonetarySummation setLineTotal(Amount lineTotal) {
       this.lineTotal = lineTotal;

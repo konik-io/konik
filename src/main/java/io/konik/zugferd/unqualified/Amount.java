@@ -20,6 +20,7 @@ package io.konik.zugferd.unqualified;
 
 import java.math.BigDecimal;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -34,7 +35,6 @@ import com.neovisionaries.i18n.CurrencyCode;
  * 
  * A number of monetary units specified by a currency where the currency is explicit or implied.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AmountType", propOrder = { "value" })
 public class Amount {
 

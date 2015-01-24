@@ -66,7 +66,6 @@ public class PaymentMeans {
     * @return the UNCL 4461 type code
     * @see http://www.unece.org/trade/untdid/d13b/tred/tred4461.htm[UN/EDIFACT 4461 Payment means code^]
     */
-   @Valid
    @Comfort
    public PaymentMeansCode getCode() {
       return code;
@@ -91,7 +90,6 @@ public class PaymentMeans {
     * 
     * @return the information
     */
-   @Valid
    @Comfort
    public List<String> getInformations() {
       if (informations == null) {
@@ -121,7 +119,7 @@ public class PaymentMeans {
     * 
     * @return the mandate reference and client creditor id
     */
-   @ValidId
+   @Valid
    @Basic
    public ExtendedID getMandateReference() {
       return mandateReference;

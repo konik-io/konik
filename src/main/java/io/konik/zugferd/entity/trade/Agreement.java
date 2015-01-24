@@ -109,6 +109,7 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     *
     * @return the product end user
     */
+   @Valid
    @Extended
    @XmlElement(name = "ProductEndUserTradeParty")
    public TradeParty getProductEndUser() {

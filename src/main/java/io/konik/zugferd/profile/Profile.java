@@ -32,7 +32,10 @@ public class Profile {
    /**
     * Instantiates a new profile.
     */
-   public Profile() {}
+   Profile() {
+      this.namespace = NS;
+      this.version = ProfileVersion.latestVersion();
+   }
    
    /**
     * Instantiates a new profile with the latest version

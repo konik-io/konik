@@ -32,9 +32,10 @@ public class ConformanceLevelTest {
    }
 
    @Test
-      public void extractConformanceLevel() throws Exception {
-         ConformanceLevel level = ConformanceLevel.extractConformanceLevel("urn:ferd:CrossIndustryDocument:invoice:1p0:basic");
-         assertThat(level).isEqualTo(ConformanceLevel.BASIC);
-      }   
+   public void extractConformanceLevel() throws Exception {
+      ConformanceLevel level = ConformanceLevel
+            .extractConformanceLevel("urn:ferd:CrossIndustryDocument:invoice:1p0:basic");
+      assertThat(level).isEqualTo(ConformanceLevel.BASIC);
+   }
 
 }

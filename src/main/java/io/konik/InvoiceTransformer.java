@@ -173,8 +173,8 @@ public class InvoiceTransformer {
     * @return the Schema Validator
     * @throws SAXException the SAX exception
     */
-   public Validator getZfSchemaValidator() throws SAXException {
-      SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
+   public Validator getZfSchemaValidator() throws SAXException {      
+      SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
       URL schemaInvoice = InvoiceTransformer.class.getResource("/zfSchema/ZUGFeRD_1p0.xsd");
       Schema invoiceSchema = sf.newSchema(schemaInvoice);
       return invoiceSchema.newValidator();

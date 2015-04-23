@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  * = The Monetary Summation of a trade settlement
  * 
  */
-@XmlType(propOrder = { "lineTotal", "chargeTotal", "allowanceTotal", "netTotal", "taxTotal", "grandTotal",
+@XmlType(propOrder = { "lineTotal", "chargeTotal", "allowanceTotal", "taxBasisTotal", "taxTotal", "grandTotal",
       "totalPrepaid", "duePayable" })
 public class MonetarySummation extends CommonMonetarySummation {
 
@@ -42,7 +42,7 @@ public class MonetarySummation extends CommonMonetarySummation {
    private Amount allowanceTotal;
 
    @XmlElement(name = "TaxBasisTotalAmount")
-   private Amount netTotal;
+   private Amount taxBasisTotal;
 
    @XmlElement(name = "TaxTotalAmount")
    private Amount taxTotal;
@@ -124,7 +124,7 @@ public class MonetarySummation extends CommonMonetarySummation {
    @Valid
    @NotNull
    public Amount getTaxBasisTotal() {
-      return netTotal;
+      return taxBasisTotal;
    }
 
    /**
@@ -136,7 +136,7 @@ public class MonetarySummation extends CommonMonetarySummation {
     * @return the trade settlement monetary summation
     */
    public MonetarySummation setTaxBasisTotal(Amount taxBasisTotal) {
-      this.netTotal = taxBasisTotal;
+      this.taxBasisTotal = taxBasisTotal;
       return this;
    }
 

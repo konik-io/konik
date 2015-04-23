@@ -24,7 +24,6 @@ import static java.nio.charset.Charset.forName;
 import static org.assertj.core.api.Assertions.assertThat;
 import io.konik.InvoiceTransformer;
 import io.konik.PrittyPrintInvoiceTransformer;
-import io.konik.utils.InvoiceLoaderUtils;
 import io.konik.utils.NumberDifferenceXmlComparison;
 import io.konik.validator.NullableNotBlankValidator;
 import io.konik.zugferd.profile.ConformanceLevel;
@@ -129,7 +128,7 @@ public class AllSampleXmlInvoicesTest {
    
    @Test
    public void validateInvoiceAgainstSchema() throws SAXException, IOException {
-      InvoiceLoaderUtils.getSchemaValidator().validate(new StreamSource(testFile));
+      transformer.getZfSchemaValidator().validate(new StreamSource(testFile));
       schemaValidationCounter++;
    }
    

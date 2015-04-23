@@ -165,6 +165,10 @@ public class MinimalInvoice {
       //execute
       Set<ConstraintViolation<Invoice>> violations = invoiceValidator.validate(invoice);   // <2>
 
+      for (ConstraintViolation<Invoice> violation : violations) {
+         // violation.getMessage()
+         // violation.getPropertyPath()         
+      }
       //verify
       assertThat(violations.size()).isZero();   // <3>
    }

@@ -18,16 +18,15 @@
  */
 package io.konik.zugferd.entity;
 
-
 import static io.konik.util.Strings.isNotEmpty;
 import io.konik.util.Strings;
+import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.unece.codes.Reference;
 import io.konik.zugferd.unqualified.ID;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
 
 /**
  * = The Tax Registration
@@ -73,6 +72,7 @@ public class TaxRegistration {
     * 
     * @return the number
     */
+   @NotBlank
    public String getTaxNumber() {
       return id.getValue();
    }
@@ -112,7 +112,7 @@ public class TaxRegistration {
     * @param taxType the new type
     * @return the tax registration
     */
-   public TaxRegistration setType(Reference taxType) {      
+   public TaxRegistration setType(Reference taxType) {
       if (taxType != null) {
          this.id.setSchemeId(taxType.getCode());
       }

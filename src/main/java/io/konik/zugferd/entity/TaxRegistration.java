@@ -113,7 +113,9 @@ public class TaxRegistration {
     * @return the tax registration
     */
    public TaxRegistration setType(Reference taxType) {      
-      this.id.setSchemeId(taxType.getCode());
+      if (taxType != null) {
+         this.id.setSchemeId(taxType.getCode());
+      }
       return this;
    }
 

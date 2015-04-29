@@ -19,7 +19,6 @@
 package io.konik.zugferd.entity;
 
 import static io.konik.util.Strings.isNotEmpty;
-import io.konik.util.Strings;
 import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.unece.codes.Reference;
 import io.konik.zugferd.unqualified.ID;

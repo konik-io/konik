@@ -98,7 +98,7 @@ public class FinancialInstitution {
    }
 
    /**
-    * Gets the name.
+    * Gets the financial institution name.
     * 
     * @return the name
     */
@@ -107,10 +107,10 @@ public class FinancialInstitution {
    }
 
    /**
-    * Sets the name.
+    * Sets the financial institution name.
     *
-    * @param name the new name
-    * @return the financial institution
+    * @param name the new bank name
+    * @return the financial institution name
     */
    public FinancialInstitution setName(String name) {
       this.name = name;

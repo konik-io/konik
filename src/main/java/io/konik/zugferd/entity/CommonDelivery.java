@@ -93,6 +93,8 @@ public abstract class CommonDelivery<R extends ReferencedDocument> {
 
    /**
     * Gets the actual delivery event.
+    * 
+    * Delivery and performance date in sales tax purposes
     *
     * @return the actual event
     */
@@ -103,6 +105,8 @@ public abstract class CommonDelivery<R extends ReferencedDocument> {
 
    /**
     * Sets the actual delivery event.
+    * 
+    * Delivery and performance date in sales tax purposes
     *
     * @param actualDelivery the actual delivery
     * @return the delivery

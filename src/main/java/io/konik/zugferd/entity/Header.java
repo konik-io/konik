@@ -257,8 +257,10 @@ public class Header {
    }
 
    /**
-    * Gets the contractual due date.
+    * Gets Contractual due date of the invoice.
     *
+    * Details only required if different from the payment due date.
+    *  
     * @return the contractual due date
     */
    @Extended
@@ -267,7 +269,9 @@ public class Header {
    }
 
    /**
-    * Sets the contractual due date.
+    * Sets Contractual due date of the invoice.
+    * 
+    * Details only required if different from the payment due date.
     *
     * @param contractualDueDate the contractual due date
     * @return the header

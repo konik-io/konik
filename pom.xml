@@ -2,7 +2,7 @@
    <modelVersion>4.0.0</modelVersion>
   
    <artifactId>konik</artifactId>
-   <version>1.0.3</version>
+   <version>1.0.4-SNAPSHOT</version>
    <name>Konik Library</name>
    <description>Konik the ZUGFeRD processing library</description>
    <url>http://konik.io</url>

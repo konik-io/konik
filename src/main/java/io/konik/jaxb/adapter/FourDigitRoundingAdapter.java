@@ -26,11 +26,11 @@ package io.konik.jaxb.adapter;
  * Defaults::
  * 
  * ----
- * io.konik.jaxb.adapter.AmountHighRoundingAdapter.scale=4
- * io.konik.jaxb.adapter.AmountHighRoundingAdapter.roundingMode=HALF_UP
+ * io.konik.jaxb.adapter.FourDigitRoundingAdapter.scale=4
+ * io.konik.jaxb.adapter.FourDigitRoundingAdapter.roundingMode=HALF_UP
  * ----
  */
-public class AmountHighRoundingAdapter extends AmountLowRoundingAdapter {
+public class FourDigitRoundingAdapter extends TwoDigitRoundingAdapter {
 
    private static final String DEFAULT_SCALE = "4";
 

@@ -58,6 +58,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.validation.ConstraintViolation;
 import javax.xml.transform.stream.StreamSource;
@@ -73,6 +75,8 @@ import com.google.common.io.ByteSource;
 @SuppressWarnings("javadoc")
 public class MinimalInvoice {
 
+   Logger log = Logger.getLogger(MinimalInvoice.class.getSimpleName());
+   
    ZfDate today = new ZfDateDay();
    ZfDate nextMonth = new ZfDateMonth(addMonths(today, 1));
 
@@ -165,9 +169,8 @@ public class MinimalInvoice {
       //execute
       Set<ConstraintViolation<Invoice>> violations = invoiceValidator.validate(invoice);   // <2>
 
-      for (ConstraintViolation<Invoice> violation : violations) {
-         // violation.getMessage()
-         // violation.getPropertyPath()         
+      for (ConstraintViolation<Invoice> violation : violations) {       
+        log.log(Level.INFO, violation.getMessage() + " at: " + violation.getPropertyPath() );
       }
       //verify
       assertThat(violations.size()).isZero();   // <3>

@@ -19,7 +19,7 @@ package io.konik.zugferd.entity;
 
 import static io.konik.zugferd.unqualified.Indicator.falseIndicator;
 import static io.konik.zugferd.unqualified.Indicator.trueIndicator;
-import io.konik.jaxb.adapter.AmountHighRoundingAdapter;
+import io.konik.jaxb.adapter.FourDigitRoundingAdapter;
 import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
@@ -56,14 +56,14 @@ public class AllowanceCharge {
    private BigDecimal calculationPercent;
 
    @XmlElement(name = "BasisAmount")
-   @XmlJavaTypeAdapter(value = AmountHighRoundingAdapter.class)
+   @XmlJavaTypeAdapter(value = FourDigitRoundingAdapter.class)
    private Amount basis;
 
    @XmlElement(name = "BasisQuantity")
    private Quantity basisQuantity;
 
    @XmlElement(name = "ActualAmount")
-   @XmlJavaTypeAdapter(value = AmountHighRoundingAdapter.class)
+   @XmlJavaTypeAdapter(value = FourDigitRoundingAdapter.class)
    private Amount actual;
 
    @XmlElement(name = "ReasonCode")

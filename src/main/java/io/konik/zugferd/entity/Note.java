@@ -97,7 +97,7 @@ public class Note {
    }
 
    /**
-    * Gets the human readable content.
+    * Gets the human readable note content.
     *
     * @return the content
     */

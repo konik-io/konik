@@ -36,11 +36,11 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  * Defaults::
  * 
  * ----
- * io.konik.jaxb.adapter.AmountLowRoundingAdapter.scale=2
- * io.konik.jaxb.adapter.AmountLowRoundingAdapter.roundingMode=HALF_UP
+ * io.konik.jaxb.adapter.TwoDigitRoundingAdapter.scale=2
+ * io.konik.jaxb.adapter.TwoDigitRoundingAdapter.roundingMode=HALF_UP
  * ----
  */
-public class AmountLowRoundingAdapter extends XmlAdapter<Amount, Amount> {
+public class TwoDigitRoundingAdapter extends XmlAdapter<Amount, Amount> {
 
    private static final String DEFAULT_SCALE = "2";
    private static final String DEFAULT_ROUNDING_MODE = "HALF_UP";
@@ -52,7 +52,7 @@ public class AmountLowRoundingAdapter extends XmlAdapter<Amount, Amount> {
    /**
     * Instantiates a new amount rounding adapter.
     */
-   public AmountLowRoundingAdapter() {
+   public TwoDigitRoundingAdapter() {
       String name = this.getClass().getName();
       scale = parseInt(Configuration.INSTANCE.getProperty(name + ".scale", getDefaultScale()));
       roundingMode = valueOf(Configuration.INSTANCE.getProperty(name + ".roundingMode", DEFAULT_ROUNDING_MODE));

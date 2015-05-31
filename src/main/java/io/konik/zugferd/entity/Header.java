@@ -22,7 +22,6 @@ import io.konik.jaxb.adapter.PeriodCompleteToDateTimeAdapter;
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Extended;
 import io.konik.validator.annotation.NotBlank;
-import io.konik.validator.annotation.NotEmpty;
 import io.konik.zugferd.unece.codes.DocumentCode;
 import io.konik.zugferd.unqualified.Indicator;
 import io.konik.zugferd.unqualified.ZfDate;
@@ -232,8 +231,7 @@ public class Header {
     * @return the included note
     */
    @Basic
-   @Valid
-   @NotEmpty
+   @Valid  
    public List<Note> getNotes() {
       if (notes == null) {
          notes = new ArrayList<Note>();

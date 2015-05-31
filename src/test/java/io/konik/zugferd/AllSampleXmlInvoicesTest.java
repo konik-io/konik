@@ -144,13 +144,11 @@ public class AllSampleXmlInvoicesTest {
       Set<ConstraintViolation<Invoice>> validationResult = validator.validate(invoice,validationGroups);
       
       //verify
-      if (!validationResult.isEmpty()) {
-         ConstraintViolation<Invoice> violation = validationResult.iterator().next();
-//         assertThat(validationResult).as(violation.getMessage()+"value %s, path %s",violation.getInvalidValue(),violation.getPropertyPath().toString()).isEmpty();
-         assertThat(validationResult).as(violation.getMessage()).isEmpty();
-      }else {
-         modelValidationCounter++;
+      for (ConstraintViolation<Invoice> violation : validationResult) {
+         String msg = violation.getPropertyPath() + " Message: "+ violation.getMessage() + " actual value: " + violation.getInvalidValue();
+         assertThat(validationResult).as(msg).isEmpty();
       }
+      modelValidationCounter++;
    }
 
 

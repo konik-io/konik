@@ -17,7 +17,7 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.jaxb.adapter.AmountHighRoundingAdapter;
+import io.konik.jaxb.adapter.FourDigitRoundingAdapter;
 import io.konik.validator.annotation.Comfort;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Quantity;
@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class Price {
 
    @XmlElement(name = "ChargeAmount")
-   @XmlJavaTypeAdapter(value = AmountHighRoundingAdapter.class)
+   @XmlJavaTypeAdapter(value = FourDigitRoundingAdapter.class)
    private Amount chargeAmount;
 
    @XmlElement(name = "BasisQuantity")

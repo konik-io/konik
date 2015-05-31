@@ -87,8 +87,7 @@ public class MinimalInvoice {
       invoice.setHeader(new Header()
          .setInvoiceNumber("20131122-42")
          .setCode(_380)
-         .setIssued(today)
-         .addNote(new Note("MFG"))
+         .setIssued(today)         
          .setName("Rechnung"));
       
       Trade trade = new Trade();

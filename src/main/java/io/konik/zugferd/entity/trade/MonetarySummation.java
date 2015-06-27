@@ -33,8 +33,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(propOrder = { "lineTotal", "chargeTotal", "allowanceTotal", "taxBasisTotal", "taxTotal", "grandTotal",
       "totalPrepaid", "duePayable" })
-public class MonetarySummation extends CommonMonetarySummation {
+public class MonetarySummation implements CommonMonetarySummation {
 
+   @Valid
+   @XmlElement(name = "LineTotalAmount")
+   private Amount lineTotal;
+   
    @XmlElement(name = "ChargeTotalAmount")
    private Amount chargeTotal;
 
@@ -63,8 +67,8 @@ public class MonetarySummation extends CommonMonetarySummation {
 
    @Override
    public MonetarySummation setLineTotal(Amount lineTotal) {
-      this.lineTotal = lineTotal;
-      return this;
+      this.lineTotal =  lineTotal; 
+      return this;      
    }
 
    /**

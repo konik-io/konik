@@ -19,8 +19,6 @@ package io.konik.zugferd.entity;
 
 import io.konik.zugferd.unqualified.Amount;
 
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
@@ -30,20 +28,14 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlTransient
 @XmlType(name = "TradeSettlementMonetarySummationType", propOrder = { "lineTotal" })
-public abstract class CommonMonetarySummation {
-
-   @Valid
-   @XmlElement(name = "LineTotalAmount")
-   protected Amount lineTotal;
+public interface CommonMonetarySummation {
 
    /**
     * Gets total amount of the line positions.
     *
     * @return the line total
     */
-   public Amount getLineTotal() {
-      return lineTotal;
-   }
+   Amount getLineTotal();
 
    /**
     * Sets total amount of the line positions.
@@ -51,9 +43,6 @@ public abstract class CommonMonetarySummation {
     * @param lineTotal the line total
     * @return the common monetary summation
     */
-   public CommonMonetarySummation setLineTotal(Amount lineTotal) {
-      this.lineTotal = lineTotal;
-      return this;
-   }
+   CommonMonetarySummation setLineTotal(Amount lineTotal);
 
 }

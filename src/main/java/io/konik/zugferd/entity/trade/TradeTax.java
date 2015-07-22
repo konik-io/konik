@@ -17,6 +17,7 @@
  */
 package io.konik.zugferd.entity.trade;
 
+import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
@@ -29,23 +30,52 @@ import java.math.BigDecimal;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * = The tax applied to a trade.
  */
-public class TradeTax extends SpecifiedTax {
+public class TradeTax implements SpecifiedTax {
 
+   @XmlElement(name = "CalculatedAmount")
+   private Amount calculated;
+
+   @XmlElement(name = "TypeCode")
+   private TaxCode type;
+
+   @XmlElement(name = "ExemptionReason")
+   private String exemptionReason;
+
+   @XmlElement(name = "BasisAmount")
+   private Amount basis;
+
+   @XmlElement(name = "LineTotalBasisAmount")
+   private Amount lineTotal;
+
+   @XmlElement(name = "AllowanceChargeBasisAmount")
+   private Amount allowanceCharge;
+
+   @XmlElement(name = "CategoryCode")
+   private TaxCategory category;
+
+   @XmlElement(name = "ApplicablePercent")
+   @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
+   private BigDecimal percentage;   
+
+   
    @Basic
    @NotNull
    @Valid
    @Override
-   public Amount getCalculated() {
+   public Amount getCalculated() {      
       return calculated;
    }
 
    @Override
    public TradeTax setCalculated(Amount calculatedAmount) {
-      return (TradeTax) super.setCalculated(calculatedAmount);
+       this.calculated = calculatedAmount;
+       return this;
    }
 
    @Basic
@@ -58,6 +88,17 @@ public class TradeTax extends SpecifiedTax {
    @Override
    public TradeTax setType(TaxCode taxTypeCode) {
       this.type = taxTypeCode;
+      return this;
+   }
+   
+   @Override
+   public String getExemptionReason() {
+      return exemptionReason;
+   }
+   
+   @Override
+   public TradeTax setExemptionReason(String exemptionReason) {
+      this.exemptionReason = exemptionReason;
       return this;
    }
 
@@ -127,30 +168,28 @@ public class TradeTax extends SpecifiedTax {
    @Comfort
    @Override
    public TaxCategory getCategory() {
-      return super.getCategory();
+      return category;
    }
 
    @Override
-   public TradeTax setCategory(TaxCategory value) {
-      return (TradeTax) super.setCategory(value);
+   public TradeTax setCategory(TaxCategory taxCategory) {
+      this.category = taxCategory;
+      return this;
    }
 
-   
    @Basic
    @NotNull
    @Override
    public BigDecimal getPercentage() {
-      return super.getPercentage();
+      return percentage;
    }
 
    @Override
-   public TradeTax setPercentage(BigDecimal applicablePercentage) {
-      return (TradeTax) super.setPercentage(applicablePercentage);
+   public TradeTax setPercentage(BigDecimal applicablePercentage) {      
+      this.percentage = applicablePercentage;
+      return this; 
    }
 
-   @Override
-   public TradeTax setExemptionReason(String exemptionReason) {
-      super.setExemptionReason(exemptionReason);
-      return this;
-   }
+
+
 }

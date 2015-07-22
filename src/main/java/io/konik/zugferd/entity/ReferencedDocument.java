@@ -75,7 +75,7 @@ public class ReferencedDocument {
     */
    @Comfort
    public Date getIssued() {
-      return new Date(issued.getTime());
+      return issued == null?null:new Date(issued.getTime());
    }
 
    /**

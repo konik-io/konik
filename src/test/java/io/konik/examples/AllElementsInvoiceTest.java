@@ -53,11 +53,11 @@ import io.konik.zugferd.entity.trade.Settlement;
 import io.konik.zugferd.entity.trade.Trade;
 import io.konik.zugferd.entity.trade.TradeTax;
 import io.konik.zugferd.entity.trade.item.Item;
+import io.konik.zugferd.entity.trade.item.ItemTax;
 import io.konik.zugferd.entity.trade.item.ReferencedDocumentItem;
 import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
 import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
 import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
-import io.konik.zugferd.entity.trade.item.SpecifiedTax;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Quantity;
 import io.konik.zugferd.unqualified.ZfDate;
@@ -156,7 +156,7 @@ public class AllElementsInvoiceTest {
             .setDeliveryNote(new ReferencedDocumentItem(1,"DOC:0815")))
          .setProduct(new Product().setName("Saddle"))
          .setSettlement(new SpecifiedSettlement()
-            .addTradeTax(new SpecifiedTax()
+            .addTradeTax((ItemTax) new ItemTax()
                .setPercentage(valueOf(19)))
                //   
                ));

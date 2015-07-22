@@ -24,7 +24,7 @@ import static org.apache.commons.lang3.ClassUtils.isPrimitiveOrWrapper;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.apache.commons.lang3.reflect.MethodUtils.getAccessibleMethod;
 import static org.apache.commons.lang3.reflect.MethodUtils.invokeMethod;
-import io.konik.zugferd.entity.CommonTax;
+import io.konik.zugferd.entity.Tax;
 import io.konik.zugferd.profile.ConformanceLevel;
 import io.konik.zugferd.profile.Profile;
 import io.konik.zugferd.unqualified.ZfDate;
@@ -122,7 +122,7 @@ public class RandomInvoiceGenerator {
          return biggestConstructor.newInstance(constructorParameterObjects);
       }
       catch (InstantiationException e) {
-         if(root.equals(CommonTax.class)){
+         if(root.equals(Tax.class)){
 //            return ZfDateFactory.create(supportedDateFormatts[random.nextInt(3)]);
          }
 //         throw e;

@@ -17,6 +17,7 @@
  */
 package io.konik.zugferd.entity;
 
+import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.validator.annotation.Comfort;
 import io.konik.zugferd.unece.codes.TaxCategory;
 import io.konik.zugferd.unece.codes.TaxCode;
@@ -24,13 +25,25 @@ import io.konik.zugferd.unece.codes.TaxCode;
 import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * = The trade tax
  * 
  */
 @Comfort
-public class AppliedTax extends CommonTax {
+public class AppliedTax implements Tax {
+   
+   @XmlElement(name = "TypeCode")
+   private TaxCode type;
+
+   @XmlElement(name = "CategoryCode")
+   private TaxCategory category;
+
+   @XmlElement(name = "ApplicablePercent")
+   @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
+   private BigDecimal percentage;   
 
    /**
     * Gets the UNCL 5153 tax type code.
@@ -52,7 +65,7 @@ public class AppliedTax extends CommonTax {
     */
    @Override
    public AppliedTax setType(TaxCode taxTypeCode) {
-      super.setType(taxTypeCode);
+      this.type = taxTypeCode;
       return this;
    }
 
@@ -70,12 +83,13 @@ public class AppliedTax extends CommonTax {
    /**
     * Sets the tax category.
     * 
-    * @param value the new category code
+    * @param taxCategory the new category code
     * @return the tax
     */
    @Override
-   public AppliedTax setCategory(TaxCategory value) {
-      return (AppliedTax) super.setCategory(value);
+   public AppliedTax setCategory(TaxCategory taxCategory) {
+      this.category = taxCategory;
+      return this; 
    }
 
    /**
@@ -97,6 +111,7 @@ public class AppliedTax extends CommonTax {
     */
    @Override
    public AppliedTax setPercentage(BigDecimal applicablePercentage) {
-      return (AppliedTax) super.setPercentage(applicablePercentage);
+      this.percentage = applicablePercentage;
+      return this;
    }
 }

@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlTransient
 @XmlType(name = "SupplyChainTradeSettlementType")
-public interface CommonSettlement<T extends CommonTax, M extends CommonMonetarySummation> {
+public interface CommonSettlement<T extends Tax, M extends CommonMonetarySummation> {
 
    /**
     * Gets the billing specified period.

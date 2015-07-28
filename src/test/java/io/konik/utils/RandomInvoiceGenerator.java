@@ -126,7 +126,7 @@ public class RandomInvoiceGenerator {
 //            return ZfDateFactory.create(supportedDateFormatts[random.nextInt(3)]);
          }
 //         throw e;
-         e.printStackTrace();
+        // e.printStackTrace();
          return null;
       }
    }

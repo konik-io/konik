@@ -84,7 +84,7 @@ public class PaymentMeans {
    }
 
    /**
-    * Gets the free text payment method information.
+    * Free text containing payment method information.
     * 
     * Example:: +Cash, Credit Card+
     * 

@@ -85,7 +85,9 @@ public class ReferencedDocument {
     * @return the referenced document
     */
    public ReferencedDocument setIssued(Date issued) {
-      this.issued = new Date(issued.getTime());
+      if (issued != null) {
+         this.issued = new Date(issued.getTime());
+      }
       return this;
    }
 

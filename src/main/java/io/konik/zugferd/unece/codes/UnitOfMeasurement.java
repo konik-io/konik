@@ -50,7 +50,7 @@ public enum UnitOfMeasurement {
    KILOGRAM("KGM", "Kilogram (kg)"),
 
    /** The Kilometer (km). */
-   KILOMETER("KTM", "Kilometer (km)"),
+   KILOMETER("KMT", "Kilometer (km)"),
 
    /** The Kilowatt hour (kWh). */
    KILOWATT_HOUR("KWH", "Kilowatt hour (kWh)"),

@@ -85,6 +85,13 @@
          <version>1.5</version>
          <scope>test</scope>
       </dependency>
+      <dependency>
+         <groupId>org.mockito</groupId>
+         <artifactId>mockito-all</artifactId>
+         <version>1.10.19</version>
+         <scope>test</scope>
+      </dependency>
+
       <!-- this test dependencies can be used also at runtime -->
       <dependency>
          <groupId>org.apache.bval</groupId>
@@ -109,6 +116,18 @@
          <groupId>org.openjdk.jmh</groupId>
          <artifactId>jmh-generator-annprocess</artifactId>
          <scope>provided</scope>
+      </dependency>
+
+      <!-- SDK dependencies -->
+      <dependency>
+         <groupId>com.google.http-client</groupId>
+         <artifactId>google-http-client</artifactId>
+         <version>1.20.0</version>
+      </dependency>
+      <dependency>
+         <groupId>com.google.http-client</groupId>
+         <artifactId>google-http-client-jackson2</artifactId>
+         <version>1.20.0</version>
       </dependency>
    </dependencies>
 

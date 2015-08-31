@@ -4,3 +4,6 @@
 .factorypath
 .project
 infinitest.filters
+
+.idea
+*.iml

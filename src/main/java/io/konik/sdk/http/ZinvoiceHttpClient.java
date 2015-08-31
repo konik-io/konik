@@ -1,5 +1,6 @@
 package io.konik.sdk.http;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.http.*;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonObjectParser;
@@ -26,9 +27,18 @@ public class ZinvoiceHttpClient {
 
 	private final HttpRequestFactory httpRequestFactory;
 
-	public ZinvoiceHttpClient(ZinvoiceApiConfig apiConfig, HttpRequestFactory httpRequestFactory) {
+	private final ObjectMapper objectMapper;
+
+	public ZinvoiceHttpClient(ZinvoiceApiConfig apiConfig, HttpRequestFactory httpRequestFactory, ObjectMapper objectMapper) {
 		this.apiConfig = apiConfig;
 		this.httpRequestFactory = httpRequestFactory;
+		this.objectMapper = objectMapper;
+	}
+
+	public ZinvoiceHttpClient(ZinvoiceApiConfig apiConfig, ObjectMapper objectMapper) {
+		this.apiConfig = apiConfig;
+		this.objectMapper = objectMapper;
+		this.httpRequestFactory = DEFAULT_HTTP_REQUEST_FACTORY;
 	}
 
 	/**
@@ -37,12 +47,22 @@ public class ZinvoiceHttpClient {
 	 * @param endpoint
 	 * @param responseTypeClass
 	 * @return
-	 * @throws IOException
 	 */
-	public <T> T get(String endpoint, Class<T> responseTypeClass) throws IOException {
-		HttpRequest request = httpRequestFactory.buildGetRequest(createEndpoint(endpoint));
-		request.setHeaders(new HttpHeaders().set("API-KEY", apiConfig.getApiKey()));
-		return request.execute().parseAs(responseTypeClass);
+	public <T> T get(String endpoint, Class<T> responseTypeClass) {
+		T result;
+
+		try {
+			HttpRequest request = httpRequestFactory.buildGetRequest(createEndpoint(endpoint));
+			request.setHeaders(new HttpHeaders().set("API-KEY", apiConfig.getApiKey()));
+
+			HttpResponse response = request.execute();
+
+			result = objectMapper.readValue(response.parseAsString(), responseTypeClass);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		return result;
 	}
 
 	private GenericUrl createEndpoint(String endpoint) {

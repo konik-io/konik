@@ -1,5 +1,6 @@
 package io.konik.sdk.http;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.http.*;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -40,7 +41,6 @@ public class ZinvoiceHttpClientTest {
 				}
 			};
 		}
-
 	};
 
 	private HttpRequestFactory httpRequestFactory = httpTransport.createRequestFactory(new HttpRequestInitializer() {
@@ -50,7 +50,9 @@ public class ZinvoiceHttpClientTest {
 		}
 	});
 
-	private ZinvoiceHttpClient zinvoiceHttpClient = new ZinvoiceHttpClient(apiConfig, httpRequestFactory);
+	private ObjectMapper objectMapper = new ObjectMapper();
+
+	private ZinvoiceHttpClient zinvoiceHttpClient = new ZinvoiceHttpClient(apiConfig, httpRequestFactory, objectMapper);
 
 	@Test
 	@SuppressWarnings("unchecked")

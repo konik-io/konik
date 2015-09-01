@@ -1,0 +1,98 @@
+package io.konik.sdk.invoice;
+
+import com.google.api.client.http.HttpRequestFactory;
+import com.google.api.client.http.LowLevelHttpRequest;
+import com.google.api.client.http.LowLevelHttpResponse;
+import com.google.api.client.testing.http.MockHttpTransport;
+import com.google.api.client.testing.http.MockLowLevelHttpRequest;
+import com.google.api.client.testing.http.MockLowLevelHttpResponse;
+import io.konik.sdk.ZinvoiceApiConfig;
+import io.konik.sdk.http.ZinvoiceHttpClient;
+import org.junit.Test;
+import org.unitils.thirdparty.org.apache.commons.io.IOUtils;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.UUID;
+
+import static org.assertj.core.api.Assertions.*;
+
+public class RestInvoiceApiTest {
+
+	private static final String INVOICE_ID = "4fd7563db62c4234a500b09be34e07dd";
+
+	private final ZinvoiceApiConfig apiConfig = new ZinvoiceApiConfig(UUID.randomUUID().toString(), "http://localhost");
+
+	private final ZinvoiceHttpClient getInvoiceMockHttpClient = new ZinvoiceHttpClient(apiConfig, mockHttpRequestFactory(new MockLowLevelHttpRequest(){
+		@Override
+		public LowLevelHttpResponse execute() throws IOException {
+			StringWriter writer = new StringWriter();
+			IOUtils.copy(getClass().getResourceAsStream("/json/RestInvoiceApiTest_getInvoice.json"), writer, "UTF-8");
+			String json = writer.toString();
+
+			MockLowLevelHttpResponse response = new MockLowLevelHttpResponse();
+			response.setStatusCode(200);
+			response.setContentType("application/json");
+			response.setContent(json);
+			return response;
+		}
+	}), apiConfig.getDefaulObjectMapper());
+
+
+	private HttpRequestFactory mockHttpRequestFactory(final MockLowLevelHttpRequest request) {
+		return new MockHttpTransport() {
+			@Override
+			public LowLevelHttpRequest buildRequest(String method, String url) throws IOException {
+				return request;
+			}
+		}.createRequestFactory();
+	}
+
+	@Test
+	public void shouldLoadDocumentAndReturnsItsId() {
+		//given:
+		InvoiceApi invoiceApi = new RestInvoiceApi(getInvoiceMockHttpClient);
+
+		//when:
+		InvoiceDocument invoiceDocument = invoiceApi.getInvoice(INVOICE_ID);
+
+		//then:
+		assertThat(invoiceDocument.getId()).isEqualTo(INVOICE_ID);
+	}
+
+	@Test
+	public void shouldLoadDocumentAndReturnGuidelineNamespace() {
+		//given:
+		InvoiceApi invoiceApi = new RestInvoiceApi(getInvoiceMockHttpClient);
+
+		//when:
+		InvoiceDocument invoiceDocument = invoiceApi.getInvoice(INVOICE_ID);
+
+		//then:
+		assertThat(invoiceDocument.getInvoice().getContext().getGuideline().getNamespace()).isEqualTo("urn:ferd:CrossIndustryDocument:invoice:");
+	}
+
+	@Test
+	public void shouldLoadDocumentAndReturnItsInvoiceNumber() {
+		//given:
+		InvoiceApi invoiceApi = new RestInvoiceApi(getInvoiceMockHttpClient);
+
+		//when:
+		InvoiceDocument invoiceDocument = invoiceApi.getInvoice(INVOICE_ID);
+
+		//then:
+		assertThat(invoiceDocument.getInvoice().getHeader().getInvoiceNumber()).isEqualTo("20150201");
+	}
+
+	@Test
+	public void shouldLoadDocumentAndReturnSellerTaxNumber() {
+		//given:
+		InvoiceApi invoiceApi = new RestInvoiceApi(getInvoiceMockHttpClient);
+
+		//when:
+		InvoiceDocument invoiceDocument = invoiceApi.getInvoice(INVOICE_ID);
+
+		//then:
+		assertThat(invoiceDocument.getInvoice().getTrade().getAgreement().getSeller().getTaxRegistrations().get(0).getTaxNumber()).isEqualTo("7732393669");
+	}
+}

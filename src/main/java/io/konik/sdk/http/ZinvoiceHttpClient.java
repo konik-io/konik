@@ -41,6 +41,12 @@ public class ZinvoiceHttpClient {
 		this.httpRequestFactory = DEFAULT_HTTP_REQUEST_FACTORY;
 	}
 
+	public ZinvoiceHttpClient(ZinvoiceApiConfig apiConfig) {
+		this.apiConfig = apiConfig;
+		this.objectMapper = apiConfig.getDefaulObjectMapper();
+		this.httpRequestFactory = DEFAULT_HTTP_REQUEST_FACTORY;
+	}
+
 	/**
 	 * Runs GET request.
 	 *

@@ -14,9 +14,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class ZinvoiceHttpClientTest {
 
@@ -61,6 +59,6 @@ public class ZinvoiceHttpClientTest {
 		Map<String, String> response = zinvoiceHttpClient.get("/lorem/ipsum", Map.class);
 
 		//then:
-		assertThat(response.get("apiKey"), is(equalTo(apiConfig.getApiKey())));
+		assertThat(response.get("apiKey")).isEqualTo(apiConfig.getApiKey());
 	}
 }

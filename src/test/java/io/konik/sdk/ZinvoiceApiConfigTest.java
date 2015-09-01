@@ -4,9 +4,7 @@ import org.junit.Test;
 
 import java.util.UUID;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class ZinvoiceApiConfigTest {
 
@@ -20,7 +18,7 @@ public class ZinvoiceApiConfigTest {
 		ZinvoiceApiConfig config = new ZinvoiceApiConfig(apiKey, destinationUrl);
 
 		//then:
-		assertThat(config.getApiKey(), is(equalTo(apiKey)));
-		assertThat(config.getDestinationUrl(), is(equalTo(destinationUrl)));
+		assertThat(config.getApiKey()).isEqualTo(apiKey);
+		assertThat(config.getDestinationUrl()).isEqualTo(destinationUrl);
 	}
 }

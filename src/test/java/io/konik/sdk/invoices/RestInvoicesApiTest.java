@@ -22,9 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class RestInvoicesApiTest {
 
@@ -81,7 +79,7 @@ public class RestInvoicesApiTest {
 		List<InvoicesListElement> response = invoicesApi.outbox();
 
 		//then:
-		assertThat(response.size(), is(equalTo(4)));
+		assertThat(response).hasSize(4);
 	}
 
 	@Test
@@ -93,7 +91,7 @@ public class RestInvoicesApiTest {
 		List<InvoicesListElement> response = invoicesApi.outbox();
 
 		//then:
-		assertThat(response.get(0).getId(), is(equalTo("e7508df79bc24ceb9f8ac8f98e718e67")));
+		assertThat(response.get(0).getId()).isEqualTo("e7508df79bc24ceb9f8ac8f98e718e67");
 	}
 
 	@Test
@@ -105,7 +103,7 @@ public class RestInvoicesApiTest {
 		List<InvoicesListElement> response = invoicesApi.outbox();
 
 		//then:
-		assertThat(response.get(0).getStatus(), is(equalTo(InvoicesListElement.Status.PRINTED)));
+		assertThat(response.get(0).getStatus()).isEqualTo(InvoicesListElement.Status.PRINTED);
 	}
 
 	@Test
@@ -119,7 +117,7 @@ public class RestInvoicesApiTest {
 		List<InvoicesListElement> response = invoicesApi.outbox();
 
 		//then:
-		assertThat(response.get(0).getCreatedDate(), is(equalTo(expectedCreatedDate)));
+		assertThat(response.get(0).getCreatedDate()).isEqualTo(expectedCreatedDate);
 	}
 
 	@Test
@@ -133,7 +131,7 @@ public class RestInvoicesApiTest {
 		List<InvoicesListElement> response = invoicesApi.outbox();
 
 		//then:
-		assertThat(response.get(0).getPerformanceDate(), is(equalTo(expectedPerformanceDate)));
+		assertThat(response.get(0).getPerformanceDate()).isEqualTo(expectedPerformanceDate);
 	}
 
 	@Test
@@ -145,7 +143,7 @@ public class RestInvoicesApiTest {
 		List<InvoicesListElement> response = invoicesApi.inbox();
 
 		//then:
-		assertThat(response.size(), is(equalTo(3)));
+		assertThat(response).hasSize(3);
 	}
 
 	@Test
@@ -157,7 +155,7 @@ public class RestInvoicesApiTest {
 		List<InvoicesListElement> response = invoicesApi.inbox();
 
 		//then:
-		assertThat(response.get(0).getStatus(), is(equalTo(InvoicesListElement.Status.REJECTED)));
+		assertThat(response.get(0).getStatus()).isEqualTo(InvoicesListElement.Status.REJECTED);
 	}
 
 	@Test
@@ -169,7 +167,7 @@ public class RestInvoicesApiTest {
 		List<InvoicesListElement> response = invoicesApi.inbox();
 
 		//then:
-		assertThat(response.get(0).getAmount(), is(equalTo(BigDecimal.valueOf(235.62))));
+		assertThat(response.get(0).getAmount()).isEqualTo(BigDecimal.valueOf(235.62));
 	}
 
 	@Test
@@ -181,6 +179,6 @@ public class RestInvoicesApiTest {
 		List<InvoicesListElement> response = invoicesApi.inbox();
 
 		//then:
-		assertThat(response.get(0).getCurrency(), is(equalTo("EUR")));
+		assertThat(response.get(0).getCurrency()).isEqualTo("EUR");
 	}
 }

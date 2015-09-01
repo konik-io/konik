@@ -9,21 +9,11 @@ import java.util.Date;
 
 public class InvoicesListElement {
 
-	public enum Status {
-		DRAFT,
-		CREATED,
-		SENT,
-		PRINTED,
-		PAID,
-		ACCEPTED,
-		REJECTED;
-	}
-
 	private String id;
 
 	private String documentType;
 
-	private Status status;
+	private String status;
 
 	private String number;
 
@@ -57,11 +47,11 @@ public class InvoicesListElement {
 		this.documentType = documentType;
 	}
 
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

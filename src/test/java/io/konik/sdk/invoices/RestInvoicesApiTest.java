@@ -103,7 +103,7 @@ public class RestInvoicesApiTest {
 		List<InvoicesListElement> response = invoicesApi.outbox();
 
 		//then:
-		assertThat(response.get(0).getStatus()).isEqualTo(InvoicesListElement.Status.PRINTED);
+		assertThat(response.get(0).getStatus()).isEqualTo("PRINTED");
 	}
 
 	@Test
@@ -155,7 +155,7 @@ public class RestInvoicesApiTest {
 		List<InvoicesListElement> response = invoicesApi.inbox();
 
 		//then:
-		assertThat(response.get(0).getStatus()).isEqualTo(InvoicesListElement.Status.REJECTED);
+		assertThat(response.get(0).getStatus()).isEqualTo("REJECTED");
 	}
 
 	@Test

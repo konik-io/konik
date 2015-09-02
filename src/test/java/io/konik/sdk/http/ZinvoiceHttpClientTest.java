@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ZinvoiceHttpClientTest {
 

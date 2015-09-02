@@ -6,8 +6,12 @@ import com.google.api.client.http.LowLevelHttpResponse;
 import com.google.api.client.testing.http.MockHttpTransport;
 import com.google.api.client.testing.http.MockLowLevelHttpRequest;
 import com.google.api.client.testing.http.MockLowLevelHttpResponse;
+import com.google.common.io.ByteStreams;
+import io.konik.InvoiceTransformer;
 import io.konik.sdk.ZinvoiceApiConfig;
+import io.konik.sdk.http.BadRequestException;
 import io.konik.sdk.http.ZinvoiceHttpClient;
+import io.konik.zugferd.Invoice;
 import org.junit.Test;
 import org.unitils.thirdparty.org.apache.commons.io.IOUtils;
 
@@ -15,7 +19,9 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.failBecauseExceptionWasNotThrown;
+import static org.mockito.Mockito.*;
 
 public class RestInvoiceApiTest {
 
@@ -23,7 +29,7 @@ public class RestInvoiceApiTest {
 
 	private final ZinvoiceApiConfig apiConfig = new ZinvoiceApiConfig(UUID.randomUUID().toString(), "http://localhost");
 
-	private final ZinvoiceHttpClient getInvoiceMockHttpClient = new ZinvoiceHttpClient(apiConfig, mockHttpRequestFactory(new MockLowLevelHttpRequest(){
+	private final ZinvoiceHttpClient getInvoiceMockHttpClient = new ZinvoiceHttpClient(apiConfig, mockHttpRequestFactory(new MockLowLevelHttpRequest() {
 		@Override
 		public LowLevelHttpResponse execute() throws IOException {
 			StringWriter writer = new StringWriter();
@@ -32,6 +38,18 @@ public class RestInvoiceApiTest {
 
 			MockLowLevelHttpResponse response = new MockLowLevelHttpResponse();
 			response.setStatusCode(200);
+			response.setContentType("application/json");
+			response.setContent(json);
+			return response;
+		}
+	}), apiConfig.getDefaulObjectMapper());
+
+	private final ZinvoiceHttpClient createInvoiceFailHttpClient = new ZinvoiceHttpClient(apiConfig, mockHttpRequestFactory(new MockLowLevelHttpRequest(){
+		@Override
+		public LowLevelHttpResponse execute() throws IOException {
+			String json = "{\"path\": \"/invoice\", \"message\": \"Your request contains errors\", \"errors\": {\"trade.settlement.monetarySummation.chargeTotal\": \"may not be null\"}}";
+			MockLowLevelHttpResponse response = new MockLowLevelHttpResponse();
+			response.setStatusCode(400);
 			response.setContentType("application/json");
 			response.setContent(json);
 			return response;
@@ -94,5 +112,42 @@ public class RestInvoiceApiTest {
 
 		//then:
 		assertThat(invoiceDocument.getInvoice().getTrade().getAgreement().getSeller().getTaxRegistrations().get(0).getTaxNumber()).isEqualTo("7732393669");
+	}
+
+	@Test
+	public void shouldWrapBadRequestIntoException() {
+		//given:
+		InvoiceApi invoiceApi = new RestInvoiceApi(createInvoiceFailHttpClient);
+
+		//when:
+		try {
+			invoiceApi.createInvoice(mock(Invoice.class));
+			failBecauseExceptionWasNotThrown(BadRequestException.class);
+		} catch (BadRequestException e) {
+			//then:
+			assertThat(e.getErrorResponse().getMessage()).isEqualTo("Your request contains errors");
+			assertThat(e.getErrorResponse().getErrors()).containsEntry("trade.settlement.monetarySummation.chargeTotal", "may not be null");
+		}
+	}
+
+	@Test
+	public void shouldUseInvoiceTransformerToGenerateZugferdXmlInvoiceRepresentationDuringCreateRequest() throws IOException {
+		//given:
+		ZinvoiceHttpClient zinvoiceHttpClient = mock(ZinvoiceHttpClient.class);
+		InvoiceTransformer invoiceTransformer = mock(InvoiceTransformer.class);
+		Invoice invoice = mock(Invoice.class);
+		InvoiceApi invoiceApi = new RestInvoiceApi(zinvoiceHttpClient, invoiceTransformer);
+		byte[] mockXml = ByteStreams.toByteArray(getClass().getResourceAsStream("/ZUGFeRD-invoice.sample.xml"));
+
+		when(invoiceTransformer.fromModel(invoice)).thenReturn(mockXml);
+		when(zinvoiceHttpClient.post("/invoice", mockXml, "application/xml", CreatedInvoice.class))
+				.thenReturn(mock(CreatedInvoice.class));
+
+		//when:
+		invoiceApi.createInvoice(invoice);
+
+		//then:
+		verify(invoiceTransformer).fromModel(invoice);
+		verify(zinvoiceHttpClient.post("/invoice", mockXml, "application/xml", CreatedInvoice.class));
 	}
 }

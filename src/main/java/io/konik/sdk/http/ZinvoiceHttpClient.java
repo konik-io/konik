@@ -7,7 +7,9 @@ import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import io.konik.sdk.ZinvoiceApiConfig;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * HTTP client for Zinvoice services.
@@ -62,13 +64,65 @@ public class ZinvoiceHttpClient {
 			request.setHeaders(new HttpHeaders().set("API-KEY", apiConfig.getApiKey()));
 
 			HttpResponse response = request.execute();
-
 			result = objectMapper.readValue(response.parseAsString(), responseTypeClass);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 
 		return result;
+	}
+
+	/**
+	 * Downloads content as {@see InputStream}.
+	 *
+	 * @param endpoint
+	 * @return
+	 */
+	public InputStream download(String endpoint) {
+		try {
+			HttpRequest request = httpRequestFactory.buildGetRequest(createEndpoint(endpoint));
+			request.setHeaders(new HttpHeaders().set("API-KEY", apiConfig.getApiKey()));
+			return request.execute().getContent();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * Runs POST request.
+	 *
+	 * @param endpoint
+	 * @param responseTypeClass
+	 * @return
+	 */
+	public <T> T post(String endpoint, byte[] body, String contentType, Class<T> responseTypeClass) {
+		T result;
+
+		try {
+			HttpContent content = new InputStreamContent(contentType, new ByteArrayInputStream(body));
+			HttpRequest request = httpRequestFactory.buildPostRequest(createEndpoint(endpoint), content);
+			request.setHeaders(new HttpHeaders().set("API-KEY", apiConfig.getApiKey()));
+
+			HttpResponse response = request.execute();
+
+			result = objectMapper.readValue(response.parseAsString(), responseTypeClass);
+		} catch (HttpResponseException e) {
+			throw new BadRequestException(getErrorResponse(e));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		return result;
+	}
+
+	private ErrorResponse getErrorResponse(HttpResponseException e) {
+		ErrorResponse errorResponse;
+		try {
+			 errorResponse = objectMapper.readValue(e.getContent(), ErrorResponse.class);
+		} catch (IOException e1) {
+			throw new RuntimeException(e1);
+		}
+		return errorResponse;
 	}
 
 	private GenericUrl createEndpoint(String endpoint) {

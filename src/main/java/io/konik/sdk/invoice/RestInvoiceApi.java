@@ -7,6 +7,7 @@ import io.konik.sdk.http.ZinvoiceHttpClient;
 import io.konik.zugferd.Invoice;
 
 import java.io.InputStream;
+import java.nio.charset.Charset;
 
 
 public class RestInvoiceApi implements InvoiceApi{
@@ -64,5 +65,29 @@ public class RestInvoiceApi implements InvoiceApi{
 	@Override
 	public void deleteInvoice(String invoiceId) {
 		httpClient.delete("/invoice/"+invoiceId);
+	}
+
+	@Override
+	public boolean sendInvoice(String invoiceId, String email, String message) {
+		try {
+			String json = "{\"recipient\":\""+email+"\", \"message\":\""+message+"\"}";
+
+			CreatedInvoice createdInvoice = httpClient.post("/invoice/"+invoiceId+"/pdf/send", json.getBytes(Charset.forName("UTF-8")), "application/json", CreatedInvoice.class);
+
+			return createdInvoice != null && createdInvoice.getInvoiceId() != null;
+		} catch (RuntimeException e) {
+			if (e.getCause() instanceof HttpResponseException) {
+				HttpResponseException responseException = (HttpResponseException) e.getCause();
+				if (responseException.getStatusCode() == 409) {
+					throw new InsufficientCreditsAmountException();
+				}
+			}
+			throw e;
+		}
+	}
+
+	@Override
+	public boolean sendInvoice(String invoiceId, String email) {
+		return sendInvoice(invoiceId, email, "");
 	}
 }

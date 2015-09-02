@@ -15,4 +15,8 @@ public interface InvoiceApi {
 	InputStream downloadInvoiceAsPDF(String invoiceId);
 
 	void deleteInvoice(String invoiceId);
+
+	boolean sendInvoice(String invoiceId, String email, String message);
+
+	boolean sendInvoice(String invoiceId, String email);
 }

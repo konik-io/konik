@@ -109,7 +109,10 @@ public class ZinvoiceHttpClient {
 
 			result = objectMapper.readValue(response.parseAsString(), responseTypeClass);
 		} catch (HttpResponseException e) {
-			throw new BadRequestException(getErrorResponse(e));
+			if (e.getStatusCode() == 400) {
+				throw new BadRequestException(getErrorResponse(e));
+			}
+			throw new RuntimeException(e);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

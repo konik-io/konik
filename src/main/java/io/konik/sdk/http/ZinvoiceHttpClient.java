@@ -81,7 +81,9 @@ public class ZinvoiceHttpClient {
 	public InputStream download(String endpoint) {
 		try {
 			HttpRequest request = httpRequestFactory.buildGetRequest(createEndpoint(endpoint));
-			request.setHeaders(new HttpHeaders().set("API-KEY", apiConfig.getApiKey()));
+			request.setHeaders(new HttpHeaders()
+					.set("API-KEY", apiConfig.getApiKey())
+					.setAccept("application/json"));
 			return request.execute().getContent();
 		} catch (IOException e) {
 			throw new RuntimeException(e);

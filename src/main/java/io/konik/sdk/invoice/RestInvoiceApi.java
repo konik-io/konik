@@ -1,6 +1,8 @@
 package io.konik.sdk.invoice;
 
+import com.google.api.client.http.HttpResponseException;
 import io.konik.InvoiceTransformer;
+import io.konik.sdk.http.InsufficientCreditsAmountException;
 import io.konik.sdk.http.ZinvoiceHttpClient;
 import io.konik.zugferd.Invoice;
 
@@ -46,7 +48,17 @@ public class RestInvoiceApi implements InvoiceApi{
 
 	@Override
 	public InputStream downloadInvoiceAsPDF(String invoiceId) {
-		return httpClient.download("/invoice/" + invoiceId + "/pdf");
+		try {
+			return httpClient.download("/invoice/" + invoiceId + "/pdf");
+		} catch (RuntimeException e) {
+			if (e.getCause() instanceof HttpResponseException) {
+				HttpResponseException responseException = (HttpResponseException) e.getCause();
+				if (responseException.getStatusCode() == 409) {
+					throw new InsufficientCreditsAmountException();
+				}
+			}
+			throw e;
+		}
 	}
 
 	@Override

@@ -11,4 +11,18 @@ public class BadRequestException extends RuntimeException {
 	public ErrorResponse getErrorResponse() {
 		return errorResponse;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder("BadRequestException: " + errorResponse.getMessage());
+		stringBuilder.append("\nReason:\n|");
+
+		for (String key : errorResponse.getErrors().keySet()) {
+			String message = errorResponse.getErrors().get(key);
+			stringBuilder.append("\n");
+			stringBuilder.append("|-- " + key + ": " + message);
+		}
+		stringBuilder.append("\n|_");
+		return stringBuilder.toString();
+	}
 }

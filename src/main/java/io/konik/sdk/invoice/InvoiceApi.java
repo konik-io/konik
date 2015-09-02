@@ -12,5 +12,7 @@ public interface InvoiceApi {
 
 	CreatedInvoice createDraftInvoice(Invoice invoice);
 
-	InputStream downloadPdf(String invoiceId);
+	InputStream downloadInvoiceAsPDF(String invoiceId);
+
+	void deleteInvoice(String invoiceId);
 }

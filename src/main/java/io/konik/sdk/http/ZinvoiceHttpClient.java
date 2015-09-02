@@ -115,6 +115,22 @@ public class ZinvoiceHttpClient {
 		return result;
 	}
 
+	/**
+	 * Runs DELETE request.
+	 *
+	 * @param endpoint
+	 * @return
+	 */
+	public void delete(String endpoint) {
+		try {
+			HttpRequest request = httpRequestFactory.buildDeleteRequest(createEndpoint(endpoint));
+			request.setHeaders(new HttpHeaders().set("API-KEY", apiConfig.getApiKey()));
+			request.execute();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 	private ErrorResponse getErrorResponse(HttpResponseException e) {
 		ErrorResponse errorResponse;
 		try {

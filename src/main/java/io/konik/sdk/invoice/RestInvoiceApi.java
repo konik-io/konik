@@ -45,7 +45,12 @@ public class RestInvoiceApi implements InvoiceApi{
 	}
 
 	@Override
-	public InputStream downloadPdf(String invoiceId) {
-		return httpClient.download("/invoice/"+invoiceId+"/pdf");
+	public InputStream downloadInvoiceAsPDF(String invoiceId) {
+		return httpClient.download("/invoice/" + invoiceId + "/pdf");
+	}
+
+	@Override
+	public void deleteInvoice(String invoiceId) {
+		httpClient.delete(invoiceId);
 	}
 }

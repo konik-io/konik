@@ -36,15 +36,15 @@ public class RestInvoiceApi implements InvoiceApi{
 	}
 
 	@Override
-	public CreatedInvoice createInvoice(Invoice invoice) {
+	public InvoiceResponse createInvoice(Invoice invoice) {
 		byte[] invoiceXml = invoiceTransformer.fromModel(invoice);
-		return httpClient.post("/invoice", invoiceXml, "application/xml", CreatedInvoice.class);
+		return httpClient.post("/invoice", invoiceXml, "application/xml", InvoiceResponse.class);
 	}
 
 	@Override
-	public CreatedInvoice createDraftInvoice(Invoice invoice) {
+	public InvoiceResponse createDraftInvoice(Invoice invoice) {
 		byte[] invoiceXml = invoiceTransformer.fromModel(invoice);
-		return httpClient.post("/invoice/draft", invoiceXml, "application/xml", CreatedInvoice.class);
+		return httpClient.post("/invoice/draft", invoiceXml, "application/xml", InvoiceResponse.class);
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class RestInvoiceApi implements InvoiceApi{
 		try {
 			String json = "{\"recipient\":\""+email+"\", \"message\":\""+message+"\"}";
 
-			CreatedInvoice createdInvoice = httpClient.post("/invoice/"+invoiceId+"/pdf/send", json.getBytes(Charset.forName("UTF-8")), "application/json", CreatedInvoice.class);
+			InvoiceResponse createdInvoice = httpClient.post("/invoice/"+invoiceId+"/pdf/send", json.getBytes(Charset.forName("UTF-8")), "application/json", InvoiceResponse.class);
 
 			return createdInvoice != null && createdInvoice.getInvoiceId() != null;
 		} catch (RuntimeException e) {

@@ -140,14 +140,14 @@ public class RestInvoiceApiTest {
 		byte[] mockXml = ByteStreams.toByteArray(getClass().getResourceAsStream("/ZUGFeRD-invoice.sample.xml"));
 
 		when(invoiceTransformer.fromModel(invoice)).thenReturn(mockXml);
-		when(zinvoiceHttpClient.post("/invoice", mockXml, "application/xml", CreatedInvoice.class))
-				.thenReturn(mock(CreatedInvoice.class));
+		when(zinvoiceHttpClient.post("/invoice", mockXml, "application/xml", InvoiceResponse.class))
+				.thenReturn(mock(InvoiceResponse.class));
 
 		//when:
 		invoiceApi.createInvoice(invoice);
 
 		//then:
 		verify(invoiceTransformer).fromModel(invoice);
-		verify(zinvoiceHttpClient.post("/invoice", mockXml, "application/xml", CreatedInvoice.class));
+		verify(zinvoiceHttpClient.post("/invoice", mockXml, "application/xml", InvoiceResponse.class));
 	}
 }

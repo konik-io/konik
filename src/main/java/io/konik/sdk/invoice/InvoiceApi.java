@@ -8,9 +8,9 @@ public interface InvoiceApi {
 
 	InvoiceDocument getInvoice(String id);
 
-	CreatedInvoice createInvoice(Invoice invoice);
+	InvoiceResponse createInvoice(Invoice invoice);
 
-	CreatedInvoice createDraftInvoice(Invoice invoice);
+	InvoiceResponse createDraftInvoice(Invoice invoice);
 
 	InputStream downloadInvoiceAsPDF(String invoiceId);
 

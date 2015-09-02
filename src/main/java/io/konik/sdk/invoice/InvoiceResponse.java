@@ -1,6 +1,6 @@
 package io.konik.sdk.invoice;
 
-public class CreatedInvoice {
+public class InvoiceResponse {
 
 	private String invoiceId;
 

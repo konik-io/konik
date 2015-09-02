@@ -63,6 +63,6 @@ public class RestInvoiceApi implements InvoiceApi{
 
 	@Override
 	public void deleteInvoice(String invoiceId) {
-		httpClient.delete(invoiceId);
+		httpClient.delete("/invoice/"+invoiceId);
 	}
 }

@@ -48,6 +48,18 @@ public class RestInvoiceApi implements InvoiceApi{
 	}
 
 	@Override
+	public InvoiceResponse updateInvoice(String invoiceId, Invoice invoice) {
+		byte[] invoiceXml = invoiceTransformer.fromModel(invoice);
+		return httpClient.put("/invoice/" + invoiceId, invoiceXml, "application/xml", InvoiceResponse.class);
+	}
+
+	@Override
+	public InvoiceResponse updateDraftInvoice(String invoiceId, Invoice invoice) {
+		byte[] invoiceXml = invoiceTransformer.fromModel(invoice);
+		return httpClient.put("/invoice/draft/" + invoiceId, invoiceXml, "application/xml", InvoiceResponse.class);
+	}
+
+	@Override
 	public InputStream downloadInvoiceAsPDF(String invoiceId) {
 		try {
 			return httpClient.download("/invoice/" + invoiceId + "/pdf");

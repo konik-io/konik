@@ -106,7 +106,35 @@ public class ZinvoiceHttpClient {
 			request.setHeaders(new HttpHeaders().set("API-KEY", apiConfig.getApiKey()));
 
 			HttpResponse response = request.execute();
+			result = objectMapper.readValue(response.parseAsString(), responseTypeClass);
+		} catch (HttpResponseException e) {
+			if (e.getStatusCode() == 400) {
+				throw new BadRequestException(getErrorResponse(e));
+			}
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 
+		return result;
+	}
+
+	/**
+	 * Runs PUT request.
+	 *
+	 * @param endpoint
+	 * @param responseTypeClass
+	 * @return
+	 */
+	public <T> T put(String endpoint, byte[] body, String contentType, Class<T> responseTypeClass) {
+		T result;
+
+		try {
+			HttpContent content = new InputStreamContent(contentType, new ByteArrayInputStream(body));
+			HttpRequest request = httpRequestFactory.buildPutRequest(createEndpoint(endpoint), content);
+			request.setHeaders(new HttpHeaders().set("API-KEY", apiConfig.getApiKey()));
+
+			HttpResponse response = request.execute();
 			result = objectMapper.readValue(response.parseAsString(), responseTypeClass);
 		} catch (HttpResponseException e) {
 			if (e.getStatusCode() == 400) {

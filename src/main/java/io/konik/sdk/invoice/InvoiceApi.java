@@ -12,6 +12,10 @@ public interface InvoiceApi {
 
 	InvoiceResponse createDraftInvoice(Invoice invoice);
 
+	InvoiceResponse updateInvoice(String invoiceId, Invoice invoice);
+
+	InvoiceResponse updateDraftInvoice(String invoiceId, Invoice invoice);
+
 	InputStream downloadInvoiceAsPDF(String invoiceId);
 
 	void deleteInvoice(String invoiceId);

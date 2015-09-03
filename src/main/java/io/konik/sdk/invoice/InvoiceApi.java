@@ -23,4 +23,6 @@ public interface InvoiceApi {
 	boolean sendInvoice(String invoiceId, String email, String message);
 
 	boolean sendInvoice(String invoiceId, String email);
+
+	InvoiceResponse uploadInvoice(InputStream pdf);
 }

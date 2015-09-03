@@ -5,11 +5,17 @@ import com.google.api.client.http.*;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.common.io.ByteStreams;
 import io.konik.sdk.ZinvoiceApiConfig;
+import org.apache.tika.detect.DefaultDetector;
+import org.apache.tika.detect.Detector;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.mime.MediaType;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 
 /**
  * HTTP client for Zinvoice services.
@@ -85,6 +91,47 @@ public class ZinvoiceHttpClient {
 					.set("API-KEY", apiConfig.getApiKey())
 					.setAccept("application/json"));
 			return request.execute().getContent();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * Uploads {@see InputStream} to given endpoint.
+	 *
+	 * @param endpoint
+	 * @param files map where key is field name and value is a content of uploading file
+	 * @return
+	 */
+	public <T> T upload(String endpoint, Map<String, InputStream> files, Class<T> responseTypeClass) {
+		try {
+			MultipartContent content = new MultipartContent();
+			content.setMediaType(new HttpMediaType("multipart/form-data")
+					.setParameter("boundary", "__END_OF_PART__"));
+
+			Detector detector = new DefaultDetector();
+
+			for (String key : files.keySet()) {
+				InputStream file = new ByteArrayInputStream(ByteStreams.toByteArray(files.get(key)));
+				MediaType mediaType = detector.detect(file, new Metadata());
+				MultipartContent.Part part = new MultipartContent.Part(new InputStreamContent(mediaType.toString(), file));
+				part.setHeaders(new HttpHeaders().set("Content-Disposition", String.format("form-data; name=\"%s\"; filename=\"%s\"", key, key)));
+				content.addPart(part);
+			}
+
+			HttpRequest request = httpRequestFactory.buildPostRequest(createEndpoint(endpoint), content);
+			request.setHeaders(new HttpHeaders()
+					.set("API-KEY", apiConfig.getApiKey())
+					.setAccept("application/json"));
+			HttpResponse response = request.execute();
+
+			return objectMapper.readValue(response.parseAsString(), responseTypeClass);
+
+		} catch (HttpResponseException e) {
+			if (e.getStatusCode() == 400) {
+				throw new BadRequestException(getErrorResponse(e));
+			}
+			throw new RuntimeException(e);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

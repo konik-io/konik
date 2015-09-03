@@ -1,6 +1,7 @@
 package io.konik.sdk.invoice;
 
 import com.google.api.client.http.HttpResponseException;
+import com.google.api.client.util.Maps;
 import io.konik.InvoiceTransformer;
 import io.konik.sdk.http.InsufficientCreditsAmountException;
 import io.konik.sdk.http.ZinvoiceHttpClient;
@@ -8,6 +9,7 @@ import io.konik.zugferd.Invoice;
 
 import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.util.Map;
 
 
 public class RestInvoiceApi implements InvoiceApi{
@@ -101,5 +103,12 @@ public class RestInvoiceApi implements InvoiceApi{
 	@Override
 	public boolean sendInvoice(String invoiceId, String email) {
 		return sendInvoice(invoiceId, email, "");
+	}
+
+	@Override
+	public InvoiceResponse uploadInvoice(InputStream pdf) {
+		Map<String, InputStream> files = Maps.newHashMap();
+		files.put("pdf", pdf);
+		return httpClient.upload("/invoice/pdf", files, InvoiceResponse.class);
 	}
 }

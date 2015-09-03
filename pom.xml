@@ -45,7 +45,13 @@
          <artifactId>javax.inject</artifactId>
          <optional>true</optional>
       </dependency>
-      
+      <dependency>
+         <groupId>org.apache.tika</groupId>
+         <artifactId>tika-core</artifactId>
+         <version>1.10</version>
+      </dependency>
+
+
       <!-- TEST dependencies -->
       <dependency>
          <groupId>junit</groupId>
@@ -66,7 +72,6 @@
       <dependency>
          <groupId>com.google.guava</groupId>
          <artifactId>guava</artifactId>
-         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>org.apache.commons</groupId>

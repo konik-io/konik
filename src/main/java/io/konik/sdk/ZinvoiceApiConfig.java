@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import io.konik.Configuration;
 import io.konik.zugferd.unqualified.ZfDate;
 import io.konik.zugferd.unqualified.ZfDateDay;
 
@@ -27,6 +28,11 @@ public class ZinvoiceApiConfig {
 	 * e.g. https://app.z-rechnung.com
 	 */
 	private final String destinationUrl;
+
+	public ZinvoiceApiConfig() {
+		this(Configuration.INSTANCE.getProperty("io.konik.zinvoice.api-key"),
+				Configuration.INSTANCE.getProperty("io.konik.zinvoice.url"));
+	}
 
 	public ZinvoiceApiConfig(String apiKey, String destinationUrl) {
 		this.apiKey = apiKey;

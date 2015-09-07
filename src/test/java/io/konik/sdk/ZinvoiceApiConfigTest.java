@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ZinvoiceApiConfigTest {
 
@@ -20,5 +20,15 @@ public class ZinvoiceApiConfigTest {
 		//then:
 		assertThat(config.getApiKey()).isEqualTo(apiKey);
 		assertThat(config.getDestinationUrl()).isEqualTo(destinationUrl);
+	}
+
+	@Test
+	public void shouldUsePropertiesFileToGetDefaultValues() {
+		//when:
+		ZinvoiceApiConfig apiConfig = new ZinvoiceApiConfig();
+
+		//then:
+		assertThat(apiConfig.getApiKey()).isEqualTo("1234-1234-1234-1234");
+		assertThat(apiConfig.getDestinationUrl()).isEqualTo("https://localhost:8080");
 	}
 }

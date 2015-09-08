@@ -45,7 +45,13 @@
          <artifactId>javax.inject</artifactId>
          <optional>true</optional>
       </dependency>
-      
+      <dependency>
+         <groupId>org.apache.tika</groupId>
+         <artifactId>tika-core</artifactId>
+         <version>1.10</version>
+      </dependency>
+
+
       <!-- TEST dependencies -->
       <dependency>
          <groupId>junit</groupId>
@@ -66,7 +72,6 @@
       <dependency>
          <groupId>com.google.guava</groupId>
          <artifactId>guava</artifactId>
-         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>org.apache.commons</groupId>
@@ -85,6 +90,13 @@
          <version>1.5</version>
          <scope>test</scope>
       </dependency>
+      <dependency>
+         <groupId>org.mockito</groupId>
+         <artifactId>mockito-all</artifactId>
+         <version>1.10.19</version>
+         <scope>test</scope>
+      </dependency>
+
       <!-- this test dependencies can be used also at runtime -->
       <dependency>
          <groupId>org.apache.bval</groupId>
@@ -109,6 +121,29 @@
          <groupId>org.openjdk.jmh</groupId>
          <artifactId>jmh-generator-annprocess</artifactId>
          <scope>provided</scope>
+      </dependency>
+
+      <!-- SDK dependencies -->
+      <dependency>
+         <groupId>com.google.http-client</groupId>
+         <artifactId>google-http-client</artifactId>
+         <version>1.20.0</version>
+      </dependency>
+      <dependency>
+         <groupId>com.google.http-client</groupId>
+         <artifactId>google-http-client-jackson2</artifactId>
+         <version>1.20.0</version>
+         <exclusions>
+            <exclusion>
+               <groupId>com.fasterxml.jackson.core</groupId>
+               <artifactId>jackson-core</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+      <dependency>
+         <groupId>com.fasterxml.jackson.core</groupId>
+         <artifactId>jackson-databind</artifactId>
+         <version>2.6.1</version>
       </dependency>
    </dependencies>
 

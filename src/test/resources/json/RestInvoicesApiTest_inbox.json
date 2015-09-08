@@ -1,0 +1,38 @@
+[
+  {
+    "id": "682ff061764346c2a43f3b2a7bc05581",
+    "documentType": "Rechnung",
+    "status": "REJECTED",
+    "number": "20150201",
+    "performanceDate": "2012-03-12",
+    "buyerName": "Kunden AG Mitte",
+    "sellerName": "Lorem ipsum dolor sit amet",
+    "amount": 235.62,
+    "currency": "EUR",
+    "createdDate": "2015-07-30 06:10"
+  },
+  {
+    "id": "31d01643-9617-4726-8b7f-68b757d3a105",
+    "documentType": "RECHNUNGS-KORREKTUR",
+    "status": "REJECTED",
+    "number": "RK21012345",
+    "performanceDate": "2013-08-05",
+    "buyerName": "MUSTER-KUNDE GMBH",
+    "sellerName": "MUSTERLIEFERANT GMBH",
+    "amount": -8.79,
+    "currency": "EUR",
+    "createdDate": "2015-08-27 10:45"
+  },
+  {
+    "id": "23f56e7f-fb94-4114-ab1a-89c62e744fc1",
+    "documentType": "Rechnung",
+    "status": "CREATED",
+    "number": "103002",
+    "performanceDate": "2016-01-01",
+    "buyerName": "Blütenhaus GmbH ",
+    "sellerName": "CRONUS AG",
+    "amount": 11592.63,
+    "currency": "EUR",
+    "createdDate": "2015-08-28 12:59"
+  }
+]

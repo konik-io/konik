@@ -1,0 +1,176 @@
+{
+  "document": {
+    "id": "4fd7563db62c4234a500b09be34e07dd",
+    "invoice": {
+      "context": {
+        "test": false,
+        "guideline": {
+          "namespace": "urn:ferd:CrossIndustryDocument:invoice:",
+          "version": "V1P0",
+          "conformanceLevel": "BASIC"
+        }
+      },
+      "header": {
+        "invoiceNumber": "20150201",
+        "name": "Invoice",
+        "code": "_380",
+        "issued": 1331593200000,
+        "copy": false,
+        "languages": [
+          "de"
+        ],
+        "notes": [
+          {
+            "contentCode": "-",
+            "contents": [
+              "Rechnung gemäß Bestellung vom 01.03.2013"
+            ],
+            "subjectCode": "-"
+          }
+        ]
+      },
+      "trade": {
+        "agreement": {
+          "seller": {
+            "id": "GE2020211",
+            "globalIds": [],
+            "name": "Lorem ipsum dolor sit amet",
+            "contact": {
+              "name": "Joe Doe"
+            },
+            "address": {
+              "postcode": "1202312",
+              "lineOne": "test",
+              "lineTwo": "test",
+              "city": "London",
+              "country": "AS"
+            },
+            "taxRegistrations": [
+              {
+                "type": "FC",
+                "taxNumber": "7732393669"
+              }
+            ]
+          },
+          "buyer": {
+            "id": "GE2020211",
+            "globalIds": [
+              {
+                "value": "H A 123",
+                "schemeId": "RN"
+              }
+            ],
+            "name": "Kunden AG Mitte",
+            "contact": {
+              "name": "Hans Muster"
+            },
+            "address": {
+              "postcode": "69876",
+              "lineOne": "Kundenstraße 15",
+              "city": "Frankfurt",
+              "country": "DE"
+            },
+            "taxRegistrations": []
+          },
+          "additional": []
+        },
+        "delivery": {
+          "actualDelivery": 1331593200000
+        },
+        "settlement": {
+          "paymentReference": "123123-1231-1323",
+          "currency": "EUR",
+          "paymentMeans": [
+            {
+              "informations": [
+                "Zahlbar innerhalb 30 Tagen netto bis 04.04.2013, 3% Skonto innerhalb 10 Tagen bis 15.03.2013"
+              ],
+              "payeeAccount": {
+                "iban": "DE08 7009 0100 1234 5678 90"
+              },
+              "payeeInstitution": {
+                "bic": "GENODEF1M04",
+                "name": "Hausbank München"
+              }
+            }
+          ],
+          "tradeTax": [],
+          "allowanceCharge": [],
+          "serviceCharge": [],
+          "paymentTerms": [],
+          "monetarySummation": {
+            "lineTotal": {
+              "value": 198,
+              "currency": "EUR"
+            },
+            "chargeTotal": {
+              "value": 0,
+              "currency": "EUR"
+            },
+            "allowanceTotal": {
+              "value": 0,
+              "currency": "EUR"
+            },
+            "taxBasisTotal": {
+              "value": 198,
+              "currency": "EUR"
+            },
+            "taxTotal": {
+              "value": 37.62,
+              "currency": "EUR"
+            },
+            "grandTotal": {
+              "value": 235.62,
+              "currency": "EUR"
+            }
+          }
+        },
+        "items": [
+          {
+            "agreement": {
+              "additional": [],
+              "netPrice": {
+                "chargeAmount": {
+                  "value": 9.9,
+                  "currency": "EUR"
+                }
+              }
+            },
+            "delivery": {
+              "billed": {
+                "value": 20,
+                "unitCode": "C62",
+                "unit": "UNIT"
+              }
+            },
+            "settlement": {
+              "tradeTax": [
+                {
+                  "type": "VAT",
+                  "percentage": 19
+                }
+              ]
+            },
+            "product": {
+              "globalId": {
+                "value": "TB100A4"
+              },
+              "name": "Trennblätter A4 GTIN: 4012345001235",
+              "characteristics": [],
+              "classifications": [],
+              "origins": [],
+              "containedProducts": []
+            }
+          }
+        ]
+      }
+    },
+    "type": "OUTGOING"
+  },
+  "info": {
+    "isOwner": true,
+    "userId": "669b71c4e4b09aab32e4bff2",
+    "status": "CREATED",
+    "printed": false
+  }
+}

@@ -24,7 +24,7 @@ import java.lang.annotation.Retention;
 
 /**
  * 
- *  Indicates that the property or method is only supported in the compfort profile.
+ *  Indicates that the property or method is only supported in the comfort profile.
  */
 @Documented
 @Retention(RUNTIME)

@@ -18,10 +18,12 @@
 package io.konik.zugferd.entity.trade.item;
 
 import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.PositionDocument;
 import io.konik.zugferd.entity.Product;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -52,20 +54,21 @@ public class Item {
    private Product product;
 
    /**
-    * Gets the item position document.
+    * Gets the item Line number.
     *
     * @return the position
     */
    @Comfort
    @Valid
+   //@NotNull(groups = Comfort.class)
    public PositionDocument getPosition() {
       return position;
    }
 
    /**
-    * Sets the new item position document.
+    * Sets the new item Line number.
     *
-    * @param newPosition the new position
+    * @param newPosition the new Line number.
     * @return the trade item
     */
    public Item setPosition(PositionDocument newPosition) {

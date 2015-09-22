@@ -35,7 +35,6 @@ import io.konik.zugferd.entity.Address;
 import io.konik.zugferd.entity.DebtorFinancialAccount;
 import io.konik.zugferd.entity.FinancialInstitution;
 import io.konik.zugferd.entity.Header;
-import io.konik.zugferd.entity.Note;
 import io.konik.zugferd.entity.PaymentMeans;
 import io.konik.zugferd.entity.Product;
 import io.konik.zugferd.entity.TaxRegistration;

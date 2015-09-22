@@ -36,11 +36,11 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * Contains payment related information on an Item basis.
  */
-@XmlType(propOrder = { "itemTax", "billingPeriod", "bookingReference", "monetarySummation" })
+@XmlType(propOrder = { "tax", "billingPeriod", "bookingReference", "monetarySummation" })
 public class SpecifiedSettlement implements CommonSettlement<ItemTax, SpecifiedMonetarySummation> {
 
    @XmlElement(name = "ApplicableTradeTax")
-   private List<ItemTax> itemTax;
+   private List<ItemTax> tax;
 
    @XmlElement(name = "BillingSpecifiedPeriod")
    private Period billingPeriod;
@@ -56,10 +56,10 @@ public class SpecifiedSettlement implements CommonSettlement<ItemTax, SpecifiedM
    @Valid
    @Override
    public List<ItemTax> getTradeTax() {
-      if (itemTax == null) {
-         itemTax = new ArrayList<ItemTax>();
+      if (tax == null) {
+         tax = new ArrayList<ItemTax>();
       }
-      return this.itemTax;
+      return this.tax;
    }
 
    @Override

@@ -123,5 +123,10 @@ public class Amount {
       this.currency = currency;
       return this;
    }
+   
+   @Override
+   public String toString() {    
+      return getValue() + " " + getCurrency();
+   }
 
 }

@@ -106,7 +106,7 @@ public class TradeParty {
    }
 
    /**
-    * Adds the global vendor number or customer number ids.
+    * Adds the global vendor number or customer number ID.
     * 
     * Example:: GLN, DUNS, BIC, ODETTE
     * 

@@ -45,7 +45,7 @@ import com.neovisionaries.i18n.CurrencyCode;
  * 
  * Contains trade specific payment and price related informations
  */
-@XmlType(propOrder = { "paymentReference", "currency", "invoicee", "payee", "paymentMeans", "tradeTax",
+@XmlType(propOrder = { "paymentReference", "currency", "invoicee", "payee", "paymentMeans", "tax",
       "billingPeriod", "allowanceCharge", "serviceCharge", "paymentTerms", "monetarySummation",
       "costCenter" })
 public class Settlement implements CommonSettlement<TradeTax, MonetarySummation> {
@@ -66,7 +66,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
    private List<PaymentMeans> paymentMeans;
 
    @XmlElement(name = "ApplicableTradeTax")
-   private List<TradeTax> tradeTax;
+   private List<TradeTax> tax;
 
    @XmlElement(name = "BillingSpecifiedPeriod")
    private Period billingPeriod;
@@ -212,10 +212,10 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     */
    @Override
    public List<TradeTax> getTradeTax() {
-      if (tradeTax == null) {
-         tradeTax = new ArrayList<TradeTax>();
+      if (tax == null) {
+         tax = new ArrayList<TradeTax>();
       }
-      return this.tradeTax;
+      return this.tax;
    }
 
    /**

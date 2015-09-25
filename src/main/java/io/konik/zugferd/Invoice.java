@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * = The Root of the ZUGFeRD Invoice Model.
+ * = The Root of the ZUGFeRD Document Model.
  */
 @XmlRootElement(name = "CrossIndustryDocument")
 @XmlAccessorType(XmlAccessType.FIELD)

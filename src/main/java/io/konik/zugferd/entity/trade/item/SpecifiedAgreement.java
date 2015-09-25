@@ -91,7 +91,7 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    }
 
    /**
-    * Gets item gross price.
+    * Gets details on item based gross price excluding taxes
     *
     * @return the item gross price
     */
@@ -102,7 +102,7 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    }
 
    /**
-    * Sets item gross price.
+    * Sets details on item based gross price excluding taxes.
     *
     * @param grossPrice the new  the item gross price
     * @return the specified agreement
@@ -113,7 +113,8 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    }
 
    /**
-    * Gets the net price item price.
+    * Gets the details on net price without tax
+    * The net prices included all allowances and charges, but no taxes.
     *
     * @return the net price product trade price
     */
@@ -124,7 +125,8 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    }
 
    /**
-    * Sets the net price product trade price.
+    * Sets the details on net price without tax
+    * The net prices included all allowances and charges, but no taxes.
     *
     * @param netPrice the new net price product trade price
     * @return the supply chain trade agreement

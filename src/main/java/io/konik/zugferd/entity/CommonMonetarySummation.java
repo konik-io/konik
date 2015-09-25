@@ -31,14 +31,16 @@ import javax.xml.bind.annotation.XmlType;
 public interface CommonMonetarySummation {
 
    /**
-    * Gets total amount of the line positions.
+    * Gets total amount of the line position/s 
+    * The line total amount is the net amount, including any additions and deductions without specifying the value-added tax.
     *
     * @return the line total
     */
    Amount getLineTotal();
 
    /**
-    * Sets total amount of the line positions.
+    * Sets total amount of the line position/s.
+    * The line total amount is the net amount, including any additions and deductions without specifying the value-added tax.
     *
     * @param lineTotal the line total
     * @return the common monetary summation

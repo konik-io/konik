@@ -33,7 +33,7 @@ import com.neovisionaries.i18n.CurrencyCode;
  * A number of monetary units specified by a currency where the currency is explicit or implied.
  */
 @XmlType(name = "AmountType", propOrder = { "value" })
-public class Amount {
+public class Amount{
 
    @NotNull
    @XmlValue

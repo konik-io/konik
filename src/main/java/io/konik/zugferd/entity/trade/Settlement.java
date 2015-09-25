@@ -45,7 +45,7 @@ import com.neovisionaries.i18n.CurrencyCode;
  * 
  * Contains trade specific payment and price related informations
  */
-@XmlType(propOrder = { "paymentReference", "currency", "invoicee", "payee", "paymentMeans", "tax",
+@XmlType(propOrder = { "paymentReference", "currency", "invoicee", "payee", "paymentMeans", "tradeTax",
       "billingPeriod", "allowanceCharge", "serviceCharge", "paymentTerms", "monetarySummation",
       "costCenter" })
 public class Settlement implements CommonSettlement<TradeTax, MonetarySummation> {
@@ -66,7 +66,7 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
    private List<PaymentMeans> paymentMeans;
 
    @XmlElement(name = "ApplicableTradeTax")
-   private List<TradeTax> tax;
+   private List<TradeTax> tradeTax;
 
    @XmlElement(name = "BillingSpecifiedPeriod")
    private Period billingPeriod;
@@ -136,7 +136,9 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
    }
 
    /**
-    * Gets the invoicee trade party.
+    * Gets the details on the alternative invoicee. 
+    * 
+    * Additional role, if different from Buyer
     * 
     * @return the invoicee trade party
     */
@@ -147,10 +149,10 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
    }
 
    /**
-    * Sets the invoicee trade party.
+    * Sets the details on the alternative invoicee.
     * 
-    * Profile:: COMFORT
-    *
+    * Additional role, if different from Buyer
+    * 
     * @param invoicee the new invoicee trade party
     * @return the trade settlement
     */
@@ -206,22 +208,22 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
    }
 
    /**
-    * Gets the applicable trade tax.
+    * Gets the applicable trade tradeTax.
     *
-    * @return the applicable trade tax
+    * @return the applicable trade tradeTax
     */
    @Override
    public List<TradeTax> getTradeTax() {
-      if (tax == null) {
-         tax = new ArrayList<TradeTax>();
+      if (tradeTax == null) {
+         tradeTax = new ArrayList<TradeTax>();
       }
-      return this.tax;
+      return this.tradeTax;
    }
 
    /**
-    * Adds a trade tax.
+    * Adds a trade tradeTax.
     *
-    * @param additionalTradeTax the additional trade tax
+    * @param additionalTradeTax the additional trade tradeTax
     * @return the trade settlement
     */
    @Override

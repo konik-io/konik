@@ -101,7 +101,7 @@ public class AmountCalculator {
    /**
     * Line net total tax amount
     * 
-    * line Net * VAT[] = TotalLineAmount
+    * line Net total * VAT[] = TotalLineAmount
     *
     * @param item the item
     * @return the big decimal

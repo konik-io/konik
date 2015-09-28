@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 public class MeasureRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> {
 
    private static final String DEFAULT_ROUNDING_MODE = "HALF_UP";
-   private static final String DEFAULT_SCALE = "2";
+   private static final String DEFAULT_SCALE = "0";
 
    final int scale;
    final RoundingMode roundingMode;

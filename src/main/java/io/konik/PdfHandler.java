@@ -99,7 +99,7 @@ public class PdfHandler {
       PipedOutputStream pipedOutputStream = new PipedOutputStream();
       PipedInputStream pipedInputStream = new PipedInputStream(pipedOutputStream, 65536);
       try {
-         String version = invoice.getContext().getGuideline().getVersion().toString();
+         String version = invoice.getContext().getGuideline().getVersion().versionAlt();
          String confomanceLevel = invoice.getContext().getGuideline().getConformanceLevel().name();
          transformer.fromModelAsync(invoice, pipedOutputStream);
          DefaultAppendParameter parameter = new DefaultAppendParameter(inputPdf, pipedInputStream, resultingPdf,

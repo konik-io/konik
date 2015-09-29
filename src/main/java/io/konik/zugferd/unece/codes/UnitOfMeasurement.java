@@ -95,8 +95,11 @@ public enum UnitOfMeasurement {
    WEEK("WEE", "Week"),
 
    /** The Month. */
-   MONTH("MON", "Month");
+   MONTH("MON", "Month"),
 
+   /** The Mile. 1609,344 m */
+   MILE("SMI", "International Mile");
+   
    private final String description;
    private final String code;
 

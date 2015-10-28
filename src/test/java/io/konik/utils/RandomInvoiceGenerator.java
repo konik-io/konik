@@ -184,7 +184,7 @@ public class RandomInvoiceGenerator {
    private Object generatePrimitveValue(Class<?> type, String methodName) {
       if (methodName.equals("getClass")) return type;
       if (String.class.isAssignableFrom(type)) return generateStringBasedOnName(methodName);
-      if (BigDecimal.class.isAssignableFrom(type)) return new BigDecimal(randomNumeric(3)+"."+randomNumeric(6));
+      if (BigDecimal.class.isAssignableFrom(type)) return new BigDecimal(randomNumeric(3)+"."+randomNumeric(8));
       if (isAssignable(type,Boolean.class,true)) return TRUE;
       if (isAssignable(type,Integer.class,true)) return Integer.valueOf(random.nextInt(100));
       if (type.isEnum()) return getEnum(type);

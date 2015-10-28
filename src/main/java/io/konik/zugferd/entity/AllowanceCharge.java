@@ -43,7 +43,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlType(name = "TradeAllowanceChargeType", propOrder = { "surcharge", "sequence", "calculationPercent", "basis",
       "basisQuantity", "actual", "reasonCode", "reason" })
-public class AllowanceCharge {
+@XmlJavaTypeAdapter(FourDigitRoundingAdapter.class)
+public class AllowanceCharge implements CommonAllowanceCharge {
 
    @XmlElement(name = "ChargeIndicator")
    private Indicator surcharge;
@@ -56,14 +57,14 @@ public class AllowanceCharge {
    private BigDecimal calculationPercent;
 
    @XmlElement(name = "BasisAmount")
-   @XmlJavaTypeAdapter(value = FourDigitRoundingAdapter.class)
+   @XmlJavaTypeAdapter(FourDigitRoundingAdapter.class)
    private Amount basis;
 
    @XmlElement(name = "BasisQuantity")
    private Quantity basisQuantity;
 
    @XmlElement(name = "ActualAmount")
-   @XmlJavaTypeAdapter(value = FourDigitRoundingAdapter.class)
+   @XmlJavaTypeAdapter(FourDigitRoundingAdapter.class)
    private Amount actual;
 
    @XmlElement(name = "ReasonCode")
@@ -85,6 +86,7 @@ public class AllowanceCharge {
     *
     * @return true if charge
     */
+   @Override
    @NotNull(groups = Comfort.class)
    public boolean isSurcharge() {
       return surcharge.getIndicator();
@@ -95,6 +97,7 @@ public class AllowanceCharge {
     *
     * @return true if is discount
     */
+   @Override
    @NotNull(groups = Comfort.class)
    public boolean isDiscount() {
       return !surcharge.getIndicator();
@@ -105,6 +108,7 @@ public class AllowanceCharge {
     *
     * @return the allowance charge to be true
     */
+   @Override
    public AllowanceCharge setSurcharge() {
       this.surcharge = trueIndicator();
       return this;
@@ -115,6 +119,7 @@ public class AllowanceCharge {
     *
     * @return the allowance discount to be true
     */
+   @Override
    public AllowanceCharge setDiscount() {
       this.surcharge = falseIndicator();
       return this;
@@ -125,6 +130,7 @@ public class AllowanceCharge {
     *
     * @return the sequence
     */
+   @Override
    @Extended
    public BigDecimal getSequence() {
       return sequence;
@@ -136,6 +142,7 @@ public class AllowanceCharge {
     * @param sequence the new sequence
     * @return the allowance charge
     */
+   @Override
    public AllowanceCharge setSequence(BigDecimal sequence) {
       this.sequence = sequence;
       return this;
@@ -146,6 +153,7 @@ public class AllowanceCharge {
     *
     * @return the calculation percent
     */
+   @Override
    @Extended
    public BigDecimal getCalculationPercent() {
       return calculationPercent;
@@ -157,6 +165,7 @@ public class AllowanceCharge {
     * @param calculationPercent the new calculation percent
     * @return the allowance charge
     */
+   @Override
    public AllowanceCharge setCalculationPercent(BigDecimal calculationPercent) {
       this.calculationPercent = calculationPercent;
       return this;
@@ -167,6 +176,7 @@ public class AllowanceCharge {
     * 
     * @return the basis amount
     */
+   @Override
    @Valid
    @Extended
    public Amount getBasis() {
@@ -179,6 +189,7 @@ public class AllowanceCharge {
     * @param basisAmount the new basis amount
     * @return the allowance charge
     */
+   @Override
    public AllowanceCharge setBasis(Amount basisAmount) {
       this.basis = basisAmount;
       return this;
@@ -189,6 +200,7 @@ public class AllowanceCharge {
     *
     * @return the basis quantity
     */
+   @Override
    @Extended
    @Valid
    public Quantity getBasisQuantity() {
@@ -201,6 +213,7 @@ public class AllowanceCharge {
     * @param basisQuantity the new basis quantity
     * @return the allowance charge
     */
+   @Override
    public AllowanceCharge setBasisQuantity(Quantity basisQuantity) {
       this.basisQuantity = basisQuantity;
       return this;
@@ -211,6 +224,7 @@ public class AllowanceCharge {
     * 
     * @return the actual amount
     */
+   @Override
    @Valid
    @NotNull(groups = Comfort.class)
    public Amount getActual() {
@@ -223,6 +237,7 @@ public class AllowanceCharge {
     * @param actualAmount the new actual amount
     * @return the allowance charge
     */
+   @Override
    public AllowanceCharge setActual(Amount actualAmount) {
       this.actual = actualAmount;
       return this;
@@ -233,6 +248,7 @@ public class AllowanceCharge {
     *
     * @return the reason code
     */
+   @Override
    @Extended
    public String getReasonCode() {
       return reasonCode;
@@ -244,6 +260,7 @@ public class AllowanceCharge {
     * @param reasonCode the new reason code
     * @return the allowance charge
     */
+   @Override
    public AllowanceCharge setReasonCode(String reasonCode) {
       this.reasonCode = reasonCode;
       return this;
@@ -254,6 +271,7 @@ public class AllowanceCharge {
     * 
     * @return the reason
     */
+   @Override
    @Comfort
    public String getReason() {
       return reason;
@@ -265,6 +283,7 @@ public class AllowanceCharge {
     * @param reason the new reason
     * @return the allowance charge
     */
+   @Override
    public AllowanceCharge setReason(String reason) {
       this.reason = reason;
       return this;

@@ -48,6 +48,7 @@ import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
 import static io.konik.zugferd.profile.ConformanceLevel.BASIC;
 import static io.konik.zugferd.unece.codes.DocumentCode._220;
 import static io.konik.zugferd.unece.codes.Reference.FC;
+import static io.konik.zugferd.unece.codes.Reference.VA;
 import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -74,34 +75,34 @@ public class EntwicklerTageDemo {
          .setInvoiceNumber("20151106-42")
          .setCode(_220)
          .setIssued(today)         
-         .setName("Rechnung"));
+         .setName("Bestellung"));
       
       Trade trade = new Trade();
       trade.setAgreement(new Agreement()    // <2>
             .setSeller(new TradeParty()
-                  .setName("Seller Inc.")
-                  .setAddress(new Address("80331", "Marienplatz 1", "München", DE))
-                  .addTaxRegistrations(new TaxRegistration("DE122...", FC)))
+                  .setName("FeRD Management und Consulting GmbH")
+                  .setAddress(new Address("50933", "Stolberger Str. 108a", "Köln", DE))
+                  .addTaxRegistrations(new TaxRegistration("DE122...", VA)))
             .setBuyer(new TradeParty()
-                  .setName("Buyer Inc.")
-                  .setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
-                  .addTaxRegistrations(new TaxRegistration("DE123...", FC))));
+                  .setName("Bei Spiel GmbH")
+                  .setAddress(new Address("12345", "Ecke 12", "Stadthausen", DE))
+                  .addTaxRegistrations(new TaxRegistration("DE136695976", VA))));
       
       trade.setDelivery(new Delivery(nextMonth));
       
       trade.setSettlement(new Settlement()
-            .setPaymentReference("20131122-42")
+            .setPaymentReference("PER-42")
             .setCurrency(EUR)
             .addPaymentMeans(new PaymentMeans()
                .setPayerAccount(new DebtorFinancialAccount("DE01234.."))
                   .setPayerInstitution(new FinancialInstitution("GENO...")))
             .setMonetarySummation(new MonetarySummation()
-               .setLineTotal(new Amount(100, EUR))
+               .setLineTotal(new Amount(498, EUR))
                .setChargeTotal(new Amount(0,EUR))
                .setAllowanceTotal(new Amount(0, EUR))
-               .setTaxBasisTotal(new Amount(100, EUR))
-               .setTaxTotal(new Amount(19, EUR))               
-               .setGrandTotal(new Amount(119, EUR))));
+               .setTaxBasisTotal(new Amount(498, EUR))
+               .setTaxTotal(new Amount("71.02", EUR))
+               .setGrandTotal(new Amount("569.82", EUR))));
       
       trade.addItem(new Item()
          .setProduct(new Product().setName("Saddle"))

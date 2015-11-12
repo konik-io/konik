@@ -154,7 +154,6 @@ public class Agreement implements CommonAgreement<ReferencedDocument, Referenced
     * @return the delivery terms Incoterms code
     */
    @Extended
-   @NotBlank(groups=Extended.class)
    @XmlElement(name = "ApplicableTradeDeliveryTerms")
    @XmlJavaTypeAdapter(value = TradeDeliveryTermsAdapter.class)
    public String getDeliveryTerms() {

@@ -255,9 +255,9 @@ public class Header {
    }
 
    /**
-    * Gets Contractual due date of the invoice.
-    *
-    * Details only required if different from the payment due date.
+    * Gets contractual due date of the invoice.
+    * 
+    * ￼￼Remark: Should only be used, if the contractual due date is different to the payment due date (e.g. with SEPA credit transfers).
     *  
     * @return the contractual due date
     */
@@ -267,9 +267,9 @@ public class Header {
    }
 
    /**
-    * Sets Contractual due date of the invoice.
+    * Sets contractual due date of the invoice.
     * 
-    * Details only required if different from the payment due date.
+    * Remark: Should only be used, if the contractual due date is different to the payment due date (e.g. with SEPA credit transfers).
     *
     * @param contractualDueDate the contractual due date
     * @return the header

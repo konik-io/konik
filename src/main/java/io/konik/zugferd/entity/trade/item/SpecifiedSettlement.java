@@ -23,13 +23,12 @@ import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonSettlement;
 import io.konik.zugferd.entity.Period;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * = The Trade Item Settlement

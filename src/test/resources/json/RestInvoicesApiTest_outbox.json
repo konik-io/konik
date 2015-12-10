@@ -1,0 +1,50 @@
+[
+  {
+    "id": "e7508df79bc24ceb9f8ac8f98e718e67",
+    "documentType": "Proformarechnung",
+    "status": "PRINTED",
+    "number": "20150423",
+    "performanceDate": "2015-07-31",
+    "buyerName": "Kunden AG Mitte",
+    "sellerName": "Lorem ipsum dolor sit amet",
+    "amount": 12,
+    "currency": "EUR",
+    "createdDate": "2015-07-31 09:12"
+  },
+  {
+    "id": "4fd7563db62c4234a500b09be34e07dd",
+    "documentType": "Invoice",
+    "status": "CREATED",
+    "number": "20150201",
+    "performanceDate": "2012-03-12",
+    "buyerName": "Kunden AG Mitte",
+    "sellerName": "Lorem ipsum dolor sit amet",
+    "amount": 235.62,
+    "currency": "EUR",
+    "createdDate": "2015-08-04 07:35"
+  },
+  {
+    "id": "68f34cc93d7549e2a22b09ea24ef1db2",
+    "documentType": "Invoice",
+    "status": "CREATED",
+    "number": "20150201",
+    "performanceDate": "2012-03-12",
+    "buyerName": "Kunden AG Mitte",
+    "sellerName": "Lorem ipsum dolor sit amet",
+    "amount": 235.62,
+    "currency": "EUR",
+    "createdDate": "2015-08-06 06:34"
+  },
+  {
+    "id": "54a354a5fa6b4d6f87258a664aa16856",
+    "documentType": "Invoice",
+    "status": "PRINTED",
+    "number": "20150201",
+    "performanceDate": "2012-03-12",
+    "buyerName": "Kunden AG Mitte",
+    "sellerName": "Lorem ipsum dolor sit amet",
+    "amount": 235.62,
+    "currency": "EUR",
+    "createdDate": "2015-08-06 06:43"
+  }
+]

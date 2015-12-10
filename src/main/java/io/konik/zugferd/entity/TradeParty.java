@@ -24,15 +24,14 @@ import io.konik.validator.annotation.Extended;
 import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.unqualified.ID;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * = The Trade Party

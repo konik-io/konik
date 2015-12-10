@@ -17,28 +17,20 @@
  */
 package io.konik;
 
-import static java.util.logging.Level.WARNING;
 import io.konik.harness.FileAppender;
 import io.konik.harness.FileExtractor;
 import io.konik.harness.appender.DefaultAppendParameter;
 import io.konik.harness.exception.InvoiceAppendError;
 import io.konik.zugferd.Invoice;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
-import java.util.ServiceLoader;
-import java.util.logging.Logger;
-
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
+import java.io.*;
+import java.util.ServiceLoader;
+import java.util.logging.Logger;
+
+import static java.util.logging.Level.WARNING;
 
 /**
  * Transforms, appends or extracts invoices to PDFs.

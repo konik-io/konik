@@ -44,7 +44,9 @@ beiläufig entstandene, mittelbare Schäden, Straf- oder Folgeschäden und zwar 
 Kosten, Verluste bzw. Schäden hätte normalerweise vorhergesehen werden können.
 
 -->
-<rsm:CrossIndustryDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15">
+<rsm:CrossIndustryDocument xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0"
+						   xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12"
+						   xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15">
 	<rsm:SpecifiedExchangedDocumentContext>
 		<ram:TestIndicator><udt:Indicator>true</udt:Indicator></ram:TestIndicator><!-- Im Echtbetrieb muss der TestIndicator entweder vollständig entfallen oder auf false stehen. -->
 		<ram:GuidelineSpecifiedDocumentContextParameter>

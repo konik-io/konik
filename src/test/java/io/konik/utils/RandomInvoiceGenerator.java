@@ -18,32 +18,27 @@
  */
 package io.konik.utils;
 
+import io.konik.zugferd.entity.Tax;
+import io.konik.zugferd.profile.ConformanceLevel;
+import io.konik.zugferd.profile.Profile;
+import io.konik.zugferd.unqualified.ZfDate;
+import io.konik.zugferd.unqualified.ZfDateFactory;
+import net._01001111.text.LoremIpsum;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.reflect.MethodUtils;
+
+import java.lang.reflect.*;
+import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Random;
+
 import static java.lang.Boolean.TRUE;
 import static org.apache.commons.lang3.ClassUtils.isAssignable;
 import static org.apache.commons.lang3.ClassUtils.isPrimitiveOrWrapper;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.apache.commons.lang3.reflect.MethodUtils.getAccessibleMethod;
 import static org.apache.commons.lang3.reflect.MethodUtils.invokeMethod;
-import io.konik.zugferd.entity.Tax;
-import io.konik.zugferd.profile.ConformanceLevel;
-import io.konik.zugferd.profile.Profile;
-import io.konik.zugferd.unqualified.ZfDate;
-import io.konik.zugferd.unqualified.ZfDateFactory;
-
-import java.lang.reflect.Array;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Random;
-
-import net._01001111.text.LoremIpsum;
-
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.reflect.MethodUtils;
 @SuppressWarnings("javadoc")
 public class RandomInvoiceGenerator {
    LoremIpsum jlorem = new LoremIpsum();

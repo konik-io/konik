@@ -17,7 +17,7 @@
  */
 package io.konik.zugferd.entity;
 
-import static java.util.Collections.addAll;
+import com.neovisionaries.i18n.LanguageCode;
 import io.konik.jaxb.adapter.PeriodCompleteToDateTimeAdapter;
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Extended;
@@ -25,9 +25,6 @@ import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.unece.codes.DocumentCode;
 import io.konik.zugferd.unqualified.Indicator;
 import io.konik.zugferd.unqualified.ZfDate;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -37,8 +34,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.neovisionaries.i18n.LanguageCode;
+import static java.util.Collections.addAll;
 
 /**
  * = The Invoice Document Header

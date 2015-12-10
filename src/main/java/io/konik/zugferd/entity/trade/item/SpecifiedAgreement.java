@@ -22,12 +22,11 @@ import io.konik.zugferd.entity.CommonAgreement;
 import io.konik.zugferd.entity.GrossPrice;
 import io.konik.zugferd.entity.Price;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * = The Agreement used on the trade item level.

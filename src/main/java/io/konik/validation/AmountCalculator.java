@@ -17,7 +17,7 @@
  */
 package io.konik.validation;
 
-import static java.math.RoundingMode.HALF_UP;
+import com.neovisionaries.i18n.CurrencyCode;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.AllowanceCharge;
 import io.konik.zugferd.entity.GrossPrice;
@@ -29,10 +29,9 @@ import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Quantity;
 
 import java.math.BigDecimal;
-import java.util.Currency;
 import java.util.List;
 
-import com.neovisionaries.i18n.CurrencyCode;
+import static java.math.RoundingMode.HALF_UP;
 
 /**
  *  Calculate the missing amounts of the invoice.

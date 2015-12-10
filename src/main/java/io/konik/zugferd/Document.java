@@ -18,7 +18,6 @@
  */
 package io.konik.zugferd;
 
-import io.konik.zugferd.entity.Context;
 import io.konik.zugferd.profile.ConformanceLevel;
 
 /**

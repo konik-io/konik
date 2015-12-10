@@ -18,14 +18,13 @@
  */
 package io.konik.zugferd.unqualified;
 
-import java.math.BigDecimal;
+import com.neovisionaries.i18n.CurrencyCode;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
-
-import com.neovisionaries.i18n.CurrencyCode;
+import java.math.BigDecimal;
 
 /**
  * = The Monetary Amount.

@@ -17,8 +17,6 @@
  */
 package io.konik.zugferd.entity;
 
-import static io.konik.zugferd.unqualified.Indicator.falseIndicator;
-import static io.konik.zugferd.unqualified.Indicator.trueIndicator;
 import io.konik.jaxb.adapter.FourDigitRoundingAdapter;
 import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.validator.annotation.Comfort;
@@ -27,14 +25,16 @@ import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Indicator;
 import io.konik.zugferd.unqualified.Quantity;
 
-import java.math.BigDecimal;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.math.BigDecimal;
+
+import static io.konik.zugferd.unqualified.Indicator.falseIndicator;
+import static io.konik.zugferd.unqualified.Indicator.trueIndicator;
 
 /**
  * = The Allowance Charge

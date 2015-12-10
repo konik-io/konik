@@ -47,7 +47,6 @@ import static com.neovisionaries.i18n.CurrencyCode.EUR;
 import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
 import static io.konik.zugferd.profile.ConformanceLevel.BASIC;
 import static io.konik.zugferd.unece.codes.DocumentCode._220;
-import static io.konik.zugferd.unece.codes.Reference.FC;
 import static io.konik.zugferd.unece.codes.Reference.VA;
 import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;

@@ -25,11 +25,7 @@ import io.konik.zugferd.profile.ConformanceLevel;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 /**
  * = The Root of the ZUGFeRD Document Model.

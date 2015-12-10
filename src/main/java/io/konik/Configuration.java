@@ -17,13 +17,13 @@
  */
 package io.konik;
 
-import static java.util.logging.Level.CONFIG;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.logging.Logger;
+
+import static java.util.logging.Level.CONFIG;
 
 /**
  * The Global Konik Configuration.
@@ -106,10 +106,10 @@ public enum Configuration {
     * Indicate of Konik should strip the trailing zeros in all amounts.
     * 
     * 
-    * @return true if strip trailing zeros is active (default)
+    * @return true if strip trailing zeros is active (default is false)
     */
    public boolean stripTrailingZeros() {
-      return Boolean.parseBoolean(getProperty("io.konik.stripTrailingZeros", "true"));
+      return Boolean.parseBoolean(getProperty("io.konik.stripTrailingZeros", "false"));
    }
 
    @Override

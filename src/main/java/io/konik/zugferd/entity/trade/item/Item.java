@@ -52,20 +52,21 @@ public class Item {
    private Product product;
 
    /**
-    * Gets the item position document.
+    * Gets the item Line number.
     *
     * @return the position
     */
    @Comfort
    @Valid
+   //@NotNull(groups = Comfort.class)
    public PositionDocument getPosition() {
       return position;
    }
 
    /**
-    * Sets the new item position document.
+    * Sets the new item Line number.
     *
-    * @param newPosition the new position
+    * @param newPosition the new Line number.
     * @return the trade item
     */
    public Item setPosition(PositionDocument newPosition) {

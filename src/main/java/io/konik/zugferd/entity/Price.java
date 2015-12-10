@@ -22,8 +22,6 @@ import io.konik.validator.annotation.Comfort;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Quantity;
 
-import java.util.List;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,6 +29,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.List;
 
 /**
  * = The Price
@@ -49,7 +48,7 @@ public class Price {
    private Quantity basis;
 
    @XmlElement(name = "AppliedTradeAllowanceCharge")
-   protected List<AllowanceCharge> allowanceCharges;
+   protected List<AllowanceCharge> allowanceCharges;//grossprice
 
    Price() {
    }
@@ -87,7 +86,7 @@ public class Price {
    }
 
    /**
-    * Gets the basis quantity.
+    * Gets the unit of price base quantity.
     * 
     * @return the basis quantity
     */
@@ -98,7 +97,7 @@ public class Price {
    }
 
    /**
-    * Sets the basis quantity.
+    * Sets the unit of price base quantity.
     *
     * @param quantity the new basis quantity
     * @return the price

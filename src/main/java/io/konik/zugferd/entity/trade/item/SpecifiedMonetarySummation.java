@@ -29,21 +29,22 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * 
- * The specified per item monetary summation.
+ * The specified per monetary summation on item basis.
  */
 @XmlType(propOrder = { "lineTotal", "totalAllowanceCharge" })
 public class SpecifiedMonetarySummation implements CommonMonetarySummation {
 
-   @Valid
+   
    @XmlElement(name = "LineTotalAmount")
    private Amount lineTotal;
    
    @XmlElement(name = "TotalAllowanceChargeAmount")
    private Amount totalAllowanceCharge;
 
+   
    @Comfort
    @Override
-   @NotNull(groups = Comfort.class)
+   @Valid @NotNull(groups = Comfort.class)
    public Amount getLineTotal() {
       return lineTotal;
    }

@@ -121,6 +121,13 @@ public enum TaxCategory {
    H("Higher rate", "Code specifying a higher rate of duty or tax or fee."),
 
    /**
+    * Intra-Community Supply
+    * 
+    * Code specifying that the VAT rate is levied from the invoicee for Intra-Community supplies.
+    **/
+   IC("Intra-Community Supply", "Code specifying that the VAT rate is levied from the invoicee for Intra-Community supplies."),
+   
+   /**
     * Services outside scope of tax
     * 
     * Code specifying that taxes are not applicable to the

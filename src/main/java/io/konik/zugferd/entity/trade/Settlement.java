@@ -17,28 +17,20 @@
  */
 package io.konik.zugferd.entity.trade;
 
+import com.neovisionaries.i18n.CurrencyCode;
 import io.konik.jaxb.bindable.entity.AccountingAccountAdapter;
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
-import io.konik.zugferd.entity.CommonSettlement;
-import io.konik.zugferd.entity.LogisticsServiceCharge;
-import io.konik.zugferd.entity.PaymentMeans;
-import io.konik.zugferd.entity.PaymentTerm;
-import io.konik.zugferd.entity.Period;
-import io.konik.zugferd.entity.SpecifiedAllowanceCharge;
-import io.konik.zugferd.entity.TradeParty;
-
-import java.util.ArrayList;
-import java.util.List;
+import io.konik.zugferd.entity.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import com.neovisionaries.i18n.CurrencyCode;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * = The Trade Settlement
@@ -136,7 +128,9 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
    }
 
    /**
-    * Gets the invoicee trade party.
+    * Gets the details on the alternative invoicee. 
+    * 
+    * Additional role, if different from Buyer
     * 
     * @return the invoicee trade party
     */
@@ -147,10 +141,10 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
    }
 
    /**
-    * Sets the invoicee trade party.
+    * Sets the details on the alternative invoicee.
     * 
-    * Profile:: COMFORT
-    *
+    * Additional role, if different from Buyer
+    * 
     * @param invoicee the new invoicee trade party
     * @return the trade settlement
     */
@@ -206,9 +200,9 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
    }
 
    /**
-    * Gets the applicable trade tax.
+    * Gets the applicable trade tradeTax.
     *
-    * @return the applicable trade tax
+    * @return the applicable trade tradeTax
     */
    @Override
    public List<TradeTax> getTradeTax() {
@@ -219,9 +213,9 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
    }
 
    /**
-    * Adds a trade tax.
+    * Adds a trade tradeTax.
     *
-    * @param additionalTradeTax the additional trade tax
+    * @param additionalTradeTax the additional trade tradeTax
     * @return the trade settlement
     */
    @Override

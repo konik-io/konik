@@ -17,14 +17,14 @@
  */
 package io.konik.validator.annotation;
 
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 /**
  * 
- *  Indicates that the property or method is only supported in the compfort profile.
+ *  Indicates that the property or method is only supported in the comfort profile.
  */
 @Documented
 @Retention(RUNTIME)

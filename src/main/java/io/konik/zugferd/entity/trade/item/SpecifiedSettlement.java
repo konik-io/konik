@@ -23,24 +23,23 @@ import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonSettlement;
 import io.konik.zugferd.entity.Period;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * = The Trade Item Settlement
  * 
  * Contains payment related information on an Item basis.
  */
-@XmlType(propOrder = { "itemTax", "billingPeriod", "bookingReference", "monetarySummation" })
+@XmlType(propOrder = { "tradeTax", "billingPeriod", "bookingReference", "monetarySummation" })
 public class SpecifiedSettlement implements CommonSettlement<ItemTax, SpecifiedMonetarySummation> {
 
    @XmlElement(name = "ApplicableTradeTax")
-   private List<ItemTax> itemTax;
+   private List<ItemTax> tradeTax;
 
    @XmlElement(name = "BillingSpecifiedPeriod")
    private Period billingPeriod;
@@ -56,10 +55,10 @@ public class SpecifiedSettlement implements CommonSettlement<ItemTax, SpecifiedM
    @Valid
    @Override
    public List<ItemTax> getTradeTax() {
-      if (itemTax == null) {
-         itemTax = new ArrayList<ItemTax>();
+      if (tradeTax == null) {
+         tradeTax = new ArrayList<ItemTax>();
       }
-      return this.itemTax;
+      return this.tradeTax;
    }
 
    @Override

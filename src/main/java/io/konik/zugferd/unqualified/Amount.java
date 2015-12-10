@@ -18,14 +18,13 @@
  */
 package io.konik.zugferd.unqualified;
 
-import java.math.BigDecimal;
+import com.neovisionaries.i18n.CurrencyCode;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
-
-import com.neovisionaries.i18n.CurrencyCode;
+import java.math.BigDecimal;
 
 /**
  * = The Monetary Amount.
@@ -33,7 +32,7 @@ import com.neovisionaries.i18n.CurrencyCode;
  * A number of monetary units specified by a currency where the currency is explicit or implied.
  */
 @XmlType(name = "AmountType", propOrder = { "value" })
-public class Amount {
+public class Amount{
 
    @NotNull
    @XmlValue
@@ -122,6 +121,11 @@ public class Amount {
    public Amount setCurrency(CurrencyCode currency) {
       this.currency = currency;
       return this;
+   }
+   
+   @Override
+   public String toString() {    
+      return getValue() + " " + getCurrency();
    }
 
 }

@@ -4,6 +4,5 @@
 .factorypath
 .project
 infinitest.filters
-
 .idea
-*.iml
+konik.iml

@@ -17,7 +17,7 @@
  */
 package io.konik.zugferd.entity;
 
-import static java.util.Collections.addAll;
+import com.neovisionaries.i18n.LanguageCode;
 import io.konik.jaxb.adapter.PeriodCompleteToDateTimeAdapter;
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Extended;
@@ -25,9 +25,6 @@ import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.unece.codes.DocumentCode;
 import io.konik.zugferd.unqualified.Indicator;
 import io.konik.zugferd.unqualified.ZfDate;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -37,8 +34,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.neovisionaries.i18n.LanguageCode;
+import static java.util.Collections.addAll;
 
 /**
  * = The Invoice Document Header
@@ -255,9 +254,9 @@ public class Header {
    }
 
    /**
-    * Gets Contractual due date of the invoice.
-    *
-    * Details only required if different from the payment due date.
+    * Gets contractual due date of the invoice.
+    * 
+    * ￼￼Remark: Should only be used, if the contractual due date is different to the payment due date (e.g. with SEPA credit transfers).
     *  
     * @return the contractual due date
     */
@@ -267,9 +266,9 @@ public class Header {
    }
 
    /**
-    * Sets Contractual due date of the invoice.
+    * Sets contractual due date of the invoice.
     * 
-    * Details only required if different from the payment due date.
+    * Remark: Should only be used, if the contractual due date is different to the payment due date (e.g. with SEPA credit transfers).
     *
     * @param contractualDueDate the contractual due date
     * @return the header

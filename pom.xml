@@ -39,6 +39,7 @@
          <artifactId>nv-i18n</artifactId>
          <version>1.13</version>
       </dependency>
+
       <!-- Optional -->
       <dependency>
          <groupId>javax.inject</groupId>
@@ -91,6 +92,12 @@
          <scope>test</scope>
       </dependency>
       <dependency>
+          <groupId>org.javers</groupId>
+          <artifactId>javers-core</artifactId>
+          <version>1.3.4</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
          <groupId>org.mockito</groupId>
          <artifactId>mockito-all</artifactId>
          <version>1.10.19</version>
@@ -107,7 +114,7 @@
       <dependency>
          <groupId>io.konik</groupId>
          <artifactId>pdfbox-carriage</artifactId>
-         <version>0.8.3</version>
+         <version>1.0.0-SNAPSHOT</version>
          <scope>test</scope>
       </dependency>
       <!-- Benchmark dependencies -->

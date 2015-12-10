@@ -1,5 +1,6 @@
 package io.konik.sdk;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -23,6 +24,7 @@ public class ZinvoiceApiConfigTest {
 	}
 
 	@Test
+	@Ignore
 	public void shouldUsePropertiesFileToGetDefaultValues() {
 		//when:
 		ZinvoiceApiConfig apiConfig = new ZinvoiceApiConfig();

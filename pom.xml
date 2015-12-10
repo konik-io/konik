@@ -73,6 +73,8 @@
       <dependency>
          <groupId>com.google.guava</groupId>
          <artifactId>guava</artifactId>
+         <version>18.0</version>
+         <scope>compile</scope>
       </dependency>
       <dependency>
          <groupId>org.apache.commons</groupId>

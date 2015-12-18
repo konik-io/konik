@@ -91,7 +91,7 @@ public class CsvMapperBuilder {
 		return Column.builder().name(header);
 	}
 
-	public static CsvMapperBuilder withHeadersFromCsvFile(File csvFile) {
+	public static CsvMapperBuilder withHeadersFromCsvFile(final File csvFile, final ColumnsConfigurer columnsConfigurer) {
 		if (!csvFile.exists()) {
 			throw new IllegalArgumentException("File does not exist!");
 		}
@@ -101,13 +101,11 @@ public class CsvMapperBuilder {
 			final String[] headers = reader.getHeader(true);
 			reader.close();
 
-			final CsvMapperHeaderColumnsConfigurer configurer = new CsvMapperHeaderColumnsConfigurer();
-
 			List<Column> columns = Lists.transform(Arrays.asList(headers), new Function<String, Column>() {
 				@Nullable
 				@Override
 				public Column apply(String input) {
-					return configurer.getColumnDefinitionForHeader(input);
+					return columnsConfigurer.getColumnDefinitionForHeader(input);
 				}
 			});
 

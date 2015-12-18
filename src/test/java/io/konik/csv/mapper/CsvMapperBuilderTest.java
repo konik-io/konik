@@ -66,7 +66,7 @@ public class CsvMapperBuilderTest {
 	public void shouldReadRowsFromExistingCsvFileUsingCsvMpperHeaderColumnConfigurer() throws IOException {
 		//given:
 		File csvFile = new File("src/test/resources/csv/example.csv");
-		CsvMapperBuilder mapperBuilder = CsvMapperBuilder.withHeadersFromCsvFile(csvFile);
+		CsvMapperBuilder mapperBuilder = CsvMapperBuilder.withHeadersFromCsvFile(csvFile, new CsvMapperHeaderColumnsConfigurer());
 		CellProcessor[] processors = mapperBuilder.getCellProcessors();
 		CsvDozerBeanReader reader = mapperBuilder.getBeanReader(csvFile, Row.class);
 

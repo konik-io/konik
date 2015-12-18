@@ -1,5 +1,6 @@
 package io.konik.csv;
 
+import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.CurrencyCode;
 import io.konik.csv.model.Row;
 import io.konik.zugferd.unece.codes.Reference;
@@ -26,6 +27,7 @@ public class Rows {
 				.setCity("London")
 				.setPostcode("8231233")
 				.setEmail("joedoe@loremipsumltd.com")
+				.setCountryCode(CountryCode.DE)
 				.addTax(new Row.Tax("UK2123432123", Reference.FC))
 				.addTax(new Row.Tax("UK1231232322", Reference.VA));
 
@@ -49,6 +51,7 @@ public class Rows {
 						.setCity("Los Angeles, California")
 						.setPostcode("8323443")
 						.setEmail("contact@billgatesmicrosoft.com")
+						.setCountryCode(CountryCode.US)
 						.addTax(new Row.Tax("US123123345345", Reference.FC))
 						.setBankInfo(new Row.BankInformation()
 										.setBankName("Test Bank Account")
@@ -61,14 +64,12 @@ public class Rows {
 						.setQuantity(BigDecimal.ONE)
 						.setTaxPercent(BigDecimal.valueOf(19))
 						.setUnit(UnitOfMeasurement.UNIT)
-						.setUnitPrice(BigDecimal.valueOf(79))
-						.setLineTotal(BigDecimal.valueOf(79)),
+						.setUnitPrice(BigDecimal.valueOf(79)),
 				new Row.Item().setName("Transport service")
 						.setQuantity(BigDecimal.ONE)
 						.setTaxPercent(BigDecimal.valueOf(19))
 						.setUnit(UnitOfMeasurement.UNIT)
 						.setUnitPrice(BigDecimal.valueOf(9.99))
-						.setLineTotal(BigDecimal.valueOf(9.99))
 		));
 
 		row2 = new Row();
@@ -88,6 +89,7 @@ public class Rows {
 						.setAddressLine1("Test Street 2")
 						.setCity("Berlin")
 						.setPostcode("34234")
+						.setCountryCode(CountryCode.DE)
 						.addTax(new Row.Tax("DE123123123", Reference.FC))
 						.setBankInfo(new Row.BankInformation()
 										.setBankName("Test Bank Account")
@@ -101,7 +103,6 @@ public class Rows {
 						.setTaxPercent(BigDecimal.valueOf(8))
 						.setUnit(UnitOfMeasurement.LITRE)
 						.setUnitPrice(BigDecimal.valueOf(17))
-						.setLineTotal(BigDecimal.valueOf(136))
 		));
 	}
 

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rsm:CrossIndustryDocument xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12"
+                           xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15"
+                           xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0">
+    <rsm:SpecifiedExchangedDocumentContext>
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+            <ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:basic</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
+    </rsm:SpecifiedExchangedDocumentContext>
+    <rsm:HeaderExchangedDocument>
+        <ram:ID>INVOICE/2015/11/22</ram:ID>
+        <ram:Name>Rechnung</ram:Name>
+        <ram:TypeCode>380</ram:TypeCode>
+        <ram:IssueDateTime>
+            <udt:DateTimeString format="102">20151214</udt:DateTimeString>
+        </ram:IssueDateTime>
+        <ram:IncludedNote>
+            <ram:Content>This is simple note in two separate lines</ram:Content>
+        </ram:IncludedNote>
+        <ram:EffectiveSpecifiedPeriod>
+            <ram:CompleteDateTime>
+                <udt:DateTimeString format="102">20151231</udt:DateTimeString>
+            </ram:CompleteDateTime>
+        </ram:EffectiveSpecifiedPeriod>
+    </rsm:HeaderExchangedDocument>
+    <rsm:SpecifiedSupplyChainTradeTransaction>
+        <ram:ApplicableSupplyChainTradeAgreement>
+            <ram:SellerTradeParty>
+                <ram:ID>123123123123</ram:ID>
+                <ram:Name>Microsoft</ram:Name>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName>Bill Gates</ram:PersonName>
+                    <ram:EmailURIUniversalCommunication>
+                        <ram:URIID>contact@billgatesmicrosoft.com</ram:URIID>
+                    </ram:EmailURIUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>8323443</ram:PostcodeCode>
+                    <ram:LineOne>Silicon Valley 21</ram:LineOne>
+                    <ram:LineTwo></ram:LineTwo>
+                    <ram:CityName>Los Angeles, California</ram:CityName>
+                    <ram:CountryID>US</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">US123123345345</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                <ram:ID>123123123123</ram:ID>
+                <ram:Name>Lorem Ipsum LTD</ram:Name>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName>Joe Doe</ram:PersonName>
+                    <ram:EmailURIUniversalCommunication>
+                        <ram:URIID>joedoe@loremipsumltd.com</ram:URIID>
+                    </ram:EmailURIUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>8231233</ram:PostcodeCode>
+                    <ram:LineOne>Baker Street 21</ram:LineOne>
+                    <ram:LineTwo></ram:LineTwo>
+                    <ram:CityName>London</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">UK2123432123</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="VA">UK1231232322</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:BuyerTradeParty>
+        </ram:ApplicableSupplyChainTradeAgreement>
+        <ram:ApplicableSupplyChainTradeDelivery>
+            <ram:ActualDeliverySupplyChainEvent>
+                <ram:OccurrenceDateTime>
+                    <udt:DateTimeString format="102">20151214</udt:DateTimeString>
+                </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+        </ram:ApplicableSupplyChainTradeDelivery>
+        <ram:ApplicableSupplyChainTradeSettlement>
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:Information></ram:Information>
+                <ram:PayeePartyCreditorFinancialAccount>
+                    <ram:IBANID>PL123123123123132</ram:IBANID>
+                </ram:PayeePartyCreditorFinancialAccount>
+                <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                    <ram:BICID>TESTBNK</ram:BICID>
+                    <ram:Name>Test Bank Account</ram:Name>
+                </ram:PayeeSpecifiedCreditorFinancialInstitution>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+                <ram:CalculatedAmount currencyID="EUR">16.91</ram:CalculatedAmount>
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <ram:BasisAmount currencyID="EUR">88.99</ram:BasisAmount>
+                <ram:LineTotalBasisAmount currencyID="EUR">88.99</ram:LineTotalBasisAmount>
+                <ram:CategoryCode>S</ram:CategoryCode>
+                <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:SpecifiedTradeSettlementMonetarySummation>
+                <ram:LineTotalAmount currencyID="EUR">88.99</ram:LineTotalAmount>
+                <ram:ChargeTotalAmount currencyID="EUR">0.00</ram:ChargeTotalAmount>
+                <ram:AllowanceTotalAmount currencyID="EUR">0.00</ram:AllowanceTotalAmount>
+                <ram:TaxBasisTotalAmount currencyID="EUR">88.99</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount currencyID="EUR">16.91</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount currencyID="EUR">105.90</ram:GrandTotalAmount>
+            </ram:SpecifiedTradeSettlementMonetarySummation>
+        </ram:ApplicableSupplyChainTradeSettlement>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>1</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">79.0000</ram:ChargeAmount>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">79.0000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">79.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>1</ram:SellerAssignedID>
+                <ram:BuyerAssignedID>1</ram:BuyerAssignedID>
+                <ram:Name>Computer mouse</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>2</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">9.9900</ram:ChargeAmount>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">9.9900</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">9.99</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>2</ram:SellerAssignedID>
+                <ram:BuyerAssignedID>2</ram:BuyerAssignedID>
+                <ram:Name>Transport service</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+    </rsm:SpecifiedSupplyChainTradeTransaction>
+</rsm:CrossIndustryDocument>

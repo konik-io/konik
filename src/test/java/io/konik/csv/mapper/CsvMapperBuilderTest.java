@@ -1,5 +1,6 @@
 package io.konik.csv.mapper;
 
+import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.CurrencyCode;
 import io.konik.csv.Rows;
 import io.konik.csv.model.Row;
@@ -84,6 +85,7 @@ public class CsvMapperBuilderTest {
 				.add(column("recipient.addressLine2"))
 				.add(column("recipient.city"))
 				.add(column("recipient.postcode"))
+				.add(column("recipient.countryCode").type(CountryCode.class))
 				.add(column("recipient.email"))
 				.add(column("recipient.taxes[0].number"))
 				.add(column("recipient.taxes[0].type")
@@ -104,6 +106,7 @@ public class CsvMapperBuilderTest {
 				.add(column("issuer.addressLine2"))
 				.add(column("issuer.city"))
 				.add(column("issuer.postcode"))
+				.add(column("issuer.countryCode").type(CountryCode.class))
 				.add(column("issuer.email"))
 				.add(column("issuer.taxes[0].number"))
 				.add(column("issuer.taxes[0].type")
@@ -121,7 +124,7 @@ public class CsvMapperBuilderTest {
 				)
 				.add(column("items[0].unitPrice").type(BigDecimal.class))
 				.add(column("items[0].taxPercent").type(BigDecimal.class))
-				.add(column("items[0].lineTotal").type(BigDecimal.class))
+				//.add(column("items[0].lineTotal").type(BigDecimal.class))
 
 				.add(column("items[1].name"))
 				.add(column("items[1].quantity").type(BigDecimal.class))
@@ -130,7 +133,7 @@ public class CsvMapperBuilderTest {
 								.processor(new UnitOfMeasurementProcessor())
 				)
 				.add(column("items[1].unitPrice").type(BigDecimal.class))
-				.add(column("items[1].taxPercent").type(BigDecimal.class))
-				.add(column("items[1].lineTotal").type(BigDecimal.class));
+				.add(column("items[1].taxPercent").type(BigDecimal.class));
+				//.add(column("items[1].lineTotal").type(BigDecimal.class));
 	}
 }

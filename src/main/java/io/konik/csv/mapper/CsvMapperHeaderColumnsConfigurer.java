@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 import static io.konik.csv.mapper.CsvMapperBuilder.Column;
 import static io.konik.csv.mapper.CsvMapperBuilder.column;
 
-final class CsvMapperHeaderColumnsConfigurer {
+final class CsvMapperHeaderColumnsConfigurer implements ColumnsConfigurer {
 
 	private static final Logger log = LoggerFactory.getLogger(CsvMapperHeaderColumnsConfigurer.class);
 
@@ -110,6 +110,7 @@ final class CsvMapperHeaderColumnsConfigurer {
 		return typeColumn(type, null);
 	}
 
+	@Override
 	public Column getColumnDefinitionForHeader(String header) {
 		for (Pattern pattern : config.keySet()) {
 			Matcher matcher = pattern.matcher(header);

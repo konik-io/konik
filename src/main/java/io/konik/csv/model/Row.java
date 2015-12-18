@@ -1,6 +1,7 @@
 package io.konik.csv.model;
 
 import com.google.common.base.Objects;
+import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.CurrencyCode;
 import io.konik.zugferd.unece.codes.Reference;
 import io.konik.zugferd.unece.codes.UnitOfMeasurement;
@@ -16,17 +17,17 @@ import java.util.List;
  */
 public final class Row {
 
-	private Header header;
+	private Header header = new Header();
 
-	private TradeParty recipient;
+	private TradeParty recipient = new TradeParty();
 
-	private TradeParty issuer;
+	private TradeParty issuer = new TradeParty();
 
 	private List<Item> items = new LinkedList<Item>();
 
-	private String comments;
+	private String comments = "";
 
-	private String paymentReference;
+	private String paymentReference = "";
 
 
 	public Header getHeader() {
@@ -108,14 +109,14 @@ public final class Row {
 	}
 
 	public static final class Header {
-		private String invoiceNumber;
-		private String type;
+		private String invoiceNumber = "";
+		private String type = "";
 		private Date issued;
 		private Date dueDate;
-		private String note;
-		private String reference;
-		private String customerNumber;
-		private CurrencyCode currency;
+		private String note = "";
+		private String reference = "";
+		private String customerNumber = "";
+		private CurrencyCode currency = CurrencyCode.EUR;
 
 		public String getInvoiceNumber() {
 			return invoiceNumber;
@@ -225,8 +226,8 @@ public final class Row {
 	}
 
 	public static class Tax {
-		private String number;
-		private Reference type;
+		private String number = "";
+		private Reference type = Reference.FC;
 
 		public Tax() {}
 
@@ -277,13 +278,14 @@ public final class Row {
 	}
 
 	public static class TradeParty {
-		private String name;
-		private String contactName;
-		private String addressLine1;
-		private String addressLine2;
-		private String city;
-		private String postcode;
-		private String email;
+		private String name = "";
+		private String contactName = "";
+		private String addressLine1 = "";
+		private String addressLine2 = "";
+		private String city = "";
+		private String postcode = "";
+		private CountryCode countryCode;
+		private String email = "";
 		private List<Tax> taxes = new LinkedList<Tax>();
 		private BankInformation bankInfo = new BankInformation();
 
@@ -377,6 +379,15 @@ public final class Row {
 			return this;
 		}
 
+		public CountryCode getCountryCode() {
+			return countryCode;
+		}
+
+		public TradeParty setCountryCode(CountryCode countryCode) {
+			this.countryCode = countryCode;
+			return this;
+		}
+
 		@Override
 		public boolean equals(Object o) {
 			if (this == o) return true;
@@ -388,6 +399,7 @@ public final class Row {
 					Objects.equal(addressLine2, that.addressLine2) &&
 					Objects.equal(city, that.city) &&
 					Objects.equal(postcode, that.postcode) &&
+					Objects.equal(countryCode, that.countryCode) &&
 					Objects.equal(email, that.email) &&
 					Objects.equal(taxes, that.taxes) &&
 					Objects.equal(bankInfo, that.bankInfo);
@@ -395,7 +407,7 @@ public final class Row {
 
 		@Override
 		public int hashCode() {
-			return Objects.hashCode(name, contactName, addressLine1, addressLine2, city, postcode, email, taxes, bankInfo);
+			return Objects.hashCode(name, contactName, addressLine1, addressLine2, city, postcode, countryCode, email, taxes, bankInfo);
 		}
 
 		@Override
@@ -407,6 +419,7 @@ public final class Row {
 					", addressLine2='" + addressLine2 + '\'' +
 					", city='" + city + '\'' +
 					", postcode='" + postcode + '\'' +
+					", countryCode=" + countryCode +
 					", email='" + email + '\'' +
 					", taxes=" + taxes +
 					", bankInfo=" + bankInfo +
@@ -415,12 +428,11 @@ public final class Row {
 	}
 
 	public static class Item {
-		private String name;
-		private BigDecimal quantity;
-		private UnitOfMeasurement unit;
-		private BigDecimal unitPrice;
-		private BigDecimal taxPercent;
-		private BigDecimal lineTotal;
+		private String name = "";
+		private BigDecimal quantity = BigDecimal.ZERO;
+		private UnitOfMeasurement unit = UnitOfMeasurement.UNIT;
+		private BigDecimal unitPrice = BigDecimal.ZERO;
+		private BigDecimal taxPercent = BigDecimal.ZERO;
 
 		public String getName() {
 			return name;
@@ -467,15 +479,6 @@ public final class Row {
 			return this;
 		}
 
-		public BigDecimal getLineTotal() {
-			return lineTotal;
-		}
-
-		public Item setLineTotal(BigDecimal lineTotal) {
-			this.lineTotal = lineTotal;
-			return this;
-		}
-
 		@Override
 		public String toString() {
 			return "Item {" +
@@ -484,7 +487,6 @@ public final class Row {
 					", unit=" + unit +
 					", unitPrice=" + unitPrice +
 					", taxPercent=" + taxPercent +
-					", lineTotal=" + lineTotal +
 					'}';
 		}
 
@@ -497,20 +499,19 @@ public final class Row {
 					Objects.equal(quantity, item.quantity) &&
 					Objects.equal(unit, item.unit) &&
 					Objects.equal(unitPrice, item.unitPrice) &&
-					Objects.equal(taxPercent, item.taxPercent) &&
-					Objects.equal(lineTotal, item.lineTotal);
+					Objects.equal(taxPercent, item.taxPercent);
 		}
 
 		@Override
 		public int hashCode() {
-			return Objects.hashCode(name, quantity, unit, unitPrice, taxPercent, lineTotal);
+			return Objects.hashCode(name, quantity, unit, unitPrice, taxPercent);
 		}
 	}
 
 	public static class BankInformation {
-		private String bankName;
-		private String bic;
-		private String iban;
+		private String bankName = "";
+		private String bic = "";
+		private String iban = "";
 
 		public String getBankName() {
 			return bankName;

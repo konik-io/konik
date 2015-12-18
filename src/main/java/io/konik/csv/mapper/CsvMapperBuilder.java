@@ -7,7 +7,13 @@ import org.dozer.loader.api.*;
 import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.dozer.CsvDozerBeanData;
+import org.supercsv.io.dozer.CsvDozerBeanReader;
+import org.supercsv.prefs.CsvPreference;
 
+import javax.annotation.Nullable;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +25,11 @@ public class CsvMapperBuilder {
 
 	public CsvMapperBuilder add(Column.Builder builder) {
 		columns.add(builder.build());
+		return this;
+	}
+
+	public CsvMapperBuilder addColumns(List<Column> columns) {
+		this.columns.addAll(columns);
 		return this;
 	}
 
@@ -80,6 +91,44 @@ public class CsvMapperBuilder {
 		return Column.builder().name(header);
 	}
 
+	public static CsvMapperBuilder withHeadersFromCsvFile(File csvFile) {
+		if (!csvFile.exists()) {
+			throw new IllegalArgumentException("File does not exist!");
+		}
+
+		try {
+			final CsvDozerBeanReader reader = new CsvDozerBeanReader(new FileReader(csvFile), CsvPreference.STANDARD_PREFERENCE);
+			final String[] headers = reader.getHeader(true);
+			reader.close();
+
+			final CsvMapperHeaderColumnsConfigurer configurer = new CsvMapperHeaderColumnsConfigurer();
+
+			List<Column> columns = Lists.transform(Arrays.asList(headers), new Function<String, Column>() {
+				@Nullable
+				@Override
+				public Column apply(String input) {
+					return configurer.getColumnDefinitionForHeader(input);
+				}
+			});
+
+			return new CsvMapperBuilder().addColumns(columns);
+
+		} catch (Exception e) {
+			throw new RuntimeException("CsvMapperBuilder initialization failed", e);
+		}
+	}
+
+	public CsvDozerBeanReader getBeanReader(File csvFile, Class<?> beanType) {
+		try {
+			CsvDozerBeanReader reader = new CsvDozerBeanReader(new FileReader(csvFile), CsvPreference.STANDARD_PREFERENCE, buildBeanMapper(beanType));
+			reader.getHeader(true);
+			return reader;
+
+		} catch (IOException e) {
+			throw new RuntimeException("Bean reader initialization failed", e);
+		}
+	}
+
 	static class Column {
 		final String name;
 		final Class<?> type;
@@ -97,6 +146,17 @@ public class CsvMapperBuilder {
 
 		public static Builder builder() {
 			return new Builder();
+		}
+
+		@Override
+		public String toString() {
+			return "Column{" +
+					"name='" + name + '\'' +
+					", type=" + type +
+					", processor=" + processor +
+					", mappingOptions=" + Arrays.toString(mappingOptions) +
+					", fieldDefinition=" + fieldDefinition +
+					'}';
 		}
 
 		public static class Builder {

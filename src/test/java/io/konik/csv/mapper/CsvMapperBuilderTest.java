@@ -21,6 +21,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.UUID;
 
@@ -51,7 +52,7 @@ public class CsvMapperBuilderTest {
 
 		//when:
 		CsvDozerBeanReader reader = new CsvDozerBeanReader(new FileReader(file), CsvPreference.STANDARD_PREFERENCE, mapper);
-		reader.getHeader(true);
+		System.out.println(Arrays.toString(reader.getHeader(true)));
 		Row row1 = reader.read(Row.class, processors);
 		Row row2 = reader.read(Row.class, processors);
 		reader.close();
@@ -59,7 +60,24 @@ public class CsvMapperBuilderTest {
 		//then:
 		assertThat(row1).isEqualTo(Rows.row1);
 		assertThat(row2).isEqualTo(Rows.row2);
+	}
 
+	@Test
+	public void shouldReadRowsFromExistingCsvFileUsingCsvMpperHeaderColumnConfigurer() throws IOException {
+		//given:
+		File csvFile = new File("src/test/resources/csv/example.csv");
+		CsvMapperBuilder mapperBuilder = CsvMapperBuilder.withHeadersFromCsvFile(csvFile);
+		CellProcessor[] processors = mapperBuilder.getCellProcessors();
+		CsvDozerBeanReader reader = mapperBuilder.getBeanReader(csvFile, Row.class);
+
+		//when:
+		Row row1 = reader.read(Row.class, processors);
+		Row row2 = reader.read(Row.class, processors);
+		reader.close();
+
+		//then:
+		assertThat(row1).isEqualTo(Rows.row1);
+		assertThat(row2).isEqualTo(Rows.row2);
 	}
 
 
@@ -124,7 +142,6 @@ public class CsvMapperBuilderTest {
 				)
 				.add(column("items[0].unitPrice").type(BigDecimal.class))
 				.add(column("items[0].taxPercent").type(BigDecimal.class))
-				//.add(column("items[0].lineTotal").type(BigDecimal.class))
 
 				.add(column("items[1].name"))
 				.add(column("items[1].quantity").type(BigDecimal.class))
@@ -134,6 +151,5 @@ public class CsvMapperBuilderTest {
 				)
 				.add(column("items[1].unitPrice").type(BigDecimal.class))
 				.add(column("items[1].taxPercent").type(BigDecimal.class));
-				//.add(column("items[1].lineTotal").type(BigDecimal.class));
 	}
 }

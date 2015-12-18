@@ -130,6 +130,7 @@ public class RowToInvoiceConverter {
 			Settlement settlement = new Settlement()
 					.setCurrency(currencyCode)
 					.addPaymentMeans(paymentMeans)
+					.setPaymentReference(row.getHeader().getReference())
 					.setMonetarySummation(calculateMonetarySummation());
 
 			addTradeTaxesFromCalculatedTax(settlement);

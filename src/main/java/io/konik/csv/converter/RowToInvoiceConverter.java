@@ -36,24 +36,24 @@ public class RowToInvoiceConverter {
 	private static final ConcurrentMap<String, DocumentCode> codes = new ConcurrentHashMap<String, DocumentCode>();
 
 	static {
-		codes.put("Rechnung", DocumentCode._380);
-		codes.put("Gutschriftsanzeige", DocumentCode._380);
-		codes.put("Angebot", DocumentCode._310);
-		codes.put("Bestellung", DocumentCode._220);
-		codes.put("Proformarechnung", DocumentCode._325);
-		codes.put("Teilrechnung", DocumentCode._326);
-		codes.put("Korrigierte Rechnung", DocumentCode._384);
-		codes.put("Konsolidierte Rechnung", DocumentCode._385);
-		codes.put("Vorauszahlungsrechnung", DocumentCode._386);
-		codes.put("Invoice", DocumentCode._380);
-		codes.put("Credit note", DocumentCode._381);
-		codes.put("Offer", DocumentCode._310);
-		codes.put("Order", DocumentCode._220);
-		codes.put("Proforma invoice", DocumentCode._325);
-		codes.put("Partial invoice", DocumentCode._326);
-		codes.put("Corrected invoice", DocumentCode._384);
-		codes.put("Consolidated invoice", DocumentCode._385);
-		codes.put("Prepayment invoice", DocumentCode._386);
+		codes.put("rechnung", DocumentCode._380);
+		codes.put("gutschriftsanzeige", DocumentCode._380);
+		codes.put("angebot", DocumentCode._310);
+		codes.put("bestellung", DocumentCode._220);
+		codes.put("proformarechnung", DocumentCode._325);
+		codes.put("teilrechnung", DocumentCode._326);
+		codes.put("korrigierte rechnung", DocumentCode._384);
+		codes.put("konsolidierte rechnung", DocumentCode._385);
+		codes.put("vorauszahlungsrechnung", DocumentCode._386);
+		codes.put("invoice", DocumentCode._380);
+		codes.put("credit note", DocumentCode._381);
+		codes.put("offer", DocumentCode._310);
+		codes.put("order", DocumentCode._220);
+		codes.put("proforma invoice", DocumentCode._325);
+		codes.put("partial invoice", DocumentCode._326);
+		codes.put("corrected invoice", DocumentCode._384);
+		codes.put("consolidated invoice", DocumentCode._385);
+		codes.put("prepayment invoice", DocumentCode._386);
 	}
 
 	public static Invoice convert(Row row) {
@@ -64,7 +64,7 @@ public class RowToInvoiceConverter {
 
 	protected static DocumentCode getCode(String code) {
 		if (code != null) {
-			String key = code.trim();
+			String key = code.trim().toLowerCase();
 
 			if (codes.containsKey(key)) {
 				return codes.get(key);
@@ -99,7 +99,7 @@ public class RowToInvoiceConverter {
 
 			Trade trade = createTrade(row, agreement, delivery, settlement);
 
-			Invoice invoice = new Invoice(ConformanceLevel.BASIC);
+			Invoice invoice = new Invoice(ConformanceLevel.EXTENDED);
 			invoice.setHeader(header);
 			invoice.setTrade(trade);
 

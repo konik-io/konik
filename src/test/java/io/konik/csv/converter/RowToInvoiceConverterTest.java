@@ -36,7 +36,7 @@ public class RowToInvoiceConverterTest {
 
 	@Test
 	public void shouldConvertInvoiceWithConformanceLevelBasic() {
-		assertThat(invoice.getContext().getGuideline().getConformanceLevel()).isEqualTo(ConformanceLevel.BASIC);
+		assertThat(invoice.getContext().getGuideline().getConformanceLevel()).isEqualTo(ConformanceLevel.EXTENDED);
 	}
 
 	@Test

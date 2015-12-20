@@ -208,9 +208,15 @@ public class RowToInvoiceConverter {
 			Header header = new Header();
 
 			if (rowHeader != null) {
-				header.setIssued(new ZfDateDay(rowHeader.getIssued()))
-						.setContractualDueDate(new ZfDateDay(rowHeader.getDueDate()))
-						.setCode(getCode(rowHeader.getType()))
+				if (rowHeader.getIssued() != null) {
+					header.setIssued(new ZfDateDay(rowHeader.getIssued()));
+				}
+
+				if (rowHeader.getDueDate() != null) {
+					header.setContractualDueDate(new ZfDateDay(rowHeader.getDueDate()));
+				}
+
+				header.setCode(getCode(rowHeader.getType()))
 						.setInvoiceNumber(rowHeader.getInvoiceNumber())
 						.setName(rowHeader.getType());
 

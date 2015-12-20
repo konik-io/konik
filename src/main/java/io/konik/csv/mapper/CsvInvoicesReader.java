@@ -1,9 +1,5 @@
 package io.konik.csv.mapper;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
 import io.konik.csv.converter.RowToInvoiceConverter;
 import io.konik.csv.model.Row;
 import io.konik.zugferd.Invoice;
@@ -12,11 +8,11 @@ import org.slf4j.LoggerFactory;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.dozer.CsvDozerBeanReader;
 
-import javax.annotation.Nullable;
 import java.io.File;
-import java.util.Collection;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Reader class used for reading CSV files and returning a {@link List} of {@see Invoice}s.
@@ -42,46 +38,115 @@ public class CsvInvoicesReader {
 	 * @param csvFile
 	 * @return
 	 */
-	public List<Invoice> read(File csvFile) {
+	public Result read(File csvFile) {
 		CsvMapperBuilder mapperBuilder = CsvMapperBuilder.withHeadersFromCsvFile(csvFile, columnsConfigurer);
 		CellProcessor[] processors = mapperBuilder.getCellProcessors();
 		CsvDozerBeanReader reader = mapperBuilder.getBeanReader(csvFile, Row.class);
 
-		List<Row> rows = new LinkedList<Row>();
+		List<ConvertedRow> convertedRows = new LinkedList<ConvertedRow>();
+		List<RowError> rowErrors = new LinkedList<RowError>();
 		Row currentRow = null;
+		final AtomicInteger rowNumber = new AtomicInteger(1);
 
 		try {
-			while ((currentRow = reader.read(Row.class, processors)) != null) {
-				rows.add(currentRow);
-			}
-
-			reader.close();
-
-			List<Invoice> invoices = Lists.transform(rows, new Function<Row, Invoice>() {
-				@Nullable
-				@Override
-				public Invoice apply(Row input) {
-					try {
-						return RowToInvoiceConverter.convert(input);
-					} catch (Exception e) {
-						log.warn("Row could not be converted to invoice: {} | row = {}", e.getMessage(), input);
+			do {
+				try {
+					currentRow = reader.read(Row.class, processors);
+					if (currentRow != null) {
+						Invoice invoice = RowToInvoiceConverter.convert(currentRow);
+						convertedRows.add(new ConvertedRow(rowNumber.getAndIncrement(), currentRow, invoice));
 					}
-
-					return null;
+				} catch (Exception e) {
+					log.warn("Exception caught during reading a row");
+					rowErrors.add(new RowError(rowNumber.getAndIncrement(), currentRow, e.getMessage(), e));
 				}
-			});
+			} while (currentRow != null);
 
-			Collection<Invoice> result = Collections2.filter(invoices, new Predicate<Invoice>() {
-				@Override
-				public boolean apply(@Nullable Invoice input) {
-					return input != null;
-				}
-			});
-
-			return new LinkedList<Invoice>(result);
+			return new Result(convertedRows, rowErrors);
 
 		} catch (Exception e) {
 			throw new RuntimeException(e);
+
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					log.error(e.getMessage(), e);
+				}
+			}
+		}
+	}
+
+	static public class ConvertedRow {
+		private final int rowNumber;
+		private final Row row;
+		private final Invoice invoice;
+
+		public ConvertedRow(int rowNumber, Row row, Invoice invoice) {
+			this.rowNumber = rowNumber;
+			this.row = row;
+			this.invoice = invoice;
+		}
+
+		public int getRowNumber() {
+			return rowNumber;
+		}
+
+		public Row getRow() {
+			return row;
+		}
+
+		public Invoice getInvoice() {
+			return invoice;
+		}
+	}
+
+	static public class RowError {
+		private final int rowNumber;
+		private final Row row;
+		private final String errorMessage;
+		private final Exception exception;
+
+		public RowError(int rowNumber, Row row, String errorMessage, Exception exception) {
+			this.rowNumber = rowNumber;
+			this.row = row;
+			this.errorMessage = errorMessage;
+			this.exception = exception;
+		}
+
+		public int getRowNumber() {
+			return rowNumber;
+		}
+
+		public Row getRow() {
+			return row;
+		}
+
+		public String getErrorMessage() {
+			return errorMessage;
+		}
+
+		public Exception getException() {
+			return exception;
+		}
+	}
+
+	static public class Result {
+		private final List<ConvertedRow> convertedRows;
+		private final List<RowError> rowErrors;
+
+		public Result(List<ConvertedRow> convertedRows, List<RowError> rowErrors) {
+			this.convertedRows = convertedRows;
+			this.rowErrors = rowErrors;
+		}
+
+		public List<ConvertedRow> getConvertedRows() {
+			return convertedRows;
+		}
+
+		public List<RowError> getRowErrors() {
+			return rowErrors;
 		}
 	}
 }

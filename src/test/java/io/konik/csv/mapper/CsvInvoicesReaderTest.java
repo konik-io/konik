@@ -8,7 +8,6 @@ import org.assertj.core.api.Condition;
 import org.junit.Test;
 
 import java.io.File;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,14 +21,14 @@ public class CsvInvoicesReaderTest {
 		File csvFile = new File("src/test/resources/csv/example.csv");
 
 		//when:
-		List<Invoice> invoices = reader.read(csvFile);
+		CsvInvoicesReader.Result result = reader.read(csvFile);
 
 		//then:
-		assertThat(invoices).hasSize(2);
+		assertThat(result.getConvertedRows()).hasSize(2);
 
-		assertThat(invoices.get(0)).is(createdFrom(Rows.row1));
+		assertThat(result.getConvertedRows().get(0).getInvoice()).is(createdFrom(Rows.row1));
 
-		assertThat(invoices.get(1)).is(createdFrom(Rows.row2));
+		assertThat(result.getConvertedRows().get(1).getInvoice()).is(createdFrom(Rows.row2));
 	}
 
 	private static Condition<Invoice> createdFrom(final Row row) {

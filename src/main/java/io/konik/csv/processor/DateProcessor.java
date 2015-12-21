@@ -41,8 +41,8 @@ public final class DateProcessor implements CellProcessor {
 				return dateFormat.get().parse(dateStr);
 			} catch (ParseException e) {
 				log.error("Parsing {} throws an exception: {}", value, e.getMessage());
+				throw new RuntimeException(String.format("Value %s does not match valid date format (yyyyMMdd)", value));
 			}
-			return null;
 		}
 
 		if (value instanceof Date) {

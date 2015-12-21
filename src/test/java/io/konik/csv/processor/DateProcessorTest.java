@@ -29,15 +29,12 @@ public class DateProcessorTest {
 		DateFormat dateFormat = new DateProcessor().getDateFormat();
 
 		return Arrays.asList(
-				new Object[] { "20150101", dateFormat.parse("20150101")},
+				new Object[] { "20150101", dateFormat.parse("20150101") },
 				new Object[] { "19960130", dateFormat.parse("19960130") },
 				new Object[] { "20000101", dateFormat.parse("20000101") },
 				new Object[] { "19991231", dateFormat.parse("19991231") },
 				new Object[] { "20120229", dateFormat.parse("20120229") },
-				new Object[] { "33333333", dateFormat.parse("33351003") },
-				new Object[] { "", null },
-				new Object[] { null, null },
-				new Object[] { "LOREM", null }
+				new Object[] { "33333333", dateFormat.parse("33351003") }
 		);
 	}
 

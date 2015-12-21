@@ -21,21 +21,27 @@ public class Example01Test {
 		CsvInvoicesReader.Result result = reader.read(csvFile);
 
 		//then:
-		assertThat(result.getConvertedRows()).hasSize(2);
+		assertThat(result.getConvertedRows()).hasSize(1);
 
 		//then:
-		assertThat(result.getRowErrors()).hasSize(2);
+		assertThat(result.getRowErrors()).hasSize(3);
 
 		//and:
-		assertThat(result.getRowErrors().get(0).getRowNumber()).isEqualTo(3);
+		assertThat(result.getRowErrors().get(0).getRowNumber()).isEqualTo(2);
 
 		//and:
 		assertThat(result.getRowErrors().get(0).getErrorMessage()).isEqualTo(result.getRowErrors().get(0).getException().getMessage());
 
 		//and:
-		assertThat(result.getRowErrors().get(1).getRowNumber()).isEqualTo(4);
+		assertThat(result.getRowErrors().get(1).getRowNumber()).isEqualTo(3);
 
 		//and:
 		assertThat(result.getRowErrors().get(1).getErrorMessage()).isEqualTo(result.getRowErrors().get(1).getException().getMessage());
+
+		//and:
+		assertThat(result.getRowErrors().get(2).getRowNumber()).isEqualTo(4);
+
+		//and:
+		assertThat(result.getRowErrors().get(2).getErrorMessage()).isEqualTo(result.getRowErrors().get(2).getException().getMessage());
 	}
 }

@@ -11,6 +11,7 @@ import org.supercsv.io.dozer.CsvDozerBeanReader;
 import org.supercsv.prefs.CsvPreference;
 
 import javax.annotation.Nullable;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,6 +23,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CsvMapperBuilder {
 
 	private final CopyOnWriteArrayList<Column> columns = new CopyOnWriteArrayList<Column>();
+
+	private final CsvPreference csvPreference;
+
+	public CsvMapperBuilder(CsvPreference csvPreference) {
+		this.csvPreference = csvPreference;
+	}
 
 	public CsvMapperBuilder add(Column.Builder builder) {
 		columns.add(builder.build());
@@ -96,8 +103,12 @@ public class CsvMapperBuilder {
 			throw new IllegalArgumentException("File does not exist!");
 		}
 
+
+		CsvPreference csvPreference = recognizeCsvPreference(csvFile);
+
+
 		try {
-			final CsvDozerBeanReader reader = new CsvDozerBeanReader(new FileReader(csvFile), CsvPreference.STANDARD_PREFERENCE);
+			final CsvDozerBeanReader reader = new CsvDozerBeanReader(new FileReader(csvFile), csvPreference);
 			final String[] headers = reader.getHeader(true);
 			reader.close();
 
@@ -109,16 +120,54 @@ public class CsvMapperBuilder {
 				}
 			});
 
-			return new CsvMapperBuilder().addColumns(columns);
+			return new CsvMapperBuilder(csvPreference).addColumns(columns);
 
 		} catch (Exception e) {
 			throw new RuntimeException("CsvMapperBuilder initialization failed", e);
 		}
 	}
 
+	public static CsvPreference recognizeCsvPreference(File file) {
+		String[] lines = new String[2];
+		try {
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+			int lineNum = 0;
+			String line;
+
+			while ((line = bufferedReader.readLine()) != null && lineNum < 2) {
+				lines[lineNum++] = line.replaceAll("\"([^\"]+)\"", "_");
+			}
+
+			if (isEmptyLine(lines[0]) || isEmptyLine(lines[1])) {
+				throw new IllegalArgumentException("CSV file has to contain a header and at least one row");
+			}
+
+		} catch (IOException e) {
+			throw new IllegalStateException("Delimiter recognition failed", e);
+		}
+
+		if (isDelimiter(",", lines[0], lines[1])) {
+			return CsvPreference.STANDARD_PREFERENCE;
+		}
+
+		if (isDelimiter(";", lines[0], lines[1])) {
+			return CsvPreference.EXCEL_NORTH_EUROPE_PREFERENCE;
+		}
+
+		throw new IllegalStateException("Delimiter for the CSV file could not be found");
+	}
+
+	private static boolean isEmptyLine(String line) {
+		return line == null || line.isEmpty();
+	}
+
+	private static boolean isDelimiter(String delimiter, String lineOne, String lineTwo) {
+		return lineOne.split(delimiter).length == lineTwo.split(delimiter).length && lineOne.contains(delimiter);
+	}
+
 	public CsvDozerBeanReader getBeanReader(File csvFile, Class<?> beanType) {
 		try {
-			CsvDozerBeanReader reader = new CsvDozerBeanReader(new FileReader(csvFile), CsvPreference.STANDARD_PREFERENCE, buildBeanMapper(beanType));
+			CsvDozerBeanReader reader = new CsvDozerBeanReader(new FileReader(csvFile), csvPreference, buildBeanMapper(beanType));
 			reader.getHeader(true);
 			return reader;
 

@@ -82,7 +82,7 @@ public class CsvMapperBuilderTest {
 
 
 	private CsvMapperBuilder getBuilder() {
-		return new CsvMapperBuilder()
+		return new CsvMapperBuilder(CsvPreference.STANDARD_PREFERENCE)
 				.add(column("header.invoiceNumber"))
 				.add(column("header.type"))
 				.add(column("header.issued")

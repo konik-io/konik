@@ -11,10 +11,7 @@ import org.supercsv.io.dozer.CsvDozerBeanReader;
 import org.supercsv.prefs.CsvPreference;
 
 import javax.annotation.Nullable;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -103,12 +100,10 @@ public class CsvMapperBuilder {
 			throw new IllegalArgumentException("File does not exist!");
 		}
 
-
 		CsvPreference csvPreference = recognizeCsvPreference(csvFile);
 
-
 		try {
-			final CsvDozerBeanReader reader = new CsvDozerBeanReader(new FileReader(csvFile), csvPreference);
+			final CsvDozerBeanReader reader = new CsvDozerBeanReader(new InputStreamReader(new FileInputStream(csvFile), "UTF-8"), csvPreference);
 			final String[] headers = reader.getHeader(true);
 			reader.close();
 
@@ -167,7 +162,11 @@ public class CsvMapperBuilder {
 
 	public CsvDozerBeanReader getBeanReader(File csvFile, Class<?> beanType) {
 		try {
-			CsvDozerBeanReader reader = new CsvDozerBeanReader(new FileReader(csvFile), csvPreference, buildBeanMapper(beanType));
+			CsvDozerBeanReader reader = new CsvDozerBeanReader(
+					new InputStreamReader(new FileInputStream(csvFile), "UTF-8"),
+					csvPreference,
+					buildBeanMapper(beanType)
+			);
 			reader.getHeader(true);
 			return reader;
 

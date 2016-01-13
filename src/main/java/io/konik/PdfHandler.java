@@ -17,6 +17,8 @@
  */
 package io.konik;
 
+import com.google.common.collect.Lists;
+import io.konik.csv.pdf.FileAppenderPriorityComparator;
 import io.konik.harness.FileAppender;
 import io.konik.harness.FileExtractor;
 import io.konik.harness.appender.DefaultAppendParameter;
@@ -27,9 +29,13 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 import java.io.*;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import java.util.ServiceLoader;
 import java.util.logging.Logger;
 
+import static io.konik.csv.pdf.FileAppenderPriorityComparator.Order;
 import static java.util.logging.Level.WARNING;
 
 /**
@@ -65,7 +71,16 @@ public class PdfHandler {
     * If error is thrown check you have a Konik PDF Carriage on the classpath.
     */
    public PdfHandler() {
-      this.fileAppender = ServiceLoader.load(FileAppender.class).iterator().next();
+      Iterator iterator = ServiceLoader.load(FileAppender.class).iterator();
+      List<FileAppender> appenders = Lists.<FileAppender>newArrayList(iterator);
+
+      if (appenders.isEmpty()) {
+         throw new IllegalStateException("FileAppender implementation not found in the classpath!");
+      }
+
+      Collections.sort(appenders, new FileAppenderPriorityComparator(Order.DESC));
+
+      this.fileAppender = appenders.get(0);
       this.fileExtractor = ServiceLoader.load(FileExtractor.class).iterator().next();
       this.transformer = new InvoiceTransformer();
    }

@@ -31,6 +31,25 @@ public class CsvInvoicesReaderTest {
 		assertThat(result.getConvertedRows().get(1).getInvoice()).is(createdFrom(Rows.row2));
 	}
 
+	@Test
+	public void shouldMapFileInput() {
+		//given:
+		File csvFile = new File("src/test/resources/csv/example_with_file.csv");
+
+		//when:
+		CsvInvoicesReader.Result result = reader.read(csvFile);
+
+		//then:
+		assertThat(result.getConvertedRows().get(0).getRow().getFile().getInput()).isEqualTo("src/test/resources/invoice.pdf");
+
+		assertThat(result.getConvertedRows().get(0).getRow().getFile().getOutput()).isEqualTo("");
+
+		//and:
+		assertThat(result.getConvertedRows().get(1).getRow().getFile().getInput()).isEqualTo("src/test/resources/invoice2.pdf");
+
+		assertThat(result.getConvertedRows().get(1).getRow().getFile().getOutput()).isEqualTo("src/test/resources/invoice2_new.pdf");
+	}
+
 	private static Condition<Invoice> createdFrom(final Row row) {
 		return new Condition<Invoice>() {
 			@Override

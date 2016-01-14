@@ -4,9 +4,6 @@ import org.junit.Test;
 
 import java.io.File;
 
-/**
- * Created by wololock on 11.01.16.
- */
 public class CsvToZUGFeRDConverterTest {
 
 	private CsvToZUGFeRDConverter converter = new CsvToZUGFeRDConverter();

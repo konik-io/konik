@@ -40,14 +40,14 @@ public class CsvInvoicesReaderTest {
 		CsvInvoicesReader.Result result = reader.read(csvFile);
 
 		//then:
-		assertThat(result.getConvertedRows().get(0).getRow().getFile().getInput()).isEqualTo("src/test/resources/invoice.pdf");
+		assertThat(result.getConvertedRows().get(0).getRow().getFile().getInput()).isEqualTo("src/test/resources/csv/pdf/invoice.pdf");
 
-		assertThat(result.getConvertedRows().get(0).getRow().getFile().getOutput()).isEqualTo("");
+		assertThat(result.getConvertedRows().get(0).getRow().getFile().getOutput()).isEqualTo("/tmp/inoive_new.pdf");
 
 		//and:
-		assertThat(result.getConvertedRows().get(1).getRow().getFile().getInput()).isEqualTo("src/test/resources/invoice2.pdf");
+		assertThat(result.getConvertedRows().get(1).getRow().getFile().getInput()).isEqualTo("src/test/resources/csv/pdf/invoice2.pdf");
 
-		assertThat(result.getConvertedRows().get(1).getRow().getFile().getOutput()).isEqualTo("src/test/resources/invoice2_new.pdf");
+		assertThat(result.getConvertedRows().get(1).getRow().getFile().getOutput()).isEqualTo("/tmp/invoice2_new.pdf");
 	}
 
 	private static Condition<Invoice> createdFrom(final Row row) {

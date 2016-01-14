@@ -107,7 +107,7 @@ public class CsvToZUGFeRDConverter {
 		String inputPath = System.getProperty("inputPath");
 		String outputPath = System.getProperty("outputPath");
 
-		String csvFileName = args[1];
+		String csvFileName = args[0];
 
 		File csvFile = new File(csvFileName);
 

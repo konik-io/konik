@@ -27,7 +27,7 @@
       <dependency>
          <groupId>io.konik</groupId>
          <artifactId>harness</artifactId>
-         <version>0.8.0</version>
+         <version>1.0.0</version>
       </dependency>
       <dependency>
          <groupId>javax.validation</groupId>
@@ -63,13 +63,6 @@
          <artifactId>super-csv-dozer</artifactId>
          <version>2.4.0</version>
       </dependency>
-      <dependency>
-         <groupId>org.simpleflatmapper</groupId>
-         <artifactId>sfm</artifactId>
-         <version>2.5.5</version>
-      </dependency>
-
-
 
       <!-- TEST dependencies -->
       <dependency>
@@ -97,6 +90,18 @@
       <dependency>
          <groupId>org.apache.commons</groupId>
          <artifactId>commons-lang3</artifactId>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>commons-io</groupId>
+         <artifactId>commons-io</artifactId>
+         <version>2.4</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>io.konik</groupId>
+         <artifactId>pdfconverter</artifactId>
+         <version>1.0.20</version>
          <scope>test</scope>
       </dependency>
       <dependency>
@@ -184,6 +189,19 @@
                <packages>
                   <param>io.konik</param>
                </packages>
+            </configuration>
+         </plugin>
+         <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+               <archive>
+                  <manifest>
+                     <mainClass>fully.qualified.MainClass</mainClass>
+                  </manifest>
+               </archive>
+               <descriptorRefs>
+                  <descriptorRef>jar-with-dependencies</descriptorRef>
+               </descriptorRefs>
             </configuration>
          </plugin>
       </plugins>

@@ -29,6 +29,8 @@ public final class Row {
 
 	private String paymentReference = "";
 
+	private File file = new File();
+
 
 	public Header getHeader() {
 		return header;
@@ -78,6 +80,14 @@ public final class Row {
 		this.paymentReference = paymentReference;
 	}
 
+	public File getFile() {
+		return file;
+	}
+
+	public void setFile(File file) {
+		this.file = file;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -88,23 +98,25 @@ public final class Row {
 				Objects.equal(issuer, row.issuer) &&
 				Objects.equal(items, row.items) &&
 				Objects.equal(comments, row.comments) &&
-				Objects.equal(paymentReference, row.paymentReference);
+				Objects.equal(paymentReference, row.paymentReference) &&
+				Objects.equal(file, row.file);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(header, recipient, issuer, items, comments, paymentReference);
+		return Objects.hashCode(header, recipient, issuer, items, comments, paymentReference, file);
 	}
 
 	@Override
 	public String toString() {
-		return "Row{" +
+		return "Row {" +
 				"header=" + header +
 				", recipient=" + recipient +
 				", issuer=" + issuer +
 				", items=" + items +
 				", comments='" + comments + '\'' +
 				", paymentReference='" + paymentReference + '\'' +
+				", file=" + file +
 				'}';
 	}
 
@@ -562,6 +574,51 @@ public final class Row {
 		@Override
 		public int hashCode() {
 			return Objects.hashCode(bankName, bic, iban);
+		}
+	}
+
+	public static class File {
+		private String input = "";
+		private String output = "";
+
+		public String getInput() {
+			return input;
+		}
+
+		public File setInput(String input) {
+			this.input = input;
+			return this;
+		}
+
+		public String getOutput() {
+			return output;
+		}
+
+		public File setOutput(String output) {
+			this.output = output;
+			return this;
+		}
+
+		@Override
+		public boolean equals(Object o) {
+			if (this == o) return true;
+			if (!(o instanceof File)) return false;
+			File file = (File) o;
+			return Objects.equal(input, file.input) &&
+					Objects.equal(output, file.output);
+		}
+
+		@Override
+		public int hashCode() {
+			return Objects.hashCode(input, output);
+		}
+
+		@Override
+		public String toString() {
+			return "File {" +
+					"input='" + input + '\'' +
+					", output='" + output + '\'' +
+					'}';
 		}
 	}
 }

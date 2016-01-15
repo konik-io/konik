@@ -30,6 +30,9 @@ final class CsvMapperHeaderColumnsConfigurer implements ColumnsConfigurer {
 	private static final ConcurrentMap<Pattern, Function<String, Column.Builder>> config = new ConcurrentHashMap<Pattern, Function<String, Column.Builder>>();
 
 	static {
+		config.put(Pattern.compile("^file\\.input"), defaultColumn());
+		config.put(Pattern.compile("^file\\.output"), defaultColumn());
+
 		config.put(Pattern.compile("^header\\.invoiceNumber$"), defaultColumn());
 		config.put(Pattern.compile("^header\\.type$"), defaultColumn());
 		config.put(Pattern.compile("^header\\.issued$"), typeColumn(Date.class, new DateProcessor()));

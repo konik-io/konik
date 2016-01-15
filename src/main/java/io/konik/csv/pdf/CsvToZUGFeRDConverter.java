@@ -33,24 +33,35 @@ public class CsvToZUGFeRDConverter {
 		Result result = csvInvoicesReader.read(csvFile);
 
 		if (result != null) {
+			log.info("CSV file contains {} rows, {} errors", result.getConvertedRows().size(), result.getRowErrors().size());
+
 			for (final ConvertedRow convertedRow : result.getConvertedRows()) {
 				InputStream input = null;
 				OutputStream output = null;
+
+				log.info("Processing row {}", convertedRow.getRowNumber());
 
 				try {
 					final Row row = convertedRow.getRow();
 
 					if (isInputFilePresent(row)) {
-						String inputFile = row.getFile().getInput();
-						input = new FileInputStream(getFilePath(inputPath, inputFile));
+						log.info("Input file for given row present...");
+
+						String inputFile = getFilePath(inputPath, row.getFile().getInput());
+						input = new FileInputStream(inputFile);
+						log.info("Input file: {}", inputFile);
 
 						String outputName = row.getFile().getOutput();
 						if (!(outputName != null && !outputName.isEmpty())) {
-							outputName = row.getFile().getInput().replaceFirst("/\\.pdf$/", DEFAULT_SUFFIX);
+							outputName = row.getFile().getInput().replaceFirst(".pdf", DEFAULT_SUFFIX);
 						}
-						output = new FileOutputStream(getFilePath(outputPath, outputName));
+						outputName = getFilePath(outputPath, outputName);
+						output = new FileOutputStream(outputName);
+						log.info("Output file: {}", outputName);
 
+						log.info("Starting append invoice process...");
 						pdfHandler.appendInvoice(convertedRow.getInvoice(), input, output);
+						log.info("Invoice appended to the output file");
 					}
 				} catch (IOException e) {
 					log.warn("IOException caught: {}", e.getMessage());
@@ -106,7 +117,6 @@ public class CsvToZUGFeRDConverter {
 	public static void main(String[] args) {
 		String inputPath = System.getProperty("inputPath");
 		String outputPath = System.getProperty("outputPath");
-
 		String csvFileName = args[0];
 
 		File csvFile = new File(csvFileName);
@@ -114,6 +124,12 @@ public class CsvToZUGFeRDConverter {
 		if (!csvFile.exists()) {
 			throw new IllegalArgumentException(String.format("Csv file with name %s does not exist", csvFileName));
 		}
+
+		log.info("----------------------------------------------------------");
+		log.info("CSV file:\t\t{}", csvFile.getAbsolutePath());
+		log.info("Input path:\t{}", inputPath);
+		log.info("Output path:\t{}", outputPath);
+		log.info("----------------------------------------------------------");
 
 		CsvToZUGFeRDConverter converter = new CsvToZUGFeRDConverter();
 		converter.convert(csvFile, inputPath, outputPath);

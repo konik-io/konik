@@ -93,18 +93,6 @@
          <scope>test</scope>
       </dependency>
       <dependency>
-         <groupId>commons-io</groupId>
-         <artifactId>commons-io</artifactId>
-         <version>2.4</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <groupId>io.konik</groupId>
-         <artifactId>pdfconverter</artifactId>
-         <version>1.0.20</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
          <groupId>org.unitils</groupId>
          <artifactId>unitils-core</artifactId>
          <version>3.4.2</version>
@@ -189,19 +177,6 @@
                <packages>
                   <param>io.konik</param>
                </packages>
-            </configuration>
-         </plugin>
-         <plugin>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <configuration>
-               <archive>
-                  <manifest>
-                     <mainClass>fully.qualified.MainClass</mainClass>
-                  </manifest>
-               </archive>
-               <descriptorRefs>
-                  <descriptorRef>jar-with-dependencies</descriptorRef>
-               </descriptorRefs>
             </configuration>
          </plugin>
       </plugins>

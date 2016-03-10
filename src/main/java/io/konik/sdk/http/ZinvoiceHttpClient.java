@@ -101,7 +101,8 @@ public class ZinvoiceHttpClient {
 	 *
 	 * @param endpoint
 	 * @param files map where key is field name and value is a content of uploading file
-	 * @return
+	 * @param responseTypeClass 
+	 * @return 
 	 */
 	public <T> T upload(String endpoint, Map<String, InputStream> files, Class<T> responseTypeClass) {
 		try {
@@ -141,6 +142,8 @@ public class ZinvoiceHttpClient {
 	 * Runs POST request.
 	 *
 	 * @param endpoint
+	 * @param body 
+	 * @param contentType 
 	 * @param responseTypeClass
 	 * @return
 	 */
@@ -170,6 +173,8 @@ public class ZinvoiceHttpClient {
 	 * Runs PUT request.
 	 *
 	 * @param endpoint
+	 * @param body 
+	 * @param contentType 
 	 * @param responseTypeClass
 	 * @return
 	 */

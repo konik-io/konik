@@ -1,5 +1,6 @@
 package io.konik.sdk.invoice;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.LowLevelHttpRequest;
 import com.google.api.client.http.LowLevelHttpResponse;
@@ -12,7 +13,6 @@ import io.konik.sdk.ZinvoiceApiConfig;
 import io.konik.sdk.http.BadRequestException;
 import io.konik.sdk.http.ZinvoiceHttpClient;
 import io.konik.zugferd.Invoice;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.unitils.thirdparty.org.apache.commons.io.IOUtils;
 
@@ -132,7 +132,7 @@ public class RestInvoiceApiTest {
 	}
 
 	@Test
-	@Ignore("mvm clean test issue")
+	//@Ignore("mvm clean test issue")
 	public void shouldUseInvoiceTransformerToGenerateZugferdXmlInvoiceRepresentationDuringCreateRequest() throws IOException {
 		//given:
 		ZinvoiceHttpClient zinvoiceHttpClient = mock(ZinvoiceHttpClient.class);
@@ -150,6 +150,31 @@ public class RestInvoiceApiTest {
 
 		//then:
 		verify(invoiceTransformer).fromModel(invoice);
-		verify(zinvoiceHttpClient.post("/invoice", mockXml, "application/xml", InvoiceResponse.class));
+		verify(zinvoiceHttpClient.post("/invoice", mockXml, "application/xml", InvoiceResponse.class)).getInvoiceId();
+	}
+
+	@Test
+	public void shouldCallRemoteZInvoiceServiceToUpdateInvoiceStatus() {
+		//given:
+		ZinvoiceApiConfig apiConfig = new ZinvoiceApiConfig();
+		ObjectMapper objectMapper = new ObjectMapper();
+		MockHttpTransport httpTransport = new MockHttpTransport.Builder()
+				.setLowLevelHttpRequest(
+						new MockLowLevelHttpRequest("/invoice/123/status")
+								.setResponse(new MockLowLevelHttpResponse().setContent("{\"invoiceId\": \"123\", \"status\": \"BOOKED\"}"))
+				)
+				.build();
+		HttpRequestFactory requestFactory = httpTransport.createRequestFactory();
+		ZinvoiceHttpClient httpClient = new ZinvoiceHttpClient(apiConfig, requestFactory, objectMapper);
+		InvoiceApi invoiceApi = new RestInvoiceApi(httpClient, new InvoiceTransformer());
+
+
+		//when:
+		StatusResponse statusResponse = invoiceApi.updateStatus("123", Status.BOOKED);
+
+		//then:
+		assertThat(statusResponse.getInvoiceId()).isEqualTo("123");
+		assertThat(statusResponse.getStatus()).isEqualTo(Status.BOOKED);
+
 	}
 }

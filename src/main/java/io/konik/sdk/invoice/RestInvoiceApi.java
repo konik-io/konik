@@ -6,13 +6,17 @@ import io.konik.InvoiceTransformer;
 import io.konik.sdk.http.InsufficientCreditsAmountException;
 import io.konik.sdk.http.ZinvoiceHttpClient;
 import io.konik.zugferd.Invoice;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.Map;
 
 
-public class RestInvoiceApi implements InvoiceApi{
+public class RestInvoiceApi implements InvoiceApi {
+
+	private static final Logger log = LoggerFactory.getLogger(RestInvoiceApi.class);
 
 	private final ZinvoiceHttpClient httpClient;
 
@@ -110,5 +114,24 @@ public class RestInvoiceApi implements InvoiceApi{
 		Map<String, InputStream> files = Maps.newHashMap();
 		files.put("pdf", pdf);
 		return httpClient.upload("/invoice/pdf", files, InvoiceResponse.class);
+	}
+
+	@Override
+	public StatusResponse updateStatus(String invoiceId, Status status) {
+		try {
+			String json = String.format("{\"status\": \"%s\"}", status.toString());
+			String url = String.format("/invoice/%s/status", invoiceId);
+
+			log.debug("Updating status of the invoice with id {}: {}", invoiceId, json);
+
+			StatusResponse response = httpClient.post(url, json.getBytes("UTF-8"), "application/json", StatusResponse.class);
+
+			log.debug("Change status response = {}", response);
+
+			return response;
+		} catch (Exception e) {
+			log.warn("Caught exception {}: {}", e.getClass().getSimpleName(), e.getMessage());
+			throw new RuntimeException(e);
+		}
 	}
 }

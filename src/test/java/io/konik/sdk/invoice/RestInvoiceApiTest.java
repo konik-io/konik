@@ -17,6 +17,7 @@ import io.konik.zugferd.Invoice;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.mockito.Mockito;
 import org.unitils.thirdparty.org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -152,15 +153,15 @@ public class RestInvoiceApiTest {
 		invoiceApi.createInvoice(invoice);
 
 		//then:
-		verify(invoiceTransformer).fromModel(invoice);
-		verify(zinvoiceHttpClient.post("/invoice", mockXml, "application/xml", InvoiceResponse.class)).getInvoiceId();
+		verify(invoiceTransformer, times(1)).fromModel(invoice);
+		verify(zinvoiceHttpClient, times(1)).post(Mockito.eq("/invoice"), Mockito.<byte[]>anyObject(), Mockito.eq("application/xml"), Mockito.eq(InvoiceResponse.class));
 	}
 
 	@Test
 	@Ignore("Ticket created")
 	public void shouldCallRemoteZInvoiceServiceToUpdateInvoiceStatus() {
 		//given:
-		ZinvoiceApiConfig apiConfig = new ZinvoiceApiConfig();
+		ZinvoiceApiConfig apiConfig = new ZinvoiceApiConfig(UUID.randomUUID().toString(), "http://localhost:8080");
 		ObjectMapper objectMapper = new ObjectMapper();
 		MockHttpTransport httpTransport = new MockHttpTransport.Builder()
 				.setLowLevelHttpRequest(

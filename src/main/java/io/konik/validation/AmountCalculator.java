@@ -17,197 +17,264 @@
  */
 package io.konik.validation;
 
+import com.google.common.base.Function;
 import com.neovisionaries.i18n.CurrencyCode;
+import io.konik.util.Amounts;
+import io.konik.util.Items;
+import io.konik.util.MonetarySummations;
 import io.konik.zugferd.Invoice;
-import io.konik.zugferd.entity.AllowanceCharge;
-import io.konik.zugferd.entity.GrossPrice;
+import io.konik.zugferd.entity.AppliedTax;
+import io.konik.zugferd.entity.LogisticsServiceCharge;
+import io.konik.zugferd.entity.SpecifiedAllowanceCharge;
+import io.konik.zugferd.entity.Tax;
 import io.konik.zugferd.entity.trade.MonetarySummation;
+import io.konik.zugferd.entity.trade.Settlement;
 import io.konik.zugferd.entity.trade.item.Item;
 import io.konik.zugferd.entity.trade.item.ItemTax;
-import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
 import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.Quantity;
 
+import javax.annotation.Nullable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
-
-import static java.math.RoundingMode.HALF_UP;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 /**
- *  Calculate the missing amounts of the invoice.
+ * Calculate the missing amounts of the invoice.
  */
-public class AmountCalculator {
+public final class AmountCalculator {
 
-   private Invoice doc;
-   private CurrencyCode defaultCurrency;
-   
-   AmountCalculator (Invoice doc){
-      this.doc = doc;
-      this.defaultCurrency = doc.getTrade().getSettlement().getMonetarySummation().getGrandTotal().getCurrency();
-   }
-   
-   public BigDecimal total(Invoice doc) {
-      return null;
-   }
+	public static MonetarySummation calculateMonetarySummation(final Invoice invoice) {
+		assertNotNull(invoice);
 
- 
-   public MonetarySummation monetarySummation() {
-      MonetarySummation monetarySummation = new MonetarySummation();
-      
-      BigDecimal total = BigDecimal.ZERO;
-      BigDecimal allowanceTotal = BigDecimal.ZERO;
-      
-      List<Item> items = doc.getTrade().getItems();
-      for (Item item : items) {
-         SpecifiedMonetarySummation lineMonetarySummation = lineMonetarySummation(item);
-         total = total.add(lineMonetarySummation.getLineTotal().getValue());
-         allowanceTotal = allowanceTotal.add(lineMonetarySummation.getTotalAllowanceCharge().getValue());         
-      }
-      monetarySummation.setLineTotal(new Amount(total, defaultCurrency));
-      
-      return monetarySummation;
-   }
-   
-   /**
-    * Line monetary summation.
-    * 
-    * The line total amount is the net amount, including any additions and deductions without specifying the value-added tax.
-    *
-    * @param item the item
-    * @return the specified monetary summation
-    */
-   public SpecifiedMonetarySummation lineMonetarySummation(Item item) {
-      SpecifiedMonetarySummation monetarySummation = new SpecifiedMonetarySummation();
-      CurrencyCode currency = getCurrency(item);
-      
-      monetarySummation.setLineTotal(new Amount(lineTotalAmount(item),currency));
+		CurrencyCode currency = getCurrency(invoice);
+		List<Item> items = Items.purchasableItemsOnly(invoice.getTrade().getItems());
+		Settlement settlement = invoice.getTrade().getSettlement();
 
-      BigDecimal lineTotalAllowanceCharge = lineTotalAllowanceCharge(item.getAgreement().getGrossPrice());
-      monetarySummation.setTotalAllowanceCharge(new Amount(lineTotalAllowanceCharge, currency));
-      return monetarySummation;
-   }
+		MonetarySummation monetarySummation = MonetarySummations.newMonetarySummation(currency);
+		monetarySummation.setAllowanceTotal(new InvoiceAllowanceTotalCalculator().apply(settlement));
+		monetarySummation.setChargeTotal(new InvoiceChargeTotalCalculator().apply(settlement));
 
-   private CurrencyCode getCurrency(Item item) {
-      return item.getAgreement().getGrossPrice().getChargeAmount().getCurrency();
-   }
-   
-   public BigDecimal lineTotalAmount(Item item){
-      BigDecimal lineNetTotalAmount = lineNetTotalAmount(item);      
-      BigDecimal lineNetTotalTaxAmount = lineNetTotalTaxAmount(item);
-      return lineNetTotalAmount.add(lineNetTotalTaxAmount);
-   }
-   
-   /**
-    * Line net total tax amount
-    * 
-    * line Net total * VAT[] = TotalLineAmount
-    *
-    * @param item the item
-    * @return the big decimal
-    */
-   public BigDecimal lineNetTotalTaxAmount(Item item){
-      BigDecimal lineNetTotalAmount = lineNetTotalAmount(item);
-      List<ItemTax> tradeTax = item.getSettlement().getTradeTax();
-      for (ItemTax tax : tradeTax) {
-         lineNetTotalAmount = lineNetTotalAmount.multiply(tax.getPercentage().divide(new BigDecimal(100),HALF_UP));
-      }
-      return lineNetTotalAmount;
-   }
-   
-   
-   
-   /**
-    * Calculate line net total amount.
-    * 
-    * net price * billedQuantity = line net total amount
-    *
-    * @param item the item
-    * @return the big decimal
-    */
-   public BigDecimal lineNetTotalAmount(Item item) {
-      BigDecimal lineNetAmount = calcLineNetAmount(item.getAgreement().getGrossPrice());
-      Quantity billed = item.getDelivery().getBilled();
-      BigDecimal lineTotalAmount = lineNetAmount.multiply(billed.getValue());
-      return lineTotalAmount;
-   }
-   
-   /**
-    * Calculate the line net amount.
-    * 
-    *  gross price + surcharges - discounts = net price
-    *
-    * @param grossPrice the gross price
-    * @return the big decimal
-    */
-   public BigDecimal calcLineNetAmount(GrossPrice grossPrice) {
-      BigDecimal grossPriceAmount = grossPrice.getChargeAmount().getValue();
-      BigDecimal lineAllowanceTotalAmount = lineTotalAllowanceCharge(grossPrice);
-      return grossPriceAmount.add(lineAllowanceTotalAmount);
-   }
+		TaxAggregator taxAggregator = new TaxAggregator();
+
+		for (Item item : items) {
+			Amount lineTotal = new ItemLineTotalCalculator().apply(item);
+			ItemTax itemTax = new ItemTaxExtractor().apply(item);
+
+			taxAggregator.add(itemTax, lineTotal != null ? lineTotal.getValue() : BigDecimal.ZERO);
+
+			monetarySummation.setLineTotal(Amounts.add(
+					monetarySummation.getLineTotal(),
+					lineTotal
+			));
+		}
+
+		appendTaxFromInvoiceAllowanceCharge(settlement, taxAggregator);
+
+		appendTaxFromInvoiceServiceCharge(settlement, taxAggregator);
+
+		monetarySummation.setTaxBasisTotal(new Amount(taxAggregator.calculateTaxBasis(), currency));
+		monetarySummation.setTaxTotal(new Amount(taxAggregator.calculateTaxTotal(), currency));
+
+		monetarySummation.setGrandTotal(Amounts.add(
+				monetarySummation.getTaxBasisTotal(),
+				monetarySummation.getTaxTotal()
+		));
+
+		if (settlement.getMonetarySummation() != null && settlement.getMonetarySummation().getTotalPrepaid() != null) {
+			monetarySummation.setTotalPrepaid(
+					settlement.getMonetarySummation().getTotalPrepaid()
+			);
+		}
+
+		monetarySummation.setDuePayable(
+				Amounts.add(monetarySummation.getGrandTotal(), Amounts.negate(monetarySummation.getTotalPrepaid()))
+		);
+
+		return monetarySummation;
+	}
+
+	private static void appendTaxFromInvoiceServiceCharge(Settlement settlement, TaxAggregator taxAggregator) {
+		if (settlement.getServiceCharge() != null) {
+			for (LogisticsServiceCharge charge : settlement.getServiceCharge()) {
+				if (charge.getTradeTax() != null && charge.getAmount() != null) {
+					for (AppliedTax tax : charge.getTradeTax()) {
+						taxAggregator.add(tax, charge.getAmount().getValue());
+					}
+				}
+			}
+		}
+	}
+
+	private static void appendTaxFromInvoiceAllowanceCharge(Settlement settlement, TaxAggregator taxAggregator) {
+		if (settlement.getAllowanceCharge() != null) {
+			for (SpecifiedAllowanceCharge charge : settlement.getAllowanceCharge()) {
+				if (charge.getCategory() != null && charge.getActual() != null) {
+					BigDecimal amount = charge.getActual().getValue();
+					if (charge.isDiscount()) {
+						amount = amount.negate();
+					}
+					taxAggregator.add(charge.getCategory(), amount);
+				}
+			}
+		}
+	}
+
+	public static CurrencyCode getCurrency(final Invoice invoice) {
+		assertNotNull(invoice);
+		return invoice.getTrade().getSettlement().getCurrency();
+	}
 
 
-   private BigDecimal lineTotalAllowanceCharge(GrossPrice grossPrice) {
-      BigDecimal lineNetAmount = BigDecimal.ZERO;
-      for (AllowanceCharge allowanceCharge : grossPrice.getAllowanceCharges()) {
-         if (allowanceCharge.isSurcharge()) {
-            lineNetAmount = lineNetAmount.add(allowanceCharge.getActual().getValue());
-         }else {
-            lineNetAmount = lineNetAmount.subtract(allowanceCharge.getActual().getValue());
-         }
-      }
-      return lineNetAmount;
-   }
-     
-   public BigDecimal lineTotalIncVat(Item item) {
-      
-      //Settlement
-      SpecifiedMonetarySummation monetarySummation = item.getSettlement().getMonetarySummation();
-      List<ItemTax> tradeTax = item.getSettlement().getTradeTax();
+	private static void assertNotNull(final Invoice invoice) {
+		if (invoice == null || invoice.getTrade() == null) {
+			throw new IllegalArgumentException("Invoice and Trade objects cannot be null");
+		}
+	}
 
 
-      
-      //gross price
-      GrossPrice grossPrice = item.getAgreement().getGrossPrice();
-      List<AllowanceCharge> allowanceCharges = grossPrice.getAllowanceCharges();
-      Quantity basisQuantity = grossPrice.getBasis();
-      Amount chargeAmount = grossPrice.getChargeAmount();
-      
-      
-      
-      return null;
-      //1 TB100A4 Trennblätter A4 20 Stk. 9,90 198,00 19%
-   }
+	/**
+	 * Helper class for calculating {@link Item}'s line total.
+	 */
+	static final class ItemLineTotalCalculator implements Function<Item, Amount> {
+
+		@Nullable
+		@Override
+		public Amount apply(@Nullable Item item) {
+			if (item == null || item.getDelivery() == null) {
+				return null;
+			}
+
+			if (item.getAgreement().getNetPrice() == null) {
+				return null;
+			}
+
+			BigDecimal quantity = item.getDelivery().getBilled() != null ? item.getDelivery().getBilled().getValue() : BigDecimal.ZERO;
+			return Amounts.multiply(item.getAgreement().getNetPrice().getChargeAmount(), quantity);
+		}
+	}
+
+	/**
+	 * Helper class for calculating {@link Item}'s tax total.
+	 */
+	static final class ItemTaxTotalCalculator implements Function<Item, Amount> {
+
+		private final Amount lineTotal;
+
+		public ItemTaxTotalCalculator(final Amount lineTotal) {
+			this.lineTotal = lineTotal;
+		}
+
+		@Override
+		public Amount apply(@Nullable Item item) {
+			CurrencyCode currency = lineTotal.getCurrency();
+			Amount taxTotal = Amounts.zero(currency);
+
+			if (item != null && item.getSettlement() != null && item.getSettlement().getTradeTax() != null) {
+				for (ItemTax tax : item.getSettlement().getTradeTax()) {
+					BigDecimal taxRate = tax.getPercentage().divide(BigDecimal.valueOf(100), 2, BigDecimal.ROUND_HALF_UP).setScale(2, RoundingMode.HALF_UP);
+					BigDecimal taxValue = lineTotal.getValue().multiply(taxRate).setScale(2, RoundingMode.HALF_UP);
+
+					taxTotal = Amounts.add(taxTotal, new Amount(taxValue, currency));
+				}
+			}
+			return taxTotal;
+		}
+	}
+
+	public static final class InvoiceAllowanceTotalCalculator implements Function<Settlement, Amount> {
+		@Nullable
+		@Override
+		public Amount apply(@Nullable Settlement settlement) {
+			if (settlement == null || settlement.getAllowanceCharge() == null) {
+				return null;
+			}
+
+			BigDecimal chargeValue = BigDecimal.ZERO;
+
+			for (SpecifiedAllowanceCharge charge : settlement.getAllowanceCharge()) {
+				if (charge.isDiscount()) {
+					chargeValue = chargeValue.add(charge.getActual().getValue());
+				}
+			}
+			return new Amount(chargeValue, settlement.getCurrency());
+		}
+	}
+
+	public static final class InvoiceChargeTotalCalculator implements Function<Settlement, Amount> {
+		@Nullable
+		@Override
+		public Amount apply(@Nullable Settlement settlement) {
+			if (settlement == null || settlement.getAllowanceCharge() == null) {
+				return null;
+			}
+
+			BigDecimal chargeValue = BigDecimal.ZERO;
+
+			for (SpecifiedAllowanceCharge charge : settlement.getAllowanceCharge()) {
+				if (charge.isSurcharge()) {
+					chargeValue = chargeValue.add(charge.getActual().getValue());
+				}
+			}
+
+			for (LogisticsServiceCharge charge : settlement.getServiceCharge()) {
+				chargeValue = chargeValue.add(charge.getAmount().getValue());
+			}
+
+			return new Amount(chargeValue, settlement.getCurrency());
+		}
+	}
+
+	public static final class ItemTaxExtractor implements Function<Item, ItemTax> {
+		@Nullable
+		@Override
+		public ItemTax apply(@Nullable Item item) {
+			if (item == null || item.getSettlement() == null) {
+				return null;
+			}
+
+			if (item.getSettlement().getTradeTax().isEmpty()) {
+				return null;
+			}
+
+			return item.getSettlement().getTradeTax().get(0);
+		}
+	}
+
+	/**
+	 * Helper class for aggregating tax information and calculating
+	 * tax basis and tax total values.
+	 */
+	static final class TaxAggregator {
+
+		private static final int PRECISION = 2;
+		private static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
+
+		private final ConcurrentMap<BigDecimal, BigDecimal> map = new ConcurrentHashMap<BigDecimal, BigDecimal>();
+
+		public void add(Tax tax, BigDecimal amount) {
+			BigDecimal key = tax.getPercentage().setScale(PRECISION, ROUNDING_MODE);
+			map.putIfAbsent(key, BigDecimal.ZERO);
+			map.put(key, map.get(key).add(amount));
+		}
+
+		public BigDecimal calculateTaxBasis() {
+			BigDecimal taxBasis = BigDecimal.ZERO;
+			for (BigDecimal amount : map.values()) {
+				taxBasis = taxBasis.add(amount);
+			}
+			return taxBasis;
+		}
+
+		public BigDecimal calculateTaxTotal() {
+			BigDecimal taxTotal = BigDecimal.ZERO;
+			for (Map.Entry<BigDecimal, BigDecimal> entry : map.entrySet()) {
+				BigDecimal taxAmount = entry.getValue().multiply(entry.getKey().divide(BigDecimal.valueOf(100), PRECISION, ROUNDING_MODE)).setScale(PRECISION, ROUNDING_MODE);
+				taxTotal = taxTotal.add(taxAmount);
+			}
+			return taxTotal;
+		}
+	}
 }
-/*
-      <ram:IncludedSupplyChainTradeLineItem>
-         <ram:AssociatedDocumentLineDocument>
-            <ram:LineID>1</ram:LineID>
-         </ram:AssociatedDocumentLineDocument>
-         <ram:SpecifiedSupplyChainTradeAgreement>
-            <ram:GrossPriceProductTradePrice>
-               <ram:ChargeAmount currencyID="EUR">9.9000</ram:ChargeAmount>
-            </ram:GrossPriceProductTradePrice>
-            <ram:NetPriceProductTradePrice>
-               <ram:ChargeAmount currencyID="EUR">9.9000</ram:ChargeAmount>
-            </ram:NetPriceProductTradePrice>
-         </ram:SpecifiedSupplyChainTradeAgreement>
-         <ram:SpecifiedSupplyChainTradeDelivery>
-            <ram:BilledQuantity unitCode="C62">20.0000</ram:BilledQuantity>
-         </ram:SpecifiedSupplyChainTradeDelivery>
-         <ram:SpecifiedSupplyChainTradeSettlement>
-            <ram:ApplicableTradeTax>
-               <ram:TypeCode>VAT</ram:TypeCode>
-               <ram:CategoryCode>S</ram:CategoryCode>
-               <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
-            </ram:ApplicableTradeTax>
-            <ram:SpecifiedTradeSettlementMonetarySummation>
-               <ram:LineTotalAmount currencyID="EUR">198.00</ram:LineTotalAmount>
-            </ram:SpecifiedTradeSettlementMonetarySummation>
-         </ram:SpecifiedSupplyChainTradeSettlement>
-         <ram:SpecifiedTradeProduct>
-            <ram:GlobalID schemeID="0160">4012345001235</ram:GlobalID>
-            <ram:SellerAssignedID>TB100A4</ram:SellerAssignedID>
-            <ram:Name>Trennblätter A4</ram:Name>
-         </ram:SpecifiedTradeProduct>
-      </ram:IncludedSupplyChainTradeLineItem>
-*/

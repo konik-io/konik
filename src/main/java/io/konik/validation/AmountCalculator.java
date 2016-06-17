@@ -23,14 +23,10 @@ import io.konik.util.Amounts;
 import io.konik.util.Items;
 import io.konik.util.MonetarySummations;
 import io.konik.zugferd.Invoice;
-import io.konik.zugferd.entity.AppliedTax;
-import io.konik.zugferd.entity.LogisticsServiceCharge;
-import io.konik.zugferd.entity.SpecifiedAllowanceCharge;
-import io.konik.zugferd.entity.Tax;
+import io.konik.zugferd.entity.*;
 import io.konik.zugferd.entity.trade.MonetarySummation;
 import io.konik.zugferd.entity.trade.Settlement;
-import io.konik.zugferd.entity.trade.item.Item;
-import io.konik.zugferd.entity.trade.item.ItemTax;
+import io.konik.zugferd.entity.trade.item.*;
 import io.konik.zugferd.unqualified.Amount;
 
 import javax.annotation.Nullable;
@@ -46,6 +42,13 @@ import java.util.concurrent.ConcurrentMap;
  */
 public final class AmountCalculator {
 
+	/**
+	 * Calculates {@link MonetarySummation} for given {@link Invoice} basing on line {@link Item}s
+	 * and global {@link io.konik.zugferd.entity.AllowanceCharge} and {@link LogisticsServiceCharge}
+	 *
+	 * @param invoice
+	 * @return
+	 */
 	public static MonetarySummation calculateMonetarySummation(final Invoice invoice) {
 		assertNotNull(invoice);
 
@@ -96,6 +99,21 @@ public final class AmountCalculator {
 		return monetarySummation;
 	}
 
+	/**
+	 * Calculates {@link SpecifiedMonetarySummation} for given {@link Item}
+	 *
+	 * @param item
+	 * @return
+	 */
+	public static SpecifiedMonetarySummation calculateSpecifiedMonetarySummation(final Item item) {
+		CurrencyCode currencyCode = getCurrency(item);
+
+		SpecifiedMonetarySummation monetarySummation = MonetarySummations.newSpecifiedMonetarySummation(currencyCode);
+		monetarySummation.setLineTotal(new ItemLineTotalCalculator().apply(item));
+		monetarySummation.setTotalAllowanceCharge(new ItemTotalAllowanceChargeCalculator(currencyCode).apply(item));
+		return monetarySummation;
+	}
+
 	private static void appendTaxFromInvoiceServiceCharge(Settlement settlement, TaxAggregator taxAggregator) {
 		if (settlement.getServiceCharge() != null) {
 			for (LogisticsServiceCharge charge : settlement.getServiceCharge()) {
@@ -127,10 +145,41 @@ public final class AmountCalculator {
 		return invoice.getTrade().getSettlement().getCurrency();
 	}
 
+	/**
+	 * Extracts {@link CurrencyCode} from {@link Item} object.
+	 * @param item
+	 * @return
+	 */
+	public static CurrencyCode getCurrency(final Item item) {
+		assertNotNull(item);
+
+		SpecifiedAgreement agreement = item.getAgreement();
+		if (agreement != null && agreement.getGrossPrice() != null && agreement.getGrossPrice().getChargeAmount() != null) {
+			return agreement.getGrossPrice().getChargeAmount().getCurrency();
+		}
+
+		if (agreement != null && agreement.getNetPrice() != null && agreement.getNetPrice().getChargeAmount() != null) {
+			return agreement.getNetPrice().getChargeAmount().getCurrency();
+		}
+
+		SpecifiedSettlement settlement = item.getSettlement();
+		if (settlement != null && settlement.getMonetarySummation() != null && settlement.getMonetarySummation().getLineTotal() != null) {
+			return settlement.getMonetarySummation().getLineTotal().getCurrency();
+		}
+
+		return null;
+	}
+
 
 	private static void assertNotNull(final Invoice invoice) {
 		if (invoice == null || invoice.getTrade() == null) {
 			throw new IllegalArgumentException("Invoice and Trade objects cannot be null");
+		}
+	}
+
+	private static void assertNotNull(final Item item) {
+		if (item == null) {
+			throw new IllegalArgumentException("Item cannot be null");
 		}
 	}
 
@@ -181,6 +230,35 @@ public final class AmountCalculator {
 				}
 			}
 			return taxTotal;
+		}
+	}
+
+	/**
+	 * Calculates total {@link io.konik.zugferd.entity.AllowanceCharge} for given {@link Item}.
+	 */
+	public static final class ItemTotalAllowanceChargeCalculator implements Function<Item, Amount> {
+
+		private final CurrencyCode currencyCode;
+
+		public ItemTotalAllowanceChargeCalculator(CurrencyCode currencyCode) {
+			this.currencyCode = currencyCode;
+		}
+
+		@Override
+		public Amount apply(@Nullable Item item) {
+			Amount totalAllowanceCharge = Amounts.zero(currencyCode);
+
+			if (item != null && item.getAgreement() != null && item.getAgreement().getGrossPrice() != null) {
+				GrossPrice grossPrice = item.getAgreement().getGrossPrice();
+
+				if (grossPrice.getAllowanceCharges() != null) {
+					for (AllowanceCharge charge : grossPrice.getAllowanceCharges()) {
+						totalAllowanceCharge = Amounts.add(totalAllowanceCharge, charge.getActual());
+					}
+				}
+			}
+
+			return Amounts.setPrecision(totalAllowanceCharge, 2, RoundingMode.HALF_UP);
 		}
 	}
 

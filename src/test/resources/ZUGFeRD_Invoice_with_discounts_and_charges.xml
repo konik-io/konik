@@ -5,7 +5,7 @@
         </ram:TestIndicator>
         <!-- Im Echtbetrieb muss der TestIndicator entweder vollständig entfallen oder auf false stehen. -->
         <ram:GuidelineSpecifiedDocumentContextParameter>
-            <ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:comfort</ram:ID>
+            <ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:extended</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>
     </rsm:SpecifiedExchangedDocumentContext>
     <rsm:HeaderExchangedDocument>
@@ -211,6 +211,7 @@
                 </ram:ApplicableTradeTax>
                 <ram:SpecifiedTradeSettlementMonetarySummation>
                     <ram:LineTotalAmount currencyID="EUR">10.00</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="EUR">0.67</ram:TotalAllowanceChargeAmount>
                 </ram:SpecifiedTradeSettlementMonetarySummation>
             </ram:SpecifiedSupplyChainTradeSettlement>
             <ram:SpecifiedTradeProduct>
@@ -246,6 +247,7 @@
                 </ram:ApplicableTradeTax>
                 <ram:SpecifiedTradeSettlementMonetarySummation>
                     <ram:LineTotalAmount currencyID="EUR">27.50</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="EUR">0.00</ram:TotalAllowanceChargeAmount>
                 </ram:SpecifiedTradeSettlementMonetarySummation>
             </ram:SpecifiedSupplyChainTradeSettlement>
             <ram:SpecifiedTradeProduct>
@@ -281,6 +283,7 @@
                 </ram:ApplicableTradeTax>
                 <ram:SpecifiedTradeSettlementMonetarySummation>
                     <ram:LineTotalAmount currencyID="EUR">109.80</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="EUR">0.00</ram:TotalAllowanceChargeAmount>
                 </ram:SpecifiedTradeSettlementMonetarySummation>
             </ram:SpecifiedSupplyChainTradeSettlement>
             <ram:SpecifiedTradeProduct>
@@ -320,6 +323,7 @@
                 </ram:ApplicableTradeTax>
                 <ram:SpecifiedTradeSettlementMonetarySummation>
                     <ram:LineTotalAmount currencyID="EUR">55.40</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="EUR">0.00</ram:TotalAllowanceChargeAmount>
                 </ram:SpecifiedTradeSettlementMonetarySummation>
             </ram:SpecifiedSupplyChainTradeSettlement>
             <ram:SpecifiedTradeProduct>

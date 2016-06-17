@@ -2,6 +2,7 @@ package io.konik.util;
 
 import com.neovisionaries.i18n.CurrencyCode;
 import io.konik.zugferd.entity.trade.MonetarySummation;
+import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
 import io.konik.zugferd.unqualified.Amount;
 
 /**
@@ -26,6 +27,21 @@ public final class MonetarySummations {
 		monetarySummation.setTaxBasisTotal(zeroAmount);
 		monetarySummation.setTaxTotal(zeroAmount);
 		monetarySummation.setTotalPrepaid(zeroAmount);
+
+		return monetarySummation;
+	}
+
+	/**
+	 * Creates a new {@link SpecifiedMonetarySummation} with 0 (zero) {@link Amount} for every field.
+	 * @param currencyCode
+	 * @return
+	 */
+	public static SpecifiedMonetarySummation newSpecifiedMonetarySummation(final CurrencyCode currencyCode) {
+		Amount zeroAmount = Amounts.zero(currencyCode);
+
+		SpecifiedMonetarySummation monetarySummation = new SpecifiedMonetarySummation();
+		monetarySummation.setLineTotal(zeroAmount);
+		monetarySummation.setTotalAllowanceCharge(zeroAmount);
 
 		return monetarySummation;
 	}

@@ -57,4 +57,8 @@ public final class Amounts {
 	public static Amount negate(Amount amount) {
 		return new Amount(amount.getValue().negate(), amount.getCurrency());
 	}
+
+	public static Amount setPrecision(final Amount amount, int precision, RoundingMode roundingMode) {
+		return new Amount(amount.getValue().setScale(precision, roundingMode), amount.getCurrency());
+	}
 }

@@ -130,6 +130,7 @@
          <version>1.0.0-RC1</version>
          <scope>test</scope>
       </dependency>
+
       <!-- Benchmark dependencies -->
       <dependency>
          <groupId>org.openjdk.jmh</groupId>

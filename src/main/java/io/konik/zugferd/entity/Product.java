@@ -18,6 +18,7 @@
  */
 package io.konik.zugferd.entity;
 
+import com.neovisionaries.i18n.CountryCode;
 import io.konik.jaxb.adapter.CountryAdapter;
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Comfort;
@@ -25,23 +26,21 @@ import io.konik.validator.annotation.Extended;
 import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.unqualified.ID;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import com.neovisionaries.i18n.CountryCode;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * = The Trade Product
  */
 @XmlType(name = "TradeProductType", propOrder = { "globalId", "sellerAssignedId", "buyerAssignedId", "name",
       "description", "characteristics", "classifications", "origins", "containedProducts" })
-public class Product {
+public class Product implements Serializable {
 
    @XmlElement(name = "GlobalID")
    private ID globalId;

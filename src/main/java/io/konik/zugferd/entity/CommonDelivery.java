@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 
 /**
  * = The Common Delivery class.
@@ -34,7 +35,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlTransient
 @XmlType(name = "SupplyChainTradeDeliveryType")
-public abstract class CommonDelivery<R extends ReferencedDocument> {
+public abstract class CommonDelivery<R extends ReferencedDocument> implements Serializable {
 
    @XmlElement(name = "ShipToTradeParty")
    private TradeParty shipTo;

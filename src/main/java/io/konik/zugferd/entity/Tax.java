@@ -21,11 +21,11 @@ import io.konik.validator.annotation.Comfort;
 import io.konik.zugferd.unece.codes.TaxCategory;
 import io.konik.zugferd.unece.codes.TaxCode;
 
-import java.math.BigDecimal;
-
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * = The trade tax
@@ -43,7 +43,7 @@ as AppliedTradeTax|CategoryTradeTax       TypeCode, CategoryCode, ApplicablePerc
    as ApplicableTradeTax in ITEM             +CalculatedAmount, +ExemptionReason
       as ApplicableTradeTax in TRADE            +BasisAmount, +LineTotalBasisAmount, +AllowanceChargeBasisAmount
  */
-public interface Tax {
+public interface Tax extends Serializable {
    /**
     * Gets the UNCL 5153 tax type code.
     * 

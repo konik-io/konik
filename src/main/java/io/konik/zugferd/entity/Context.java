@@ -29,6 +29,7 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 
 /**
  * = The Exchanged Document Context
@@ -36,7 +37,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * Grouping of the properties of the message.
  */
 @XmlType(name = "ExchangedDocumentContextType", propOrder = { "test", "businessProcess", "guideline" })
-public class Context {
+public class Context implements Serializable {
 
    @XmlElement(name = "TestIndicator")
    private Indicator test;

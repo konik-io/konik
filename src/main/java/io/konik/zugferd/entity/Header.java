@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +46,7 @@ import static java.util.Collections.addAll;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "HeaderExchangedDocument", propOrder = { "invoiceNumber", "name", "code", "issued", "copy",
       "languages", "notes", "contractualDueDate" })
-public class Header {
+public class Header implements Serializable {
 
    @XmlElement(name = "ID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

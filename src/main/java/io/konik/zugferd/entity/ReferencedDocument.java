@@ -21,12 +21,12 @@ import io.konik.jaxb.adapter.IssueDateTimeAdapter;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.NotBlank;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * = The Referenced Document
@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * References a external Document.
  */
 @XmlType(name = "ReferencedDocumentType", propOrder = { "issued", "linePos", "typeCode", "id", "referenceType" })
-public class ReferencedDocument {
+public class ReferencedDocument implements Serializable {
 
    @XmlElement(name = "IssueDateTime")
    @XmlJavaTypeAdapter(value = IssueDateTimeAdapter.class)

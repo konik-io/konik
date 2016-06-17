@@ -17,14 +17,14 @@
  */
 package io.konik.zugferd.entity;
 
+import com.neovisionaries.i18n.CountryCode;
 import io.konik.validator.annotation.Basic;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import com.neovisionaries.i18n.CountryCode;
+import java.io.Serializable;
 
 /**
  * = The Address
@@ -32,7 +32,7 @@ import com.neovisionaries.i18n.CountryCode;
  * The postal address of an entity.
  */
 @XmlType(name = "TradeAddressType", propOrder = { "postcode", "lineOne", "lineTwo", "city", "country" })
-public class Address {
+public class Address implements Serializable {
 
    @XmlElement(name = "PostcodeCode")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

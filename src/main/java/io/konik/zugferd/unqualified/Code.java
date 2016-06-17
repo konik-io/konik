@@ -26,12 +26,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 
 /**
  * = The classification code
  */
 @XmlType(name = "CodeType", propOrder = { "value" })
-public class Code {
+public class Code implements Serializable {
 
    @XmlValue
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

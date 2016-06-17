@@ -21,6 +21,7 @@ import io.konik.zugferd.unqualified.Amount;
 
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 
 /**
  * 
@@ -28,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlTransient
 @XmlType(name = "TradeSettlementMonetarySummationType", propOrder = { "lineTotal" })
-public interface CommonMonetarySummation {
+public interface CommonMonetarySummation extends Serializable {
 
    /**
     * Gets total amount of the line position/s 

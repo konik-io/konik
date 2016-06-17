@@ -20,10 +20,10 @@ package io.konik.zugferd.entity;
 import io.konik.zugferd.entity.trade.Agreement;
 import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * = The Agreement
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlTransient
 @XmlType(name = "SupplyChainTradeAgreementType")
-public interface CommonAgreement<R extends ReferencedDocument, A extends ReferencedDocument> {
+public interface CommonAgreement<R extends ReferencedDocument, A extends ReferencedDocument> extends Serializable {
    /**
     * Gets the buyer order referenced document.
     *

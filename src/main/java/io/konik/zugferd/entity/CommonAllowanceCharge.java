@@ -20,6 +20,7 @@ package io.konik.zugferd.entity;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Quantity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -27,7 +28,7 @@ import java.math.BigDecimal;
  * The common interface for the Allowance Charges.
  * 
  */
-public interface CommonAllowanceCharge {
+public interface CommonAllowanceCharge extends Serializable {
 
    /**
     * Checks if is a surcharge.

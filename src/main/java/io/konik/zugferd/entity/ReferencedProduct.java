@@ -23,14 +23,14 @@ import io.konik.validator.annotation.NotEmpty;
 import io.konik.zugferd.unqualified.ID;
 import io.konik.zugferd.unqualified.Quantity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * = The Referenced Product which is a included or part of another product.
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @Extended
 @XmlType(name = "ReferencedProductType", propOrder = { "globalIds", "sellerAssignedId", "buyerAssignedId", "names",
       "descriptions", "units" })
-public class ReferencedProduct {
+public class ReferencedProduct implements Serializable {
 
    
    @XmlElement(name = "GlobalID")

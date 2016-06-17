@@ -20,13 +20,14 @@ package io.konik.zugferd.unqualified;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 
 /**
  * 
  * = The Indicator.
  */
 @XmlType(name = "IndicatorType", propOrder = { "indicator" })
-public class Indicator {
+public class Indicator implements Serializable {
 
    @XmlElement(name = "Indicator", required = true)
    private boolean indicator;

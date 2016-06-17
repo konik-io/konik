@@ -19,17 +19,17 @@ package io.konik.zugferd.entity;
 
 import io.konik.validator.annotation.Comfort;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * = The item position Document
  */
 @XmlType(name = "DocumentLineDocumentType", propOrder = { "position", "notes" })
-public class PositionDocument {
+public class PositionDocument implements Serializable {
 
     @XmlElement(name = "LineID")
     private String position;

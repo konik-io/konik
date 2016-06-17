@@ -22,18 +22,18 @@ import io.konik.validator.annotation.NotBlank;
 import io.konik.validator.annotation.NotEmpty;
 import io.konik.zugferd.unqualified.Measure;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Class ProductCharacteristic.
  */
 @XmlType(name = "ProductCharacteristicType", propOrder = { "typeCode", "description", "measurand", "value" })
-public class ProductCharacteristic {
+public class ProductCharacteristic implements Serializable {
 
    @XmlElement(name = "TypeCode")
    private String typeCode;

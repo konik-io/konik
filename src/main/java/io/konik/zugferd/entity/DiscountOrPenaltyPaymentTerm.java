@@ -24,19 +24,19 @@ import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Measure;
 import io.konik.zugferd.unqualified.ZfDate;
 
-import java.math.BigDecimal;
-
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * = The payment penalty or discount terms and conditions of a trade
  */
 @Extended
 @XmlTransient
-abstract class DiscountOrPenaltyTerm {
+abstract class DiscountOrPenaltyTerm implements Serializable {
 
    @XmlElement(name = "BasisDateTime")
    private ZfDate reference;

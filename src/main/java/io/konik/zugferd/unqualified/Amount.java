@@ -24,6 +24,7 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -32,7 +33,7 @@ import java.math.BigDecimal;
  * A number of monetary units specified by a currency where the currency is explicit or implied.
  */
 @XmlType(name = "AmountType", propOrder = { "value" })
-public class Amount{
+public class Amount implements Serializable {
 
    @NotNull
    @XmlValue

@@ -17,11 +17,13 @@
  */
 package io.konik.zugferd.profile;
 
+import java.io.Serializable;
+
 /**
  * 
  * The ZUGFeRD Profile consists of three parts. The namespace the version and the conformance level.
  */
-public class Profile {
+public class Profile implements Serializable {
    private static final String DELIMITER = ":";
    private static final String NS = "urn:ferd:CrossIndustryDocument:invoice:";
    

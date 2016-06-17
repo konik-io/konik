@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -39,7 +40,7 @@ import java.util.List;
  * Applies to a buyer, seller, order recipient or invoice recipient.
  */
 @XmlType(name = "TradePartyType", propOrder = { "id", "globalIds", "name", "contact", "address", "taxRegistrations" })
-public class TradeParty {
+public class TradeParty implements Serializable {
 
    @XmlElement(name = "ID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

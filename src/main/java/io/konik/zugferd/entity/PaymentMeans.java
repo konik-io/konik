@@ -19,16 +19,15 @@ package io.konik.zugferd.entity;
 
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Comfort;
-import io.konik.validator.annotation.ValidId;
 import io.konik.zugferd.unece.codes.PaymentMeansCode;
 import io.konik.zugferd.unqualified.ExtendedID;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * = The Payment Means
@@ -37,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "TradeSettlementPaymentMeansType", propOrder = { "code", "informations", "mandateReference",
       "payerAccount", "payeeAccount", "payerInstitution", "payeeInstitution" })
-public class PaymentMeans {
+public class PaymentMeans implements Serializable {
 
    @XmlElement(name = "TypeCode")
    private PaymentMeansCode code;

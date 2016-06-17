@@ -22,13 +22,14 @@ import io.konik.zugferd.unqualified.ZfDate;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 
 /**
  * = The period of time
  * 
  */
 @XmlType(name = "SpecifiedPeriodType", propOrder = { "start", "end" })
-public class Period {
+public class Period implements Serializable {
 
    @XmlElement(name = "StartDateTime")
    private ZfDate start;

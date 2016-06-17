@@ -18,7 +18,6 @@
  */
 package io.konik.zugferd.entity;
 
-import static io.konik.util.Strings.isNotEmpty;
 import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.unece.codes.Reference;
 import io.konik.zugferd.unqualified.ID;
@@ -26,6 +25,9 @@ import io.konik.zugferd.unqualified.ID;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
+
+import static io.konik.util.Strings.isNotEmpty;
 
 /**
  * = The Tax Registration
@@ -35,7 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  * The {@link ID#getSchemeId()} is the Tax payer's number or VAT number according to (UNCL 1153) eg. FC or VA
  */
 @XmlType(name = "TaxRegistrationType", propOrder = { "id" })
-public class TaxRegistration {
+public class TaxRegistration implements Serializable {
 
    @XmlElement(name = "ID")
    private ID id;

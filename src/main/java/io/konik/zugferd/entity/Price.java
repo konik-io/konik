@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -38,7 +39,7 @@ import java.util.List;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TradePriceType", propOrder = { "chargeAmount", "basis", "allowanceCharges" })
-public class Price {
+public class Price implements Serializable {
 
    @XmlElement(name = "ChargeAmount")
    @XmlJavaTypeAdapter(value = FourDigitRoundingAdapter.class)

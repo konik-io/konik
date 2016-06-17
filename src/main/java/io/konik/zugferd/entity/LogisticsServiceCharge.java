@@ -21,12 +21,12 @@ import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.NotBlank;
 import io.konik.zugferd.unqualified.Amount;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * = The Logistics Service Charge
@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @Comfort
 @XmlType(name = "LogisticsServiceChargeType", propOrder = { "description", "amount", "tradeTax" })
-public class LogisticsServiceCharge {
+public class LogisticsServiceCharge implements Serializable {
 
    @XmlElement(name = "Description")
    private String description;

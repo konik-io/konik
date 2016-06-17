@@ -20,12 +20,14 @@ package io.konik.zugferd.entity;
 
 import io.konik.validator.annotation.ValidFinancialAccount;
 
+import java.io.Serializable;
+
 
 /**
  * = The Financial Account.
  */
 @ValidFinancialAccount
-public interface FinancialAccount {
+public interface FinancialAccount extends Serializable {
 
    /**
     * Gets the iban.

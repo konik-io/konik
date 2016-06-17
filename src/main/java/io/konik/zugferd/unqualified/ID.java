@@ -25,12 +25,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 
 /**
  * = The Identifier.
  */
 @XmlType(name = "IDType", propOrder = { "value" })
-public class ID {
+public class ID implements Serializable {
 
    @XmlValue
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

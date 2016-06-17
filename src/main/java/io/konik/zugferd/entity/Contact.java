@@ -25,6 +25,7 @@ import io.konik.validator.annotation.ValidContact;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 
 /**
  * = The Trade Contact
@@ -33,7 +34,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlType(name = "TradeContactType", propOrder = { "name", "department", "telephone", "fax", "email" })
 @ValidContact
-public class Contact {
+public class Contact implements Serializable {
 
    @XmlElement(name = "PersonName")
    private String name;

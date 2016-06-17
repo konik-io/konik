@@ -26,6 +26,7 @@ import io.konik.zugferd.profile.ConformanceLevel;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.*;
+import java.io.Serializable;
 
 /**
  * = The Root of the ZUGFeRD Document Model.
@@ -33,7 +34,7 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name = "CrossIndustryDocument")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = { "context", "header", "trade" })
-public class Invoice {
+public class Invoice implements Serializable {
 
    @XmlElement(name = "SpecifiedExchangedDocumentContext", required = true)
    private Context context;

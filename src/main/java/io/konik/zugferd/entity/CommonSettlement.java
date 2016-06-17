@@ -17,10 +17,10 @@
  */
 package io.konik.zugferd.entity;
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * = The Trade Settlement
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlTransient
 @XmlType(name = "SupplyChainTradeSettlementType")
-public interface CommonSettlement<T extends Tax, M extends CommonMonetarySummation> {
+public interface CommonSettlement<T extends Tax, M extends CommonMonetarySummation> extends Serializable {
 
    /**
     * Gets the billing specified period.

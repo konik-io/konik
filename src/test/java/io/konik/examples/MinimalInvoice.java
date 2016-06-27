@@ -25,8 +25,8 @@ import io.konik.validation.InvoiceValidator;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.*;
 import io.konik.zugferd.entity.trade.*;
-import io.konik.zugferd.entity.trade.item.Item;
-import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
+import io.konik.zugferd.entity.trade.item.*;
+import io.konik.zugferd.unece.codes.TaxCode;
 import io.konik.zugferd.unqualified.*;
 import org.junit.Test;
 import org.xml.sax.SAXException;
@@ -37,6 +37,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.math.BigDecimal;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -97,10 +98,18 @@ public class MinimalInvoice {
                .setAllowanceTotal(new Amount(0, EUR))
                .setTaxBasisTotal(new Amount(100, EUR))
                .setTaxTotal(new Amount(19, EUR))               
+               .setDuePayable(new Amount(119, EUR))
+               .setTotalPrepaid(new Amount(0, EUR))
                .setGrandTotal(new Amount(119, EUR))));
-      
+
+      ItemTax itemTax = new ItemTax();
+      itemTax.setPercentage(BigDecimal.valueOf(19));
+      itemTax.setType(TaxCode.VAT);
+
       trade.addItem(new Item()
          .setProduct(new Product().setName("Saddle"))
+         .setAgreement(new SpecifiedAgreement().setGrossPrice(new GrossPrice(new Amount(100, EUR))).setNetPrice(new Price(new Amount(100, EUR))))
+         .setSettlement(new SpecifiedSettlement().addTradeTax(itemTax))
          .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))));
       invoice.setTrade(trade);
       

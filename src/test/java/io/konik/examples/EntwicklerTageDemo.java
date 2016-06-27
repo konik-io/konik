@@ -26,8 +26,8 @@ import io.konik.zugferd.Document;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.*;
 import io.konik.zugferd.entity.trade.*;
-import io.konik.zugferd.entity.trade.item.Item;
-import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
+import io.konik.zugferd.entity.trade.item.*;
+import io.konik.zugferd.unece.codes.TaxCode;
 import io.konik.zugferd.unqualified.*;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -39,6 +39,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.math.BigDecimal;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -100,12 +101,20 @@ public class EntwicklerTageDemo {
                .setLineTotal(new Amount(498, EUR))
                .setChargeTotal(new Amount(0,EUR))
                .setAllowanceTotal(new Amount(0, EUR))
+               .setTotalPrepaid(new Amount(0, EUR))
                .setTaxBasisTotal(new Amount(498, EUR))
-               .setTaxTotal(new Amount("71.02", EUR))
-               .setGrandTotal(new Amount("569.82", EUR))));
+               .setTaxTotal(new Amount("74.70", EUR))
+               .setDuePayable(new Amount("572.70", EUR))
+               .setGrandTotal(new Amount("572.70", EUR))));
+
+      ItemTax tax = new ItemTax();
+      tax.setPercentage(BigDecimal.valueOf(15));
+      tax.setType(TaxCode.VAT);
       
       trade.addItem(new Item()
          .setProduct(new Product().setName("Saddle"))
+         .setAgreement(new SpecifiedAgreement().setGrossPrice(new GrossPrice(new Amount(498, EUR))).setNetPrice(new Price(new Amount(498, EUR))))
+         .setSettlement(new SpecifiedSettlement().addTradeTax(tax))
          .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))));
       order.setTrade(trade);
       

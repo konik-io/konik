@@ -13,6 +13,7 @@ import org.apache.bval.jsr303.util.PathImpl;
 import javax.validation.ConstraintViolation;
 import javax.validation.Path;
 import javax.validation.metadata.ConstraintDescriptor;
+import java.math.RoundingMode;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,42 +40,42 @@ public class MonetarySummationValidator {
 
 				if (!areEqual(monetarySummation.getGrandTotal(), calculatedMonetarySummation.getGrandTotal())) {
 					String message = message(monetarySummation.getGrandTotal(), calculatedMonetarySummation.getGrandTotal());
-					violations.add(new Violation(invoice, message, "monetarySummation.grandTotal.error", "trade.settlement.monetarySummation.grandTotal", monetarySummation.getGrandTotal().getValue()));
+					violations.add(new Violation(invoice, message, "monetarySummation.grandTotal.error", "trade.settlement.monetarySummation.grandTotal", monetarySummation.getGrandTotal() != null ? monetarySummation.getGrandTotal().getValue() : null));
 				}
 
 				if (!areEqual(monetarySummation.getTaxBasisTotal(), calculatedMonetarySummation.getTaxBasisTotal())) {
 					String message = message(monetarySummation.getTaxBasisTotal(), calculatedMonetarySummation.getTaxBasisTotal());
-					violations.add(new Violation(invoice, message, "monetarySummation.taxBasisTotal.error", "trade.settlement.monetarySummation.taxBasisTotal", monetarySummation.getTaxBasisTotal().getValue()));
+					violations.add(new Violation(invoice, message, "monetarySummation.taxBasisTotal.error", "trade.settlement.monetarySummation.taxBasisTotal", monetarySummation.getTaxBasisTotal() != null ? monetarySummation.getTaxBasisTotal().getValue() : null));
 				}
 
 				if (!areEqual(monetarySummation.getChargeTotal(), calculatedMonetarySummation.getChargeTotal())) {
 					String message = message(monetarySummation.getChargeTotal(), calculatedMonetarySummation.getChargeTotal());
-					violations.add(new Violation(invoice, message, "monetarySummation.chargeTotal.error", "trade.settlement.monetarySummation.chargeTotal", monetarySummation.getChargeTotal().getValue()));
+					violations.add(new Violation(invoice, message, "monetarySummation.chargeTotal.error", "trade.settlement.monetarySummation.chargeTotal", monetarySummation.getChargeTotal() != null ? monetarySummation.getChargeTotal().getValue() : null));
 				}
 
 				if (!areEqual(monetarySummation.getAllowanceTotal(), calculatedMonetarySummation.getAllowanceTotal())) {
 					String message = message(monetarySummation.getAllowanceTotal(), calculatedMonetarySummation.getAllowanceTotal());
-					violations.add(new Violation(invoice, message, "monetarySummation.allowanceTotal.error", "trade.settlement.monetarySummation.allowanceTotal", monetarySummation.getAllowanceTotal().getValue()));
+					violations.add(new Violation(invoice, message, "monetarySummation.allowanceTotal.error", "trade.settlement.monetarySummation.allowanceTotal", monetarySummation.getAllowanceTotal() != null ? monetarySummation.getAllowanceTotal().getValue() : null));
 				}
 
 				if (!areEqual(monetarySummation.getDuePayable(), calculatedMonetarySummation.getDuePayable())) {
 					String message = message(monetarySummation.getDuePayable(), calculatedMonetarySummation.getDuePayable());
-					violations.add(new Violation(invoice, message, "monetarySummation.duePayable.error", "trade.settlement.monetarySummation.duePayable", monetarySummation.getDuePayable().getValue()));
+					violations.add(new Violation(invoice, message, "monetarySummation.duePayable.error", "trade.settlement.monetarySummation.duePayable", monetarySummation.getDuePayable() != null ? monetarySummation.getDuePayable().getValue() : null));
 				}
 
 				if (!areEqual(monetarySummation.getLineTotal(), calculatedMonetarySummation.getLineTotal())) {
 					String message = message(monetarySummation.getLineTotal(), calculatedMonetarySummation.getLineTotal());
-					violations.add(new Violation(invoice, message, "monetarySummation.lineTotal.error", "trade.settlement.monetarySummation.lineTotal", monetarySummation.getLineTotal().getValue()));
+					violations.add(new Violation(invoice, message, "monetarySummation.lineTotal.error", "trade.settlement.monetarySummation.lineTotal", monetarySummation.getLineTotal() != null ? monetarySummation.getLineTotal().getValue() : null));
 				}
 
 				if (!areEqual(monetarySummation.getTaxTotal(), calculatedMonetarySummation.getTaxTotal())) {
 					String message = message(monetarySummation.getTaxTotal(), calculatedMonetarySummation.getTaxTotal());
-					violations.add(new Violation(invoice, message, "monetarySummation.taxTotal.error", "trade.settlement.monetarySummation.taxTotal", monetarySummation.getTaxTotal().getValue()));
+					violations.add(new Violation(invoice, message, "monetarySummation.taxTotal.error", "trade.settlement.monetarySummation.taxTotal", monetarySummation.getTaxTotal() != null ? monetarySummation.getTaxTotal().getValue() : null));
 				}
 
 				if (!areEqual(monetarySummation.getTotalPrepaid(), calculatedMonetarySummation.getTotalPrepaid())) {
 					String message = message(monetarySummation.getTotalPrepaid(), calculatedMonetarySummation.getTotalPrepaid());
-					violations.add(new Violation(invoice, message, "monetarySummation.totalPrepaid.error", "trade.settlement.monetarySummation.totalPrepaid", monetarySummation.getTotalPrepaid().getValue()));
+					violations.add(new Violation(invoice, message, "monetarySummation.totalPrepaid.error", "trade.settlement.monetarySummation.totalPrepaid", monetarySummation.getTotalPrepaid() != null ? monetarySummation.getTotalPrepaid().getValue() : null));
 				}
 			}
 
@@ -107,7 +108,10 @@ public class MonetarySummationValidator {
 	}
 
 	private static String message(final Amount first, final Amount second) {
-		return String.format("%s != %s", first.getValue().toString(), second.getValue().toString());
+		return String.format("%s != %s",
+				first != null ? first.getValue().toString() : "null",
+				second != null ? second.getValue().toString() : "null"
+		);
 	}
 
 	private static boolean areEqual(final Amount first, final Amount second) {
@@ -125,7 +129,11 @@ public class MonetarySummationValidator {
 		}
 
 		if (first.getValue() != null && second.getValue() != null) {
-			return first.getValue().equals(second.getValue());
+			return first.getValue()
+					.setScale(2, RoundingMode.HALF_UP)
+					.equals(second.getValue()
+							.setScale(2, RoundingMode.HALF_UP)
+					);
 		}
 
 		return false;

@@ -110,10 +110,10 @@ public class RestInvoiceApi implements InvoiceApi {
 	}
 
 	@Override
-	public InvoiceResponse uploadInvoice(InputStream pdf) {
+	public InvoiceResponse uploadInvoice(InputStream pdf, InvoiceDocument.Type type) {
 		Map<String, InputStream> files = Maps.newHashMap();
 		files.put("pdf", pdf);
-		return httpClient.upload("/invoice/pdf", files, InvoiceResponse.class);
+		return httpClient.upload(String.format("/invoice/pdf?type=%s", type.toString()), files, InvoiceResponse.class);
 	}
 
 	@Override

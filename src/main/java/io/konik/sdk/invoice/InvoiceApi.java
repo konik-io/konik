@@ -24,7 +24,7 @@ public interface InvoiceApi {
 
 	boolean sendInvoice(String invoiceId, String email);
 
-	InvoiceResponse uploadInvoice(InputStream pdf);
+	InvoiceResponse uploadInvoice(InputStream pdf, InvoiceDocument.Type type);
 
 	StatusResponse updateStatus(String invoiceId, Status status);
 }

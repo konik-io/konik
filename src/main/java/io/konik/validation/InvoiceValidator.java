@@ -81,7 +81,7 @@ public class InvoiceValidator {
 		Class<?>[] validationGroups = resolveIntoValidationGroups(conformanceLevel);
 		Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice, validationGroups);
 		if (monetarySummationValidator != null) {
-			violations.addAll(monetarySummationValidator.validate(invoice));
+			violations.addAll(monetarySummationValidator.validate(invoice, validationGroups));
 		}
 		return violations;
 	}

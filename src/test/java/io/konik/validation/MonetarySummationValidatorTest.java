@@ -1,10 +1,13 @@
 package io.konik.validation;
 
 import io.konik.InvoiceTransformer;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.Invoice;
 import org.junit.Test;
 
 import javax.validation.ConstraintViolation;
+import javax.validation.groups.Default;
 import java.io.InputStream;
 import java.util.Set;
 
@@ -21,7 +24,7 @@ public class MonetarySummationValidatorTest {
 		MonetarySummationValidator validator = new MonetarySummationValidator();
 
 		//when:
-		Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
+		Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice, new Class[] {Default.class, Comfort.class, Extended.class});
 
 		//then:
 		assertThat(violations).isEmpty();
@@ -36,7 +39,7 @@ public class MonetarySummationValidatorTest {
 		MonetarySummationValidator validator = new MonetarySummationValidator();
 
 		//when:
-		Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
+		Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice, new Class[] {Default.class, Comfort.class, Extended.class});
 
 		//then:
 		assertThat(violations).hasSize(1);

@@ -17,6 +17,14 @@
  */
 package io.konik.zugferd.profile;
 
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
+
+import java.lang.annotation.Annotation;
+import java.util.Arrays;
+import java.util.List;
+
 import static io.konik.util.Strings.isNullOrEmpty;
 
 /**
@@ -56,6 +64,10 @@ public enum ConformanceLevel {
       int lastTokenPosition = tokens.length-1;
       String level = tokens[lastTokenPosition];
       return valueOf(level.toUpperCase());
+   }
+
+   public static List<Class<? extends Annotation>> getAnnotations() {
+      return Arrays.asList(Basic.class, Comfort.class, Extended.class);
    }
 
 }

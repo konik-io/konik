@@ -4,6 +4,10 @@ import io.konik.zugferd.Invoice;
 
 public class InvoiceDocument {
 
+	public enum Type {
+		INCOMING, OUTGOING;
+	}
+
 	private String id;
 
 	private Invoice invoice;

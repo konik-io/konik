@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rsm:CrossIndustryDocument xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15" xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0">
+    <rsm:SpecifiedExchangedDocumentContext>
+        <ram:TestIndicator>
+            <udt:Indicator>false</udt:Indicator>
+        </ram:TestIndicator>
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+            <ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:extended</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
+    </rsm:SpecifiedExchangedDocumentContext>
+    <rsm:HeaderExchangedDocument>
+        <ram:ID>103002</ram:ID>
+        <ram:Name>Invoice</ram:Name>
+        <ram:TypeCode>380</ram:TypeCode>
+        <ram:IssueDateTime>
+            <udt:DateTimeString format="102">20160603</udt:DateTimeString>
+        </ram:IssueDateTime>
+        <ram:CopyIndicator>
+            <udt:Indicator>false</udt:Indicator>
+        </ram:CopyIndicator>
+    </rsm:HeaderExchangedDocument>
+    <rsm:SpecifiedSupplyChainTradeTransaction>
+        <ram:ApplicableSupplyChainTradeAgreement>
+            <ram:SellerTradeParty>
+                <ram:Name>CRONUS International Ltd.</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>W2 8HG</ram:PostcodeCode>
+                    <ram:LineOne>5 The Ring</ram:LineOne>
+                    <ram:LineTwo>Westminster</ram:LineTwo>
+                    <ram:CityName>London</ram:CityName>
+                    <ram:CountryID>GB</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">GB777777777</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                <ram:ID>20000</ram:ID>
+                <ram:Name>Selangorian Ltd.</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>CV6 1GY</ram:PostcodeCode>
+                    <ram:LineOne>153 Thomas Drive</ram:LineOne>
+                    <ram:LineTwo></ram:LineTwo>
+                    <ram:CityName>Coventry</ram:CityName>
+                    <ram:CountryID>GB</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">254687456</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:BuyerTradeParty>
+        </ram:ApplicableSupplyChainTradeAgreement>
+        <ram:ApplicableSupplyChainTradeDelivery>
+            <ram:ShipToTradeParty>
+                <ram:Name>Selangorian Ltd.</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>CV6 1GY</ram:PostcodeCode>
+                    <ram:LineOne>153 Thomas Drive</ram:LineOne>
+                    <ram:LineTwo></ram:LineTwo>
+                    <ram:CityName>Coventry</ram:CityName>
+                    <ram:CountryID>GB</ram:CountryID>
+                </ram:PostalTradeAddress>
+            </ram:ShipToTradeParty>
+            <ram:ActualDeliverySupplyChainEvent>
+                <ram:OccurrenceDateTime>
+                    <udt:DateTimeString format="102">20170101</udt:DateTimeString>
+                </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+        </ram:ApplicableSupplyChainTradeDelivery>
+        <ram:ApplicableSupplyChainTradeSettlement>
+            <ram:PaymentReference></ram:PaymentReference>
+            <ram:InvoiceCurrencyCode>GBP</ram:InvoiceCurrencyCode>
+            <ram:InvoiceeTradeParty>
+                <ram:ID>20000</ram:ID>
+                <ram:Name>Selangorian Ltd.</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>CV6 1GY</ram:PostcodeCode>
+                    <ram:LineOne>153 Thomas Drive</ram:LineOne>
+                    <ram:LineTwo></ram:LineTwo>
+                    <ram:CityName>Coventry</ram:CityName>
+                    <ram:CountryID>GB</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">254687456</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:InvoiceeTradeParty>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:PayeePartyCreditorFinancialAccount>
+                    <ram:IBANID>GB 12 CPBK 08929965044991</ram:IBANID>
+                    <ram:AccountName>CRONUS International Ltd.</ram:AccountName>
+                </ram:PayeePartyCreditorFinancialAccount>
+                <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                    <ram:BICID></ram:BICID>
+                </ram:PayeeSpecifiedCreditorFinancialInstitution>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+                <ram:CalculatedAmount currencyID="GBP">443.66</ram:CalculatedAmount>
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <ram:BasisAmount currencyID="GBP">6337.98</ram:BasisAmount>
+                <ram:LineTotalBasisAmount currencyID="GBP">6534.00</ram:LineTotalBasisAmount>
+                <ram:AllowanceChargeBasisAmount currencyID="GBP">-196.02</ram:AllowanceChargeBasisAmount>
+                <ram:CategoryCode>S</ram:CategoryCode>
+                <ram:ApplicablePercent>10.00</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:SpecifiedTradeAllowanceCharge>
+                <ram:ChargeIndicator>
+                    <udt:Indicator>false</udt:Indicator>
+                </ram:ChargeIndicator>
+                <ram:BasisAmount currencyID="GBP">6534.00</ram:BasisAmount>
+                <ram:ActualAmount currencyID="GBP">196.02</ram:ActualAmount>
+                <ram:Reason>Rechnung Rabatt</ram:Reason>
+                <ram:CategoryTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>10.00</ram:ApplicablePercent>
+                </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedTradePaymentTerms>
+                <ram:Description>Net 14 days. Zahlbar bis 06.02.17.</ram:Description>
+                <ram:DueDateDateTime>
+                    <udt:DateTimeString format="102">20170206</udt:DateTimeString>
+                </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradeSettlementMonetarySummation>
+                <ram:LineTotalAmount currencyID="GBP">6534.00</ram:LineTotalAmount>
+                <ram:ChargeTotalAmount currencyID="GBP">0.00</ram:ChargeTotalAmount>
+                <ram:AllowanceTotalAmount currencyID="GBP">196.02</ram:AllowanceTotalAmount>
+                <ram:TaxBasisTotalAmount currencyID="GBP">6337.98</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount currencyID="GBP">633.80</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount currencyID="GBP">6971.78</ram:GrandTotalAmount>
+                <ram:TotalPrepaidAmount currencyID="GBP">0.00</ram:TotalPrepaidAmount>
+                <ram:DuePayableAmount currencyID="GBP">6971.78</ram:DuePayableAmount>
+            </ram:SpecifiedTradeSettlementMonetarySummation>
+        </ram:ApplicableSupplyChainTradeSettlement>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>10000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="GBP">54.0000</ram:ChargeAmount>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="GBP">54.0000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="HUR">25.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>10.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="GBP">1350.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>TIMOTHY</ram:SellerAssignedID>
+                <ram:BuyerAssignedID></ram:BuyerAssignedID>
+                <ram:Name>Assembling Furniture, January</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>20000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="GBP">54.0000</ram:ChargeAmount>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="GBP">54.0000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="KMT">96.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>10.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="GBP">5184.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>TIMOTHY</ram:SellerAssignedID>
+                <ram:BuyerAssignedID></ram:BuyerAssignedID>
+                <ram:Name>Assembling Furniture, January</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+    </rsm:SpecifiedSupplyChainTradeTransaction>
+</rsm:CrossIndustryDocument>

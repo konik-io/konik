@@ -171,10 +171,10 @@ public class MonetarySummationValidator {
 		return violations;
 	}
 
-	private static String message(final Amount first, final Amount second) {
-		return String.format("%s != %s",
-				first != null ? first.getValue().toString() : "null",
-				second != null ? second.getValue().toString() : "null"
+	private static String message(final Amount original, final Amount recalculated) {
+		return String.format("Original amount value for given field is [%s] while expected value after recalculation is equal [%s]",
+				original != null ? original.getValue().toString() : "null",
+				recalculated != null ? recalculated.getValue().toString() : "null"
 		);
 	}
 

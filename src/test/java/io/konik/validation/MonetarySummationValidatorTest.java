@@ -64,7 +64,7 @@ public class MonetarySummationValidatorTest {
 		for (ConstraintViolation<Invoice> violation : violations) {
 			System.out.printf("%-70s: %s%n", violation.getPropertyPath().toString(), violation.getMessage());
 		}
-		assertThat(violations).hasSize(2);
+		assertThat(violations).hasSize(0);
 
 	}
 

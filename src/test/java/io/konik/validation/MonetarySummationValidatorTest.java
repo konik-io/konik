@@ -49,4 +49,42 @@ public class MonetarySummationValidatorTest {
 		assertThat(violations.iterator().next().getPropertyPath().toString()).isEqualTo("trade.settlement.monetarySummation.lineTotal");
 	}
 
+	@Test
+	public void shouldValidateInvoiceExample3() {
+		//given:
+		InputStream xml = getClass().getResourceAsStream("/ZUGFeRD_Invoice_monetary_summation_recalculation_failed_input.xml");
+		InvoiceTransformer transformer = new InvoiceTransformer();
+		Invoice invoice = transformer.toModel(xml);
+		MonetarySummationValidator validator = new MonetarySummationValidator();
+
+		//when:
+		Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice, new Class[] {Default.class, Comfort.class, Extended.class});
+
+		//then:
+		for (ConstraintViolation<Invoice> violation : violations) {
+			System.out.printf("%-70s: %s%n", violation.getPropertyPath().toString(), violation.getMessage());
+		}
+		assertThat(violations).hasSize(2);
+
+	}
+
+	@Test
+	public void shouldValidateInvoiceExample4() {
+		//given:
+		InputStream xml = getClass().getResourceAsStream("/ZUGFeRD_Invoice_navision_calculation_error.xml");
+		InvoiceTransformer transformer = new InvoiceTransformer();
+		Invoice invoice = transformer.toModel(xml);
+		MonetarySummationValidator validator = new MonetarySummationValidator();
+
+		//when:
+		Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice, new Class[] {Default.class, Comfort.class, Extended.class});
+
+		//then:
+		for (ConstraintViolation<Invoice> violation : violations) {
+			System.out.printf("%-70s: %s%n", violation.getPropertyPath().toString(), violation.getMessage());
+		}
+		assertThat(violations).hasSize(2);
+
+	}
+
 }

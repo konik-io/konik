@@ -22,6 +22,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Path;
 import javax.validation.metadata.ConstraintDescriptor;
 import java.lang.annotation.Annotation;
+import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
 
@@ -182,6 +183,11 @@ public class MonetarySummationValidator {
 		if (first == null && second == null) {
 			return true;
 		}
+
+		if (zeroEqualsNull(first, second) || zeroEqualsNull(second, first)) {
+			return true;
+		}
+
 		if (first == null || second == null) {
 			return false;
 		}
@@ -201,6 +207,13 @@ public class MonetarySummationValidator {
 		}
 
 		return false;
+	}
+
+	private static boolean zeroEqualsNull(final Amount first, final Amount second) {
+		return first == null &&
+				second != null &&
+				second.getValue() != null &&
+				second.getValue().setScale(2, RoundingMode.HALF_UP).equals(BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP));
 	}
 
 	private static class Violation implements ConstraintViolation<Invoice> {

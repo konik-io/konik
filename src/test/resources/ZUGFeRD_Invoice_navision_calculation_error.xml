@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rsm:CrossIndustryDocument xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15" xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0">
+    <rsm:SpecifiedExchangedDocumentContext>
+        <ram:TestIndicator>
+            <udt:Indicator>false</udt:Indicator>
+        </ram:TestIndicator>
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+            <ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:extended</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
+    </rsm:SpecifiedExchangedDocumentContext>
+    <rsm:HeaderExchangedDocument>
+        <ram:ID>103004</ram:ID>
+        <ram:Name>Invoice</ram:Name>
+        <ram:TypeCode>380</ram:TypeCode>
+        <ram:IssueDateTime>
+            <udt:DateTimeString format="102">20160706</udt:DateTimeString>
+        </ram:IssueDateTime>
+        <ram:CopyIndicator>
+            <udt:Indicator>false</udt:Indicator>
+        </ram:CopyIndicator>
+    </rsm:HeaderExchangedDocument>
+    <rsm:SpecifiedSupplyChainTradeTransaction>
+        <ram:ApplicableSupplyChainTradeAgreement>
+            <ram:SellerTradeParty>
+                <ram:Name>CRONUS International Ltd.</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>W2 8HG</ram:PostcodeCode>
+                    <ram:LineOne>5 The Ring</ram:LineOne>
+                    <ram:LineTwo>Westminster</ram:LineTwo>
+                    <ram:CityName>London</ram:CityName>
+                    <ram:CountryID>GB</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">GB777777777</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                <ram:ID>50000</ram:ID>
+                <ram:Name>Guildford Water Department</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>GU7 5GT</ram:PostcodeCode>
+                    <ram:LineOne>25 Water Way</ram:LineOne>
+                    <ram:LineTwo></ram:LineTwo>
+                    <ram:CityName>Guildford</ram:CityName>
+                    <ram:CountryID>GB</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">582048936</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:BuyerTradeParty>
+        </ram:ApplicableSupplyChainTradeAgreement>
+        <ram:ApplicableSupplyChainTradeDelivery>
+            <ram:ShipToTradeParty>
+                <ram:Name>Guildford Water Department</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>GU7 5GT</ram:PostcodeCode>
+                    <ram:LineOne>25 Water Way</ram:LineOne>
+                    <ram:LineTwo></ram:LineTwo>
+                    <ram:CityName>Guildford</ram:CityName>
+                    <ram:CountryID>GB</ram:CountryID>
+                </ram:PostalTradeAddress>
+            </ram:ShipToTradeParty>
+            <ram:ActualDeliverySupplyChainEvent>
+                <ram:OccurrenceDateTime>
+                    <udt:DateTimeString format="102">20170101</udt:DateTimeString>
+                </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+        </ram:ApplicableSupplyChainTradeDelivery>
+        <ram:ApplicableSupplyChainTradeSettlement>
+            <ram:PaymentReference></ram:PaymentReference>
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+            <ram:InvoiceeTradeParty>
+                <ram:ID>50000</ram:ID>
+                <ram:Name>Guildford Water Department</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>GU7 5GT</ram:PostcodeCode>
+                    <ram:LineOne>25 Water Way</ram:LineOne>
+                    <ram:LineTwo></ram:LineTwo>
+                    <ram:CityName>Guildford</ram:CityName>
+                    <ram:CountryID>GB</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">582048936</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:InvoiceeTradeParty>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:PayeePartyCreditorFinancialAccount>
+                    <ram:IBANID>GB 12 CPBK 08929965044991</ram:IBANID>
+                    <ram:AccountName>CRONUS International Ltd.</ram:AccountName>
+                </ram:PayeePartyCreditorFinancialAccount>
+                <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                    <ram:BICID></ram:BICID>
+                </ram:PayeeSpecifiedCreditorFinancialInstitution>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+                <ram:CalculatedAmount currencyID="EUR">89.95</ram:CalculatedAmount>
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <ram:BasisAmount currencyID="EUR">473.40</ram:BasisAmount>
+                <ram:LineTotalBasisAmount currencyID="EUR">503.40</ram:LineTotalBasisAmount>
+                <ram:AllowanceChargeBasisAmount currencyID="EUR">-30.00</ram:AllowanceChargeBasisAmount>
+                <ram:CategoryCode>S</ram:CategoryCode>
+                <ram:ApplicablePercent>25.00</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:SpecifiedTradeAllowanceCharge>
+                <ram:ChargeIndicator>
+                    <udt:Indicator>false</udt:Indicator>
+                </ram:ChargeIndicator>
+                <ram:BasisAmount currencyID="EUR">503.40</ram:BasisAmount>
+                <ram:ActualAmount currencyID="EUR">30.00</ram:ActualAmount>
+                <ram:Reason>Invoice discount</ram:Reason>
+                <ram:CategoryTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>25.00</ram:ApplicablePercent>
+                </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedTradePaymentTerms>
+                <ram:Description>Net 14 days. Payment until 07.02.17.</ram:Description>
+                <ram:DueDateDateTime>
+                    <udt:DateTimeString format="102">20170207</udt:DateTimeString>
+                </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradeSettlementMonetarySummation>
+                <ram:LineTotalAmount currencyID="EUR">503.40</ram:LineTotalAmount>
+                <ram:ChargeTotalAmount currencyID="EUR">0.00</ram:ChargeTotalAmount>
+                <ram:AllowanceTotalAmount currencyID="EUR">30.00</ram:AllowanceTotalAmount>
+                <ram:TaxBasisTotalAmount currencyID="EUR">473.40</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount currencyID="EUR">118.35</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount currencyID="EUR">591.75</ram:GrandTotalAmount>
+                <ram:TotalPrepaidAmount currencyID="EUR">0.00</ram:TotalPrepaidAmount>
+                <ram:DuePayableAmount currencyID="EUR">591.75</ram:DuePayableAmount>
+            </ram:SpecifiedTradeSettlementMonetarySummation>
+        </ram:ApplicableSupplyChainTradeSettlement>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>10000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">125.1000</ram:ChargeAmount>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">125.1000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>25.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">125.10</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>1900-S</ram:SellerAssignedID>
+                <ram:BuyerAssignedID></ram:BuyerAssignedID>
+                <ram:Name>PARIS Guest Chair, black</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>20000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">281.4000</ram:ChargeAmount>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:BasisAmount currencyID="EUR">281.4000</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="EUR">14.0700</ram:ActualAmount>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">267.3300</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>25.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">267.33</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>1906-S</ram:SellerAssignedID>
+                <ram:BuyerAssignedID></ram:BuyerAssignedID>
+                <ram:Name>ATHENS Mobile Pedestal</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>30000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">123.3000</ram:ChargeAmount>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:BasisAmount currencyID="EUR">123.3000</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="EUR">12.3300</ram:ActualAmount>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">110.9700</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>25.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">110.97</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>1908-S</ram:SellerAssignedID>
+                <ram:BuyerAssignedID></ram:BuyerAssignedID>
+                <ram:Name>LONDON Swivel Chair, blue</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+    </rsm:SpecifiedSupplyChainTradeTransaction>
+</rsm:CrossIndustryDocument>

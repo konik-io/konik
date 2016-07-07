@@ -87,4 +87,23 @@ public class MonetarySummationValidatorTest {
 
 	}
 
+	@Test
+	public void shouldValidateInvoiceAllowanceChargeTotalIncludingItemQuantity() {
+		//given:
+		InputStream xml = getClass().getResourceAsStream("/ZUGFeRD_Invoice_navision_discounts_error.xml");
+		InvoiceTransformer transformer = new InvoiceTransformer();
+		Invoice invoice = transformer.toModel(xml);
+		MonetarySummationValidator validator = new MonetarySummationValidator();
+
+		//when:
+		Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice, new Class[] {Default.class, Comfort.class, Extended.class});
+
+		//then:
+		for (ConstraintViolation<Invoice> violation : violations) {
+			System.out.printf("%-70s: %s%n", violation.getPropertyPath().toString(), violation.getMessage());
+		}
+		assertThat(violations).hasSize(0);
+
+	}
+
 }

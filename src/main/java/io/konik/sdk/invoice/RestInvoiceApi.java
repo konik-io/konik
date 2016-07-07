@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.Map;
 
@@ -88,7 +90,8 @@ public class RestInvoiceApi implements InvoiceApi {
 	@Override
 	public boolean sendInvoice(String invoiceId, String email, String message) {
 		try {
-			String json = "{\"recipient\":\""+email+"\", \"message\":\""+message+"\"}";
+			String encodedMessage = URLEncoder.encode(message, "UTF-8");
+			String json = "{\"recipient\":\""+email+"\", \"message\":\""+encodedMessage+"\"}";
 
 			InvoiceResponse createdInvoice = httpClient.post("/invoice/"+invoiceId+"/pdf/send", json.getBytes(Charset.forName("UTF-8")), "application/json", InvoiceResponse.class);
 
@@ -101,6 +104,8 @@ public class RestInvoiceApi implements InvoiceApi {
 				}
 			}
 			throw e;
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e);
 		}
 	}
 

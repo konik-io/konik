@@ -18,8 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
-import javax.validation.ConstraintViolation;
-import javax.validation.Path;
+import javax.validation.*;
 import javax.validation.metadata.ConstraintDescriptor;
 import java.lang.annotation.Annotation;
 import java.math.BigDecimal;
@@ -33,6 +32,12 @@ import java.util.*;
 public class MonetarySummationValidator {
 
 	private static Logger log = LoggerFactory.getLogger(MonetarySummationValidator.class);
+
+	private final MessageInterpolator messageInterpolator;
+
+	public MonetarySummationValidator(MessageInterpolator messageInterpolator) {
+		this.messageInterpolator = messageInterpolator;
+	}
 
 	/**
 	 * Checks if given method belongs to the validation groups profile.
@@ -172,11 +177,11 @@ public class MonetarySummationValidator {
 		return violations;
 	}
 
-	private static String message(final Amount first, final Amount second) {
-		return String.format("%s != %s",
-				first != null ? first.getValue().toString() : "null",
-				second != null ? second.getValue().toString() : "null"
-		);
+	private String message(final Amount current, final Amount expected) {
+		Object currentValue = current != null ? current.getValue() : "null";
+		Object expectedValue = expected != null ? expected.getValue() : "null";
+
+		return messageInterpolator.interpolate("{io.konik.validation.amount.calculation.error}", new Violation.Context(currentValue, expectedValue));
 	}
 
 	private static boolean areEqual(final Amount first, final Amount second) {
@@ -285,6 +290,80 @@ public class MonetarySummationValidator {
 		@Override
 		public <U> U unwrap(Class<U> type) {
 			return null;
+		}
+
+		static class Context implements MessageInterpolator.Context {
+
+			private final Object currentValue;
+			private final Object expectedValue;
+
+			public Context(Object currentValue, Object expectedValue) {
+				this.currentValue = currentValue;
+				this.expectedValue = expectedValue;
+			}
+
+			@Override
+			public ConstraintDescriptor<?> getConstraintDescriptor() {
+				return new ConstraintDescriptor<Annotation>() {
+					@Override
+					public Annotation getAnnotation() {
+						return null;
+					}
+
+					@Override
+					public String getMessageTemplate() {
+						return "{io.konik.validation.amount.calculation.error}";
+					}
+
+					@Override
+					public Set<Class<?>> getGroups() {
+						return null;
+					}
+
+					@Override
+					public Set<Class<? extends Payload>> getPayload() {
+						return null;
+					}
+
+					@Override
+					public ConstraintTarget getValidationAppliesTo() {
+						return null;
+					}
+
+					@Override
+					public List<Class<? extends ConstraintValidator<Annotation, ?>>> getConstraintValidatorClasses() {
+						return new LinkedList<Class<? extends ConstraintValidator<Annotation, ?>>>();
+					}
+
+					@Override
+					public Map<String, Object> getAttributes() {
+						Map<String,Object> map =  new HashMap<String, Object>();
+						map.put("currentValue", currentValue);
+						map.put("expectedValue", expectedValue);
+						return map;
+					}
+
+					@Override
+					public Set<ConstraintDescriptor<?>> getComposingConstraints() {
+						return new HashSet<ConstraintDescriptor<?>>();
+					}
+
+					@Override
+					public boolean isReportAsSingleViolation() {
+						return false;
+					}
+				};
+			}
+
+			@Override
+			public Object getValidatedValue() {
+				return currentValue;
+			}
+
+			@Override
+			public <T> T unwrap(Class<T> type) {
+				return null;
+			}
 		}
 	}
 }

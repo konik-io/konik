@@ -247,13 +247,19 @@ public final class AmountCalculator {
 		@Override
 		public Amount apply(@Nullable Item item) {
 			Amount totalAllowanceCharge = Amounts.zero(currencyCode);
+			BigDecimal quantity = BigDecimal.ONE;
+
+			if (item != null && item.getDelivery() != null && item.getDelivery().getBilled() != null) {
+				quantity = item.getDelivery().getBilled().getValue();
+			}
 
 			if (item != null && item.getAgreement() != null && item.getAgreement().getGrossPrice() != null) {
 				GrossPrice grossPrice = item.getAgreement().getGrossPrice();
 
 				if (grossPrice.getAllowanceCharges() != null) {
 					for (AllowanceCharge charge : grossPrice.getAllowanceCharges()) {
-						totalAllowanceCharge = Amounts.add(totalAllowanceCharge, charge.getActual());
+						Amount amount = new Amount(charge.getActual().getValue().multiply(quantity), currencyCode);
+						totalAllowanceCharge = Amounts.add(totalAllowanceCharge, amount);
 					}
 				}
 			}

@@ -211,7 +211,7 @@
                 </ram:ApplicableTradeTax>
                 <ram:SpecifiedTradeSettlementMonetarySummation>
                     <ram:LineTotalAmount currencyID="EUR">10.00</ram:LineTotalAmount>
-                    <ram:TotalAllowanceChargeAmount currencyID="EUR">0.67</ram:TotalAllowanceChargeAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="EUR">2.00</ram:TotalAllowanceChargeAmount>
                 </ram:SpecifiedTradeSettlementMonetarySummation>
             </ram:SpecifiedSupplyChainTradeSettlement>
             <ram:SpecifiedTradeProduct>

@@ -21,6 +21,7 @@ import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.profile.ConformanceLevel;
+import org.apache.bval.jsr303.DefaultMessageInterpolator;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -57,7 +58,7 @@ public class InvoiceValidator {
 	public InvoiceValidator(Validator validator) {
 		super();
 		this.validator = validator;
-		this.monetarySummationValidator = new MonetarySummationValidator();
+		this.monetarySummationValidator = new MonetarySummationValidator(new DefaultMessageInterpolator());
 	}
 
 	/**
@@ -66,7 +67,7 @@ public class InvoiceValidator {
 	public InvoiceValidator() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		this.validator = factory.getValidator();
-		this.monetarySummationValidator = new MonetarySummationValidator();
+		this.monetarySummationValidator = new MonetarySummationValidator(new DefaultMessageInterpolator());
 	}
 
 

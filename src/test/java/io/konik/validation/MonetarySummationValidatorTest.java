@@ -4,12 +4,15 @@ import io.konik.InvoiceTransformer;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.Invoice;
+
 import org.apache.bval.jsr303.DefaultMessageInterpolator;
 import org.junit.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.groups.Default;
+
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,7 +48,8 @@ public class MonetarySummationValidatorTest {
 		//then:
 		assertThat(violations).hasSize(1);
 
-		assertThat(violations.iterator().next().getMessage()).isEqualTo("Calculation error: expected value is [202.70] while current value is [202.71]");
+		assertThat(violations.iterator().next().getMessage()).contains("[202.70]");
+		assertThat(violations.iterator().next().getInvalidValue()).isEqualTo(new BigDecimal("202.71"));
 
 		assertThat(violations.iterator().next().getPropertyPath().toString()).isEqualTo("trade.settlement.monetarySummation.lineTotal");
 	}

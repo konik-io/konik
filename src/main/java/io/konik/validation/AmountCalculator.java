@@ -101,7 +101,7 @@ public final class AmountCalculator {
 				Amounts.add(monetarySummation.getGrandTotal(), Amounts.negate(monetarySummation.getTotalPrepaid()))
 		);
 
-		return monetarySummation;
+		return MonetarySummations.precise(monetarySummation, 2, RoundingMode.HALF_UP);
 	}
 
 	/**
@@ -114,8 +114,8 @@ public final class AmountCalculator {
 		CurrencyCode currencyCode = getCurrency(item);
 
 		SpecifiedMonetarySummation monetarySummation = MonetarySummations.newSpecifiedMonetarySummation(currencyCode);
-		monetarySummation.setLineTotal(new ItemLineTotalCalculator().apply(item));
-		monetarySummation.setTotalAllowanceCharge(new ItemTotalAllowanceChargeCalculator(currencyCode).apply(item));
+		monetarySummation.setLineTotal(Amounts.setPrecision(new ItemLineTotalCalculator().apply(item), 2, RoundingMode.HALF_UP));
+		monetarySummation.setTotalAllowanceCharge(Amounts.setPrecision(new ItemTotalAllowanceChargeCalculator(currencyCode).apply(item), 2, RoundingMode.HALF_UP));
 		return monetarySummation;
 	}
 
@@ -206,7 +206,8 @@ public final class AmountCalculator {
 			}
 
 			BigDecimal quantity = item.getDelivery().getBilled() != null ? item.getDelivery().getBilled().getValue() : BigDecimal.ZERO;
-			return Amounts.multiply(item.getAgreement().getNetPrice().getChargeAmount(), quantity);
+			Amount amount = item.getAgreement().getNetPrice().getChargeAmount();
+			return Amounts.multiply(amount, quantity);
 		}
 	}
 
@@ -360,7 +361,7 @@ public final class AmountCalculator {
 		public BigDecimal calculateTaxTotal() {
 			BigDecimal taxTotal = BigDecimal.ZERO;
 			for (Map.Entry<BigDecimal, BigDecimal> entry : map.entrySet()) {
-				BigDecimal taxAmount = entry.getValue().multiply(entry.getKey().divide(BigDecimal.valueOf(100), PRECISION, ROUNDING_MODE)).setScale(PRECISION, ROUNDING_MODE);
+				BigDecimal taxAmount = entry.getValue().multiply(entry.getKey().divide(BigDecimal.valueOf(100))).setScale(PRECISION, ROUNDING_MODE);
 				taxTotal = taxTotal.add(taxAmount);
 			}
 			return taxTotal;

@@ -5,6 +5,8 @@ import io.konik.zugferd.entity.trade.MonetarySummation;
 import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
 import io.konik.zugferd.unqualified.Amount;
 
+import java.math.RoundingMode;
+
 /**
  * Helper functions for {@link io.konik.zugferd.entity.trade.MonetarySummation} class.
  */
@@ -56,6 +58,19 @@ public final class MonetarySummations {
 		copy.setAllowanceTotal(Amounts.copy(monetarySummation.getAllowanceTotal()));
 		copy.setTaxBasisTotal(Amounts.copy(monetarySummation.getTaxBasisTotal()));
 		copy.setTaxTotal(Amounts.copy(monetarySummation.getTaxTotal()));
+		return copy;
+	}
+
+	public static MonetarySummation precise(final MonetarySummation monetarySummation, int precision, RoundingMode roundingMode) {
+		MonetarySummation copy = newMonetarySummation(monetarySummation);
+		copy.setChargeTotal(Amounts.setPrecision(copy.getChargeTotal(), precision, roundingMode));
+		copy.setDuePayable(Amounts.setPrecision(copy.getDuePayable(), precision, roundingMode));
+		copy.setLineTotal(Amounts.setPrecision(copy.getLineTotal(), precision, roundingMode));
+		copy.setTotalPrepaid(Amounts.setPrecision(copy.getTotalPrepaid(), precision, roundingMode));
+		copy.setGrandTotal(Amounts.setPrecision(copy.getGrandTotal(), precision, roundingMode));
+		copy.setAllowanceTotal(Amounts.setPrecision(copy.getAllowanceTotal(), precision, roundingMode));
+		copy.setTaxBasisTotal(Amounts.setPrecision(copy.getTaxBasisTotal(), precision, roundingMode));
+		copy.setTaxTotal(Amounts.setPrecision(copy.getTaxTotal(), precision, roundingMode));
 		return copy;
 	}
 }

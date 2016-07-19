@@ -192,7 +192,7 @@ public final class AmountCalculator {
 		@Nullable
 		@Override
 		public Amount apply(@Nullable Item item) {
-			if (item == null || item.getDelivery() == null) {
+			if (item == null || item.getDelivery() == null || item.getAgreement() == null) {
 				return null;
 			}
 

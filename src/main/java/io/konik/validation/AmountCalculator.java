@@ -56,6 +56,11 @@ public final class AmountCalculator {
 		List<Item> items = Items.purchasableItemsOnly(invoice.getTrade().getItems());
 		Settlement settlement = invoice.getTrade().getSettlement();
 
+		// If there are no items that can be used to recalculate monetary summation, return the current one
+		if (items.isEmpty()) {
+			return MonetarySummations.newMonetarySummation(settlement.getMonetarySummation());
+		}
+
 		MonetarySummation monetarySummation = MonetarySummations.newMonetarySummation(currency);
 		monetarySummation.setAllowanceTotal(new InvoiceAllowanceTotalCalculator().apply(settlement));
 		monetarySummation.setChargeTotal(new InvoiceChargeTotalCalculator().apply(settlement));

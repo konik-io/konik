@@ -61,4 +61,16 @@ public final class Amounts {
 	public static Amount setPrecision(final Amount amount, int precision, RoundingMode roundingMode) {
 		return new Amount(amount.getValue().setScale(precision, roundingMode), amount.getCurrency());
 	}
+
+	/**
+	 * Creates a copy of given {@link Amount} object.
+	 * @param amount
+	 * @return
+	 */
+	public static Amount copy(final Amount amount) {
+		if (amount == null) {
+			return null;
+		}
+		return new Amount(amount.getValue(), amount.getCurrency());
+	}
 }

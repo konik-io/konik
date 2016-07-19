@@ -45,4 +45,17 @@ public final class MonetarySummations {
 
 		return monetarySummation;
 	}
+
+	public static MonetarySummation newMonetarySummation(final MonetarySummation monetarySummation) {
+		MonetarySummation copy = new MonetarySummation();
+		copy.setChargeTotal(Amounts.copy(monetarySummation.getChargeTotal()));
+		copy.setDuePayable(Amounts.copy(monetarySummation.getDuePayable()));
+		copy.setLineTotal(Amounts.copy(monetarySummation.getLineTotal()));
+		copy.setTotalPrepaid(Amounts.copy(monetarySummation.getTotalPrepaid()));
+		copy.setGrandTotal(Amounts.copy(monetarySummation.getGrandTotal()));
+		copy.setAllowanceTotal(Amounts.copy(monetarySummation.getAllowanceTotal()));
+		copy.setTaxBasisTotal(Amounts.copy(monetarySummation.getTaxBasisTotal()));
+		copy.setTaxTotal(Amounts.copy(monetarySummation.getTaxTotal()));
+		return copy;
+	}
 }

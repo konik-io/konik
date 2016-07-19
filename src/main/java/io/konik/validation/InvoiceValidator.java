@@ -47,6 +47,7 @@ public class InvoiceValidator {
 	 * Instantiates a new invoice validator.
 	 *
 	 * @param validator the validator
+	 * @param monetarySummationValidator 
 	 */
 	@Inject
 	public InvoiceValidator(Validator validator, MonetarySummationValidator monetarySummationValidator) {
@@ -55,6 +56,11 @@ public class InvoiceValidator {
 		this.monetarySummationValidator = monetarySummationValidator;
 	}
 
+	/**
+	 * Instantiates a new invoice validator.
+	 *
+	 * @param validator the validator
+	 */
 	public InvoiceValidator(Validator validator) {
 		super();
 		this.validator = validator;

@@ -35,6 +35,9 @@ public class MonetarySummationValidator {
 
 	private final MessageInterpolator messageInterpolator;
 
+	/**
+	 * @param messageInterpolator
+	 */
 	public MonetarySummationValidator(MessageInterpolator messageInterpolator) {
 		this.messageInterpolator = messageInterpolator;
 	}
@@ -45,7 +48,8 @@ public class MonetarySummationValidator {
 	 * @param clazz
 	 * @param methodName
 	 * @param validationGroups
-	 * @return
+	 * @return true if the method belongs to this validation group 
+	 * 
 	 */
 	public static boolean belongsToProfile(final Class<?> clazz, final String methodName, final List<Class<?>> validationGroups) {
 		try {

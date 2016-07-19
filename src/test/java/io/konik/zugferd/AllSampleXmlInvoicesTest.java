@@ -25,7 +25,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import io.konik.InvoiceTransformer;
 import io.konik.PrittyPrintInvoiceTransformer;
 import io.konik.utils.NumberDifferenceXmlComparison;
+import io.konik.validation.AmountCalculator;
+import io.konik.validation.InvoiceValidator;
 import io.konik.validator.NullableNotBlankValidator;
+import io.konik.zugferd.entity.trade.MonetarySummation;
 import io.konik.zugferd.profile.ConformanceLevel;
 
 import java.io.File;
@@ -39,6 +42,8 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import javax.xml.transform.stream.StreamSource;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.custommonkey.xmlunit.Diff;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
@@ -58,9 +63,12 @@ import com.google.common.io.Files;
 @RunWith(Parameterized.class)
 public class AllSampleXmlInvoicesTest {
    
+   private static final Logger log = LogManager.getLogger();
+   
    private static final String TEST_FILE_LOCATION = "src/test/resources";
 
    private static final String UTF_8 = "UTF-8";
+      
 
    private static Validator validator;
 
@@ -72,6 +80,7 @@ public class AllSampleXmlInvoicesTest {
    
    InvoiceTransformer transformer = new PrittyPrintInvoiceTransformer();
    
+      
    static int unmarshallCounter;
    static int schemaValidationCounter;
    static int marshallBackCounter;
@@ -107,7 +116,7 @@ public class AllSampleXmlInvoicesTest {
       File xmlDir = new File(TEST_FILE_LOCATION);
       Iterable<File> traversal = Files.fileTreeTraverser().children(xmlDir);
       for (File file : traversal) {
-         if (file.isFile() && getFileExtension(file.getName()).equals("xml")){
+         if (file.isFile() && getFileExtension(file.getName()).equals("xml") && !file.getName().contains("log4j2")){
             result.add(new Object[]{file,file.getName()});
          }
       }
@@ -140,14 +149,18 @@ public class AllSampleXmlInvoicesTest {
       ConformanceLevel conformanceLevel = invoice.getContext().getGuideline().getConformanceLevel();
       Class<?>[] validationGroups = resolveIntoValidationGroups(conformanceLevel);
 
+      InvoiceValidator invoiceValidator = new InvoiceValidator();
       //execute
-      Set<ConstraintViolation<Invoice>> validationResult = validator.validate(invoice,validationGroups);
+      
+      Set<ConstraintViolation<Invoice>> validationResult = invoiceValidator.validate(invoice);
+      MonetarySummation monetarySummation = AmountCalculator.calculateMonetarySummation(invoice);
       
       //verify
       for (ConstraintViolation<Invoice> violation : validationResult) {
-         String msg = violation.getPropertyPath() + " Message: "+ violation.getMessage() + " actual value: " + violation.getInvalidValue();
-         assertThat(validationResult).as(msg).isEmpty();
+         String msg = violation.getPropertyPath() + " Message: "+ violation.getMessage() + " | Actual value: " + violation.getInvalidValue();
+         log.warn(msg);
       }
+      assertThat(validationResult).isEmpty();
       modelValidationCounter++;
    }
 

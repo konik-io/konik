@@ -95,7 +95,7 @@
 			</ram:AssociatedDocumentLineDocument>
 			<ram:SpecifiedSupplyChainTradeAgreement>
 				<ram:GrossPriceProductTradePrice>
-					<ram:ChargeAmount currencyID="EUR">171.2000</ram:ChargeAmount>
+					<ram:ChargeAmount currencyID="EUR">160.0000</ram:ChargeAmount>
 					<ram:BasisQuantity unitCode="HUR">1.0000</ram:BasisQuantity>
 				</ram:GrossPriceProductTradePrice>
 				<ram:NetPriceProductTradePrice>
@@ -113,7 +113,7 @@
 					<ram:ApplicablePercent>7.00</ram:ApplicablePercent>
 				</ram:ApplicableTradeTax>
 				<ram:SpecifiedTradeSettlementMonetarySummation>
-					<ram:LineTotalAmount currencyID="EUR">171.20</ram:LineTotalAmount>
+					<ram:LineTotalAmount currencyID="EUR">160.00</ram:LineTotalAmount>
 				</ram:SpecifiedTradeSettlementMonetarySummation>
 			</ram:SpecifiedSupplyChainTradeSettlement>
 			<ram:SpecifiedTradeProduct>
@@ -127,7 +127,7 @@
 			</ram:AssociatedDocumentLineDocument>
 			<ram:SpecifiedSupplyChainTradeAgreement>
 				<ram:GrossPriceProductTradePrice>
-					<ram:ChargeAmount currencyID="EUR">0.9400</ram:ChargeAmount>
+					<ram:ChargeAmount currencyID="EUR">0.7900</ram:ChargeAmount>
 					<ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
 				</ram:GrossPriceProductTradePrice>
 				<ram:NetPriceProductTradePrice>
@@ -145,7 +145,7 @@
 					<ram:ApplicablePercent>19.00</ram:ApplicablePercent>
 				</ram:ApplicableTradeTax>
 				<ram:SpecifiedTradeSettlementMonetarySummation>
-					<ram:LineTotalAmount currencyID="EUR">376.04</ram:LineTotalAmount>
+					<ram:LineTotalAmount currencyID="EUR">316.00</ram:LineTotalAmount>
 				</ram:SpecifiedTradeSettlementMonetarySummation>
 			</ram:SpecifiedSupplyChainTradeSettlement>
 			<ram:SpecifiedTradeProduct>
@@ -159,7 +159,7 @@
 			</ram:AssociatedDocumentLineDocument>
 			<ram:SpecifiedSupplyChainTradeAgreement>
 				<ram:GrossPriceProductTradePrice>
-					<ram:ChargeAmount currencyID="EUR">0.1200</ram:ChargeAmount>
+					<ram:ChargeAmount currencyID="EUR">0.1000</ram:ChargeAmount>
 					<ram:BasisQuantity unitCode="LTR">1.0000</ram:BasisQuantity>
 				</ram:GrossPriceProductTradePrice>
 				<ram:NetPriceProductTradePrice>
@@ -177,7 +177,7 @@
 					<ram:ApplicablePercent>19.00</ram:ApplicablePercent>
 				</ram:ApplicableTradeTax>
 				<ram:SpecifiedTradeSettlementMonetarySummation>
-					<ram:LineTotalAmount currencyID="EUR">23.80</ram:LineTotalAmount>
+					<ram:LineTotalAmount currencyID="EUR">20.00</ram:LineTotalAmount>
 				</ram:SpecifiedTradeSettlementMonetarySummation>
 			</ram:SpecifiedSupplyChainTradeSettlement>
 			<ram:SpecifiedTradeProduct>

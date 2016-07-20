@@ -51,7 +51,7 @@ public final class Amounts {
 	 * @return
 	 */
 	public static Amount multiply(Amount amount, BigDecimal times) {
-		return new Amount(amount.getValue().multiply(times).setScale(2, RoundingMode.HALF_UP), amount.getCurrency());
+		return new Amount(amount.getValue().multiply(times), amount.getCurrency());
 	}
 
 	public static Amount negate(Amount amount) {
@@ -59,6 +59,21 @@ public final class Amounts {
 	}
 
 	public static Amount setPrecision(final Amount amount, int precision, RoundingMode roundingMode) {
+		if (amount == null) {
+			return null;
+		}
 		return new Amount(amount.getValue().setScale(precision, roundingMode), amount.getCurrency());
+	}
+
+	/**
+	 * Creates a copy of given {@link Amount} object.
+	 * @param amount
+	 * @return
+	 */
+	public static Amount copy(final Amount amount) {
+		if (amount == null) {
+			return null;
+		}
+		return new Amount(amount.getValue(), amount.getCurrency());
 	}
 }

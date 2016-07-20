@@ -56,6 +56,11 @@ public final class AmountCalculator {
 		List<Item> items = Items.purchasableItemsOnly(invoice.getTrade().getItems());
 		Settlement settlement = invoice.getTrade().getSettlement();
 
+		// If there are no items that can be used to recalculate monetary summation, return the current one
+		if (items.isEmpty()) {
+			return MonetarySummations.newMonetarySummation(settlement.getMonetarySummation());
+		}
+
 		MonetarySummation monetarySummation = MonetarySummations.newMonetarySummation(currency);
 		monetarySummation.setAllowanceTotal(new InvoiceAllowanceTotalCalculator().apply(settlement));
 		monetarySummation.setChargeTotal(new InvoiceChargeTotalCalculator().apply(settlement));
@@ -96,7 +101,7 @@ public final class AmountCalculator {
 				Amounts.add(monetarySummation.getGrandTotal(), Amounts.negate(monetarySummation.getTotalPrepaid()))
 		);
 
-		return monetarySummation;
+		return MonetarySummations.precise(monetarySummation, 2, RoundingMode.HALF_UP);
 	}
 
 	/**
@@ -109,8 +114,8 @@ public final class AmountCalculator {
 		CurrencyCode currencyCode = getCurrency(item);
 
 		SpecifiedMonetarySummation monetarySummation = MonetarySummations.newSpecifiedMonetarySummation(currencyCode);
-		monetarySummation.setLineTotal(new ItemLineTotalCalculator().apply(item));
-		monetarySummation.setTotalAllowanceCharge(new ItemTotalAllowanceChargeCalculator(currencyCode).apply(item));
+		monetarySummation.setLineTotal(Amounts.setPrecision(new ItemLineTotalCalculator().apply(item), 2, RoundingMode.HALF_UP));
+		monetarySummation.setTotalAllowanceCharge(Amounts.setPrecision(new ItemTotalAllowanceChargeCalculator(currencyCode).apply(item), 2, RoundingMode.HALF_UP));
 		return monetarySummation;
 	}
 
@@ -192,16 +197,23 @@ public final class AmountCalculator {
 		@Nullable
 		@Override
 		public Amount apply(@Nullable Item item) {
-			if (item == null || item.getDelivery() == null) {
-				return null;
+			Amount originLineTotal = null;
+
+			if (item != null && item.getSettlement() != null && item.getSettlement().getMonetarySummation() != null) {
+				originLineTotal = Amounts.copy(item.getSettlement().getMonetarySummation().getLineTotal());
+			}
+
+			if (item == null || item.getDelivery() == null || item.getAgreement() == null) {
+				return originLineTotal;
 			}
 
 			if (item.getAgreement().getNetPrice() == null) {
-				return null;
+				return originLineTotal;
 			}
 
 			BigDecimal quantity = item.getDelivery().getBilled() != null ? item.getDelivery().getBilled().getValue() : BigDecimal.ZERO;
-			return Amounts.multiply(item.getAgreement().getNetPrice().getChargeAmount(), quantity);
+			Amount amount = item.getAgreement().getNetPrice().getChargeAmount();
+			return Amounts.multiply(amount, quantity);
 		}
 	}
 
@@ -355,7 +367,7 @@ public final class AmountCalculator {
 		public BigDecimal calculateTaxTotal() {
 			BigDecimal taxTotal = BigDecimal.ZERO;
 			for (Map.Entry<BigDecimal, BigDecimal> entry : map.entrySet()) {
-				BigDecimal taxAmount = entry.getValue().multiply(entry.getKey().divide(BigDecimal.valueOf(100), PRECISION, ROUNDING_MODE)).setScale(PRECISION, ROUNDING_MODE);
+				BigDecimal taxAmount = entry.getValue().multiply(entry.getKey().divide(BigDecimal.valueOf(100))).setScale(PRECISION, ROUNDING_MODE);
 				taxTotal = taxTotal.add(taxAmount);
 			}
 			return taxTotal;

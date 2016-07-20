@@ -197,7 +197,7 @@
                 </ram:GrossPriceProductTradePrice>
                 <ram:NetPriceProductTradePrice>
                     <ram:ChargeAmount currencyID="EUR">3.3333</ram:ChargeAmount>
-                    <ram:BasisQuantity unitCode="MTK">1</ram:BasisQuantity>
+                    <ram:BasisQuantity unitCode="MTK">1.0000</ram:BasisQuantity>
                 </ram:NetPriceProductTradePrice>
             </ram:SpecifiedSupplyChainTradeAgreement>
             <ram:SpecifiedSupplyChainTradeDelivery>
@@ -309,7 +309,7 @@
                 </ram:GrossPriceProductTradePrice>
                 <ram:NetPriceProductTradePrice>
                     <ram:ChargeAmount currencyID="EUR">2.7700</ram:ChargeAmount>
-                    <ram:BasisQuantity unitCode="C62">1</ram:BasisQuantity>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
                 </ram:NetPriceProductTradePrice>
             </ram:SpecifiedSupplyChainTradeAgreement>
             <ram:SpecifiedSupplyChainTradeDelivery>

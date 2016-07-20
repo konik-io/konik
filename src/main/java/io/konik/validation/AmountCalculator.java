@@ -197,12 +197,18 @@ public final class AmountCalculator {
 		@Nullable
 		@Override
 		public Amount apply(@Nullable Item item) {
+			Amount originLineTotal = null;
+
+			if (item != null && item.getSettlement() != null && item.getSettlement().getMonetarySummation() != null) {
+				originLineTotal = Amounts.copy(item.getSettlement().getMonetarySummation().getLineTotal());
+			}
+
 			if (item == null || item.getDelivery() == null || item.getAgreement() == null) {
-				return null;
+				return originLineTotal;
 			}
 
 			if (item.getAgreement().getNetPrice() == null) {
-				return null;
+				return originLineTotal;
 			}
 
 			BigDecimal quantity = item.getDelivery().getBilled() != null ? item.getDelivery().getBilled().getValue() : BigDecimal.ZERO;

@@ -10,8 +10,8 @@
    Monetary amounts always need a Currency
    
 -->
-<rsm:CrossIndustryDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0"
-   xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15">
+<rsm:CrossIndustryDocument xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0"
+                           xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15">
    <rsm:SpecifiedExchangedDocumentContext>
       <ram:TestIndicator>
          <udt:Indicator>true</udt:Indicator>
@@ -125,9 +125,9 @@
             <ram:ApplicablePercent>7.00</ram:ApplicablePercent>
          </ram:ApplicableTradeTax>
          <ram:ApplicableTradeTax>
-            <ram:CalculatedAmount currencyID="EUR">12.25</ram:CalculatedAmount>
+            <ram:CalculatedAmount currencyID="EUR">12.24</ram:CalculatedAmount>
             <ram:TypeCode>VAT</ram:TypeCode>
-            <ram:BasisAmount currencyID="EUR">64.46</ram:BasisAmount>
+            <ram:BasisAmount currencyID="EUR">64.40</ram:BasisAmount>
             <ram:CategoryCode>S</ram:CategoryCode>
             <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
          </ram:ApplicableTradeTax>
@@ -175,14 +175,14 @@
             </ram:DueDateDateTime>
          </ram:SpecifiedTradePaymentTerms>
          <ram:SpecifiedTradeSettlementMonetarySummation>
-            <ram:LineTotalAmount currencyID="EUR">202.76</ram:LineTotalAmount>
+            <ram:LineTotalAmount currencyID="EUR">202.70</ram:LineTotalAmount>
             <ram:ChargeTotalAmount currencyID="EUR">5.80</ram:ChargeTotalAmount>
             <ram:AllowanceTotalAmount currencyID="EUR">14.73</ram:AllowanceTotalAmount>
-            <ram:TaxBasisTotalAmount currencyID="EUR">193.83</ram:TaxBasisTotalAmount>
-            <ram:TaxTotalAmount currencyID="EUR">21.31</ram:TaxTotalAmount>
-            <ram:GrandTotalAmount currencyID="EUR">215.14</ram:GrandTotalAmount>
+            <ram:TaxBasisTotalAmount currencyID="EUR">193.77</ram:TaxBasisTotalAmount>
+            <ram:TaxTotalAmount currencyID="EUR">21.30</ram:TaxTotalAmount>
+            <ram:GrandTotalAmount currencyID="EUR">215.07</ram:GrandTotalAmount>
             <ram:TotalPrepaidAmount currencyID="EUR">50.00</ram:TotalPrepaidAmount>
-            <ram:DuePayableAmount currencyID="EUR">165.14</ram:DuePayableAmount>
+            <ram:DuePayableAmount currencyID="EUR">165.07</ram:DuePayableAmount>
          </ram:SpecifiedTradeSettlementMonetarySummation>
       </ram:ApplicableSupplyChainTradeSettlement>
       <ram:IncludedSupplyChainTradeLineItem>
@@ -212,7 +212,7 @@
             </ram:GrossPriceProductTradePrice>
             <ram:NetPriceProductTradePrice>
                <ram:ChargeAmount currencyID="EUR">3.3333</ram:ChargeAmount>
-               <ram:BasisQuantity unitCode="MTK">1</ram:BasisQuantity>
+               <ram:BasisQuantity unitCode="MTK">1.0000</ram:BasisQuantity>
             </ram:NetPriceProductTradePrice>
          </ram:SpecifiedSupplyChainTradeAgreement>
          <ram:SpecifiedSupplyChainTradeDelivery>
@@ -322,7 +322,7 @@
             </ram:GrossPriceProductTradePrice>
             <ram:NetPriceProductTradePrice>
                <ram:ChargeAmount currencyID="EUR">2.7700</ram:ChargeAmount>
-               <ram:BasisQuantity unitCode="C62">1</ram:BasisQuantity>
+               <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
             </ram:NetPriceProductTradePrice>
          </ram:SpecifiedSupplyChainTradeAgreement>
          <ram:SpecifiedSupplyChainTradeDelivery>
@@ -335,7 +335,7 @@
                <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradeSettlementMonetarySummation>
-               <ram:LineTotalAmount currencyID="EUR">55.46</ram:LineTotalAmount>
+               <ram:LineTotalAmount currencyID="EUR">55.40</ram:LineTotalAmount>
             </ram:SpecifiedTradeSettlementMonetarySummation>
          </ram:SpecifiedSupplyChainTradeSettlement>
          <ram:SpecifiedTradeProduct>

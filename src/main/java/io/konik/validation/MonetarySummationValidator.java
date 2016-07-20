@@ -127,6 +127,7 @@ public class MonetarySummationValidator {
 				}
 
 				if (belongsToProfile(clazz, "getDuePayable", validationGroupsList) &&
+						!isEqualZero(monetarySummation.getDuePayable()) &&
 						!areEqual(monetarySummation.getDuePayable(), calculatedMonetarySummation.getDuePayable())) {
 					String message = message(monetarySummation.getDuePayable(), calculatedMonetarySummation.getDuePayable());
 					violations.add(new Violation(invoice, message, "monetarySummation.duePayable.error", "trade.settlement.monetarySummation.duePayable", monetarySummation.getDuePayable() != null ? monetarySummation.getDuePayable().getValue() : null));
@@ -179,6 +180,14 @@ public class MonetarySummationValidator {
 		}
 
 		return violations;
+	}
+
+	private static boolean isEqualZero(final Amount amount) {
+		if (amount == null || amount.getValue() == null) {
+			return false;
+		}
+
+		return BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP).equals(amount.getValue().setScale(2, RoundingMode.HALF_UP));
 	}
 
 	private String message(final Amount current, final Amount expected) {

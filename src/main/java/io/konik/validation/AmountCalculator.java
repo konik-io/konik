@@ -139,6 +139,11 @@ public final class AmountCalculator {
 					if (charge.isDiscount()) {
 						amount = amount.negate();
 					}
+
+					if (taxAggregator.getTaxBasisForTaxPercentage(charge.getCategory().getPercentage()).signum() < 0) {
+						amount = amount.negate();
+					}
+
 					taxAggregator.add(charge.getCategory(), amount);
 				}
 			}
@@ -354,6 +359,14 @@ public final class AmountCalculator {
 			BigDecimal key = tax.getPercentage().setScale(PRECISION, ROUNDING_MODE);
 			map.putIfAbsent(key, BigDecimal.ZERO);
 			map.put(key, map.get(key).add(amount));
+		}
+
+		public BigDecimal getTaxBasisForTaxPercentage(final BigDecimal percentage) {
+			BigDecimal value = map.get(percentage);
+			if (value == null) {
+				return BigDecimal.ZERO;
+			}
+			return value;
 		}
 
 		public BigDecimal calculateTaxBasis() {

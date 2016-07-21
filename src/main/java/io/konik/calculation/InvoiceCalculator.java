@@ -1,22 +1,29 @@
-package io.konik.validation.correction;
+package io.konik.calculation;
 
 import io.konik.util.Invoices;
 import io.konik.zugferd.Invoice;
 
 import javax.validation.constraints.NotNull;
+
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Corrects {@link Invoice} with specified {@link Correction}s.
+ * Completes the {@link Invoice} and calculates with specified {@link Correction}s or additions.
  */
-public final class InvoiceCorrector {
+public final class InvoiceCalculator {
 
 	private final Invoice invoice;
 	private final List<Correction<Invoice>> corrections = new CopyOnWriteArrayList<Correction<Invoice>>();
 
-	public InvoiceCorrector(@NotNull final Invoice invoice) {
+	/**
+	 * 
+	 * @param invoice
+	 */
+	public InvoiceCalculator(@NotNull final Invoice invoice) {
 		this.invoice = invoice;
+		corrections.add(new InvoiceMonetarySummationCompleter());
+		corrections.add(new ItemSpecifiedMonetarySummationCompleter());
 	}
 
 	/**
@@ -31,7 +38,7 @@ public final class InvoiceCorrector {
 	 * Runs all registered {@link Correction}s on the {@link Invoice}
 	 * @return
 	 */
-	public Invoice correct() {
+	public Invoice complete() {
 		Invoice correctedInvoice = Invoices.clone(invoice);
 		for (Correction<Invoice> correction : corrections) {
 			correctedInvoice = correction.correct(correctedInvoice);

@@ -1,4 +1,4 @@
-package io.konik.validation.correction;
+package io.konik.calculation;
 
 import javax.validation.constraints.NotNull;
 

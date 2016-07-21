@@ -235,5 +235,22 @@ public class MonetarySummation implements CommonMonetarySummation {
       this.duePayable = duePayable;
       return this;
    }
+   
+
+   @Override
+   public String toString() {
+      StringBuilder builder = new StringBuilder();
+      builder.append("MonetarySummation [");
+      if (lineTotal != null) builder.append("lineTotal=").append(lineTotal).append(", ");
+      if (chargeTotal != null) builder.append("chargeTotal=").append(chargeTotal).append(", ");
+      if (allowanceTotal != null) builder.append("allowanceTotal=").append(allowanceTotal).append(", ");
+      if (taxBasisTotal != null) builder.append("taxBasisTotal=").append(taxBasisTotal).append(", ");
+      if (taxTotal != null) builder.append("taxTotal=").append(taxTotal).append(", ");
+      if (grandTotal != null) builder.append("grandTotal=").append(grandTotal).append(", ");
+      if (totalPrepaid != null) builder.append("totalPrepaid=").append(totalPrepaid).append(", ");
+      if (duePayable != null) builder.append("duePayable=").append(duePayable);
+      builder.append("]");
+      return builder.toString();
+   }
 
 }

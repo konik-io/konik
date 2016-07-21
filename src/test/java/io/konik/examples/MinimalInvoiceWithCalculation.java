@@ -19,8 +19,10 @@
 package io.konik.examples;
 
 import com.google.common.io.ByteSource;
+
 import io.konik.InvoiceTransformer;
 import io.konik.PdfHandler;
+import io.konik.calculation.InvoiceCalculator;
 import io.konik.validation.InvoiceValidator;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.*;
@@ -28,19 +30,21 @@ import io.konik.zugferd.entity.trade.*;
 import io.konik.zugferd.entity.trade.item.*;
 import io.konik.zugferd.unece.codes.TaxCode;
 import io.konik.zugferd.unqualified.*;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import javax.validation.ConstraintViolation;
 import javax.xml.transform.stream.StreamSource;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static com.neovisionaries.i18n.CountryCode.DE;
 import static com.neovisionaries.i18n.CurrencyCode.EUR;
@@ -53,12 +57,12 @@ import static org.apache.commons.lang3.time.DateUtils.addMonths;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * The example class shows how easy it is to create a compact invoice.
+ * The example shows how easy it is to create a compact invoice and let it automatically calculate.
  */
 @SuppressWarnings("javadoc")
-public class MinimalInvoice {
+public class MinimalInvoiceWithCalculation {
 
-   Logger log = Logger.getLogger(MinimalInvoice.class.getSimpleName());
+   static final Logger log = LogManager.getLogger();
    
    ZfDate today = new ZfDateDay();
    ZfDate nextMonth = new ZfDateMonth(addMonths(today, 1));
@@ -95,14 +99,14 @@ public class MinimalInvoice {
          .setAgreement(new SpecifiedAgreement().setGrossPrice(new GrossPrice(new Amount(100, EUR))).setNetPrice(new Price(new Amount(100, EUR))))
          .setSettlement(new SpecifiedSettlement().addTradeTax(itemTax))
          .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))));
-      
+                
       trade.setSettlement(new Settlement()
       .setPaymentReference("20131122-42")
       .setCurrency(EUR)
       .addPaymentMeans(new PaymentMeans()
          .setPayerAccount(new DebtorFinancialAccount("DE01234.."))
-            .setPayerInstitution(new FinancialInstitution("GENO...")))
-      .setMonetarySummation(new MonetarySummation()
+            .setPayerInstitution(new FinancialInstitution("GENO..."))));
+      /*.setMonetarySummation(new MonetarySummation() // <3>
          .setLineTotal(new Amount(100, EUR))
          .setChargeTotal(new Amount(0,EUR))
          .setAllowanceTotal(new Amount(0, EUR))
@@ -110,11 +114,24 @@ public class MinimalInvoice {
          .setTaxTotal(new Amount(19, EUR))               
          .setDuePayable(new Amount(119, EUR))
          .setTotalPrepaid(new Amount(0, EUR))
-         .setGrandTotal(new Amount(119, EUR))));
+         .setGrandTotal(new Amount(119, EUR))));*/
       
-      invoice.setTrade(trade);
-      
-      return invoice;
+      invoice.setTrade(trade);      
+      Invoice completedInvoice = new InvoiceCalculator(invoice).complete(); // <4>
+          
+      log.info(completedInvoice.getTrade().getSettlement().getMonetarySummation().toString());// <5>
+      /* MonetarySummation [  
+       * lineTotal=100.00 EUR, 
+       * chargeTotal=0.00 EUR, 
+       * allowanceTotal=0.00 EUR, 
+       * taxBasisTotal=100.00 EUR, 
+       * taxTotal=19.00 EUR, 
+       * grandTotal=119.00 EUR, 
+       * totalPrepaid=0.00 EUR, 
+       * duePayable=119.00 EUR]
+       */
+     
+      return completedInvoice;
    }
    // end::createInvoice[]
    
@@ -161,7 +178,7 @@ public class MinimalInvoice {
       Set<ConstraintViolation<Invoice>> violations = invoiceValidator.validate(invoice);   // <2>
 
       for (ConstraintViolation<Invoice> violation : violations) {       
-        log.log(Level.INFO, violation.getMessage() + " at: " + violation.getPropertyPath() );
+        log.info(violation.getMessage() + " at: " + violation.getPropertyPath() );
       }
       //verify
       assertThat(violations.size()).isZero();   // <3>

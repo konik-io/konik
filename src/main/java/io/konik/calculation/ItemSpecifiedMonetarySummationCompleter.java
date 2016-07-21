@@ -1,4 +1,4 @@
-package io.konik.validation.correction;
+package io.konik.calculation;
 
 import io.konik.util.Items;
 import io.konik.validation.AmountCalculator;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Recalculates {@link SpecifiedMonetarySummation} for every {@link Item} and replaces old object with the new one.
  */
-public final class ItemSpecifiedMonetarySummationCorrection implements Correction<Invoice> {
+public final class ItemSpecifiedMonetarySummationCompleter implements Correction<Invoice> {
 
 	@Override
 	public Invoice correct(@NotNull final Invoice invoice) {

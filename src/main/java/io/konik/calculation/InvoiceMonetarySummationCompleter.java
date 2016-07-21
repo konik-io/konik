@@ -1,4 +1,4 @@
-package io.konik.validation.correction;
+package io.konik.calculation;
 
 import io.konik.validation.AmountCalculator;
 import io.konik.zugferd.Invoice;
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Recalculates invoice settlement {@link MonetarySummation} and replaces it in the {@link Invoice} object.
  */
-public final class InvoiceMonetarySummationCorrection implements Correction<Invoice> {
+public final class InvoiceMonetarySummationCompleter implements Correction<Invoice> {
 
 	@Override
 	public Invoice correct(@NotNull final Invoice invoice) {

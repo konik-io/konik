@@ -1,15 +1,19 @@
-package io.konik.validation.correction;
+package io.konik.calculation;
 
 import io.konik.InvoiceTransformer;
+import io.konik.calculation.InvoiceCalculator;
+import io.konik.calculation.InvoiceMonetarySummationCompleter;
+import io.konik.calculation.ItemSpecifiedMonetarySummationCompleter;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
+
 import org.junit.Test;
 
 import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class InvoiceCorrectorTest {
+public class InvoiceCalculatorTest {
 
 	@Test
 	public void shouldCorrectInvoiceMonetarySummationAndItemsSpecifiedMonetarySummations() {
@@ -17,12 +21,12 @@ public class InvoiceCorrectorTest {
 		InputStream xml = getClass().getResourceAsStream("/ZUGFeRD_Invoice_with_discounts_and_charges.xml");
 		InvoiceTransformer transformer = new InvoiceTransformer();
 		Invoice invoice = transformer.toModel(xml);
-		InvoiceCorrector corrector = new InvoiceCorrector(invoice);
-		corrector.applyCorrection(new InvoiceMonetarySummationCorrection());
-		corrector.applyCorrection(new ItemSpecifiedMonetarySummationCorrection());
+		InvoiceCalculator corrector = new InvoiceCalculator(invoice);
+		corrector.applyCorrection(new InvoiceMonetarySummationCompleter());
+		corrector.applyCorrection(new ItemSpecifiedMonetarySummationCompleter());
 
 		//when:
-		Invoice corrected = corrector.correct();
+		Invoice corrected = corrector.complete();
 
 		//then:
 		assertThat(invoice.getTrade().getSettlement().getMonetarySummation())

@@ -140,10 +140,6 @@ public final class AmountCalculator {
 						amount = amount.negate();
 					}
 
-					if (taxAggregator.getTaxBasisForTaxPercentage(charge.getCategory().getPercentage()).signum() < 0) {
-						amount = amount.negate();
-					}
-
 					taxAggregator.add(charge.getCategory(), amount);
 				}
 			}

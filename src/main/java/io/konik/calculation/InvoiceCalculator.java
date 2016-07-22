@@ -4,7 +4,6 @@ import io.konik.util.Invoices;
 import io.konik.zugferd.Invoice;
 
 import javax.validation.constraints.NotNull;
-
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -32,6 +31,13 @@ public final class InvoiceCalculator {
 	 */
 	public void applyCorrection(final Correction<Invoice> correction) {
 		this.corrections.add(correction);
+	}
+
+	/**
+	 * Resets calculator and removes all applied {@link Correction}s.
+	 */
+	public void reset() {
+		this.corrections.clear();
 	}
 
 	/**

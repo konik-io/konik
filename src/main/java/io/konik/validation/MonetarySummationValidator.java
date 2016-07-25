@@ -97,6 +97,8 @@ public class MonetarySummationValidator {
 			List<Class<?>> validationGroupsList = Arrays.asList(validationGroups);
 
 			if (settlement.getMonetarySummation() != null) {
+				log.debug("Validating invoice monetary summation...");
+
 				MonetarySummation monetarySummation = settlement.getMonetarySummation();
 				MonetarySummation calculatedMonetarySummation = AmountCalculator.calculateMonetarySummation(invoice);
 
@@ -151,6 +153,8 @@ public class MonetarySummationValidator {
 					violations.add(new Violation(invoice, message, "monetarySummation.totalPrepaid.error", "trade.settlement.monetarySummation.totalPrepaid", monetarySummation.getTotalPrepaid() != null ? monetarySummation.getTotalPrepaid().getValue() : null));
 				}
 			}
+
+			log.debug("Validating item's specified monetary summations...");
 
 			if (trade.getItems() != null) {
 				for (int i = 0; i < trade.getItems().size(); i++) {

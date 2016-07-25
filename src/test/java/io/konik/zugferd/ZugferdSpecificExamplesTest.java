@@ -23,7 +23,8 @@ public class ZugferdSpecificExamplesTest {
 	public static Collection<Object[]> getData() {
 		return Arrays.asList(new Object[][]{
 				{ "ZUGFeRD_1p0_COMFORT_Einfach_Original.xml", 0 },
-				{ "ZUGFeRD_1p0_EXTENDED_Warenrechnung.xml", 2 }
+				{ "ZUGFeRD_1p0_EXTENDED_Warenrechnung.xml", 2 },
+				{ "large_zugferd_invoice.xml", 6 },
 		});
 	}
 
@@ -48,6 +49,18 @@ public class ZugferdSpecificExamplesTest {
 		Set<ConstraintViolation<Invoice>> validationResult = invoiceValidator.validate(invoice);
 
 		//then:
+		printErrorsIfPresent(validationResult);
 		assertThat(validationResult).hasSize(expectedNumberOfErrors);
+	}
+
+	private static void printErrorsIfPresent(final Set<ConstraintViolation<Invoice>> constraintViolations) {
+		if (constraintViolations != null) {
+			for (ConstraintViolation<Invoice> constraintViolation : constraintViolations) {
+				System.out.printf("%-60s: %s | Invalid value: %s%n",
+						constraintViolation.getPropertyPath(),
+						constraintViolation.getMessage(),
+						constraintViolation.getInvalidValue());
+			}
+		}
 	}
 }

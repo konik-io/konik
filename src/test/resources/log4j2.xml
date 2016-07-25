@@ -6,9 +6,7 @@
     </Console>
   </Appenders>
   <Loggers>
-    <Logger name="io.Konik" level="trace">
-      <AppenderRef ref="Console"/>
-    </Logger>
+    <Logger name="io.konik" level="trace"/>
     <Root level="info">
       <AppenderRef ref="Console"/>
     </Root>

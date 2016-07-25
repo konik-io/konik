@@ -5,6 +5,8 @@ import io.konik.validation.AmountCalculator;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.trade.item.Item;
 import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -14,8 +16,13 @@ import java.util.List;
  */
 public final class ItemSpecifiedMonetarySummationCompleter implements Correction<Invoice> {
 
+	protected static Logger log = LoggerFactory.getLogger(ItemSpecifiedMonetarySummationCompleter.class);
+
 	@Override
 	public Invoice correct(@NotNull final Invoice invoice) {
+
+		log.debug("Running ItemSpecifiedMonetarySummationCompleter...");
+
 		if (invoice.getTrade() != null && invoice.getTrade().getItems() != null) {
 			List<Item> items = Items.purchasableItemsOnly(invoice.getTrade().getItems());
 			for (Item item : items) {

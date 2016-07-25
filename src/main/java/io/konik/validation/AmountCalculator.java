@@ -28,10 +28,13 @@ import io.konik.zugferd.entity.trade.MonetarySummation;
 import io.konik.zugferd.entity.trade.Settlement;
 import io.konik.zugferd.entity.trade.item.*;
 import io.konik.zugferd.unqualified.Amount;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -41,6 +44,8 @@ import java.util.concurrent.ConcurrentMap;
  * Calculate the missing amounts of the invoice.
  */
 public final class AmountCalculator {
+
+	protected static Logger log = LoggerFactory.getLogger(AmountCalculator.class);
 
 	/**
 	 * Calculates {@link MonetarySummation} for given {@link Invoice} basing on line {@link Item}s
@@ -67,9 +72,18 @@ public final class AmountCalculator {
 
 		TaxAggregator taxAggregator = new TaxAggregator();
 
+		log.debug("Starting recalculating line total from {} items...", items.size());
+		int itemsCounter = 0;
+
 		for (Item item : items) {
+			log.debug("==> {}:", ++itemsCounter);
+			log.debug("Recalculating item: [{}]", item.getProduct().getName());
+
 			Amount lineTotal = new ItemLineTotalCalculator().apply(item);
 			ItemTax itemTax = new ItemTaxExtractor().apply(item);
+
+			log.debug("Recalculated item line total = {}", lineTotal);
+			log.debug("Recalculated item tax = {}%", itemTax.getPercentage());
 
 			taxAggregator.add(itemTax, lineTotal != null ? lineTotal.getValue() : BigDecimal.ZERO);
 
@@ -77,7 +91,12 @@ public final class AmountCalculator {
 					monetarySummation.getLineTotal(),
 					lineTotal
 			));
+
+			log.debug("Current monetarySummation.lineTotal = {} (the sum of all line totals)", monetarySummation.getLineTotal());
 		}
+
+		log.debug("==> DONE!");
+		log.debug("Finished recalculating monetarySummation.lineTotal...");
 
 		appendTaxFromInvoiceAllowanceCharge(settlement, taxAggregator);
 
@@ -91,6 +110,8 @@ public final class AmountCalculator {
 				monetarySummation.getTaxTotal()
 		));
 
+		log.debug("Recalculated grand total = {} (tax basis total + tax total)", monetarySummation.getGrandTotal());
+
 		if (settlement.getMonetarySummation() != null && settlement.getMonetarySummation().getTotalPrepaid() != null) {
 			monetarySummation.setTotalPrepaid(
 					settlement.getMonetarySummation().getTotalPrepaid()
@@ -101,7 +122,13 @@ public final class AmountCalculator {
 				Amounts.add(monetarySummation.getGrandTotal(), Amounts.negate(monetarySummation.getTotalPrepaid()))
 		);
 
-		return MonetarySummations.precise(monetarySummation, 2, RoundingMode.HALF_UP);
+		MonetarySummation result = MonetarySummations.precise(monetarySummation, 2, RoundingMode.HALF_UP);
+
+		log.debug("Recalculating invoice monetary summation DONE!");
+		log.debug(" ==> result: {}", result);
+		log.debug("");
+
+		return result;
 	}
 
 	/**
@@ -111,19 +138,28 @@ public final class AmountCalculator {
 	 * @return
 	 */
 	public static SpecifiedMonetarySummation calculateSpecifiedMonetarySummation(final Item item) {
+		log.debug("Recalculating specified monetary summation for [{}]", item.getProduct().getName());
+
 		CurrencyCode currencyCode = getCurrency(item);
 
 		SpecifiedMonetarySummation monetarySummation = MonetarySummations.newSpecifiedMonetarySummation(currencyCode);
 		monetarySummation.setLineTotal(Amounts.setPrecision(new ItemLineTotalCalculator().apply(item), 2, RoundingMode.HALF_UP));
 		monetarySummation.setTotalAllowanceCharge(Amounts.setPrecision(new ItemTotalAllowanceChargeCalculator(currencyCode).apply(item), 2, RoundingMode.HALF_UP));
+
+		log.debug("==> lineTotal = {}", monetarySummation.getLineTotal());
+		log.debug("==> totalAllowanceCharge = {}", monetarySummation.getTotalAllowanceCharge());
+
 		return monetarySummation;
 	}
 
 	private static void appendTaxFromInvoiceServiceCharge(Settlement settlement, TaxAggregator taxAggregator) {
+		log.debug("Adding tax amounts from invoice service charge...");
 		if (settlement.getServiceCharge() != null) {
 			for (LogisticsServiceCharge charge : settlement.getServiceCharge()) {
 				if (charge.getTradeTax() != null && charge.getAmount() != null) {
 					for (AppliedTax tax : charge.getTradeTax()) {
+						log.debug("==> added {} to {}%", charge.getAmount(), tax.getPercentage());
+
 						taxAggregator.add(tax, charge.getAmount().getValue());
 					}
 				}
@@ -132,6 +168,7 @@ public final class AmountCalculator {
 	}
 
 	private static void appendTaxFromInvoiceAllowanceCharge(Settlement settlement, TaxAggregator taxAggregator) {
+		log.debug("Adding tax amounts from invoice allowance charge...");
 		if (settlement.getAllowanceCharge() != null) {
 			for (SpecifiedAllowanceCharge charge : settlement.getAllowanceCharge()) {
 				if (charge.getCategory() != null && charge.getActual() != null) {
@@ -139,6 +176,8 @@ public final class AmountCalculator {
 					if (charge.isDiscount()) {
 						amount = amount.negate();
 					}
+
+					log.debug("==> added {} to {}%", amount, charge.getCategory().getPercentage());
 
 					taxAggregator.add(charge.getCategory(), amount);
 				}
@@ -214,6 +253,9 @@ public final class AmountCalculator {
 
 			BigDecimal quantity = item.getDelivery().getBilled() != null ? item.getDelivery().getBilled().getValue() : BigDecimal.ZERO;
 			Amount amount = item.getAgreement().getNetPrice().getChargeAmount();
+
+			log.debug("Line total formula: {} (net price) x {} (quantity)", amount, quantity);
+
 			return Amounts.multiply(amount, quantity);
 		}
 	}
@@ -296,7 +338,11 @@ public final class AmountCalculator {
 					chargeValue = chargeValue.add(charge.getActual().getValue());
 				}
 			}
-			return new Amount(chargeValue, settlement.getCurrency());
+			Amount amount =  new Amount(chargeValue, settlement.getCurrency());
+
+			log.debug("Invoice allowance total = {}", amount);
+
+			return amount;
 		}
 	}
 
@@ -320,7 +366,11 @@ public final class AmountCalculator {
 				chargeValue = chargeValue.add(charge.getAmount().getValue());
 			}
 
-			return new Amount(chargeValue, settlement.getCurrency());
+			Amount amount =  new Amount(chargeValue, settlement.getCurrency());
+
+			log.debug("Invoice charge total = {}", amount);
+
+			return amount;
 		}
 	}
 
@@ -366,19 +416,29 @@ public final class AmountCalculator {
 		}
 
 		public BigDecimal calculateTaxBasis() {
+			log.debug("Recalculating tax basis for tax percentages: {}", Arrays.toString(map.keySet().toArray()));
 			BigDecimal taxBasis = BigDecimal.ZERO;
 			for (BigDecimal amount : map.values()) {
 				taxBasis = taxBasis.add(amount);
 			}
+
+			log.debug("Recalculated tax basis = {}", taxBasis);
+
 			return taxBasis;
 		}
 
 		public BigDecimal calculateTaxTotal() {
+			log.debug("Calculating tax total...");
 			BigDecimal taxTotal = BigDecimal.ZERO;
 			for (Map.Entry<BigDecimal, BigDecimal> entry : map.entrySet()) {
 				BigDecimal taxAmount = entry.getValue().multiply(entry.getKey().divide(BigDecimal.valueOf(100))).setScale(PRECISION, ROUNDING_MODE);
+				log.debug("===> {} x {}% = {}", entry.getValue(), entry.getKey(), taxAmount);
+
 				taxTotal = taxTotal.add(taxAmount);
 			}
+
+			log.debug("Recalculated tax total = {}", taxTotal);
+
 			return taxTotal;
 		}
 	}

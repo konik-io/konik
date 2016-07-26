@@ -1,17 +1,28 @@
 package io.konik.zugferd;
 
+import com.google.common.io.Files;
 import io.konik.InvoiceTransformer;
+import io.konik.PrittyPrintInvoiceTransformer;
+import io.konik.utils.NumberDifferenceXmlComparison;
 import io.konik.validation.InvoiceValidator;
+import org.custommonkey.xmlunit.Diff;
+import org.custommonkey.xmlunit.XMLAssert;
+import org.custommonkey.xmlunit.XMLUnit;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.xml.sax.SAXException;
 
 import javax.validation.ConstraintViolation;
+import javax.xml.transform.stream.StreamSource;
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
 
+import static java.nio.charset.Charset.forName;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Parameterized.class)
@@ -34,8 +45,32 @@ public class ZugferdSpecificExamplesTest {
 	@Parameterized.Parameter(1)
 	public int expectedNumberOfErrors;
 
+	InvoiceTransformer transformer = new PrittyPrintInvoiceTransformer();
+
 	private static File stringFileNameToFile(String name) {
 		return new File(ROOT + name);
+	}
+
+	@BeforeClass
+	public static void setup() {
+		XMLUnit.setIgnoreWhitespace(true);
+		XMLUnit.setIgnoreAttributeOrder(false);
+		XMLUnit.setIgnoreComments(true);
+	}
+
+	@Test
+	public void unmarshalInvoice() {
+		//execute
+		Invoice invoice = transformer.toModel(stringFileNameToFile(file));
+
+		//verify
+		assertThat(invoice).isNotNull();
+	}
+
+
+	@Test
+	public void validateInvoiceAgainstSchema() throws SAXException, IOException {
+		transformer.getZfSchemaValidator().validate(new StreamSource(stringFileNameToFile(file)));
 	}
 
 	@Test
@@ -51,6 +86,24 @@ public class ZugferdSpecificExamplesTest {
 		//then:
 		printErrorsIfPresent(validationResult);
 		assertThat(validationResult).hasSize(expectedNumberOfErrors);
+	}
+
+	@Test
+	public void marshallBackInvoiceModelAndDiffXml() throws Exception {
+		//setup:
+		File testFile = stringFileNameToFile(file);
+		String testFileContent = Files.toString(testFile, forName("UTF-8"));
+		Invoice model = transformer.toModel(testFile);
+
+		//when:
+		byte[] invoiceAsByteArray = transformer.fromModel(model);
+
+		//then:
+		String remarshalledInvoice = new String(invoiceAsByteArray, "UTF-8");
+		Files.write(remarshalledInvoice.getBytes(), new File("./target/test_"+file));
+		Diff diff = new Diff(testFileContent, remarshalledInvoice);
+		diff.overrideDifferenceListener(new NumberDifferenceXmlComparison());
+		XMLAssert.assertXMLEqual(diff, true);
 	}
 
 	private static void printErrorsIfPresent(final Set<ConstraintViolation<Invoice>> constraintViolations) {

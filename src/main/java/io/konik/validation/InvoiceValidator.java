@@ -21,7 +21,8 @@ import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.profile.ConformanceLevel;
-import org.apache.bval.jsr303.DefaultMessageInterpolator;
+
+import java.util.Set;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -31,7 +32,8 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import javax.validation.groups.Default;
-import java.util.Set;
+
+import org.apache.bval.jsr.DefaultMessageInterpolator;
 
 /**
  * Validates the invoice against the declared invoice profile.

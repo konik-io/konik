@@ -198,8 +198,8 @@
       <!-- this test dependencies can be used also at runtime -->
       <dependency>
          <groupId>org.apache.bval</groupId>
-         <artifactId>bval-jsr303</artifactId>
-         <version>0.5</version>
+         <artifactId>bval-jsr</artifactId>
+         <version>1.1.1</version>
       </dependency>
       <dependency>
          <groupId>io.konik</groupId>

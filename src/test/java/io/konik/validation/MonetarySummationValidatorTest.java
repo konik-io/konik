@@ -5,7 +5,7 @@ import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.Invoice;
 
-import org.apache.bval.jsr303.DefaultMessageInterpolator;
+import org.apache.bval.jsr.DefaultMessageInterpolator;
 import org.junit.Test;
 
 import javax.validation.ConstraintViolation;

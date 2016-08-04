@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rsm:CrossIndustryDocument xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12" xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0">
+    <rsm:SpecifiedExchangedDocumentContext>
+        <ram:TestIndicator>
+            <udt:Indicator>false</udt:Indicator>
+        </ram:TestIndicator>
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+            <ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:extended</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
+    </rsm:SpecifiedExchangedDocumentContext>
+    <rsm:HeaderExchangedDocument>
+        <ram:ID>42202461</ram:ID>
+        <ram:Name>BILL</ram:Name>
+        <ram:TypeCode>380</ram:TypeCode>
+        <ram:IssueDateTime>
+            <udt:DateTimeString format="102">20160728</udt:DateTimeString>
+        </ram:IssueDateTime>
+        <ram:LanguageID>de</ram:LanguageID>
+        <ram:IncludedNote>
+            <ram:Content>Brütsch Elektronik AG / 700025.000000</ram:Content>
+        </ram:IncludedNote>
+    </rsm:HeaderExchangedDocument>
+    <rsm:SpecifiedSupplyChainTradeTransaction>
+        <ram:ApplicableSupplyChainTradeAgreement>
+            <ram:SellerTradeParty>
+                <ram:Name>ABACUS Research AG</ram:Name>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName> </ram:PersonName>
+                    <ram:TelephoneUniversalCommunication>
+                        <ram:CompleteNumber>+41 71 292 25 25</ram:CompleteNumber>
+                    </ram:TelephoneUniversalCommunication>
+                    <ram:FaxUniversalCommunication>
+                        <ram:CompleteNumber>+41 71 292 25 00</ram:CompleteNumber>
+                    </ram:FaxUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>9301</ram:PostcodeCode>
+                    <ram:LineOne>Abacus-Platz 1</ram:LineOne>
+                    <ram:LineTwo>Postfach</ram:LineTwo>
+                    <ram:CityName>Wittenbach</ram:CityName>
+                    <ram:CountryID>CH</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">CHE110365544</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                <ram:Name>softtech ag</ram:Name>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName> </ram:PersonName>
+                    <ram:TelephoneUniversalCommunication>
+                        <ram:CompleteNumber>052 645 00 00</ram:CompleteNumber>
+                    </ram:TelephoneUniversalCommunication>
+                    <ram:FaxUniversalCommunication>
+                        <ram:CompleteNumber>052 645 00 25</ram:CompleteNumber>
+                    </ram:FaxUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>8240</ram:PostcodeCode>
+                    <ram:LineOne>Barzingergasse 4</ram:LineOne>
+                    <ram:CityName>Thayngen</ram:CityName>
+                    <ram:CountryID>CH</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">327354</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:BuyerTradeParty>
+        </ram:ApplicableSupplyChainTradeAgreement>
+        <ram:ApplicableSupplyChainTradeDelivery>
+            <ram:ActualDeliverySupplyChainEvent>
+                <ram:OccurrenceDateTime>
+                    <udt:DateTimeString format="102">20160728</udt:DateTimeString>
+                </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+        </ram:ApplicableSupplyChainTradeDelivery>
+        <ram:ApplicableSupplyChainTradeSettlement>
+            <ram:PaymentReference>206520000000831000422024617</ram:PaymentReference>
+            <ram:InvoiceCurrencyCode>CHF</ram:InvoiceCurrencyCode>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:PayeePartyCreditorFinancialAccount>
+                    <ram:ProprietaryID>01-004054-1</ram:ProprietaryID>
+                </ram:PayeePartyCreditorFinancialAccount>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+                <ram:CalculatedAmount currencyID="CHF">39.00</ram:CalculatedAmount>
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <ram:BasisAmount currencyID="CHF">487.50</ram:BasisAmount>
+                <ram:ApplicablePercent>8.00</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:SpecifiedTradePaymentTerms>
+                <ram:Description>30 TAGE NETTO</ram:Description>
+                <ram:DueDateDateTime>
+                    <udt:DateTimeString format="102">20160827</udt:DateTimeString>
+                </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradeSettlementMonetarySummation>
+                <ram:LineTotalAmount currencyID="CHF">487.50</ram:LineTotalAmount>
+                <ram:ChargeTotalAmount currencyID="CHF">0.00</ram:ChargeTotalAmount>
+                <ram:AllowanceTotalAmount currencyID="CHF">0.00</ram:AllowanceTotalAmount>
+                <ram:TaxBasisTotalAmount currencyID="CHF">487.50</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount currencyID="CHF">39.00</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount currencyID="CHF">526.50</ram:GrandTotalAmount>
+            </ram:SpecifiedTradeSettlementMonetarySummation>
+        </ram:ApplicableSupplyChainTradeSettlement>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>2</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">100.0000</ram:ChargeAmount>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:CalculationPercent>25.00</ram:CalculationPercent>
+                        <ram:BasisAmount currencyID="CHF">100.00</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="CHF">25.0000</ram:ActualAmount>
+                        <ram:Reason>Staffelrabatt</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">75.0000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+                <ram:ActualDeliverySupplyChainEvent>
+                    <ram:OccurrenceDateTime>
+                        <udt:DateTimeString format="102">20160727</udt:DateTimeString>
+                    </ram:OccurrenceDateTime>
+                </ram:ActualDeliverySupplyChainEvent>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:ApplicablePercent>8.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">75.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>20175.100</ram:SellerAssignedID>
+                <ram:Name>UPG-DNG 106=&gt;108:10175.100</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>3</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">80.0000</ram:ChargeAmount>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:CalculationPercent>25.00</ram:CalculationPercent>
+                        <ram:BasisAmount currencyID="CHF">80.00</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="CHF">20.0000</ram:ActualAmount>
+                        <ram:Reason>Staffelrabatt</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">60.0000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+                <ram:ActualDeliverySupplyChainEvent>
+                    <ram:OccurrenceDateTime>
+                        <udt:DateTimeString format="102">20160727</udt:DateTimeString>
+                    </ram:OccurrenceDateTime>
+                </ram:ActualDeliverySupplyChainEvent>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:ApplicablePercent>8.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">60.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>20175.200</ram:SellerAssignedID>
+                <ram:Name>UPG-DNG 106=&gt;108:10175.207</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>4</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">150.0000</ram:ChargeAmount>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:CalculationPercent>25.00</ram:CalculationPercent>
+                        <ram:BasisAmount currencyID="CHF">150.00</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="CHF">37.5000</ram:ActualAmount>
+                        <ram:Reason>Staffelrabatt</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">112.5000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+                <ram:ActualDeliverySupplyChainEvent>
+                    <ram:OccurrenceDateTime>
+                        <udt:DateTimeString format="102">20160727</udt:DateTimeString>
+                    </ram:OccurrenceDateTime>
+                </ram:ActualDeliverySupplyChainEvent>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:ApplicablePercent>8.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">112.50</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>20175.200</ram:SellerAssignedID>
+                <ram:Name>UPG-DNG 106=&gt;108:10175.210</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>5</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">120.0000</ram:ChargeAmount>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:CalculationPercent>25.00</ram:CalculationPercent>
+                        <ram:BasisAmount currencyID="CHF">120.00</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="CHF">30.0000</ram:ActualAmount>
+                        <ram:Reason>Staffelrabatt</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">90.0000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+                <ram:ActualDeliverySupplyChainEvent>
+                    <ram:OccurrenceDateTime>
+                        <udt:DateTimeString format="102">20160727</udt:DateTimeString>
+                    </ram:OccurrenceDateTime>
+                </ram:ActualDeliverySupplyChainEvent>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:ApplicablePercent>8.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">90.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>20175.200</ram:SellerAssignedID>
+                <ram:Name>UPG-DNG 106=&gt;108:10175.213</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>6</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">200.0000</ram:ChargeAmount>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:CalculationPercent>25.00</ram:CalculationPercent>
+                        <ram:BasisAmount currencyID="CHF">200.00</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="CHF">50.0000</ram:ActualAmount>
+                        <ram:Reason>Staffelrabatt</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">150.0000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+                <ram:ActualDeliverySupplyChainEvent>
+                    <ram:OccurrenceDateTime>
+                        <udt:DateTimeString format="102">20160727</udt:DateTimeString>
+                    </ram:OccurrenceDateTime>
+                </ram:ActualDeliverySupplyChainEvent>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:ApplicablePercent>8.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">150.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>20175.200</ram:SellerAssignedID>
+                <ram:Name>UPG-DNG 106=&gt;108:10175.215</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+    </rsm:SpecifiedSupplyChainTradeTransaction>
+</rsm:CrossIndustryDocument>

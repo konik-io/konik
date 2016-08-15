@@ -35,7 +35,10 @@ public class ZugferdSpecificExamplesTest {
 		return Arrays.asList(new Object[][]{
 				{ "ZUGFeRD_1p0_COMFORT_Einfach_Original.xml", 0 },
 				{ "ZUGFeRD_1p0_EXTENDED_Warenrechnung.xml", 2 },
-				{ "large_zugferd_invoice.xml", 6 },
+				{ "large_zugferd_invoice.xml", 5 },
+				{ "duePayable.xml", 1 },
+				{ "productName.xml", 2 },
+				{ "totalAllowanceCharge.xml", 6 },
 		});
 	}
 

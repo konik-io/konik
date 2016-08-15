@@ -131,8 +131,11 @@ public class MonetarySummationValidator {
 					violations.add(new Violation(invoice, message, "monetarySummation.allowanceTotal.error", "trade.settlement.monetarySummation.allowanceTotal", monetarySummation.getAllowanceTotal() != null ? monetarySummation.getAllowanceTotal().getValue() : null));
 				}
 
+				boolean expectDuePayable = (settlement.getPaymentMeans() != null && !settlement.getPaymentMeans().isEmpty()) ||
+						!isEqualZero(monetarySummation.getTotalPrepaid());
+
 				if (belongsToProfile(clazz, "getDuePayable", validationGroupsList) &&
-						!isEqualZero(monetarySummation.getDuePayable()) &&
+						expectDuePayable &&
 						!areEqual(monetarySummation.getDuePayable(), calculatedMonetarySummation.getDuePayable())) {
 					String message = message(monetarySummation.getDuePayable(), calculatedMonetarySummation.getDuePayable());
 					violations.add(new Violation(invoice, message, "monetarySummation.duePayable.error", "trade.settlement.monetarySummation.duePayable", monetarySummation.getDuePayable() != null ? monetarySummation.getDuePayable().getValue() : null));

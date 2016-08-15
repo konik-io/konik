@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rsm:CrossIndustryDocument xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12" xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0">
+    <rsm:SpecifiedExchangedDocumentContext>
+        <ram:TestIndicator>
+            <udt:Indicator>false</udt:Indicator>
+        </ram:TestIndicator>
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+            <ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:extended</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
+    </rsm:SpecifiedExchangedDocumentContext>
+    <rsm:HeaderExchangedDocument>
+        <ram:ID>005</ram:ID>
+        <ram:Name>BILL</ram:Name>
+        <ram:TypeCode>380</ram:TypeCode>
+        <ram:IssueDateTime>
+            <udt:DateTimeString format="102">20160710</udt:DateTimeString>
+        </ram:IssueDateTime>
+        <ram:LanguageID>de</ram:LanguageID>
+    </rsm:HeaderExchangedDocument>
+    <rsm:SpecifiedSupplyChainTradeTransaction>
+        <ram:ApplicableSupplyChainTradeAgreement>
+            <ram:SellerTradeParty>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName> </ram:PersonName>
+                    <ram:EmailURIUniversalCommunication>
+                        <ram:URIID>silvio.enzler@abacus.ch</ram:URIID>
+                    </ram:EmailURIUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress/>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                <ram:Name>Abacus</ram:Name>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName> </ram:PersonName>
+                    <ram:EmailURIUniversalCommunication>
+                        <ram:URIID>silvio.enzler@abacus.ch</ram:URIID>
+                    </ram:EmailURIUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>9030</ram:PostcodeCode>
+                    <ram:LineOne>Hüslenweg 101</ram:LineOne>
+                    <ram:CityName>Abtwil SG</ram:CityName>
+                    <ram:CountryID>CH</ram:CountryID>
+                </ram:PostalTradeAddress>
+            </ram:BuyerTradeParty>
+        </ram:ApplicableSupplyChainTradeAgreement>
+        <ram:ApplicableSupplyChainTradeDelivery/>
+        <ram:ApplicableSupplyChainTradeSettlement>
+            <ram:PaymentReference>000000000020160710000000050</ram:PaymentReference>
+            <ram:InvoiceCurrencyCode>CHF</ram:InvoiceCurrencyCode>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:PayeePartyCreditorFinancialAccount>
+                    <ram:ProprietaryID>01-2564-7</ram:ProprietaryID>
+                </ram:PayeePartyCreditorFinancialAccount>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+                <ram:CalculatedAmount currencyID="CHF">44.80</ram:CalculatedAmount>
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <ram:BasisAmount currencyID="CHF">560.00</ram:BasisAmount>
+                <ram:ApplicablePercent>8.00</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:SpecifiedTradeSettlementMonetarySummation>
+                <ram:LineTotalAmount currencyID="CHF">560.00</ram:LineTotalAmount>
+                <ram:ChargeTotalAmount currencyID="CHF">0.00</ram:ChargeTotalAmount>
+                <ram:AllowanceTotalAmount currencyID="CHF">0.00</ram:AllowanceTotalAmount>
+                <ram:TaxBasisTotalAmount currencyID="CHF">560.00</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount currencyID="CHF">44.80</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount currencyID="CHF">604.80</ram:GrandTotalAmount>
+            </ram:SpecifiedTradeSettlementMonetarySummation>
+        </ram:ApplicableSupplyChainTradeSettlement>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>10</ram:LineID>
+                <ram:IncludedNote>
+                    <ram:Content>Summarische Position, Details siehe PDF</ram:Content>
+                </ram:IncludedNote>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:CalculatedAmount currencyID="CHF">44.80</ram:CalculatedAmount>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:ApplicablePercent>8.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">560.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:Name>Test</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+    </rsm:SpecifiedSupplyChainTradeTransaction>
+</rsm:CrossIndustryDocument>

@@ -1,3 +1,20 @@
+/* Copyright (C) 2014 konik.io
+ *
+ * This file is part of the Konik library.
+ *
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * The Konik library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ */
 package io.konik.calculation;
 
 import io.konik.util.Invoices;
@@ -16,8 +33,9 @@ public final class InvoiceCalculator {
 	private final List<Correction<Invoice>> corrections = new CopyOnWriteArrayList<Correction<Invoice>>();
 
 	/**
-	 * 
-	 * @param invoice
+	 * Instantiates a new invoice calculator.
+	 *
+	 * @param invoice the invoice
 	 */
 	public InvoiceCalculator(@NotNull final Invoice invoice) {
 		this.invoice = invoice;
@@ -26,8 +44,9 @@ public final class InvoiceCalculator {
 	}
 
 	/**
-	 * Registers {@link Correction} to apply on the {@link Invoice}
-	 * @param correction
+	 * Registers {@link Correction} to apply on the {@link Invoice}.
+	 *
+	 * @param correction the correction
 	 */
 	public void applyCorrection(final Correction<Invoice> correction) {
 		this.corrections.add(correction);

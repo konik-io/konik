@@ -1,3 +1,20 @@
+/* Copyright (C) 2014 konik.io
+ *
+ * This file is part of the Konik library.
+ *
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * The Konik library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
+ */
 package io.konik.util;
 
 
@@ -54,10 +71,24 @@ public final class Amounts {
 		return new Amount(amount.getValue().multiply(times), amount.getCurrency());
 	}
 
+	/**
+	 * Negate Amount
+	 *
+	 * @param amount the amount
+	 * @return the amount
+	 */
 	public static Amount negate(Amount amount) {
 		return new Amount(amount.getValue().negate(), amount.getCurrency());
 	}
 
+	/**
+	 * Sets the precision for amount.
+	 *
+	 * @param amount the amount
+	 * @param precision the precision
+	 * @param roundingMode the rounding mode
+	 * @return the amount
+	 */
 	public static Amount setPrecision(final Amount amount, int precision, RoundingMode roundingMode) {
 		if (amount == null) {
 			return null;

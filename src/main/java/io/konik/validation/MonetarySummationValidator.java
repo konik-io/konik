@@ -5,6 +5,7 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import io.konik.validator.annotation.Basic;
 import io.konik.zugferd.Invoice;
+import io.konik.zugferd.entity.PaymentMeans;
 import io.konik.zugferd.entity.trade.MonetarySummation;
 import io.konik.zugferd.entity.trade.Settlement;
 import io.konik.zugferd.entity.trade.Trade;
@@ -128,8 +129,12 @@ public class MonetarySummationValidator {
 					violations.add(new Violation(invoice, message, "monetarySummation.allowanceTotal.error", "trade.settlement.monetarySummation.allowanceTotal", monetarySummation.getAllowanceTotal() != null ? monetarySummation.getAllowanceTotal().getValue() : null));
 				}
 
-				boolean expectDuePayable = (settlement.getPaymentMeans() != null && !settlement.getPaymentMeans().isEmpty()) ||
-						!isEqualZero(monetarySummation.getTotalPrepaid());
+				boolean expectDuePayable = monetarySummation.getTotalPrepaid() != null && !isEqualZero(monetarySummation.getTotalPrepaid());
+				if (settlement.getPaymentMeans() != null) {
+					for (PaymentMeans paymentMeans : settlement.getPaymentMeans()) {
+						expectDuePayable = expectDuePayable || paymentMeans.getCode() != null;
+					}
+				}
 
 				if (belongsToProfile(clazz, "getDuePayable", validationGroupsList) &&
 						expectDuePayable &&

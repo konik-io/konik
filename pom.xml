@@ -204,7 +204,7 @@
       <dependency>
          <groupId>io.konik</groupId>
          <artifactId>pdfbox-carriage</artifactId>
-         <version>1.0.0-RC1</version>
+         <version>1.0.0</version>
          <scope>test</scope>
       </dependency>
 

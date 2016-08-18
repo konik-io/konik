@@ -313,13 +313,17 @@ public final class AmountCalculator {
 
 				if (grossPrice.getAllowanceCharges() != null) {
 					for (AllowanceCharge charge : grossPrice.getAllowanceCharges()) {
-						Amount amount = new Amount(charge.getActual().getValue().multiply(quantity), currencyCode);
+						BigDecimal chargeValue = charge.getActual().getValue();
+						if (charge.isDiscount()) {
+							chargeValue = chargeValue.negate();
+						}
+						Amount amount = new Amount(chargeValue.multiply(quantity), currencyCode);
 						totalAllowanceCharge = Amounts.add(totalAllowanceCharge, amount);
 					}
 				}
 			}
 
-			return Amounts.setPrecision(totalAllowanceCharge, 2, RoundingMode.HALF_UP);
+			return Amounts.setPrecision(Amounts.abs(totalAllowanceCharge), 2, RoundingMode.HALF_UP);
 		}
 	}
 

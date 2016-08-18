@@ -82,9 +82,9 @@
                 </ram:PayeePartyCreditorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
-                <ram:CalculatedAmount currencyID="CHF">39.00</ram:CalculatedAmount>
+                <ram:CalculatedAmount currencyID="CHF">6.40</ram:CalculatedAmount>
                 <ram:TypeCode>VAT</ram:TypeCode>
-                <ram:BasisAmount currencyID="CHF">487.50</ram:BasisAmount>
+                <ram:BasisAmount currencyID="CHF">80.00</ram:BasisAmount>
                 <ram:ApplicablePercent>8.00</ram:ApplicablePercent>
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
@@ -114,7 +114,7 @@
                             <udt:Indicator>false</udt:Indicator>
                         </ram:ChargeIndicator>
                         <ram:CalculationPercent>25.00</ram:CalculationPercent>
-                        <ram:BasisAmount currencyID="CHF">80.00</ram:BasisAmount>
+                        <ram:BasisAmount currencyID="CHF">80.0000</ram:BasisAmount>
                         <ram:ActualAmount currencyID="CHF">20.0000</ram:ActualAmount>
                         <ram:Reason>Staffelrabatt</ram:Reason>
                     </ram:AppliedTradeAllowanceCharge>
@@ -123,7 +123,7 @@
                             <udt:Indicator>true</udt:Indicator>
                         </ram:ChargeIndicator>
                         <ram:CalculationPercent>25.00</ram:CalculationPercent>
-                        <ram:BasisAmount currencyID="CHF">80.00</ram:BasisAmount>
+                        <ram:BasisAmount currencyID="CHF">80.0000</ram:BasisAmount>
                         <ram:ActualAmount currencyID="CHF">20.0000</ram:ActualAmount>
                         <ram:Reason>Surcharge</ram:Reason>
                     </ram:AppliedTradeAllowanceCharge>

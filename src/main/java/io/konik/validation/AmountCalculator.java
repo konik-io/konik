@@ -311,15 +311,21 @@ public final class AmountCalculator {
 			if (item != null && item.getAgreement() != null && item.getAgreement().getGrossPrice() != null) {
 				GrossPrice grossPrice = item.getAgreement().getGrossPrice();
 
-				if (grossPrice.getAllowanceCharges() != null) {
+				if (grossPrice.getAllowanceCharges() != null && !grossPrice.getAllowanceCharges().isEmpty()) {
 					for (AllowanceCharge charge : grossPrice.getAllowanceCharges()) {
-						Amount amount = new Amount(charge.getActual().getValue().multiply(quantity), currencyCode);
+						BigDecimal chargeValue = charge.getActual().getValue();
+						if (charge.isDiscount()) {
+							chargeValue = chargeValue.negate();
+						}
+						Amount amount = new Amount(chargeValue.multiply(quantity), currencyCode);
 						totalAllowanceCharge = Amounts.add(totalAllowanceCharge, amount);
 					}
+
+					totalAllowanceCharge = Amounts.setPrecision(Amounts.abs(totalAllowanceCharge), 2, RoundingMode.HALF_UP);
 				}
 			}
 
-			return Amounts.setPrecision(totalAllowanceCharge, 2, RoundingMode.HALF_UP);
+			return totalAllowanceCharge;
 		}
 	}
 

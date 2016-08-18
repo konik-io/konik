@@ -72,8 +72,9 @@ public class ItemTotalAllowanceChargeCalculatorTest {
 
 	private static AllowanceCharge charge(final BigDecimal value) {
 		AllowanceCharge charge = new AllowanceCharge();
-		charge.setActual(new Amount(value, CURRENCY_CODE));
-		if (RANDOM.nextBoolean()) {
+		charge.setActual(new Amount(value.abs(), CURRENCY_CODE));
+
+		if (value.signum() < 0) {
 			charge.setDiscount();
 		} else {
 			charge.setSurcharge();

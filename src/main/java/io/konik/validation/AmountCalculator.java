@@ -311,7 +311,7 @@ public final class AmountCalculator {
 			if (item != null && item.getAgreement() != null && item.getAgreement().getGrossPrice() != null) {
 				GrossPrice grossPrice = item.getAgreement().getGrossPrice();
 
-				if (grossPrice.getAllowanceCharges() != null) {
+				if (grossPrice.getAllowanceCharges() != null && !grossPrice.getAllowanceCharges().isEmpty()) {
 					for (AllowanceCharge charge : grossPrice.getAllowanceCharges()) {
 						BigDecimal chargeValue = charge.getActual().getValue();
 						if (charge.isDiscount()) {
@@ -320,10 +320,12 @@ public final class AmountCalculator {
 						Amount amount = new Amount(chargeValue.multiply(quantity), currencyCode);
 						totalAllowanceCharge = Amounts.add(totalAllowanceCharge, amount);
 					}
+
+					totalAllowanceCharge = Amounts.setPrecision(Amounts.abs(totalAllowanceCharge), 2, RoundingMode.HALF_UP);
 				}
 			}
 
-			return Amounts.setPrecision(Amounts.abs(totalAllowanceCharge), 2, RoundingMode.HALF_UP);
+			return totalAllowanceCharge;
 		}
 	}
 

@@ -3,9 +3,9 @@ package io.konik.validation;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
-
 import io.konik.validator.annotation.Basic;
 import io.konik.zugferd.Invoice;
+import io.konik.zugferd.entity.GrossPrice;
 import io.konik.zugferd.entity.PaymentMeans;
 import io.konik.zugferd.entity.trade.MonetarySummation;
 import io.konik.zugferd.entity.trade.Settlement;
@@ -15,7 +15,6 @@ import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
 import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
 import io.konik.zugferd.profile.ConformanceLevel;
 import io.konik.zugferd.unqualified.Amount;
-
 import org.apache.bval.jsr.util.PathImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +22,6 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Nullable;
 import javax.validation.*;
 import javax.validation.metadata.ConstraintDescriptor;
-
 import java.lang.annotation.Annotation;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -184,7 +182,7 @@ public class MonetarySummationValidator {
 								violations.add(new Violation(invoice, message, "item.monetarySummation.lineTotal.error", "trade.items["+i+"].settlement.monetarySummation.lineTotal", monetarySummation.getLineTotal() != null ? monetarySummation.getLineTotal().getValue() : null));
 							}
 							if (belongsToProfile(SpecifiedMonetarySummation.class, "getTotalAllowanceCharge", validationGroupsList) &&
-									!areEqual(monetarySummation.getTotalAllowanceCharge(), calculatedMonetarySummation.getTotalAllowanceCharge())) {
+									((grossPriceIncludesCharges(item) && monetarySummation.getTotalAllowanceCharge() == null) || !areEqual(monetarySummation.getTotalAllowanceCharge(), calculatedMonetarySummation.getTotalAllowanceCharge()))) {
 								String message = message(monetarySummation.getTotalAllowanceCharge(), calculatedMonetarySummation.getTotalAllowanceCharge());
 								violations.add(new Violation(invoice, message, "item.monetarySummation.totalAllowanceCharge.error", "trade.items["+i+"].settlement.monetarySummation.totalAllowanceCharge", monetarySummation.getTotalAllowanceCharge() != null ? monetarySummation.getTotalAllowanceCharge().getValue() : null));
 							}
@@ -195,6 +193,20 @@ public class MonetarySummationValidator {
 		}
 
 		return violations;
+	}
+
+	private static boolean grossPriceIncludesCharges(final Item item) {
+		boolean result = false;
+
+		if (item != null && item.getAgreement() != null && item.getAgreement().getGrossPrice() != null) {
+			GrossPrice grossPrice = item.getAgreement().getGrossPrice();
+
+			if (grossPrice.getAllowanceCharges() != null) {
+				return !grossPrice.getAllowanceCharges().isEmpty();
+			}
+		}
+
+		return result;
 	}
 
 	private static boolean isEqualZero(final Amount amount) {

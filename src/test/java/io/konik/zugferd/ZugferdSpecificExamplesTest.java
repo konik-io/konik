@@ -37,8 +37,9 @@ public class ZugferdSpecificExamplesTest {
 				{ "ZUGFeRD_1p0_EXTENDED_Warenrechnung.xml", 2 },
 				{ "large_zugferd_invoice.xml", 5 },
 				{ "duePayable.xml", 0 },
-				{ "productName.xml", 2 },
+				{ "productName.xml", 1 },
 				{ "totalAllowanceCharge.xml", 5 },
+				{ "totalAllowanceChargeWithDiscountAndSurcharge.xml", 0 },
 		});
 	}
 

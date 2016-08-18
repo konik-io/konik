@@ -82,6 +82,15 @@ public final class Amounts {
 	}
 
 	/**
+	 * Amount absolute value.
+	 * @param amount
+	 * @return
+	 */
+	public static Amount abs(Amount amount) {
+		return new Amount(amount.getValue().abs(), amount.getCurrency());
+	}
+
+	/**
 	 * Sets the precision for amount.
 	 *
 	 * @param amount the amount

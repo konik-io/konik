@@ -4,13 +4,11 @@ import io.konik.InvoiceTransformer;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.Invoice;
-
 import org.apache.bval.jsr.DefaultMessageInterpolator;
 import org.junit.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.groups.Default;
-
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.Set;
@@ -46,6 +44,10 @@ public class MonetarySummationValidatorTest {
 		Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice, new Class[] {Default.class, Comfort.class, Extended.class});
 
 		//then:
+		for (ConstraintViolation<Invoice> violation : violations) {
+			System.out.printf("%-70s: %s%n", violation.getPropertyPath().toString(), violation.getMessage());
+		}
+
 		assertThat(violations).hasSize(1);
 
 		assertThat(violations.iterator().next().getMessage()).contains("[202.70]");

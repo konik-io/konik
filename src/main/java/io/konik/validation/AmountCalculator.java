@@ -321,7 +321,7 @@ public final class AmountCalculator {
 						totalAllowanceCharge = Amounts.add(totalAllowanceCharge, amount);
 					}
 
-					totalAllowanceCharge = Amounts.setPrecision(Amounts.abs(totalAllowanceCharge), 2, RoundingMode.HALF_UP);
+					totalAllowanceCharge = Amounts.setPrecision(totalAllowanceCharge, 2, RoundingMode.HALF_UP);
 				}
 			}
 

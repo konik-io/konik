@@ -361,7 +361,7 @@
             </ram:SpecifiedTradeAccountingAccount>
             <ram:SpecifiedTradeSettlementMonetarySummation>
                <ram:LineTotalAmount currencyID="EUR">288.75</ram:LineTotalAmount>
-               <ram:TotalAllowanceChargeAmount currencyID="EUR">123.75</ram:TotalAllowanceChargeAmount>
+               <ram:TotalAllowanceChargeAmount currencyID="EUR">-123.75</ram:TotalAllowanceChargeAmount>
             </ram:SpecifiedTradeSettlementMonetarySummation>
          </ram:SpecifiedSupplyChainTradeSettlement>
          <ram:SpecifiedTradeProduct>

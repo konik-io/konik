@@ -151,7 +151,7 @@ public class AllSampleXmlInvoicesTest {
       //execute
       
       Set<ConstraintViolation<Invoice>> validationResult = invoiceValidator.validate(invoice);
-      MonetarySummation monetarySummation = AmountCalculator.calculateMonetarySummation(invoice);
+      MonetarySummation monetarySummation = AmountCalculator.recalculate(invoice).getMonetarySummation();
       
       //verify
       for (ConstraintViolation<Invoice> violation : validationResult) {

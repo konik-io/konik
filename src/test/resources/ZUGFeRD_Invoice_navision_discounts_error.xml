@@ -1,1 +1,207 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><rsm:CrossIndustryDocument xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15" xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0"><rsm:SpecifiedExchangedDocumentContext><ram:GuidelineSpecifiedDocumentContextParameter><ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:extended</ram:ID></ram:GuidelineSpecifiedDocumentContextParameter></rsm:SpecifiedExchangedDocumentContext><rsm:HeaderExchangedDocument><ram:ID>103022</ram:ID><ram:Name>Invoice</ram:Name><ram:TypeCode>380</ram:TypeCode><ram:IssueDateTime><udt:DateTimeString format="102">20160707</udt:DateTimeString></ram:IssueDateTime></rsm:HeaderExchangedDocument><rsm:SpecifiedSupplyChainTradeTransaction><ram:ApplicableSupplyChainTradeAgreement><ram:SellerTradeParty><ram:Name>CRONUS International Ltd.</ram:Name><ram:PostalTradeAddress><ram:PostcodeCode>W2 8HG</ram:PostcodeCode><ram:LineOne>5 The Ring</ram:LineOne><ram:LineTwo>Westminster</ram:LineTwo><ram:CityName>London</ram:CityName><ram:CountryID>GB</ram:CountryID></ram:PostalTradeAddress><ram:SpecifiedTaxRegistration><ram:ID schemeID="FC">GB777777777</ram:ID></ram:SpecifiedTaxRegistration></ram:SellerTradeParty><ram:BuyerTradeParty><ram:ID>01445544</ram:ID><ram:Name>Progressive Home Furnishings </ram:Name><ram:PostalTradeAddress><ram:PostcodeCode>US-IL 61236</ram:PostcodeCode><ram:LineOne>3000 Roosevelt Blvd.</ram:LineOne><ram:LineTwo></ram:LineTwo><ram:CityName>Chicago</ram:CityName><ram:CountryID>US</ram:CountryID></ram:PostalTradeAddress><ram:SpecifiedTaxRegistration><ram:ID schemeID="FC">DE-777777777</ram:ID></ram:SpecifiedTaxRegistration></ram:BuyerTradeParty></ram:ApplicableSupplyChainTradeAgreement><ram:ApplicableSupplyChainTradeDelivery><ram:ShipToTradeParty><ram:Name>Progressive Home Furnishings </ram:Name><ram:PostalTradeAddress><ram:PostcodeCode>US-IL 61236</ram:PostcodeCode><ram:LineOne>3000 Roosevelt Blvd.</ram:LineOne><ram:LineTwo></ram:LineTwo><ram:CityName>Chicago</ram:CityName><ram:CountryID>US</ram:CountryID></ram:PostalTradeAddress></ram:ShipToTradeParty><ram:ActualDeliverySupplyChainEvent><ram:OccurrenceDateTime><udt:DateTimeString format="610">201701</udt:DateTimeString></ram:OccurrenceDateTime></ram:ActualDeliverySupplyChainEvent></ram:ApplicableSupplyChainTradeDelivery><ram:ApplicableSupplyChainTradeSettlement><ram:PaymentReference></ram:PaymentReference><ram:InvoiceCurrencyCode>USD</ram:InvoiceCurrencyCode><ram:InvoiceeTradeParty><ram:ID>01445544</ram:ID><ram:Name>Progressive Home Furnishings </ram:Name><ram:PostalTradeAddress><ram:PostcodeCode>US-IL 61236</ram:PostcodeCode><ram:LineOne>3000 Roosevelt Blvd.</ram:LineOne><ram:LineTwo></ram:LineTwo><ram:CityName>Chicago</ram:CityName><ram:CountryID>US</ram:CountryID></ram:PostalTradeAddress><ram:SpecifiedTaxRegistration><ram:ID schemeID="FC">DE-777777777</ram:ID></ram:SpecifiedTaxRegistration></ram:InvoiceeTradeParty><ram:SpecifiedTradeSettlementPaymentMeans><ram:PayeePartyCreditorFinancialAccount><ram:IBANID>GB 12 CPBK 08929965044991</ram:IBANID><ram:AccountName>CRONUS International Ltd.</ram:AccountName></ram:PayeePartyCreditorFinancialAccount><ram:PayeeSpecifiedCreditorFinancialInstitution><ram:BICID></ram:BICID></ram:PayeeSpecifiedCreditorFinancialInstitution></ram:SpecifiedTradeSettlementPaymentMeans><ram:ApplicableTradeTax><ram:CalculatedAmount currencyID="USD">382.50</ram:CalculatedAmount><ram:TypeCode>VAT</ram:TypeCode><ram:BasisAmount currencyID="USD">1530.00</ram:BasisAmount><ram:LineTotalBasisAmount currencyID="USD">1700.00</ram:LineTotalBasisAmount><ram:AllowanceChargeBasisAmount currencyID="USD">-170.00</ram:AllowanceChargeBasisAmount><ram:CategoryCode>S</ram:CategoryCode><ram:ApplicablePercent>25.00</ram:ApplicablePercent></ram:ApplicableTradeTax><ram:SpecifiedTradeAllowanceCharge><ram:ChargeIndicator><udt:Indicator>false</udt:Indicator></ram:ChargeIndicator><ram:BasisAmount currencyID="USD">1700.00</ram:BasisAmount><ram:ActualAmount currencyID="USD">170.00</ram:ActualAmount><ram:Reason>Invoice discount</ram:Reason><ram:CategoryTradeTax><ram:TypeCode>VAT</ram:TypeCode><ram:CategoryCode>S</ram:CategoryCode><ram:ApplicablePercent>25.00</ram:ApplicablePercent></ram:CategoryTradeTax></ram:SpecifiedTradeAllowanceCharge><ram:SpecifiedTradePaymentTerms><ram:Description>Net 14 days. Payment until 09.02.17.</ram:Description><ram:DueDateDateTime><udt:DateTimeString format="102">20170209</udt:DateTimeString></ram:DueDateDateTime></ram:SpecifiedTradePaymentTerms><ram:SpecifiedTradeSettlementMonetarySummation><ram:LineTotalAmount currencyID="USD">1700.00</ram:LineTotalAmount><ram:ChargeTotalAmount currencyID="USD">0.00</ram:ChargeTotalAmount><ram:AllowanceTotalAmount currencyID="USD">170.00</ram:AllowanceTotalAmount><ram:TaxBasisTotalAmount currencyID="USD">1530.00</ram:TaxBasisTotalAmount><ram:TaxTotalAmount currencyID="USD">382.50</ram:TaxTotalAmount><ram:GrandTotalAmount currencyID="USD">1912.50</ram:GrandTotalAmount><ram:TotalPrepaidAmount currencyID="USD">0.00</ram:TotalPrepaidAmount><ram:DuePayableAmount currencyID="USD">1912.50</ram:DuePayableAmount></ram:SpecifiedTradeSettlementMonetarySummation></ram:ApplicableSupplyChainTradeSettlement><ram:IncludedSupplyChainTradeLineItem><ram:AssociatedDocumentLineDocument><ram:LineID>10000</ram:LineID></ram:AssociatedDocumentLineDocument><ram:SpecifiedSupplyChainTradeAgreement><ram:GrossPriceProductTradePrice><ram:ChargeAmount currencyID="USD">10.0000</ram:ChargeAmount><ram:AppliedTradeAllowanceCharge><ram:ChargeIndicator><udt:Indicator>false</udt:Indicator></ram:ChargeIndicator><ram:BasisAmount currencyID="USD">10.0000</ram:BasisAmount><ram:ActualAmount currencyID="USD">1.5000</ram:ActualAmount></ram:AppliedTradeAllowanceCharge></ram:GrossPriceProductTradePrice><ram:NetPriceProductTradePrice><ram:ChargeAmount currencyID="USD">8.5000</ram:ChargeAmount></ram:NetPriceProductTradePrice></ram:SpecifiedSupplyChainTradeAgreement><ram:SpecifiedSupplyChainTradeDelivery><ram:BilledQuantity unitCode="C62">100.0000</ram:BilledQuantity></ram:SpecifiedSupplyChainTradeDelivery><ram:SpecifiedSupplyChainTradeSettlement><ram:ApplicableTradeTax><ram:TypeCode>VAT</ram:TypeCode><ram:CategoryCode>S</ram:CategoryCode><ram:ApplicablePercent>25.00</ram:ApplicablePercent></ram:ApplicableTradeTax><ram:SpecifiedTradeSettlementMonetarySummation><ram:LineTotalAmount currencyID="USD">850.00</ram:LineTotalAmount><ram:TotalAllowanceChargeAmount currencyID="USD">150.00</ram:TotalAllowanceChargeAmount></ram:SpecifiedTradeSettlementMonetarySummation></ram:SpecifiedSupplyChainTradeSettlement><ram:SpecifiedTradeProduct><ram:SellerAssignedID>1160</ram:SellerAssignedID><ram:BuyerAssignedID></ram:BuyerAssignedID><ram:Name>Tire </ram:Name></ram:SpecifiedTradeProduct></ram:IncludedSupplyChainTradeLineItem><ram:IncludedSupplyChainTradeLineItem><ram:AssociatedDocumentLineDocument><ram:LineID>20000</ram:LineID></ram:AssociatedDocumentLineDocument><ram:SpecifiedSupplyChainTradeAgreement><ram:GrossPriceProductTradePrice><ram:ChargeAmount currencyID="USD">10.0000</ram:ChargeAmount><ram:AppliedTradeAllowanceCharge><ram:ChargeIndicator><udt:Indicator>false</udt:Indicator></ram:ChargeIndicator><ram:BasisAmount currencyID="USD">10.0000</ram:BasisAmount><ram:ActualAmount currencyID="USD">1.5000</ram:ActualAmount></ram:AppliedTradeAllowanceCharge></ram:GrossPriceProductTradePrice><ram:NetPriceProductTradePrice><ram:ChargeAmount currencyID="USD">8.5000</ram:ChargeAmount></ram:NetPriceProductTradePrice></ram:SpecifiedSupplyChainTradeAgreement><ram:SpecifiedSupplyChainTradeDelivery><ram:BilledQuantity unitCode="C62">100.0000</ram:BilledQuantity></ram:SpecifiedSupplyChainTradeDelivery><ram:SpecifiedSupplyChainTradeSettlement><ram:ApplicableTradeTax><ram:TypeCode>VAT</ram:TypeCode><ram:CategoryCode>S</ram:CategoryCode><ram:ApplicablePercent>25.00</ram:ApplicablePercent></ram:ApplicableTradeTax><ram:SpecifiedTradeSettlementMonetarySummation><ram:LineTotalAmount currencyID="USD">850.00</ram:LineTotalAmount><ram:TotalAllowanceChargeAmount currencyID="USD">150.00</ram:TotalAllowanceChargeAmount></ram:SpecifiedTradeSettlementMonetarySummation></ram:SpecifiedSupplyChainTradeSettlement><ram:SpecifiedTradeProduct><ram:SellerAssignedID>1170</ram:SellerAssignedID><ram:BuyerAssignedID></ram:BuyerAssignedID><ram:Name>Tube </ram:Name></ram:SpecifiedTradeProduct></ram:IncludedSupplyChainTradeLineItem></rsm:SpecifiedSupplyChainTradeTransaction></rsm:CrossIndustryDocument>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rsm:CrossIndustryDocument xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15" xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0">
+    <rsm:SpecifiedExchangedDocumentContext>
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+            <ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:extended</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
+    </rsm:SpecifiedExchangedDocumentContext>
+    <rsm:HeaderExchangedDocument>
+        <ram:ID>103022</ram:ID>
+        <ram:Name>Invoice</ram:Name>
+        <ram:TypeCode>380</ram:TypeCode>
+        <ram:IssueDateTime>
+            <udt:DateTimeString format="102">20160707</udt:DateTimeString>
+        </ram:IssueDateTime>
+    </rsm:HeaderExchangedDocument>
+    <rsm:SpecifiedSupplyChainTradeTransaction>
+        <ram:ApplicableSupplyChainTradeAgreement>
+            <ram:SellerTradeParty>
+                <ram:Name>CRONUS International Ltd.</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>W2 8HG</ram:PostcodeCode>
+                    <ram:LineOne>5 The Ring</ram:LineOne>
+                    <ram:LineTwo>Westminster</ram:LineTwo>
+                    <ram:CityName>London</ram:CityName>
+                    <ram:CountryID>GB</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">GB777777777</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                <ram:ID>01445544</ram:ID>
+                <ram:Name>Progressive Home Furnishings</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>US-IL 61236</ram:PostcodeCode>
+                    <ram:LineOne>3000 Roosevelt Blvd.</ram:LineOne>
+                    <ram:LineTwo></ram:LineTwo>
+                    <ram:CityName>Chicago</ram:CityName>
+                    <ram:CountryID>US</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">DE-777777777</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:BuyerTradeParty>
+        </ram:ApplicableSupplyChainTradeAgreement>
+        <ram:ApplicableSupplyChainTradeDelivery>
+            <ram:ShipToTradeParty>
+                <ram:Name>Progressive Home Furnishings</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>US-IL 61236</ram:PostcodeCode>
+                    <ram:LineOne>3000 Roosevelt Blvd.</ram:LineOne>
+                    <ram:LineTwo></ram:LineTwo>
+                    <ram:CityName>Chicago</ram:CityName>
+                    <ram:CountryID>US</ram:CountryID>
+                </ram:PostalTradeAddress>
+            </ram:ShipToTradeParty>
+            <ram:ActualDeliverySupplyChainEvent>
+                <ram:OccurrenceDateTime>
+                    <udt:DateTimeString format="610">201701</udt:DateTimeString>
+                </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+        </ram:ApplicableSupplyChainTradeDelivery>
+        <ram:ApplicableSupplyChainTradeSettlement>
+            <ram:PaymentReference></ram:PaymentReference>
+            <ram:InvoiceCurrencyCode>USD</ram:InvoiceCurrencyCode>
+            <ram:InvoiceeTradeParty>
+                <ram:ID>01445544</ram:ID>
+                <ram:Name>Progressive Home Furnishings</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>US-IL 61236</ram:PostcodeCode>
+                    <ram:LineOne>3000 Roosevelt Blvd.</ram:LineOne>
+                    <ram:LineTwo></ram:LineTwo>
+                    <ram:CityName>Chicago</ram:CityName>
+                    <ram:CountryID>US</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="FC">DE-777777777</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:InvoiceeTradeParty>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:PayeePartyCreditorFinancialAccount>
+                    <ram:IBANID>GB 12 CPBK 08929965044991</ram:IBANID>
+                    <ram:AccountName>CRONUS International Ltd.</ram:AccountName>
+                </ram:PayeePartyCreditorFinancialAccount>
+                <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                    <ram:BICID></ram:BICID>
+                </ram:PayeeSpecifiedCreditorFinancialInstitution>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+                <ram:CalculatedAmount currencyID="USD">382.50</ram:CalculatedAmount>
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <ram:BasisAmount currencyID="USD">1530.00</ram:BasisAmount>
+                <ram:LineTotalBasisAmount currencyID="USD">1700.00</ram:LineTotalBasisAmount>
+                <ram:AllowanceChargeBasisAmount currencyID="USD">-170.00</ram:AllowanceChargeBasisAmount>
+                <ram:CategoryCode>S</ram:CategoryCode>
+                <ram:ApplicablePercent>25.00</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:SpecifiedTradeAllowanceCharge>
+                <ram:ChargeIndicator>
+                    <udt:Indicator>false</udt:Indicator>
+                </ram:ChargeIndicator>
+                <ram:BasisAmount currencyID="USD">1700.00</ram:BasisAmount>
+                <ram:ActualAmount currencyID="USD">170.00</ram:ActualAmount>
+                <ram:Reason>Invoice discount</ram:Reason>
+                <ram:CategoryTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>25.00</ram:ApplicablePercent>
+                </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedTradePaymentTerms>
+                <ram:Description>Net 14 days. Payment until 09.02.17.</ram:Description>
+                <ram:DueDateDateTime>
+                    <udt:DateTimeString format="102">20170209</udt:DateTimeString>
+                </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradeSettlementMonetarySummation>
+                <ram:LineTotalAmount currencyID="USD">1700.00</ram:LineTotalAmount>
+                <ram:ChargeTotalAmount currencyID="USD">0.00</ram:ChargeTotalAmount>
+                <ram:AllowanceTotalAmount currencyID="USD">170.00</ram:AllowanceTotalAmount>
+                <ram:TaxBasisTotalAmount currencyID="USD">1530.00</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount currencyID="USD">382.50</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount currencyID="USD">1912.50</ram:GrandTotalAmount>
+                <ram:TotalPrepaidAmount currencyID="USD">0.00</ram:TotalPrepaidAmount>
+                <ram:DuePayableAmount currencyID="USD">1912.50</ram:DuePayableAmount>
+            </ram:SpecifiedTradeSettlementMonetarySummation>
+        </ram:ApplicableSupplyChainTradeSettlement>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>10000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="USD">10.0000</ram:ChargeAmount>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:BasisAmount currencyID="USD">10.0000</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="USD">1.5000</ram:ActualAmount>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="USD">8.5000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">100.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>25.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="USD">850.00</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="USD">-150.00</ram:TotalAllowanceChargeAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>1160</ram:SellerAssignedID>
+                <ram:BuyerAssignedID></ram:BuyerAssignedID>
+                <ram:Name>Tire</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>20000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="USD">10.0000</ram:ChargeAmount>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:BasisAmount currencyID="USD">10.0000</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="USD">1.5000</ram:ActualAmount>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="USD">8.5000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">100.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>25.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="USD">850.00</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="USD">-150.00</ram:TotalAllowanceChargeAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>1170</ram:SellerAssignedID>
+                <ram:BuyerAssignedID></ram:BuyerAssignedID>
+                <ram:Name>Tube</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+    </rsm:SpecifiedSupplyChainTradeTransaction>
+</rsm:CrossIndustryDocument>

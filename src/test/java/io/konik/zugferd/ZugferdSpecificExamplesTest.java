@@ -39,6 +39,7 @@ public class ZugferdSpecificExamplesTest {
 				{ "duePayable.xml", 0 },
 				{ "productName.xml", 1 },
 				{ "totalAllowanceCharge.xml", 5 },
+				{ "totalAllowanceCharge2.xml", 0 },
 				{ "totalAllowanceChargeWithDiscountAndSurcharge.xml", 0 },
 				{ "totalAllowanceChargeWithDiscountAndSurchargeWithMissingTotalAllowanceCharge.xml", 1 },
 		});

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- edited with XMLSpy v2016 rel. 2 sp1 (x64) (http://www.altova.com) by Matthias Nötzli (ABACUS Research AG) -->
+<rsm:CrossIndustryDocument xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12" xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0">
+	<rsm:SpecifiedExchangedDocumentContext>
+		<ram:TestIndicator>
+			<udt:Indicator>false</udt:Indicator>
+		</ram:TestIndicator>
+		<ram:GuidelineSpecifiedDocumentContextParameter>
+			<ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:extended</ram:ID>
+		</ram:GuidelineSpecifiedDocumentContextParameter>
+	</rsm:SpecifiedExchangedDocumentContext>
+	<rsm:HeaderExchangedDocument>
+		<ram:ID>924754</ram:ID>
+		<ram:Name>BILL</ram:Name>
+		<ram:TypeCode>380</ram:TypeCode>
+		<ram:IssueDateTime>
+			<udt:DateTimeString format="102">20160728</udt:DateTimeString>
+		</ram:IssueDateTime>
+		<ram:LanguageID>de</ram:LanguageID>
+	</rsm:HeaderExchangedDocument>
+	<rsm:SpecifiedSupplyChainTradeTransaction>
+		<ram:ApplicableSupplyChainTradeAgreement>
+			<ram:BuyerReference>Riesen Peter</ram:BuyerReference>
+			<ram:SellerTradeParty>
+				<ram:Name>Prematic AG</ram:Name>
+				<ram:DefinedTradeContact>
+					<ram:PersonName> </ram:PersonName>
+					<ram:TelephoneUniversalCommunication>
+						<ram:CompleteNumber>071 - 918 60 60</ram:CompleteNumber>
+					</ram:TelephoneUniversalCommunication>
+					<ram:FaxUniversalCommunication>
+						<ram:CompleteNumber>071 - 918 60 40</ram:CompleteNumber>
+					</ram:FaxUniversalCommunication>
+					<ram:EmailURIUniversalCommunication>
+						<ram:URIID>info@prematic.ch</ram:URIID>
+					</ram:EmailURIUniversalCommunication>
+				</ram:DefinedTradeContact>
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>9556</ram:PostcodeCode>
+					<ram:LineOne>Märwilerstr. 43</ram:LineOne>
+					<ram:LineTwo>Postfach 77</ram:LineTwo>
+					<ram:CityName>Affeltrangen</ram:CityName>
+					<ram:CountryID>CH</ram:CountryID>
+				</ram:PostalTradeAddress>
+				<ram:SpecifiedTaxRegistration>
+					<ram:ID schemeID="FC">CHE-107.081.052 MWST</ram:ID>
+				</ram:SpecifiedTaxRegistration>
+			</ram:SellerTradeParty>
+			<ram:BuyerTradeParty>
+				<ram:Name>Schweizerische Bundesbahnen SBB</ram:Name>
+				<ram:DefinedTradeContact>
+					<ram:PersonName> </ram:PersonName>
+					<ram:TelephoneUniversalCommunication>
+						<ram:CompleteNumber>189781</ram:CompleteNumber>
+					</ram:TelephoneUniversalCommunication>
+				</ram:DefinedTradeContact>
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>3000</ram:PostcodeCode>
+					<ram:LineOne>Poststrasse 6</ram:LineOne>
+					<ram:CityName>Bern 65</ram:CityName>
+					<ram:CountryID>CH</ram:CountryID>
+				</ram:PostalTradeAddress>
+			</ram:BuyerTradeParty>
+		</ram:ApplicableSupplyChainTradeAgreement>
+		<ram:ApplicableSupplyChainTradeDelivery>
+			<ram:ShipToTradeParty>
+				<ram:Name>SBB Personenverkehr Operating</ram:Name>
+				<ram:DefinedTradeContact>
+					<ram:PersonName> </ram:PersonName>
+				</ram:DefinedTradeContact>
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>8048</ram:PostcodeCode>
+					<ram:LineOne>Aargauerstr. 15</ram:LineOne>
+					<ram:CityName>Zürich</ram:CityName>
+					<ram:CountryID>CH</ram:CountryID>
+				</ram:PostalTradeAddress>
+			</ram:ShipToTradeParty>
+			<ram:ActualDeliverySupplyChainEvent>
+				<ram:OccurrenceDateTime>
+					<udt:DateTimeString format="102">20160726</udt:DateTimeString>
+				</ram:OccurrenceDateTime>
+			</ram:ActualDeliverySupplyChainEvent>
+		</ram:ApplicableSupplyChainTradeDelivery>
+		<ram:ApplicableSupplyChainTradeSettlement>
+			<ram:PaymentReference>313604001897810092475407162</ram:PaymentReference>
+			<ram:InvoiceCurrencyCode>CHF</ram:InvoiceCurrencyCode>
+			<ram:SpecifiedTradeSettlementPaymentMeans>
+				<ram:PayeePartyCreditorFinancialAccount>
+					<ram:ProprietaryID>01-001852-7</ram:ProprietaryID>
+				</ram:PayeePartyCreditorFinancialAccount>
+			</ram:SpecifiedTradeSettlementPaymentMeans>
+			<ram:SpecifiedTradePaymentTerms>
+				<ram:Description>30 TAGE NETTO</ram:Description>
+				<ram:DueDateDateTime>
+					<udt:DateTimeString format="102">20160827</udt:DateTimeString>
+				</ram:DueDateDateTime>
+			</ram:SpecifiedTradePaymentTerms>
+			<ram:SpecifiedTradeSettlementMonetarySummation>
+				<ram:LineTotalAmount currencyID="CHF">30.00</ram:LineTotalAmount>
+				<ram:ChargeTotalAmount currencyID="CHF">0.00</ram:ChargeTotalAmount>
+				<ram:AllowanceTotalAmount currencyID="CHF">0.00</ram:AllowanceTotalAmount>
+				<ram:TaxBasisTotalAmount currencyID="CHF">30.00</ram:TaxBasisTotalAmount>
+				<ram:TaxTotalAmount currencyID="CHF">2.40</ram:TaxTotalAmount>
+				<ram:GrandTotalAmount currencyID="CHF">32.40</ram:GrandTotalAmount>
+			</ram:SpecifiedTradeSettlementMonetarySummation>
+		</ram:ApplicableSupplyChainTradeSettlement>
+		<ram:IncludedSupplyChainTradeLineItem>
+			<ram:AssociatedDocumentLineDocument>
+				<ram:LineID>1</ram:LineID>
+			</ram:AssociatedDocumentLineDocument>
+			<ram:SpecifiedSupplyChainTradeAgreement>
+				<ram:GrossPriceProductTradePrice>
+					<ram:ChargeAmount currencyID="CHF">5.5000</ram:ChargeAmount>
+				</ram:GrossPriceProductTradePrice>
+				<ram:NetPriceProductTradePrice>
+					<ram:ChargeAmount currencyID="CHF">5.5000</ram:ChargeAmount>
+				</ram:NetPriceProductTradePrice>
+			</ram:SpecifiedSupplyChainTradeAgreement>
+			<ram:SpecifiedSupplyChainTradeDelivery>
+				<ram:BilledQuantity unitCode="C62">5.0000</ram:BilledQuantity>
+				<ram:ActualDeliverySupplyChainEvent>
+					<ram:OccurrenceDateTime>
+						<udt:DateTimeString format="102">20160726</udt:DateTimeString>
+					</ram:OccurrenceDateTime>
+				</ram:ActualDeliverySupplyChainEvent>
+			</ram:SpecifiedSupplyChainTradeDelivery>
+			<ram:SpecifiedSupplyChainTradeSettlement>
+				<ram:ApplicableTradeTax>
+					<!--<ram:CalculatedAmount currencyID="CHF">2.20</ram:CalculatedAmount>-->
+					<ram:TypeCode>VAT</ram:TypeCode>
+					<ram:ApplicablePercent>8.00</ram:ApplicablePercent>
+				</ram:ApplicableTradeTax>
+				<ram:SpecifiedTradeSettlementMonetarySummation>
+					<ram:LineTotalAmount currencyID="CHF">27.50</ram:LineTotalAmount>
+				</ram:SpecifiedTradeSettlementMonetarySummation>
+			</ram:SpecifiedSupplyChainTradeSettlement>
+			<ram:SpecifiedTradeProduct>
+				<ram:SellerAssignedID>MR 410814</ram:SellerAssignedID>
+				<ram:Name>Winkel-Einschraubanschluss, drehbar 1/4"</ram:Name>
+				<ram:Description>Ø 8mm</ram:Description>
+			</ram:SpecifiedTradeProduct>
+		</ram:IncludedSupplyChainTradeLineItem>
+		<ram:IncludedSupplyChainTradeLineItem>
+			<ram:AssociatedDocumentLineDocument>
+				<ram:LineID>2</ram:LineID>
+			</ram:AssociatedDocumentLineDocument>
+			<ram:SpecifiedSupplyChainTradeAgreement>
+				<ram:GrossPriceProductTradePrice>
+					<ram:ChargeAmount currencyID="CHF">2.5000</ram:ChargeAmount>
+				</ram:GrossPriceProductTradePrice>
+				<ram:NetPriceProductTradePrice>
+					<ram:ChargeAmount currencyID="CHF">2.5000</ram:ChargeAmount>
+				</ram:NetPriceProductTradePrice>
+			</ram:SpecifiedSupplyChainTradeAgreement>
+			<ram:SpecifiedSupplyChainTradeDelivery>
+				<ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+				<ram:ActualDeliverySupplyChainEvent>
+					<ram:OccurrenceDateTime>
+						<udt:DateTimeString format="102">20160726</udt:DateTimeString>
+					</ram:OccurrenceDateTime>
+				</ram:ActualDeliverySupplyChainEvent>
+			</ram:SpecifiedSupplyChainTradeDelivery>
+			<ram:SpecifiedSupplyChainTradeSettlement>
+				<ram:ApplicableTradeTax>
+					<!--<ram:CalculatedAmount currencyID="CHF">0.20</ram:CalculatedAmount>-->
+					<ram:TypeCode>VAT</ram:TypeCode>
+					<ram:ApplicablePercent>8.00</ram:ApplicablePercent>
+				</ram:ApplicableTradeTax>
+				<ram:SpecifiedTradeSettlementMonetarySummation>
+					<ram:LineTotalAmount currencyID="CHF">2.50</ram:LineTotalAmount>
+				</ram:SpecifiedTradeSettlementMonetarySummation>
+			</ram:SpecifiedSupplyChainTradeSettlement>
+			<ram:SpecifiedTradeProduct>
+				<ram:SellerAssignedID>1111</ram:SellerAssignedID>
+				<ram:Name>Porto + Verpackung</ram:Name>
+			</ram:SpecifiedTradeProduct>
+		</ram:IncludedSupplyChainTradeLineItem>
+	</rsm:SpecifiedSupplyChainTradeTransaction>
+</rsm:CrossIndustryDocument>

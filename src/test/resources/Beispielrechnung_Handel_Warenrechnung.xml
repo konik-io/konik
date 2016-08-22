@@ -355,7 +355,7 @@
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradeSettlementMonetarySummation>
                <ram:LineTotalAmount currencyID="EUR">72.50</ram:LineTotalAmount>
-               <ram:TotalAllowanceChargeAmount currencyID="EUR">2.50</ram:TotalAllowanceChargeAmount>
+               <ram:TotalAllowanceChargeAmount currencyID="EUR">-2.50</ram:TotalAllowanceChargeAmount>
             </ram:SpecifiedTradeSettlementMonetarySummation>
          </ram:SpecifiedSupplyChainTradeSettlement>
          <ram:SpecifiedTradeProduct>
@@ -501,7 +501,7 @@
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradeSettlementMonetarySummation>
                <ram:LineTotalAmount currencyID="EUR">58.20</ram:LineTotalAmount>
-               <ram:TotalAllowanceChargeAmount currencyID="EUR">1.80</ram:TotalAllowanceChargeAmount>
+               <ram:TotalAllowanceChargeAmount currencyID="EUR">-1.80</ram:TotalAllowanceChargeAmount>
             </ram:SpecifiedTradeSettlementMonetarySummation>
          </ram:SpecifiedSupplyChainTradeSettlement>
          <ram:SpecifiedTradeProduct>

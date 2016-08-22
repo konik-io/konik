@@ -102,7 +102,7 @@ public class MonetarySummationValidator {
 				log.debug("Validating invoice monetary summation...");
 
 				MonetarySummation monetarySummation = settlement.getMonetarySummation();
-				MonetarySummation calculatedMonetarySummation = AmountCalculator.calculateMonetarySummation(invoice);
+				MonetarySummation calculatedMonetarySummation = AmountCalculator.recalculate(invoice).getMonetarySummation();
 
 				Class<?> clazz = MonetarySummation.class;
 

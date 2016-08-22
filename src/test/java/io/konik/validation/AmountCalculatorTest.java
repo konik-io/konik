@@ -21,7 +21,7 @@ public class AmountCalculatorTest {
 		MonetarySummation invoiceMonetarySummation = invoice.getTrade().getSettlement().getMonetarySummation();
 
 		//when:
-		MonetarySummation summation = AmountCalculator.calculateMonetarySummation(invoice);
+		MonetarySummation summation = AmountCalculator.recalculate(invoice).getMonetarySummation();
 
 		//then:
 		assertThat(summation.getTaxTotal())

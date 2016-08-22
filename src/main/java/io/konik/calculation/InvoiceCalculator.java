@@ -39,7 +39,7 @@ public final class InvoiceCalculator {
 	 */
 	public InvoiceCalculator(@NotNull final Invoice invoice) {
 		this.invoice = invoice;
-		corrections.add(new InvoiceMonetarySummationCompleter());
+		corrections.add(new InvoiceMonetarySummationAndTradeTaxCompleter());
 		corrections.add(new ItemSpecifiedMonetarySummationCompleter());
 	}
 

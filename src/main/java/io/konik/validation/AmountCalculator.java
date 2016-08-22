@@ -26,7 +26,10 @@ import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.*;
 import io.konik.zugferd.entity.trade.MonetarySummation;
 import io.konik.zugferd.entity.trade.Settlement;
+import io.konik.zugferd.entity.trade.TradeTax;
 import io.konik.zugferd.entity.trade.item.*;
+import io.konik.zugferd.unece.codes.TaxCategory;
+import io.konik.zugferd.unece.codes.TaxCode;
 import io.konik.zugferd.unqualified.Amount;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +38,7 @@ import javax.annotation.Nullable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -54,23 +58,23 @@ public final class AmountCalculator {
 	 * @param invoice
 	 * @return
 	 */
-	public static MonetarySummation calculateMonetarySummation(final Invoice invoice) {
+	public static RecalculationResult recalculate(final Invoice invoice) {
 		assertNotNull(invoice);
 
 		CurrencyCode currency = getCurrency(invoice);
 		List<Item> items = Items.purchasableItemsOnly(invoice.getTrade().getItems());
 		Settlement settlement = invoice.getTrade().getSettlement();
 
+		TaxAggregator taxAggregator = new TaxAggregator();
+
 		// If there are no items that can be used to recalculate monetary summation, return the current one
 		if (items.isEmpty()) {
-			return MonetarySummations.newMonetarySummation(settlement.getMonetarySummation());
+			return new RecalculationResult(MonetarySummations.newMonetarySummation(settlement.getMonetarySummation()), taxAggregator);
 		}
 
 		MonetarySummation monetarySummation = MonetarySummations.newMonetarySummation(currency);
 		monetarySummation.setAllowanceTotal(new InvoiceAllowanceTotalCalculator().apply(settlement));
 		monetarySummation.setChargeTotal(new InvoiceChargeTotalCalculator().apply(settlement));
-
-		TaxAggregator taxAggregator = new TaxAggregator();
 
 		log.debug("Starting recalculating line total from {} items...", items.size());
 		int itemsCounter = 0;
@@ -128,7 +132,7 @@ public final class AmountCalculator {
 		log.debug(" ==> result: {}", result);
 		log.debug("");
 
-		return result;
+		return new RecalculationResult(result, taxAggregator);
 	}
 
 	/**
@@ -321,7 +325,7 @@ public final class AmountCalculator {
 						totalAllowanceCharge = Amounts.add(totalAllowanceCharge, amount);
 					}
 
-					totalAllowanceCharge = Amounts.setPrecision(Amounts.abs(totalAllowanceCharge), 2, RoundingMode.HALF_UP);
+					totalAllowanceCharge = Amounts.setPrecision(totalAllowanceCharge, 2, RoundingMode.HALF_UP);
 				}
 			}
 
@@ -400,23 +404,25 @@ public final class AmountCalculator {
 	 * Helper class for aggregating tax information and calculating
 	 * tax basis and tax total values.
 	 */
-	static final class TaxAggregator {
+	public static final class TaxAggregator {
 
 		private static final int PRECISION = 2;
 		private static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
 
-		private final ConcurrentMap<BigDecimal, BigDecimal> map = new ConcurrentHashMap<BigDecimal, BigDecimal>();
+		private final ConcurrentMap<Key, BigDecimal> map = new ConcurrentHashMap<Key, BigDecimal>();
 
 		public void add(Tax tax, BigDecimal amount) {
-			BigDecimal key = tax.getPercentage().setScale(PRECISION, ROUNDING_MODE);
+			Key key = Key.create(tax);
 			map.putIfAbsent(key, BigDecimal.ZERO);
 			map.put(key, map.get(key).add(amount));
 		}
 
 		public BigDecimal getTaxBasisForTaxPercentage(final BigDecimal percentage) {
-			BigDecimal value = map.get(percentage);
-			if (value == null) {
-				return BigDecimal.ZERO;
+			BigDecimal value = BigDecimal.ZERO;
+			for (Key key : map.keySet()) {
+				if (percentage.equals(key.getPercentage())) {
+					value = value.add(map.get(key));
+				}
 			}
 			return value;
 		}
@@ -436,9 +442,12 @@ public final class AmountCalculator {
 		public BigDecimal calculateTaxTotal() {
 			log.debug("Calculating tax total...");
 			BigDecimal taxTotal = BigDecimal.ZERO;
-			for (Map.Entry<BigDecimal, BigDecimal> entry : map.entrySet()) {
-				BigDecimal taxAmount = entry.getValue().multiply(entry.getKey().divide(BigDecimal.valueOf(100))).setScale(PRECISION, ROUNDING_MODE);
-				log.debug("===> {} x {}% = {}", entry.getValue(), entry.getKey(), taxAmount);
+			for (Map.Entry<Key, BigDecimal> entry : map.entrySet()) {
+				BigDecimal percentage = entry.getKey().getPercentage();
+				BigDecimal value = entry.getValue();
+				BigDecimal taxAmount = calculateTaxAmount(percentage, value);
+
+				log.debug("===> {} x {}% = {}", value, percentage, taxAmount);
 
 				taxTotal = taxTotal.add(taxAmount);
 			}
@@ -446,6 +455,141 @@ public final class AmountCalculator {
 			log.debug("Recalculated tax total = {}", taxTotal);
 
 			return taxTotal;
+		}
+
+		public List<TradeTax> generateTradeTaxList(final CurrencyCode currencyCode, final List<TradeTax> previousList) {
+			List<TradeTax> taxes = new LinkedList<TradeTax>();
+
+			for (Key key : map.keySet()) {
+				TradeTax tradeTax = new TradeTax();
+				tradeTax.setType(key.getCode());
+				tradeTax.setCategory(key.getCategory());
+				tradeTax.setPercentage(key.getPercentage());
+
+				BigDecimal basis = map.get(key);
+				BigDecimal calculated = calculateTaxAmount(key.getPercentage(), basis);
+
+				tradeTax.setBasis(new Amount(basis, currencyCode));
+				tradeTax.setCalculated(new Amount(calculated, currencyCode));
+
+				TradeTax existing = null;
+				if (previousList != null) {
+					for (TradeTax current : previousList) {
+						if (tradeTax.getType().equals(current.getType()) &&
+								tradeTax.getCategory().equals(current.getCategory()) &&
+								tradeTax.getPercentage().equals(current.getPercentage())) {
+							existing = current;
+							break;
+						}
+					}
+				}
+
+				if (existing != null) {
+					tradeTax.setExemptionReason(existing.getExemptionReason());
+
+					if (existing.getAllowanceCharge() != null) {
+						tradeTax.setAllowanceCharge(new Amount(existing.getAllowanceCharge().getValue(), existing.getAllowanceCharge().getCurrency()));
+					}
+
+					if (existing.getLineTotal() != null) {
+						tradeTax.setLineTotal(new Amount(existing.getLineTotal().getValue(), existing.getLineTotal().getCurrency()));
+					}
+				}
+
+				taxes.add(tradeTax);
+			}
+
+			return taxes;
+		}
+
+		public static BigDecimal calculateTaxAmount(final BigDecimal percentage, final BigDecimal value) {
+			return value.multiply(percentage.divide(BigDecimal.valueOf(100))).setScale(PRECISION, ROUNDING_MODE);
+		}
+
+		@Override
+		public String toString() {
+			return "TaxAggregator{" +
+					"map=" + map +
+					'}';
+		}
+
+		/**
+		 * Helper key for {@link TaxAggregator}
+		 */
+		static final class Key {
+			private final BigDecimal percentage;
+			private final TaxCode code;
+			private final TaxCategory category;
+
+			private Key(final Tax tax) {
+				this.percentage = tax.getPercentage();
+				this.category = tax.getCategory();
+				this.code = tax.getType();
+			}
+
+			public static Key create(final Tax tax) {
+				return new Key(tax);
+			}
+
+			public BigDecimal getPercentage() {
+				return percentage;
+			}
+
+			public TaxCode getCode() {
+				return code;
+			}
+
+			public TaxCategory getCategory() {
+				return category;
+			}
+
+			@Override
+			public boolean equals(Object o) {
+				if (this == o) return true;
+				if (!(o instanceof Key)) return false;
+
+				Key key = (Key) o;
+
+				if (!percentage.equals(key.percentage)) return false;
+				if (code != key.code) return false;
+				return category == key.category;
+
+			}
+
+			@Override
+			public int hashCode() {
+				int result = percentage.hashCode();
+				result = 31 * result + (code != null ? code.hashCode() : 0);
+				result = 31 * result + (category != null ? category.hashCode() : 0);
+				return result;
+			}
+
+			@Override
+			public String toString() {
+				return "Key{" +
+						"percentage=" + percentage +
+						", code=" + code +
+						", category=" + category +
+						'}';
+			}
+		}
+	}
+
+	public static final class RecalculationResult {
+		private final MonetarySummation monetarySummation;
+		private final TaxAggregator taxAggregator;
+
+		public RecalculationResult(MonetarySummation monetarySummation, TaxAggregator taxAggregator) {
+			this.monetarySummation = monetarySummation;
+			this.taxAggregator = taxAggregator;
+		}
+
+		public MonetarySummation getMonetarySummation() {
+			return monetarySummation;
+		}
+
+		public TaxAggregator getTaxAggregator() {
+			return taxAggregator;
 		}
 	}
 }

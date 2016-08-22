@@ -1,15 +1,12 @@
 package io.konik.calculation;
 
 import io.konik.InvoiceTransformer;
-import io.konik.calculation.InvoiceCalculator;
-import io.konik.calculation.InvoiceMonetarySummationCompleter;
-import io.konik.calculation.ItemSpecifiedMonetarySummationCompleter;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
-
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,8 +19,6 @@ public class InvoiceCalculatorTest {
 		InvoiceTransformer transformer = new InvoiceTransformer();
 		Invoice invoice = transformer.toModel(xml);
 		InvoiceCalculator corrector = new InvoiceCalculator(invoice);
-		corrector.applyCorrection(new InvoiceMonetarySummationCompleter());
-		corrector.applyCorrection(new ItemSpecifiedMonetarySummationCompleter());
 
 		//when:
 		Invoice corrected = corrector.complete();
@@ -40,5 +35,28 @@ public class InvoiceCalculatorTest {
 						.isNotEqualTo(corrected.getTrade().getItems().get(i).getSettlement().getMonetarySummation());
 			}
 		}
+	}
+
+	@Test
+	public void shouldCorrectInvoiceTradeTaxList() {
+		//given:
+		InputStream xml = getClass().getResourceAsStream("/ZUGFeRD-without-trade-tax.xml");
+		InvoiceTransformer transformer = new InvoiceTransformer();
+		Invoice invoice = transformer.toModel(xml);
+		InvoiceCalculator corrector = new InvoiceCalculator(invoice);
+
+		//when:
+		Invoice corrected = corrector.complete();
+
+		//then:
+		assertThat(invoice.getTrade().getSettlement().getTradeTax()).isEmpty();
+
+		assertThat(corrected.getTrade().getSettlement().getTradeTax()).hasSize(1);
+
+		assertThat(corrected.getTrade().getSettlement().getTradeTax().get(0).getCalculated().getValue()).isEqualByComparingTo(BigDecimal.valueOf(2.40));
+
+		assertThat(corrected.getTrade().getSettlement().getTradeTax().get(0).getBasis().getValue()).isEqualByComparingTo(BigDecimal.valueOf(30.0));
+
+		assertThat(corrected.getTrade().getSettlement().getTradeTax().get(0).getPercentage()).isEqualByComparingTo(BigDecimal.valueOf(8.0));
 	}
 }

@@ -29,7 +29,7 @@ For more information please visit http://konik.io
 
 Fancy project badges
 
-[![Build Status](http://ci.konik.io/job/konik/badge/icon)](http://ci.konik.io/job/konik/)
+[![Build Status](http://ci.konik.io/buildStatus/icon?job=konikproject/konik)](http://ci.konik.io/blue/pipelines/)
 
 Development Branch  
 [![Dependency Status](https://www.versioneye.com/user/projects/5418643d9185981b52000004/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5418643d9185981b52000004)

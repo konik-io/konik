@@ -18,21 +18,21 @@ public class InvoiceCalculatorTest {
 		InputStream xml = getClass().getResourceAsStream("/ZUGFeRD_Invoice_with_discounts_and_charges.xml");
 		InvoiceTransformer transformer = new InvoiceTransformer();
 		Invoice invoice = transformer.toModel(xml);
-		InvoiceCalculator corrector = new InvoiceCalculator(invoice);
+		InvoiceCalculator calculator = new InvoiceCalculator(invoice);
 
 		//when:
-		Invoice corrected = corrector.complete();
+		Invoice calculatedInvoice = calculator.complete();
 
 		//then:
 		assertThat(invoice.getTrade().getSettlement().getMonetarySummation())
-				.isNotEqualTo(corrected.getTrade().getSettlement().getMonetarySummation());
+				.isNotEqualTo(calculatedInvoice.getTrade().getSettlement().getMonetarySummation());
 
 		for (int i = 0; i < invoice.getTrade().getItems().size(); i++) {
 			SpecifiedMonetarySummation monetarySummation = invoice.getTrade().getItems().get(i).getSettlement().getMonetarySummation();
 
 			if (monetarySummation != null) {
 				assertThat(monetarySummation)
-						.isNotEqualTo(corrected.getTrade().getItems().get(i).getSettlement().getMonetarySummation());
+						.isNotEqualTo(calculatedInvoice.getTrade().getItems().get(i).getSettlement().getMonetarySummation());
 			}
 		}
 	}

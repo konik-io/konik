@@ -18,26 +18,44 @@
  */
 package io.konik.examples;
 
-import com.google.common.io.ByteSource;
-
+import static com.neovisionaries.i18n.CountryCode.DE;
+import static com.neovisionaries.i18n.CurrencyCode.EUR;
+import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
+import static io.konik.zugferd.profile.ConformanceLevel.EXTENDED;
+import static io.konik.zugferd.unece.codes.DocumentCode._380;
+import static io.konik.zugferd.unece.codes.Reference.FC;
+import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
+import static org.apache.commons.lang3.time.DateUtils.addMonths;
+import static org.assertj.core.api.Assertions.assertThat;
 import io.konik.InvoiceTransformer;
 import io.konik.PdfHandler;
 import io.konik.calculation.InvoiceCalculator;
 import io.konik.validation.InvoiceValidator;
 import io.konik.zugferd.Invoice;
-import io.konik.zugferd.entity.*;
-import io.konik.zugferd.entity.trade.*;
-import io.konik.zugferd.entity.trade.item.*;
+import io.konik.zugferd.entity.Address;
+import io.konik.zugferd.entity.DebtorFinancialAccount;
+import io.konik.zugferd.entity.FinancialInstitution;
+import io.konik.zugferd.entity.Header;
+import io.konik.zugferd.entity.PaymentMeans;
+import io.konik.zugferd.entity.Price;
+import io.konik.zugferd.entity.Product;
+import io.konik.zugferd.entity.TaxRegistration;
+import io.konik.zugferd.entity.TradeParty;
+import io.konik.zugferd.entity.trade.Agreement;
+import io.konik.zugferd.entity.trade.Delivery;
+import io.konik.zugferd.entity.trade.Settlement;
+import io.konik.zugferd.entity.trade.Trade;
+import io.konik.zugferd.entity.trade.item.Item;
+import io.konik.zugferd.entity.trade.item.ItemTax;
+import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
+import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
+import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
 import io.konik.zugferd.unece.codes.TaxCode;
-import io.konik.zugferd.unqualified.*;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-import org.xml.sax.SAXException;
-
-import javax.validation.ConstraintViolation;
-import javax.xml.transform.stream.StreamSource;
+import io.konik.zugferd.unqualified.Amount;
+import io.konik.zugferd.unqualified.Quantity;
+import io.konik.zugferd.unqualified.ZfDate;
+import io.konik.zugferd.unqualified.ZfDateDay;
+import io.konik.zugferd.unqualified.ZfDateMonth;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -46,15 +64,15 @@ import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.util.Set;
 
-import static com.neovisionaries.i18n.CountryCode.DE;
-import static com.neovisionaries.i18n.CurrencyCode.EUR;
-import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
-import static io.konik.zugferd.profile.ConformanceLevel.BASIC;
-import static io.konik.zugferd.unece.codes.DocumentCode._380;
-import static io.konik.zugferd.unece.codes.Reference.FC;
-import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
-import static org.apache.commons.lang3.time.DateUtils.addMonths;
-import static org.assertj.core.api.Assertions.assertThat;
+import javax.validation.ConstraintViolation;
+import javax.xml.transform.stream.StreamSource;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
+import org.xml.sax.SAXException;
+
+import com.google.common.io.ByteSource;
 
 /**
  * The example shows how easy it is to create a compact invoice and let it automatically calculate.
@@ -70,7 +88,7 @@ public class MinimalInvoiceWithCalculation {
    // tag::createInvoice[]
    private Invoice createInvoice() {
       
-      Invoice invoice = new Invoice(BASIC);    // <1>
+      Invoice invoice = new Invoice(EXTENDED);    // <1>
       invoice.setHeader(new Header()
          .setInvoiceNumber("20131122-42")
          .setCode(_380)
@@ -78,7 +96,7 @@ public class MinimalInvoiceWithCalculation {
          .setName("Rechnung"));
       
       Trade trade = new Trade();
-      trade.setAgreement(new Agreement()    // <2>
+      trade.setAgreement(new Agreement()    
             .setSeller(new TradeParty()
                   .setName("Seller Inc.")
                   .setAddress(new Address("80331", "Marienplatz 1", "München", DE))
@@ -96,7 +114,7 @@ public class MinimalInvoiceWithCalculation {
 
       trade.addItem(new Item()
          .setProduct(new Product().setName("Saddle"))
-         .setAgreement(new SpecifiedAgreement().setGrossPrice(new GrossPrice(new Amount(100, EUR))).setNetPrice(new Price(new Amount(100, EUR))))
+         .setAgreement(new SpecifiedAgreement()/*.setGrossPrice(new GrossPrice(new Amount(100, EUR)))*/.setNetPrice(new Price(new Amount(100, EUR))))// <2>
          .setSettlement(new SpecifiedSettlement().addTradeTax(itemTax))
          .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))));
                 

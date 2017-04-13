@@ -1,17 +1,17 @@
-# Konik 
+# Konik ZUGFeRD Library
 
 [![Join the chat at https://gitter.im/konik-io/konik](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/konik-io/konik?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 is a easy to use open source implementation of the ZUGFeRD data model including various enhancements. 
 
 ## Features 
- - Easy and understandable API to create and read invoices.
- - Extensive documentation with examples.
- - Logical invoice validation done with JSR303
+ - Easy and understandable API to create and read ZUGFeRD compliant invoices.
+ - Extensive documentation with examples. See [konik.io/docs](http://konik.io/docs)
+ - XML Schame and semantic invoice validation.
  - Validation of invoices against ZUGFeRD profiles.
  - Validation of invoices against specific country invoice regulations.
- - Easy way of invoice attaching or extracting from PDFs.
- - Multiple PDF Carriages from different vendors. Choose your favorite.
+ - Attaching or extracting XMLs from PDFs.
+ - Multiple PDF Carriages from different vendors (Currently iText adn PDFBox). Choose your favorite or use any other of your choice.
 
 ## Modules 
 
@@ -23,16 +23,17 @@ Quick overview of the different modules.
  - ```pdfbox-carriage```	The PDF provider which can be used together with the Konik library.
  - ```distribution``` Zip distribution package. For those who are not using maven.
  - ```project``` content related to the project like Scripts, Formatting rules, dictionary.  (Not a Maven module). 
- 
 
-For more information please visit http://konik.io
+## Documentation  
 
-Fancy project badges
+http://konik.io/docs
+
+
 
 [![Build Status](http://ci.konik.io/buildStatus/icon?job=konikproject/konik)](http://ci.konik.io/blue/pipelines/)
 
-Development Branch  
-[![Dependency Status](https://www.versioneye.com/user/projects/5418643d9185981b52000004/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5418643d9185981b52000004)
+## Licence
+Licensing
 
-Master Branch  
-[![Dependency Status](https://www.versioneye.com/user/projects/5418644d918598866a000008/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5418644d918598866a000008)
+All code is licensed under the [AGPL](#LICENCE.md), v3 or later.
+

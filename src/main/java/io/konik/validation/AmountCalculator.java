@@ -81,7 +81,7 @@ public final class AmountCalculator {
 
 		for (Item item : items) {
 			log.debug("==> {}:", ++itemsCounter);
-			log.debug("Recalculating item: [{}]", item.getProduct().getName());
+			log.debug("Recalculating item: [{}]", item.getProduct() != null ? item.getProduct().getName() : "N/A");
 
 			Amount lineTotal = new ItemLineTotalCalculator().apply(item);
 			ItemTax itemTax = new ItemTaxExtractor().apply(item);

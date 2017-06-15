@@ -142,7 +142,7 @@ public final class AmountCalculator {
 	 * @return
 	 */
 	public static SpecifiedMonetarySummation calculateSpecifiedMonetarySummation(final Item item) {
-		log.debug("Recalculating specified monetary summation for [{}]", item.getProduct().getName());
+		log.debug("Recalculating specified monetary summation for [{}]", item.getProduct() != null ? item.getProduct().getName() : "N/A");
 
 		CurrencyCode currencyCode = getCurrency(item);
 

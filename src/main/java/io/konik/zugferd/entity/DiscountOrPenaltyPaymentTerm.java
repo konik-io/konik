@@ -27,6 +27,7 @@ import io.konik.zugferd.unqualified.ZfDate;
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -36,29 +37,17 @@ import java.math.BigDecimal;
  */
 @Extended
 @XmlTransient
-abstract class DiscountOrPenaltyTerm implements Serializable {
+@XmlType(name = "TradePaymentDiscountTermsType", propOrder = { "reference", "maturityPeriod", "basis",
+      "calculationPercent", "actualDiscount" })
+interface DiscountOrPenaltyTerm extends Serializable {
 
-   @XmlElement(name = "BasisDateTime")
-   private ZfDate reference;
-
-   @XmlElement(name = "BasisPeriodMeasure")
-   private Measure maturityPeriod;
-
-   @XmlElement(name = "BasisAmount")
-   private Amount basis;
-
-   @XmlElement(name = "CalculationPercent")
-   @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
-   private BigDecimal calculationPercent;
 
    /**
     * Gets the reference date of maturity.
     *
     * @return the reference date
     */
-   public ZfDate getReference() {
-      return reference;
-   }
+   ZfDate getReference();
 
    /**
     * Sets the reference date of maturity.
@@ -66,10 +55,7 @@ abstract class DiscountOrPenaltyTerm implements Serializable {
     * @param reference the new reference date
     * @return the discount penalty or discount payment term
     */
-   public DiscountOrPenaltyTerm setReference(ZfDate reference) {
-      this.reference = reference;
-      return this;
-   }
+   DiscountOrPenaltyTerm setReference(ZfDate reference);
 
    /**
     * Gets the maturity period measure unit.
@@ -77,9 +63,7 @@ abstract class DiscountOrPenaltyTerm implements Serializable {
     * @return the maturity period
     */
    @Valid
-   public Measure getMaturityPeriod() {
-      return maturityPeriod;
-   }
+   Measure getMaturityPeriod();
 
    /**
     * Sets the maturity period measure unit.
@@ -87,11 +71,7 @@ abstract class DiscountOrPenaltyTerm implements Serializable {
     * @param maturityPeriod the new maturity period measure unit.
     * @return the discount penalty or discount payment term
     */
-
-   public DiscountOrPenaltyTerm setMaturityPeriod(Measure maturityPeriod) {
-      this.maturityPeriod = maturityPeriod;
-      return this;
-   }
+   DiscountOrPenaltyTerm setMaturityPeriod(Measure maturityPeriod);
 
    /**
     * Gets basis amount of the payment surcharge.
@@ -99,9 +79,7 @@ abstract class DiscountOrPenaltyTerm implements Serializable {
     * @return the basis amount
     */
    @Valid
-   public Amount getBasis() {
-      return basis;
-   }
+   Amount getBasis();      
 
    /**
     * Sets the basis amount of the payment surcharge.
@@ -109,10 +87,7 @@ abstract class DiscountOrPenaltyTerm implements Serializable {
     * @param basis the new basis amount
     * @return the discount penalty or discount payment term
     */
-   public DiscountOrPenaltyTerm setBasis(Amount basis) {
-      this.basis = basis;
-      return this;
-   }
+   DiscountOrPenaltyTerm setBasis(Amount basis);
 
    /**
     * Gets the calculation percentage of payment surcharge.
@@ -120,9 +95,7 @@ abstract class DiscountOrPenaltyTerm implements Serializable {
     * @return the calculation percent
     */
 
-   public BigDecimal getCalculationPercent() {
-      return calculationPercent;
-   }
+   BigDecimal getCalculationPercent();
 
    /**
     * Sets the calculation percentage of payment surcharge.
@@ -130,11 +103,7 @@ abstract class DiscountOrPenaltyTerm implements Serializable {
     * @param calculationPercent the new calculation percent of payment surcharge.
     * @return the discount penalty or discount payment term
     */
-
-   public DiscountOrPenaltyTerm setCalculationPercent(BigDecimal calculationPercent) {
-      this.calculationPercent = calculationPercent;
-      return this;
-   }
+   DiscountOrPenaltyTerm setCalculationPercent(BigDecimal calculationPercent);
 
    /**
     * Gets the actual penalty or discount amount.
@@ -142,7 +111,7 @@ abstract class DiscountOrPenaltyTerm implements Serializable {
     * @return the actual penalty or discount amount
     */
    @Valid
-   public abstract Amount getAmount();
+   Amount getAmount();
 
    /**
     * Sets the actual penalty or discount amount.
@@ -150,6 +119,6 @@ abstract class DiscountOrPenaltyTerm implements Serializable {
     * @param penaltyOrDiscountAmount the new penalty or discount amount
     * @return the discount penalty or discount payment term
     */
-   public abstract DiscountOrPenaltyTerm setAmount(Amount penaltyOrDiscountAmount);
+   DiscountOrPenaltyTerm setAmount(Amount penaltyOrDiscountAmount);
 
 }

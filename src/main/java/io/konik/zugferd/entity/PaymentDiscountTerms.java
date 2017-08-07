@@ -18,19 +18,37 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.unqualified.Amount;
+import java.math.BigDecimal;
 
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
+import io.konik.zugferd.unqualified.Amount;
+import io.konik.zugferd.unqualified.Measure;
+import io.konik.zugferd.unqualified.ZfDate;
 
 /**
  * 
  * = The payment discount terms and conditions of a trade.
  */
-@XmlType(name = "TradePaymentDiscountTermsType", propOrder = { "reference", "maturityPeriod", "basis",
-      "calculationPercent", "actualDiscount" })
-public class PaymentDiscountTerms extends DiscountOrPenaltyTerm {
+public class PaymentDiscountTerms implements DiscountOrPenaltyTerm {
 
+   private static final long serialVersionUID = 8402012452394529191L;
+
+   @XmlElement(name = "BasisDateTime")
+   private ZfDate reference;
+
+   @XmlElement(name = "BasisPeriodMeasure")
+   private Measure maturityPeriod;
+
+   @XmlElement(name = "BasisAmount")
+   private Amount basis;
+
+   @XmlElement(name = "CalculationPercent")
+   @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
+   private BigDecimal calculationPercent;   
+   
    @XmlElement(name = "ActualDiscountAmount")
    private Amount actualDiscount;
 
@@ -44,4 +62,49 @@ public class PaymentDiscountTerms extends DiscountOrPenaltyTerm {
       this.actualDiscount = actualDiscountAmount;
       return this;
    }
+
+   @Override
+   public ZfDate getReference() {
+      return reference;
+   }
+
+   @Override
+   public PaymentDiscountTerms setReference(ZfDate reference) {      
+      this.reference = reference;
+      return this;
+   }
+
+   @Override
+   public Measure getMaturityPeriod() {      
+      return maturityPeriod;
+   }
+
+   @Override
+   public PaymentDiscountTerms setMaturityPeriod(Measure maturityPeriod) {
+      this.maturityPeriod = maturityPeriod;
+      return this;
+   }
+
+   @Override
+   public Amount getBasis() { 
+      return basis;
+   }
+
+   @Override
+   public PaymentDiscountTerms setBasis(Amount basis) {
+      this.basis = basis;
+      return this;
+   }
+
+   @Override
+   public BigDecimal getCalculationPercent() {
+      return calculationPercent;
+   }
+
+   @Override
+   public PaymentDiscountTerms setCalculationPercent(BigDecimal calculationPercent) {
+      this.calculationPercent = calculationPercent;
+      return this;
+   }
+   
 }

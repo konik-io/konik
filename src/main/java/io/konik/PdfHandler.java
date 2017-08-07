@@ -116,6 +116,15 @@ public class PdfHandler {
          pipedInputStream.close();
       }
    }
+   
+   private void appendSync(final Invoice invoice, final InputStream inputPdf, final OutputStream resultingPdf) {
+      String version = invoice.getContext().getGuideline().getVersion().versionAlt();
+      String confomanceLevel = invoice.getContext().getGuideline().getConformanceLevel().name();
+      byte[] invoiceModel = transformer.fromModel(invoice);
+      DefaultAppendParameter parameter = new DefaultAppendParameter(inputPdf, new ByteArrayInputStream(invoiceModel),
+            resultingPdf, version, confomanceLevel);
+      fileAppender.append(parameter);
+   }
 
    /**
     * Extract invoice from given pdf file

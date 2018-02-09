@@ -8,11 +8,11 @@ is a easy to use open source implementation of the ZUGFeRD data model including 
 ## Features 
  - Easy and understandable API to create and read ZUGFeRD compliant invoices.
  - Extensive documentation with examples. See [konik.io/docs](http://konik.io/docs)
- - XML Schame and semantic invoice validation.
+ - XML Scheme and semantic invoice validation.
  - Validation of invoices against ZUGFeRD profiles.
  - Validation of invoices against specific country invoice regulations.
  - Attaching or extracting XMLs from PDFs.
- - Multiple PDF Carriages from different vendors (Currently iText adn PDFBox). Choose your favorite or use any other of your choice.
+ - Multiple PDF Carriages from different vendors (Currently iText and PDFBox). Choose your favorite or use any other of your choice.
 
 ## Modules 
 

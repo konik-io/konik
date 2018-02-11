@@ -1,7 +1,7 @@
 # Konik ZUGFeRD Library
 
 [![Join the chat at https://gitter.im/konik-io/konik](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/konik-io/konik?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](http://ci.konik.io/buildStatus/icon?job=konikproject/konik)](http://ci.konik.io/blue/pipelines/)
+[![Jenkins](https://img.shields.io/jenkins/s/https/jenkins.qa.ubuntu.com/view/Precise/view/All%20Precise/job/precise-desktop-amd64_default.svg)](https://ci.8gears.com/blue/pipelines)
 
 is a easy to use open source implementation of the ZUGFeRD data model including various enhancements. 
 

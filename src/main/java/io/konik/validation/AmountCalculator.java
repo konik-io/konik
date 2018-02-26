@@ -18,6 +18,7 @@ package io.konik.validation;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -86,30 +87,34 @@ public final class AmountCalculator {
     monetarySummation.setAllowanceTotal(new InvoiceAllowanceTotalCalculator().apply(settlement));
     monetarySummation.setChargeTotal(new InvoiceChargeTotalCalculator().apply(settlement));
 
-    log.debug("Starting recalculating line total from {} items...", items.size());
+    log.info("Starting recalculating line total from {} items...", items.size());
     int itemsCounter = 0;
 
     for (Item item : items) {
-      log.debug("==> {}:", ++itemsCounter);
-      log.debug("Recalculating item: [{}]",
+      log.info("==> {}:", ++itemsCounter);
+      log.info("Recalculating item: [{}]", 
           item.getProduct() != null ? item.getProduct().getName() : "N/A");
 
       Amount lineTotal = new ItemLineTotalCalculator().apply(item);
-      ItemTax itemTax = new ItemTaxExtractor().apply(item);
+      List<ItemTax> itemTaxes = new ArrayList<ItemTax>();
+      if (item.getSettlement().getTradeTax().size() > 0) {
+        itemTaxes.addAll(item.getSettlement().getTradeTax());
+      }
+      for (ItemTax itemTax : itemTaxes) {
+        log.info("Recalculated item line total = {}", lineTotal);
+        log.info("Recalculated item tax = {}%", itemTax.getPercentage());
 
-      log.debug("Recalculated item line total = {}", lineTotal);
-      log.debug("Recalculated item tax = {}%", itemTax.getPercentage());
-
-      taxAggregator.add(itemTax, lineTotal != null ? lineTotal.getValue() : BigDecimal.ZERO);
+        taxAggregator.add(itemTax, lineTotal != null ? lineTotal.getValue() : BigDecimal.ZERO);
+      }
 
       monetarySummation.setLineTotal(Amounts.add(monetarySummation.getLineTotal(), lineTotal));
 
-      log.debug("Current monetarySummation.lineTotal = {} (the sum of all line totals)",
+      log.info("Current monetarySummation.lineTotal = {} (the sum of all line totals)",
           monetarySummation.getLineTotal());
     }
 
-    log.debug("==> DONE!");
-    log.debug("Finished recalculating monetarySummation.lineTotal...");
+    log.info("==> DONE!");
+    log.info("Finished recalculating monetarySummation.lineTotal...");
 
     appendTaxFromInvoiceAllowanceCharge(settlement, taxAggregator);
 
@@ -121,7 +126,7 @@ public final class AmountCalculator {
     monetarySummation.setGrandTotal(
         Amounts.add(monetarySummation.getTaxBasisTotal(), monetarySummation.getTaxTotal()));
 
-    log.debug("Recalculated grand total = {} (tax basis total + tax total)",
+    log.info("Recalculated grand total = {} (tax basis total + tax total)",
         monetarySummation.getGrandTotal());
 
     if (settlement.getMonetarySummation() != null
@@ -135,9 +140,9 @@ public final class AmountCalculator {
     MonetarySummation result =
         MonetarySummations.precise(monetarySummation, 2, RoundingMode.HALF_UP);
 
-    log.debug("Recalculating invoice monetary summation DONE!");
-    log.debug(" ==> result: {}", result);
-    log.debug("");
+    log.info("Recalculating invoice monetary summation DONE!");
+    log.info(" ==> result: {}", result);
+    log.info("");
 
     return new RecalculationResult(result, taxAggregator);
   }
@@ -424,7 +429,9 @@ public final class AmountCalculator {
         return null;
       }
 
-      return item.getSettlement().getTradeTax().get(0);
+      return item.getSettlement().getTradeTax().size() > 1
+          ? item.getSettlement().getTradeTax().get(1)
+          : item.getSettlement().getTradeTax().get(0);
     }
   }
 

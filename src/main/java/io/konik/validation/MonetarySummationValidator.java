@@ -331,7 +331,7 @@ public class MonetarySummationValidator {
     Object expectedValue = expected != null ? expected.getValue() : "null";
 
     return messageInterpolator.interpolate("{io.konik.validation.amount.calculation.error}",
-        new Violation.Context(currentValue, expectedValue));
+        new Context(currentValue, expectedValue));
   }
 
   private static boolean areEqual(final Amount first, final Amount second) {

@@ -17,13 +17,12 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.Comfort;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import io.konik.validator.annotation.Comfort;
 
 /**
  * = The item position Document

@@ -28,6 +28,13 @@ import static io.konik.zugferd.unece.codes.Reference.FC;
 import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
 import static org.apache.commons.lang3.time.DateUtils.addDays;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.xml.transform.stream.StreamSource;
+import org.junit.Test;
+import org.xml.sax.SAXException;
+import com.google.common.io.ByteSource;
 import io.konik.InvoiceTransformer;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.Address;
@@ -51,17 +58,6 @@ import io.konik.zugferd.unqualified.ZfDate;
 import io.konik.zugferd.unqualified.ZfDateDay;
 import io.konik.zugferd.unqualified.ZfDateMonth;
 import io.konik.zugferd.unqualified.ZfDateWeek;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.xml.transform.stream.StreamSource;
-
-import org.junit.Test;
-import org.xml.sax.SAXException;
-
-import com.google.common.io.ByteSource;
 
 /**
  * The example class shows how easy it is to create a compact invoice.

@@ -19,12 +19,10 @@ package io.konik.jaxb.adapter;
 
 import static java.lang.Integer.parseInt;
 import static java.math.RoundingMode.valueOf;
-import io.konik.Configuration;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+import io.konik.Configuration;
 
 /**
  * 

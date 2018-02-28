@@ -5,7 +5,6 @@
 package io.konik.jaxb.bindable.unqualified;
 
 import static javax.xml.bind.annotation.XmlNsForm.QUALIFIED;
-
 import javax.xml.bind.annotation.XmlNs;
 import javax.xml.bind.annotation.XmlSchema;
 

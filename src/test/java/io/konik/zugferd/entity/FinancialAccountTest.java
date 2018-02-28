@@ -1,15 +1,11 @@
 package io.konik.zugferd.entity;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
 import java.util.Set;
-
-import io.konik.zugferd.util.TestValidatorFactory;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
-
 import org.junit.Test;
+import io.konik.zugferd.util.TestValidatorFactory;
 
 @SuppressWarnings("javadoc")
 public class FinancialAccountTest extends TestValidatorFactory {

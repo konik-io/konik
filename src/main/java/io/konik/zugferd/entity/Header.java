@@ -17,15 +17,10 @@
  */
 package io.konik.zugferd.entity;
 
-import com.neovisionaries.i18n.LanguageCode;
-import io.konik.jaxb.adapter.PeriodCompleteToDateTimeAdapter;
-import io.konik.validator.annotation.Basic;
-import io.konik.validator.annotation.Extended;
-import io.konik.validator.annotation.NotBlank;
-import io.konik.zugferd.unece.codes.DocumentCode;
-import io.konik.zugferd.unqualified.Indicator;
-import io.konik.zugferd.unqualified.ZfDate;
-
+import static java.util.Collections.addAll;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -34,11 +29,14 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.util.Collections.addAll;
+import com.neovisionaries.i18n.LanguageCode;
+import io.konik.jaxb.adapter.PeriodCompleteToDateTimeAdapter;
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Extended;
+import io.konik.validator.annotation.NotBlank;
+import io.konik.zugferd.unece.codes.DocumentCode;
+import io.konik.zugferd.unqualified.Indicator;
+import io.konik.zugferd.unqualified.ZfDate;
 
 /**
  * = The Invoice Document Header

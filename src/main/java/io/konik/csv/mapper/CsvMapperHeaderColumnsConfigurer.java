@@ -1,27 +1,25 @@
 package io.konik.csv.mapper;
 
-import com.google.common.base.Function;
-import com.neovisionaries.i18n.CountryCode;
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.csv.processor.DateProcessor;
-import io.konik.csv.processor.ReferenceProcessor;
-import io.konik.csv.processor.UnitOfMeasurementProcessor;
-import io.konik.zugferd.unece.codes.Reference;
-import io.konik.zugferd.unece.codes.UnitOfMeasurement;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.supercsv.cellprocessor.ift.CellProcessor;
-
-import javax.annotation.Nullable;
+import static io.konik.csv.mapper.CsvMapperBuilder.column;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static io.konik.csv.mapper.CsvMapperBuilder.Column;
-import static io.konik.csv.mapper.CsvMapperBuilder.column;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import com.google.common.base.Function;
+import com.neovisionaries.i18n.CountryCode;
+import com.neovisionaries.i18n.CurrencyCode;
+import io.konik.csv.mapper.CsvMapperBuilder.Column;
+import io.konik.csv.processor.DateProcessor;
+import io.konik.csv.processor.ReferenceProcessor;
+import io.konik.csv.processor.UnitOfMeasurementProcessor;
+import io.konik.zugferd.unece.codes.Reference;
+import io.konik.zugferd.unece.codes.UnitOfMeasurement;
 
 final class CsvMapperHeaderColumnsConfigurer implements ColumnsConfigurer {
 

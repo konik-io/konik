@@ -17,12 +17,11 @@
  */
 package io.konik.calculation;
 
-import io.konik.util.Invoices;
-import io.konik.zugferd.Invoice;
-
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import javax.validation.constraints.NotNull;
+import io.konik.util.Invoices;
+import io.konik.zugferd.Invoice;
 
 /**
  * Completes the {@link Invoice} and calculates with specified {@link Correction}s or additions.

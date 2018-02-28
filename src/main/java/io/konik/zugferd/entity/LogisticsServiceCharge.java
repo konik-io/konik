@@ -17,16 +17,15 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.Comfort;
-import io.konik.validator.annotation.NotBlank;
-import io.konik.zugferd.unqualified.Amount;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.NotBlank;
+import io.konik.zugferd.unqualified.Amount;
 
 /**
  * = The Logistics Service Charge

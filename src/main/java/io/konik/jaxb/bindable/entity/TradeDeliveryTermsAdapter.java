@@ -19,7 +19,6 @@
 package io.konik.jaxb.bindable.entity;
 
 import static io.konik.util.Strings.isNullOrEmpty;
-
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 /**

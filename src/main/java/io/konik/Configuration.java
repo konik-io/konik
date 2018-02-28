@@ -17,13 +17,12 @@
  */
 package io.konik;
 
+import static java.util.logging.Level.CONFIG;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.logging.Logger;
-
-import static java.util.logging.Level.CONFIG;
 
 /**
  * The Global Konik Configuration.

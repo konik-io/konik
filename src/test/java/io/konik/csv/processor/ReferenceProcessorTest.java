@@ -1,17 +1,15 @@
 package io.konik.csv.processor;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
-import io.konik.zugferd.unece.codes.Reference;
+import java.text.ParseException;
+import java.util.Arrays;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import java.text.ParseException;
-import java.util.Arrays;
-
-import static org.junit.runners.Parameterized.Parameter;
-import static org.junit.runners.Parameterized.Parameters;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+import io.konik.zugferd.unece.codes.Reference;
 
 @RunWith(Parameterized.class)
 public class ReferenceProcessorTest {

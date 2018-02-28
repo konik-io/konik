@@ -17,15 +17,14 @@
  */
 package io.konik.zugferd.entity;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import io.konik.jaxb.bindable.entity.UniversalCommunicationAdapter;
 import io.konik.validator.annotation.Email;
 import io.konik.validator.annotation.Extended;
 import io.konik.validator.annotation.ValidContact;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.io.Serializable;
 
 /**
  * = The Trade Contact

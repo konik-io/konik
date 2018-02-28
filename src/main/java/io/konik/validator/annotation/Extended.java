@@ -18,7 +18,6 @@
 package io.konik.validator.annotation;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 

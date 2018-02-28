@@ -19,10 +19,8 @@
 package io.konik.zugferd.entity;
 
 import java.math.BigDecimal;
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Measure;

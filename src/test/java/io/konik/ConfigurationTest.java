@@ -1,10 +1,8 @@
 package io.konik;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
 import java.io.File;
 import java.io.FileOutputStream;
-
 import org.assertj.core.util.Files;
 import org.junit.After;
 import org.junit.Before;

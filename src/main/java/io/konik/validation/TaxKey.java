@@ -9,19 +9,19 @@ import io.konik.zugferd.unece.codes.TaxCode;
 /**
  * Helper key for {@link TaxAggregator}
  */
-final class Key {
+final class TaxKey {
   private final BigDecimal percentage;
   private final TaxCode code;
   private final TaxCategory category;
 
-  private Key(final Tax tax) {
+  private TaxKey(final Tax tax) {
     this.percentage = tax.getPercentage();
     this.category = tax.getCategory();
     this.code = tax.getType();
   }
 
-  public static Key create(final Tax tax) {
-    return new Key(tax);
+  public static TaxKey create(final Tax tax) {
+    return new TaxKey(tax);
   }
 
   public BigDecimal getPercentage() {
@@ -40,10 +40,10 @@ final class Key {
   public boolean equals(Object o) {
     if (this == o)
       return true;
-    if (!(o instanceof Key))
+    if (!(o instanceof TaxKey))
       return false;
 
-    Key key = (Key) o;
+    TaxKey key = (TaxKey) o;
 
     if (!percentage.equals(key.percentage))
       return false;

@@ -18,6 +18,7 @@ package io.konik.validation;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,7 @@ import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.AppliedTax;
 import io.konik.zugferd.entity.LogisticsServiceCharge;
 import io.konik.zugferd.entity.SpecifiedAllowanceCharge;
+import io.konik.zugferd.entity.Tax;
 import io.konik.zugferd.entity.trade.MonetarySummation;
 import io.konik.zugferd.entity.trade.Settlement;
 import io.konik.zugferd.entity.trade.item.Item;
@@ -82,13 +84,18 @@ public final class AmountCalculator {
           item.getProduct() != null ? item.getProduct().getName() : "N/A");
 
       Amount lineTotal = new ItemLineTotalCalculator().apply(item);
-      List<ItemTax> itemTaxes = item.getSettlement().getTradeTax();
-      for (ItemTax tax : itemTaxes) {
-        LOG.debug("Recalculated item line total = {}", lineTotal);
-        LOG.debug("Recalculated item tax = {}%", tax.getPercentage());
-
-        taxAggregator.add(tax, lineTotal != null ? lineTotal.getValue() : BigDecimal.ZERO);
+      List<ItemTax> itemTradeTaxes = item.getSettlement().getTradeTax();
+      BigDecimal percentage = BigDecimal.ZERO;
+      for (ItemTax itemTax : itemTradeTaxes) {
+        percentage = percentage.add(itemTax.getPercentage());
       }
+
+      LOG.debug("Recalculated item line total = {}", lineTotal);
+      LOG.debug("Recalculated item tax = {}%", percentage);
+
+      List<Tax> itemTaxes = new ArrayList<Tax>();
+      itemTaxes.addAll(itemTradeTaxes);
+      taxAggregator.add(itemTaxes, lineTotal != null ? lineTotal.getValue() : BigDecimal.ZERO);
 
       monetarySummation.setLineTotal(Amounts.add(monetarySummation.getLineTotal(), lineTotal));
 
@@ -103,8 +110,7 @@ public final class AmountCalculator {
 
     appendTaxFromInvoiceServiceCharge(settlement, taxAggregator);
 
-    monetarySummation
-        .setTaxBasisTotal(new Amount(taxAggregator.calculateTaxBasis(items), currency));
+    monetarySummation.setTaxBasisTotal(new Amount(taxAggregator.calculateTaxBasis(), currency));
     monetarySummation.setTaxTotal(new Amount(taxAggregator.calculateTaxTotal(), currency));
 
     monetarySummation.setGrandTotal(
@@ -164,9 +170,11 @@ public final class AmountCalculator {
         if (charge.getTradeTax() != null && charge.getAmount() != null) {
           for (AppliedTax tax : charge.getTradeTax()) {
             LOG.debug("==> added {} to {}%", charge.getAmount(), tax.getPercentage());
-
-            taxAggregator.add(tax, charge.getAmount().getValue());
           }
+
+          List<Tax> itemTaxes = new ArrayList<Tax>();
+          itemTaxes.addAll(charge.getTradeTax());
+          taxAggregator.add(itemTaxes, charge.getAmount().getValue());
         }
       }
     }
@@ -184,8 +192,9 @@ public final class AmountCalculator {
           }
 
           LOG.debug("==> added {} to {}%", amount, charge.getCategory().getPercentage());
-
-          taxAggregator.add(charge.getCategory(), amount);
+          List<Tax> itemTaxes = new ArrayList<Tax>();
+          itemTaxes.add(charge.getCategory());
+          taxAggregator.add(itemTaxes, amount);
         }
       }
     }

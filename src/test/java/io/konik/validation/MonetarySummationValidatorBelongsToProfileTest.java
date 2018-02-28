@@ -1,20 +1,18 @@
 package io.konik.validation;
 
-import io.konik.validator.annotation.Basic;
-import io.konik.validator.annotation.Comfort;
-import io.konik.validator.annotation.Extended;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-
-import javax.validation.groups.Default;
+import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.runners.Parameterized.Parameter;
-import static org.junit.runners.Parameterized.Parameters;
+import javax.validation.groups.Default;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
 
 @RunWith(Parameterized.class)
 public class MonetarySummationValidatorBelongsToProfileTest {

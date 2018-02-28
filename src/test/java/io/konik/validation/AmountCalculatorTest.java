@@ -1,14 +1,12 @@
 package io.konik.validation;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import java.io.IOException;
+import java.io.InputStream;
+import org.junit.Test;
 import io.konik.InvoiceTransformer;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.trade.MonetarySummation;
-import org.junit.Test;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class AmountCalculatorTest {
 

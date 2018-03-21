@@ -1,0 +1,19 @@
+image: maven:3.5.2-jdk-8
+
+pipelines:
+  default:
+    - step:
+        script:
+          - bash configure-maven.sh
+          - mvn -B verify sonar:sonar
+  branches:
+    master:
+      - step:
+          script:
+            - bash configure-maven.sh
+            - mvn -B verify deploy sonar:sonar
+    develop:
+      - step:
+          script:
+            - bash configure-maven.sh
+            - mvn -B verify deploy sonar:sonar

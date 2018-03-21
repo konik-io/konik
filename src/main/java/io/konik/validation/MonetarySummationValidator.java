@@ -79,7 +79,10 @@ public class MonetarySummationValidator {
       return Iterables.any(profileAnnotationsOnly, new Predicate<Annotation>() {
         @Override
         public boolean apply(@Nullable Annotation annotation) {
-          return validationGroups.contains(annotation.annotationType());
+          if (annotation != null) {
+            return validationGroups.contains(annotation.annotationType());
+          }
+          return false;
         }
       });
 

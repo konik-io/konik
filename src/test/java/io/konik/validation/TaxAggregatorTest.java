@@ -8,7 +8,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import io.konik.zugferd.entity.Tax;
 import io.konik.zugferd.entity.trade.TradeTax;
-import io.konik.zugferd.entity.trade.item.Item;
 import io.konik.zugferd.unece.codes.TaxCategory;
 import io.konik.zugferd.unece.codes.TaxCode;
 
@@ -49,7 +48,6 @@ public class TaxAggregatorTest {
   @Test
   public void shouldCalculateTaxBasisFromAddedTaxAmounts() {
     // given:
-    List<Item> items = new ArrayList<Item>();
     TaxAggregator aggregator = new TaxAggregator();
     aggregator.add(vat19, BigDecimal.valueOf(100));
     aggregator.add(vat19, BigDecimal.valueOf(54));

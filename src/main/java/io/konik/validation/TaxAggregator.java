@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import org.slf4j.Logger;
@@ -41,13 +42,13 @@ public class TaxAggregator {
 
   public BigDecimal getTaxBasisForTaxPercentage(final BigDecimal percentage) {
     BigDecimal value = BigDecimal.ZERO;
-    for (List<TaxKey> keys : map.keySet()) {
+    for (Entry<List<TaxKey>, BigDecimal> keys : map.entrySet()) {
       BigDecimal percentageSum = BigDecimal.ZERO;
-      for (TaxKey taxKey : keys) {
+      for (TaxKey taxKey : keys.getKey()) {
         percentageSum = percentageSum.add(taxKey.getPercentage());
       }
       if (percentage.equals(percentageSum)) {
-        value = value.add(map.get(keys));
+        value = value.add(keys.getValue());
       }
     }
     return value;
@@ -92,14 +93,14 @@ public class TaxAggregator {
       final List<TradeTax> previousList) {
     List<TradeTax> taxes = new LinkedList<TradeTax>();
 
-    for (List<TaxKey> keys : map.keySet()) {
-      for (TaxKey key : keys) {
+    for (Entry<List<TaxKey>, BigDecimal> keys : map.entrySet()) {
+      for (TaxKey key : keys.getKey()) {
         TradeTax tradeTax = new TradeTax();
         tradeTax.setType(key.getCode());
         tradeTax.setCategory(key.getCategory());
         tradeTax.setPercentage(key.getPercentage());
 
-        BigDecimal basis = map.get(keys);
+        BigDecimal basis = keys.getValue();
         BigDecimal calculated = calculateTaxAmount(key.getPercentage(), basis);
 
         tradeTax.setBasis(new Amount(basis, currencyCode));

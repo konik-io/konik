@@ -17,7 +17,7 @@ import io.konik.zugferd.entity.trade.TradeTax;
  */
 public final class InvoiceMonetarySummationAndTradeTaxCompleter implements Correction<Invoice> {
 
-  protected static Logger log =
+  protected static final Logger log =
       LoggerFactory.getLogger(InvoiceMonetarySummationAndTradeTaxCompleter.class);
 
   @Override

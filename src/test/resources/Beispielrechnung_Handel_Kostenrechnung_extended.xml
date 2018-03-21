@@ -263,7 +263,7 @@
       <ram:IncludedSupplyChainTradeLineItem>
          <ram:SpecifiedSupplyChainTradeAgreement>
             <ram:GrossPriceProductTradePrice>
-               <ram:ChargeAmount currencyID="EUR">0.0520</ram:ChargeAmount>
+               <ram:ChargeAmount currencyID="EUR">0.052</ram:ChargeAmount>
             </ram:GrossPriceProductTradePrice>
             <ram:NetPriceProductTradePrice>
                <ram:ChargeAmount currencyID="EUR">0.0520</ram:ChargeAmount>

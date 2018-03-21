@@ -37,4 +37,3 @@ http://konik.io/docs
 Licensing
 
 All code is licensed under the [AGPL](LICENCE.md), v3 or later.
-

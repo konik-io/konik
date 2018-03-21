@@ -1,10 +1,14 @@
 package io.konik.zugferd;
 
-import com.google.common.io.Files;
-import io.konik.InvoiceTransformer;
-import io.konik.PrittyPrintInvoiceTransformer;
-import io.konik.utils.NumberDifferenceXmlComparison;
-import io.konik.validation.InvoiceValidator;
+import static java.nio.charset.Charset.forName;
+import static org.assertj.core.api.Assertions.assertThat;
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Set;
+import javax.validation.ConstraintViolation;
+import javax.xml.transform.stream.StreamSource;
 import org.custommonkey.xmlunit.Diff;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
@@ -13,17 +17,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.xml.sax.SAXException;
-
-import javax.validation.ConstraintViolation;
-import javax.xml.transform.stream.StreamSource;
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Set;
-
-import static java.nio.charset.Charset.forName;
-import static org.assertj.core.api.Assertions.assertThat;
+import com.google.common.io.Files;
+import io.konik.InvoiceTransformer;
+import io.konik.PrittyPrintInvoiceTransformer;
+import io.konik.utils.NumberDifferenceXmlComparison;
+import io.konik.validation.InvoiceValidator;
 
 @RunWith(Parameterized.class)
 public class ZugferdSpecificExamplesTest {

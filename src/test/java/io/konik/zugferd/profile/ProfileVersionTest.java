@@ -2,7 +2,6 @@ package io.konik.zugferd.profile;
 
 import static io.konik.zugferd.profile.ProfileVersion.RC;
 import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.Before;
 import org.junit.Test;
 

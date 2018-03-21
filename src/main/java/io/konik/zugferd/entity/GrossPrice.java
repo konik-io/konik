@@ -17,11 +17,10 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.unqualified.Amount;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import io.konik.zugferd.unqualified.Amount;
 
 /**
  * 

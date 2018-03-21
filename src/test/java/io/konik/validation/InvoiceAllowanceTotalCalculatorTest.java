@@ -1,21 +1,18 @@
 package io.konik.validation;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Collection;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 import com.neovisionaries.i18n.CurrencyCode;
 import io.konik.zugferd.entity.SpecifiedAllowanceCharge;
 import io.konik.zugferd.entity.trade.Settlement;
 import io.konik.zugferd.unqualified.Amount;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Collection;
-
-import static io.konik.validation.AmountCalculator.InvoiceAllowanceTotalCalculator;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.runners.Parameterized.Parameter;
-import static org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class InvoiceAllowanceTotalCalculatorTest {

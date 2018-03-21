@@ -1,5 +1,18 @@
 package io.konik.sdk.invoice;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.failBecauseExceptionWasNotThrown;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.UUID;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.mockito.Mockito;
+import org.unitils.thirdparty.org.apache.commons.io.IOUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.LowLevelHttpRequest;
@@ -8,25 +21,11 @@ import com.google.api.client.testing.http.MockHttpTransport;
 import com.google.api.client.testing.http.MockLowLevelHttpRequest;
 import com.google.api.client.testing.http.MockLowLevelHttpResponse;
 import com.google.common.io.ByteStreams;
-
 import io.konik.InvoiceTransformer;
 import io.konik.sdk.ZinvoiceApiConfig;
 import io.konik.sdk.http.BadRequestException;
 import io.konik.sdk.http.ZinvoiceHttpClient;
 import io.konik.zugferd.Invoice;
-
-import org.junit.Ignore;
-import org.junit.Test;
-import org.mockito.Mockito;
-import org.unitils.thirdparty.org.apache.commons.io.IOUtils;
-
-import java.io.IOException;
-import java.io.StringWriter;
-import java.util.UUID;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.failBecauseExceptionWasNotThrown;
-import static org.mockito.Mockito.*;
 
 public class RestInvoiceApiTest {
 

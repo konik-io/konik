@@ -1,14 +1,12 @@
 package io.konik.calculation;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import java.io.InputStream;
+import java.math.BigDecimal;
+import org.junit.Test;
 import io.konik.InvoiceTransformer;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
-import org.junit.Test;
-
-import java.io.InputStream;
-import java.math.BigDecimal;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class InvoiceCalculatorTest {
 

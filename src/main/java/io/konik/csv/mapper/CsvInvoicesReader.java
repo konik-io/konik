@@ -1,18 +1,17 @@
 package io.konik.csv.mapper;
 
-import io.konik.csv.converter.RowToInvoiceConverter;
-import io.konik.csv.model.Row;
-import io.konik.zugferd.Invoice;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.supercsv.cellprocessor.ift.CellProcessor;
-import org.supercsv.io.dozer.CsvDozerBeanReader;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.io.dozer.CsvDozerBeanReader;
+import io.konik.csv.converter.RowToInvoiceConverter;
+import io.konik.csv.model.Row;
+import io.konik.zugferd.Invoice;
 
 /**
  * Reader class used for reading CSV files and returning a {@link List} of {@see Invoice}s.

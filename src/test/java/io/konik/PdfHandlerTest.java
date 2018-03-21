@@ -1,18 +1,16 @@
 package io.konik;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import io.konik.harness.FileExtractor;
-import io.konik.utils.RandomInvoiceGenerator;
-import io.konik.zugferd.Invoice;
-
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ServiceLoader;
-
 import org.apache.pdfbox.io.IOUtils;
 import org.junit.Before;
 import org.junit.Test;
+import io.konik.harness.FileExtractor;
+import io.konik.utils.RandomInvoiceGenerator;
+import io.konik.zugferd.Invoice;
 
 @SuppressWarnings("javadoc")
 public class PdfHandlerTest {

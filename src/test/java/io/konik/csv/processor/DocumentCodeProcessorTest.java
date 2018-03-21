@@ -1,9 +1,8 @@
 package io.konik.csv.processor;
 
-import io.konik.zugferd.unece.codes.DocumentCode;
-import org.junit.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
+import io.konik.zugferd.unece.codes.DocumentCode;
 
 public class DocumentCodeProcessorTest {
 

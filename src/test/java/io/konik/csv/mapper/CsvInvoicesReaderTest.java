@@ -1,15 +1,13 @@
 package io.konik.csv.mapper;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import java.io.File;
+import org.assertj.core.api.Condition;
+import org.junit.Test;
 import io.konik.csv.Rows;
 import io.konik.csv.converter.InvoiceToRowConverter;
 import io.konik.csv.model.Row;
 import io.konik.zugferd.Invoice;
-import org.assertj.core.api.Condition;
-import org.junit.Test;
-
-import java.io.File;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class CsvInvoicesReaderTest {
 

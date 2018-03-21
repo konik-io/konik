@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.xml.transform.stream.StreamSource;
@@ -60,6 +61,7 @@ import io.konik.zugferd.entity.trade.item.Item;
 import io.konik.zugferd.entity.trade.item.ItemTax;
 import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
 import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
+import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
 import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
 import io.konik.zugferd.unece.codes.TaxCode;
 import io.konik.zugferd.unqualified.Amount;
@@ -101,22 +103,31 @@ public class MinimalInvoiceWithCalculation {
     itemTax.setPercentage(BigDecimal.valueOf(19));
     itemTax.setType(TaxCode.VAT);
 
-    trade.addItem(new Item().setProduct(new Product().setName("Saddle")).setAgreement(
-        new SpecifiedAgreement()/* .setGrossPrice(new GrossPrice(new Amount(100, EUR))) */
-            .setNetPrice(new Price(new Amount(100, EUR))))// <2>
-        .setSettlement(new SpecifiedSettlement().addTradeTax(itemTax))
-        .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))));
+    trade
+        .addItem(
+            new Item().setProduct(new Product().setName("Saddle")).setAgreement(
+                new SpecifiedAgreement()/* .setGrossPrice(new GrossPrice(new Amount(100, EUR))) */
+                    .setNetPrice(new Price(new Amount(100, EUR))))// <2>
+                .setSettlement(new SpecifiedSettlement()
+                    .setMonetarySummation(new SpecifiedMonetarySummation()
+                        .setTotalAllowanceCharge(new Amount(
+                            BigDecimal.valueOf(0).setScale(4, RoundingMode.HALF_UP), EUR))
+                        .setLineTotal(new Amount(
+                            BigDecimal.valueOf(123.323).setScale(2, RoundingMode.HALF_UP), EUR)))
+                    .addTradeTax(itemTax))
+                .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))));
 
     trade.setSettlement(new Settlement().setPaymentReference("20131122-42").setCurrency(EUR)
         .addPaymentMeans(new PaymentMeans().setPayerAccount(new DebtorFinancialAccount("DE01234.."))
             .setPayerInstitution(new FinancialInstitution("GENO..."))));
+
     /*
-     * .setMonetarySummation(new MonetarySummation() // <3> .setLineTotal(new Amount(100, EUR))
-     * .setChargeTotal(new Amount(0,EUR)) .setAllowanceTotal(new Amount(0, EUR))
-     * .setTaxBasisTotal(new Amount(100, EUR)) .setTaxTotal(new Amount(19, EUR)) .setDuePayable(new
-     * Amount(119, EUR)) .setTotalPrepaid(new Amount(0, EUR)) .setGrandTotal(new Amount(119,
-     * EUR))));
+     * .setMonetarySummation(new MonetarySummation().setLineTotal(new Amount(100, EUR))
+     * .setChargeTotal(new Amount(0, EUR)).setAllowanceTotal(new Amount(0, EUR))
+     * .setTaxBasisTotal(new Amount(100, EUR)).setTaxTotal(new Amount(19, EUR)) .setDuePayable(new
+     * Amount(119, EUR)).setTotalPrepaid(new Amount(0, EUR)) .setGrandTotal(new Amount(119, EUR))));
      */
+
 
     invoice.setTrade(trade);
     Invoice completedInvoice = new InvoiceCalculator(invoice).complete(); // <4>

@@ -21,14 +21,14 @@ public class ConfigurationTest {
    @After 
    public void resetToDefault() {
       System.setProperty("io.konik.stripTrailingZeros","true");
-      Configuration.INSTANCE.reload();
+      Configuration.INSTANCE.load();
       Files.delete(new File(CONFIG_FILE));
    }
 
    @Test
    public final void getProperty_fromFile() throws Exception {
       IOUtils.write("io.konik.key=value", new FileOutputStream(CONFIG_FILE));
-      Configuration.INSTANCE.reload();
+      Configuration.INSTANCE.load();
       assertThat(Configuration.INSTANCE.getProperty("io.konik.key")).isEqualTo("value");
    }
    
@@ -46,7 +46,7 @@ public class ConfigurationTest {
    @Test
    public final void stripTrailingZeros_SystemProperty() throws Exception {
       System.setProperty("io.konik.stripTrailingZeros","false");
-      Configuration.INSTANCE.reload();
+      Configuration.INSTANCE.load();
       assertThat(Configuration.INSTANCE.stripTrailingZeros()).isFalse();
    }
    
@@ -54,7 +54,7 @@ public class ConfigurationTest {
    public final void sgetProperty_SystemPropertyOverrideFile() throws Exception {
       IOUtils.write("io.konik.OverrideFile=value", new FileOutputStream(CONFIG_FILE));
       System.setProperty("io.konik.OverrideFile","is overridden");
-      Configuration.INSTANCE.reload();
+      Configuration.INSTANCE.load();
       assertThat(Configuration.INSTANCE.getProperty("io.konik.OverrideFile")).isEqualTo("is overridden");
       resetToDefault();
    }

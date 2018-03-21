@@ -220,9 +220,10 @@ public class MonetarySummationValidator {
 
       log.debug("Validating item's specified monetary summations...");
 
-      if (trade.getItems() != null) {
-        for (int i = 0; i < trade.getItems().size(); i++) {
-          Item item = trade.getItems().get(i);
+      List<Item> items = trade.getItems();
+      if (items != null) {
+        for (int i = 0; i < items.size(); i++) {
+          Item item = items.get(i);
 
           if (item.getSettlement() != null) {
             SpecifiedSettlement specifiedSettlement = item.getSettlement();
@@ -256,7 +257,10 @@ public class MonetarySummationValidator {
                     calculatedMonetarySummation.getLineTotal());
                 violations.add(new Violation(invoice, "lineTotal needs 2 decimals",
                     "item.monetarySummation.lineTotal.error",
-                    "trade.items[" + i + "].settlement.monetarySummation.lineTotal",
+                    "trade.items[" + i + "].settlement.monetarySummation.lineTotal: "
+                        + (monetarySummation.getLineTotal() != null
+                            ? monetarySummation.getLineTotal()
+                            : "null"),
                     monetarySummation.getLineTotal() != null
                         ? monetarySummation.getLineTotal().getValue()
                         : null));
@@ -288,7 +292,10 @@ public class MonetarySummationValidator {
                     calculatedMonetarySummation.getTotalAllowanceCharge());
                 violations.add(new Violation(invoice, "totalAllowanceCharge needs 4 decimals",
                     "item.monetarySummation.totalAllowanceCharge.error",
-                    "trade.items[" + i + "].settlement.monetarySummation.totalAllowanceCharge",
+                    "trade.items[" + i + "].settlement.monetarySummation.totalAllowanceCharge: "
+                        + (monetarySummation.getTotalAllowanceCharge() != null
+                            ? monetarySummation.getTotalAllowanceCharge().getValue()
+                            : "null"),
                     monetarySummation.getTotalAllowanceCharge() != null
                         ? monetarySummation.getTotalAllowanceCharge().getValue()
                         : null));

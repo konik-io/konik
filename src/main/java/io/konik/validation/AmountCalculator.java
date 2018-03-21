@@ -154,7 +154,7 @@ public final class AmountCalculator {
     monetarySummation.setLineTotal(
         Amounts.setPrecision(new ItemLineTotalCalculator().apply(item), 2, RoundingMode.HALF_UP));
     monetarySummation.setTotalAllowanceCharge(Amounts.setPrecision(
-        new ItemTotalAllowanceChargeCalculator(currencyCode).apply(item), 2, RoundingMode.HALF_UP));
+        new ItemTotalAllowanceChargeCalculator(currencyCode).apply(item), 4, RoundingMode.HALF_UP));
 
     LOG.debug("==> lineTotal = {}", monetarySummation.getLineTotal());
     LOG.debug("==> totalAllowanceCharge = {}", monetarySummation.getTotalAllowanceCharge());

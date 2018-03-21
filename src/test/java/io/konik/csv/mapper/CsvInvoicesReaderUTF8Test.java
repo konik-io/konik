@@ -1,10 +1,10 @@
 package io.konik.csv.mapper;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
 
 public class CsvInvoicesReaderUTF8Test {
 

@@ -18,9 +18,9 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.ValidFinancialAccount;
-
 import java.io.Serializable;
+
+import io.konik.validator.annotation.ValidFinancialAccount;
 
 
 /**

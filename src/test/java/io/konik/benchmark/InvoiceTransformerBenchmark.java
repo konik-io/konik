@@ -23,13 +23,6 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.openjdk.jmh.annotations.Mode.Throughput;
 import static org.openjdk.jmh.annotations.Scope.Thread;
-import io.konik.InvoiceTransformer;
-import io.konik.PdfHandler;
-import io.konik.carriage.pdfbox.PDFBoxInvoiceAppender;
-import io.konik.harness.FileAppender;
-import io.konik.harness.appender.DefaultAppendParameter;
-import io.konik.utils.InvoiceLoaderUtils;
-import io.konik.zugferd.Invoice;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -50,6 +43,14 @@ import org.openjdk.jmh.annotations.Threads;
 import org.openjdk.jmh.runner.RunnerException;
 
 import com.google.common.io.Files;
+
+import io.konik.InvoiceTransformer;
+import io.konik.PdfHandler;
+import io.konik.carriage.pdfbox.PDFBoxInvoiceAppender;
+import io.konik.harness.FileAppender;
+import io.konik.harness.appender.DefaultAppendParameter;
+import io.konik.utils.InvoiceLoaderUtils;
+import io.konik.zugferd.Invoice;
 
 @State(Thread)
 @BenchmarkMode(Throughput)

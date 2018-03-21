@@ -1,17 +1,18 @@
 package io.konik.csv;
 
-import com.neovisionaries.i18n.CountryCode;
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.csv.model.Row;
-import io.konik.zugferd.unece.codes.Reference;
-import io.konik.zugferd.unece.codes.UnitOfMeasurement;
-
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+
+import com.neovisionaries.i18n.CountryCode;
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.csv.model.Row;
+import io.konik.zugferd.unece.codes.Reference;
+import io.konik.zugferd.unece.codes.UnitOfMeasurement;
 
 public class Rows {
 

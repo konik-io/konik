@@ -1,19 +1,21 @@
 package io.konik.sdk.invoice;
 
-import com.google.api.client.http.HttpResponseException;
-import com.google.api.client.util.Maps;
-import io.konik.InvoiceTransformer;
-import io.konik.sdk.http.InsufficientCreditsAmountException;
-import io.konik.sdk.http.ZinvoiceHttpClient;
-import io.konik.zugferd.Invoice;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.api.client.http.HttpResponseException;
+import com.google.api.client.util.Maps;
+
+import io.konik.InvoiceTransformer;
+import io.konik.sdk.http.InsufficientCreditsAmountException;
+import io.konik.sdk.http.ZinvoiceHttpClient;
+import io.konik.zugferd.Invoice;
 
 
 public class RestInvoiceApi implements InvoiceApi {

@@ -1,20 +1,7 @@
 package io.konik.csv.mapper;
 
-import com.neovisionaries.i18n.CountryCode;
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.csv.Rows;
-import io.konik.csv.model.Row;
-import io.konik.csv.processor.DateProcessor;
-import io.konik.csv.processor.ReferenceProcessor;
-import io.konik.csv.processor.UnitOfMeasurementProcessor;
-import io.konik.zugferd.unece.codes.Reference;
-import io.konik.zugferd.unece.codes.UnitOfMeasurement;
-import org.dozer.DozerBeanMapper;
-import org.junit.Test;
-import org.supercsv.cellprocessor.ift.CellProcessor;
-import org.supercsv.io.dozer.CsvDozerBeanReader;
-import org.supercsv.io.dozer.CsvDozerBeanWriter;
-import org.supercsv.prefs.CsvPreference;
+import static io.konik.csv.mapper.CsvMapperBuilder.column;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
 import java.io.FileReader;
@@ -25,8 +12,23 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.UUID;
 
-import static io.konik.csv.mapper.CsvMapperBuilder.column;
-import static org.assertj.core.api.Assertions.assertThat;
+import org.dozer.DozerBeanMapper;
+import org.junit.Test;
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.io.dozer.CsvDozerBeanReader;
+import org.supercsv.io.dozer.CsvDozerBeanWriter;
+import org.supercsv.prefs.CsvPreference;
+
+import com.neovisionaries.i18n.CountryCode;
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.csv.Rows;
+import io.konik.csv.model.Row;
+import io.konik.csv.processor.DateProcessor;
+import io.konik.csv.processor.ReferenceProcessor;
+import io.konik.csv.processor.UnitOfMeasurementProcessor;
+import io.konik.zugferd.unece.codes.Reference;
+import io.konik.zugferd.unece.codes.UnitOfMeasurement;
 
 public class CsvMapperBuilderTest {
 

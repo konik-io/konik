@@ -1,14 +1,16 @@
 package io.konik.util;
 
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.zugferd.entity.trade.MonetarySummation;
-import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
-import io.konik.zugferd.unqualified.Amount;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
+
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.zugferd.entity.trade.MonetarySummation;
+import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
+import io.konik.zugferd.unqualified.Amount;
 
 public class MonetarySummationsTest {
 

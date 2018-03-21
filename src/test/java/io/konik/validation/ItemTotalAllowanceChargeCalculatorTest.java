@@ -1,26 +1,28 @@
 package io.konik.validation;
 
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.util.Amounts;
-import io.konik.zugferd.entity.AllowanceCharge;
-import io.konik.zugferd.entity.GrossPrice;
-import io.konik.zugferd.entity.trade.item.Item;
-import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
-import io.konik.zugferd.unqualified.Amount;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import static java.math.BigDecimal.valueOf;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Random;
 
-import static io.konik.validation.AmountCalculator.ItemTotalAllowanceChargeCalculator;
-import static java.math.BigDecimal.valueOf;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.runners.Parameterized.Parameter;
-import static org.junit.runners.Parameterized.Parameters;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.util.Amounts;
+import io.konik.validation.AmountCalculator.ItemTotalAllowanceChargeCalculator;
+import io.konik.zugferd.entity.AllowanceCharge;
+import io.konik.zugferd.entity.GrossPrice;
+import io.konik.zugferd.entity.trade.item.Item;
+import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
+import io.konik.zugferd.unqualified.Amount;
 
 @RunWith(Parameterized.class)
 public class ItemTotalAllowanceChargeCalculatorTest {

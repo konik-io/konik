@@ -1,11 +1,12 @@
 package io.konik.util;
 
+import java.math.RoundingMode;
+
 import com.neovisionaries.i18n.CurrencyCode;
+
 import io.konik.zugferd.entity.trade.MonetarySummation;
 import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
 import io.konik.zugferd.unqualified.Amount;
-
-import java.math.RoundingMode;
 
 /**
  * Helper functions for {@link io.konik.zugferd.entity.trade.MonetarySummation} class.

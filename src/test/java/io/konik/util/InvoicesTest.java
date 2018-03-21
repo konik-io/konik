@@ -1,13 +1,15 @@
 package io.konik.util;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import io.konik.InvoiceTransformer;
-import io.konik.zugferd.Invoice;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.InputStream;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import io.konik.InvoiceTransformer;
+import io.konik.zugferd.Invoice;
 
 public class InvoicesTest {
 

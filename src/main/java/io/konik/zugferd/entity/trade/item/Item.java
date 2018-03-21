@@ -17,16 +17,17 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
-import io.konik.validator.annotation.Comfort;
-import io.konik.zugferd.entity.PositionDocument;
-import io.konik.zugferd.entity.Product;
+import java.io.Serializable;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import java.io.Serializable;
+
+import io.konik.validator.annotation.Comfort;
+import io.konik.zugferd.entity.PositionDocument;
+import io.konik.zugferd.entity.Product;
 
 /**
  * = The Trade Item.

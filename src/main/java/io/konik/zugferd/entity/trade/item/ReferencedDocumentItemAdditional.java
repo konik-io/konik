@@ -17,9 +17,9 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
-import io.konik.validator.annotation.Extended;
-
 import javax.validation.constraints.NotNull;
+
+import io.konik.validator.annotation.Extended;
 
 /**
  * 

@@ -18,15 +18,15 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
-import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.Measure;
-import io.konik.zugferd.unqualified.ZfDate;
-
 import java.math.BigDecimal;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
+import io.konik.zugferd.unqualified.Amount;
+import io.konik.zugferd.unqualified.Measure;
+import io.konik.zugferd.unqualified.ZfDate;
 
 /**
  * = The payment penalty terms and conditions of a trade

@@ -1,19 +1,20 @@
 package io.konik.csv.pdf;
 
-import io.konik.harness.FileAppender;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static io.konik.csv.pdf.FileAppenderPriorityComparator.Order;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import io.konik.csv.pdf.FileAppenderPriorityComparator.Order;
+import io.konik.harness.FileAppender;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FileAppenderPriorityComparatorTest {

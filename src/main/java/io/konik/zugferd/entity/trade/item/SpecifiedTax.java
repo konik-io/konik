@@ -17,12 +17,12 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
+import javax.validation.Valid;
+
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.Tax;
 import io.konik.zugferd.unqualified.Amount;
-
-import javax.validation.Valid;
 
 /**
  *  

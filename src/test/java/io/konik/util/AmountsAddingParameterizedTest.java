@@ -1,18 +1,20 @@
 package io.konik.util;
 
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.zugferd.unqualified.Amount;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.runners.Parameterized.Parameter;
-import static org.junit.runners.Parameterized.Parameters;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.zugferd.unqualified.Amount;
 
 @RunWith(Parameterized.class)
 public class AmountsAddingParameterizedTest {

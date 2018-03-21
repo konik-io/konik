@@ -17,16 +17,16 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
-import io.konik.validator.annotation.Comfort;
-import io.konik.zugferd.unece.codes.TaxCategory;
-import io.konik.zugferd.unece.codes.TaxCode;
-
 import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
+import io.konik.validator.annotation.Comfort;
+import io.konik.zugferd.unece.codes.TaxCategory;
+import io.konik.zugferd.unece.codes.TaxCode;
 
 /**
  * = The trade tax

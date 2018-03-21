@@ -1,12 +1,14 @@
 package io.konik.util;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
-import io.konik.zugferd.entity.trade.item.Item;
-
-import javax.annotation.Nullable;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.annotation.Nullable;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
+
+import io.konik.zugferd.entity.trade.item.Item;
 
 /**
  * Helper functions for {@link Item} class.

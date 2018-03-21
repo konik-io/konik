@@ -1,8 +1,33 @@
 package io.konik.validation;
 
+import java.lang.annotation.Annotation;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.annotation.Nullable;
+import javax.validation.ConstraintTarget;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintViolation;
+import javax.validation.MessageInterpolator;
+import javax.validation.Path;
+import javax.validation.Payload;
+import javax.validation.metadata.ConstraintDescriptor;
+
+import org.apache.bval.jsr.util.PathImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
+
 import io.konik.validator.annotation.Basic;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.GrossPrice;
@@ -15,17 +40,6 @@ import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
 import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
 import io.konik.zugferd.profile.ConformanceLevel;
 import io.konik.zugferd.unqualified.Amount;
-import org.apache.bval.jsr.util.PathImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.annotation.Nullable;
-import javax.validation.*;
-import javax.validation.metadata.ConstraintDescriptor;
-import java.lang.annotation.Annotation;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.*;
 
 /**
  * Validates {@link Invoice}'s {@link MonetarySummation} by comparing values after recalculating MonetarySummation

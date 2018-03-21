@@ -17,14 +17,15 @@
  */
 package io.konik.jaxb.adapter;
 
-import io.konik.Configuration;
+import static java.lang.Integer.parseInt;
+import static java.math.RoundingMode.valueOf;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import static java.lang.Integer.parseInt;
-import static java.math.RoundingMode.valueOf;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+import io.konik.Configuration;
 
 /**
  * 

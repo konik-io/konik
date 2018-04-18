@@ -38,7 +38,6 @@ public class Period implements Serializable {
    @XmlElement(name = "EndDateTime")
    private ZfDate end;
 
-
    /**
     * Gets the start date time.
     * 

@@ -38,7 +38,7 @@ public class MonetarySummation implements CommonMonetarySummation {
    @Valid
    @XmlElement(name = "LineTotalAmount")
    private Amount lineTotal;
-   
+
    @XmlElement(name = "ChargeTotalAmount")
    private Amount chargeTotal;
 
@@ -67,8 +67,8 @@ public class MonetarySummation implements CommonMonetarySummation {
 
    @Override
    public MonetarySummation setLineTotal(Amount lineTotal) {
-      this.lineTotal =  lineTotal; 
-      return this;      
+      this.lineTotal = lineTotal;
+      return this;
    }
 
    /**
@@ -235,7 +235,6 @@ public class MonetarySummation implements CommonMonetarySummation {
       this.duePayable = duePayable;
       return this;
    }
-   
 
    @Override
    public String toString() {

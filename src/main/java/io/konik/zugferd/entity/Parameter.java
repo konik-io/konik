@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlType(name = "DocumentContextParameterType", propOrder = { "id" })
 public class Parameter implements Serializable {
-   
+
    @XmlElement(name = "ID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private final String id;

@@ -37,28 +37,28 @@ import io.konik.validator.EmailValidator;
  */
 @Documented
 @Constraint(validatedBy = EmailValidator.class)
-@Target({METHOD, FIELD, ANNOTATION_TYPE, PARAMETER})
+@Target({ METHOD, FIELD, ANNOTATION_TYPE, PARAMETER })
 @Retention(RUNTIME)
 public @interface Email {
-    
-    /**
-     * Groups.
-     *
-     * @return the class[]
-     */
-    Class<?>[] groups() default {};
 
-    /**
-     * Message.
-     *
-     * @return the string
-     */
-    String message() default "{io.konik.validation.constraints.email.message}";
+   /**
+    * Groups.
+    *
+    * @return the class[]
+    */
+   Class<?>[] groups() default {};
 
-    /**
-     * Payload.
-     *
-     * @return the class<? extends payload>[]
-     */
-    Class<? extends Payload>[] payload() default {};
+   /**
+    * Message.
+    *
+    * @return the string
+    */
+   String message() default "{io.konik.validation.constraints.email.message}";
+
+   /**
+    * Payload.
+    *
+    * @return the class<? extends payload>[]
+    */
+   Class<? extends Payload>[] payload() default {};
 }

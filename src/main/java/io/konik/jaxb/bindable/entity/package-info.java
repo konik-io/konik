@@ -19,7 +19,8 @@
 /**
  * Package for bindable entity types
  */
-@XmlSchema(elementFormDefault = QUALIFIED, namespace = "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12", xmlns = { @XmlNs(prefix = "ram", namespaceURI = "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12") })
+@XmlSchema(elementFormDefault = QUALIFIED, namespace = "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12", xmlns = {
+      @XmlNs(prefix = "ram", namespaceURI = "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12") })
 @XmlJavaTypeAdapters({ @XmlJavaTypeAdapter(value = DateTimeAdapter.class, type = DateTime.class) })
 @XmlAccessorType(NONE)
 package io.konik.jaxb.bindable.entity;
@@ -35,4 +36,3 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapters;
 
 import io.konik.jaxb.bindable.unqualified.DateTime;
 import io.konik.jaxb.bindable.unqualified.DateTimeAdapter;
-

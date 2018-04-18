@@ -9,12 +9,12 @@ import io.konik.zugferd.Invoice;
  */
 public final class Invoices {
 
-	/**
-	 * Clones deeply given {@link Invoice}
-	 * @param invoice
-	 * @return
-	 */
-	public static Invoice clone(final Invoice invoice) {
-		return SerializationUtils.clone(invoice);
-	}
+   /**
+    * Clones deeply given {@link Invoice}
+    * @param invoice
+    * @return
+    */
+   public static Invoice clone(final Invoice invoice) {
+      return SerializationUtils.clone(invoice);
+   }
 }

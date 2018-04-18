@@ -37,7 +37,8 @@ import io.konik.zugferd.unece.codes.TaxCode;
  * The complexity of this hierarchy is also result of the validation path, as we can not override constraints.
  */
 @XmlTransient
-@XmlType(name = "TradeTaxType", propOrder = { "calculated", "type", "exemptionReason", "basis", "lineTotal","allowanceCharge", "category", "percentage" })
+@XmlType(name = "TradeTaxType", propOrder = { "calculated", "type", "exemptionReason", "basis", "lineTotal",
+      "allowanceCharge", "category", "percentage" })
 /* 
 HIRACHY TOP DOWN
 as AppliedTradeTax|CategoryTradeTax       TypeCode, CategoryCode, ApplicablePercent

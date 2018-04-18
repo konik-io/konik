@@ -35,10 +35,10 @@ import io.konik.zugferd.unqualified.ZfDate;
  * = The trade delivery information.
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = { "relatedConsignment", "shipTo", "ultimateShipTo", "shipFrom", "actualDelivery",
-      "despatchAdvice", "deliveryNote" })
+@XmlType(propOrder = { "relatedConsignment", "shipTo", "ultimateShipTo", "shipFrom", "actualDelivery", "despatchAdvice",
+      "deliveryNote" })
 public class Delivery extends CommonDelivery<ReferencedDocument> {
-  
+
    @XmlElement(name = "RelatedSupplyChainConsignment")
    private Consignment relatedConsignment;
 
@@ -100,6 +100,7 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
    public TradeParty getUltimateShipTo() {
       return super.getUltimateShipTo();
    }
+
    /**
     * Gets the ship from.
     *
@@ -121,7 +122,7 @@ public class Delivery extends CommonDelivery<ReferencedDocument> {
       this.shipFrom = shipFrom;
       return this;
    }
-   
+
    @Valid
    @Extended
    @Override

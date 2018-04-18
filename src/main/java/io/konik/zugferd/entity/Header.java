@@ -46,8 +46,8 @@ import io.konik.zugferd.unqualified.ZfDate;
  * = The Invoice Document Header
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "HeaderExchangedDocument", propOrder = { "invoiceNumber", "name", "code", "issued", "copy",
-      "languages", "notes", "contractualDueDate" })
+@XmlType(name = "HeaderExchangedDocument", propOrder = { "invoiceNumber", "name", "code", "issued", "copy", "languages",
+      "notes", "contractualDueDate" })
 public class Header implements Serializable {
 
    @XmlElement(name = "ID")
@@ -189,7 +189,7 @@ public class Header implements Serializable {
     */
    @Extended
    public boolean isCopy() {
-      return copy == null?false:copy.getIndicator();
+      return copy == null ? false : copy.getIndicator();
    }
 
    /**
@@ -233,7 +233,7 @@ public class Header implements Serializable {
     * @return the included note
     */
    @Basic
-   @Valid  
+   @Valid
    public List<Note> getNotes() {
       if (notes == null) {
          notes = new ArrayList<Note>();

@@ -50,8 +50,7 @@ public enum TaxCategory {
     * A tax category code indicating the item is tax exempt
     * when the item is bought for future resale.
     **/
-   AB("Exempt for resale",
-         "A tax category code indicating the item is tax exempt when the item is bought for future resale."),
+   AB("Exempt for resale", "A tax category code indicating the item is tax exempt when the item is bought for future resale."),
 
    /**
     * Value Added Tax (VAT) not now due for payment
@@ -60,9 +59,7 @@ public enum TaxCategory {
     * which is due on the current invoice is to be paid on
     * receipt of a separate VAT payment request.
     **/
-   AC(
-         "Value Added Tax (VAT) not now due for payment",
-         " A code to indicate that the Value Added Tax (VAT) amount which is due on the current invoice is to be paid on receipt of a separate VAT payment request."),
+   AC("Value Added Tax (VAT) not now due for payment", " A code to indicate that the Value Added Tax (VAT) amount which is due on the current invoice is to be paid on receipt of a separate VAT payment request."),
 
    /**
     * Value Added Tax (VAT) due from a previous invoice
@@ -70,8 +67,7 @@ public enum TaxCategory {
     * A code to indicate that the Value Added Tax (VAT) amount
     * of a previous invoice is to be paid.
     **/
-   AD("Value Added Tax (VAT) due from a previous invoice",
-         "A code to indicate that the Value Added Tax (VAT) amount of a previous invoice is to be paid."),
+   AD("Value Added Tax (VAT) due from a previous invoice", "A code to indicate that the Value Added Tax (VAT) amount of a previous invoice is to be paid."),
 
    /**
     * VAT Reverse Charge
@@ -95,8 +91,7 @@ public enum TaxCategory {
     * Duty associated with shipment of goods is paid by the
     * supplier; customer receives goods with duty paid.
     **/
-   C("Duty paid by supplier",
-         "Duty associated with shipment of goods is paid by the supplier; customer receives goods with duty paid."),
+   C("Duty paid by supplier", "Duty associated with shipment of goods is paid by the supplier; customer receives goods with duty paid."),
 
    /**
     * Exempt from tax
@@ -126,7 +121,7 @@ public enum TaxCategory {
     * Code specifying that the VAT rate is levied from the invoicee for Intra-Community supplies.
     **/
    IC("Intra-Community Supply", "Code specifying that the VAT rate is levied from the invoicee for Intra-Community supplies."),
-   
+
    /**
     * Services outside scope of tax
     * 

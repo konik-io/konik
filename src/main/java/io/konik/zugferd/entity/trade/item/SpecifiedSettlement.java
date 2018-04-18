@@ -49,7 +49,6 @@ public class SpecifiedSettlement implements CommonSettlement<ItemTax, SpecifiedM
    @XmlJavaTypeAdapter(AccountingAccountAdapter.class)
    private String bookingReference;
 
-   
    @XmlElement(name = "SpecifiedTradeSettlementMonetarySummation")
    private SpecifiedMonetarySummation monetarySummation;
 

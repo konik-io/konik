@@ -39,7 +39,7 @@ import io.konik.validator.ValidContactValidator;
 @Constraint(validatedBy = { ValidContactValidator.class })
 @Documented
 public @interface ValidContact {
-   
+
    /**
     * Message.
     *

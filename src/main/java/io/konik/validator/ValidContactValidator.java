@@ -28,7 +28,7 @@ import io.konik.zugferd.entity.Contact;
 /**
  * Validates if the Contact is valid by having a contact name or department
  */
-public class ValidContactValidator implements  ConstraintValidator<ValidContact,Contact> {
+public class ValidContactValidator implements ConstraintValidator<ValidContact, Contact> {
 
    @Override
    public void initialize(ValidContact constraintAnnotation) {
@@ -43,7 +43,5 @@ public class ValidContactValidator implements  ConstraintValidator<ValidContact,
       }
       return false;
    }
-
-
 
 }

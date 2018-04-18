@@ -28,8 +28,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * = The Debtor Financial Account.
  */
 @XmlType(name = "DebtorFinancialAccountType", propOrder = { "iban", "proprietaryId" })
-public class DebtorFinancialAccount implements FinancialAccount{
-   
+public class DebtorFinancialAccount implements FinancialAccount {
+
    @XmlElement(name = "IBANID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private String iban;
@@ -43,6 +43,7 @@ public class DebtorFinancialAccount implements FinancialAccount{
     */
    public DebtorFinancialAccount() {
    }
+
    /**
     * Instantiates a new debtor financial account.
     *
@@ -51,7 +52,7 @@ public class DebtorFinancialAccount implements FinancialAccount{
    public DebtorFinancialAccount(String iban) {
       this.iban = iban;
    }
-   
+
    @Override
    public String getIban() {
       return iban;
@@ -62,12 +63,12 @@ public class DebtorFinancialAccount implements FinancialAccount{
       this.iban = iban;
       return this;
    }
-   
+
    @Override
    public String getProprietaryId() {
       return proprietaryId;
    }
-   
+
    @Override
    public DebtorFinancialAccount setProprietaryId(String proprietaryId) {
       this.proprietaryId = proprietaryId;

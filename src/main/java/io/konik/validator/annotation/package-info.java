@@ -20,4 +20,3 @@
  * ZUGFeRD Validation Annotations.
  */
 package io.konik.validator.annotation;
-

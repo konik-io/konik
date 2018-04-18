@@ -10,21 +10,21 @@ import com.neovisionaries.i18n.LanguageCode;
  */
 public class LanguageCodeConverter extends DozerConverter<String, LanguageCode> {
 
-	public LanguageCodeConverter() {
-		this(String.class, LanguageCode.class);
-	}
+   public LanguageCodeConverter() {
+      this(String.class, LanguageCode.class);
+   }
 
-	public LanguageCodeConverter(Class<String> prototypeA, Class<LanguageCode> prototypeB) {
-		super(prototypeA, prototypeB);
-	}
+   public LanguageCodeConverter(Class<String> prototypeA, Class<LanguageCode> prototypeB) {
+      super(prototypeA, prototypeB);
+   }
 
-	@Override
-	public LanguageCode convertTo(String source, LanguageCode destination) {
-		return LanguageCode.getByCode(source, false);
-	}
+   @Override
+   public LanguageCode convertTo(String source, LanguageCode destination) {
+      return LanguageCode.getByCode(source, false);
+   }
 
-	@Override
-	public String convertFrom(LanguageCode source, String destination) {
-		return source.toString();
-	}
+   @Override
+   public String convertFrom(LanguageCode source, String destination) {
+      return source.toString();
+   }
 }

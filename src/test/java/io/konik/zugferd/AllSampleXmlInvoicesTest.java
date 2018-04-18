@@ -63,30 +63,28 @@ import io.konik.zugferd.profile.ConformanceLevel;
 @SuppressWarnings("javadoc")
 @RunWith(Parameterized.class)
 public class AllSampleXmlInvoicesTest {
-   
+
    private static final Logger log = LogManager.getLogger();
-   
+
    private static final String TEST_FILE_LOCATION = "src/test/resources";
 
    private static final String UTF_8 = "UTF-8";
-      
 
    private static Validator validator;
 
    @Parameter
    public File testFile;
-   
-   @Parameter(value=1)
+
+   @Parameter(value = 1)
    public String testFileName;
-   
+
    InvoiceTransformer transformer = new PrittyPrintInvoiceTransformer();
-   
-      
+
    static int unmarshallCounter;
    static int schemaValidationCounter;
    static int marshallBackCounter;
    static int modelValidationCounter;
-   
+
    @BeforeClass
    public static void setup() {
       XMLUnit.setIgnoreWhitespace(true);
@@ -94,11 +92,12 @@ public class AllSampleXmlInvoicesTest {
       XMLUnit.setIgnoreComments(true);
       //validator
       ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-      NullableNotBlankValidator notBlankValidator = factory.getConstraintValidatorFactory().getInstance(NullableNotBlankValidator.class);
+      NullableNotBlankValidator notBlankValidator = factory.getConstraintValidatorFactory()
+            .getInstance(NullableNotBlankValidator.class);
       assertThat(notBlankValidator).isNotNull();
       validator = factory.getValidator();
    }
-   
+
    @AfterClass
    public static void printStatistics() {
       System.out.println("Statistics:");
@@ -107,24 +106,23 @@ public class AllSampleXmlInvoicesTest {
       System.out.println("Model validated:         " + modelValidationCounter);
       System.out.println("Round trip marshalled:   " + marshallBackCounter);
       System.out.println("*************************");
-      
-      
+
    }
-   
+
    @Parameters(name = "{1}")
    public static Iterable<Object[]> findAllInvoiceXMlFiles() {
       Collection<Object[]> result = Lists.newArrayList();
       File xmlDir = new File(TEST_FILE_LOCATION);
       Iterable<File> traversal = Files.fileTreeTraverser().children(xmlDir);
       for (File file : traversal) {
-         if (file.isFile() && getFileExtension(file.getName()).equals("xml") && !file.getName().contains("log4j2") && !file.getName().contains("error")){
-            result.add(new Object[]{file,file.getName()});
+         if (file.isFile() && getFileExtension(file.getName()).equals("xml") && !file.getName().contains("log4j2")
+               && !file.getName().contains("error")) {
+            result.add(new Object[] { file, file.getName() });
          }
       }
       return result;
    }
 
-   
    @Test
    public void unmarshalInvoice() {
       //execute
@@ -135,14 +133,12 @@ public class AllSampleXmlInvoicesTest {
       unmarshallCounter++;
    }
 
-   
    @Test
    public void validateInvoiceAgainstSchema() throws SAXException, IOException {
       transformer.getZfSchemaValidator().validate(new StreamSource(testFile));
       schemaValidationCounter++;
    }
-   
-   
+
    @Test
    public void validateInvoiceModel() {
       //setup
@@ -152,38 +148,36 @@ public class AllSampleXmlInvoicesTest {
 
       InvoiceValidator invoiceValidator = new InvoiceValidator();
       //execute
-      
+
       Set<ConstraintViolation<Invoice>> validationResult = invoiceValidator.validate(invoice);
       MonetarySummation monetarySummation = AmountCalculator.recalculate(invoice).getMonetarySummation();
-      
+
       //verify
       for (ConstraintViolation<Invoice> violation : validationResult) {
-         String msg = violation.getPropertyPath() + " Message: "+ violation.getMessage() + " | Actual value: " + violation.getInvalidValue();
+         String msg = violation.getPropertyPath() + " Message: " + violation.getMessage() + " | Actual value: "
+               + violation.getInvalidValue();
          log.warn(msg);
       }
       assertThat(validationResult).isEmpty();
       modelValidationCounter++;
    }
 
-
-   
    @Test
    public void marshallBackInvoiceModelAndDiffXml() throws Exception {
       //setup
       String testFileContent = Files.toString(testFile, forName(UTF_8));
       Invoice model = transformer.toModel(testFile);
-      
 
       //execute 
       byte[] invoiceAsByteArray = transformer.fromModel(model);
-      
+
       //verify
-      String remarshalledInvoice = new String(invoiceAsByteArray,UTF_8);
-      Files.write(remarshalledInvoice.getBytes(), new File("./target/test_"+testFileName));
-//      System.out.println(remarshalledInvoice);
+      String remarshalledInvoice = new String(invoiceAsByteArray, UTF_8);
+      Files.write(remarshalledInvoice.getBytes(), new File("./target/test_" + testFileName));
+      //      System.out.println(remarshalledInvoice);
       Diff diff = new Diff(testFileContent, remarshalledInvoice);
       diff.overrideDifferenceListener(new NumberDifferenceXmlComparison());
       XMLAssert.assertXMLEqual(diff, true);
       marshallBackCounter++;
-  }
+   }
 }

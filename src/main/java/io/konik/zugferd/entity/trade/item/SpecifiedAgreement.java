@@ -42,7 +42,6 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    private Price netPrice;
    private ReferencedDocumentItem customerOrder;
 
-  
    @Valid
    @Extended
    @Override
@@ -64,7 +63,7 @@ public class SpecifiedAgreement implements CommonAgreement<ReferencedDocumentIte
    public ReferencedDocumentItem getContract() {
       return contract;
    }
-   
+
    @Valid
    @Extended
    @Override

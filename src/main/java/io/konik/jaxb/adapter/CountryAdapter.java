@@ -36,13 +36,17 @@ public class CountryAdapter extends XmlAdapter<TradeCountry, CountryCode> {
 
    @Override
    public TradeCountry marshal(CountryCode country) throws Exception {
-      if (country == null) { return null; }
+      if (country == null) {
+         return null;
+      }
       return new TradeCountry(country.getAlpha2());
    }
 
    @Override
    public CountryCode unmarshal(TradeCountry tradeCountry) throws Exception {
-      if (tradeCountry == null) { return null; }
+      if (tradeCountry == null) {
+         return null;
+      }
       if (Strings.isNullOrEmpty(tradeCountry.getCode())) {
          LOG.log(Level.WARNING, "Trade Country is defined in XML but the code is empty or null");
          return null;

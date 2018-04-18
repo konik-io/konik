@@ -99,7 +99,7 @@ public enum UnitOfMeasurement {
 
    /** The Mile. 1609,344 m */
    MILE("SMI", "International Mile");
-   
+
    private final String description;
    private final String code;
 
@@ -141,7 +141,9 @@ public enum UnitOfMeasurement {
    public static UnitOfMeasurement getByCode(String code) {
       if (code != null) {
          for (UnitOfMeasurement v : values()) {
-            if (v.getCode().intern() == code.intern()) { return v; }
+            if (v.getCode().intern() == code.intern()) {
+               return v;
+            }
          }
       }
       return null;

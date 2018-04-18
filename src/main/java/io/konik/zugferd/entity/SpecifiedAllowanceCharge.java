@@ -41,10 +41,11 @@ import io.konik.zugferd.unqualified.Quantity;
  * 
  * = The Specified Allowance Charge.
  */
-@XmlType(name = "", propOrder = { "surcharge", "sequence", "calculationPercent", "basis", "basisQuantity", "actual", "reasonCode", "reason", "category" })
+@XmlType(name = "", propOrder = { "surcharge", "sequence", "calculationPercent", "basis", "basisQuantity", "actual",
+      "reasonCode", "reason", "category" })
 
 public class SpecifiedAllowanceCharge implements CommonAllowanceCharge {
-   
+
    @XmlElement(name = "ChargeIndicator")
    private Indicator surcharge;
 
@@ -72,9 +73,9 @@ public class SpecifiedAllowanceCharge implements CommonAllowanceCharge {
 
    @XmlElement(name = "Reason")
    private String reason;
-   
+
    @XmlElement(name = "CategoryTradeTax")
-   private AppliedTax category;  
+   private AppliedTax category;
 
    /**
     * Instantiates a new allowance charge.
@@ -290,6 +291,7 @@ public class SpecifiedAllowanceCharge implements CommonAllowanceCharge {
       this.reason = reason;
       return this;
    }
+
    /**
     * Gets the category.
     *
@@ -310,5 +312,5 @@ public class SpecifiedAllowanceCharge implements CommonAllowanceCharge {
       this.category = category;
       return this;
    }
- 
+
 }

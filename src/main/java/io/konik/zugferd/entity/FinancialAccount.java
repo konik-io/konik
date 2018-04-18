@@ -22,7 +22,6 @@ import java.io.Serializable;
 
 import io.konik.validator.annotation.ValidFinancialAccount;
 
-
 /**
  * = The Financial Account.
  */

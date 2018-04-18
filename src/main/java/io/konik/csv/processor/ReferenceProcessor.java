@@ -12,25 +12,25 @@ import io.konik.zugferd.unece.codes.Reference;
  */
 public final class ReferenceProcessor implements CellProcessor {
 
-	private static final Logger log = LoggerFactory.getLogger(ReferenceProcessor.class);
+   private static final Logger log = LoggerFactory.getLogger(ReferenceProcessor.class);
 
-	@Override
-	public <T> T execute(Object value, CsvContext context) {
+   @Override
+   public <T> T execute(Object value, CsvContext context) {
 
-		if (value instanceof String) {
-			String code = (String) value;
-			try {
-				return (T) Reference.getByCode(code);
-			} catch (IllegalArgumentException e) {
-				log.warn("Reference for value {} does not exist", value);
-			}
-		}
+      if (value instanceof String) {
+         String code = (String) value;
+         try {
+            return (T) Reference.getByCode(code);
+         } catch (IllegalArgumentException e) {
+            log.warn("Reference for value {} does not exist", value);
+         }
+      }
 
-		if (value instanceof Reference) {
-			Reference reference = (Reference) value;
-			return (T) reference.getCode();
-		}
+      if (value instanceof Reference) {
+         Reference reference = (Reference) value;
+         return (T) reference.getCode();
+      }
 
-		return null;
-	}
+      return null;
+   }
 }

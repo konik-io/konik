@@ -39,7 +39,9 @@ public class ParameterProfileAdapter extends XmlAdapter<Parameter, Profile> {
 
    @Override
    public Profile unmarshal(Parameter p) throws Exception {
-      if (p == null) { return null; }
+      if (p == null) {
+         return null;
+      }
       String fullName = p.getId();
       try {
          ProfileVersion version = ProfileVersion.extractVersion(fullName);
@@ -63,7 +65,9 @@ public class ParameterProfileAdapter extends XmlAdapter<Parameter, Profile> {
 
    @Override
    public Parameter marshal(Profile profile) throws Exception {
-      if (profile == null) { return null; }
+      if (profile == null) {
+         return null;
+      }
       return new Parameter(profile.fullName());
    }
 }

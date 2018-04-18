@@ -34,24 +34,23 @@ import io.konik.zugferd.unqualified.Amount;
 @XmlType(propOrder = { "lineTotal", "totalAllowanceCharge" })
 public class SpecifiedMonetarySummation implements CommonMonetarySummation {
 
-   
    @XmlElement(name = "LineTotalAmount")
    private Amount lineTotal;
-   
+
    @XmlElement(name = "TotalAllowanceChargeAmount")
    private Amount totalAllowanceCharge;
 
-   
    @Comfort
    @Override
-   @Valid @NotNull(groups = Comfort.class)
+   @Valid
+   @NotNull(groups = Comfort.class)
    public Amount getLineTotal() {
       return lineTotal;
    }
 
    @Override
    public SpecifiedMonetarySummation setLineTotal(Amount lineTotal) {
-      this.lineTotal =  lineTotal; 
+      this.lineTotal = lineTotal;
       return this;
    }
 

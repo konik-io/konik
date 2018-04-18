@@ -58,7 +58,7 @@ public class RandomInvoiceTest {
    private static final String TARGET_RANDOM_ZF_INVOICE_XML_2ND = "target/random_zf_invoice_2ndrun.xml";
 
    private final static InvoiceTransformer transformer = new PrittyPrintInvoiceTransformer();
-   
+
    private static Invoice randomInvoice;
    private static String randomInvoiceAsXml;
    private static InvoiceValidator validator;
@@ -74,7 +74,7 @@ public class RandomInvoiceTest {
       randomInvoice = new RandomInvoiceGenerator().generate(Invoice.class);
       assertNotNull(randomInvoice);
       byte[] xmlFromModel = transformer.fromModel(randomInvoice);
-      randomInvoiceAsXml = new String(xmlFromModel,utf8);
+      randomInvoiceAsXml = new String(xmlFromModel, utf8);
       assertNotNull(randomInvoiceAsXml);
    }
 
@@ -91,54 +91,52 @@ public class RandomInvoiceTest {
       String firstLine = Files.readFirstLine(xmlInvoiceOutputfile, utf8);
       assertThat(firstLine).startsWith("<?xml version=");
    }
-   
+
    @Test
-   public void validateRandomInvoiceAgainstSchema() throws  SAXException, IOException {
+   public void validateRandomInvoiceAgainstSchema() throws SAXException, IOException {
       //validate
       StringReader reader = new StringReader(randomInvoiceAsXml);
       getSchemaValidator().validate(new StreamSource(reader));
    }
 
    @Test
-//   @Ignore("Until Random Generator is correct.")
-   public void validateRandomInvoice(){
+   //   @Ignore("Until Random Generator is correct.")
+   public void validateRandomInvoice() {
       //setup
-//      Class<?>[] validationGroups = InvoiceValidator.resolveIntoValidationGroups(invoice.getContext().getGuideline().getConformanceLevel());
+      //      Class<?>[] validationGroups = InvoiceValidator.resolveIntoValidationGroups(invoice.getContext().getGuideline().getConformanceLevel());
 
       //execute
       Set<ConstraintViolation<Invoice>> validationResult = validator.validate(randomInvoice);
-      
+
       //verify
       if (!validationResult.isEmpty()) {
-         System.out.println("Validation Errors:"); 
+         System.out.println("Validation Errors:");
          for (ConstraintViolation<Invoice> constraintViolation : validationResult) {
             String left = StringUtils.rightPad(constraintViolation.getPropertyPath().toString(), 100);
-          System.out.println(left + constraintViolation.getMessage() + " invalid value is: " + constraintViolation.getInvalidValue()); 
+            System.out.println(left + constraintViolation.getMessage() + " invalid value is: "
+                  + constraintViolation.getInvalidValue());
          }
          assertThat(validationResult).as("See System out for details").isEmpty();
       }
    }
 
-   
    @Test
    public void compareXMLFileForDifferences() throws SAXException, IOException {
       Invoice controlInvoice = transformer.toModel(new ByteArrayInputStream(randomInvoiceAsXml.getBytes()));
       byte[] toModel = transformer.fromModel(controlInvoice);
       Files.write(toModel, new File(TARGET_RANDOM_ZF_INVOICE_XML_2ND));
-      String controlInvoiceAsXml = new String(toModel,utf8);
-      
+      String controlInvoiceAsXml = new String(toModel, utf8);
+
       //Verify
       Diff diff = new Diff(randomInvoiceAsXml, controlInvoiceAsXml);
       assertThat(diff.identical()).as(diff.toString()).isTrue();
    }
-   
-   
+
    @Test
    @Ignore("rounding is indicated as error")
-   public void compareInvoiceModels()  {
+   public void compareInvoiceModels() {
       Invoice invoice2 = transformer.toModel(new ByteArrayInputStream(randomInvoiceAsXml.getBytes()));
-      ReflectionAssert.assertReflectionEquals(randomInvoice,invoice2,IGNORE_DEFAULTS,LENIENT_DATES);
+      ReflectionAssert.assertReflectionEquals(randomInvoice, invoice2, IGNORE_DEFAULTS, LENIENT_DATES);
    }
-   
 
 }

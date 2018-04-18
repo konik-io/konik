@@ -39,8 +39,8 @@ import io.konik.zugferd.entity.TradeParty;
  * = The Trade Agreement.
  * 
  */
-@XmlType(propOrder = { "buyerReference", "seller", "buyer", "productEndUser", "deliveryTerms", "buyerOrder",
-      "contract", "additional", "customerOrder" })
+@XmlType(propOrder = { "buyerReference", "seller", "buyer", "productEndUser", "deliveryTerms", "buyerOrder", "contract",
+      "additional", "customerOrder" })
 public class Agreement implements CommonAgreement<ReferencedDocument, ReferencedDocumentAdditional> {
 
    private String buyerReference;

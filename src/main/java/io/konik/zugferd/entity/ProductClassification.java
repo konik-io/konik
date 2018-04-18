@@ -35,7 +35,7 @@ import io.konik.zugferd.unqualified.Code;
  */
 @XmlType(name = "ProductClassificationType", propOrder = { "classCode", "classNames" })
 public class ProductClassification implements Serializable {
-   
+
    @XmlElement(name = "ClassCode")
    private Code classCode;
 

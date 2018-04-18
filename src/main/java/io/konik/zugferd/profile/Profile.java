@@ -26,11 +26,11 @@ import java.io.Serializable;
 public class Profile implements Serializable {
    private static final String DELIMITER = ":";
    private static final String NS = "urn:ferd:CrossIndustryDocument:invoice:";
-   
+
    private String namespace;
    private ProfileVersion version;
    private ConformanceLevel conformanceLevel;
-   
+
    /**
     * Instantiates a new profile.
     */
@@ -38,7 +38,7 @@ public class Profile implements Serializable {
       this.namespace = NS;
       this.version = ProfileVersion.latestVersion();
    }
-   
+
    /**
     * Instantiates a new profile with the latest version
     *
@@ -73,7 +73,7 @@ public class Profile implements Serializable {
    public String getNamespace() {
       return namespace;
    }
-   
+
    /**
     * Sets the namespace.
     *
@@ -84,7 +84,7 @@ public class Profile implements Serializable {
       this.namespace = namespace;
       return this;
    }
-   
+
    /**
     * Gets the version.
     *
@@ -93,7 +93,7 @@ public class Profile implements Serializable {
    public ProfileVersion getVersion() {
       return version;
    }
-   
+
    /**
     * Sets the version.
     *
@@ -104,7 +104,7 @@ public class Profile implements Serializable {
       this.version = version;
       return this;
    }
-   
+
    /**
     * Gets the conformance level.
     *
@@ -113,7 +113,7 @@ public class Profile implements Serializable {
    public ConformanceLevel getConformanceLevel() {
       return conformanceLevel;
    }
-   
+
    /**
     * Sets the conformance level.
     *
@@ -124,17 +124,14 @@ public class Profile implements Serializable {
       this.conformanceLevel = conformanceLevel;
       return this;
    }
-   
-   
+
    /**
     * Gets the full name consisting of the namespace, version, conformance level.
     *
     * @return the full name
     */
-   public String fullName(){
-      return namespace+version.toString()+DELIMITER+conformanceLevel.toString();
+   public String fullName() {
+      return namespace + version.toString() + DELIMITER + conformanceLevel.toString();
    }
-   
-   
-   
+
 }

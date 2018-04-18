@@ -40,7 +40,7 @@ import io.konik.validator.NotBlankValidator;
  * Compared to {@code NullableNotBlank} this validator will not accept null values as valid.
  */
 @Documented
-@Constraint(validatedBy = {NotBlankValidator.class})
+@Constraint(validatedBy = { NotBlankValidator.class })
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 @ReportAsSingleViolation

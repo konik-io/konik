@@ -75,7 +75,9 @@ public class Context implements Serializable {
     */
    @Basic
    public boolean isTest() {
-      if (test == null) { return false; }
+      if (test == null) {
+         return false;
+      }
       return test.getIndicator();
    }
 

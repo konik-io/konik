@@ -256,11 +256,12 @@ public final class AmountCalculator {
 			}
 
 			BigDecimal quantity = item.getDelivery().getBilled() != null ? item.getDelivery().getBilled().getValue() : BigDecimal.ZERO;
+			BigDecimal basisQuantity = Items.basisQuantity(item);
 			Amount amount = item.getAgreement().getNetPrice().getChargeAmount();
 
-			log.debug("Line total formula: {} (net price) x {} (quantity)", amount, quantity);
-
-			return Amounts.multiply(amount, quantity);
+			log.debug("Line total formula: {} (net price) / {} (BasisQuantity)  x {} (quantity)", amount, basisQuantity, quantity);
+			Amount netPricePerUnit = Amounts.divide(amount, basisQuantity);
+			return Amounts.multiply(netPricePerUnit, quantity);
 		}
 	}
 

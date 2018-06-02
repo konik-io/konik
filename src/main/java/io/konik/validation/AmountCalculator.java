@@ -1,18 +1,19 @@
-/*
- * Copyright (C) 2014 konik.io
+/* Copyright (C) 2014 konik.io
  *
  * This file is part of the Konik library.
  *
- * The Konik library is free software: you can redistribute it and/or modify it under the terms of
- * the GNU Affero General Public License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
+ * The Konik library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * The Konik library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * The Konik library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
- * You should have received a copy of the GNU Affero General Public License along with the Konik
- * library. If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with the Konik library. If not, see <http://www.gnu.org/licenses/>.
  */
 package io.konik.validation;
 
@@ -23,6 +24,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import javax.annotation.Nullable;
@@ -59,6 +61,8 @@ public final class AmountCalculator {
 
   protected static Logger log = LoggerFactory.getLogger(AmountCalculator.class);
 
+  private AmountCalculator() {}
+  
   /**
    * Calculates {@link MonetarySummation} for given {@link Invoice} basing on line {@link Item}s and
    * global {@link io.konik.zugferd.entity.AllowanceCharge} and {@link LogisticsServiceCharge}
@@ -97,7 +101,7 @@ public final class AmountCalculator {
 
       Amount lineTotal = new ItemLineTotalCalculator().apply(item);
       List<ItemTax> itemTaxes = new ArrayList<ItemTax>();
-      if (item.getSettlement().getTradeTax().size() > 0) {
+      if (!item.getSettlement().getTradeTax().isEmpty()) {
         itemTaxes.addAll(item.getSettlement().getTradeTax());
       }
       for (ItemTax itemTax : itemTaxes) {
@@ -142,7 +146,6 @@ public final class AmountCalculator {
 
     log.info("Recalculating invoice monetary summation DONE!");
     log.info(" ==> result: {}", result);
-    log.info("");
 
     return new RecalculationResult(result, taxAggregator);
   }
@@ -173,7 +176,7 @@ public final class AmountCalculator {
   }
 
   private static void appendTaxFromInvoiceServiceCharge(Settlement settlement,
-      TaxAggregator taxAggregator) {
+    TaxAggregator taxAggregator) {
     log.debug("Adding tax amounts from invoice service charge...");
     if (settlement.getServiceCharge() != null) {
       for (LogisticsServiceCharge charge : settlement.getServiceCharge()) {
@@ -189,11 +192,11 @@ public final class AmountCalculator {
   }
 
   private static void appendTaxFromInvoiceAllowanceCharge(Settlement settlement,
-      TaxAggregator taxAggregator) {
+    TaxAggregator taxAggregator) {
     log.debug("Adding tax amounts from invoice allowance charge...");
     if (settlement.getAllowanceCharge() != null) {
       for (SpecifiedAllowanceCharge charge : settlement.getAllowanceCharge()) {
-        if (charge.getCategory() != null && charge.getActual() != null) {
+        if (charge.getCategory() != null) {
           BigDecimal amount = charge.getActual().getValue();
           if (charge.isDiscount()) {
             amount = amount.negate();
@@ -222,19 +225,16 @@ public final class AmountCalculator {
     assertNotNull(item);
 
     SpecifiedAgreement agreement = item.getAgreement();
-    if (agreement != null && agreement.getGrossPrice() != null
-        && agreement.getGrossPrice().getChargeAmount() != null) {
+    if (agreement != null && agreement.getGrossPrice() != null) {
       return agreement.getGrossPrice().getChargeAmount().getCurrency();
     }
 
-    if (agreement != null && agreement.getNetPrice() != null
-        && agreement.getNetPrice().getChargeAmount() != null) {
+    if (agreement != null && agreement.getNetPrice() != null) {
       return agreement.getNetPrice().getChargeAmount().getCurrency();
     }
 
     SpecifiedSettlement settlement = item.getSettlement();
-    if (settlement != null && settlement.getMonetarySummation() != null
-        && settlement.getMonetarySummation().getLineTotal() != null) {
+    if (settlement != null && settlement.getMonetarySummation() != null) {
       return settlement.getMonetarySummation().getLineTotal().getCurrency();
     }
 
@@ -243,7 +243,7 @@ public final class AmountCalculator {
 
 
   private static void assertNotNull(final Invoice invoice) {
-    if (invoice == null || invoice.getTrade() == null) {
+    if (invoice == null) {
       throw new IllegalArgumentException("Invoice and Trade objects cannot be null");
     }
   }
@@ -265,8 +265,7 @@ public final class AmountCalculator {
     public Amount apply(@Nullable Item item) {
       Amount originLineTotal = null;
 
-      if (item != null && item.getSettlement() != null
-          && item.getSettlement().getMonetarySummation() != null) {
+			if (item != null && item.getSettlement() != null && item.getSettlement().getMonetarySummation() != null) {
         originLineTotal = Amounts.copy(item.getSettlement().getMonetarySummation().getLineTotal());
       }
 
@@ -278,9 +277,7 @@ public final class AmountCalculator {
         return originLineTotal;
       }
 
-      BigDecimal quantity =
-          item.getDelivery().getBilled() != null ? item.getDelivery().getBilled().getValue()
-              : BigDecimal.ZERO;
+      BigDecimal quantity = item.getDelivery().getBilled().getValue();
       Amount amount = item.getAgreement().getNetPrice().getChargeAmount();
 
       log.debug("Line total formula: {} (net price) x {} (quantity)", amount, quantity);
@@ -305,14 +302,10 @@ public final class AmountCalculator {
       CurrencyCode currency = lineTotal.getCurrency();
       Amount taxTotal = Amounts.zero(currency);
 
-      if (item != null && item.getSettlement() != null
-          && item.getSettlement().getTradeTax() != null) {
+			if (item != null && item.getSettlement() != null && item.getSettlement().getTradeTax() != null) {
         for (ItemTax tax : item.getSettlement().getTradeTax()) {
-          BigDecimal taxRate =
-              tax.getPercentage().divide(BigDecimal.valueOf(100), 2, BigDecimal.ROUND_HALF_UP)
-                  .setScale(2, RoundingMode.HALF_UP);
-          BigDecimal taxValue =
-              lineTotal.getValue().multiply(taxRate).setScale(2, RoundingMode.HALF_UP);
+					BigDecimal taxRate = tax.getPercentage().divide(BigDecimal.valueOf(100), 2, BigDecimal.ROUND_HALF_UP).setScale(2, RoundingMode.HALF_UP);
+					BigDecimal taxValue = lineTotal.getValue().multiply(taxRate).setScale(2, RoundingMode.HALF_UP);
 
           taxTotal = Amounts.add(taxTotal, new Amount(taxValue, currency));
         }
@@ -337,16 +330,14 @@ public final class AmountCalculator {
       Amount totalAllowanceCharge = Amounts.zero(currencyCode);
       BigDecimal quantity = BigDecimal.ONE;
 
-      if (item != null && item.getDelivery() != null && item.getDelivery().getBilled() != null) {
+      if (item != null && item.getDelivery() != null) {
         quantity = item.getDelivery().getBilled().getValue();
       }
 
-      if (item != null && item.getAgreement() != null
-          && item.getAgreement().getGrossPrice() != null) {
+			if (item != null && item.getAgreement() != null && item.getAgreement().getGrossPrice() != null) {
         GrossPrice grossPrice = item.getAgreement().getGrossPrice();
 
-        if (grossPrice.getAllowanceCharges() != null
-            && !grossPrice.getAllowanceCharges().isEmpty()) {
+				if (grossPrice.getAllowanceCharges() != null && !grossPrice.getAllowanceCharges().isEmpty()) {
           for (AllowanceCharge charge : grossPrice.getAllowanceCharges()) {
             BigDecimal chargeValue = charge.getActual().getValue();
             if (charge.isDiscount()) {
@@ -356,8 +347,7 @@ public final class AmountCalculator {
             totalAllowanceCharge = Amounts.add(totalAllowanceCharge, amount);
           }
 
-          totalAllowanceCharge =
-              Amounts.setPrecision(totalAllowanceCharge, 2, RoundingMode.HALF_UP);
+					totalAllowanceCharge = Amounts.setPrecision(totalAllowanceCharge, 2, RoundingMode.HALF_UP);
         }
       }
 
@@ -365,8 +355,7 @@ public final class AmountCalculator {
     }
   }
 
-  public static final class InvoiceAllowanceTotalCalculator
-      implements Function<Settlement, Amount> {
+	public static final class InvoiceAllowanceTotalCalculator implements Function<Settlement, Amount> {
     @Nullable
     @Override
     public Amount apply(@Nullable Settlement settlement) {
@@ -436,7 +425,8 @@ public final class AmountCalculator {
   }
 
   /**
-   * Helper class for aggregating tax information and calculating tax basis and tax total values.
+	 * Helper class for aggregating tax information and calculating
+	 * tax basis and tax total values.
    */
   public static final class TaxAggregator {
 
@@ -458,17 +448,16 @@ public final class AmountCalculator {
 
     public BigDecimal getTaxBasisForTaxPercentage(final BigDecimal percentage) {
       BigDecimal value = BigDecimal.ZERO;
-      for (Key key : map.keySet()) {
-        if (percentage.equals(key.getPercentage())) {
-          value = value.add(map.get(key));
+      for (Entry<Key, BigDecimal> entry : map.entrySet()) {
+        if (percentage.equals(entry.getKey().getPercentage())) {
+          value = value.add(map.get(entry.getKey()));
         }
       }
       return value;
     }
 
     public BigDecimal calculateTaxBasis() {
-      log.debug("Recalculating tax basis for tax percentages: {}",
-          Arrays.toString(map.keySet().toArray()));
+	  log.debug("Recalculating tax basis for tax percentages: {}", Arrays.toString(map.keySet().toArray()));
       BigDecimal taxBasis = BigDecimal.ZERO;
       for (BigDecimal amount : map.values()) {
         taxBasis = taxBasis.add(amount);
@@ -497,18 +486,17 @@ public final class AmountCalculator {
       return taxTotal;
     }
 
-    public List<TradeTax> generateTradeTaxList(final CurrencyCode currencyCode,
-        final List<TradeTax> previousList) {
+	public List<TradeTax> generateTradeTaxList(final CurrencyCode currencyCode, final List<TradeTax> previousList) {
       List<TradeTax> taxes = new LinkedList<TradeTax>();
 
-      for (Key key : map.keySet()) {
+      for (Entry<Key, BigDecimal> entry : map.entrySet()) {
         TradeTax tradeTax = new TradeTax();
-        tradeTax.setType(key.getCode());
-        tradeTax.setCategory(key.getCategory());
-        tradeTax.setPercentage(key.getPercentage());
+        tradeTax.setType(entry.getKey().getCode());
+        tradeTax.setCategory(entry.getKey().getCategory());
+        tradeTax.setPercentage(entry.getKey().getPercentage());
 
-        BigDecimal basis = map.get(key);
-        BigDecimal calculated = calculateTaxAmount(key.getPercentage(), basis);
+        BigDecimal basis = map.get(entry.getKey());
+        BigDecimal calculated = calculateTaxAmount(entry.getKey().getPercentage(), basis);
 
         tradeTax.setBasis(new Amount(basis, currencyCode));
         tradeTax.setCalculated(new Amount(calculated, currencyCode));
@@ -516,9 +504,9 @@ public final class AmountCalculator {
         TradeTax existing = null;
         if (previousList != null) {
           for (TradeTax current : previousList) {
-            if (tradeTax.getType().equals(current.getType())
-                && tradeTax.getCategory().equals(current.getCategory())
-                && tradeTax.getPercentage().equals(current.getPercentage())) {
+						if (tradeTax.getType().equals(current.getType()) &&
+								tradeTax.getCategory().equals(current.getCategory()) &&
+								tradeTax.getPercentage().equals(current.getPercentage())) {
               existing = current;
               break;
             }
@@ -529,13 +517,11 @@ public final class AmountCalculator {
           tradeTax.setExemptionReason(existing.getExemptionReason());
 
           if (existing.getAllowanceCharge() != null) {
-            tradeTax.setAllowanceCharge(new Amount(existing.getAllowanceCharge().getValue(),
-                existing.getAllowanceCharge().getCurrency()));
+						tradeTax.setAllowanceCharge(new Amount(existing.getAllowanceCharge().getValue(), existing.getAllowanceCharge().getCurrency()));
           }
 
           if (existing.getLineTotal() != null) {
-            tradeTax.setLineTotal(new Amount(existing.getLineTotal().getValue(),
-                existing.getLineTotal().getCurrency()));
+						tradeTax.setLineTotal(new Amount(existing.getLineTotal().getValue(), existing.getLineTotal().getCurrency()));
           }
         }
 
@@ -545,14 +531,15 @@ public final class AmountCalculator {
       return taxes;
     }
 
-    public BigDecimal calculateTaxAmount(final BigDecimal percentage, final BigDecimal value) {
-      return value.multiply(percentage.divide(BigDecimal.valueOf(100))).setScale(PRECISION,
-          roundingMode);
+		public BigDecimal calculateTaxAmount(final BigDecimal percentage, final BigDecimal value) {
+			return value.multiply(percentage.divide(BigDecimal.valueOf(100))).setScale(PRECISION, roundingMode);
     }
 
     @Override
     public String toString() {
-      return "TaxAggregator{" + "map=" + map + '}';
+			return "TaxAggregator{" +
+					"map=" + map +
+					'}';
     }
 
     /**
@@ -587,17 +574,21 @@ public final class AmountCalculator {
 
       @Override
       public boolean equals(Object o) {
-        if (this == o)
-          return true;
-        if (!(o instanceof Key))
-          return false;
+		if (this == o) {
+		  return true;
+		}
+		if (!(o instanceof Key)) {
+		  return false;
+		}
 
         Key key = (Key) o;
 
-        if (!percentage.equals(key.percentage))
-          return false;
-        if (code != key.code)
-          return false;
+		if (!percentage.equals(key.percentage)) {
+		  return false;
+		}
+		if (code != key.code) {
+		  return false;
+		}
         return category == key.category;
 
       }
@@ -612,8 +603,11 @@ public final class AmountCalculator {
 
       @Override
       public String toString() {
-        return "Key{" + "percentage=" + percentage + ", code=" + code + ", category=" + category
-            + '}';
+				return "Key{" +
+						"percentage=" + percentage +
+						", code=" + code +
+						", category=" + category +
+						'}';
       }
     }
   }

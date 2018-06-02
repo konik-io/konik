@@ -71,6 +71,10 @@ public final class Amounts {
 		return new Amount(amount.getValue().multiply(times), amount.getCurrency());
 	}
 
+	public static Amount divide(Amount amount, BigDecimal devisor) {
+		return new Amount(amount.getValue().divide(devisor,4,RoundingMode.HALF_UP), amount.getCurrency());
+	}
+
 	/**
 	 * Negate Amount
 	 *

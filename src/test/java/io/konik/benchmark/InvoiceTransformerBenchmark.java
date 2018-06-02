@@ -39,7 +39,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
-
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
@@ -110,6 +110,7 @@ public class InvoiceTransformerBenchmark extends DefaultBenchmark {
    
    
    @Test
+   @Ignore
    public void runInvoiceTransformerBenchmark() throws RunnerException {
       runDefault();
    }

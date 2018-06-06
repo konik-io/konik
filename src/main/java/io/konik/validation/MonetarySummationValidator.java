@@ -173,10 +173,8 @@ public class MonetarySummationValidator {
             SpecifiedSettlement specifiedSettlement = item.getSettlement();
 
             if (specifiedSettlement.getMonetarySummation() != null) {
-              SpecifiedMonetarySummation monetarySummation =
-                  specifiedSettlement.getMonetarySummation();
-              SpecifiedMonetarySummation calculatedMonetarySummation =
-                  AmountCalculator.calculateSpecifiedMonetarySummation(item);
+              SpecifiedMonetarySummation monetarySummation = specifiedSettlement.getMonetarySummation();
+              SpecifiedMonetarySummation calculatedMonetarySummation = AmountCalculator.calculateSpecifiedMonetarySummation(item);
 
               String lineTotal = (monetarySummation.getLineTotal() != null
                   ? monetarySummation.getLineTotal().getValue().toString()

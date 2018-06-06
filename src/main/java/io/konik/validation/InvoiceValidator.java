@@ -45,39 +45,39 @@ import io.konik.zugferd.profile.ConformanceLevel;
 @Singleton
 public class InvoiceValidator {
 
-  private final Validator validator;
-  private final MonetarySummationValidator monetarySummationValidator;
+	private final Validator validator;
+	private final MonetarySummationValidator monetarySummationValidator;
 
-  /**
-   * Instantiates a new invoice validator.
-   *
-   * @param validator the validator
-   * @param monetarySummationValidator
-   */
-  @Inject
+	/**
+	 * Instantiates a new invoice validator.
+	 *
+	 * @param validator the validator
+	 * @param monetarySummationValidator 
+	 */
+	@Inject
 	public InvoiceValidator(Validator validator, MonetarySummationValidator monetarySummationValidator) {
-    super();
-    this.validator = validator;
-    this.monetarySummationValidator = monetarySummationValidator;
-  }
+		super();
+		this.validator = validator;
+		this.monetarySummationValidator = monetarySummationValidator;
+	}
 
-  /**
-   * Instantiates a new invoice validator.
-   *
-   * @param validator the validator
-   */
-  public InvoiceValidator(Validator validator) {
-    super();
-    this.validator = validator;
+	/**
+	 * Instantiates a new invoice validator.
+	 *
+	 * @param validator the validator
+	 */
+	public InvoiceValidator(Validator validator) {
+		super();
+		this.validator = validator;
 		this.monetarySummationValidator = new MonetarySummationValidator(new DefaultMessageInterpolator());
-  }
+	}
 
-  /**
-   * Instantiates a new default invoice validator, based on the Bean Validation provider
-   */
-  public InvoiceValidator() {
-    ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-    this.validator = factory.getValidator();
+	/**
+	 * Instantiates a new default invoice validator, based on the Bean Validation provider
+	 */
+	public InvoiceValidator() {
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		this.validator = factory.getValidator();
 		this.monetarySummationValidator = new MonetarySummationValidator(new DefaultMessageInterpolator());
   }
 
@@ -129,22 +129,22 @@ public class InvoiceValidator {
     invoiceTransformer.getZfSchemaValidator().validate(xmlFile);
   }
 
-  /**
-   * Resolve the given profile into bean validation groups.
-   *
-   * @param conformanceLevel the given profile
-   * @return the class[] list of validation group classes
-   */
-  public static Class<?>[] resolveIntoValidationGroups(ConformanceLevel conformanceLevel) {
-    switch (conformanceLevel) {
-      case BASIC:
-        return new Class[] {Default.class};
-      case COMFORT:
-        return new Class[] {Default.class, Comfort.class};
-      case EXTENDED:
-        return new Class[] {Default.class, Comfort.class, Extended.class};
-      default:
-        throw new IllegalArgumentException("Provided Profile:" + conformanceLevel + "not covered");
-    }
-  }
+	/**
+	 * Resolve the given profile into bean validation groups.
+	 *
+	 * @param conformanceLevel the given profile
+	 * @return the class[] list of validation group classes
+	 */
+	public static Class<?>[] resolveIntoValidationGroups(ConformanceLevel conformanceLevel) {
+		switch (conformanceLevel) {
+			case BASIC:
+				return new Class[]{Default.class};
+			case COMFORT:
+				return new Class[]{Default.class, Comfort.class};
+			case EXTENDED:
+				return new Class[]{Default.class, Comfort.class, Extended.class};
+			default:
+				throw new IllegalArgumentException("Provided Profile:" + conformanceLevel + "not covered");
+		}
+	}
 }

@@ -64,8 +64,8 @@ public final class AmountCalculator {
   private AmountCalculator() {}
   
   /**
-   * Calculates {@link MonetarySummation} for given {@link Invoice} basing on line {@link Item}s and
-   * global {@link io.konik.zugferd.entity.AllowanceCharge} and {@link LogisticsServiceCharge}
+	 * Calculates {@link MonetarySummation} for given {@link Invoice} basing on line {@link Item}s
+	 * and global {@link io.konik.zugferd.entity.AllowanceCharge} and {@link LogisticsServiceCharge}
    *
    * @param invoice
    * @return
@@ -79,12 +79,9 @@ public final class AmountCalculator {
 
     TaxAggregator taxAggregator = new TaxAggregator();
 
-    // If there are no items that can be used to recalculate monetary summation, return the current
-    // one
+		// If there are no items that can be used to recalculate monetary summation, return the current one
     if (items.isEmpty()) {
-      return new RecalculationResult(
-          MonetarySummations.newMonetarySummation(settlement.getMonetarySummation()),
-          taxAggregator);
+			return new RecalculationResult(MonetarySummations.newMonetarySummation(settlement.getMonetarySummation()), taxAggregator);
     }
 
     MonetarySummation monetarySummation = MonetarySummations.newMonetarySummation(currency);
@@ -111,7 +108,10 @@ public final class AmountCalculator {
         taxAggregator.add(itemTax, lineTotal != null ? lineTotal.getValue() : BigDecimal.ZERO);
       }
 
-      monetarySummation.setLineTotal(Amounts.add(monetarySummation.getLineTotal(), lineTotal));
+			monetarySummation.setLineTotal(Amounts.add(
+					monetarySummation.getLineTotal(),
+					lineTotal
+			));
 
       log.info("Current monetarySummation.lineTotal = {} (the sum of all line totals)",
           monetarySummation.getLineTotal());
@@ -127,22 +127,25 @@ public final class AmountCalculator {
     monetarySummation.setTaxBasisTotal(new Amount(taxAggregator.calculateTaxBasis(), currency));
     monetarySummation.setTaxTotal(new Amount(taxAggregator.calculateTaxTotal(), currency));
 
-    monetarySummation.setGrandTotal(
-        Amounts.add(monetarySummation.getTaxBasisTotal(), monetarySummation.getTaxTotal()));
+		monetarySummation.setGrandTotal(Amounts.add(
+				monetarySummation.getTaxBasisTotal(),
+				monetarySummation.getTaxTotal()
+		));
 
     log.info("Recalculated grand total = {} (tax basis total + tax total)",
         monetarySummation.getGrandTotal());
 
-    if (settlement.getMonetarySummation() != null
-        && settlement.getMonetarySummation().getTotalPrepaid() != null) {
-      monetarySummation.setTotalPrepaid(settlement.getMonetarySummation().getTotalPrepaid());
+		if (settlement.getMonetarySummation() != null && settlement.getMonetarySummation().getTotalPrepaid() != null) {
+			monetarySummation.setTotalPrepaid(
+					settlement.getMonetarySummation().getTotalPrepaid()
+			);
     }
 
-    monetarySummation.setDuePayable(Amounts.add(monetarySummation.getGrandTotal(),
-        Amounts.negate(monetarySummation.getTotalPrepaid())));
+		monetarySummation.setDuePayable(
+				Amounts.add(monetarySummation.getGrandTotal(), Amounts.negate(monetarySummation.getTotalPrepaid()))
+		);
 
-    MonetarySummation result =
-        MonetarySummations.precise(monetarySummation, 2, RoundingMode.HALF_UP);
+		MonetarySummation result = MonetarySummations.precise(monetarySummation, 2, RoundingMode.HALF_UP);
 
     log.info("Recalculating invoice monetary summation DONE!");
     log.info(" ==> result: {}", result);
@@ -157,17 +160,13 @@ public final class AmountCalculator {
    * @return
    */
   public static SpecifiedMonetarySummation calculateSpecifiedMonetarySummation(final Item item) {
-    log.debug("Recalculating specified monetary summation for [{}]",
-        item.getProduct() != null ? item.getProduct().getName() : "N/A");
+		log.debug("Recalculating specified monetary summation for [{}]", item.getProduct() != null ? item.getProduct().getName() : "N/A");
 
     CurrencyCode currencyCode = getCurrency(item);
 
-    SpecifiedMonetarySummation monetarySummation =
-        MonetarySummations.newSpecifiedMonetarySummation(currencyCode);
-    monetarySummation.setLineTotal(
-        Amounts.setPrecision(new ItemLineTotalCalculator().apply(item), 2, RoundingMode.HALF_UP));
-    monetarySummation.setTotalAllowanceCharge(Amounts.setPrecision(
-        new ItemTotalAllowanceChargeCalculator(currencyCode).apply(item), 2, RoundingMode.HALF_UP));
+		SpecifiedMonetarySummation monetarySummation = MonetarySummations.newSpecifiedMonetarySummation(currencyCode);
+		monetarySummation.setLineTotal(Amounts.setPrecision(new ItemLineTotalCalculator().apply(item), 2, RoundingMode.HALF_UP));
+		monetarySummation.setTotalAllowanceCharge(Amounts.setPrecision(new ItemTotalAllowanceChargeCalculator(currencyCode).apply(item), 2, RoundingMode.HALF_UP));
 
     log.debug("==> lineTotal = {}", monetarySummation.getLineTotal());
     log.debug("==> totalAllowanceCharge = {}", monetarySummation.getTotalAllowanceCharge());
@@ -175,8 +174,7 @@ public final class AmountCalculator {
     return monetarySummation;
   }
 
-  private static void appendTaxFromInvoiceServiceCharge(Settlement settlement,
-    TaxAggregator taxAggregator) {
+	private static void appendTaxFromInvoiceServiceCharge(Settlement settlement, TaxAggregator taxAggregator) {
     log.debug("Adding tax amounts from invoice service charge...");
     if (settlement.getServiceCharge() != null) {
       for (LogisticsServiceCharge charge : settlement.getServiceCharge()) {
@@ -191,8 +189,7 @@ public final class AmountCalculator {
     }
   }
 
-  private static void appendTaxFromInvoiceAllowanceCharge(Settlement settlement,
-    TaxAggregator taxAggregator) {
+	private static void appendTaxFromInvoiceAllowanceCharge(Settlement settlement, TaxAggregator taxAggregator) {
     log.debug("Adding tax amounts from invoice allowance charge...");
     if (settlement.getAllowanceCharge() != null) {
       for (SpecifiedAllowanceCharge charge : settlement.getAllowanceCharge()) {
@@ -217,7 +214,6 @@ public final class AmountCalculator {
 
   /**
    * Extracts {@link CurrencyCode} from {@link Item} object.
-   * 
    * @param item
    * @return
    */

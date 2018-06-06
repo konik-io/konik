@@ -81,6 +81,12 @@ public class InvoiceValidator {
 		this.monetarySummationValidator = new MonetarySummationValidator(new DefaultMessageInterpolator());
   }
 
+  /**
+   * Validate the invoice without scheme-validation
+   *
+   * @param invoice the invoice
+   * @return the sets the
+   */
   public Set<ConstraintViolation<Invoice>> validate(Invoice invoice) {
     return validate(invoice, false);
   }
@@ -89,9 +95,10 @@ public class InvoiceValidator {
    * Validate the invoice
    *
    * @param invoice the invoice
+   * @param shallBeVvalidatedWithScheme true if the Validation should validate the invoice with the scheme aswell.
    * @return the sets the
    */
-  public Set<ConstraintViolation<Invoice>> validate(Invoice invoice, boolean validateWithSchema) {
+  public Set<ConstraintViolation<Invoice>> validate(Invoice invoice, boolean shallBeVvalidatedWithScheme) {
     ConformanceLevel conformanceLevel = invoice.getContext().getGuideline().getConformanceLevel();
     Class<?>[] validationGroups = resolveIntoValidationGroups(conformanceLevel);
     Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice, validationGroups);
@@ -100,7 +107,7 @@ public class InvoiceValidator {
       violations.addAll(monetarySummationValidator.validate(invoice, validationGroups));
     }
 
-    if (validateWithSchema) {
+    if (shallBeVvalidatedWithScheme) {
       try {
         validateWithShema(invoice);
       } catch (IOException e) {

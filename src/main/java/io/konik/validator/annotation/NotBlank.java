@@ -23,7 +23,6 @@ import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
-import io.konik.validator.NotBlankValidator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -34,12 +33,14 @@ import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.NotNull;
 
+import io.konik.validator.NotBlankValidator;
+
 /**
  * Validate that a string should be not empty or consists of only whitespaces.
  * Compared to {@code NullableNotBlank} this validator will not accept null values as valid.
  */
 @Documented
-@Constraint(validatedBy = {NotBlankValidator.class})
+@Constraint(validatedBy = { NotBlankValidator.class })
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 @ReportAsSingleViolation

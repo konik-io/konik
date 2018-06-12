@@ -17,6 +17,12 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import io.konik.jaxb.adapter.FourDigitRoundingAdapter;
 import io.konik.jaxb.adapter.TwoDigitRoundingAdapter;
 import io.konik.validator.annotation.Comfort;
@@ -24,39 +30,32 @@ import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonMonetarySummation;
 import io.konik.zugferd.unqualified.Amount;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 /**
  * 
  * The specified per monetary summation on item basis.
  */
-@XmlType(propOrder = {"lineTotal", "totalAllowanceCharge"})
+@XmlType(propOrder = { "lineTotal", "totalAllowanceCharge" })
 public class SpecifiedMonetarySummation implements CommonMonetarySummation {
 
+   @XmlElement(name = "LineTotalAmount")
+   @XmlJavaTypeAdapter(TwoDigitRoundingAdapter.class)
+   private Amount lineTotal;
 
-  @XmlElement(name = "LineTotalAmount")
-  @XmlJavaTypeAdapter(TwoDigitRoundingAdapter.class)
-  private Amount lineTotal;
+   @XmlElement(name = "TotalAllowanceChargeAmount")
+   @XmlJavaTypeAdapter(FourDigitRoundingAdapter.class)
+   private Amount totalAllowanceCharge;
 
-  @XmlElement(name = "TotalAllowanceChargeAmount")
-  @XmlJavaTypeAdapter(FourDigitRoundingAdapter.class)
-  private Amount totalAllowanceCharge;
-
-
-  @Comfort
-  @Override
-   @Valid @NotNull(groups = Comfort.class)
+   @Comfort
+   @Override
+   @Valid
+   @NotNull(groups = Comfort.class)
    public Amount getLineTotal() {
       return lineTotal;
    }
 
    @Override
    public SpecifiedMonetarySummation setLineTotal(Amount lineTotal) {
-      this.lineTotal =  lineTotal; 
+      this.lineTotal = lineTotal;
       return this;
    }
 

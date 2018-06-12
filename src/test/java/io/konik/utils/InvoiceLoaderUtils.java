@@ -22,7 +22,6 @@ import static java.lang.Boolean.TRUE;
 import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
 import static javax.xml.bind.JAXBContext.newInstance;
 import static org.apache.commons.lang3.Validate.notNull;
-import io.konik.zugferd.Invoice;
 
 import java.net.URL;
 
@@ -34,6 +33,9 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 import org.xml.sax.SAXException;
+
+import io.konik.zugferd.Invoice;
+
 @SuppressWarnings("javadoc")
 public class InvoiceLoaderUtils {
 
@@ -43,43 +45,40 @@ public class InvoiceLoaderUtils {
    public static Invoice generateRandomInvoice() {
       return new RandomInvoiceGenerator().generate(Invoice.class);
    }
-   
-   
-//   public static Invoice loadInvoice() throws JAXBException{
-//      Unmarshaller unmarshaller = newInstance("io.konik.zugferd").createUnmarshaller();
-//      JAXBElement<Invoice> invoice = unmarshaller.unmarshal(loadZfBasicXmlInvoice(), Invoice.class);
-//      assertNotNull(invoice);
-//      assertNotNull(invoice.getValue());
-//      return invoice.getValue();
-//   }
-   
-//   public static InputStream loadZfBasicXmlInvoiceAsStream() {
-//      InputStream is = InvoiceLoaderUtils.class.getResourceAsStream(ZF_MUSTERRECHNUNG_EINFACH_XML);
-//      assertNotNull(is);
-//      return is;
-//   }
-   
-//   public static Source loadZfBasicXmlInvoice() {
-//      Source source = new StreamSource(loadZfBasicXmlInvoiceAsStream());
-//      assertNotNull(source);
-//      return source;
-//   }
-   
-   
+
+   //   public static Invoice loadInvoice() throws JAXBException{
+   //      Unmarshaller unmarshaller = newInstance("io.konik.zugferd").createUnmarshaller();
+   //      JAXBElement<Invoice> invoice = unmarshaller.unmarshal(loadZfBasicXmlInvoice(), Invoice.class);
+   //      assertNotNull(invoice);
+   //      assertNotNull(invoice.getValue());
+   //      return invoice.getValue();
+   //   }
+
+   //   public static InputStream loadZfBasicXmlInvoiceAsStream() {
+   //      InputStream is = InvoiceLoaderUtils.class.getResourceAsStream(ZF_MUSTERRECHNUNG_EINFACH_XML);
+   //      assertNotNull(is);
+   //      return is;
+   //   }
+
+   //   public static Source loadZfBasicXmlInvoice() {
+   //      Source source = new StreamSource(loadZfBasicXmlInvoiceAsStream());
+   //      assertNotNull(source);
+   //      return source;
+   //   }
+
    public static Validator getSchemaValidator() throws SAXException {
       SchemaFactory sf = SchemaFactory.newInstance(W3C_XML_SCHEMA_NS_URI);
       URL schemaInvoice = notNull(InvoiceLoaderUtils.class.getResource(ZF_1_SCHEMA_XSD));
       Schema invoiceSchema = sf.newSchema(schemaInvoice);
       return invoiceSchema.newValidator();
    }
-   
-   
+
    public static Marshaller createZfMarshaller() throws JAXBException {
       Marshaller marshaller = newInstance("io.konik.zugferd").createMarshaller();
-      marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, TRUE );
+      marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, TRUE);
       return marshaller;
    }
-   
+
    public static Unmarshaller createZfUnmarshaller() throws JAXBException {
       return newInstance("io.konik.zugferd").createUnmarshaller();
    }

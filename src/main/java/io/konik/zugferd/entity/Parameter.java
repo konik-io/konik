@@ -17,18 +17,19 @@
  */
 package io.konik.zugferd.entity;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.io.Serializable;
 
 /**
  * The parameter type used in document context.
  */
 @XmlType(name = "DocumentContextParameterType", propOrder = { "id" })
 public class Parameter implements Serializable {
-   
+
    @XmlElement(name = "ID")
    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
    private final String id;

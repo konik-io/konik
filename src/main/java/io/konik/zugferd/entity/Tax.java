@@ -17,15 +17,16 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.Comfort;
-import io.konik.zugferd.unece.codes.TaxCategory;
-import io.konik.zugferd.unece.codes.TaxCode;
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import java.io.Serializable;
-import java.math.BigDecimal;
+
+import io.konik.validator.annotation.Comfort;
+import io.konik.zugferd.unece.codes.TaxCategory;
+import io.konik.zugferd.unece.codes.TaxCode;
 
 /**
  * = The trade tax
@@ -36,7 +37,8 @@ import java.math.BigDecimal;
  * The complexity of this hierarchy is also result of the validation path, as we can not override constraints.
  */
 @XmlTransient
-@XmlType(name = "TradeTaxType", propOrder = { "calculated", "type", "exemptionReason", "basis", "lineTotal","allowanceCharge", "category", "percentage" })
+@XmlType(name = "TradeTaxType", propOrder = { "calculated", "type", "exemptionReason", "basis", "lineTotal",
+      "allowanceCharge", "category", "percentage" })
 /* 
 HIRACHY TOP DOWN
 as AppliedTradeTax|CategoryTradeTax       TypeCode, CategoryCode, ApplicablePercent

@@ -17,13 +17,13 @@
  */
 package io.konik.jaxb.adapter;
 
-import io.konik.jaxb.bindable.entity.DueDatePeriod;
-import io.konik.zugferd.unqualified.ZfDate;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+import io.konik.jaxb.bindable.entity.DueDatePeriod;
+import io.konik.zugferd.unqualified.ZfDate;
 
 /**
  * = Adapter to map the Period's complete property to a DateTime property .
@@ -34,7 +34,9 @@ public class PeriodCompleteToDateTimeAdapter extends XmlAdapter<DueDatePeriod, Z
 
    @Override
    public ZfDate unmarshal(DueDatePeriod period) throws Exception {
-      if (period == null) { return null; }
+      if (period == null) {
+         return null;
+      }
       if (period.getContractualDueDate() == null) {
          LOG.log(Level.WARNING, "Specified Period exist but no complete Date Time");
          return null;
@@ -44,7 +46,9 @@ public class PeriodCompleteToDateTimeAdapter extends XmlAdapter<DueDatePeriod, Z
 
    @Override
    public DueDatePeriod marshal(ZfDate complete) throws Exception {
-      if (complete == null) { return null; }
+      if (complete == null) {
+         return null;
+      }
       return new DueDatePeriod(complete);
    }
 

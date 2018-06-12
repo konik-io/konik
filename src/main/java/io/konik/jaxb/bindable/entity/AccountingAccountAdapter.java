@@ -26,13 +26,17 @@ public class AccountingAccountAdapter extends XmlAdapter<AccountingAccount, Stri
 
    @Override
    public String unmarshal(AccountingAccount aa) throws Exception {
-      if (aa == null) { return null; }
+      if (aa == null) {
+         return null;
+      }
       return aa.id;
    }
 
    @Override
    public AccountingAccount marshal(String accountingAccount) throws Exception {
-      if (accountingAccount == null) { return null; }
+      if (accountingAccount == null) {
+         return null;
+      }
       return new AccountingAccount(accountingAccount);
    }
 

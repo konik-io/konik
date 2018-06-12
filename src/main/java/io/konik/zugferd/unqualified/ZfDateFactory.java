@@ -32,9 +32,15 @@ public class ZfDateFactory {
     * @return the zf date
     */
    public static ZfDate create(String formatCode) {
-      if (ZfDateDay.CODE.equals(formatCode)) { return new ZfDateDay(); }
-      if (ZfDateMonth.CODE.equals(formatCode)) { return new ZfDateMonth(); }
-      if (ZfDateWeek.CODE.equals(formatCode)) { return new ZfDateWeek(); }
+      if (ZfDateDay.CODE.equals(formatCode)) {
+         return new ZfDateDay();
+      }
+      if (ZfDateMonth.CODE.equals(formatCode)) {
+         return new ZfDateMonth();
+      }
+      if (ZfDateWeek.CODE.equals(formatCode)) {
+         return new ZfDateWeek();
+      }
       throw new IllegalArgumentException("Can not create a ZfDate for the given code" + formatCode);
    }
 }

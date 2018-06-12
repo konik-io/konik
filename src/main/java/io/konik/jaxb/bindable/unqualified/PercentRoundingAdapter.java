@@ -19,12 +19,13 @@ package io.konik.jaxb.bindable.unqualified;
 
 import static java.lang.Integer.parseInt;
 import static java.math.RoundingMode.valueOf;
-import io.konik.Configuration;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+import io.konik.Configuration;
 
 /**
  * = Rounding Adapter for percentage.
@@ -55,9 +56,13 @@ public class PercentRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> {
 
    @Override
    public BigDecimal marshal(BigDecimal value) throws Exception {
-      if (value == null) { return null; }
+      if (value == null) {
+         return null;
+      }
       BigDecimal roundedValue = value.setScale(scale, roundingMode);
-      if (stripTrailingZeros) { return roundedValue.stripTrailingZeros(); }
+      if (stripTrailingZeros) {
+         return roundedValue.stripTrailingZeros();
+      }
       return roundedValue;
    }
 }

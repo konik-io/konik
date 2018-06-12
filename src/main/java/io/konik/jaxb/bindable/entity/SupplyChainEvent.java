@@ -18,12 +18,12 @@
  */
 package io.konik.jaxb.bindable.entity;
 
-import io.konik.zugferd.unqualified.ZfDate;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import io.konik.zugferd.unqualified.ZfDate;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SupplyChainEventType", propOrder = { "occurrence" })

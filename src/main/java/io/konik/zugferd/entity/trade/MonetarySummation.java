@@ -17,15 +17,15 @@
  */
 package io.konik.zugferd.entity.trade;
 
-import io.konik.validator.annotation.Basic;
-import io.konik.validator.annotation.Comfort;
-import io.konik.zugferd.entity.CommonMonetarySummation;
-import io.konik.zugferd.unqualified.Amount;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.zugferd.entity.CommonMonetarySummation;
+import io.konik.zugferd.unqualified.Amount;
 
 /**
  * = The Monetary Summation of a trade settlement
@@ -38,7 +38,7 @@ public class MonetarySummation implements CommonMonetarySummation {
    @Valid
    @XmlElement(name = "LineTotalAmount")
    private Amount lineTotal;
-   
+
    @XmlElement(name = "ChargeTotalAmount")
    private Amount chargeTotal;
 
@@ -67,8 +67,8 @@ public class MonetarySummation implements CommonMonetarySummation {
 
    @Override
    public MonetarySummation setLineTotal(Amount lineTotal) {
-      this.lineTotal =  lineTotal; 
-      return this;      
+      this.lineTotal = lineTotal;
+      return this;
    }
 
    /**
@@ -235,7 +235,6 @@ public class MonetarySummation implements CommonMonetarySummation {
       this.duePayable = duePayable;
       return this;
    }
-   
 
    @Override
    public String toString() {

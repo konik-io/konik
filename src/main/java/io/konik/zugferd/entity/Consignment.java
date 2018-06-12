@@ -18,14 +18,15 @@
 
 package io.konik.zugferd.entity;
 
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import static java.util.Collections.addAll;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Collections.addAll;
+import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  * = The Consignment.
@@ -63,7 +64,7 @@ public class Consignment implements Serializable {
     * @param additionalShippingMethod the additional shipping method
     * @return the consignment
     */
-   public Consignment addShippingMethod(LogisticsTransportMovement ...additionalShippingMethod) {
+   public Consignment addShippingMethod(LogisticsTransportMovement... additionalShippingMethod) {
       addAll(getShippingMethods(), additionalShippingMethod);
       return this;
    }

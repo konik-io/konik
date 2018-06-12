@@ -17,23 +17,25 @@
  */
 package io.konik.zugferd.entity;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.validator.annotation.NotEmpty;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.ZfDate;
 
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * = The trade settlement terms of payment.
  */
-@XmlType(name = "TradePaymentTermsType", propOrder = { "descriptions", "due", "partialPayments", "penalty", "discount" })
+@XmlType(name = "TradePaymentTermsType", propOrder = { "descriptions", "due", "partialPayments", "penalty",
+      "discount" })
 public class PaymentTerm implements Serializable {
 
    @XmlElement(name = "Description")

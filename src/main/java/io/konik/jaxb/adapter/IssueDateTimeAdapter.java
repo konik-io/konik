@@ -17,12 +17,12 @@
  */
 package io.konik.jaxb.adapter;
 
-import io.konik.util.Strings;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+import io.konik.util.Strings;
 
 /**
  * = The Issue Date Time Adapter.
@@ -41,13 +41,17 @@ public class IssueDateTimeAdapter extends XmlAdapter<String, Date> {
 
    @Override
    public Date unmarshal(String date) throws Exception {
-      if (Strings.isNullOrEmpty(date)) { return null; }
+      if (Strings.isNullOrEmpty(date)) {
+         return null;
+      }
       return dateTimeFormatter.get().parse(date.trim());
    }
 
    @Override
    public String marshal(Date date) throws Exception {
-      if (date == null) { return null; }
+      if (date == null) {
+         return null;
+      }
       return dateTimeFormatter.get().format(date);
    }
 

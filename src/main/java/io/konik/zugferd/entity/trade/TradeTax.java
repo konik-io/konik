@@ -17,6 +17,13 @@
  */
 package io.konik.zugferd.entity.trade;
 
+import java.math.BigDecimal;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Comfort;
@@ -25,13 +32,6 @@ import io.konik.zugferd.entity.trade.item.SpecifiedTax;
 import io.konik.zugferd.unece.codes.TaxCategory;
 import io.konik.zugferd.unece.codes.TaxCode;
 import io.konik.zugferd.unqualified.Amount;
-
-import java.math.BigDecimal;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * = The tax applied to a trade.
@@ -61,21 +61,20 @@ public class TradeTax implements SpecifiedTax {
 
    @XmlElement(name = "ApplicablePercent")
    @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
-   private BigDecimal percentage;   
+   private BigDecimal percentage;
 
-   
    @Basic
    @NotNull
    @Valid
    @Override
-   public Amount getCalculated() {      
+   public Amount getCalculated() {
       return calculated;
    }
 
    @Override
    public TradeTax setCalculated(Amount calculatedAmount) {
-       this.calculated = calculatedAmount;
-       return this;
+      this.calculated = calculatedAmount;
+      return this;
    }
 
    @Basic
@@ -90,12 +89,12 @@ public class TradeTax implements SpecifiedTax {
       this.type = taxTypeCode;
       return this;
    }
-   
+
    @Override
    public String getExemptionReason() {
       return exemptionReason;
    }
-   
+
    @Override
    public TradeTax setExemptionReason(String exemptionReason) {
       this.exemptionReason = exemptionReason;
@@ -185,11 +184,9 @@ public class TradeTax implements SpecifiedTax {
    }
 
    @Override
-   public TradeTax setPercentage(BigDecimal applicablePercentage) {      
+   public TradeTax setPercentage(BigDecimal applicablePercentage) {
       this.percentage = applicablePercentage;
-      return this; 
+      return this;
    }
-
-
 
 }

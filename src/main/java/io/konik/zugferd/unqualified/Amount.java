@@ -17,14 +17,15 @@
  */
 package io.konik.zugferd.unqualified;
 
-import com.neovisionaries.i18n.CurrencyCode;
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
-import java.io.Serializable;
-import java.math.BigDecimal;
+
+import com.neovisionaries.i18n.CurrencyCode;
 
 /**
  * = The Monetary Amount.
@@ -122,9 +123,9 @@ public class Amount implements Serializable {
       this.currency = currency;
       return this;
    }
-   
+
    @Override
-   public String toString() {    
+   public String toString() {
       return getValue() + " " + getCurrency();
    }
 

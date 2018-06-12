@@ -18,17 +18,15 @@
  */
 package io.konik.zugferd.unqualified;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
-
 
 @SuppressWarnings("javadoc")
 public class ZfDateDayTest {
 
    ZfDateDay date = new ZfDateDay();
-   
+
    @Test
    public void getFormatter() throws Exception {
       assertThat(date.getFormatter()).isNotNull();
@@ -38,22 +36,22 @@ public class ZfDateDayTest {
    public void getFormatCode() throws Exception {
       assertThat(date.getFormatCode()).isEqualTo("102");
    }
-   
+
    @Test
    public void setDate() {
       date.setDate("20131212");
       assertThat(date).isEqualTo("2013-12-12");
    }
 
-   @Test(expected=IllegalArgumentException.class)
+   @Test(expected = IllegalArgumentException.class)
    public void setDate_fail() {
       date.setDate("asdf");
    }
-   
+
    @Test
    public void toStringTest() {
       date.setDate("20131212");
       assertThat(date.toString()).isEqualTo("20131212");
    }
-   
+
 }

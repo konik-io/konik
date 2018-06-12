@@ -17,15 +17,15 @@
  */
 package io.konik.zugferd.profile;
 
-import io.konik.validator.annotation.Basic;
-import io.konik.validator.annotation.Comfort;
-import io.konik.validator.annotation.Extended;
+import static io.konik.util.Strings.isNullOrEmpty;
 
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.List;
 
-import static io.konik.util.Strings.isNullOrEmpty;
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
 
 /**
  * The latest Version Invoice Profiles.
@@ -46,7 +46,7 @@ public enum ConformanceLevel {
     */
    ConformanceLevel() {
    }
-   
+
    @Override
    public String toString() {
       return name().toLowerCase();
@@ -59,9 +59,11 @@ public enum ConformanceLevel {
     * @return the conformance level
     */
    public static ConformanceLevel extractConformanceLevel(String fullName) {
-      if (isNullOrEmpty(fullName)) {throw new EnumConstantNotPresentException(ConformanceLevel.class, fullName);}
+      if (isNullOrEmpty(fullName)) {
+         throw new EnumConstantNotPresentException(ConformanceLevel.class, fullName);
+      }
       String[] tokens = fullName.split(DELIMITER);
-      int lastTokenPosition = tokens.length-1;
+      int lastTokenPosition = tokens.length - 1;
       String level = tokens[lastTokenPosition];
       return valueOf(level.toUpperCase());
    }

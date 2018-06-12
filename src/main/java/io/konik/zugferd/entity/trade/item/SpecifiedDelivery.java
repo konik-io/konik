@@ -17,17 +17,17 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonDelivery;
 import io.konik.zugferd.entity.TradeParty;
 import io.konik.zugferd.unqualified.Quantity;
 import io.konik.zugferd.unqualified.ZfDate;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 
 /**
  * = The Trade Delivery
@@ -136,7 +136,7 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
    public Quantity getPackageQuantity() {
       return packageQuantity;
    }
-   
+
    /**
     * Sets the package quantity.
     *
@@ -147,14 +147,14 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
       this.packageQuantity = packageQuantity;
       return this;
    }
-   
+
    @Extended
    @Valid
    @Override
    public TradeParty getShipTo() {
       return super.getShipTo();
    }
-   
+
    @Extended
    @Valid
    @Override
@@ -167,7 +167,7 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
    public ZfDate getActualDelivery() {
       return super.getActualDelivery();
    }
-   
+
    @Extended
    @Valid
    @Override

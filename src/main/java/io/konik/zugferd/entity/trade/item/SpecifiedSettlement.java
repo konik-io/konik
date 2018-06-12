@@ -17,18 +17,19 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
-import io.konik.jaxb.bindable.entity.AccountingAccountAdapter;
-import io.konik.validator.annotation.Comfort;
-import io.konik.validator.annotation.Extended;
-import io.konik.zugferd.entity.CommonSettlement;
-import io.konik.zugferd.entity.Period;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.util.ArrayList;
-import java.util.List;
+
+import io.konik.jaxb.bindable.entity.AccountingAccountAdapter;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
+import io.konik.zugferd.entity.CommonSettlement;
+import io.konik.zugferd.entity.Period;
 
 /**
  * = The Trade Item Settlement
@@ -48,7 +49,6 @@ public class SpecifiedSettlement implements CommonSettlement<ItemTax, SpecifiedM
    @XmlJavaTypeAdapter(AccountingAccountAdapter.class)
    private String bookingReference;
 
-   
    @XmlElement(name = "SpecifiedTradeSettlementMonetarySummation")
    private SpecifiedMonetarySummation monetarySummation;
 

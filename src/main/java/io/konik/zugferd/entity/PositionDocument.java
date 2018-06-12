@@ -17,13 +17,14 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.Comfort;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+import io.konik.validator.annotation.Comfort;
 
 /**
  * = The item position Document
@@ -31,96 +32,97 @@ import java.util.List;
 @XmlType(name = "DocumentLineDocumentType", propOrder = { "position", "notes" })
 public class PositionDocument implements Serializable {
 
-    @XmlElement(name = "LineID")
-    private String position;
+   @XmlElement(name = "LineID")
+   private String position;
 
-    @XmlElement(name = "IncludedNote")
-    private List<Note> notes;
+   @XmlElement(name = "IncludedNote")
+   private List<Note> notes;
 
-    PositionDocument() {}
+   PositionDocument() {
+   }
 
-    /**
-     * Instantiates a new item position document.
-     *
-     * @param position the position number
-     */
-    public PositionDocument(String position) {
-        super();
-        this.position = position;
-    }
+   /**
+    * Instantiates a new item position document.
+    *
+    * @param position the position number
+    */
+   public PositionDocument(String position) {
+      super();
+      this.position = position;
+   }
 
-    /**
-     * Instantiates a new item position document.
-     *
-     * @param position the position
-     * @param notes the notes
-     */
-    public PositionDocument(String position, List<Note> notes) {
-        this(position);
-        this.notes = notes;
-    }
-    
+   /**
+    * Instantiates a new item position document.
+    *
+    * @param position the position
+    * @param notes the notes
+    */
+   public PositionDocument(String position, List<Note> notes) {
+      this(position);
+      this.notes = notes;
+   }
+
    /**
     * Instantiates a new item position document.
     *
     * @param position the position number
     */
    public PositionDocument(int position) {
-        super();
-        this.position = Integer.toString(position);
-    }
+      super();
+      this.position = Integer.toString(position);
+   }
 
-    /**
-     * Instantiates a new item position document.
-     *
-     * @param position the position
-     * @param notes the notes
-     */
-    public PositionDocument(int position, List<Note> notes) {
-        this(position);
-        this.notes = notes;
-    }
+   /**
+    * Instantiates a new item position document.
+    *
+    * @param position the position
+    * @param notes the notes
+    */
+   public PositionDocument(int position, List<Note> notes) {
+      this(position);
+      this.notes = notes;
+   }
 
-    /**
-     * Gets the line position.
-     * 
-     * @return the position number
-     */
-    @Comfort
-    public String getPosition() {
-        return position;
-    }
+   /**
+    * Gets the line position.
+    * 
+    * @return the position number
+    */
+   @Comfort
+   public String getPosition() {
+      return position;
+   }
 
-    /**
-     * Sets the line position
-     * 
-     * @param position the position
-     */
-    public void setPosition(String position) {
-        this.position = position;
+   /**
+    * Sets the line position
+    * 
+    * @param position the position
+    */
+   public void setPosition(String position) {
+      this.position = position;
 
-    }
+   }
 
-    /**
-     * Gets the included note.
-     * 
-     * @return the included note
-     */
-    public List<Note> getNotes() {
-        if (notes == null) {
-            notes = new ArrayList<Note>();
-        }
-        return this.notes;
-    }
+   /**
+    * Gets the included note.
+    * 
+    * @return the included note
+    */
+   public List<Note> getNotes() {
+      if (notes == null) {
+         notes = new ArrayList<Note>();
+      }
+      return this.notes;
+   }
 
-    /**
-     * Adds the note.
-     * 
-     * @param note the note
-     */
-    public void addNote(Note note) {
-        getNotes().add(note);
+   /**
+    * Adds the note.
+    * 
+    * @param note the note
+    */
+   public void addNote(Note note) {
+      getNotes().add(note);
 
-    }
+   }
 
 }

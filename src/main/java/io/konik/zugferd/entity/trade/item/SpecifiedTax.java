@@ -17,18 +17,18 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
+import javax.validation.Valid;
+
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.Tax;
 import io.konik.zugferd.unqualified.Amount;
 
-import javax.validation.Valid;
-
 /**
  *  
  * The Interface ItemTax.
  */
-public interface SpecifiedTax extends Tax{
+public interface SpecifiedTax extends Tax {
 
    /**
     * Set the calculated amount.
@@ -46,7 +46,7 @@ public interface SpecifiedTax extends Tax{
     * @return the calculated amount
     */
    Amount getCalculated();
-   
+
    /**
     * Sets the tax exemption reason.
     * 
@@ -55,7 +55,6 @@ public interface SpecifiedTax extends Tax{
     */
    SpecifiedTax setExemptionReason(String exemptionReason);
 
-   
    /**
     * Gets the tax exemption reason.
     * 
@@ -63,7 +62,5 @@ public interface SpecifiedTax extends Tax{
     */
    @Comfort
    String getExemptionReason();
-
-
 
 }

@@ -18,31 +18,29 @@
  */
 package io.konik.zugferd;
 
-
-
 @SuppressWarnings("javadoc")
 public class SampleInvoiceValidationRoundtripTest {
-   
-//   
-//   @Test
-//   public void unmarshallExistingInvoiceAndValidateOutput() throws SAXException, IOException, JAXBException {
-//      //setup
-//      Marshaller marshaller = InvoiceLoaderUtils.createZfMarshaller();
-//      Invoice invoice = InvoiceLoaderUtils.loadInvoice();
-//
-//      //exec
-//      StringWriter stringWriter = new StringWriter(10000);
-//      marshaller.marshal(invoice, stringWriter);
-//      //marshaller.marshal(invoice, new File("sample_invoice_out.xml"));
-//
-//      StringReader reader = new StringReader(stringWriter.toString());
-//      getSchemaValidator().validate(new StreamSource(reader));
-//   }
-//   
-//   @Test
-//   public void validateExistingInvoiceAginstSchema() throws SAXException, IOException {
-//      Source xmlSource = InvoiceLoaderUtils.loadZfBasicXmlInvoice();
-//      Validator validator = InvoiceLoaderUtils.getSchemaValidator();
-//      validator.validate(xmlSource);
-//   }
+
+   //   
+   //   @Test
+   //   public void unmarshallExistingInvoiceAndValidateOutput() throws SAXException, IOException, JAXBException {
+   //      //setup
+   //      Marshaller marshaller = InvoiceLoaderUtils.createZfMarshaller();
+   //      Invoice invoice = InvoiceLoaderUtils.loadInvoice();
+   //
+   //      //exec
+   //      StringWriter stringWriter = new StringWriter(10000);
+   //      marshaller.marshal(invoice, stringWriter);
+   //      //marshaller.marshal(invoice, new File("sample_invoice_out.xml"));
+   //
+   //      StringReader reader = new StringReader(stringWriter.toString());
+   //      getSchemaValidator().validate(new StreamSource(reader));
+   //   }
+   //   
+   //   @Test
+   //   public void validateExistingInvoiceAginstSchema() throws SAXException, IOException {
+   //      Source xmlSource = InvoiceLoaderUtils.loadZfBasicXmlInvoice();
+   //      Validator validator = InvoiceLoaderUtils.getSchemaValidator();
+   //      validator.validate(xmlSource);
+   //   }
 }

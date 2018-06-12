@@ -17,13 +17,14 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.entity.trade.Agreement;
-import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
+import java.io.Serializable;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import java.io.Serializable;
-import java.util.List;
+
+import io.konik.zugferd.entity.trade.Agreement;
+import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
 
 /**
  * = The Agreement

@@ -33,17 +33,13 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
  */
 @SuppressWarnings("javadoc")
 public class BenchmarkRunner {
-   
+
    public static void main(String... args) throws RunnerException {
       SimpleDateFormat d = new SimpleDateFormat("yyyy-MM-dd@HH-mm-ss");
-      Options opt = new OptionsBuilder()
-         .include(".*"  +"Benchmark" + ".*")
-         .detectJvmArgs()
-         .forks(1)
-         .resultFormat(ResultFormatType.CSV)
-         .result("benchmarks/all_"+d.format(new Date()) + ".txt")
-   //      .addProfiler(ProfilerType.STACK)
-         .build();
-         new Runner(opt).run();
+      Options opt = new OptionsBuilder().include(".*" + "Benchmark" + ".*").detectJvmArgs().forks(1)
+            .resultFormat(ResultFormatType.CSV).result("benchmarks/all_" + d.format(new Date()) + ".txt")
+            //      .addProfiler(ProfilerType.STACK)
+            .build();
+      new Runner(opt).run();
    }
 }

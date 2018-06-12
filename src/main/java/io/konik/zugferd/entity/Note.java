@@ -17,15 +17,20 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
+import io.konik.validator.annotation.NotEmpty;
+import io.konik.validator.annotation.NullableNotBlank;
 
 /**
  * = The Note

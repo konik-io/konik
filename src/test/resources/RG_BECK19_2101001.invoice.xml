@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rsm:CrossIndustryDocument xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12"
+                           xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15"
+                           xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0">
+
+    <rsm:SpecifiedExchangedDocumentContext>
+        <ram:TestIndicator>
+            <udt:Indicator>true</udt:Indicator>
+        </ram:TestIndicator>
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+            <ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:extended</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
+    </rsm:SpecifiedExchangedDocumentContext>
+    <rsm:HeaderExchangedDocument>
+        <ram:ID>2101001</ram:ID>
+        <ram:Name>RECHNUNG</ram:Name>
+        <ram:TypeCode>380</ram:TypeCode>
+        <ram:IssueDateTime>
+            <udt:DateTimeString format="102">20180214</udt:DateTimeString>
+        </ram:IssueDateTime>
+    </rsm:HeaderExchangedDocument>
+    <rsm:SpecifiedSupplyChainTradeTransaction>
+        <ram:ApplicableSupplyChainTradeAgreement>
+            <ram:BuyerReference>Kund.Auftr.Text</ram:BuyerReference>
+            <ram:SellerTradeParty>
+                <ram:ID>4711471147110</ram:ID>
+                <ram:Name>AMG Haustechnik KG</ram:Name>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName>Sammy Selke</ram:PersonName>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>52477</ram:PostcodeCode>
+                    <ram:LineOne>Otto-Lilienthal-Str. 1</ram:LineOne>
+                    <ram:CityName>Alsdorf</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="VA">DE121685017</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                <ram:ID>BECK19</ram:ID>
+                <ram:Name>Grünwald GmbH Sanitär + Heizung</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>55595</ram:PostcodeCode>
+                    <ram:LineOne>Hauptstr.</ram:LineOne>
+                    <ram:CityName>Sommerloch</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="VA">DE222222222</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:BuyerTradeParty>
+            <ram:BuyerOrderReferencedDocument>
+                <ram:ID>Kund.Auftr.Nr.</ram:ID>
+            </ram:BuyerOrderReferencedDocument>
+        </ram:ApplicableSupplyChainTradeAgreement>
+        <ram:ApplicableSupplyChainTradeDelivery>
+            <ram:ShipToTradeParty>
+                <ram:Name>Grünwald GmbH Sanitär + Heizung</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>55595</ram:PostcodeCode>
+                    <ram:LineOne>Hauptstr.</ram:LineOne>
+                    <ram:CityName>Sommerloch</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+            </ram:ShipToTradeParty>
+            <ram:ActualDeliverySupplyChainEvent>
+                <ram:OccurrenceDateTime>
+                    <udt:DateTimeString format="102">20180214</udt:DateTimeString>
+                </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+            <ram:DeliveryNoteReferencedDocument>
+                <ram:IssueDateTime>2018-02-14T00:00:00</ram:IssueDateTime>
+                <ram:ID>3401649-001</ram:ID>
+            </ram:DeliveryNoteReferencedDocument>
+        </ram:ApplicableSupplyChainTradeDelivery>
+        <ram:ApplicableSupplyChainTradeSettlement>
+            <ram:PaymentReference>2101001</ram:PaymentReference>
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:PayeePartyCreditorFinancialAccount>
+                    <ram:IBANID>DE9800123456789</ram:IBANID>
+                </ram:PayeePartyCreditorFinancialAccount>
+                <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                    <ram:BICID>123456789</ram:BICID>
+                    <ram:Name>DNB NOR BANK ASA</ram:Name>
+                </ram:PayeeSpecifiedCreditorFinancialInstitution>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+                <ram:CalculatedAmount currencyID="EUR">1467.36</ram:CalculatedAmount>
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <ram:BasisAmount currencyID="EUR">7722.97</ram:BasisAmount>
+                <ram:CategoryCode>S</ram:CategoryCode>
+                <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:SpecifiedTradeAllowanceCharge>
+                <ram:ChargeIndicator>
+                    <udt:Indicator>false</udt:Indicator>
+                </ram:ChargeIndicator>
+                <ram:ActualAmount currencyID="EUR">77.06</ram:ActualAmount>
+                <ram:Reason>Online-Vergütung</ram:Reason>
+                <ram:CategoryTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedTradeAllowanceCharge>
+                <ram:ChargeIndicator>
+                    <udt:Indicator>true</udt:Indicator>
+                </ram:ChargeIndicator>
+                <ram:ActualAmount currencyID="EUR">94.10</ram:ActualAmount>
+                <ram:Reason>Logistiksicherung</ram:Reason>
+                <ram:CategoryTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedTradePaymentTerms>
+                <ram:Description>Zahlbar bis 16.03.2018 ohne Abzug</ram:Description>
+                <ram:DueDateDateTime>
+                    <udt:DateTimeString format="102">20180316</udt:DateTimeString>
+                </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradePaymentTerms>
+                <ram:Description>Zahlbar bis 28.02.2018 3,00% Skt= 8914,62</ram:Description>
+                <ram:ApplicableTradePaymentDiscountTerms>
+                    <ram:BasisDateTime>
+                        <udt:DateTimeString format="102">20180228</udt:DateTimeString>
+                    </ram:BasisDateTime>
+                    <ram:BasisAmount currencyID="EUR">9190.31</ram:BasisAmount>
+                    <ram:CalculationPercent>3.00</ram:CalculationPercent>
+                </ram:ApplicableTradePaymentDiscountTerms>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradeSettlementMonetarySummation>
+                <ram:LineTotalAmount currencyID="EUR">7705.93</ram:LineTotalAmount>
+                <ram:ChargeTotalAmount currencyID="EUR">94.10</ram:ChargeTotalAmount>
+                <ram:AllowanceTotalAmount currencyID="EUR">77.06</ram:AllowanceTotalAmount>
+                <ram:TaxBasisTotalAmount currencyID="EUR">7722.97</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount currencyID="EUR">1467.36</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount currencyID="EUR">9190.33</ram:GrandTotalAmount>
+            </ram:SpecifiedTradeSettlementMonetarySummation>
+        </ram:ApplicableSupplyChainTradeSettlement>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>1000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:BuyerOrderReferencedDocument>
+                    <ram:ID>Kund.Auftr.Nr.</ram:ID>
+                </ram:BuyerOrderReferencedDocument>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">4500.0000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:BasisAmount currencyID="EUR">4500.0000</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="EUR">1980.0000</ram:ActualAmount>
+                        <ram:Reason>Rabatt</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">2520.0000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">3.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">7560.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>PAKETBBKE10E</ram:SellerAssignedID>
+                <ram:Name>Brötje Gas-Brennwert-Paket 10 BBK-E E m.BBK 22 E Erdgas E, ADH 15, KAS 80/2</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>1001</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:BuyerOrderReferencedDocument>
+                    <ram:ID>Kund.Auftr.Nr.</ram:ID>
+                </ram:BuyerOrderReferencedDocument>
+                <ram:AdditionalReferencedDocument>
+                    <ram:LineID>1000</ram:LineID>
+                    <ram:ID>3401649-001</ram:ID>
+                    <ram:ReferenceTypeCode>AWR</ram:ReferenceTypeCode>
+                </ram:AdditionalReferencedDocument>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">0.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>BBK22FE</ram:SellerAssignedID>
+                <ram:Name>Brötje Gas-Brennwert-WZ BBK 22 F E</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>1002</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:BuyerOrderReferencedDocument>
+                    <ram:ID>Kund.Auftr.Nr.</ram:ID>
+                </ram:BuyerOrderReferencedDocument>
+                <ram:AdditionalReferencedDocument>
+                    <ram:LineID>1000</ram:LineID>
+                    <ram:ID>3401649-001</ram:ID>
+                    <ram:ReferenceTypeCode>AWR</ram:ReferenceTypeCode>
+                </ram:AdditionalReferencedDocument>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">3.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">0.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>ADH15</ram:SellerAssignedID>
+                <ram:Name>Brötje Anschluss-Set AP 1/2" f.Heiz- und Gasanschl.f.WSS/WSC WTS/WTC WSK/WTK WGB2</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>1003</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:BuyerOrderReferencedDocument>
+                    <ram:ID>Kund.Auftr.Nr.</ram:ID>
+                </ram:BuyerOrderReferencedDocument>
+                <ram:AdditionalReferencedDocument>
+                    <ram:LineID>1000</ram:LineID>
+                    <ram:ID>3401649-001</ram:ID>
+                    <ram:ReferenceTypeCode>AWR</ram:ReferenceTypeCode>
+                </ram:AdditionalReferencedDocument>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">3.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">0.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>KAS802</ram:SellerAssignedID>
+                <ram:Name>Brötje Abgasleitung-Set KAS 80/2 Kessel/Schacht DN 80/125 PPS/AI</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>2000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:BuyerOrderReferencedDocument>
+                    <ram:ID>Kund.Auftr.Nr.</ram:ID>
+                </ram:BuyerOrderReferencedDocument>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">906.7000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="MTR">1000.0000</ram:BasisQuantity>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:BasisAmount currencyID="EUR">906.7000</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="EUR">90.6700</ram:ActualAmount>
+                        <ram:Reason>Rabatt</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:BasisAmount currencyID="EUR">906.7000</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="EUR">453.3000</ram:ActualAmount>
+                        <ram:Reason>Rabatt</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>true</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:ActualAmount currencyID="EUR">283.3900</ram:ActualAmount>
+                        <ram:Reason>Kupferzuschlag</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">646.1200</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="MTR">1000.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="MTR">100.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">64.61</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>QNYM5R</ram:SellerAssignedID>
+                <ram:Name>NYM-J 5x1.5qmm Ring 100m</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>3000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:BuyerOrderReferencedDocument>
+                    <ram:ID>Kund.Auftr.Nr.</ram:ID>
+                </ram:BuyerOrderReferencedDocument>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">5.3800</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>true</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:ActualAmount currencyID="EUR">0.0100</ram:ActualAmount>
+                        <ram:Reason>Eichgebühr f.Kaltwasserzähler</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">5.3900</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">5.39</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>WZ15K</ram:SellerAssignedID>
+                <ram:Name>Wohnungs-Wasserzähler Der gute Griff 1/2" Kaltw.QN 1.5(3cbm) 110 mm</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>4000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:BuyerOrderReferencedDocument>
+                    <ram:ID>Kund.Auftr.Nr.</ram:ID>
+                </ram:BuyerOrderReferencedDocument>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">5.3800</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>true</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:ActualAmount currencyID="EUR">0.0100</ram:ActualAmount>
+                        <ram:Reason>Eichgebühr f.Kaltwasserzähler</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">5.3900</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">5.39</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>WZ15K</ram:SellerAssignedID>
+                <ram:Name>Wohnungs-Wasserzähler Der gute Griff 1/2" Kaltw.QN 1.5(3cbm) 110 mm</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>5000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:BuyerOrderReferencedDocument>
+                    <ram:ID>Kund.Auftr.Nr.</ram:ID>
+                </ram:BuyerOrderReferencedDocument>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">906.7000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="MTR">1000.0000</ram:BasisQuantity>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:BasisAmount currencyID="EUR">906.7000</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="EUR">90.6700</ram:ActualAmount>
+                        <ram:Reason>Rabatt</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:BasisAmount currencyID="EUR">906.7000</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="EUR">453.3000</ram:ActualAmount>
+                        <ram:Reason>Rabatt</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>true</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:ActualAmount currencyID="EUR">283.3900</ram:ActualAmount>
+                        <ram:Reason>Kupferzuschlag</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">646.1200</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="MTR">1000.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="MTR">100.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">64.61</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>QNYM5R</ram:SellerAssignedID>
+                <ram:Name>NYM-J 5x1.5qmm Ring 100m</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>6000</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:BuyerOrderReferencedDocument>
+                    <ram:ID>Kund.Auftr.Nr.</ram:ID>
+                </ram:BuyerOrderReferencedDocument>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">11.4000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:BasisAmount currencyID="EUR">11.4000</ram:BasisAmount>
+                        <ram:ActualAmount currencyID="EUR">5.4700</ram:ActualAmount>
+                        <ram:Reason>Rabatt</ram:Reason>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">5.9300</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">5.93</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>EVNS</ram:SellerAssignedID>
+                <ram:Name>Eckventil 1/2" m.Schubrosette verchromt m.Längenausgleich Der gute Griff</ram:Name>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+    </rsm:SpecifiedSupplyChainTradeTransaction>
+</rsm:CrossIndustryDocument>

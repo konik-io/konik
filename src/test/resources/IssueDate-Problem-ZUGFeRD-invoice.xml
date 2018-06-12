@@ -1,0 +1,646 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rsm:CrossIndustryDocument xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12"
+                           xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15"
+                           xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0">
+
+<rsm:SpecifiedExchangedDocumentContext>
+        <ram:TestIndicator>
+            <udt:Indicator>true</udt:Indicator>
+        </ram:TestIndicator>
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+            <ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:extended</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
+    </rsm:SpecifiedExchangedDocumentContext>
+    <rsm:HeaderExchangedDocument>
+        <ram:ID>212725237644</ram:ID>
+        <ram:Name>Ihre Monatsrechnung für Oktober 2017</ram:Name>
+        <ram:TypeCode>380</ram:TypeCode>
+        <ram:IssueDateTime>
+            <udt:DateTimeString format="102">20180126</udt:DateTimeString>
+        </ram:IssueDateTime>
+        <ram:IncludedNote>
+            <ram:Content>Weitere Angaben zu §40 EnWG entnehmen Sie dem Papierbeleg</ram:Content>
+        </ram:IncludedNote>
+        <ram:EffectiveSpecifiedPeriod>
+            <ram:CompleteDateTime>
+                <udt:DateTimeString format="102">20180226</udt:DateTimeString>
+            </ram:CompleteDateTime>
+        </ram:EffectiveSpecifiedPeriod>
+    </rsm:HeaderExchangedDocument>
+    <rsm:SpecifiedSupplyChainTradeTransaction>
+        <ram:ApplicableSupplyChainTradeAgreement>
+            <ram:SellerTradeParty>
+                <ram:Name>E.ON Energie Deutschland GmbH</ram:Name>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName>Mandy Sakuth</ram:PersonName>
+                    <ram:TelephoneUniversalCommunication>
+                        <ram:CompleteNumber>05351-123-33688</ram:CompleteNumber>
+                    </ram:TelephoneUniversalCommunication>
+                    <ram:FaxUniversalCommunication>
+                        <ram:CompleteNumber>0871-95386220</ram:CompleteNumber>
+                    </ram:FaxUniversalCommunication>
+                    <ram:EmailURIUniversalCommunication>
+                        <ram:URIID>GKBetreuung-Mitte2@eon-energie.com</ram:URIID>
+                    </ram:EmailURIUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>84001</ram:PostcodeCode>
+                    <ram:LineOne>Postfach 14 75</ram:LineOne>
+                    <ram:CityName>Landshut</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="VA">DE259922663</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                <ram:ID>231000344816</ram:ID>
+                <ram:Name>Zeppelin Rental GmbH Projektservice Elektro &#38; Energie</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>45356</ram:PostcodeCode>
+                    <ram:LineOne>Lüschershofstr. 61-63</ram:LineOne>
+                    <ram:CityName>Essen</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+            </ram:BuyerTradeParty>
+        </ram:ApplicableSupplyChainTradeAgreement>
+        <ram:ApplicableSupplyChainTradeDelivery>
+            <ram:ShipToTradeParty>
+                <ram:Name>Verbrauchsstelle</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>74321</ram:PostcodeCode>
+                    <ram:LineOne>Schwarzwaldstr. 29</ram:LineOne>
+                    <ram:CityName>Bietigheim-Bissingen</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+            </ram:ShipToTradeParty>
+        </ram:ApplicableSupplyChainTradeDelivery>
+        <ram:ApplicableSupplyChainTradeSettlement>
+            <ram:PaymentReference>231000344816</ram:PaymentReference>
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+            <ram:InvoiceeTradeParty>
+                <ram:Name>Zeppelin Rental GmbH Projektservice Elektro &#38; Energie</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>45356</ram:PostcodeCode>
+                    <ram:LineOne>Lüschershofstr. 61-63</ram:LineOne>
+                    <ram:CityName>Essen</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+            </ram:InvoiceeTradeParty>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:TypeCode>31</ram:TypeCode>
+                <ram:Information>per Überweisung</ram:Information>
+                <ram:ID schemeAgencyID="DE41EON00000129793"></ram:ID>
+                <ram:PayerPartyDebtorFinancialAccount>
+                    <ram:IBANID>DE57 3007 0010 0394 0368 00</ram:IBANID>
+                </ram:PayerPartyDebtorFinancialAccount>
+                <ram:PayerSpecifiedDebtorFinancialInstitution>
+                    <ram:Name>Deutsche Bank AG</ram:Name>
+                </ram:PayerSpecifiedDebtorFinancialInstitution>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+                <ram:CalculatedAmount currencyID="EUR">0.00</ram:CalculatedAmount>
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <ram:BasisAmount currencyID="EUR">1079.71</ram:BasisAmount>
+                <ram:CategoryCode>S</ram:CategoryCode>
+                <ram:ApplicablePercent>19.00</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:SpecifiedTradeSettlementMonetarySummation>
+                <ram:LineTotalAmount currencyID="EUR">1079.71</ram:LineTotalAmount>
+                <ram:ChargeTotalAmount currencyID="EUR">0.00</ram:ChargeTotalAmount>
+                <ram:AllowanceTotalAmount currencyID="EUR">0.00</ram:AllowanceTotalAmount>
+                <ram:TaxBasisTotalAmount currencyID="EUR">1079.71</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount currencyID="EUR">0.00</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount currencyID="EUR">1079.71</ram:GrandTotalAmount>
+                <ram:TotalPrepaidAmount currencyID="EUR">0.00</ram:TotalPrepaidAmount>
+                <ram:DuePayableAmount currencyID="EUR">1079.71</ram:DuePayableAmount>
+            </ram:SpecifiedTradeSettlementMonetarySummation>
+        </ram:ApplicableSupplyChainTradeSettlement>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument></ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0320</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0320</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="KWH">5960.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <ram:StartDateTime>
+                        <udt:DateTimeString format="102">20171001</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <ram:EndDateTime>
+                        <udt:DateTimeString format="102">20171031</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">190.72</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:GlobalID schemeID="0088"></ram:GlobalID>
+                <ram:Name>Arbeitspreis</ram:Name>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_LOCATION</ram:TypeCode>
+                    <ram:Description>Zählpunkt</ram:Description>
+                    <ram:Value>DE00008674321S31BB200300400500816</ram:Value>
+                </ram:ApplicableProductCharacteristic>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_NUMBER</ram:TypeCode>
+                    <ram:Description>Zählernummer</ram:Description>
+                    <ram:Value></ram:Value>
+                </ram:ApplicableProductCharacteristic>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument></ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0688</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0688</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="KWH">5960.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <ram:StartDateTime>
+                        <udt:DateTimeString format="102">20171001</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <ram:EndDateTime>
+                        <udt:DateTimeString format="102">20171031</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">410.05</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:GlobalID schemeID="0088">4044038000324</ram:GlobalID>
+                <ram:Name>Erneuerbare Energien Gesetz (EEG)</ram:Name>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_LOCATION</ram:TypeCode>
+                    <ram:Description>Zählpunkt</ram:Description>
+                    <ram:Value>DE00008674321S31BB200300400500816</ram:Value>
+                </ram:ApplicableProductCharacteristic>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_NUMBER</ram:TypeCode>
+                    <ram:Description>Zählernummer</ram:Description>
+                    <ram:Value></ram:Value>
+                </ram:ApplicableProductCharacteristic>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument></ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0000</ram:ChargeAmount>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="KWH">5960.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <ram:StartDateTime>
+                        <udt:DateTimeString format="102">20171001</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <ram:EndDateTime>
+                        <udt:DateTimeString format="102">20171031</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">0.00</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:GlobalID schemeID="0088">4044038000294</ram:GlobalID>
+                <ram:Name>Stromsteuer</ram:Name>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_LOCATION</ram:TypeCode>
+                    <ram:Description>Zählpunkt</ram:Description>
+                    <ram:Value>DE00008674321S31BB200300400500816</ram:Value>
+                </ram:ApplicableProductCharacteristic>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_NUMBER</ram:TypeCode>
+                    <ram:Description>Zählernummer</ram:Description>
+                    <ram:Value></ram:Value>
+                </ram:ApplicableProductCharacteristic>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument></ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0554</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0554</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="KWH">5960.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <ram:StartDateTime>
+                        <udt:DateTimeString format="102">20171001</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <ram:EndDateTime>
+                        <udt:DateTimeString format="102">20171031</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">330.18</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:GlobalID schemeID="0088"></ram:GlobalID>
+                <ram:Name>Arbeitspreis Netz</ram:Name>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_LOCATION</ram:TypeCode>
+                    <ram:Description>Zählpunkt</ram:Description>
+                    <ram:Value>DE00008674321S31BB200300400500816</ram:Value>
+                </ram:ApplicableProductCharacteristic>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_NUMBER</ram:TypeCode>
+                    <ram:Description>Zählernummer</ram:Description>
+                    <ram:Value></ram:Value>
+                </ram:ApplicableProductCharacteristic>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument></ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">9.3500</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">9.3500</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="KWH">3.8214</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <ram:StartDateTime>
+                        <udt:DateTimeString format="102">20171001</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <ram:EndDateTime>
+                        <udt:DateTimeString format="102">20171031</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">35.73</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:GlobalID schemeID="0088">9990001000053</ram:GlobalID>
+                <ram:Name>Leistungspreis Netz</ram:Name>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_LOCATION</ram:TypeCode>
+                    <ram:Description>Zählpunkt</ram:Description>
+                    <ram:Value>DE00008674321S31BB200300400500816</ram:Value>
+                </ram:ApplicableProductCharacteristic>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_NUMBER</ram:TypeCode>
+                    <ram:Description>Zählernummer</ram:Description>
+                    <ram:Value></ram:Value>
+                </ram:ApplicableProductCharacteristic>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument></ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">689.4800</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="DAY">365.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">689.4800</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="DAY">365.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="DAY">31.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <ram:StartDateTime>
+                        <udt:DateTimeString format="102">20171001</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <ram:EndDateTime>
+                        <udt:DateTimeString format="102">20171031</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">58.56</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:GlobalID schemeID="0088"></ram:GlobalID>
+                <ram:Name>Entgelt für Messstellenbetrieb,Messung</ram:Name>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_LOCATION</ram:TypeCode>
+                    <ram:Description>Zählpunkt</ram:Description>
+                    <ram:Value>DE00008674321S31BB200300400500816</ram:Value>
+                </ram:ApplicableProductCharacteristic>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_NUMBER</ram:TypeCode>
+                    <ram:Description>Zählernummer</ram:Description>
+                    <ram:Value></ram:Value>
+                </ram:ApplicableProductCharacteristic>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument></ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0044</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0044</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="KWH">5960.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <ram:StartDateTime>
+                        <udt:DateTimeString format="102">20171001</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <ram:EndDateTime>
+                        <udt:DateTimeString format="102">20171031</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">26.10</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:GlobalID schemeID="0088">9990001000334</ram:GlobalID>
+                <ram:Name>Kraft-Wärme-Kopplung (KWK)</ram:Name>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_LOCATION</ram:TypeCode>
+                    <ram:Description>Zählpunkt</ram:Description>
+                    <ram:Value>DE00008674321S31BB200300400500816</ram:Value>
+                </ram:ApplicableProductCharacteristic>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_NUMBER</ram:TypeCode>
+                    <ram:Description>Zählernummer</ram:Description>
+                    <ram:Value></ram:Value>
+                </ram:ApplicableProductCharacteristic>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument></ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0039</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0039</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="KWH">5960.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <ram:StartDateTime>
+                        <udt:DateTimeString format="102">20171001</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <ram:EndDateTime>
+                        <udt:DateTimeString format="102">20171031</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">23.12</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:GlobalID schemeID="0088">9990001000681</ram:GlobalID>
+                <ram:Name>§ 19 StromNEV-Umlage</ram:Name>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_LOCATION</ram:TypeCode>
+                    <ram:Description>Zählpunkt</ram:Description>
+                    <ram:Value>DE00008674321S31BB200300400500816</ram:Value>
+                </ram:ApplicableProductCharacteristic>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_NUMBER</ram:TypeCode>
+                    <ram:Description>Zählernummer</ram:Description>
+                    <ram:Value></ram:Value>
+                </ram:ApplicableProductCharacteristic>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument></ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0003</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0003</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="KWH">-5960.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <ram:StartDateTime>
+                        <udt:DateTimeString format="102">20171001</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <ram:EndDateTime>
+                        <udt:DateTimeString format="102">20171031</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">-1.67</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:GlobalID schemeID="0088">9990001000706</ram:GlobalID>
+                <ram:Name>Offshore-Umlage</ram:Name>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_LOCATION</ram:TypeCode>
+                    <ram:Description>Zählpunkt</ram:Description>
+                    <ram:Value>DE00008674321S31BB200300400500816</ram:Value>
+                </ram:ApplicableProductCharacteristic>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_NUMBER</ram:TypeCode>
+                    <ram:Description>Zählernummer</ram:Description>
+                    <ram:Value></ram:Value>
+                </ram:ApplicableProductCharacteristic>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument></ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0001</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0001</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="KWH">5960.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <ram:StartDateTime>
+                        <udt:DateTimeString format="102">20171001</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <ram:EndDateTime>
+                        <udt:DateTimeString format="102">20171031</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">0.36</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:GlobalID schemeID="0088">9990001000730</ram:GlobalID>
+                <ram:Name>§ 18 AbLaV-Umlage</ram:Name>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_LOCATION</ram:TypeCode>
+                    <ram:Description>Zählpunkt</ram:Description>
+                    <ram:Value>DE00008674321S31BB200300400500816</ram:Value>
+                </ram:ApplicableProductCharacteristic>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_NUMBER</ram:TypeCode>
+                    <ram:Description>Zählernummer</ram:Description>
+                    <ram:Value></ram:Value>
+                </ram:ApplicableProductCharacteristic>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument></ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0011</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="EUR">0.0011</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="KWH">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="KWH">5960.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <ram:StartDateTime>
+                        <udt:DateTimeString format="102">20171001</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <ram:EndDateTime>
+                        <udt:DateTimeString format="102">20171031</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="EUR">6.56</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:GlobalID schemeID="0088"></ram:GlobalID>
+                <ram:Name>Konzessionsabgabe Sonderkunde</ram:Name>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_LOCATION</ram:TypeCode>
+                    <ram:Description>Zählpunkt</ram:Description>
+                    <ram:Value>DE00008674321S31BB200300400500816</ram:Value>
+                </ram:ApplicableProductCharacteristic>
+                <ram:ApplicableProductCharacteristic>
+                    <ram:TypeCode>METER_NUMBER</ram:TypeCode>
+                    <ram:Description>Zählernummer</ram:Description>
+                    <ram:Value></ram:Value>
+                </ram:ApplicableProductCharacteristic>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+    </rsm:SpecifiedSupplyChainTradeTransaction>
+</rsm:CrossIndustryDocument>

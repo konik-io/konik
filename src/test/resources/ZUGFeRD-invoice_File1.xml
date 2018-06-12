@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rsm:CrossIndustryDocument xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12"
+                           xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15"
+                           xmlns:rsm="urn:ferd:CrossIndustryDocument:invoice:1p0">
+    <rsm:SpecifiedExchangedDocumentContext>
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+            <ram:ID>urn:ferd:CrossIndustryDocument:invoice:1p0:extended</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
+    </rsm:SpecifiedExchangedDocumentContext>
+    <rsm:HeaderExchangedDocument>
+        <ram:ID>1243</ram:ID>
+        <ram:Name>Invoice</ram:Name>
+        <ram:TypeCode>380</ram:TypeCode>
+        <ram:IssueDateTime>
+            <udt:DateTimeString format="102">20180308</udt:DateTimeString>
+        </ram:IssueDateTime>
+        <ram:IncludedNote>
+            <ram:Content>TipTotalAmount: 0.00</ram:Content>
+        </ram:IncludedNote>
+        <ram:IncludedNote>
+            <ram:Content>NumberOfGuests: 174</ram:Content>
+        </ram:IncludedNote>
+    </rsm:HeaderExchangedDocument>
+    <rsm:SpecifiedSupplyChainTradeTransaction>
+        <ram:ApplicableSupplyChainTradeAgreement>
+            <ram:SellerTradeParty>
+                <ram:ID>b7aca6a4de204f9ea46c386cb2672783</ram:ID>
+                <ram:Name>Restaurant Al Covo</ram:Name>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName>AbaPOS System</ram:PersonName>
+                </ram:DefinedTradeContact>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                <ram:Name></ram:Name>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName>Abacus Abacus</ram:PersonName>
+                </ram:DefinedTradeContact>
+            </ram:BuyerTradeParty>
+        </ram:ApplicableSupplyChainTradeAgreement>
+        <ram:ApplicableSupplyChainTradeDelivery>
+            <ram:ActualDeliverySupplyChainEvent>
+                <ram:OccurrenceDateTime>
+                    <udt:DateTimeString format="102">20180308</udt:DateTimeString>
+                </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+        </ram:ApplicableSupplyChainTradeDelivery>
+        <ram:ApplicableSupplyChainTradeSettlement>
+            <ram:PaymentReference>1243</ram:PaymentReference>
+            <ram:InvoiceCurrencyCode>CHF</ram:InvoiceCurrencyCode>
+            <ram:ApplicableTradeTax>
+                <ram:CalculatedAmount currencyID="CHF">568.45</ram:CalculatedAmount>
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <ram:BasisAmount currencyID="CHF">7382.51</ram:BasisAmount>
+                <ram:CategoryCode>S</ram:CategoryCode>
+                <ram:ApplicablePercent>7.70</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:ApplicableTradeTax>
+                <ram:CalculatedAmount currencyID="CHF">0.00</ram:CalculatedAmount>
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <ram:BasisAmount currencyID="CHF">0.04</ram:BasisAmount>
+                <ram:CategoryCode>S</ram:CategoryCode>
+                <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:SpecifiedTradeAllowanceCharge>
+                <ram:ChargeIndicator>
+                    <udt:Indicator>true</udt:Indicator>
+                </ram:ChargeIndicator>
+                <ram:ActualAmount currencyID="CHF">0.04</ram:ActualAmount>
+                <ram:CategoryTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>0.00</ram:ApplicablePercent>
+                </ram:CategoryTradeTax>
+            </ram:SpecifiedTradeAllowanceCharge>
+            <ram:SpecifiedTradeSettlementMonetarySummation>
+                <ram:LineTotalAmount currencyID="CHF">7382.51</ram:LineTotalAmount>
+                <ram:ChargeTotalAmount currencyID="CHF">0.04</ram:ChargeTotalAmount>
+                <ram:AllowanceTotalAmount currencyID="CHF">0.00</ram:AllowanceTotalAmount>
+                <ram:TaxBasisTotalAmount currencyID="CHF">7382.55</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount currencyID="CHF">568.45</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount currencyID="CHF">7951.00</ram:GrandTotalAmount>
+                <ram:TotalPrepaidAmount currencyID="CHF">0.00</ram:TotalPrepaidAmount>
+                <ram:DuePayableAmount currencyID="CHF">7951.00</ram:DuePayableAmount>
+            </ram:SpecifiedTradeSettlementMonetarySummation>
+        </ram:ApplicableSupplyChainTradeSettlement>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>1</ram:LineID>
+                <ram:IncludedNote>
+                    <ram:Content>TotalAmountInclusiveTax: 0.00</ram:Content>
+                </ram:IncludedNote>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">0.0000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">0.0000</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">1.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>7.70</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">0.00</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="CHF">0.00</ram:TotalAllowanceChargeAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>65300</ram:SellerAssignedID>
+                <ram:Name>eigener Text</ram:Name>
+                <ram:DesignatedProductClassification>
+                    <ram:ClassCode listID="SELLER_ASSIGNED">6</ram:ClassCode>
+                    <ram:ClassName>*KÜCHE</ram:ClassName>
+                </ram:DesignatedProductClassification>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>2</ram:LineID>
+                <ram:IncludedNote>
+                    <ram:Content>TotalAmountInclusiveTax: 132.00</ram:Content>
+                </ram:IncludedNote>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">3.7139</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">3.7139</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">33.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>7.70</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">122.56</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="CHF">0.00</ram:TotalAllowanceChargeAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>1001</ram:SellerAssignedID>
+                <ram:Name>Cafe Creme</ram:Name>
+                <ram:DesignatedProductClassification>
+                    <ram:ClassCode listID="SELLER_ASSIGNED">100</ram:ClassCode>
+                    <ram:ClassName>Warme Getränke</ram:ClassName>
+                </ram:DesignatedProductClassification>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>3</ram:LineID>
+                <ram:IncludedNote>
+                    <ram:Content>TotalAmountInclusiveTax: 184.00</ram:Content>
+                </ram:IncludedNote>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">3.7139</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">3.7139</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">46.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>7.70</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">170.84</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="CHF">0.00</ram:TotalAllowanceChargeAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>1002</ram:SellerAssignedID>
+                <ram:Name>Espresso</ram:Name>
+                <ram:DesignatedProductClassification>
+                    <ram:ClassCode listID="SELLER_ASSIGNED">100</ram:ClassCode>
+                    <ram:ClassName>Warme Getränke</ram:ClassName>
+                </ram:DesignatedProductClassification>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>4</ram:LineID>
+                <ram:IncludedNote>
+                    <ram:Content>TotalAmountInclusiveTax: 12.00</ram:Content>
+                </ram:IncludedNote>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">3.7100</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">3.7100</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">3.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>7.70</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">11.13</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="CHF">0.00</ram:TotalAllowanceChargeAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>2031</ram:SellerAssignedID>
+                <ram:Name>Coca Cola</ram:Name>
+                <ram:DesignatedProductClassification>
+                    <ram:ClassCode listID="SELLER_ASSIGNED">201</ram:ClassCode>
+                    <ram:ClassName>Mineral AC</ram:ClassName>
+                </ram:DesignatedProductClassification>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>5</ram:LineID>
+                <ram:IncludedNote>
+                    <ram:Content>TotalAmountInclusiveTax: 328.00</ram:Content>
+                </ram:IncludedNote>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">7.4280</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">7.4280</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">41.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>7.70</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">304.55</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="CHF">0.00</ram:TotalAllowanceChargeAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>2047</ram:SellerAssignedID>
+                <ram:Name>Appenzeller laut 8dl</ram:Name>
+                <ram:DesignatedProductClassification>
+                    <ram:ClassCode listID="SELLER_ASSIGNED">201</ram:ClassCode>
+                    <ram:ClassName>Mineral AC</ram:ClassName>
+                </ram:DesignatedProductClassification>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>6</ram:LineID>
+                <ram:IncludedNote>
+                    <ram:Content>TotalAmountInclusiveTax: 160.00</ram:Content>
+                </ram:IncludedNote>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">7.4280</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">7.4280</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">20.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>7.70</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">148.56</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="CHF">0.00</ram:TotalAllowanceChargeAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>2049</ram:SellerAssignedID>
+                <ram:Name>Appenzeller still 8dl</ram:Name>
+                <ram:DesignatedProductClassification>
+                    <ram:ClassCode listID="SELLER_ASSIGNED">201</ram:ClassCode>
+                    <ram:ClassName>Mineral AC</ram:ClassName>
+                </ram:DesignatedProductClassification>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>7</ram:LineID>
+                <ram:IncludedNote>
+                    <ram:Content>TotalAmountInclusiveTax: 68.00</ram:Content>
+                </ram:IncludedNote>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">7.8900</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">7.8900</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">8.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>7.70</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">63.12</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="CHF">0.00</ram:TotalAllowanceChargeAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>162391</ram:SellerAssignedID>
+                <ram:Name>Inga Lorenzo</ram:Name>
+                <ram:DesignatedProductClassification>
+                    <ram:ClassCode listID="SELLER_ASSIGNED">504</ram:ClassCode>
+                    <ram:ClassName>Grappa</ram:ClassName>
+                </ram:DesignatedProductClassification>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>8</ram:LineID>
+                <ram:IncludedNote>
+                    <ram:Content>TotalAmountInclusiveTax: 5220.00</ram:Content>
+                </ram:IncludedNote>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">55.7103</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">55.7103</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">87.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>7.70</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">4846.80</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="CHF">0.00</ram:TotalAllowanceChargeAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>65500</ram:SellerAssignedID>
+                <ram:Name>***AC Menu</ram:Name>
+                <ram:DesignatedProductClassification>
+                    <ram:ClassCode listID="SELLER_ASSIGNED">690</ram:ClassCode>
+                    <ram:ClassName>AC Menu</ram:ClassName>
+                </ram:DesignatedProductClassification>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>9</ram:LineID>
+                <ram:IncludedNote>
+                    <ram:Content>TotalAmountInclusiveTax: 156.00</ram:Content>
+                </ram:IncludedNote>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">36.2100</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">36.2100</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">4.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>7.70</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">144.84</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="CHF">0.00</ram:TotalAllowanceChargeAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>4550</ram:SellerAssignedID>
+                <ram:Name>Grüner Veltliner Selection Schwander</ram:Name>
+                <ram:DesignatedProductClassification>
+                    <ram:ClassCode listID="SELLER_ASSIGNED">7725</ram:ClassCode>
+                    <ram:ClassName>AC Weiss AU</ram:ClassName>
+                </ram:DesignatedProductClassification>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>10</ram:LineID>
+                <ram:IncludedNote>
+                    <ram:Content>TotalAmountInclusiveTax: 1691.00</ram:Content>
+                </ram:IncludedNote>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedSupplyChainTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">82.6374</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount currencyID="CHF">82.6374</ram:ChargeAmount>
+                    <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedSupplyChainTradeAgreement>
+            <ram:SpecifiedSupplyChainTradeDelivery>
+                <ram:BilledQuantity unitCode="C62">19.0000</ram:BilledQuantity>
+            </ram:SpecifiedSupplyChainTradeDelivery>
+            <ram:SpecifiedSupplyChainTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:ApplicablePercent>7.70</ram:ApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementMonetarySummation>
+                    <ram:LineTotalAmount currencyID="CHF">1570.11</ram:LineTotalAmount>
+                    <ram:TotalAllowanceChargeAmount currencyID="CHF">0.00</ram:TotalAllowanceChargeAmount>
+                </ram:SpecifiedTradeSettlementMonetarySummation>
+            </ram:SpecifiedSupplyChainTradeSettlement>
+            <ram:SpecifiedTradeProduct>
+                <ram:SellerAssignedID>9612</ram:SellerAssignedID>
+                <ram:Name>Reserva Hazienda 12</ram:Name>
+                <ram:DesignatedProductClassification>
+                    <ram:ClassCode listID="SELLER_ASSIGNED">7732</ram:ClassCode>
+                    <ram:ClassName>AC Rot Spanien</ram:ClassName>
+                </ram:DesignatedProductClassification>
+            </ram:SpecifiedTradeProduct>
+        </ram:IncludedSupplyChainTradeLineItem>
+    </rsm:SpecifiedSupplyChainTradeTransaction>
+</rsm:CrossIndustryDocument>

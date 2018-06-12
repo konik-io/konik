@@ -261,7 +261,9 @@ public final class AmountCalculator {
 
 			log.debug("Line total formula: {} (net price) / {} (BasisQuantity)  x {} (quantity)", amount, basisQuantity, quantity);
 			Amount netPricePerUnit = Amounts.divide(amount, basisQuantity);
-			return Amounts.multiply(netPricePerUnit, quantity);
+            Amount result = Amounts.multiply(netPricePerUnit, quantity);
+            // return Amounts.setPrecision(result,2, RoundingMode.HALF_UP);
+            return result;
 		}
 	}
 

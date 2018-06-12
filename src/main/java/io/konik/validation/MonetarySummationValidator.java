@@ -116,42 +116,40 @@ public class MonetarySummationValidator {
 
             Class<?> clazz = MonetarySummation.class;
 
-            if (belongsToProfile(clazz, "getGrandTotal", validationGroupsList) &&
-                  !areEqual(monetarySummation.getGrandTotal(), calculatedMonetarySummation.getGrandTotal())) {
+            if (belongsToProfile(clazz, "getGrandTotal", validationGroupsList)
+                  && !areEqual(monetarySummation.getGrandTotal(), calculatedMonetarySummation.getGrandTotal())) {
                String message = message(monetarySummation.getGrandTotal(), calculatedMonetarySummation.getGrandTotal());
                violations.add(new Violation(invoice, message, "monetarySummation.grandTotal.error",
                      "trade.settlement.monetarySummation.grandTotal",
                      monetarySummation.getGrandTotal() != null ? monetarySummation.getGrandTotal().getValue() : null));
             }
 
-            if (belongsToProfile(clazz, "getTaxBasisTotal", validationGroupsList) &&
-                  !areEqual(monetarySummation.getTaxBasisTotal(), calculatedMonetarySummation.getTaxBasisTotal())) {
+            if (belongsToProfile(clazz, "getTaxBasisTotal", validationGroupsList)
+                  && !areEqual(monetarySummation.getTaxBasisTotal(), calculatedMonetarySummation.getTaxBasisTotal())) {
                String message = message(monetarySummation.getTaxBasisTotal(),
                      calculatedMonetarySummation.getTaxBasisTotal());
                violations.add(new Violation(invoice, message, "monetarySummation.taxBasisTotal.error",
-                     "trade.settlement.monetarySummation.taxBasisTotal",
-                     monetarySummation.getTaxBasisTotal() != null ? monetarySummation.getTaxBasisTotal().getValue()
-                           : null));
+                     "trade.settlement.monetarySummation.taxBasisTotal", monetarySummation.getTaxBasisTotal() != null
+                           ? monetarySummation.getTaxBasisTotal().getValue() : null));
             }
 
-            if (belongsToProfile(clazz, "getChargeTotal", validationGroupsList) &&
-                  !areEqual(monetarySummation.getChargeTotal(), calculatedMonetarySummation.getChargeTotal())) {
+            if (belongsToProfile(clazz, "getChargeTotal", validationGroupsList)
+                  && !areEqual(monetarySummation.getChargeTotal(), calculatedMonetarySummation.getChargeTotal())) {
                String message = message(monetarySummation.getChargeTotal(),
                      calculatedMonetarySummation.getChargeTotal());
                violations.add(new Violation(invoice, message, "monetarySummation.chargeTotal.error",
-                     "trade.settlement.monetarySummation.chargeTotal",
-                     monetarySummation.getChargeTotal() != null ? monetarySummation.getChargeTotal().getValue()
-                           : null));
+                     "trade.settlement.monetarySummation.chargeTotal", monetarySummation.getChargeTotal() != null
+                           ? monetarySummation.getChargeTotal().getValue() : null));
             }
 
-            if (belongsToProfile(clazz, "getAllowanceTotal", validationGroupsList) &&
-                  !areEqual(monetarySummation.getAllowanceTotal(), calculatedMonetarySummation.getAllowanceTotal())) {
+            if (belongsToProfile(clazz, "getAllowanceTotal", validationGroupsList)
+                  && !areEqual(monetarySummation.getAllowanceTotal(),
+                        calculatedMonetarySummation.getAllowanceTotal())) {
                String message = message(monetarySummation.getAllowanceTotal(),
                      calculatedMonetarySummation.getAllowanceTotal());
                violations.add(new Violation(invoice, message, "monetarySummation.allowanceTotal.error",
-                     "trade.settlement.monetarySummation.allowanceTotal",
-                     monetarySummation.getAllowanceTotal() != null ? monetarySummation.getAllowanceTotal().getValue()
-                           : null));
+                     "trade.settlement.monetarySummation.allowanceTotal", monetarySummation.getAllowanceTotal() != null
+                           ? monetarySummation.getAllowanceTotal().getValue() : null));
             }
 
             boolean expectDuePayable = monetarySummation.getTotalPrepaid() != null
@@ -162,39 +160,37 @@ public class MonetarySummationValidator {
                }
             }
 
-            if (belongsToProfile(clazz, "getDuePayable", validationGroupsList) &&
-                  expectDuePayable &&
-                  !areEqual(monetarySummation.getDuePayable(), calculatedMonetarySummation.getDuePayable())) {
+            if (belongsToProfile(clazz, "getDuePayable", validationGroupsList) && expectDuePayable
+                  && !areEqual(monetarySummation.getDuePayable(), calculatedMonetarySummation.getDuePayable())) {
                String message = message(monetarySummation.getDuePayable(), calculatedMonetarySummation.getDuePayable());
                violations.add(new Violation(invoice, message, "monetarySummation.duePayable.error",
                      "trade.settlement.monetarySummation.duePayable",
                      monetarySummation.getDuePayable() != null ? monetarySummation.getDuePayable().getValue() : null));
             }
 
-            if (belongsToProfile(clazz, "getLineTotal", validationGroupsList) &&
-                  !areEqual(monetarySummation.getLineTotal(), calculatedMonetarySummation.getLineTotal())) {
+            if (belongsToProfile(clazz, "getLineTotal", validationGroupsList)
+                  && !areEqual(monetarySummation.getLineTotal(), calculatedMonetarySummation.getLineTotal())) {
                String message = message(monetarySummation.getLineTotal(), calculatedMonetarySummation.getLineTotal());
                violations.add(new Violation(invoice, message, "monetarySummation.lineTotal.error",
                      "trade.settlement.monetarySummation.lineTotal",
                      monetarySummation.getLineTotal() != null ? monetarySummation.getLineTotal().getValue() : null));
             }
 
-            if (belongsToProfile(clazz, "getTaxTotal", validationGroupsList) &&
-                  !areEqual(monetarySummation.getTaxTotal(), calculatedMonetarySummation.getTaxTotal())) {
+            if (belongsToProfile(clazz, "getTaxTotal", validationGroupsList)
+                  && !areEqual(monetarySummation.getTaxTotal(), calculatedMonetarySummation.getTaxTotal())) {
                String message = message(monetarySummation.getTaxTotal(), calculatedMonetarySummation.getTaxTotal());
                violations.add(new Violation(invoice, message, "monetarySummation.taxTotal.error",
                      "trade.settlement.monetarySummation.taxTotal",
                      monetarySummation.getTaxTotal() != null ? monetarySummation.getTaxTotal().getValue() : null));
             }
 
-            if (belongsToProfile(clazz, "getTotalPrepaid", validationGroupsList) &&
-                  !areEqual(monetarySummation.getTotalPrepaid(), calculatedMonetarySummation.getTotalPrepaid())) {
+            if (belongsToProfile(clazz, "getTotalPrepaid", validationGroupsList)
+                  && !areEqual(monetarySummation.getTotalPrepaid(), calculatedMonetarySummation.getTotalPrepaid())) {
                String message = message(monetarySummation.getTotalPrepaid(),
                      calculatedMonetarySummation.getTotalPrepaid());
                violations.add(new Violation(invoice, message, "monetarySummation.totalPrepaid.error",
-                     "trade.settlement.monetarySummation.totalPrepaid",
-                     monetarySummation.getTotalPrepaid() != null ? monetarySummation.getTotalPrepaid().getValue()
-                           : null));
+                     "trade.settlement.monetarySummation.totalPrepaid", monetarySummation.getTotalPrepaid() != null
+                           ? monetarySummation.getTotalPrepaid().getValue() : null));
             }
          }
 
@@ -213,50 +209,41 @@ public class MonetarySummationValidator {
                            .calculateSpecifiedMonetarySummation(item);
 
                      String lineTotal = (monetarySummation.getLineTotal() != null
-                           ? monetarySummation.getLineTotal().getValue().toString()
-                           : "");
+                           ? monetarySummation.getLineTotal().getValue().toString() : "");
 
-                     if (belongsToProfile(SpecifiedMonetarySummation.class, "getLineTotal",
-                           validationGroupsList)
-                           && !areEqual(monetarySummation.getLineTotal(),
-                                 calculatedMonetarySummation.getLineTotal())) {
+                     if (belongsToProfile(SpecifiedMonetarySummation.class, "getLineTotal", validationGroupsList)
+                           && !areEqual(monetarySummation.getLineTotal(), calculatedMonetarySummation.getLineTotal())) {
                         String message = message(monetarySummation.getLineTotal(),
                               calculatedMonetarySummation.getLineTotal());
-                        violations
-                              .add(new Violation(invoice, message, "item.monetarySummation.lineTotal.error",
-                                    "trade.items[" + i + "].settlement.monetarySummation.lineTotal",
-                                    monetarySummation.getLineTotal() != null
-                                          ? monetarySummation.getLineTotal().getValue()
-                                          : null));
+                        violations.add(new Violation(invoice, message, "item.monetarySummation.lineTotal.error",
+                              "trade.items[" + i + "].settlement.monetarySummation.lineTotal",
+                              monetarySummation.getLineTotal() != null ? monetarySummation.getLineTotal().getValue()
+                                    : null));
                      }
 
                      else if (!lineTotal.contains(".") || lineTotal.split("\\.")[1].length() != 2) {
                         violations.add(new Violation(invoice, "lineTotal needs 2 decimals",
                               "item.monetarySummation.lineTotal.error",
                               "trade.items[" + i + "].settlement.monetarySummation.lineTotal",
-                              monetarySummation.getLineTotal() != null
-                                    ? monetarySummation.getLineTotal().getValue()
+                              monetarySummation.getLineTotal() != null ? monetarySummation.getLineTotal().getValue()
                                     : null));
                      }
 
                      String totalAllowanceCharge = (monetarySummation.getTotalAllowanceCharge() != null
-                           ? monetarySummation.getTotalAllowanceCharge().getValue().toString()
-                           : "0.0000");
+                           ? monetarySummation.getTotalAllowanceCharge().getValue().toString() : "0.0000");
 
                      if (belongsToProfile(SpecifiedMonetarySummation.class, "getTotalAllowanceCharge",
                            validationGroupsList)
-                           && ((grossPriceIncludesCharges(item)
-                                 && monetarySummation.getTotalAllowanceCharge() == null)
+                           && ((grossPriceIncludesCharges(item) && monetarySummation.getTotalAllowanceCharge() == null)
                                  || !areEqual(monetarySummation.getTotalAllowanceCharge(),
                                        calculatedMonetarySummation.getTotalAllowanceCharge()))) {
                         String message = message(monetarySummation.getTotalAllowanceCharge(),
                               calculatedMonetarySummation.getTotalAllowanceCharge());
-                        violations.add(new Violation(invoice, message,
-                              "item.monetarySummation.totalAllowanceCharge.error",
-                              "trade.items[" + i + "].settlement.monetarySummation.totalAllowanceCharge",
-                              monetarySummation.getTotalAllowanceCharge() != null
-                                    ? monetarySummation.getTotalAllowanceCharge().getValue()
-                                    : null));
+                        violations
+                              .add(new Violation(invoice, message, "item.monetarySummation.totalAllowanceCharge.error",
+                                    "trade.items[" + i + "].settlement.monetarySummation.totalAllowanceCharge",
+                                    monetarySummation.getTotalAllowanceCharge() != null
+                                          ? monetarySummation.getTotalAllowanceCharge().getValue() : null));
                      }
 
                      else if (!totalAllowanceCharge.contains(".")
@@ -265,8 +252,7 @@ public class MonetarySummationValidator {
                               "item.monetarySummation.totalAllowanceCharge.error",
                               "trade.items[" + i + "].settlement.monetarySummation.totalAllowanceCharge",
                               monetarySummation.getTotalAllowanceCharge() != null
-                                    ? monetarySummation.getTotalAllowanceCharge().getValue()
-                                    : null));
+                                    ? monetarySummation.getTotalAllowanceCharge().getValue() : null));
                      }
                   }
                }
@@ -336,8 +322,7 @@ public class MonetarySummationValidator {
    }
 
    private static boolean zeroEqualsNull(final Amount first, final Amount second) {
-      return first == null && second != null && second.getValue() != null
-            && second.getValue().setScale(2, RoundingMode.HALF_UP)
-                  .equals(BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP));
+      return first == null && second != null && second.getValue() != null && second.getValue()
+            .setScale(2, RoundingMode.HALF_UP).equals(BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP));
    }
 }

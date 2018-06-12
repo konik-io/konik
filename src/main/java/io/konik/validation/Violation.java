@@ -29,8 +29,7 @@ class Violation implements ConstraintViolation<Invoice> {
    private final String propertyPath;
    private final Object invalidValue;
 
-   public Violation(Invoice invoice, String message, String messageTemplate, String propertyPath,
-         Object invalidValue) {
+   public Violation(Invoice invoice, String message, String messageTemplate, String propertyPath, Object invalidValue) {
       this.invoice = invoice;
       this.message = message;
       this.messageTemplate = messageTemplate;

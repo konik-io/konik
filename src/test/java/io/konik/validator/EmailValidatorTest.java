@@ -13,12 +13,14 @@ public class EmailValidatorTest {
       boolean valid = emailValidator.isValid("Foo.Bar+1106sk@gmail.com", null);
       assertThat(valid).isTrue();
    }
+
    @Test
    public void isValidWithUpperCase() throws Exception {
       EmailValidator emailValidator = new EmailValidator();
       boolean valid = emailValidator.isValid("vb+spamprotect@gmail.com", null);
       assertThat(valid).isTrue();
    }
+
    @Test
    public void isValidWithTwoDomain() throws Exception {
       EmailValidator emailValidator = new EmailValidator();

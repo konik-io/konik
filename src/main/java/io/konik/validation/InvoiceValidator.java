@@ -114,11 +114,11 @@ public class InvoiceValidator {
          try {
             validateWithShema(invoice);
          } catch (IOException e) {
-            violations.add(new Violation(invoice, e.getLocalizedMessage(), "invoice.io.error",
-                  e.getMessage(), "error"));
+            violations
+                  .add(new Violation(invoice, e.getLocalizedMessage(), "invoice.io.error", e.getMessage(), "error"));
          } catch (SAXException e) {
-            violations.add(new Violation(invoice, e.getLocalizedMessage(), "scheme.validation.error",
-                  e.getMessage(), "error"));
+            violations.add(
+                  new Violation(invoice, e.getLocalizedMessage(), "scheme.validation.error", e.getMessage(), "error"));
          }
       }
 

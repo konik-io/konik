@@ -56,9 +56,13 @@ public class MeasureRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> {
 
    @Override
    public BigDecimal marshal(BigDecimal value) throws Exception {
-      if (value == null) { return null; }
+      if (value == null) {
+         return null;
+      }
       BigDecimal roundedValue = value.setScale(scale, roundingMode);
-      if (stripTrailingZeros) { return roundedValue.stripTrailingZeros(); }
+      if (stripTrailingZeros) {
+         return roundedValue.stripTrailingZeros();
+      }
       return roundedValue;
    }
 }

@@ -47,8 +47,8 @@ public class PaymentDiscountTerms implements DiscountOrPenaltyTerm {
 
    @XmlElement(name = "CalculationPercent")
    @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
-   private BigDecimal calculationPercent;   
-   
+   private BigDecimal calculationPercent;
+
    @XmlElement(name = "ActualDiscountAmount")
    private Amount actualDiscount;
 
@@ -69,13 +69,13 @@ public class PaymentDiscountTerms implements DiscountOrPenaltyTerm {
    }
 
    @Override
-   public PaymentDiscountTerms setReference(ZfDate reference) {      
+   public PaymentDiscountTerms setReference(ZfDate reference) {
       this.reference = reference;
       return this;
    }
 
    @Override
-   public Measure getMaturityPeriod() {      
+   public Measure getMaturityPeriod() {
       return maturityPeriod;
    }
 
@@ -86,7 +86,7 @@ public class PaymentDiscountTerms implements DiscountOrPenaltyTerm {
    }
 
    @Override
-   public Amount getBasis() { 
+   public Amount getBasis() {
       return basis;
    }
 
@@ -106,5 +106,5 @@ public class PaymentDiscountTerms implements DiscountOrPenaltyTerm {
       this.calculationPercent = calculationPercent;
       return this;
    }
-   
+
 }

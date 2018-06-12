@@ -19,10 +19,10 @@
 /**
  * The starting point of every Konik Invoice.
  */
-@XmlSchema(namespace = "urn:ferd:CrossIndustryDocument:invoice:1p0", xmlns = { @XmlNs(prefix = "rsm", namespaceURI = "urn:ferd:CrossIndustryDocument:invoice:1p0") }, elementFormDefault = XmlNsForm.QUALIFIED)
+@XmlSchema(namespace = "urn:ferd:CrossIndustryDocument:invoice:1p0", xmlns = {
+      @XmlNs(prefix = "rsm", namespaceURI = "urn:ferd:CrossIndustryDocument:invoice:1p0") }, elementFormDefault = XmlNsForm.QUALIFIED)
 package io.konik.zugferd;
 
 import javax.xml.bind.annotation.XmlNs;
 import javax.xml.bind.annotation.XmlNsForm;
 import javax.xml.bind.annotation.XmlSchema;
-

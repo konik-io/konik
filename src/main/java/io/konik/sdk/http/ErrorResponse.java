@@ -4,42 +4,42 @@ import java.util.Map;
 
 public class ErrorResponse {
 
-	private String path;
+   private String path;
 
-	private String message;
+   private String message;
 
-	private Map<String, String> errors;
+   private Map<String, String> errors;
 
-	public String getPath() {
-		return path;
-	}
+   public String getPath() {
+      return path;
+   }
 
-	public void setPath(String path) {
-		this.path = path;
-	}
+   public void setPath(String path) {
+      this.path = path;
+   }
 
-	public String getMessage() {
-		return message;
-	}
+   public String getMessage() {
+      return message;
+   }
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
+   public void setMessage(String message) {
+      this.message = message;
+   }
 
-	public Map<String, String> getErrors() {
-		return errors;
-	}
+   public Map<String, String> getErrors() {
+      return errors;
+   }
 
-	public void setErrors(Map<String, String> errors) {
-		this.errors = errors;
-	}
+   public void setErrors(Map<String, String> errors) {
+      this.errors = errors;
+   }
 
-	@Override
-	public String toString() {
-		return "ErrorResponse{" +
-				"path='" + path + '\'' +
-				", message='" + message + '\'' +
-				", errors=" + errors +
-				'}';
-	}
+   @Override
+   public String toString() {
+      return "ErrorResponse{" +
+            "path='" + path + '\'' +
+            ", message='" + message + '\'' +
+            ", errors=" + errors +
+            '}';
+   }
 }

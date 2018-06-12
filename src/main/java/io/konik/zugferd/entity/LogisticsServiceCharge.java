@@ -39,7 +39,7 @@ public class LogisticsServiceCharge implements Serializable {
 
    @XmlElement(name = "Description")
    private String description;
-   
+
    @XmlElement(name = "AppliedAmount")
    private Amount amount;
 
@@ -53,7 +53,7 @@ public class LogisticsServiceCharge implements Serializable {
     * 
     * @return the description
     */
-   @NotBlank   
+   @NotBlank
    public String getDescription() {
       return description;
    }

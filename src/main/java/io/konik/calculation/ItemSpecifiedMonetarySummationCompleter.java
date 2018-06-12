@@ -16,22 +16,23 @@ import java.util.List;
  */
 public final class ItemSpecifiedMonetarySummationCompleter implements Correction<Invoice> {
 
-	protected static Logger log = LoggerFactory.getLogger(ItemSpecifiedMonetarySummationCompleter.class);
+   protected static Logger log = LoggerFactory.getLogger(ItemSpecifiedMonetarySummationCompleter.class);
 
-	@Override
-	public Invoice correct(@NotNull final Invoice invoice) {
+   @Override
+   public Invoice correct(@NotNull final Invoice invoice) {
 
-		log.debug("Running ItemSpecifiedMonetarySummationCompleter...");
+      log.debug("Running ItemSpecifiedMonetarySummationCompleter...");
 
-		if (invoice.getTrade() != null && invoice.getTrade().getItems() != null) {
-			List<Item> items = Items.purchasableItemsOnly(invoice.getTrade().getItems());
-			for (Item item : items) {
-				if (item.getSettlement() != null) {
-					SpecifiedMonetarySummation monetarySummation = AmountCalculator.calculateSpecifiedMonetarySummation(item);
-					item.getSettlement().setMonetarySummation(monetarySummation);
-				}
-			}
-		}
-		return invoice;
-	}
+      if (invoice.getTrade() != null && invoice.getTrade().getItems() != null) {
+         List<Item> items = Items.purchasableItemsOnly(invoice.getTrade().getItems());
+         for (Item item : items) {
+            if (item.getSettlement() != null) {
+               SpecifiedMonetarySummation monetarySummation = AmountCalculator
+                     .calculateSpecifiedMonetarySummation(item);
+               item.getSettlement().setMonetarySummation(monetarySummation);
+            }
+         }
+      }
+      return invoice;
+   }
 }

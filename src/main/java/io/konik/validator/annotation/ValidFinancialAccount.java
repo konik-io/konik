@@ -39,9 +39,9 @@ import javax.validation.Payload;
 @Documented
 public @interface ValidFinancialAccount {
 
-    String message() default "{io.konik.validation.constraints.financialaccount.message}";
+   String message() default "{io.konik.validation.constraints.financialaccount.message}";
 
-    Class<?>[] groups() default { };
+   Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default { };
+   Class<? extends Payload>[] payload() default {};
 }

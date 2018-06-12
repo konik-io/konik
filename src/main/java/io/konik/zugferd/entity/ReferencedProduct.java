@@ -41,7 +41,6 @@ import java.util.List;
       "descriptions", "units" })
 public class ReferencedProduct implements Serializable {
 
-   
    @XmlElement(name = "GlobalID")
    private List<ID> globalIds;
 

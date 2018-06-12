@@ -61,21 +61,20 @@ public class TradeTax implements SpecifiedTax {
 
    @XmlElement(name = "ApplicablePercent")
    @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
-   private BigDecimal percentage;   
+   private BigDecimal percentage;
 
-   
    @Basic
    @NotNull
    @Valid
    @Override
-   public Amount getCalculated() {      
+   public Amount getCalculated() {
       return calculated;
    }
 
    @Override
    public TradeTax setCalculated(Amount calculatedAmount) {
-       this.calculated = calculatedAmount;
-       return this;
+      this.calculated = calculatedAmount;
+      return this;
    }
 
    @Basic
@@ -90,12 +89,12 @@ public class TradeTax implements SpecifiedTax {
       this.type = taxTypeCode;
       return this;
    }
-   
+
    @Override
    public String getExemptionReason() {
       return exemptionReason;
    }
-   
+
    @Override
    public TradeTax setExemptionReason(String exemptionReason) {
       this.exemptionReason = exemptionReason;
@@ -185,11 +184,9 @@ public class TradeTax implements SpecifiedTax {
    }
 
    @Override
-   public TradeTax setPercentage(BigDecimal applicablePercentage) {      
+   public TradeTax setPercentage(BigDecimal applicablePercentage) {
       this.percentage = applicablePercentage;
-      return this; 
+      return this;
    }
-
-
 
 }

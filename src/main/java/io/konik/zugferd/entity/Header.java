@@ -187,7 +187,7 @@ public class Header implements Serializable {
     */
    @Extended
    public boolean isCopy() {
-      return copy == null?false:copy.getIndicator();
+      return copy == null ? false : copy.getIndicator();
    }
 
    /**
@@ -231,7 +231,7 @@ public class Header implements Serializable {
     * @return the included note
     */
    @Basic
-   @Valid  
+   @Valid
    public List<Note> getNotes() {
       if (notes == null) {
          notes = new ArrayList<Note>();

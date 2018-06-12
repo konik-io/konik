@@ -122,9 +122,9 @@ public class Amount implements Serializable {
       this.currency = currency;
       return this;
    }
-   
+
    @Override
-   public String toString() {    
+   public String toString() {
       return getValue() + " " + getCurrency();
    }
 

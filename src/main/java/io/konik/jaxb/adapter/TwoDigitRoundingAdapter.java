@@ -70,13 +70,17 @@ public class TwoDigitRoundingAdapter extends XmlAdapter<Amount, Amount> {
 
    @Override
    public Amount marshal(Amount amount) throws Exception {
-      if (amount == null || amount.getValue() == null) { return amount; }
+      if (amount == null || amount.getValue() == null) {
+         return amount;
+      }
       return amount.setValue(round(amount));
    }
 
    private BigDecimal round(Amount amount) {
       BigDecimal rounded = amount.getValue().setScale(scale, roundingMode);
-      if (stripTrailingZeros) { return rounded.stripTrailingZeros(); }
+      if (stripTrailingZeros) {
+         return rounded.stripTrailingZeros();
+      }
       return rounded;
    }
 }

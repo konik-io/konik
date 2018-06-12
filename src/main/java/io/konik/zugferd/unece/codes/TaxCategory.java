@@ -126,7 +126,7 @@ public enum TaxCategory {
     * Code specifying that the VAT rate is levied from the invoicee for Intra-Community supplies.
     **/
    IC("Intra-Community Supply", "Code specifying that the VAT rate is levied from the invoicee for Intra-Community supplies."),
-   
+
    /**
     * Services outside scope of tax
     * 

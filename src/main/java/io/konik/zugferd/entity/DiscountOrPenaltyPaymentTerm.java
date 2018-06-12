@@ -41,7 +41,6 @@ import java.math.BigDecimal;
       "calculationPercent", "actualDiscount" })
 interface DiscountOrPenaltyTerm extends Serializable {
 
-
    /**
     * Gets the reference date of maturity.
     *
@@ -79,7 +78,7 @@ interface DiscountOrPenaltyTerm extends Serializable {
     * @return the basis amount
     */
    @Valid
-   Amount getBasis();      
+   Amount getBasis();
 
    /**
     * Sets the basis amount of the payment surcharge.

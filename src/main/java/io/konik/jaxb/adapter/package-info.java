@@ -20,4 +20,3 @@
  * JaxB Adapter to map Unmappable Konik classes to XML ZUGFeRD Model
  */
 package io.konik.jaxb.adapter;
-

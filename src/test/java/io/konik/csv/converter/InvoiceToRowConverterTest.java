@@ -9,16 +9,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class InvoiceToRowConverterTest {
 
-	@Test
-	public void shouldConvertRowToInvoiceAndConvertItBack() {
-		//given:
-		Row row = Rows.row1;
+   @Test
+   public void shouldConvertRowToInvoiceAndConvertItBack() {
+      //given:
+      Row row = Rows.row1;
 
-		//when:
-		Invoice invoice = RowToInvoiceConverter.convert(Rows.row1);
-		Row convertedRow = InvoiceToRowConverter.convert(invoice);
+      //when:
+      Invoice invoice = RowToInvoiceConverter.convert(Rows.row1);
+      Row convertedRow = InvoiceToRowConverter.convert(invoice);
 
-		//then:
-		assertThat(row).isEqualTo(convertedRow);
-	}
+      //then:
+      assertThat(row).isEqualTo(convertedRow);
+   }
 }

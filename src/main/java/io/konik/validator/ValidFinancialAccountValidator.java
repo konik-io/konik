@@ -29,7 +29,7 @@ import javax.validation.ConstraintValidatorContext;
  * The Valid Financial Account Validator will check if a Financial Account 
  * has a not empty {@link FinancialAccount#getIban()} or {@link FinancialAccount#getProprietaryId()}.
  */
-public class ValidFinancialAccountValidator implements  ConstraintValidator<ValidFinancialAccount, FinancialAccount> {
+public class ValidFinancialAccountValidator implements ConstraintValidator<ValidFinancialAccount, FinancialAccount> {
 
    /**
     * Initialize.
@@ -50,7 +50,7 @@ public class ValidFinancialAccountValidator implements  ConstraintValidator<Vali
    @Override
    public boolean isValid(FinancialAccount account, ConstraintValidatorContext context) {
       if (account != null) {
-         return isNotEmpty(account.getProprietaryId()) || isNotEmpty(account.getIban());           
+         return isNotEmpty(account.getProprietaryId()) || isNotEmpty(account.getIban());
       }
       return true;
    }

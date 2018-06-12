@@ -26,18 +26,20 @@ import java.io.UnsupportedEncodingException;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 @SuppressWarnings("javadoc")
 public class CorrectNamespacePrefixTest {
-   
+
    static String xmlInvoice;
-   
+
    @BeforeClass
    public static void createRandomInvoiceFile() throws UnsupportedEncodingException {
       Invoice invoice = new RandomInvoiceGenerator().generate(Invoice.class);
       InvoiceTransformer invoiceTransformer = new InvoiceTransformer();
-      xmlInvoice = new String(invoiceTransformer.fromModel(invoice),"UTF-8");
+      xmlInvoice = new String(invoiceTransformer.fromModel(invoice), "UTF-8");
       assertThat(xmlInvoice).isNotEmpty();
    }
+
    @Test
    public void startsWithRsm() {
       assertThat(xmlInvoice).containsOnlyOnce("<rsm:CrossIndustryDocument");
@@ -45,16 +47,18 @@ public class CorrectNamespacePrefixTest {
 
    @Test
    public void invoiceContaisnPrefix_ram() {
-      assertThat(xmlInvoice).containsOnlyOnce("xmlns:ram=\"urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12\"");
+      assertThat(xmlInvoice).containsOnlyOnce(
+            "xmlns:ram=\"urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12\"");
    }
-   
+
    @Test
    public void invoiceContaisnPrefix_rsm() {
       assertThat(xmlInvoice).containsOnlyOnce("xmlns:rsm=\"urn:ferd:CrossIndustryDocument:invoice:1p0\"");
    }
-   
+
    @Test
    public void invoiceContaisnPrefix_udt() {
-      assertThat(xmlInvoice).containsOnlyOnce("xmlns:udt=\"urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15\"");
+      assertThat(xmlInvoice)
+            .containsOnlyOnce("xmlns:udt=\"urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15\"");
    }
 }

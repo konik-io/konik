@@ -34,7 +34,9 @@ public class UniversalCommunicationAdapter extends XmlAdapter<UniversalCommunica
 
    @Override
    public UniversalCommunication marshal(String unversalCommunication) throws Exception {
-      if (isNullOrEmpty(unversalCommunication)) { return null; }
+      if (isNullOrEmpty(unversalCommunication)) {
+         return null;
+      }
 
       UniversalCommunication communication = new UniversalCommunication();
       if (emailRegEx.matcher(unversalCommunication).matches()) {
@@ -47,7 +49,9 @@ public class UniversalCommunicationAdapter extends XmlAdapter<UniversalCommunica
 
    @Override
    public String unmarshal(UniversalCommunication communication) throws Exception {
-      if (isNotEmpty(communication.getCompleteNumber())) { return communication.getCompleteNumber(); }
+      if (isNotEmpty(communication.getCompleteNumber())) {
+         return communication.getCompleteNumber();
+      }
       return communication.getMail();
    }
 }

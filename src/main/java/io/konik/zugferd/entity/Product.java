@@ -58,7 +58,7 @@ public class Product implements Serializable {
 
    @XmlElement(name = "Description")
    private String description;
-   
+
    @Valid
    @XmlElement(name = "ApplicableProductCharacteristic")
    private List<ProductCharacteristic> characteristics;

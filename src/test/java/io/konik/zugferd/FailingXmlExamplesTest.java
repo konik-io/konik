@@ -27,52 +27,53 @@ import static org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class FailingXmlExamplesTest {
 
-	private static final String SAMPLES_DIR = "/fail_samples/";
+   private static final String SAMPLES_DIR = "/fail_samples/";
 
-	private static Validator validator;
+   private static Validator validator;
 
-	@Parameter(value = 0)
-	public String xmlFileName;
+   @Parameter(value = 0)
+   public String xmlFileName;
 
-	private InvoiceTransformer transformer = new PrittyPrintInvoiceTransformer();
+   private InvoiceTransformer transformer = new PrittyPrintInvoiceTransformer();
 
-	@Parameters(name = "{0}")
-	public static Iterable<String[]> getAllIncorrectXmlFiles() {
-		List<String[]> files = new LinkedList<String[]>();
-		files.add(new String[] { "RE-20151029_4.Bestellung.xml" });
-		files.add(new String[] { "RE-20151029_4.xml" });
-		return files;
-	}
+   @Parameters(name = "{0}")
+   public static Iterable<String[]> getAllIncorrectXmlFiles() {
+      List<String[]> files = new LinkedList<String[]>();
+      files.add(new String[] { "RE-20151029_4.Bestellung.xml" });
+      files.add(new String[] { "RE-20151029_4.xml" });
+      return files;
+   }
 
-	@BeforeClass
-	public static void setup() {
-		XMLUnit.setIgnoreWhitespace(true);
-		XMLUnit.setIgnoreAttributeOrder(false);
-		XMLUnit.setIgnoreComments(true);
+   @BeforeClass
+   public static void setup() {
+      XMLUnit.setIgnoreWhitespace(true);
+      XMLUnit.setIgnoreAttributeOrder(false);
+      XMLUnit.setIgnoreComments(true);
 
-		//validator
-		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-		NullableNotBlankValidator notBlankValidator = factory.getConstraintValidatorFactory().getInstance(NullableNotBlankValidator.class);
-		assertThat(notBlankValidator).isNotNull();
-		validator = factory.getValidator();
-	}
+      //validator
+      ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+      NullableNotBlankValidator notBlankValidator = factory.getConstraintValidatorFactory()
+            .getInstance(NullableNotBlankValidator.class);
+      assertThat(notBlankValidator).isNotNull();
+      validator = factory.getValidator();
+   }
 
-	@Test
-	public void validateIncorrectXmlFiles() {
-		//given:
-		InputStream xml = getClass().getResourceAsStream(SAMPLES_DIR + xmlFileName);
+   @Test
+   public void validateIncorrectXmlFiles() {
+      //given:
+      InputStream xml = getClass().getResourceAsStream(SAMPLES_DIR + xmlFileName);
 
-		//when:
-		Invoice invoice = transformer.toModel(xml);
-		ConformanceLevel conformanceLevel = invoice.getContext().getGuideline().getConformanceLevel();
-		Class<?>[] validationGroups = resolveIntoValidationGroups(conformanceLevel);
-		Set<ConstraintViolation<Invoice>> validationResult = validator.validate(invoice,validationGroups);
+      //when:
+      Invoice invoice = transformer.toModel(xml);
+      ConformanceLevel conformanceLevel = invoice.getContext().getGuideline().getConformanceLevel();
+      Class<?>[] validationGroups = resolveIntoValidationGroups(conformanceLevel);
+      Set<ConstraintViolation<Invoice>> validationResult = validator.validate(invoice, validationGroups);
 
-		//then:
-		for (ConstraintViolation<Invoice> violation : validationResult) {
-			System.out.println(violation.toString());
-		}
+      //then:
+      for (ConstraintViolation<Invoice> violation : validationResult) {
+         System.out.println(violation.toString());
+      }
 
-		assertThat(validationResult).isNotEmpty();
-	}
+      assertThat(validationResult).isNotEmpty();
+   }
 }

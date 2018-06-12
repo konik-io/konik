@@ -62,9 +62,9 @@ public class InvoiceTransformerBenchmark extends DefaultBenchmark {
    private final FileAppender appender = new PDFBoxInvoiceAppender();
    Invoice invoiceModel;
    File tempDir;
-   
+
    PdfHandler pdfHandler = new PdfHandler();
-   
+
    @Setup
    public void setup() throws IOException {
       InputStream is = getClass().getResourceAsStream(InvoiceLoaderUtils.ZF_MUSTERRECHNUNG_EINFACH_XML);
@@ -74,20 +74,22 @@ public class InvoiceTransformerBenchmark extends DefaultBenchmark {
       tempDir = Files.createTempDir();
    }
 
-//   @Benchmark
+   //   @Benchmark
    public void xmlToModel() throws Exception {
       transformer.toModel(new ByteArrayInputStream(invoice));
    }
-   
-//   @Benchmark
+
+   //   @Benchmark
    public void fromModelAsync() throws Exception {
-      transformer.fromModelAsync(invoiceModel,new FileOutputStream(new File(tempDir,System.currentTimeMillis()+".xml")));
+      transformer.fromModelAsync(invoiceModel,
+            new FileOutputStream(new File(tempDir, System.currentTimeMillis() + ".xml")));
    }
-   
-//   @Benchmark
+
+   //   @Benchmark
    @Threads(4)
    public void fromModelAsyncThreads() throws Exception {
-      transformer.fromModelAsync(invoiceModel,new FileOutputStream(new File(tempDir,System.currentTimeMillis()+".xml")));
+      transformer.fromModelAsync(invoiceModel,
+            new FileOutputStream(new File(tempDir, System.currentTimeMillis() + ".xml")));
    }
 
    @Benchmark
@@ -96,19 +98,18 @@ public class InvoiceTransformerBenchmark extends DefaultBenchmark {
       final PipedInputStream in = new PipedInputStream();
       final PipedOutputStream out = new PipedOutputStream(in);
       InputStream pdfIn = getClass().getResourceAsStream("/acme_invoice-42.pdf");
-      
-      transformer.fromModelAsync(invoiceModel,out);
+
+      transformer.fromModelAsync(invoiceModel, out);
       appender.append(new DefaultAppendParameter(pdfIn, in, new ByteArrayOutputStream(), "1.0", "TEST"));
    }
-   
+
    @Benchmark
    @Threads(8)
    public void fromModelToPDFAllinOne_8Threads() throws Exception {
       InputStream pdfIn = getClass().getResourceAsStream("/acme_invoice-42.pdf");
       pdfHandler.appendInvoice(invoiceModel, pdfIn, new ByteArrayOutputStream());
    }
-   
-   
+
    @Test
    public void runInvoiceTransformerBenchmark() throws RunnerException {
       runDefault();

@@ -46,8 +46,8 @@ public enum Configuration {
       loadPropertiesFromFile();
       overwriteWithSystemProperties();
    }
-   
-   void reload(){
+
+   void reload() {
       loadPropertiesFromFile();
       overwriteWithSystemProperties();
    }

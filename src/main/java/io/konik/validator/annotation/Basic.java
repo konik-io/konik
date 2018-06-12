@@ -22,7 +22,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 
-
 /**
  * 
  * Every invoice should fulfill the minimum requirement and contain all mandatory basic fields

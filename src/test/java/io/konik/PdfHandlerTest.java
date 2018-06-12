@@ -34,18 +34,17 @@ public class PdfHandlerTest {
 
       assertThat(invoice).isNotNull();
       assertThat(invoice.getHeader().getInvoiceNumber()).isEqualTo("471102");
-      
+
    }
-   
-   
+
    @Test
    public void extractInvoice_lowLevel() throws Exception {
       InputStream is = getClass().getResourceAsStream("/Musterrechnung_Einfach_Basic.pdf");
 
       InputStream stream = fileExtractor.extractToStream(is);
-      
+
       assertThat(stream).isNotNull();
-      String invoice = new String(IOUtils.toByteArray(stream),"UTF-8");
+      String invoice = new String(IOUtils.toByteArray(stream), "UTF-8");
       assertThat(invoice).contains("471102");
       stream.close();
    }

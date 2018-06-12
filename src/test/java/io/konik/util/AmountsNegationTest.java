@@ -18,26 +18,26 @@ import static org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class AmountsNegationTest {
 
-	@Parameters(name = "Case {index}: negation of {0} USD is {1} USD")
-	public static Collection<Object[]> data() {
-		return Arrays.asList(new Object[][]{
-				{ BigDecimal.ZERO, BigDecimal.ZERO },
-				{ valueOf(10), valueOf(-10) },
-				{ valueOf(1), valueOf(-1) },
-				{ valueOf(-0.002), valueOf(0.002) },
-				{ valueOf(-421.233), valueOf(421.233) }
-		});
-	}
+   @Parameters(name = "Case {index}: negation of {0} USD is {1} USD")
+   public static Collection<Object[]> data() {
+      return Arrays.asList(new Object[][] {
+            { BigDecimal.ZERO, BigDecimal.ZERO },
+            { valueOf(10), valueOf(-10) },
+            { valueOf(1), valueOf(-1) },
+            { valueOf(-0.002), valueOf(0.002) },
+            { valueOf(-421.233), valueOf(421.233) }
+      });
+   }
 
-	@Parameter
-	public BigDecimal input;
+   @Parameter
+   public BigDecimal input;
 
-	@Parameter(1)
-	public BigDecimal expectedResult;
+   @Parameter(1)
+   public BigDecimal expectedResult;
 
-	@Test
-	public void test() {
-		assertThat(Amounts.negate(new Amount(input, CurrencyCode.USD)))
-				.isEqualToComparingFieldByField(new Amount(expectedResult, CurrencyCode.USD));
-	}
+   @Test
+   public void test() {
+      assertThat(Amounts.negate(new Amount(input, CurrencyCode.USD)))
+            .isEqualToComparingFieldByField(new Amount(expectedResult, CurrencyCode.USD));
+   }
 }

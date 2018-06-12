@@ -44,15 +44,15 @@ public class UniversalCommunication {
    public String getMail() {
       return email;
    }
-  
+
    public void setMail(String uriid) {
       this.email = uriid;
    }
-  
+
    public String getCompleteNumber() {
       return number;
    }
-   
+
    public void setCompleteNumber(String uri) {
       this.number = uri;
    }

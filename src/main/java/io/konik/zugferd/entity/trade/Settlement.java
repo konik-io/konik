@@ -328,7 +328,9 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * 
     * @return the specified trade settlement monetary summation
     */
-   @Basic@Valid@NotNull   
+   @Basic
+   @Valid
+   @NotNull
    @Override
    public MonetarySummation getMonetarySummation() {
       return monetarySummation;
@@ -357,7 +359,6 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
       return costCenter;
    }
 
-   
    /**
     * Sets  the booking reference or cost center account.
     *

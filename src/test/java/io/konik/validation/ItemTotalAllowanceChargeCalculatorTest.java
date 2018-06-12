@@ -25,60 +25,61 @@ import static org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class ItemTotalAllowanceChargeCalculatorTest {
 
-	private static final CurrencyCode CURRENCY_CODE = CurrencyCode.USD;
-	private static final Random RANDOM = new Random();
+   private static final CurrencyCode CURRENCY_CODE = CurrencyCode.USD;
+   private static final Random RANDOM = new Random();
 
-	@Parameters(name = "Calculating expected total allowance charge = {0} USD")
-	public static Collection<Object[]> data() {
-		return Arrays.asList(new Object[][]{
-				{ BigDecimal.ZERO, new AllowanceCharge[] {} },
-				{ valueOf(1), new AllowanceCharge[] { charge(valueOf(1)) } },
-				{ valueOf(5.23), new AllowanceCharge[] { charge(valueOf(0.23)), charge(valueOf(2.00)), charge(valueOf(1.5)), charge(valueOf(1.5)) } },
-				{ valueOf(2), new AllowanceCharge[] { charge(valueOf(5.01)), charge(valueOf(-3.01)) } }
-		});
-	}
+   @Parameters(name = "Calculating expected total allowance charge = {0} USD")
+   public static Collection<Object[]> data() {
+      return Arrays.asList(new Object[][] {
+            { BigDecimal.ZERO, new AllowanceCharge[] {} },
+            { valueOf(1), new AllowanceCharge[] { charge(valueOf(1)) } },
+            { valueOf(5.23), new AllowanceCharge[] { charge(valueOf(0.23)), charge(valueOf(2.00)), charge(valueOf(1.5)),
+                  charge(valueOf(1.5)) } },
+            { valueOf(2), new AllowanceCharge[] { charge(valueOf(5.01)), charge(valueOf(-3.01)) } }
+      });
+   }
 
-	@Parameter
-	public BigDecimal expectedTotalAllowanceCharge;
+   @Parameter
+   public BigDecimal expectedTotalAllowanceCharge;
 
-	@Parameter(1)
-	public AllowanceCharge[] allowanceCharges;
+   @Parameter(1)
+   public AllowanceCharge[] allowanceCharges;
 
-	@Test
-	public void test() {
-		//given:
-		Item item = createItem();
-		ItemTotalAllowanceChargeCalculator calculator = new ItemTotalAllowanceChargeCalculator(CURRENCY_CODE);
+   @Test
+   public void test() {
+      //given:
+      Item item = createItem();
+      ItemTotalAllowanceChargeCalculator calculator = new ItemTotalAllowanceChargeCalculator(CURRENCY_CODE);
 
-		//when:
-		Amount totalAllowanceCharge = calculator.apply(item);
+      //when:
+      Amount totalAllowanceCharge = calculator.apply(item);
 
-		//then:
-		assertThat(totalAllowanceCharge.getValue())
-				.isEqualByComparingTo(expectedTotalAllowanceCharge);
-	}
+      //then:
+      assertThat(totalAllowanceCharge.getValue())
+            .isEqualByComparingTo(expectedTotalAllowanceCharge);
+   }
 
-	private Item createItem() {
-		Item item = new Item();
-		GrossPrice grossPrice = new GrossPrice(Amounts.zero(CURRENCY_CODE));
-		grossPrice.addAllowanceCharge(allowanceCharges);
+   private Item createItem() {
+      Item item = new Item();
+      GrossPrice grossPrice = new GrossPrice(Amounts.zero(CURRENCY_CODE));
+      grossPrice.addAllowanceCharge(allowanceCharges);
 
-		SpecifiedAgreement agreement = new SpecifiedAgreement();
-		agreement.setGrossPrice(grossPrice);
+      SpecifiedAgreement agreement = new SpecifiedAgreement();
+      agreement.setGrossPrice(grossPrice);
 
-		item.setAgreement(agreement);
-		return item;
-	}
+      item.setAgreement(agreement);
+      return item;
+   }
 
-	private static AllowanceCharge charge(final BigDecimal value) {
-		AllowanceCharge charge = new AllowanceCharge();
-		charge.setActual(new Amount(value.abs(), CURRENCY_CODE));
+   private static AllowanceCharge charge(final BigDecimal value) {
+      AllowanceCharge charge = new AllowanceCharge();
+      charge.setActual(new Amount(value.abs(), CURRENCY_CODE));
 
-		if (value.signum() < 0) {
-			charge.setDiscount();
-		} else {
-			charge.setSurcharge();
-		}
-		return charge;
-	}
+      if (value.signum() < 0) {
+         charge.setDiscount();
+      } else {
+         charge.setSurcharge();
+      }
+      return charge;
+   }
 }

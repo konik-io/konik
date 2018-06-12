@@ -34,7 +34,7 @@ import java.util.List;
  */
 @XmlType(name = "ProductClassificationType", propOrder = { "classCode", "classNames" })
 public class ProductClassification implements Serializable {
-   
+
    @XmlElement(name = "ClassCode")
    private Code classCode;
 

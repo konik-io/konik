@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @Comfort
 public class AppliedTax implements Tax {
-   
+
    @XmlElement(name = "TypeCode")
    private TaxCode type;
 
@@ -43,7 +43,7 @@ public class AppliedTax implements Tax {
 
    @XmlElement(name = "ApplicablePercent")
    @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
-   private BigDecimal percentage;   
+   private BigDecimal percentage;
 
    /**
     * Gets the UNCL 5153 tax type code.
@@ -89,7 +89,7 @@ public class AppliedTax implements Tax {
    @Override
    public AppliedTax setCategory(TaxCategory taxCategory) {
       this.category = taxCategory;
-      return this; 
+      return this;
    }
 
    /**

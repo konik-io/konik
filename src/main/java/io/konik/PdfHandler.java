@@ -46,7 +46,7 @@ import static java.util.logging.Level.WARNING;
 public class PdfHandler {
 
    private static final Logger LOG = Logger.getLogger(PdfHandler.class.getName());
-   
+
    private final FileAppender fileAppender;
    private final FileExtractor fileExtractor;
    private final InvoiceTransformer transformer;
@@ -72,7 +72,7 @@ public class PdfHandler {
     */
    public PdfHandler() {
       Iterator iterator = ServiceLoader.load(FileAppender.class).iterator();
-      List<FileAppender> appenders = Lists.<FileAppender>newArrayList(iterator);
+      List<FileAppender> appenders = Lists.<FileAppender> newArrayList(iterator);
 
       if (appenders.isEmpty()) {
          throw new IllegalStateException("FileAppender implementation not found in the classpath!");
@@ -102,7 +102,8 @@ public class PdfHandler {
       }
    }
 
-   private void append(final Invoice invoice, final InputStream inputPdf, final OutputStream resultingPdf) throws IOException {
+   private void append(final Invoice invoice, final InputStream inputPdf, final OutputStream resultingPdf)
+         throws IOException {
       PipedOutputStream pipedOutputStream = new PipedOutputStream();
       PipedInputStream pipedInputStream = new PipedInputStream(pipedOutputStream, 65536);
       try {
@@ -116,7 +117,7 @@ public class PdfHandler {
          pipedInputStream.close();
       }
    }
-   
+
    private void appendSync(final Invoice invoice, final InputStream inputPdf, final OutputStream resultingPdf) {
       String version = invoice.getContext().getGuideline().getVersion().versionAlt();
       String confomanceLevel = invoice.getContext().getGuideline().getConformanceLevel().name();
@@ -149,7 +150,7 @@ public class PdfHandler {
       Invoice invoiceModel = transformer.toModel(invoiceInputStream);
       closeQuietly(invoiceInputStream);
       return invoiceModel;
-      
+
    }
 
    private static void closeQuietly(InputStream stream) {
@@ -157,7 +158,7 @@ public class PdfHandler {
          if (stream != null) {
             stream.close();
          }
-      }catch(IOException e) {
+      } catch (IOException e) {
          LOG.log(WARNING, "Could not close InputStream. This can be a memory leak as the PDF might still be open.", e);
       }
    }

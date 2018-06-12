@@ -11,7 +11,6 @@ public class ProfileTest {
    public void setUp() throws Exception {
    }
 
-   
    @Test
    public void profile() {
       String fullName = new Profile(ConformanceLevel.BASIC).fullName();

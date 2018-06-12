@@ -53,7 +53,9 @@ public class NotBlankValidator implements ConstraintValidator<NotBlank, CharSequ
     */
    @Override
    public boolean isValid(CharSequence charSequence, ConstraintValidatorContext constraintValidatorContext) {
-      if (charSequence == null) { return true; }
+      if (charSequence == null) {
+         return true;
+      }
       return charSequence.toString().trim().length() > 0;
    }
 }

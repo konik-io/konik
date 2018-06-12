@@ -63,7 +63,7 @@ public class Consignment implements Serializable {
     * @param additionalShippingMethod the additional shipping method
     * @return the consignment
     */
-   public Consignment addShippingMethod(LogisticsTransportMovement ...additionalShippingMethod) {
+   public Consignment addShippingMethod(LogisticsTransportMovement... additionalShippingMethod) {
       addAll(getShippingMethods(), additionalShippingMethod);
       return this;
    }

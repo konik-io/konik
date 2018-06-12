@@ -25,18 +25,18 @@ import io.konik.util.Strings;
 public enum ProfileVersion {
 
    /** The release candidate. */
-   RC("rc","rc"),
+   RC("rc", "rc"),
 
    /** The release candidate extended. */
-   RCE("rce","rce"),
+   RCE("rce", "rce"),
 
    /** The version 1.0 */
-   V1P0("1p0","1.0");
+   V1P0("1p0", "1.0");
 
    private static final String DELIMITER = ":";
    private final String version;
    private final String versionAlt;
-   
+
    private ProfileVersion(String version, String versionAlt) {
       this.version = version;
       this.versionAlt = versionAlt;
@@ -50,7 +50,7 @@ public enum ProfileVersion {
    public String version() {
       return version;
    }
-   
+
    /**
     * alternative representation of the version with the .(dot).
     *
@@ -78,7 +78,9 @@ public enum ProfileVersion {
    public static ProfileVersion parse(String version) {
       for (ProfileVersion profileVersion : ProfileVersion.values()) {
          if (profileVersion.versionAlt().equals(version) ||
-               profileVersion.version().equals(version)) { return profileVersion; }
+               profileVersion.version().equals(version)) {
+            return profileVersion;
+         }
       }
       throw new EnumConstantNotPresentException(ProfileVersion.class, version);
    }
@@ -90,9 +92,11 @@ public enum ProfileVersion {
     * @return the version of provided in the full name or empty string
     */
    public static ProfileVersion extractVersion(String fullName) {
-      if (Strings.isNullOrEmpty(fullName)) { return null; }
+      if (Strings.isNullOrEmpty(fullName)) {
+         return null;
+      }
       String[] tokens = fullName.split(DELIMITER);
-      int versionTokenPosition = tokens.length-2;
+      int versionTokenPosition = tokens.length - 2;
       String version = tokens[versionTokenPosition];
       return parse(version);
    }

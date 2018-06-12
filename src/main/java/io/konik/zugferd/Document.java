@@ -23,10 +23,9 @@ import io.konik.zugferd.profile.ConformanceLevel;
 /**
  * = The Root of the ZUGFeRD Document Model.
  */
-public class Document extends Invoice{
+public class Document extends Invoice {
 
-
-    public Document(ConformanceLevel profile) {
-        super(profile);
-    }
+   public Document(ConformanceLevel profile) {
+      super(profile);
+   }
 }

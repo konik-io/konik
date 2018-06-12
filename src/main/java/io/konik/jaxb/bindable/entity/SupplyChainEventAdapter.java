@@ -29,7 +29,9 @@ public class SupplyChainEventAdapter extends XmlAdapter<SupplyChainEvent, ZfDate
 
    @Override
    public SupplyChainEvent marshal(ZfDate date) throws Exception {
-      if (date == null) { return null; }
+      if (date == null) {
+         return null;
+      }
       SupplyChainEvent event = new SupplyChainEvent();
       event.occurrence = date;
       return event;
@@ -37,7 +39,9 @@ public class SupplyChainEventAdapter extends XmlAdapter<SupplyChainEvent, ZfDate
 
    @Override
    public ZfDate unmarshal(SupplyChainEvent event) throws Exception {
-      if (event == null) { return null; }
+      if (event == null) {
+         return null;
+      }
       return event.occurrence;
    }
 }

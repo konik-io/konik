@@ -33,7 +33,8 @@ import java.util.List;
 /**
  * = The trade settlement terms of payment.
  */
-@XmlType(name = "TradePaymentTermsType", propOrder = { "descriptions", "due", "partialPayments", "penalty", "discount" })
+@XmlType(name = "TradePaymentTermsType", propOrder = { "descriptions", "due", "partialPayments", "penalty",
+      "discount" })
 public class PaymentTerm implements Serializable {
 
    @XmlElement(name = "Description")

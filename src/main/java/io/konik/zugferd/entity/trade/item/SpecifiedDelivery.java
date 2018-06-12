@@ -136,7 +136,7 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
    public Quantity getPackageQuantity() {
       return packageQuantity;
    }
-   
+
    /**
     * Sets the package quantity.
     *
@@ -147,14 +147,14 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
       this.packageQuantity = packageQuantity;
       return this;
    }
-   
+
    @Extended
    @Valid
    @Override
    public TradeParty getShipTo() {
       return super.getShipTo();
    }
-   
+
    @Extended
    @Valid
    @Override
@@ -167,7 +167,7 @@ public class SpecifiedDelivery extends CommonDelivery<ReferencedDocumentItem> {
    public ZfDate getActualDelivery() {
       return super.getActualDelivery();
    }
-   
+
    @Extended
    @Valid
    @Override

@@ -14,29 +14,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.runners.Parameterized.Parameter;
 import static org.junit.runners.Parameterized.Parameters;
 
-
 @RunWith(Parameterized.class)
 public class AmountsZeroFunctionTest {
 
-	@Parameters(name = "{index}: currency = {0}")
-	public static Collection<Object[]> data() {
-		return Arrays.asList(new Object[][]{
-				{ CurrencyCode.USD },
-				{ CurrencyCode.EUR },
-				{ CurrencyCode.PLN },
-				{ CurrencyCode.CHF },
-				{ CurrencyCode.GBP },
-				{ CurrencyCode.MXV },
-				{ CurrencyCode.CHW }
-		});
-	}
+   @Parameters(name = "{index}: currency = {0}")
+   public static Collection<Object[]> data() {
+      return Arrays.asList(new Object[][] {
+            { CurrencyCode.USD },
+            { CurrencyCode.EUR },
+            { CurrencyCode.PLN },
+            { CurrencyCode.CHF },
+            { CurrencyCode.GBP },
+            { CurrencyCode.MXV },
+            { CurrencyCode.CHW }
+      });
+   }
 
-	@Parameter
-	public CurrencyCode currencyCode;
+   @Parameter
+   public CurrencyCode currencyCode;
 
-	@Test
-	public void test() {
-		assertThat(Amounts.zero(currencyCode))
-				.isEqualToComparingFieldByField(new Amount(BigDecimal.ZERO, currencyCode));
-	}
+   @Test
+   public void test() {
+      assertThat(Amounts.zero(currencyCode))
+            .isEqualToComparingFieldByField(new Amount(BigDecimal.ZERO, currencyCode));
+   }
 }

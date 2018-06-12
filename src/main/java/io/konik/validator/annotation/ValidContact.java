@@ -38,7 +38,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = { ValidContactValidator.class })
 @Documented
 public @interface ValidContact {
-   
+
    /**
     * Message.
     *

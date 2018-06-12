@@ -75,7 +75,7 @@ public class ReferencedDocument implements Serializable {
     */
    @Comfort
    public Date getIssued() {
-      return issued == null?null:new Date(issued.getTime());
+      return issued == null ? null : new Date(issued.getTime());
    }
 
    /**

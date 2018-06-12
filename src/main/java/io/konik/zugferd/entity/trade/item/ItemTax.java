@@ -50,9 +50,8 @@ public class ItemTax implements SpecifiedTax {
 
    @XmlElement(name = "ApplicablePercent")
    @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
-   private BigDecimal percentage;   
+   private BigDecimal percentage;
 
-   
    @Override
    @Valid
    @Extended
@@ -65,7 +64,7 @@ public class ItemTax implements SpecifiedTax {
       this.calculated = calculatedAmount;
       return this;
    }
-   
+
    @Comfort
    @Override
    public TaxCode getType() {
@@ -106,10 +105,10 @@ public class ItemTax implements SpecifiedTax {
    public BigDecimal getPercentage() {
       return this.percentage;
    }
-   
+
    @Override
    public SpecifiedTax setPercentage(BigDecimal applicablePercentage) {
       this.percentage = applicablePercentage;
-       return this;
+      return this;
    }
 }

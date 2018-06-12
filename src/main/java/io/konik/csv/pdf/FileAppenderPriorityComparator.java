@@ -1,10 +1,12 @@
 package io.konik.csv.pdf;
 
-import com.google.common.base.Function;
-import io.konik.harness.FileAppender;
+import java.util.Comparator;
 
 import javax.annotation.Nullable;
-import java.util.Comparator;
+
+import com.google.common.base.Function;
+
+import io.konik.harness.FileAppender;
 
 /**
  * {@link FileAppender} {@link Comparator} that uses {@code FileAppender.getPriority()} method

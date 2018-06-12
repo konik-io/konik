@@ -26,8 +26,6 @@
 package io.konik.zugferd.entity.trade;
 
 import static javax.xml.bind.annotation.XmlNsForm.QUALIFIED;
-import io.konik.jaxb.adapter.TwoDigitRoundingAdapter;
-import io.konik.zugferd.unqualified.Amount;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -35,3 +33,6 @@ import javax.xml.bind.annotation.XmlNs;
 import javax.xml.bind.annotation.XmlSchema;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapters;
+
+import io.konik.jaxb.adapter.TwoDigitRoundingAdapter;
+import io.konik.zugferd.unqualified.Amount;

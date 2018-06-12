@@ -1,24 +1,5 @@
 package io.konik.csv.converter;
 
-import com.google.common.base.Function;
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.csv.model.Row;
-import io.konik.zugferd.Invoice;
-import io.konik.zugferd.entity.*;
-import io.konik.zugferd.entity.trade.*;
-import io.konik.zugferd.entity.trade.item.*;
-import io.konik.zugferd.profile.ConformanceLevel;
-import io.konik.zugferd.unece.codes.DocumentCode;
-import io.konik.zugferd.unece.codes.TaxCategory;
-import io.konik.zugferd.unece.codes.TaxCode;
-import io.konik.zugferd.unece.codes.UnitOfMeasurement;
-import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.Quantity;
-import io.konik.zugferd.unqualified.ZfDateDay;
-
-import javax.annotation.Nullable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
@@ -27,6 +8,49 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.annotation.Nullable;
+
+import com.google.common.base.Function;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.csv.model.Row;
+import io.konik.zugferd.Invoice;
+import io.konik.zugferd.entity.Address;
+import io.konik.zugferd.entity.Contact;
+import io.konik.zugferd.entity.CreditorFinancialAccount;
+import io.konik.zugferd.entity.FinancialInstitution;
+import io.konik.zugferd.entity.GrossPrice;
+import io.konik.zugferd.entity.Header;
+import io.konik.zugferd.entity.Note;
+import io.konik.zugferd.entity.PaymentMeans;
+import io.konik.zugferd.entity.PositionDocument;
+import io.konik.zugferd.entity.Price;
+import io.konik.zugferd.entity.Product;
+import io.konik.zugferd.entity.TaxRegistration;
+import io.konik.zugferd.entity.TradeParty;
+import io.konik.zugferd.entity.trade.Agreement;
+import io.konik.zugferd.entity.trade.Delivery;
+import io.konik.zugferd.entity.trade.MonetarySummation;
+import io.konik.zugferd.entity.trade.Settlement;
+import io.konik.zugferd.entity.trade.Trade;
+import io.konik.zugferd.entity.trade.TradeTax;
+import io.konik.zugferd.entity.trade.item.Item;
+import io.konik.zugferd.entity.trade.item.ItemTax;
+import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
+import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
+import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
+import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
+import io.konik.zugferd.profile.ConformanceLevel;
+import io.konik.zugferd.unece.codes.DocumentCode;
+import io.konik.zugferd.unece.codes.TaxCategory;
+import io.konik.zugferd.unece.codes.TaxCode;
+import io.konik.zugferd.unece.codes.UnitOfMeasurement;
+import io.konik.zugferd.unqualified.Amount;
+import io.konik.zugferd.unqualified.Quantity;
+import io.konik.zugferd.unqualified.ZfDateDay;
 
 /**
  * Converter from {@link Row} to {@link Invoice}
@@ -89,9 +113,7 @@ public class RowToInvoiceConverter {
          TradeParty buyer = mapTradeParty(row.getRecipient());
          TradeParty seller = mapTradeParty(row.getIssuer());
 
-         Agreement agreement = new Agreement()
-               .setBuyer(buyer)
-               .setSeller(seller);
+         Agreement agreement = new Agreement().setBuyer(buyer).setSeller(seller);
 
          Delivery delivery = new Delivery(header.getIssued());
 
@@ -107,10 +129,7 @@ public class RowToInvoiceConverter {
       }
 
       private Trade createTrade(Row row, Agreement agreement, Delivery delivery, Settlement settlement) {
-         Trade trade = new Trade()
-               .setAgreement(agreement)
-               .setDelivery(delivery)
-               .setSettlement(settlement);
+         Trade trade = new Trade().setAgreement(agreement).setDelivery(delivery).setSettlement(settlement);
 
          for (Item item : transformToItems(row.getItems())) {
             trade.addItem(item);
@@ -120,19 +139,14 @@ public class RowToInvoiceConverter {
 
       private Settlement mapSettlement(Row row) {
          Row.BankInformation bankInformation = row.getIssuer().getBankInfo();
-         PaymentMeans paymentMeans = new PaymentMeans()
-               .addInformation(row.getComments())
-               .setPayeeAccount(new CreditorFinancialAccount(bankInformation.getIban()))
-               .setPayeeInstitution(
+         PaymentMeans paymentMeans = new PaymentMeans().addInformation(row.getComments())
+               .setPayeeAccount(new CreditorFinancialAccount(bankInformation.getIban())).setPayeeInstitution(
                      new FinancialInstitution(bankInformation.getBic()).setName(bankInformation.getBankName()));
 
          computeCalculatedTax(row);
 
-         Settlement settlement = new Settlement()
-               .setCurrency(currencyCode)
-               .addPaymentMeans(paymentMeans)
-               .setPaymentReference(row.getHeader().getReference())
-               .setMonetarySummation(calculateMonetarySummation());
+         Settlement settlement = new Settlement().setCurrency(currencyCode).addPaymentMeans(paymentMeans)
+               .setPaymentReference(row.getHeader().getReference()).setMonetarySummation(calculateMonetarySummation());
 
          addTradeTaxesFromCalculatedTax(settlement);
          return settlement;
@@ -169,11 +183,8 @@ public class RowToInvoiceConverter {
             BigDecimal lineTotal = entry.getValue().lineTotal;
             BigDecimal taxAmount = entry.getValue().taxAmount;
 
-            TradeTax tradeTax = new TradeTax()
-                  .setType(TaxCode.VAT)
-                  .setPercentage(entry.getKey())
-                  .setCategory(TaxCategory.S)
-                  .setBasis(new Amount(lineTotal, currencyCode))
+            TradeTax tradeTax = new TradeTax().setType(TaxCode.VAT).setPercentage(entry.getKey())
+                  .setCategory(TaxCategory.S).setBasis(new Amount(lineTotal, currencyCode))
                   .setCalculated(new Amount(taxAmount, currencyCode));
             tradeTax.setLineTotal(new Amount(lineTotal, currencyCode));
 
@@ -190,8 +201,8 @@ public class RowToInvoiceConverter {
 
                if (unitPrice != null && percent != null && quantity != null) {
                   BigDecimal lineTotal = unitPrice.multiply(quantity);
-                  BigDecimal taxAmount = lineTotal.multiply(
-                        percent.divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP));
+                  BigDecimal taxAmount = lineTotal
+                        .multiply(percent.divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP));
 
                   TaxAccumulator taxAccumulator = new TaxAccumulator(taxAmount, lineTotal);
                   if (calculatedTax.containsKey(percent)) {
@@ -216,8 +227,7 @@ public class RowToInvoiceConverter {
                header.setContractualDueDate(new ZfDateDay(rowHeader.getDueDate()));
             }
 
-            header.setCode(getCode(rowHeader.getType()))
-                  .setInvoiceNumber(rowHeader.getInvoiceNumber())
+            header.setCode(getCode(rowHeader.getType())).setInvoiceNumber(rowHeader.getInvoiceNumber())
                   .setName(rowHeader.getType());
 
             if (!Strings.isNullOrEmpty(rowHeader.getNote())) {
@@ -236,17 +246,14 @@ public class RowToInvoiceConverter {
          TradeParty recipient = new TradeParty();
 
          if (tradeParty != null) {
-            recipient.setName(tradeParty.getName())
-                  .setId(customerNumber)
-                  .setContact(mapContact(tradeParty))
+            recipient.setName(tradeParty.getName()).setId(customerNumber).setContact(mapContact(tradeParty))
                   .setAddress(mapAddress(tradeParty));
 
             if (tradeParty.getTaxes() != null) {
                List<TaxRegistration> taxRegistrations = mapTaxRegistrations(tradeParty.getTaxes());
                TaxRegistration[] array = new TaxRegistration[tradeParty.getTaxes().size()];
 
-               recipient.addTaxRegistrations(
-                     taxRegistrations.toArray(array));
+               recipient.addTaxRegistrations(taxRegistrations.toArray(array));
             }
          }
 
@@ -351,8 +358,7 @@ public class RowToInvoiceConverter {
             }
 
             private Product mapProduct(String assignedId, Row.Item rowItem) {
-               return new Product().setName(rowItem.getName())
-                     .setBuyerAssignedId(assignedId)
+               return new Product().setName(rowItem.getName()).setBuyerAssignedId(assignedId)
                      .setSellerAssignedId(assignedId);
             }
          });
@@ -368,9 +374,7 @@ public class RowToInvoiceConverter {
          }
 
          public TaxAccumulator accumulate(TaxAccumulator taxAccumulator) {
-            return new TaxAccumulator(
-                  taxAccumulator.taxAmount.add(taxAmount),
-                  taxAccumulator.lineTotal.add(lineTotal));
+            return new TaxAccumulator(taxAccumulator.taxAmount.add(taxAmount), taxAccumulator.lineTotal.add(lineTotal));
          }
       }
    }

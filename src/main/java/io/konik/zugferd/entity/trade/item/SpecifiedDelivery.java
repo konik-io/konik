@@ -17,17 +17,17 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonDelivery;
 import io.konik.zugferd.entity.TradeParty;
 import io.konik.zugferd.unqualified.Quantity;
 import io.konik.zugferd.unqualified.ZfDate;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 
 /**
  * = The Trade Delivery

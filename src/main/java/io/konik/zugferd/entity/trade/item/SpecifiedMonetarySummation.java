@@ -17,15 +17,15 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
-import io.konik.validator.annotation.Comfort;
-import io.konik.validator.annotation.Extended;
-import io.konik.zugferd.entity.CommonMonetarySummation;
-import io.konik.zugferd.unqualified.Amount;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
+import io.konik.zugferd.entity.CommonMonetarySummation;
+import io.konik.zugferd.unqualified.Amount;
 
 /**
  * 

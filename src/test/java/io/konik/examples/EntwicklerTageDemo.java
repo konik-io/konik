@@ -18,32 +18,6 @@
  */
 package io.konik.examples;
 
-import com.google.common.io.ByteSource;
-import io.konik.InvoiceTransformer;
-import io.konik.PdfHandler;
-import io.konik.validation.InvoiceValidator;
-import io.konik.zugferd.Document;
-import io.konik.zugferd.Invoice;
-import io.konik.zugferd.entity.*;
-import io.konik.zugferd.entity.trade.*;
-import io.konik.zugferd.entity.trade.item.*;
-import io.konik.zugferd.unece.codes.TaxCode;
-import io.konik.zugferd.unqualified.*;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.xml.sax.SAXException;
-
-import javax.validation.ConstraintViolation;
-import javax.xml.transform.stream.StreamSource;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.math.BigDecimal;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import static com.neovisionaries.i18n.CountryCode.DE;
 import static com.neovisionaries.i18n.CurrencyCode.EUR;
 import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
@@ -53,6 +27,56 @@ import static io.konik.zugferd.unece.codes.Reference.VA;
 import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.math.BigDecimal;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.validation.ConstraintViolation;
+import javax.xml.transform.stream.StreamSource;
+
+import org.junit.Ignore;
+import org.junit.Test;
+import org.xml.sax.SAXException;
+
+import com.google.common.io.ByteSource;
+
+import io.konik.InvoiceTransformer;
+import io.konik.PdfHandler;
+import io.konik.validation.InvoiceValidator;
+import io.konik.zugferd.Document;
+import io.konik.zugferd.Invoice;
+import io.konik.zugferd.entity.Address;
+import io.konik.zugferd.entity.DebtorFinancialAccount;
+import io.konik.zugferd.entity.FinancialInstitution;
+import io.konik.zugferd.entity.GrossPrice;
+import io.konik.zugferd.entity.Header;
+import io.konik.zugferd.entity.PaymentMeans;
+import io.konik.zugferd.entity.Price;
+import io.konik.zugferd.entity.Product;
+import io.konik.zugferd.entity.TaxRegistration;
+import io.konik.zugferd.entity.TradeParty;
+import io.konik.zugferd.entity.trade.Agreement;
+import io.konik.zugferd.entity.trade.Delivery;
+import io.konik.zugferd.entity.trade.MonetarySummation;
+import io.konik.zugferd.entity.trade.Settlement;
+import io.konik.zugferd.entity.trade.Trade;
+import io.konik.zugferd.entity.trade.item.Item;
+import io.konik.zugferd.entity.trade.item.ItemTax;
+import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
+import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
+import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
+import io.konik.zugferd.unece.codes.TaxCode;
+import io.konik.zugferd.unqualified.Amount;
+import io.konik.zugferd.unqualified.Quantity;
+import io.konik.zugferd.unqualified.ZfDate;
+import io.konik.zugferd.unqualified.ZfDateDay;
+import io.konik.zugferd.unqualified.ZfDateMonth;
 
 /**
  * The example shows hot to read ZUGFeRD Invoice.
@@ -70,47 +94,34 @@ public class EntwicklerTageDemo {
    // tag::createInvoice[]
    private Document createOrder() {
       Document order = new Document(BASIC); // <1>
-      order.setHeader(new Header()
-            .setInvoiceNumber("20151106-42")
-            .setCode(_220)
-            .setIssued(today)
-            .setName("Bestellung"));
+      order.setHeader(
+            new Header().setInvoiceNumber("20151106-42").setCode(_220).setIssued(today).setName("Bestellung"));
 
       Trade trade = new Trade();
       trade.setAgreement(new Agreement() // <2>
-            .setSeller(new TradeParty()
-                  .setName("FeRD Management und Consulting GmbH")
+            .setSeller(new TradeParty().setName("FeRD Management und Consulting GmbH")
                   .setAddress(new Address("50933", "Stolberger Str. 108a", "Köln", DE))
                   .addTaxRegistrations(new TaxRegistration("DE122...", VA)))
-            .setBuyer(new TradeParty()
-                  .setName("Bei Spiel GmbH")
+            .setBuyer(new TradeParty().setName("Bei Spiel GmbH")
                   .setAddress(new Address("12345", "Ecke 12", "Stadthausen", DE))
                   .addTaxRegistrations(new TaxRegistration("DE136695976", VA))));
 
       trade.setDelivery(new Delivery(nextMonth));
 
-      trade.setSettlement(new Settlement()
-            .setPaymentReference("PER-42")
-            .setCurrency(EUR)
-            .addPaymentMeans(new PaymentMeans()
-                  .setPayerAccount(new DebtorFinancialAccount("DE01234.."))
+      trade.setSettlement(new Settlement().setPaymentReference("PER-42").setCurrency(EUR)
+            .addPaymentMeans(new PaymentMeans().setPayerAccount(new DebtorFinancialAccount("DE01234.."))
                   .setPayerInstitution(new FinancialInstitution("GENO...")))
-            .setMonetarySummation(new MonetarySummation()
-                  .setLineTotal(new Amount(498, EUR))
-                  .setChargeTotal(new Amount(0, EUR))
-                  .setAllowanceTotal(new Amount(0, EUR))
-                  .setTotalPrepaid(new Amount(0, EUR))
-                  .setTaxBasisTotal(new Amount(498, EUR))
-                  .setTaxTotal(new Amount("74.70", EUR))
-                  .setDuePayable(new Amount("572.70", EUR))
-                  .setGrandTotal(new Amount("572.70", EUR))));
+            .setMonetarySummation(
+                  new MonetarySummation().setLineTotal(new Amount(498, EUR)).setChargeTotal(new Amount(0, EUR))
+                        .setAllowanceTotal(new Amount(0, EUR)).setTotalPrepaid(new Amount(0, EUR))
+                        .setTaxBasisTotal(new Amount(498, EUR)).setTaxTotal(new Amount("74.70", EUR))
+                        .setDuePayable(new Amount("572.70", EUR)).setGrandTotal(new Amount("572.70", EUR))));
 
       ItemTax tax = new ItemTax();
       tax.setPercentage(BigDecimal.valueOf(15));
       tax.setType(TaxCode.VAT);
 
-      trade.addItem(new Item()
-            .setProduct(new Product().setName("Saddle"))
+      trade.addItem(new Item().setProduct(new Product().setName("Saddle"))
             .setAgreement(new SpecifiedAgreement().setGrossPrice(new GrossPrice(new Amount(498, EUR)))
                   .setNetPrice(new Price(new Amount(498, EUR))))
             .setSettlement(new SpecifiedSettlement().addTradeTax(tax))

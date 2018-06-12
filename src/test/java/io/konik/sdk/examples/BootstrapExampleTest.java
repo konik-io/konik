@@ -1,6 +1,7 @@
 package io.konik.sdk.examples;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.konik.sdk.ZinvoiceApiConfig;
 import io.konik.sdk.http.ZinvoiceHttpClient;
 import io.konik.sdk.invoice.InvoiceApi;
@@ -12,8 +13,7 @@ public class BootstrapExampleTest {
 
    // tag::zinvoiceApiConfig[]
    public ZinvoiceApiConfig zinvoiceApiConfig() {
-      return new ZinvoiceApiConfig(
-            "f4eb6f7b-e3c3-43b2-a456-c116315102b6", // <1>
+      return new ZinvoiceApiConfig("f4eb6f7b-e3c3-43b2-a456-c116315102b6", // <1>
             "https://app.z-rechnung.com" // <2>
       );
    }
@@ -21,17 +21,14 @@ public class BootstrapExampleTest {
 
    // tag::zinvoiceHttpClient[]
    public ZinvoiceHttpClient zinvoiceHttpClient() {
-      return new ZinvoiceHttpClient(
-            zinvoiceApiConfig() // <3>
+      return new ZinvoiceHttpClient(zinvoiceApiConfig() // <3>
       );
    }
    // end::zinvoiceHttpClient[]
 
    // tag::anotherZinvoiceHttpClient[]
    public ZinvoiceHttpClient anotherZinvoiceHttpClient() {
-      return new ZinvoiceHttpClient(
-            zinvoiceApiConfig(),
-            ZinvoiceHttpClient.DEFAULT_HTTP_REQUEST_FACTORY, // <4>
+      return new ZinvoiceHttpClient(zinvoiceApiConfig(), ZinvoiceHttpClient.DEFAULT_HTTP_REQUEST_FACTORY, // <4>
             new ObjectMapper() // <5>
       );
    }

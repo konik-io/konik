@@ -1,5 +1,21 @@
 package io.konik.sdk.invoice;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.failBecauseExceptionWasNotThrown;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.UUID;
+
+import org.junit.Ignore;
+import org.junit.Test;
+import org.mockito.Mockito;
+import org.unitils.thirdparty.org.apache.commons.io.IOUtils;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.LowLevelHttpRequest;
@@ -14,19 +30,6 @@ import io.konik.sdk.ZinvoiceApiConfig;
 import io.konik.sdk.http.BadRequestException;
 import io.konik.sdk.http.ZinvoiceHttpClient;
 import io.konik.zugferd.Invoice;
-
-import org.junit.Ignore;
-import org.junit.Test;
-import org.mockito.Mockito;
-import org.unitils.thirdparty.org.apache.commons.io.IOUtils;
-
-import java.io.IOException;
-import java.io.StringWriter;
-import java.util.UUID;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.failBecauseExceptionWasNotThrown;
-import static org.mockito.Mockito.*;
 
 public class RestInvoiceApiTest {
 
@@ -171,10 +174,8 @@ public class RestInvoiceApiTest {
       ZinvoiceApiConfig apiConfig = new ZinvoiceApiConfig(UUID.randomUUID().toString(), "http://localhost:8080");
       ObjectMapper objectMapper = new ObjectMapper();
       MockHttpTransport httpTransport = new MockHttpTransport.Builder()
-            .setLowLevelHttpRequest(
-                  new MockLowLevelHttpRequest("/invoice/123/status")
-                        .setResponse(new MockLowLevelHttpResponse()
-                              .setContent("{\"invoiceId\": \"123\", \"status\": \"BOOKED\"}")))
+            .setLowLevelHttpRequest(new MockLowLevelHttpRequest("/invoice/123/status").setResponse(
+                  new MockLowLevelHttpResponse().setContent("{\"invoiceId\": \"123\", \"status\": \"BOOKED\"}")))
             .build();
       HttpRequestFactory requestFactory = httpTransport.createRequestFactory();
       ZinvoiceHttpClient httpClient = new ZinvoiceHttpClient(apiConfig, requestFactory, objectMapper);

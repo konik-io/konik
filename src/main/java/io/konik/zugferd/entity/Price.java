@@ -17,10 +17,8 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.jaxb.adapter.FourDigitRoundingAdapter;
-import io.konik.validator.annotation.Comfort;
-import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.Quantity;
+import java.io.Serializable;
+import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -29,8 +27,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.io.Serializable;
-import java.util.List;
+
+import io.konik.jaxb.adapter.FourDigitRoundingAdapter;
+import io.konik.validator.annotation.Comfort;
+import io.konik.zugferd.unqualified.Amount;
+import io.konik.zugferd.unqualified.Quantity;
 
 /**
  * = The Price

@@ -1,14 +1,16 @@
 package io.konik.util;
 
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.zugferd.entity.trade.MonetarySummation;
-import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
-import io.konik.zugferd.unqualified.Amount;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
+
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.zugferd.entity.trade.MonetarySummation;
+import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
+import io.konik.zugferd.unqualified.Amount;
 
 public class MonetarySummationsTest {
 
@@ -20,8 +22,7 @@ public class MonetarySummationsTest {
       //when:
       MonetarySummation summation = MonetarySummations.newMonetarySummation(CURRENCY_CODE);
       //then:
-      assertThat(summation.getAllowanceTotal())
-            .isEqualToComparingFieldByField(ZERO_AMOUNT);
+      assertThat(summation.getAllowanceTotal()).isEqualToComparingFieldByField(ZERO_AMOUNT);
    }
 
    @Test
@@ -29,8 +30,7 @@ public class MonetarySummationsTest {
       //when:
       MonetarySummation summation = MonetarySummations.newMonetarySummation(CURRENCY_CODE);
       //then:
-      assertThat(summation.getChargeTotal())
-            .isEqualToComparingFieldByField(ZERO_AMOUNT);
+      assertThat(summation.getChargeTotal()).isEqualToComparingFieldByField(ZERO_AMOUNT);
    }
 
    @Test
@@ -38,8 +38,7 @@ public class MonetarySummationsTest {
       //when:
       MonetarySummation summation = MonetarySummations.newMonetarySummation(CURRENCY_CODE);
       //then:
-      assertThat(summation.getDuePayable())
-            .isEqualToComparingFieldByField(ZERO_AMOUNT);
+      assertThat(summation.getDuePayable()).isEqualToComparingFieldByField(ZERO_AMOUNT);
    }
 
    @Test
@@ -47,8 +46,7 @@ public class MonetarySummationsTest {
       //when:
       MonetarySummation summation = MonetarySummations.newMonetarySummation(CURRENCY_CODE);
       //then:
-      assertThat(summation.getGrandTotal())
-            .isEqualToComparingFieldByField(ZERO_AMOUNT);
+      assertThat(summation.getGrandTotal()).isEqualToComparingFieldByField(ZERO_AMOUNT);
    }
 
    @Test
@@ -56,8 +54,7 @@ public class MonetarySummationsTest {
       //when:
       MonetarySummation summation = MonetarySummations.newMonetarySummation(CURRENCY_CODE);
       //then:
-      assertThat(summation.getLineTotal())
-            .isEqualToComparingFieldByField(ZERO_AMOUNT);
+      assertThat(summation.getLineTotal()).isEqualToComparingFieldByField(ZERO_AMOUNT);
    }
 
    @Test
@@ -65,8 +62,7 @@ public class MonetarySummationsTest {
       //when:
       MonetarySummation summation = MonetarySummations.newMonetarySummation(CURRENCY_CODE);
       //then:
-      assertThat(summation.getTaxBasisTotal())
-            .isEqualToComparingFieldByField(ZERO_AMOUNT);
+      assertThat(summation.getTaxBasisTotal()).isEqualToComparingFieldByField(ZERO_AMOUNT);
    }
 
    @Test
@@ -74,8 +70,7 @@ public class MonetarySummationsTest {
       //when:
       MonetarySummation summation = MonetarySummations.newMonetarySummation(CURRENCY_CODE);
       //then:
-      assertThat(summation.getTaxTotal())
-            .isEqualToComparingFieldByField(ZERO_AMOUNT);
+      assertThat(summation.getTaxTotal()).isEqualToComparingFieldByField(ZERO_AMOUNT);
    }
 
    @Test
@@ -83,8 +78,7 @@ public class MonetarySummationsTest {
       //when:
       MonetarySummation summation = MonetarySummations.newMonetarySummation(CURRENCY_CODE);
       //then:
-      assertThat(summation.getTotalPrepaid())
-            .isEqualToComparingFieldByField(ZERO_AMOUNT);
+      assertThat(summation.getTotalPrepaid()).isEqualToComparingFieldByField(ZERO_AMOUNT);
    }
 
    @Test
@@ -92,8 +86,7 @@ public class MonetarySummationsTest {
       //when:
       SpecifiedMonetarySummation monetarySummation = MonetarySummations.newSpecifiedMonetarySummation(CURRENCY_CODE);
       //then:
-      assertThat(monetarySummation.getLineTotal())
-            .isEqualToComparingFieldByField(ZERO_AMOUNT);
+      assertThat(monetarySummation.getLineTotal()).isEqualToComparingFieldByField(ZERO_AMOUNT);
    }
 
    @Test
@@ -101,7 +94,6 @@ public class MonetarySummationsTest {
       //when:
       SpecifiedMonetarySummation monetarySummation = MonetarySummations.newSpecifiedMonetarySummation(CURRENCY_CODE);
       //then:
-      assertThat(monetarySummation.getTotalAllowanceCharge())
-            .isEqualToComparingFieldByField(ZERO_AMOUNT);
+      assertThat(monetarySummation.getTotalAllowanceCharge()).isEqualToComparingFieldByField(ZERO_AMOUNT);
    }
 }

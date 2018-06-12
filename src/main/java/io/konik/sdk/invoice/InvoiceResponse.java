@@ -14,8 +14,6 @@ public class InvoiceResponse {
 
    @Override
    public String toString() {
-      return "CreatedInvoice{" +
-            "invoiceId='" + invoiceId + '\'' +
-            '}';
+      return "CreatedInvoice{" + "invoiceId='" + invoiceId + '\'' + '}';
    }
 }

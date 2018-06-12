@@ -1,16 +1,17 @@
 package io.konik.csv.model;
 
-import com.google.common.base.Objects;
-import com.neovisionaries.i18n.CountryCode;
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.zugferd.unece.codes.Reference;
-import io.konik.zugferd.unece.codes.UnitOfMeasurement;
-
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
+import com.google.common.base.Objects;
+import com.neovisionaries.i18n.CountryCode;
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.zugferd.unece.codes.Reference;
+import io.konik.zugferd.unece.codes.UnitOfMeasurement;
 
 /**
  * Object representation of a single row in CSV file containing {@link io.konik.zugferd.Invoice}s
@@ -92,13 +93,10 @@ public final class Row {
       if (this == o) return true;
       if (!(o instanceof Row)) return false;
       Row row = (Row) o;
-      return Objects.equal(header, row.header) &&
-            Objects.equal(recipient, row.recipient) &&
-            Objects.equal(issuer, row.issuer) &&
-            Objects.equal(items, row.items) &&
-            Objects.equal(comments, row.comments) &&
-            Objects.equal(paymentReference, row.paymentReference) &&
-            Objects.equal(file, row.file);
+      return Objects.equal(header, row.header) && Objects.equal(recipient, row.recipient)
+            && Objects.equal(issuer, row.issuer) && Objects.equal(items, row.items)
+            && Objects.equal(comments, row.comments) && Objects.equal(paymentReference, row.paymentReference)
+            && Objects.equal(file, row.file);
    }
 
    @Override
@@ -108,15 +106,9 @@ public final class Row {
 
    @Override
    public String toString() {
-      return "Row {" +
-            "header=" + header +
-            ", recipient=" + recipient +
-            ", issuer=" + issuer +
-            ", items=" + items +
-            ", comments='" + comments + '\'' +
-            ", paymentReference='" + paymentReference + '\'' +
-            ", file=" + file +
-            '}';
+      return "Row {" + "header=" + header + ", recipient=" + recipient + ", issuer=" + issuer + ", items=" + items
+            + ", comments='" + comments + '\'' + ", paymentReference='" + paymentReference + '\'' + ", file=" + file
+            + '}';
    }
 
    public static final class Header {
@@ -206,14 +198,10 @@ public final class Row {
          if (this == o) return true;
          if (!(o instanceof Header)) return false;
          Header header = (Header) o;
-         return Objects.equal(invoiceNumber, header.invoiceNumber) &&
-               Objects.equal(type, header.type) &&
-               Objects.equal(issued, header.issued) &&
-               Objects.equal(dueDate, header.dueDate) &&
-               Objects.equal(note, header.note) &&
-               Objects.equal(reference, header.reference) &&
-               Objects.equal(customerNumber, header.customerNumber) &&
-               Objects.equal(currency, header.currency);
+         return Objects.equal(invoiceNumber, header.invoiceNumber) && Objects.equal(type, header.type)
+               && Objects.equal(issued, header.issued) && Objects.equal(dueDate, header.dueDate)
+               && Objects.equal(note, header.note) && Objects.equal(reference, header.reference)
+               && Objects.equal(customerNumber, header.customerNumber) && Objects.equal(currency, header.currency);
       }
 
       @Override
@@ -223,16 +211,9 @@ public final class Row {
 
       @Override
       public String toString() {
-         return "Header{" +
-               "invoiceNumber='" + invoiceNumber + '\'' +
-               ", type='" + type + '\'' +
-               ", issued=" + issued +
-               ", dueDate=" + dueDate +
-               ", note='" + note + '\'' +
-               ", reference='" + reference + '\'' +
-               ", customerNumber='" + customerNumber + '\'' +
-               ", currency=" + currency +
-               '}';
+         return "Header{" + "invoiceNumber='" + invoiceNumber + '\'' + ", type='" + type + '\'' + ", issued=" + issued
+               + ", dueDate=" + dueDate + ", note='" + note + '\'' + ", reference='" + reference + '\''
+               + ", customerNumber='" + customerNumber + '\'' + ", currency=" + currency + '}';
       }
    }
 
@@ -271,8 +252,7 @@ public final class Row {
          if (this == o) return true;
          if (!(o instanceof Tax)) return false;
          Tax tax = (Tax) o;
-         return Objects.equal(number, tax.number) &&
-               Objects.equal(type, tax.type);
+         return Objects.equal(number, tax.number) && Objects.equal(type, tax.type);
       }
 
       @Override
@@ -282,10 +262,7 @@ public final class Row {
 
       @Override
       public String toString() {
-         return "Tax{" +
-               "number='" + number + '\'' +
-               ", type=" + type +
-               '}';
+         return "Tax{" + "number='" + number + '\'' + ", type=" + type + '}';
       }
    }
 
@@ -405,16 +382,11 @@ public final class Row {
          if (this == o) return true;
          if (!(o instanceof TradeParty)) return false;
          TradeParty that = (TradeParty) o;
-         return Objects.equal(name, that.name) &&
-               Objects.equal(contactName, that.contactName) &&
-               Objects.equal(addressLine1, that.addressLine1) &&
-               Objects.equal(addressLine2, that.addressLine2) &&
-               Objects.equal(city, that.city) &&
-               Objects.equal(postcode, that.postcode) &&
-               Objects.equal(countryCode, that.countryCode) &&
-               Objects.equal(email, that.email) &&
-               Objects.equal(taxes, that.taxes) &&
-               Objects.equal(bankInfo, that.bankInfo);
+         return Objects.equal(name, that.name) && Objects.equal(contactName, that.contactName)
+               && Objects.equal(addressLine1, that.addressLine1) && Objects.equal(addressLine2, that.addressLine2)
+               && Objects.equal(city, that.city) && Objects.equal(postcode, that.postcode)
+               && Objects.equal(countryCode, that.countryCode) && Objects.equal(email, that.email)
+               && Objects.equal(taxes, that.taxes) && Objects.equal(bankInfo, that.bankInfo);
       }
 
       @Override
@@ -425,18 +397,10 @@ public final class Row {
 
       @Override
       public String toString() {
-         return "TradeParty{" +
-               "name='" + name + '\'' +
-               ", contactName='" + contactName + '\'' +
-               ", addressLine1='" + addressLine1 + '\'' +
-               ", addressLine2='" + addressLine2 + '\'' +
-               ", city='" + city + '\'' +
-               ", postcode='" + postcode + '\'' +
-               ", countryCode=" + countryCode +
-               ", email='" + email + '\'' +
-               ", taxes=" + taxes +
-               ", bankInfo=" + bankInfo +
-               '}';
+         return "TradeParty{" + "name='" + name + '\'' + ", contactName='" + contactName + '\'' + ", addressLine1='"
+               + addressLine1 + '\'' + ", addressLine2='" + addressLine2 + '\'' + ", city='" + city + '\''
+               + ", postcode='" + postcode + '\'' + ", countryCode=" + countryCode + ", email='" + email + '\''
+               + ", taxes=" + taxes + ", bankInfo=" + bankInfo + '}';
       }
    }
 
@@ -494,13 +458,8 @@ public final class Row {
 
       @Override
       public String toString() {
-         return "Item {" +
-               "type='" + name + '\'' +
-               ", quantity=" + quantity +
-               ", unit=" + unit +
-               ", unitPrice=" + unitPrice +
-               ", taxPercent=" + taxPercent +
-               '}';
+         return "Item {" + "type='" + name + '\'' + ", quantity=" + quantity + ", unit=" + unit + ", unitPrice="
+               + unitPrice + ", taxPercent=" + taxPercent + '}';
       }
 
       @Override
@@ -508,11 +467,9 @@ public final class Row {
          if (this == o) return true;
          if (!(o instanceof Item)) return false;
          Item item = (Item) o;
-         return Objects.equal(name, item.name) &&
-               Objects.equal(quantity, item.quantity) &&
-               Objects.equal(unit, item.unit) &&
-               Objects.equal(unitPrice, item.unitPrice) &&
-               Objects.equal(taxPercent, item.taxPercent);
+         return Objects.equal(name, item.name) && Objects.equal(quantity, item.quantity)
+               && Objects.equal(unit, item.unit) && Objects.equal(unitPrice, item.unitPrice)
+               && Objects.equal(taxPercent, item.taxPercent);
       }
 
       @Override
@@ -555,11 +512,8 @@ public final class Row {
 
       @Override
       public String toString() {
-         return "BankInformation {" +
-               "bankName='" + bankName + '\'' +
-               ", bic='" + bic + '\'' +
-               ", iban='" + iban + '\'' +
-               '}';
+         return "BankInformation {" + "bankName='" + bankName + '\'' + ", bic='" + bic + '\'' + ", iban='" + iban + '\''
+               + '}';
       }
 
       @Override
@@ -567,9 +521,8 @@ public final class Row {
          if (this == o) return true;
          if (!(o instanceof BankInformation)) return false;
          BankInformation that = (BankInformation) o;
-         return Objects.equal(bankName, that.bankName) &&
-               Objects.equal(bic, that.bic) &&
-               Objects.equal(iban, that.iban);
+         return Objects.equal(bankName, that.bankName) && Objects.equal(bic, that.bic)
+               && Objects.equal(iban, that.iban);
       }
 
       @Override
@@ -605,8 +558,7 @@ public final class Row {
          if (this == o) return true;
          if (!(o instanceof File)) return false;
          File file = (File) o;
-         return Objects.equal(input, file.input) &&
-               Objects.equal(output, file.output);
+         return Objects.equal(input, file.input) && Objects.equal(output, file.output);
       }
 
       @Override
@@ -616,10 +568,7 @@ public final class Row {
 
       @Override
       public String toString() {
-         return "File {" +
-               "input='" + input + '\'' +
-               ", output='" + output + '\'' +
-               '}';
+         return "File {" + "input='" + input + '\'' + ", output='" + output + '\'' + '}';
       }
    }
 }

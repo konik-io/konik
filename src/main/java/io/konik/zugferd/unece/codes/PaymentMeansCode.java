@@ -18,11 +18,11 @@
  */
 package io.konik.zugferd.unece.codes;
 
-import io.konik.util.KonikEnum;
-
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
+
+import io.konik.util.KonikEnum;
 
 /**
  * = The Payment Means Code

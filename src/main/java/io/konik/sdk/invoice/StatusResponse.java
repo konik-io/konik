@@ -32,11 +32,7 @@ public class StatusResponse {
 
    @Override
    public String toString() {
-      return "StatusResponse{" +
-            "invoiceId='" + invoiceId + '\'' +
-            ", status=" + status +
-            ", changed=" + changed +
-            '}';
+      return "StatusResponse{" + "invoiceId='" + invoiceId + '\'' + ", status=" + status + ", changed=" + changed + '}';
    }
 
    @Override

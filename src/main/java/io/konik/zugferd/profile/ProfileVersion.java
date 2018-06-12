@@ -77,8 +77,7 @@ public enum ProfileVersion {
     */
    public static ProfileVersion parse(String version) {
       for (ProfileVersion profileVersion : ProfileVersion.values()) {
-         if (profileVersion.versionAlt().equals(version) ||
-               profileVersion.version().equals(version)) {
+         if (profileVersion.versionAlt().equals(version) || profileVersion.version().equals(version)) {
             return profileVersion;
          }
       }

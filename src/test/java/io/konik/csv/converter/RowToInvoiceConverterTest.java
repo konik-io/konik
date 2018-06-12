@@ -1,6 +1,17 @@
 package io.konik.csv.converter;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+import org.assertj.core.api.Condition;
+import org.assertj.core.data.Index;
+import org.junit.Before;
+import org.junit.Test;
+
 import com.neovisionaries.i18n.CurrencyCode;
+
 import io.konik.csv.Rows;
 import io.konik.csv.model.Row;
 import io.konik.zugferd.Invoice;
@@ -12,15 +23,6 @@ import io.konik.zugferd.profile.ConformanceLevel;
 import io.konik.zugferd.unece.codes.DocumentCode;
 import io.konik.zugferd.unece.codes.TaxCategory;
 import io.konik.zugferd.unece.codes.TaxCode;
-import org.assertj.core.api.Condition;
-import org.assertj.core.data.Index;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class RowToInvoiceConverterTest {
 
@@ -142,14 +144,14 @@ public class RowToInvoiceConverterTest {
       return new Condition<TradeParty>() {
          @Override
          public boolean matches(TradeParty tradeParty) {
-            return tradeParty.getName().equals(rowTradeParty.getName()) &&
-                  tradeParty.getContact().getName().equals(rowTradeParty.getContactName()) &&
-                  tradeParty.getContact().getEmail().equals(rowTradeParty.getEmail()) &&
-                  tradeParty.getAddress().getLineOne().equals(rowTradeParty.getAddressLine1()) &&
-                  tradeParty.getAddress().getLineTwo().equals(rowTradeParty.getAddressLine2()) &&
-                  tradeParty.getAddress().getCity().equals(rowTradeParty.getCity()) &&
-                  tradeParty.getAddress().getPostcode().equals(rowTradeParty.getPostcode()) &&
-                  tradeParty.getAddress().getCountry().equals(rowTradeParty.getCountryCode());
+            return tradeParty.getName().equals(rowTradeParty.getName())
+                  && tradeParty.getContact().getName().equals(rowTradeParty.getContactName())
+                  && tradeParty.getContact().getEmail().equals(rowTradeParty.getEmail())
+                  && tradeParty.getAddress().getLineOne().equals(rowTradeParty.getAddressLine1())
+                  && tradeParty.getAddress().getLineTwo().equals(rowTradeParty.getAddressLine2())
+                  && tradeParty.getAddress().getCity().equals(rowTradeParty.getCity())
+                  && tradeParty.getAddress().getPostcode().equals(rowTradeParty.getPostcode())
+                  && tradeParty.getAddress().getCountry().equals(rowTradeParty.getCountryCode());
          }
       };
    }
@@ -158,8 +160,8 @@ public class RowToInvoiceConverterTest {
       return new Condition<TaxRegistration>() {
          @Override
          public boolean matches(TaxRegistration taxRegistration) {
-            return taxRegistration.getTaxNumber().equals(tax.getNumber()) &&
-                  taxRegistration.getType().equals(tax.getType());
+            return taxRegistration.getTaxNumber().equals(tax.getNumber())
+                  && taxRegistration.getType().equals(tax.getType());
          }
       };
    }
@@ -170,20 +172,20 @@ public class RowToInvoiceConverterTest {
          public boolean matches(Item item) {
             BigDecimal lineTotal = rowItem.getQuantity().multiply(rowItem.getUnitPrice());
 
-            return item.getProduct().getName().equals(rowItem.getName()) &&
-                  item.getDelivery().getBilled().getUnit().equals(rowItem.getUnit()) &&
-                  item.getDelivery().getBilled().getValue().equals(rowItem.getQuantity()) &&
-                  item.getDelivery().getBilled().getUnitCode().equals(rowItem.getUnit().getCode()) &&
-                  item.getAgreement().getNetPrice().getChargeAmount().getValue().equals(rowItem.getUnitPrice()) &&
-                  item.getAgreement().getNetPrice().getChargeAmount().getCurrency().equals(currencyCode) &&
-                  item.getAgreement().getGrossPrice().getChargeAmount().getValue().equals(rowItem.getUnitPrice()) &&
-                  item.getAgreement().getGrossPrice().getChargeAmount().getCurrency().equals(currencyCode) &&
-                  item.getSettlement().getTradeTax().size() == 1 &&
-                  item.getSettlement().getTradeTax().get(0).getPercentage().equals(rowItem.getTaxPercent()) &&
-                  item.getSettlement().getTradeTax().get(0).getCategory().equals(TaxCategory.S) &&
-                  item.getSettlement().getTradeTax().get(0).getType().equals(TaxCode.VAT) &&
-                  item.getSettlement().getMonetarySummation().getLineTotal().getCurrency().equals(currencyCode) &&
-                  item.getSettlement().getMonetarySummation().getLineTotal().getValue().equals(lineTotal);
+            return item.getProduct().getName().equals(rowItem.getName())
+                  && item.getDelivery().getBilled().getUnit().equals(rowItem.getUnit())
+                  && item.getDelivery().getBilled().getValue().equals(rowItem.getQuantity())
+                  && item.getDelivery().getBilled().getUnitCode().equals(rowItem.getUnit().getCode())
+                  && item.getAgreement().getNetPrice().getChargeAmount().getValue().equals(rowItem.getUnitPrice())
+                  && item.getAgreement().getNetPrice().getChargeAmount().getCurrency().equals(currencyCode)
+                  && item.getAgreement().getGrossPrice().getChargeAmount().getValue().equals(rowItem.getUnitPrice())
+                  && item.getAgreement().getGrossPrice().getChargeAmount().getCurrency().equals(currencyCode)
+                  && item.getSettlement().getTradeTax().size() == 1
+                  && item.getSettlement().getTradeTax().get(0).getPercentage().equals(rowItem.getTaxPercent())
+                  && item.getSettlement().getTradeTax().get(0).getCategory().equals(TaxCategory.S)
+                  && item.getSettlement().getTradeTax().get(0).getType().equals(TaxCode.VAT)
+                  && item.getSettlement().getMonetarySummation().getLineTotal().getCurrency().equals(currencyCode)
+                  && item.getSettlement().getMonetarySummation().getLineTotal().getValue().equals(lineTotal);
          }
       };
    }

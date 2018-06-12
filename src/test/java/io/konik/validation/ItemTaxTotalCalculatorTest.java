@@ -1,23 +1,25 @@
 package io.konik.validation;
 
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.zugferd.entity.trade.item.Item;
-import io.konik.zugferd.entity.trade.item.ItemTax;
-import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
-import io.konik.zugferd.unece.codes.TaxCode;
-import io.konik.zugferd.unqualified.Amount;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static io.konik.validation.AmountCalculator.ItemTaxTotalCalculator;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.runners.Parameterized.Parameter;
-import static org.junit.runners.Parameterized.Parameters;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.validation.AmountCalculator.ItemTaxTotalCalculator;
+import io.konik.zugferd.entity.trade.item.Item;
+import io.konik.zugferd.entity.trade.item.ItemTax;
+import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
+import io.konik.zugferd.unece.codes.TaxCode;
+import io.konik.zugferd.unqualified.Amount;
 
 @RunWith(Parameterized.class)
 public class ItemTaxTotalCalculatorTest {
@@ -26,11 +28,9 @@ public class ItemTaxTotalCalculatorTest {
 
    @Parameters(name = "Calculating tax amount for case {index}: {0} * {1}% = {2}")
    public static Collection<Object[]> data() {
-      return Arrays.asList(new Object[][] {
-            { BigDecimal.valueOf(100), BigDecimal.valueOf(23), BigDecimal.valueOf(23) },
+      return Arrays.asList(new Object[][] { { BigDecimal.valueOf(100), BigDecimal.valueOf(23), BigDecimal.valueOf(23) },
             { BigDecimal.valueOf(99), BigDecimal.ZERO, BigDecimal.ZERO },
-            { BigDecimal.valueOf(43.12), BigDecimal.valueOf(8), BigDecimal.valueOf(3.45) }
-      });
+            { BigDecimal.valueOf(43.12), BigDecimal.valueOf(8), BigDecimal.valueOf(3.45) } });
    }
 
    @Parameter

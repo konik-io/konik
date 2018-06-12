@@ -19,13 +19,14 @@
 package io.konik.zugferd;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import io.konik.InvoiceTransformer;
-import io.konik.utils.RandomInvoiceGenerator;
 
 import java.io.UnsupportedEncodingException;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import io.konik.InvoiceTransformer;
+import io.konik.utils.RandomInvoiceGenerator;
 
 @SuppressWarnings("javadoc")
 public class CorrectNamespacePrefixTest {

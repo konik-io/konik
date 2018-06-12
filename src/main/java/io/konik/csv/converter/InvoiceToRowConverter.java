@@ -1,20 +1,32 @@
 package io.konik.csv.converter;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.csv.model.Row;
-import io.konik.zugferd.Invoice;
-import io.konik.zugferd.entity.*;
-import io.konik.zugferd.entity.trade.Agreement;
-import io.konik.zugferd.entity.trade.Settlement;
-import io.konik.zugferd.entity.trade.Trade;
-import io.konik.zugferd.entity.trade.item.*;
-
-import javax.annotation.Nullable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import javax.annotation.Nullable;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.csv.model.Row;
+import io.konik.zugferd.Invoice;
+import io.konik.zugferd.entity.Address;
+import io.konik.zugferd.entity.Contact;
+import io.konik.zugferd.entity.Header;
+import io.konik.zugferd.entity.Note;
+import io.konik.zugferd.entity.PaymentMeans;
+import io.konik.zugferd.entity.TaxRegistration;
+import io.konik.zugferd.entity.TradeParty;
+import io.konik.zugferd.entity.trade.Agreement;
+import io.konik.zugferd.entity.trade.Settlement;
+import io.konik.zugferd.entity.trade.Trade;
+import io.konik.zugferd.entity.trade.item.Item;
+import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
+import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
+import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
+import io.konik.zugferd.entity.trade.item.SpecifiedTax;
 
 final public class InvoiceToRowConverter {
 
@@ -84,8 +96,7 @@ final public class InvoiceToRowConverter {
 
                      SpecifiedDelivery delivery = item.getDelivery();
                      if (delivery != null && delivery.getBilled() != null) {
-                        rowItem.setQuantity(delivery.getBilled().getValue())
-                              .setUnit(delivery.getBilled().getUnit());
+                        rowItem.setQuantity(delivery.getBilled().getValue()).setUnit(delivery.getBilled().getUnit());
                      }
 
                      SpecifiedAgreement agreement = item.getAgreement();
@@ -118,17 +129,13 @@ final public class InvoiceToRowConverter {
 
          Address address = tradeParty.getAddress();
          if (Objects.nonNull(address)) {
-            rowTradeParty.setAddressLine1(address.getLineOne())
-                  .setAddressLine2(address.getLineTwo())
-                  .setCity(address.getCity())
-                  .setCountryCode(address.getCountry())
-                  .setPostcode(address.getPostcode());
+            rowTradeParty.setAddressLine1(address.getLineOne()).setAddressLine2(address.getLineTwo())
+                  .setCity(address.getCity()).setCountryCode(address.getCountry()).setPostcode(address.getPostcode());
          }
 
          Contact contact = tradeParty.getContact();
          if (Objects.nonNull(contact)) {
-            rowTradeParty.setContactName(contact.getName())
-                  .setEmail(contact.getEmail());
+            rowTradeParty.setContactName(contact.getName()).setEmail(contact.getEmail());
          }
 
          List<TaxRegistration> taxRegistrations = tradeParty.getTaxRegistrations();
@@ -139,8 +146,7 @@ final public class InvoiceToRowConverter {
                public Row.Tax apply(TaxRegistration taxRegistration) {
                   Row.Tax tax = new Row.Tax();
                   if (Objects.nonNull(taxRegistration)) {
-                     tax.setNumber(taxRegistration.getTaxNumber())
-                           .setType(taxRegistration.getType());
+                     tax.setNumber(taxRegistration.getTaxNumber()).setType(taxRegistration.getType());
                   }
                   return tax;
                }
@@ -190,14 +196,9 @@ final public class InvoiceToRowConverter {
             Date dueDate = header.getContractualDueDate() != null ? new Date(header.getContractualDueDate().getTime())
                   : null;
 
-            return new Row.Header().setInvoiceNumber(header.getInvoiceNumber())
-                  .setType(header.getName())
-                  .setCurrency(currencyCode)
-                  .setReference(paymentReference)
-                  .setCustomerNumber(customerNumber)
-                  .setIssued(issued)
-                  .setDueDate(dueDate)
-                  .setNote(noteText);
+            return new Row.Header().setInvoiceNumber(header.getInvoiceNumber()).setType(header.getName())
+                  .setCurrency(currencyCode).setReference(paymentReference).setCustomerNumber(customerNumber)
+                  .setIssued(issued).setDueDate(dueDate).setNote(noteText);
          }
 
          return new Row.Header();

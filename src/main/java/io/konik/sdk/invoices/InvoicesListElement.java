@@ -1,11 +1,12 @@
 package io.konik.sdk.invoices;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import io.konik.sdk.json.DateDeserializer;
-import io.konik.sdk.json.DateTimeDeserializer;
-
 import java.math.BigDecimal;
 import java.util.Date;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import io.konik.sdk.json.DateDeserializer;
+import io.konik.sdk.json.DateTimeDeserializer;
 
 public class InvoicesListElement {
 
@@ -113,17 +114,9 @@ public class InvoicesListElement {
 
    @Override
    public String toString() {
-      return "InvoicesListElement{" +
-            "id='" + id + '\'' +
-            ", documentType='" + documentType + '\'' +
-            ", status=" + status +
-            ", number='" + number + '\'' +
-            ", performanceDate=" + performanceDate +
-            ", buyerName='" + buyerName + '\'' +
-            ", sellerName='" + sellerName + '\'' +
-            ", amount=" + amount +
-            ", currency='" + currency + '\'' +
-            ", createdDate=" + createdDate +
-            '}';
+      return "InvoicesListElement{" + "id='" + id + '\'' + ", documentType='" + documentType + '\'' + ", status="
+            + status + ", number='" + number + '\'' + ", performanceDate=" + performanceDate + ", buyerName='"
+            + buyerName + '\'' + ", sellerName='" + sellerName + '\'' + ", amount=" + amount + ", currency='" + currency
+            + '\'' + ", createdDate=" + createdDate + '}';
    }
 }

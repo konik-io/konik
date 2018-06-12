@@ -36,10 +36,6 @@ public class ErrorResponse {
 
    @Override
    public String toString() {
-      return "ErrorResponse{" +
-            "path='" + path + '\'' +
-            ", message='" + message + '\'' +
-            ", errors=" + errors +
-            '}';
+      return "ErrorResponse{" + "path='" + path + '\'' + ", message='" + message + '\'' + ", errors=" + errors + '}';
    }
 }

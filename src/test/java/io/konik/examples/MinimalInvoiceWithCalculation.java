@@ -27,6 +27,24 @@ import static io.konik.zugferd.unece.codes.Reference.FC;
 import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.math.BigDecimal;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.xml.transform.stream.StreamSource;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
+import org.xml.sax.SAXException;
+
+import com.google.common.io.ByteSource;
+
 import io.konik.InvoiceTransformer;
 import io.konik.PdfHandler;
 import io.konik.calculation.InvoiceCalculator;
@@ -57,23 +75,6 @@ import io.konik.zugferd.unqualified.ZfDate;
 import io.konik.zugferd.unqualified.ZfDateDay;
 import io.konik.zugferd.unqualified.ZfDateMonth;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.math.BigDecimal;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.xml.transform.stream.StreamSource;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-import org.xml.sax.SAXException;
-
-import com.google.common.io.ByteSource;
-
 /**
  * The example shows how easy it is to create a compact invoice and let it automatically calculate.
  */
@@ -89,22 +90,17 @@ public class MinimalInvoiceWithCalculation {
    private Invoice createInvoice() {
 
       Invoice invoice = new Invoice(EXTENDED); // <1>
-      invoice.setHeader(new Header()
-            .setInvoiceNumber("20131122-42")
-            .setCode(_380)
-            .setIssued(today)
-            .setName("Rechnung"));
+      invoice
+            .setHeader(new Header().setInvoiceNumber("20131122-42").setCode(_380).setIssued(today).setName("Rechnung"));
 
       Trade trade = new Trade();
       trade.setAgreement(new Agreement()
             .setSeller(new TradeParty()
-                  .setName("Seller Inc.")
-                  .setAddress(new Address("80331", "Marienplatz 1", "München", DE))
+                  .setName("Seller Inc.").setAddress(new Address("80331", "Marienplatz 1", "München", DE))
                   .addTaxRegistrations(new TaxRegistration("DE122...", FC)))
-            .setBuyer(new TradeParty()
-                  .setName("Buyer Inc.")
-                  .setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
-                  .addTaxRegistrations(new TaxRegistration("DE123...", FC))));
+            .setBuyer(
+                  new TradeParty().setName("Buyer Inc.").setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
+                        .addTaxRegistrations(new TaxRegistration("DE123...", FC))));
 
       trade.setDelivery(new Delivery(nextMonth));
 
@@ -112,18 +108,14 @@ public class MinimalInvoiceWithCalculation {
       itemTax.setPercentage(BigDecimal.valueOf(19));
       itemTax.setType(TaxCode.VAT);
 
-      trade.addItem(new Item()
-            .setProduct(new Product().setName("Saddle"))
+      trade.addItem(new Item().setProduct(new Product().setName("Saddle"))
             .setAgreement(new SpecifiedAgreement()
                   /*.setGrossPrice(new GrossPrice(new Amount(100, EUR)))*/.setNetPrice(new Price(new Amount(100, EUR))))// <2>
             .setSettlement(new SpecifiedSettlement().addTradeTax(itemTax))
             .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))));
 
-      trade.setSettlement(new Settlement()
-            .setPaymentReference("20131122-42")
-            .setCurrency(EUR)
-            .addPaymentMeans(new PaymentMeans()
-                  .setPayerAccount(new DebtorFinancialAccount("DE01234.."))
+      trade.setSettlement(new Settlement().setPaymentReference("20131122-42").setCurrency(EUR)
+            .addPaymentMeans(new PaymentMeans().setPayerAccount(new DebtorFinancialAccount("DE01234.."))
                   .setPayerInstitution(new FinancialInstitution("GENO..."))));
       /*.setMonetarySummation(new MonetarySummation() // <3>
          .setLineTotal(new Amount(100, EUR))

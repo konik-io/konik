@@ -1,21 +1,23 @@
 package io.konik.validation;
 
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.zugferd.entity.SpecifiedAllowanceCharge;
-import io.konik.zugferd.entity.trade.Settlement;
-import io.konik.zugferd.unqualified.Amount;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static io.konik.validation.AmountCalculator.InvoiceAllowanceTotalCalculator;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.runners.Parameterized.Parameter;
-import static org.junit.runners.Parameterized.Parameters;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.validation.AmountCalculator.InvoiceAllowanceTotalCalculator;
+import io.konik.zugferd.entity.SpecifiedAllowanceCharge;
+import io.konik.zugferd.entity.trade.Settlement;
+import io.konik.zugferd.unqualified.Amount;
 
 @RunWith(Parameterized.class)
 public class InvoiceAllowanceTotalCalculatorTest {
@@ -24,12 +26,10 @@ public class InvoiceAllowanceTotalCalculatorTest {
 
    @Parameters(name = "Calculating allowance total for case {index}: expected {0}")
    public static Collection<Object[]> data() {
-      return Arrays.asList(new Object[][] {
-            { BigDecimal.ZERO, new SpecifiedAllowanceCharge[] {} },
+      return Arrays.asList(new Object[][] { { BigDecimal.ZERO, new SpecifiedAllowanceCharge[] {} },
             { BigDecimal.valueOf(2.23), new SpecifiedAllowanceCharge[] { chargeActual(BigDecimal.valueOf(2.23)) } },
             { BigDecimal.valueOf(14.54), new SpecifiedAllowanceCharge[] { chargeActual(BigDecimal.valueOf(10.43)),
-                  chargeActual(BigDecimal.valueOf(4.11)) } }
-      });
+                  chargeActual(BigDecimal.valueOf(4.11)) } } });
    }
 
    @Parameter

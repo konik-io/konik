@@ -1,11 +1,11 @@
 package io.konik.sdk;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Ignore;
+import org.junit.Test;
 
 public class ZinvoiceApiConfigTest {
 

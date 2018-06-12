@@ -17,6 +17,12 @@
  */
 package io.konik.zugferd.entity.trade;
 
+import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.entity.CommonDelivery;
@@ -25,18 +31,12 @@ import io.konik.zugferd.entity.ReferencedDocument;
 import io.konik.zugferd.entity.TradeParty;
 import io.konik.zugferd.unqualified.ZfDate;
 
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
 /**
  * = The trade delivery information.
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = { "relatedConsignment", "shipTo", "ultimateShipTo", "shipFrom", "actualDelivery",
-      "despatchAdvice", "deliveryNote" })
+@XmlType(propOrder = { "relatedConsignment", "shipTo", "ultimateShipTo", "shipFrom", "actualDelivery", "despatchAdvice",
+      "deliveryNote" })
 public class Delivery extends CommonDelivery<ReferencedDocument> {
 
    @XmlElement(name = "RelatedSupplyChainConsignment")

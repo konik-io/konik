@@ -1,20 +1,22 @@
 package io.konik.validation;
 
-import io.konik.validator.annotation.Basic;
-import io.konik.validator.annotation.Comfort;
-import io.konik.validator.annotation.Extended;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import javax.validation.groups.Default;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.runners.Parameterized.Parameter;
-import static org.junit.runners.Parameterized.Parameters;
+import javax.validation.groups.Default;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
 
 @RunWith(Parameterized.class)
 public class MonetarySummationValidatorBelongsToProfileTest {
@@ -26,20 +28,12 @@ public class MonetarySummationValidatorBelongsToProfileTest {
 
    @Parameters(name = "Check if method {1} of class {0} belongs to {2}")
    public static Collection<Object[]> data() {
-      return Arrays.asList(new Object[][] {
-            { A.class, "getName", BASIC, false },
-            { A.class, "getName", COMFORT, true },
-            { A.class, "getName", EXTENDED, true },
-            { B.class, "getName", BASIC, false },
-            { B.class, "getName", COMFORT, false },
-            { B.class, "getName", EXTENDED, true },
-            { C.class, "getName", BASIC, true },
-            { C.class, "getName", COMFORT, true },
-            { C.class, "getName", EXTENDED, true },
-            { D.class, "getName", BASIC, true },
-            { D.class, "getName", COMFORT, true },
-            { D.class, "getName", EXTENDED, true }
-      });
+      return Arrays.asList(new Object[][] { { A.class, "getName", BASIC, false }, { A.class, "getName", COMFORT, true },
+            { A.class, "getName", EXTENDED, true }, { B.class, "getName", BASIC, false },
+            { B.class, "getName", COMFORT, false }, { B.class, "getName", EXTENDED, true },
+            { C.class, "getName", BASIC, true }, { C.class, "getName", COMFORT, true },
+            { C.class, "getName", EXTENDED, true }, { D.class, "getName", BASIC, true },
+            { D.class, "getName", COMFORT, true }, { D.class, "getName", EXTENDED, true } });
    }
 
    @Parameter

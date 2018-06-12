@@ -1,17 +1,18 @@
 package io.konik.util;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
-import io.konik.zugferd.entity.GrossPrice;
-import io.konik.zugferd.entity.trade.item.Item;
-import io.konik.zugferd.unqualified.Amount;
+import static java.math.BigDecimal.ONE;
 
-import javax.annotation.Nullable;
 import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
 
-import static java.math.BigDecimal.ONE;
+import javax.annotation.Nullable;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
+
+import io.konik.zugferd.entity.GrossPrice;
+import io.konik.zugferd.entity.trade.item.Item;
 
 /**
  * Helper functions for {@link Item} class.
@@ -37,10 +38,8 @@ public final class Items {
       return filter(items, new Predicate<Item>() {
          @Override
          public boolean apply(@Nullable Item item) {
-            return item != null &&
-                  item.getDelivery() != null &&
-                  item.getAgreement() != null &&
-                  item.getSettlement() != null;
+            return item != null && item.getDelivery() != null && item.getAgreement() != null
+                  && item.getSettlement() != null;
          }
       });
    }

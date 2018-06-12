@@ -31,6 +31,28 @@ import static org.apache.commons.lang3.time.DateUtils.addDays;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.custommonkey.xmlunit.XMLUnit.compareXML;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import javax.xml.transform.stream.StreamSource;
+
+import org.custommonkey.xmlunit.Diff;
+import org.custommonkey.xmlunit.XMLUnit;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.xml.sax.SAXException;
+
+import com.google.common.io.ByteSource;
+
 import io.konik.PrittyPrintInvoiceTransformer;
 import io.konik.validation.InvoiceValidator;
 import io.konik.zugferd.Invoice;
@@ -65,27 +87,6 @@ import io.konik.zugferd.unqualified.ZfDateDay;
 import io.konik.zugferd.unqualified.ZfDateMonth;
 import io.konik.zugferd.unqualified.ZfDateWeek;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import javax.xml.transform.stream.StreamSource;
-
-import org.custommonkey.xmlunit.Diff;
-import org.custommonkey.xmlunit.XMLUnit;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.xml.sax.SAXException;
-
-import com.google.common.io.ByteSource;
-
 /**
  * The example class shows how easy it is to create a compact invoice.
  */
@@ -100,63 +101,42 @@ public class AllElementsInvoiceTest {
    private Invoice createAllElementInvoiceModel() {
 
       Invoice invoice = new Invoice(EXTENDED); // <1>
-      invoice.setHeader(new Header()
-            .setInvoiceNumber("20131122-42")
-            .setCode(_380)
-            .setIssued(today)
-            .setName("Rechnung")
-            .setContractualDueDate(inSixWeeks)
-            .addNote(new Note("Mandatory Invoice Note")));
+      invoice.setHeader(new Header().setInvoiceNumber("20131122-42").setCode(_380).setIssued(today).setName("Rechnung")
+            .setContractualDueDate(inSixWeeks).addNote(new Note("Mandatory Invoice Note")));
 
       Trade trade = new Trade();
       trade.setAgreement(new Agreement() // <2>
-            .setSeller(new TradeParty()
-                  .setName("Seller Inc.")
+            .setSeller(new TradeParty().setName("Seller Inc.")
                   .setAddress(new Address("80331", "Marienplatz 1", "München", DE))
                   .addTaxRegistrations(new TaxRegistration("DE122...", FC)))
-            .setBuyer(new TradeParty()
-                  .setName("Buyer Inc.")
-                  .setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
-                  .addTaxRegistrations(new TaxRegistration("DE123...", FC)))
+            .setBuyer(
+                  new TradeParty().setName("Buyer Inc.").setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
+                        .addTaxRegistrations(new TaxRegistration("DE123...", FC)))
             .setDeliveryTerms("Delivery Terms"));
 
       trade.setDelivery(new Delivery(nextMonth));
 
-      trade.setSettlement(new Settlement()
-            .setPaymentReference("20131122-42")
-            .addTradeTax(new TradeTax()
-                  .setBasis(new Amount(100, EUR))
-                  .setPercentage(valueOf(19))
-                  .setCalculated(new Amount(19, EUR))
-                  .setType(VAT))
+      trade.setSettlement(new Settlement().setPaymentReference("20131122-42")
+            .addTradeTax(new TradeTax().setBasis(new Amount(100, EUR)).setPercentage(valueOf(19))
+                  .setCalculated(new Amount(19, EUR)).setType(VAT))
             .setCurrency(EUR)
-            .addPaymentMeans(new PaymentMeans()
-                  .setPayerAccount(new DebtorFinancialAccount("DE01234.."))
+            .addPaymentMeans(new PaymentMeans().setPayerAccount(new DebtorFinancialAccount("DE01234.."))
                   .setPayerInstitution(new FinancialInstitution("GENO...")))
-            .setMonetarySummation(new MonetarySummation()
-                  .setLineTotal(new Amount(100, EUR))
-                  .setTaxTotal(new Amount(19, EUR))
-                  .setGrandTotal(new Amount(119, EUR))
-                  .setTaxBasisTotal(new Amount(19, EUR))
-                  .setChargeTotal(new Amount(0, EUR))
-                  .setAllowanceTotal(new Amount(0, EUR))));
+            .setMonetarySummation(
+                  new MonetarySummation().setLineTotal(new Amount(100, EUR)).setTaxTotal(new Amount(19, EUR))
+                        .setGrandTotal(new Amount(119, EUR)).setTaxBasisTotal(new Amount(19, EUR))
+                        .setChargeTotal(new Amount(0, EUR)).setAllowanceTotal(new Amount(0, EUR))));
 
-      trade.addItem(new Item()
-            .setPosition(new PositionDocument(1))
-            .setAgreement(new SpecifiedAgreement()
-                  .setBuyerOrder(new ReferencedDocumentItem(1, "BuyerOrder1"))
+      trade.addItem(new Item().setPosition(new PositionDocument(1))
+            .setAgreement(new SpecifiedAgreement().setBuyerOrder(new ReferencedDocumentItem(1, "BuyerOrder1"))
                   .setContract(new ReferencedDocumentItem(1, "ContractPos1"))
 
                   .setCustomerOrder(new ReferencedDocumentItem(1, "CustomerOder1"))
-                  .setGrossPrice(new GrossPrice(new Amount(119, EUR)))
-                  .setNetPrice(new Price(new Amount(100, EUR))))
-            .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))
-                  .setBilled(new Quantity(1, UNIT))
+                  .setGrossPrice(new GrossPrice(new Amount(119, EUR))).setNetPrice(new Price(new Amount(100, EUR))))
+            .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT)).setBilled(new Quantity(1, UNIT))
                   .setDeliveryNote(new ReferencedDocumentItem(1, "DOC:0815")))
             .setProduct(new Product().setName("Saddle"))
-            .setSettlement(new SpecifiedSettlement()
-                  .addTradeTax((ItemTax) new ItemTax()
-                        .setPercentage(valueOf(19)))
+            .setSettlement(new SpecifiedSettlement().addTradeTax((ItemTax) new ItemTax().setPercentage(valueOf(19)))
       //   
       ));
       return invoice.setTrade(trade);

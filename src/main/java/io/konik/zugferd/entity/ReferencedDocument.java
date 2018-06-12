@@ -17,16 +17,17 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.jaxb.adapter.IssueDateTimeAdapter;
-import io.konik.validator.annotation.Comfort;
-import io.konik.validator.annotation.NotBlank;
+import java.io.Serializable;
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.io.Serializable;
-import java.util.Date;
+
+import io.konik.jaxb.adapter.IssueDateTimeAdapter;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.NotBlank;
 
 /**
  * = The Referenced Document

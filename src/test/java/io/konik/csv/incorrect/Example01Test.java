@@ -1,11 +1,12 @@
 package io.konik.csv.incorrect;
 
-import io.konik.csv.mapper.CsvInvoicesReader;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
+
+import io.konik.csv.mapper.CsvInvoicesReader;
 
 public class Example01Test {
 

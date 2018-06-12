@@ -1,10 +1,10 @@
 package io.konik.sdk.invoices;
 
-import io.konik.sdk.http.ZinvoiceHttpClient;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+
+import io.konik.sdk.http.ZinvoiceHttpClient;
 
 public class RestInvoicesApi implements InvoicesApi {
 

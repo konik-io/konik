@@ -1,16 +1,17 @@
 package io.konik.sdk;
 
+import java.io.IOException;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+
 import io.konik.Configuration;
 import io.konik.zugferd.unqualified.ZfDate;
 import io.konik.zugferd.unqualified.ZfDateDay;
-
-import java.io.IOException;
 
 /**
  * Main SDK configuration class.

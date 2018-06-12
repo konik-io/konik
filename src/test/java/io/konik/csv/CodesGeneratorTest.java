@@ -1,12 +1,13 @@
 package io.konik.csv;
 
-import io.konik.zugferd.unece.codes.Reference;
-import io.konik.zugferd.unece.codes.UnitOfMeasurement;
-import org.junit.Test;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import org.junit.Test;
+
+import io.konik.zugferd.unece.codes.Reference;
+import io.konik.zugferd.unece.codes.UnitOfMeasurement;
 
 public class CodesGeneratorTest {
 

@@ -17,6 +17,15 @@
  */
 package io.konik.zugferd.entity.trade;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import io.konik.jaxb.bindable.entity.TradeDeliveryTermsAdapter;
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Comfort;
@@ -25,21 +34,13 @@ import io.konik.zugferd.entity.CommonAgreement;
 import io.konik.zugferd.entity.ReferencedDocument;
 import io.konik.zugferd.entity.TradeParty;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 
  * = The Trade Agreement.
  * 
  */
-@XmlType(propOrder = { "buyerReference", "seller", "buyer", "productEndUser", "deliveryTerms", "buyerOrder",
-      "contract", "additional", "customerOrder" })
+@XmlType(propOrder = { "buyerReference", "seller", "buyer", "productEndUser", "deliveryTerms", "buyerOrder", "contract",
+      "additional", "customerOrder" })
 public class Agreement implements CommonAgreement<ReferencedDocument, ReferencedDocumentAdditional> {
 
    private String buyerReference;

@@ -1,6 +1,20 @@
 package io.konik.validation;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
 import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.validation.AmountCalculator.ItemLineTotalCalculator;
 import io.konik.zugferd.entity.GrossPrice;
 import io.konik.zugferd.entity.Price;
 import io.konik.zugferd.entity.trade.item.Item;
@@ -9,18 +23,6 @@ import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
 import io.konik.zugferd.unece.codes.UnitOfMeasurement;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Quantity;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Collection;
-
-import static io.konik.validation.AmountCalculator.ItemLineTotalCalculator;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.runners.Parameterized.Parameter;
-import static org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class ItemLineTotalCalculatorTest {
@@ -29,11 +31,9 @@ public class ItemLineTotalCalculatorTest {
 
    @Parameters(name = "Calculating line total for case {index}: {0} USD x {1} = {2} USD")
    public static Collection<Object[]> data() {
-      return Arrays.asList(new Object[][] {
-            { BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE },
+      return Arrays.asList(new Object[][] { { BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE },
             { BigDecimal.valueOf(9.99), BigDecimal.ONE, BigDecimal.valueOf(9.99) },
-            { BigDecimal.valueOf(0.43), BigDecimal.valueOf(25), BigDecimal.valueOf(10.75) }
-      });
+            { BigDecimal.valueOf(0.43), BigDecimal.valueOf(25), BigDecimal.valueOf(10.75) } });
    }
 
    @Parameter

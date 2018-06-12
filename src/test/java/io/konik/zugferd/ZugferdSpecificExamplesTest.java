@@ -1,10 +1,17 @@
 package io.konik.zugferd;
 
-import com.google.common.io.Files;
-import io.konik.InvoiceTransformer;
-import io.konik.PrittyPrintInvoiceTransformer;
-import io.konik.utils.NumberDifferenceXmlComparison;
-import io.konik.validation.InvoiceValidator;
+import static java.nio.charset.Charset.forName;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.xml.transform.stream.StreamSource;
+
 import org.custommonkey.xmlunit.Diff;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
@@ -14,16 +21,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.xml.sax.SAXException;
 
-import javax.validation.ConstraintViolation;
-import javax.xml.transform.stream.StreamSource;
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Set;
+import com.google.common.io.Files;
 
-import static java.nio.charset.Charset.forName;
-import static org.assertj.core.api.Assertions.assertThat;
+import io.konik.InvoiceTransformer;
+import io.konik.PrittyPrintInvoiceTransformer;
+import io.konik.utils.NumberDifferenceXmlComparison;
+import io.konik.validation.InvoiceValidator;
 
 @RunWith(Parameterized.class)
 public class ZugferdSpecificExamplesTest {
@@ -32,17 +35,11 @@ public class ZugferdSpecificExamplesTest {
 
    @Parameterized.Parameters(name = "Invoice {0} has {1} error(s)")
    public static Collection<Object[]> getData() {
-      return Arrays.asList(new Object[][] {
-            { "ZUGFeRD_1p0_COMFORT_Einfach_Original.xml", 0 },
-            { "ZUGFeRD_1p0_EXTENDED_Warenrechnung.xml", 2 },
-            { "large_zugferd_invoice.xml", 5 },
-            { "duePayable.xml", 0 },
-            { "productName.xml", 1 },
-            { "totalAllowanceCharge.xml", 5 },
-            { "totalAllowanceCharge2.xml", 0 },
-            { "totalAllowanceChargeWithDiscountAndSurcharge.xml", 0 },
-            { "totalAllowanceChargeWithDiscountAndSurchargeWithMissingTotalAllowanceCharge.xml", 1 },
-      });
+      return Arrays.asList(new Object[][] { { "ZUGFeRD_1p0_COMFORT_Einfach_Original.xml", 0 },
+            { "ZUGFeRD_1p0_EXTENDED_Warenrechnung.xml", 2 }, { "large_zugferd_invoice.xml", 5 },
+            { "duePayable.xml", 0 }, { "productName.xml", 1 }, { "totalAllowanceCharge.xml", 5 },
+            { "totalAllowanceCharge2.xml", 0 }, { "totalAllowanceChargeWithDiscountAndSurcharge.xml", 0 },
+            { "totalAllowanceChargeWithDiscountAndSurchargeWithMissingTotalAllowanceCharge.xml", 1 }, });
    }
 
    @Parameterized.Parameter
@@ -114,10 +111,8 @@ public class ZugferdSpecificExamplesTest {
    private static void printErrorsIfPresent(final Set<ConstraintViolation<Invoice>> constraintViolations) {
       if (constraintViolations != null) {
          for (ConstraintViolation<Invoice> constraintViolation : constraintViolations) {
-            System.out.printf("%-60s: %s | Invalid value: %s%n",
-                  constraintViolation.getPropertyPath(),
-                  constraintViolation.getMessage(),
-                  constraintViolation.getInvalidValue());
+            System.out.printf("%-60s: %s | Invalid value: %s%n", constraintViolation.getPropertyPath(),
+                  constraintViolation.getMessage(), constraintViolation.getInvalidValue());
          }
       }
    }

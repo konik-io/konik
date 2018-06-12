@@ -18,16 +18,17 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.NotBlank;
-import io.konik.zugferd.unece.codes.Reference;
-import io.konik.zugferd.unqualified.ID;
+import static io.konik.util.Strings.isNotEmpty;
+
+import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import java.io.Serializable;
 
-import static io.konik.util.Strings.isNotEmpty;
+import io.konik.validator.annotation.NotBlank;
+import io.konik.zugferd.unece.codes.Reference;
+import io.konik.zugferd.unqualified.ID;
 
 /**
  * = The Tax Registration

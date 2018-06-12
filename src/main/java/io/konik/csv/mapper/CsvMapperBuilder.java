@@ -1,21 +1,33 @@
 package io.konik.csv.mapper;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import javax.annotation.Nullable;
+
 import org.dozer.DozerBeanMapper;
-import org.dozer.loader.api.*;
+import org.dozer.loader.api.BeanMappingBuilder;
+import org.dozer.loader.api.FieldDefinition;
+import org.dozer.loader.api.FieldsMappingOption;
+import org.dozer.loader.api.FieldsMappingOptions;
+import org.dozer.loader.api.TypeMappingBuilder;
+import org.dozer.loader.api.TypeMappingOptions;
 import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.dozer.CsvDozerBeanData;
 import org.supercsv.io.dozer.CsvDozerBeanReader;
 import org.supercsv.prefs.CsvPreference;
 
-import javax.annotation.Nullable;
-import java.io.*;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
 
 public class CsvMapperBuilder {
 
@@ -59,13 +71,10 @@ public class CsvMapperBuilder {
          @Override
          protected void configure() {
             TypeMappingBuilder readerBuilder = mapping(CsvDozerBeanData.class, destinationObjectClass,
-                  TypeMappingOptions.oneWay(),
-                  TypeMappingOptions.wildcard(false),
-                  TypeMappingOptions.mapNull(false));
+                  TypeMappingOptions.oneWay(), TypeMappingOptions.wildcard(false), TypeMappingOptions.mapNull(false));
 
             TypeMappingBuilder writerBuilder = mapping(destinationObjectClass,
-                  type(CsvDozerBeanData.class).mapNull(true),
-                  TypeMappingOptions.oneWay(),
+                  type(CsvDozerBeanData.class).mapNull(true), TypeMappingOptions.oneWay(),
                   TypeMappingOptions.wildcard(false));
 
             for (int i = 0; i < columns.size(); i++) {
@@ -165,9 +174,7 @@ public class CsvMapperBuilder {
    public CsvDozerBeanReader getBeanReader(File csvFile, Class<?> beanType) {
       try {
          CsvDozerBeanReader reader = new CsvDozerBeanReader(
-               new InputStreamReader(new FileInputStream(csvFile), "UTF-8"),
-               csvPreference,
-               buildBeanMapper(beanType));
+               new InputStreamReader(new FileInputStream(csvFile), "UTF-8"), csvPreference, buildBeanMapper(beanType));
          reader.getHeader(true);
          return reader;
 
@@ -197,13 +204,8 @@ public class CsvMapperBuilder {
 
       @Override
       public String toString() {
-         return "Column{" +
-               "name='" + name + '\'' +
-               ", type=" + type +
-               ", processor=" + processor +
-               ", mappingOptions=" + Arrays.toString(mappingOptions) +
-               ", fieldDefinition=" + fieldDefinition +
-               '}';
+         return "Column{" + "name='" + name + '\'' + ", type=" + type + ", processor=" + processor + ", mappingOptions="
+               + Arrays.toString(mappingOptions) + ", fieldDefinition=" + fieldDefinition + '}';
       }
 
       public static class Builder {

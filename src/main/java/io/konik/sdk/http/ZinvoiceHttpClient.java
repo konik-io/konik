@@ -1,21 +1,33 @@
 package io.konik.sdk.http;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.api.client.http.*;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.JsonObjectParser;
-import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.common.io.ByteStreams;
-import io.konik.sdk.ZinvoiceApiConfig;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+
 import org.apache.tika.detect.DefaultDetector;
 import org.apache.tika.detect.Detector;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.mime.MediaType;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.api.client.http.GenericUrl;
+import com.google.api.client.http.HttpContent;
+import com.google.api.client.http.HttpHeaders;
+import com.google.api.client.http.HttpMediaType;
+import com.google.api.client.http.HttpRequest;
+import com.google.api.client.http.HttpRequestFactory;
+import com.google.api.client.http.HttpRequestInitializer;
+import com.google.api.client.http.HttpResponse;
+import com.google.api.client.http.HttpResponseException;
+import com.google.api.client.http.InputStreamContent;
+import com.google.api.client.http.MultipartContent;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonObjectParser;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.common.io.ByteStreams;
+
+import io.konik.sdk.ZinvoiceApiConfig;
 
 /**
  * HTTP client for Zinvoice services.
@@ -89,9 +101,7 @@ public class ZinvoiceHttpClient {
    public InputStream download(String endpoint) {
       try {
          HttpRequest request = httpRequestFactory.buildGetRequest(createEndpoint(endpoint));
-         request.setHeaders(new HttpHeaders()
-               .set("API-KEY", apiConfig.getApiKey())
-               .setAccept("application/json"));
+         request.setHeaders(new HttpHeaders().set("API-KEY", apiConfig.getApiKey()).setAccept("application/json"));
          return request.execute().getContent();
       } catch (IOException e) {
          throw new RuntimeException(e);
@@ -109,8 +119,7 @@ public class ZinvoiceHttpClient {
    public <T> T upload(String endpoint, Map<String, InputStream> files, Class<T> responseTypeClass) {
       try {
          MultipartContent content = new MultipartContent();
-         content.setMediaType(new HttpMediaType("multipart/form-data")
-               .setParameter("boundary", "__END_OF_PART__"));
+         content.setMediaType(new HttpMediaType("multipart/form-data").setParameter("boundary", "__END_OF_PART__"));
 
          Detector detector = new DefaultDetector();
 
@@ -124,9 +133,7 @@ public class ZinvoiceHttpClient {
          }
 
          HttpRequest request = httpRequestFactory.buildPostRequest(createEndpoint(endpoint), content);
-         request.setHeaders(new HttpHeaders()
-               .set("API-KEY", apiConfig.getApiKey())
-               .setAccept("application/json"));
+         request.setHeaders(new HttpHeaders().set("API-KEY", apiConfig.getApiKey()).setAccept("application/json"));
          HttpResponse response = request.execute();
 
          return objectMapper.readValue(response.parseAsString(), responseTypeClass);

@@ -27,10 +27,11 @@ package io.konik.zugferd.unqualified;
 
 import static javax.xml.bind.annotation.XmlAccessType.NONE;
 import static javax.xml.bind.annotation.XmlNsForm.QUALIFIED;
-import io.konik.jaxb.adapter.TwoDigitRoundingAdapter;
 
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlNs;
 import javax.xml.bind.annotation.XmlSchema;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapters;
+
+import io.konik.jaxb.adapter.TwoDigitRoundingAdapter;

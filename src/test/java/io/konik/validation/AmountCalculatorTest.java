@@ -1,14 +1,15 @@
 package io.konik.validation;
 
-import io.konik.InvoiceTransformer;
-import io.konik.zugferd.Invoice;
-import io.konik.zugferd.entity.trade.MonetarySummation;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
+
+import io.konik.InvoiceTransformer;
+import io.konik.zugferd.Invoice;
+import io.konik.zugferd.entity.trade.MonetarySummation;
 
 public class AmountCalculatorTest {
 
@@ -24,11 +25,9 @@ public class AmountCalculatorTest {
       MonetarySummation summation = AmountCalculator.recalculate(invoice).getMonetarySummation();
 
       //then:
-      assertThat(summation.getTaxTotal())
-            .isEqualToComparingFieldByField(invoiceMonetarySummation.getTaxTotal());
+      assertThat(summation.getTaxTotal()).isEqualToComparingFieldByField(invoiceMonetarySummation.getTaxTotal());
 
-      assertThat(summation.getLineTotal())
-            .isEqualToComparingFieldByField(invoiceMonetarySummation.getLineTotal());
+      assertThat(summation.getLineTotal()).isEqualToComparingFieldByField(invoiceMonetarySummation.getLineTotal());
 
       assertThat(summation.getTotalPrepaid())
             .isEqualToComparingFieldByField(invoiceMonetarySummation.getTotalPrepaid());
@@ -39,14 +38,11 @@ public class AmountCalculatorTest {
       assertThat(summation.getAllowanceTotal())
             .isEqualToComparingFieldByField(invoiceMonetarySummation.getAllowanceTotal());
 
-      assertThat(summation.getChargeTotal())
-            .isEqualToComparingFieldByField(invoiceMonetarySummation.getChargeTotal());
+      assertThat(summation.getChargeTotal()).isEqualToComparingFieldByField(invoiceMonetarySummation.getChargeTotal());
 
-      assertThat(summation.getDuePayable())
-            .isEqualToComparingFieldByField(invoiceMonetarySummation.getDuePayable());
+      assertThat(summation.getDuePayable()).isEqualToComparingFieldByField(invoiceMonetarySummation.getDuePayable());
 
-      assertThat(summation.getGrandTotal())
-            .isEqualToComparingFieldByField(invoiceMonetarySummation.getGrandTotal());
+      assertThat(summation.getGrandTotal()).isEqualToComparingFieldByField(invoiceMonetarySummation.getGrandTotal());
    }
 
 }

@@ -17,24 +17,6 @@
  */
 package io.konik.validation;
 
-import com.google.common.base.Function;
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.util.Amounts;
-import io.konik.util.Items;
-import io.konik.util.MonetarySummations;
-import io.konik.zugferd.Invoice;
-import io.konik.zugferd.entity.*;
-import io.konik.zugferd.entity.trade.MonetarySummation;
-import io.konik.zugferd.entity.trade.Settlement;
-import io.konik.zugferd.entity.trade.TradeTax;
-import io.konik.zugferd.entity.trade.item.*;
-import io.konik.zugferd.unece.codes.TaxCategory;
-import io.konik.zugferd.unece.codes.TaxCode;
-import io.konik.zugferd.unqualified.Amount;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.annotation.Nullable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
@@ -43,6 +25,36 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+
+import javax.annotation.Nullable;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Function;
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.util.Amounts;
+import io.konik.util.Items;
+import io.konik.util.MonetarySummations;
+import io.konik.zugferd.Invoice;
+import io.konik.zugferd.entity.AllowanceCharge;
+import io.konik.zugferd.entity.AppliedTax;
+import io.konik.zugferd.entity.GrossPrice;
+import io.konik.zugferd.entity.LogisticsServiceCharge;
+import io.konik.zugferd.entity.SpecifiedAllowanceCharge;
+import io.konik.zugferd.entity.Tax;
+import io.konik.zugferd.entity.trade.MonetarySummation;
+import io.konik.zugferd.entity.trade.Settlement;
+import io.konik.zugferd.entity.trade.TradeTax;
+import io.konik.zugferd.entity.trade.item.Item;
+import io.konik.zugferd.entity.trade.item.ItemTax;
+import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
+import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
+import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
+import io.konik.zugferd.unece.codes.TaxCategory;
+import io.konik.zugferd.unece.codes.TaxCode;
+import io.konik.zugferd.unqualified.Amount;
 
 /**
  * Calculate the missing amounts of the invoice.
@@ -92,9 +104,7 @@ public final class AmountCalculator {
 
          taxAggregator.add(itemTax, lineTotal != null ? lineTotal.getValue() : BigDecimal.ZERO);
 
-         monetarySummation.setLineTotal(Amounts.add(
-               monetarySummation.getLineTotal(),
-               lineTotal));
+         monetarySummation.setLineTotal(Amounts.add(monetarySummation.getLineTotal(), lineTotal));
 
          log.debug("Current monetarySummation.lineTotal = {} (the sum of all line totals)",
                monetarySummation.getLineTotal());
@@ -110,15 +120,13 @@ public final class AmountCalculator {
       monetarySummation.setTaxBasisTotal(new Amount(taxAggregator.calculateTaxBasis(), currency));
       monetarySummation.setTaxTotal(new Amount(taxAggregator.calculateTaxTotal(), currency));
 
-      monetarySummation.setGrandTotal(Amounts.add(
-            monetarySummation.getTaxBasisTotal(),
-            monetarySummation.getTaxTotal()));
+      monetarySummation
+            .setGrandTotal(Amounts.add(monetarySummation.getTaxBasisTotal(), monetarySummation.getTaxTotal()));
 
       log.debug("Recalculated grand total = {} (tax basis total + tax total)", monetarySummation.getGrandTotal());
 
       if (settlement.getMonetarySummation() != null && settlement.getMonetarySummation().getTotalPrepaid() != null) {
-         monetarySummation.setTotalPrepaid(
-               settlement.getMonetarySummation().getTotalPrepaid());
+         monetarySummation.setTotalPrepaid(settlement.getMonetarySummation().getTotalPrepaid());
       }
 
       monetarySummation.setDuePayable(
@@ -480,9 +488,9 @@ public final class AmountCalculator {
             TradeTax existing = null;
             if (previousList != null) {
                for (TradeTax current : previousList) {
-                  if (tradeTax.getType().equals(current.getType()) &&
-                        tradeTax.getCategory().equals(current.getCategory()) &&
-                        tradeTax.getPercentage().equals(current.getPercentage())) {
+                  if (tradeTax.getType().equals(current.getType())
+                        && tradeTax.getCategory().equals(current.getCategory())
+                        && tradeTax.getPercentage().equals(current.getPercentage())) {
                      existing = current;
                      break;
                   }
@@ -515,9 +523,7 @@ public final class AmountCalculator {
 
       @Override
       public String toString() {
-         return "TaxAggregator{" +
-               "map=" + map +
-               '}';
+         return "TaxAggregator{" + "map=" + map + '}';
       }
 
       /**
@@ -573,11 +579,7 @@ public final class AmountCalculator {
 
          @Override
          public String toString() {
-            return "Key{" +
-                  "percentage=" + percentage +
-                  ", code=" + code +
-                  ", category=" + category +
-                  '}';
+            return "Key{" + "percentage=" + percentage + ", code=" + code + ", category=" + category + '}';
          }
       }
    }

@@ -29,13 +29,13 @@ import io.konik.validator.annotation.Email;
  * The Email Validator for the @Email Annotation
  */
 public class EmailValidator implements ConstraintValidator<Email, String> {
-   private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+   private static final String EMAIL_PATTERN = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
 
    private static final Pattern EMAIL_COMPILED_PATTERN = Pattern.compile(EMAIL_PATTERN);
 
    @Override
    public void initialize(Email constraintAnnotation) {
-
+      /* not needed */
    }
 
    @Override
@@ -43,6 +43,6 @@ public class EmailValidator implements ConstraintValidator<Email, String> {
       if (email == null) {
          return true;
       }
-      return EMAIL_COMPILED_PATTERN.matcher(email).matches();
+      return EMAIL_COMPILED_PATTERN.matcher(email.toLowerCase()).matches();
    }
 }

@@ -17,16 +17,16 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
-import io.konik.validator.annotation.Comfort;
-import io.konik.zugferd.unece.codes.TaxCategory;
-import io.konik.zugferd.unece.codes.TaxCode;
-
 import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
+import io.konik.validator.annotation.Comfort;
+import io.konik.zugferd.unece.codes.TaxCategory;
+import io.konik.zugferd.unece.codes.TaxCode;
 
 /**
  * = The trade tax
@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @Comfort
 public class AppliedTax implements Tax {
-   
+
    @XmlElement(name = "TypeCode")
    private TaxCode type;
 
@@ -43,7 +43,7 @@ public class AppliedTax implements Tax {
 
    @XmlElement(name = "ApplicablePercent")
    @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
-   private BigDecimal percentage;   
+   private BigDecimal percentage;
 
    /**
     * Gets the UNCL 5153 tax type code.
@@ -89,7 +89,7 @@ public class AppliedTax implements Tax {
    @Override
    public AppliedTax setCategory(TaxCategory taxCategory) {
       this.category = taxCategory;
-      return this; 
+      return this;
    }
 
    /**

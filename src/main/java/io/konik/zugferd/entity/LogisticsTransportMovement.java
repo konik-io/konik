@@ -18,17 +18,15 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.Extended;
-import io.konik.validator.annotation.NullableNotBlank;
-import io.konik.zugferd.unqualified.ID;
-
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import io.konik.validator.annotation.Extended;
+import io.konik.validator.annotation.NullableNotBlank;
+import io.konik.zugferd.unqualified.ID;
 
 /**
  * = The Logistics Transport Movement.

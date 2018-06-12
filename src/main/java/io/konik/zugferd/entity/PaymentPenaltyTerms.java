@@ -18,15 +18,15 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
-import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.Measure;
-import io.konik.zugferd.unqualified.ZfDate;
-
 import java.math.BigDecimal;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
+import io.konik.zugferd.unqualified.Amount;
+import io.konik.zugferd.unqualified.Measure;
+import io.konik.zugferd.unqualified.ZfDate;
 
 /**
  * = The payment penalty terms and conditions of a trade
@@ -47,7 +47,7 @@ public class PaymentPenaltyTerms implements DiscountOrPenaltyTerm {
    @XmlElement(name = "CalculationPercent")
    @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
    private BigDecimal calculationPercent;
-   
+
    @XmlElement(name = "ActualPenaltyAmount")
    private Amount actualPenalty;
 
@@ -61,7 +61,6 @@ public class PaymentPenaltyTerms implements DiscountOrPenaltyTerm {
       this.actualPenalty = actualPenaltyAmount;
       return this;
    }
-   
 
    @Override
    public ZfDate getReference() {
@@ -69,13 +68,13 @@ public class PaymentPenaltyTerms implements DiscountOrPenaltyTerm {
    }
 
    @Override
-   public PaymentPenaltyTerms setReference(ZfDate reference) {      
+   public PaymentPenaltyTerms setReference(ZfDate reference) {
       this.reference = reference;
       return this;
    }
 
    @Override
-   public Measure getMaturityPeriod() {      
+   public Measure getMaturityPeriod() {
       return maturityPeriod;
    }
 
@@ -86,7 +85,7 @@ public class PaymentPenaltyTerms implements DiscountOrPenaltyTerm {
    }
 
    @Override
-   public Amount getBasis() { 
+   public Amount getBasis() {
       return basis;
    }
 

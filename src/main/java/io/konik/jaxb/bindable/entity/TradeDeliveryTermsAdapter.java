@@ -29,13 +29,17 @@ public class TradeDeliveryTermsAdapter extends XmlAdapter<TradeDeliveryTerms, St
 
    @Override
    public String unmarshal(TradeDeliveryTerms dradeDeliveryTerms) throws Exception {
-      if (dradeDeliveryTerms == null) { return null; }
+      if (dradeDeliveryTerms == null) {
+         return null;
+      }
       return dradeDeliveryTerms.getDeliveryTypeCode();
    }
 
    @Override
    public TradeDeliveryTerms marshal(String deliveryTypeCode) throws Exception {
-      if (isNullOrEmpty(deliveryTypeCode)) { return null; }
+      if (isNullOrEmpty(deliveryTypeCode)) {
+         return null;
+      }
       return new TradeDeliveryTerms(deliveryTypeCode);
    }
 

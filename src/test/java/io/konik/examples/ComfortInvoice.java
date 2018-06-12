@@ -29,6 +29,23 @@ import static org.apache.commons.lang3.time.DateUtils.addDays;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.custommonkey.xmlunit.XMLUnit.compareXML;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.xml.transform.stream.StreamSource;
+
+import org.custommonkey.xmlunit.Diff;
+import org.custommonkey.xmlunit.XMLUnit;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.xml.sax.SAXException;
+
+import com.google.common.io.ByteSource;
+
 import io.konik.InvoiceTransformer;
 import io.konik.PrittyPrintInvoiceTransformer;
 import io.konik.zugferd.Invoice;
@@ -55,22 +72,6 @@ import io.konik.zugferd.unqualified.ZfDateDay;
 import io.konik.zugferd.unqualified.ZfDateMonth;
 import io.konik.zugferd.unqualified.ZfDateWeek;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.xml.transform.stream.StreamSource;
-
-import org.custommonkey.xmlunit.Diff;
-import org.custommonkey.xmlunit.XMLUnit;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.xml.sax.SAXException;
-
-import com.google.common.io.ByteSource;
-
 /**
  * The example class shows how easy it is to create a compact invoice.
  */
@@ -82,63 +83,48 @@ public class ComfortInvoice {
    ZfDate inSixWeeks = new ZfDateWeek(addDays(today, 42));
 
    private Invoice createAllElementInvoiceModel() {
-      
-      Invoice invoice = new Invoice(COMFORT);    // <1>
-      invoice.setHeader(new Header()
-         .setInvoiceNumber("20131122-42")
-         .setCode(_380)
-         .setIssued(today)
-         .setName("Rechnung")
-         .setContractualDueDate(inSixWeeks));
-      
+
+      Invoice invoice = new Invoice(COMFORT); // <1>
+      invoice.setHeader(new Header().setInvoiceNumber("20131122-42").setCode(_380).setIssued(today).setName("Rechnung")
+            .setContractualDueDate(inSixWeeks));
+
       Trade trade = new Trade();
-      trade.setAgreement(new Agreement()     // <2>
-            .setSeller(new TradeParty()
-                  .setName("Seller Inc.")
+      trade.setAgreement(new Agreement() // <2>
+            .setSeller(new TradeParty().setName("Seller Inc.")
                   .setAddress(new Address("80331", "Marienplatz 1", "München", DE))
                   .addTaxRegistrations(new TaxRegistration("DE122...", FC)))
-            .setBuyer(new TradeParty()
-                  .setName("Buyer Inc.")
-                  .setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
-                  .addTaxRegistrations(new TaxRegistration("DE123...", FC))));
-      
+            .setBuyer(
+                  new TradeParty().setName("Buyer Inc.").setAddress(new Address("50667", "Domkloster 4", "Köln", DE))
+                        .addTaxRegistrations(new TaxRegistration("DE123...", FC))));
+
       trade.setDelivery(new Delivery(nextMonth));
-      
-      trade.setSettlement(new Settlement()
-            .setPaymentReference("20131122-42")
-            .setCurrency(EUR)
-            .addPaymentMeans(new PaymentMeans()
-               .setPayerAccount(new DebtorFinancialAccount("DE01234.."))
+
+      trade.setSettlement(new Settlement().setPaymentReference("20131122-42").setCurrency(EUR)
+            .addPaymentMeans(new PaymentMeans().setPayerAccount(new DebtorFinancialAccount("DE01234.."))
                   .setPayerInstitution(new FinancialInstitution("GENO...")))
-            .setMonetarySummation(new MonetarySummation()
-               .setLineTotal(new Amount(100, EUR))
-               .setTaxTotal(new Amount(19, EUR))
-               .setGrandTotal(new Amount(119, EUR))));
-      
-      trade.addItem(new Item()
-         .setProduct(new Product().setName("Saddle"))
-         .setDelivery(new SpecifiedDelivery(new Quantity(1, UNIT))
-            .setDeliveryNote(new ReferencedDocumentItem(1,"DOC:0815"))));
+            .setMonetarySummation(new MonetarySummation().setLineTotal(new Amount(100, EUR))
+                  .setTaxTotal(new Amount(19, EUR)).setGrandTotal(new Amount(119, EUR))));
+
+      trade.addItem(new Item().setProduct(new Product().setName("Saddle")).setDelivery(
+            new SpecifiedDelivery(new Quantity(1, UNIT)).setDeliveryNote(new ReferencedDocumentItem(1, "DOC:0815"))));
       invoice.setTrade(trade);
-      
+
       return invoice;
    }
 
-   
    public void transformModelAndWriteToDisk(Invoice invoice) throws IOException {
-      InvoiceTransformer transformer = new PrittyPrintInvoiceTransformer();     // <1>
+      InvoiceTransformer transformer = new PrittyPrintInvoiceTransformer(); // <1>
       FileOutputStream outputStream = new FileOutputStream("target/all-element-invoice.xml");
-      transformer.fromModel(invoice, outputStream);      // <2>
+      transformer.fromModel(invoice, outputStream); // <2>
    }
-   
-   
+
    @Test
    public void creatInvoice() throws IOException {
       //setup
       Invoice invoice = createAllElementInvoiceModel();
       transformModelAndWriteToDisk(invoice);
    }
-   
+
    @Test
    public void validateInvoice() throws IOException, SAXException {
       //setup
@@ -160,18 +146,17 @@ public class ComfortInvoice {
       InvoiceTransformer transformer = new PrittyPrintInvoiceTransformer();
       //convert model to xml
       ByteArrayOutputStream bas = new ByteArrayOutputStream(102400);
-      transformer.fromModel(invoiceModel,bas);
-      String invoice = new String(bas.toByteArray(),"UTF-8");
+      transformer.fromModel(invoiceModel, bas);
+      String invoice = new String(bas.toByteArray(), "UTF-8");
 
       //execute
       Invoice model = transformer.toModel(new ByteArrayInputStream(bas.toByteArray()));
-      String invoiceCompare = new String(transformer.fromModel(model),"UTF-8");
-      
+      String invoiceCompare = new String(transformer.fromModel(model), "UTF-8");
+
       Diff xmlDiff = compareXML(invoice, invoiceCompare);
       printOutIfNotIdentical(invoice, invoiceCompare, xmlDiff);
       assertThat(xmlDiff.identical()).as(xmlDiff.toString()).isTrue();
    }
-
 
    private static void printOutIfNotIdentical(String invoice, String invoiceCompare, Diff xmlDiff) {
       if (!xmlDiff.identical()) {

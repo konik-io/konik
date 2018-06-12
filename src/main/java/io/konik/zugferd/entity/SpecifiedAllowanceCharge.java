@@ -17,6 +17,18 @@
  */
 package io.konik.zugferd.entity;
 
+import static io.konik.zugferd.unqualified.Indicator.falseIndicator;
+import static io.konik.zugferd.unqualified.Indicator.trueIndicator;
+
+import java.math.BigDecimal;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import io.konik.jaxb.adapter.TwoDigitRoundingAdapter;
 import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.validator.annotation.Comfort;
@@ -25,25 +37,15 @@ import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Indicator;
 import io.konik.zugferd.unqualified.Quantity;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.math.BigDecimal;
-
-import static io.konik.zugferd.unqualified.Indicator.falseIndicator;
-import static io.konik.zugferd.unqualified.Indicator.trueIndicator;
-
 /**
  * 
  * = The Specified Allowance Charge.
  */
-@XmlType(name = "", propOrder = { "surcharge", "sequence", "calculationPercent", "basis", "basisQuantity", "actual", "reasonCode", "reason", "category" })
+@XmlType(name = "", propOrder = { "surcharge", "sequence", "calculationPercent", "basis", "basisQuantity", "actual",
+      "reasonCode", "reason", "category" })
 
 public class SpecifiedAllowanceCharge implements CommonAllowanceCharge {
-   
+
    @XmlElement(name = "ChargeIndicator")
    private Indicator surcharge;
 
@@ -71,9 +73,9 @@ public class SpecifiedAllowanceCharge implements CommonAllowanceCharge {
 
    @XmlElement(name = "Reason")
    private String reason;
-   
+
    @XmlElement(name = "CategoryTradeTax")
-   private AppliedTax category;  
+   private AppliedTax category;
 
    /**
     * Instantiates a new allowance charge.
@@ -289,6 +291,7 @@ public class SpecifiedAllowanceCharge implements CommonAllowanceCharge {
       this.reason = reason;
       return this;
    }
+
    /**
     * Gets the category.
     *
@@ -309,5 +312,5 @@ public class SpecifiedAllowanceCharge implements CommonAllowanceCharge {
       this.category = category;
       return this;
    }
- 
+
 }

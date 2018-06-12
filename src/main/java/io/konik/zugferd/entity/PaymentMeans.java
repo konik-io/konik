@@ -17,17 +17,18 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.Basic;
-import io.konik.validator.annotation.Comfort;
-import io.konik.zugferd.unece.codes.PaymentMeansCode;
-import io.konik.zugferd.unqualified.ExtendedID;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.zugferd.unece.codes.PaymentMeansCode;
+import io.konik.zugferd.unqualified.ExtendedID;
 
 /**
  * = The Payment Means

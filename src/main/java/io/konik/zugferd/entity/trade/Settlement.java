@@ -17,29 +17,36 @@
  */
 package io.konik.zugferd.entity.trade;
 
-import com.neovisionaries.i18n.CurrencyCode;
-import io.konik.jaxb.bindable.entity.AccountingAccountAdapter;
-import io.konik.validator.annotation.Basic;
-import io.konik.validator.annotation.Comfort;
-import io.konik.validator.annotation.Extended;
-import io.konik.zugferd.entity.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.util.ArrayList;
-import java.util.List;
+
+import com.neovisionaries.i18n.CurrencyCode;
+
+import io.konik.jaxb.bindable.entity.AccountingAccountAdapter;
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Comfort;
+import io.konik.validator.annotation.Extended;
+import io.konik.zugferd.entity.CommonSettlement;
+import io.konik.zugferd.entity.LogisticsServiceCharge;
+import io.konik.zugferd.entity.PaymentMeans;
+import io.konik.zugferd.entity.PaymentTerm;
+import io.konik.zugferd.entity.Period;
+import io.konik.zugferd.entity.SpecifiedAllowanceCharge;
+import io.konik.zugferd.entity.TradeParty;
 
 /**
  * = The Trade Settlement
  * 
  * Contains trade specific payment and price related informations
  */
-@XmlType(propOrder = { "paymentReference", "currency", "invoicee", "payee", "paymentMeans", "tradeTax",
-      "billingPeriod", "allowanceCharge", "serviceCharge", "paymentTerms", "monetarySummation",
-      "costCenter" })
+@XmlType(propOrder = { "paymentReference", "currency", "invoicee", "payee", "paymentMeans", "tradeTax", "billingPeriod",
+      "allowanceCharge", "serviceCharge", "paymentTerms", "monetarySummation", "costCenter" })
 public class Settlement implements CommonSettlement<TradeTax, MonetarySummation> {
 
    @XmlElement(name = "PaymentReference")
@@ -328,7 +335,9 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
     * 
     * @return the specified trade settlement monetary summation
     */
-   @Basic@Valid@NotNull   
+   @Basic
+   @Valid
+   @NotNull
    @Override
    public MonetarySummation getMonetarySummation() {
       return monetarySummation;
@@ -357,7 +366,6 @@ public class Settlement implements CommonSettlement<TradeTax, MonetarySummation>
       return costCenter;
    }
 
-   
    /**
     * Sets  the booking reference or cost center account.
     *

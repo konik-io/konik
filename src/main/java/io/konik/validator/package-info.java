@@ -20,4 +20,3 @@
  * ZUGFeRD Validator implementation
  */
 package io.konik.validator;
-

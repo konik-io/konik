@@ -19,8 +19,6 @@ package io.konik;
 
 import static java.util.logging.Level.WARNING;
 import static javax.xml.bind.JAXBContext.newInstance;
-import io.konik.exception.TransformationException;
-import io.konik.zugferd.Invoice;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -45,6 +43,9 @@ import javax.xml.validation.Validator;
 
 import org.xml.sax.SAXException;
 
+import io.konik.exception.TransformationException;
+import io.konik.zugferd.Invoice;
+
 /**
  * Transforms invoices from one representation to another. In other words marshaling and unmarshalling.
  * 
@@ -54,7 +55,7 @@ import org.xml.sax.SAXException;
 public class InvoiceTransformer {
 
    private static final Logger LOG = Logger.getLogger(InvoiceTransformer.class.getName());
-   
+
    private static final String MARSHALLING_ERROR = "Marshalling error";
 
    private static final String KONIK_CONTEXT = "io.konik.zugferd";
@@ -173,7 +174,7 @@ public class InvoiceTransformer {
     * @return the Schema Validator
     * @throws SAXException the SAX exception
     */
-   public Validator getZfSchemaValidator() throws SAXException {      
+   public Validator getZfSchemaValidator() throws SAXException {
       SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
       URL schemaInvoice = InvoiceTransformer.class.getResource("/zfSchema/ZUGFeRD_1p0.xsd");
       Schema invoiceSchema = sf.newSchema(schemaInvoice);

@@ -17,12 +17,13 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.unqualified.ZfDate;
+import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import java.io.Serializable;
+
+import io.konik.zugferd.unqualified.ZfDate;
 
 /**
  * = The period of time
@@ -36,7 +37,6 @@ public class Period implements Serializable {
 
    @XmlElement(name = "EndDateTime")
    private ZfDate end;
-
 
    /**
     * Gets the start date time.

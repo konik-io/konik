@@ -17,14 +17,16 @@
  */
 package io.konik.zugferd.entity;
 
-import com.neovisionaries.i18n.CountryCode;
-import io.konik.validator.annotation.Basic;
+import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.io.Serializable;
+
+import com.neovisionaries.i18n.CountryCode;
+
+import io.konik.validator.annotation.Basic;
 
 /**
  * = The Address

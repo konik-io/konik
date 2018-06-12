@@ -19,12 +19,13 @@ package io.konik.jaxb.adapter;
 
 import static java.lang.Integer.parseInt;
 import static java.math.RoundingMode.valueOf;
-import io.konik.Configuration;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+import io.konik.Configuration;
 
 /**
  * 
@@ -66,9 +67,13 @@ public class QuantityRoundingAdapter extends XmlAdapter<BigDecimal, BigDecimal> 
 
    @Override
    public BigDecimal marshal(BigDecimal amount) throws Exception {
-      if (amount == null) { return null; }
+      if (amount == null) {
+         return null;
+      }
       BigDecimal roundedValue = amount.setScale(scale, roundingMode);
-      if (stripTrailingZeros) { return roundedValue.stripTrailingZeros(); }
+      if (stripTrailingZeros) {
+         return roundedValue.stripTrailingZeros();
+      }
       return roundedValue;
    }
 }

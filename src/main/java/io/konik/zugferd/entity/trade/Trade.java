@@ -18,8 +18,9 @@
  */
 package io.konik.zugferd.entity.trade;
 
-import io.konik.validator.annotation.NotEmpty;
-import io.konik.zugferd.entity.trade.item.Item;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -27,9 +28,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
+import io.konik.validator.annotation.NotEmpty;
+import io.konik.zugferd.entity.trade.item.Item;
 
 /**
  * = The Trade transaction.

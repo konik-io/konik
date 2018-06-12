@@ -17,11 +17,12 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.unqualified.Amount;
+import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import java.io.Serializable;
+
+import io.konik.zugferd.unqualified.Amount;
 
 /**
  * 

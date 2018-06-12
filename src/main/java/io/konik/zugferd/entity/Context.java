@@ -17,19 +17,20 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.jaxb.adapter.ParameterProfileAdapter;
-import io.konik.validator.annotation.Basic;
-import io.konik.validator.annotation.Extended;
-import io.konik.zugferd.profile.ConformanceLevel;
-import io.konik.zugferd.profile.Profile;
-import io.konik.zugferd.unqualified.Indicator;
+import java.io.Serializable;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.io.Serializable;
+
+import io.konik.jaxb.adapter.ParameterProfileAdapter;
+import io.konik.validator.annotation.Basic;
+import io.konik.validator.annotation.Extended;
+import io.konik.zugferd.profile.ConformanceLevel;
+import io.konik.zugferd.profile.Profile;
+import io.konik.zugferd.unqualified.Indicator;
 
 /**
  * = The Exchanged Document Context
@@ -74,7 +75,9 @@ public class Context implements Serializable {
     */
    @Basic
    public boolean isTest() {
-      if (test == null) { return false; }
+      if (test == null) {
+         return false;
+      }
       return test.getIndicator();
    }
 

@@ -60,8 +60,7 @@ public enum TaxCategory {
     * which is due on the current invoice is to be paid on
     * receipt of a separate VAT payment request.
     **/
-   AC(
-         "Value Added Tax (VAT) not now due for payment",
+   AC("Value Added Tax (VAT) not now due for payment",
          " A code to indicate that the Value Added Tax (VAT) amount which is due on the current invoice is to be paid on receipt of a separate VAT payment request."),
 
    /**
@@ -125,8 +124,9 @@ public enum TaxCategory {
     * 
     * Code specifying that the VAT rate is levied from the invoicee for Intra-Community supplies.
     **/
-   IC("Intra-Community Supply", "Code specifying that the VAT rate is levied from the invoicee for Intra-Community supplies."),
-   
+   IC("Intra-Community Supply",
+         "Code specifying that the VAT rate is levied from the invoicee for Intra-Community supplies."),
+
    /**
     * Services outside scope of tax
     * 

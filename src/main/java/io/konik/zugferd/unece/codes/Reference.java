@@ -6112,7 +6112,9 @@ public enum Reference {
     * @return the type by code
     */
    public static Reference getByCode(String enumCode) {
-      if (isNullOrEmpty(enumCode)) { return null; }
+      if (isNullOrEmpty(enumCode)) {
+         return null;
+      }
       return valueOf(enumCode);
    }
 

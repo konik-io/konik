@@ -17,9 +17,9 @@
  */
 package io.konik.jaxb.bindable.entity;
 
-import io.konik.zugferd.unqualified.ZfDate;
-
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+import io.konik.zugferd.unqualified.ZfDate;
 
 /**
  * = The Event to ZUGFeRD Date Adapter.
@@ -28,13 +28,17 @@ public class EventAdapter extends XmlAdapter<SupplyChainEvent, ZfDate> {
 
    @Override
    public ZfDate unmarshal(SupplyChainEvent event) throws Exception {
-      if (event == null) { return null; }
+      if (event == null) {
+         return null;
+      }
       return event.occurrence;
    }
 
    @Override
    public SupplyChainEvent marshal(ZfDate date) throws Exception {
-      if (date == null) { return null; }
+      if (date == null) {
+         return null;
+      }
       SupplyChainEvent event = new SupplyChainEvent();
       event.occurrence = date;
       return event;

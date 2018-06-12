@@ -17,10 +17,10 @@
  */
 package io.konik.validator;
 
-import io.konik.validator.annotation.NotBlank;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import io.konik.validator.annotation.NotBlank;
 
 /**
  * = The Not Blank Validator.
@@ -53,7 +53,9 @@ public class NotBlankValidator implements ConstraintValidator<NotBlank, CharSequ
     */
    @Override
    public boolean isValid(CharSequence charSequence, ConstraintValidatorContext constraintValidatorContext) {
-      if (charSequence == null) { return true; }
+      if (charSequence == null) {
+         return true;
+      }
       return charSequence.toString().trim().length() > 0;
    }
 }

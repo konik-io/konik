@@ -22,7 +22,6 @@ import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
-import io.konik.validator.EmailValidator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -31,33 +30,35 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
+import io.konik.validator.EmailValidator;
+
 /**
  * Annotation to validate an email address (by pattern)<br/>
  */
 @Documented
 @Constraint(validatedBy = EmailValidator.class)
-@Target({METHOD, FIELD, ANNOTATION_TYPE, PARAMETER})
+@Target({ METHOD, FIELD, ANNOTATION_TYPE, PARAMETER })
 @Retention(RUNTIME)
 public @interface Email {
-    
-    /**
-     * Groups.
-     *
-     * @return the class[]
-     */
-    Class<?>[] groups() default {};
 
-    /**
-     * Message.
-     *
-     * @return the string
-     */
-    String message() default "{io.konik.validation.constraints.email.message}";
+   /**
+    * Groups.
+    *
+    * @return the class[]
+    */
+   Class<?>[] groups() default {};
 
-    /**
-     * Payload.
-     *
-     * @return the class<? extends payload>[]
-     */
-    Class<? extends Payload>[] payload() default {};
+   /**
+    * Message.
+    *
+    * @return the string
+    */
+   String message() default "{io.konik.validation.constraints.email.message}";
+
+   /**
+    * Payload.
+    *
+    * @return the class<? extends payload>[]
+    */
+   Class<? extends Payload>[] payload() default {};
 }

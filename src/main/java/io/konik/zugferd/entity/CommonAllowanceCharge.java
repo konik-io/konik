@@ -17,11 +17,11 @@
  */
 package io.konik.zugferd.entity;
 
-import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.Quantity;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
+
+import io.konik.zugferd.unqualified.Amount;
+import io.konik.zugferd.unqualified.Quantity;
 
 /**
  *  

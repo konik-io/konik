@@ -18,18 +18,18 @@
  */
 package io.konik.zugferd.entity.trade.item;
 
+import java.math.BigDecimal;
+
+import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.unece.codes.TaxCategory;
 import io.konik.zugferd.unece.codes.TaxCode;
 import io.konik.zugferd.unqualified.Amount;
-
-import java.math.BigDecimal;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * = The trade tax on an item basis.
@@ -50,9 +50,8 @@ public class ItemTax implements SpecifiedTax {
 
    @XmlElement(name = "ApplicablePercent")
    @XmlJavaTypeAdapter(PercentRoundingAdapter.class)
-   private BigDecimal percentage;   
+   private BigDecimal percentage;
 
-   
    @Override
    @Valid
    @Extended
@@ -65,7 +64,7 @@ public class ItemTax implements SpecifiedTax {
       this.calculated = calculatedAmount;
       return this;
    }
-   
+
    @Comfort
    @Override
    public TaxCode getType() {
@@ -106,10 +105,10 @@ public class ItemTax implements SpecifiedTax {
    public BigDecimal getPercentage() {
       return this.percentage;
    }
-   
+
    @Override
    public SpecifiedTax setPercentage(BigDecimal applicablePercentage) {
       this.percentage = applicablePercentage;
-       return this;
+      return this;
    }
 }

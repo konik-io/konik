@@ -18,23 +18,24 @@
 
 package io.konik.zugferd.entity;
 
-import io.konik.validator.annotation.NotEmpty;
-import io.konik.zugferd.unqualified.Code;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
+import io.konik.validator.annotation.NotEmpty;
+import io.konik.zugferd.unqualified.Code;
 
 /**
  * = The product classification.
  */
 @XmlType(name = "ProductClassificationType", propOrder = { "classCode", "classNames" })
 public class ProductClassification implements Serializable {
-   
+
    @XmlElement(name = "ClassCode")
    private Code classCode;
 

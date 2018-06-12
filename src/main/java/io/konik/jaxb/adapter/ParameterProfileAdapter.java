@@ -18,14 +18,15 @@
 package io.konik.jaxb.adapter;
 
 import static java.util.logging.Level.WARNING;
-import io.konik.zugferd.entity.Parameter;
-import io.konik.zugferd.profile.ConformanceLevel;
-import io.konik.zugferd.profile.Profile;
-import io.konik.zugferd.profile.ProfileVersion;
 
 import java.util.logging.Logger;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+import io.konik.zugferd.entity.Parameter;
+import io.konik.zugferd.profile.ConformanceLevel;
+import io.konik.zugferd.profile.Profile;
+import io.konik.zugferd.profile.ProfileVersion;
 
 /**
  * 
@@ -38,7 +39,9 @@ public class ParameterProfileAdapter extends XmlAdapter<Parameter, Profile> {
 
    @Override
    public Profile unmarshal(Parameter p) throws Exception {
-      if (p == null) { return null; }
+      if (p == null) {
+         return null;
+      }
       String fullName = p.getId();
       try {
          ProfileVersion version = ProfileVersion.extractVersion(fullName);
@@ -62,7 +65,9 @@ public class ParameterProfileAdapter extends XmlAdapter<Parameter, Profile> {
 
    @Override
    public Parameter marshal(Profile profile) throws Exception {
-      if (profile == null) { return null; }
+      if (profile == null) {
+         return null;
+      }
       return new Parameter(profile.fullName());
    }
 }

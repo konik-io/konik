@@ -66,10 +66,7 @@ public class TwoDigitRoundingAdapter extends XmlAdapter<Amount, Amount> {
 
    @Override
    public Amount unmarshal(Amount amount) throws Exception {
-      if (amount == null || amount.getValue() == null) {
-         return amount;
-      }
-      return amount.setValue(round(amount));
+      return amount;
    }
 
    @Override

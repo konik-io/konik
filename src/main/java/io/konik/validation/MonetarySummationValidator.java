@@ -212,10 +212,6 @@ public class MonetarySummationValidator {
                      SpecifiedMonetarySummation calculatedMonetarySummation = AmountCalculator
                            .calculateSpecifiedMonetarySummation(item);
 
-                     String lineTotal = (monetarySummation.getLineTotal() != null
-                           ? monetarySummation.getLineTotal().getValue().toString()
-                           : "");
-
                      if (belongsToProfile(SpecifiedMonetarySummation.class, "getLineTotal",
                            validationGroupsList)
                            && !areEqual(monetarySummation.getLineTotal(),
@@ -230,19 +226,6 @@ public class MonetarySummationValidator {
                                           : null));
                      }
 
-                     else if (!lineTotal.contains(".") || lineTotal.split("\\.")[1].length() != 2) {
-                        violations.add(new Violation(invoice, "lineTotal needs 2 decimals",
-                              "item.monetarySummation.lineTotal.error",
-                              "trade.items[" + i + "].settlement.monetarySummation.lineTotal",
-                              monetarySummation.getLineTotal() != null
-                                    ? monetarySummation.getLineTotal().getValue()
-                                    : null));
-                     }
-
-                     String totalAllowanceCharge = (monetarySummation.getTotalAllowanceCharge() != null
-                           ? monetarySummation.getTotalAllowanceCharge().getValue().toString()
-                           : "0.0000");
-
                      if (belongsToProfile(SpecifiedMonetarySummation.class, "getTotalAllowanceCharge",
                            validationGroupsList)
                            && ((grossPriceIncludesCharges(item)
@@ -252,16 +235,6 @@ public class MonetarySummationValidator {
                         String message = message(monetarySummation.getTotalAllowanceCharge(),
                               calculatedMonetarySummation.getTotalAllowanceCharge());
                         violations.add(new Violation(invoice, message,
-                              "item.monetarySummation.totalAllowanceCharge.error",
-                              "trade.items[" + i + "].settlement.monetarySummation.totalAllowanceCharge",
-                              monetarySummation.getTotalAllowanceCharge() != null
-                                    ? monetarySummation.getTotalAllowanceCharge().getValue()
-                                    : null));
-                     }
-
-                     else if (!totalAllowanceCharge.contains(".")
-                           || totalAllowanceCharge.split("\\.")[1].length() != 4) {
-                        violations.add(new Violation(invoice, "totalAllowanceCharge needs 4 decimals",
                               "item.monetarySummation.totalAllowanceCharge.error",
                               "trade.items[" + i + "].settlement.monetarySummation.totalAllowanceCharge",
                               monetarySummation.getTotalAllowanceCharge() != null

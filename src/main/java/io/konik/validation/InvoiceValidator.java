@@ -98,10 +98,10 @@ public class InvoiceValidator {
    * Validate the invoice
    *
    * @param invoice the invoice
-   * @param shallBeVvalidatedWithScheme true if the Validation should validate the invoice with the scheme aswell.
+   * @param shallBeValidatedWithScheme true if the Validation should validate the invoice with the scheme aswell.
    * @return the sets the
    */
-   public Set<ConstraintViolation<Invoice>> validate(Invoice invoice, boolean shallBeVvalidatedWithScheme) {
+   public Set<ConstraintViolation<Invoice>> validate(Invoice invoice, boolean shallBeValidatedWithScheme) {
       ConformanceLevel conformanceLevel = invoice.getContext().getGuideline().getConformanceLevel();
       Class<?>[] validationGroups = resolveIntoValidationGroups(conformanceLevel);
       Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice, validationGroups);
@@ -110,7 +110,7 @@ public class InvoiceValidator {
          violations.addAll(monetarySummationValidator.validate(invoice, validationGroups));
       }
 
-      if (shallBeVvalidatedWithScheme) {
+      if (shallBeValidatedWithScheme) {
          try {
             validateWithShema(invoice);
          } catch (IOException e) {

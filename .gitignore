@@ -6,3 +6,5 @@
 infinitest.filters
 .idea
 konik.iml
+build/
+.gradle/

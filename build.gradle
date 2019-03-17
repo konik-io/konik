@@ -1,0 +1,69 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'io.konik'
+version = '1.3.3-SNAPSHOT'
+description = 'Konik Library'
+sourceCompatibility = '1.8'
+
+
+dependencies {
+    compile 'io.konik:harness:1.0.0'
+    compile 'javax.validation:validation-api:1.1.0.Final'
+    compile 'com.neovisionaries:nv-i18n:1.22'
+    compile 'com.google.guava:guava:18.0'
+    compile 'javax.inject:javax.inject:1'
+    compile 'net.sf.supercsv:super-csv:2.4.0'
+    compile 'net.sf.supercsv:super-csv-dozer:2.4.0'
+    compile 'com.google.http-client:google-http-client:1.20.0'
+    compile 'com.google.http-client:google-http-client-jackson2:1.20.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+    compile 'org.apache.tika:tika-core:1.20'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'org.apache.bval:bval-jsr:1.1.2'
+    testCompile 'io.konik:pdfbox-carriage:1.1.0'
+    testCompile 'junit:junit:4.11'
+    testCompile 'net._01001111:jlorem:1.3'
+    testCompile 'org.assertj:assertj-core:1.6.1'
+    testCompile 'org.unitils:unitils-core:3.4.2'
+    testCompile 'xmlunit:xmlunit:1.5'
+    testCompile 'org.javers:javers-core:1.3.4'
+    testCompile 'org.mockito:mockito-all:1.10.19'
+    testCompile 'org.apache.logging.log4j:log4j-api:2.6.2'
+    testCompile 'org.apache.logging.log4j:log4j-core:2.6.2'
+    testCompile 'org.apache.logging.log4j:log4j-slf4j-impl:2.6.2'
+    testCompile 'org.apache.logging.log4j:log4j-jcl:2.6.2'
+    testCompile 'org.apache.logging.log4j:log4j-1.2-api:2.6.2'
+    testCompile 'org.apache.logging.log4j:log4j-jul:2.6.2'
+    compileOnly 'org.openjdk.jmh:jmh-core:1.1'
+    compileOnly 'org.openjdk.jmh:jmh-generator-annprocess:1.1'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+
+    maven {
+        url = 'http://repo.maven.apache.org/maven2'
+    }
+}
+
+
+configurations.all {
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}

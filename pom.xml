@@ -49,7 +49,7 @@
          <!-- Guava lib should and will be removed in a next release -->
          <groupId>com.google.guava</groupId>
          <artifactId>guava</artifactId>
-         <version>24.1.1-jre</version>
+         <version>26.0-jre</version>
          <scope>compile</scope>
       </dependency>
 

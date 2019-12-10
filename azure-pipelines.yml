@@ -13,14 +13,14 @@ steps:
 - script: |
     ./gradlew --version
   displayName: "Version Info"
-  
+
 - task: Gradle@2
   inputs:
     tasks: 'build'
     gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
+#    gradleOptions: '-Xmx3072m'
+#    javaHomeOption: 'JDKVersion'
+#    jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
-    publishJUnitResults: 'True'
+    publishJUnitResults: 'false'
     testResultsFiles: 'build/test-results/test/TEST-*.xml'

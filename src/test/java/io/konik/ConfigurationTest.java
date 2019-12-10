@@ -14,7 +14,7 @@ import org.unitils.thirdparty.org.apache.commons.io.IOUtils;
 @SuppressWarnings({ "javadoc", "static-method" })
 public class ConfigurationTest {
 
-   private static final String CONFIG_FILE = "target/test-classes/io.konik.configuration.properties";
+   private static final String CONFIG_FILE = "build/resources/test/io.konik.configuration.properties";
 
    @Before
    public void setUp() throws Exception {

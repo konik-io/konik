@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'maven-publish'
     id "me.champeau.gradle.jmh" version "0.5.0"
+    id "pl.allegro.tech.build.axion-release"    version "1.10.2"
 }
 
 repositories {
@@ -47,8 +48,14 @@ dependencies {
     jmh 'org.openjdk.jmh:jmh-generator-annprocess:1.1'
 }
 
+scmVersion {
+    tag {
+        prefix = 'konik'
+    }
+}
+
 group = 'io.konik'
-version = '1.3.3-SNAPSHOT'
+version = scmVersion.version
 description = 'Konik - The ZUGFeRD processing library '
 sourceCompatibility = '1.8'
 

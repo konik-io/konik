@@ -18,3 +18,5 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
+    publishJUnitResults: 'True'
+    testResultsFiles: 'build/test-results/test/TEST-*.xml'

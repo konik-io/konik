@@ -99,7 +99,9 @@ public class ZugferdSpecificExamplesTest {
 
       //then:
       String remarshalledInvoice = new String(invoiceAsByteArray, "UTF-8");
-      Files.write(remarshalledInvoice.getBytes(), new File("./target/test_" + file));
+      File file = new File("build/test-results/zf-xml/test_" + this.file);
+      file.getParentFile().mkdirs();
+      Files.write(remarshalledInvoice.getBytes(), file);
       Diff diff = new Diff(testFileContent, remarshalledInvoice);
       diff.overrideDifferenceListener(new NumberDifferenceXmlComparison());
       XMLAssert.assertXMLEqual(diff, true);

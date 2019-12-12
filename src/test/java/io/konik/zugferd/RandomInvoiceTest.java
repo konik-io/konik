@@ -52,8 +52,8 @@ import static org.unitils.reflectionassert.ReflectionComparatorMode.LENIENT_DATE
 @SuppressWarnings("javadoc")
 public class RandomInvoiceTest {
    static Charset utf8 = Charset.forName("UTF-8");
-   private static final String TARGET_RANDOM_ZF_INVOICE_XML = "target/random_zf_invoice.xml";
-   private static final String TARGET_RANDOM_ZF_INVOICE_XML_2ND = "target/random_zf_invoice_2ndrun.xml";
+   private static final String TARGET_RANDOM_ZF_INVOICE_XML = "build/test-results/zf-xml/random_zf_invoice.xml";
+   private static final String TARGET_RANDOM_ZF_INVOICE_XML_2ND = "build/test-results/zf-xml/random_zf_invoice_2ndrun.xml";
 
    private final static InvoiceTransformer transformer = new PrittyPrintInvoiceTransformer();
 

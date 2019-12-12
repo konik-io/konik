@@ -17,12 +17,11 @@
  */
 package io.konik.jaxb.adapter;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import io.konik.util.Strings;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
-
-import io.konik.util.Strings;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * = The Issue Date Time Adapter.

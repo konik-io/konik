@@ -17,9 +17,9 @@
  */
 package io.konik.jaxb.adapter;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
-
 import com.neovisionaries.i18n.CurrencyCode;
+
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
  * 

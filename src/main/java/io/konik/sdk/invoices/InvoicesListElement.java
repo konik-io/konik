@@ -1,12 +1,11 @@
 package io.konik.sdk.invoices;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 import io.konik.sdk.json.DateDeserializer;
 import io.konik.sdk.json.DateTimeDeserializer;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 public class InvoicesListElement {
 

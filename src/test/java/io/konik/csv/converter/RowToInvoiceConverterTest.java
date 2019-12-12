@@ -1,17 +1,6 @@
 package io.konik.csv.converter;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
-import org.assertj.core.api.Condition;
-import org.assertj.core.data.Index;
-import org.junit.Before;
-import org.junit.Test;
-
 import com.neovisionaries.i18n.CurrencyCode;
-
 import io.konik.csv.Rows;
 import io.konik.csv.model.Row;
 import io.konik.zugferd.Invoice;
@@ -23,6 +12,15 @@ import io.konik.zugferd.profile.ConformanceLevel;
 import io.konik.zugferd.unece.codes.DocumentCode;
 import io.konik.zugferd.unece.codes.TaxCategory;
 import io.konik.zugferd.unece.codes.TaxCode;
+import org.assertj.core.api.Condition;
+import org.assertj.core.data.Index;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RowToInvoiceConverterTest {
 

@@ -1,10 +1,5 @@
 package io.konik.calculation;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
-import javax.validation.constraints.NotNull;
-
 import io.konik.util.Amounts;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.trade.Trade;
@@ -12,6 +7,10 @@ import io.konik.zugferd.entity.trade.item.Item;
 import io.konik.zugferd.entity.trade.item.ItemTax;
 import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
 import io.konik.zugferd.unqualified.Amount;
+
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class InvoiceTaxCompleter implements Correction<Invoice> {
 

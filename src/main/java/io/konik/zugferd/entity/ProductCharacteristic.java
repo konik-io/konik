@@ -18,17 +18,16 @@
 
 package io.konik.zugferd.entity;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import io.konik.validator.annotation.NotBlank;
+import io.konik.validator.annotation.NotEmpty;
+import io.konik.zugferd.unqualified.Measure;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import io.konik.validator.annotation.NotBlank;
-import io.konik.validator.annotation.NotEmpty;
-import io.konik.zugferd.unqualified.Measure;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Class ProductCharacteristic.

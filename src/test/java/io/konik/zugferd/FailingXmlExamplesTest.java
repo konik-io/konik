@@ -1,18 +1,9 @@
 package io.konik.zugferd;
 
-import static io.konik.validation.InvoiceValidator.resolveIntoValidationGroups;
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.InputStream;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-
+import io.konik.InvoiceTransformer;
+import io.konik.PrittyPrintInvoiceTransformer;
+import io.konik.validator.NullableNotBlankValidator;
+import io.konik.zugferd.profile.ConformanceLevel;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -21,10 +12,17 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import io.konik.InvoiceTransformer;
-import io.konik.PrittyPrintInvoiceTransformer;
-import io.konik.validator.NullableNotBlankValidator;
-import io.konik.zugferd.profile.ConformanceLevel;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import java.io.InputStream;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import static io.konik.validation.InvoiceValidator.resolveIntoValidationGroups;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Parameterized.class)
 public class FailingXmlExamplesTest {

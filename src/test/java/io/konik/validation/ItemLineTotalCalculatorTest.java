@@ -1,19 +1,6 @@
 package io.konik.validation;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Collection;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameter;
-import org.junit.runners.Parameterized.Parameters;
-
 import com.neovisionaries.i18n.CurrencyCode;
-
 import io.konik.validation.AmountCalculator.ItemLineTotalCalculator;
 import io.konik.zugferd.entity.GrossPrice;
 import io.konik.zugferd.entity.Price;
@@ -23,6 +10,17 @@ import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
 import io.konik.zugferd.unece.codes.UnitOfMeasurement;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Quantity;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Collection;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Parameterized.class)
 public class ItemLineTotalCalculatorTest {

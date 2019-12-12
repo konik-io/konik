@@ -18,9 +18,9 @@
  */
 package io.konik.jaxb.bindable.entity;
 
-import static io.konik.util.Strings.isNullOrEmpty;
-
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+import static io.konik.util.Strings.isNullOrEmpty;
 
 /**
  * = The Trade Delivery Terms Adapter to String

@@ -18,6 +18,28 @@
  */
 package io.konik.examples;
 
+import com.google.common.io.ByteSource;
+import io.konik.PrittyPrintInvoiceTransformer;
+import io.konik.validation.InvoiceValidator;
+import io.konik.zugferd.Invoice;
+import io.konik.zugferd.entity.*;
+import io.konik.zugferd.entity.trade.*;
+import io.konik.zugferd.entity.trade.item.*;
+import io.konik.zugferd.unqualified.*;
+import org.custommonkey.xmlunit.Diff;
+import org.custommonkey.xmlunit.XMLUnit;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.xml.sax.SAXException;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import javax.xml.transform.stream.StreamSource;
+import java.io.*;
+import java.util.Set;
+
 import static com.neovisionaries.i18n.CountryCode.DE;
 import static com.neovisionaries.i18n.CurrencyCode.EUR;
 import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
@@ -32,57 +54,6 @@ import static org.apache.commons.lang3.time.DateUtils.addDays;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.custommonkey.xmlunit.XMLUnit.compareXML;
-
-import java.io.*;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import javax.xml.transform.stream.StreamSource;
-
-import org.custommonkey.xmlunit.Diff;
-import org.custommonkey.xmlunit.XMLUnit;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.xml.sax.SAXException;
-
-import com.google.common.io.ByteSource;
-
-import io.konik.PrittyPrintInvoiceTransformer;
-import io.konik.validation.InvoiceValidator;
-import io.konik.zugferd.Invoice;
-import io.konik.zugferd.entity.Address;
-import io.konik.zugferd.entity.DebtorFinancialAccount;
-import io.konik.zugferd.entity.FinancialInstitution;
-import io.konik.zugferd.entity.GrossPrice;
-import io.konik.zugferd.entity.Header;
-import io.konik.zugferd.entity.Note;
-import io.konik.zugferd.entity.PaymentMeans;
-import io.konik.zugferd.entity.PositionDocument;
-import io.konik.zugferd.entity.Price;
-import io.konik.zugferd.entity.Product;
-import io.konik.zugferd.entity.TaxRegistration;
-import io.konik.zugferd.entity.TradeParty;
-import io.konik.zugferd.entity.trade.Agreement;
-import io.konik.zugferd.entity.trade.Delivery;
-import io.konik.zugferd.entity.trade.MonetarySummation;
-import io.konik.zugferd.entity.trade.Settlement;
-import io.konik.zugferd.entity.trade.Trade;
-import io.konik.zugferd.entity.trade.TradeTax;
-import io.konik.zugferd.entity.trade.item.Item;
-import io.konik.zugferd.entity.trade.item.ItemTax;
-import io.konik.zugferd.entity.trade.item.ReferencedDocumentItem;
-import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
-import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
-import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
-import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.Quantity;
-import io.konik.zugferd.unqualified.ZfDate;
-import io.konik.zugferd.unqualified.ZfDateDay;
-import io.konik.zugferd.unqualified.ZfDateMonth;
-import io.konik.zugferd.unqualified.ZfDateWeek;
 
 /**
  * The example class shows how easy it is to create a compact invoice.

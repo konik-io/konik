@@ -17,12 +17,11 @@
  */
 package io.konik.util;
 
+import com.neovisionaries.i18n.CurrencyCode;
+import io.konik.zugferd.unqualified.Amount;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-
-import com.neovisionaries.i18n.CurrencyCode;
-
-import io.konik.zugferd.unqualified.Amount;
 
 /**
  * Helper functions for {@link Amount} class.

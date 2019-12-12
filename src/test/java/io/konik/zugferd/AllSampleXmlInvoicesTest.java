@@ -18,23 +18,16 @@
  */
 package io.konik.zugferd;
 
-import static com.google.common.io.Files.getFileExtension;
-import static io.konik.validation.InvoiceValidator.resolveIntoValidationGroups;
-import static java.nio.charset.Charset.forName;
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import javax.xml.transform.stream.StreamSource;
-
-import org.apache.commons.io.FileUtils;
+import com.google.common.collect.Lists;
+import com.google.common.io.Files;
+import io.konik.InvoiceTransformer;
+import io.konik.PrittyPrintInvoiceTransformer;
+import io.konik.utils.NumberDifferenceXmlComparison;
+import io.konik.validation.AmountCalculator;
+import io.konik.validation.InvoiceValidator;
+import io.konik.validator.NullableNotBlankValidator;
+import io.konik.zugferd.entity.trade.MonetarySummation;
+import io.konik.zugferd.profile.ConformanceLevel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.custommonkey.xmlunit.Diff;
@@ -49,17 +42,20 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 import org.xml.sax.SAXException;
 
-import com.google.common.collect.Lists;
-import com.google.common.io.Files;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import javax.xml.transform.stream.StreamSource;
+import java.io.File;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Set;
 
-import io.konik.InvoiceTransformer;
-import io.konik.PrittyPrintInvoiceTransformer;
-import io.konik.utils.NumberDifferenceXmlComparison;
-import io.konik.validation.AmountCalculator;
-import io.konik.validation.InvoiceValidator;
-import io.konik.validator.NullableNotBlankValidator;
-import io.konik.zugferd.entity.trade.MonetarySummation;
-import io.konik.zugferd.profile.ConformanceLevel;
+import static com.google.common.io.Files.getFileExtension;
+import static io.konik.validation.InvoiceValidator.resolveIntoValidationGroups;
+import static java.nio.charset.Charset.forName;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings("javadoc")
 @RunWith(Parameterized.class)

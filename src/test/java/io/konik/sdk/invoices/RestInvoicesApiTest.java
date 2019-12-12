@@ -1,6 +1,16 @@
 package io.konik.sdk.invoices;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.api.client.http.HttpRequestFactory;
+import com.google.api.client.http.LowLevelHttpRequest;
+import com.google.api.client.http.LowLevelHttpResponse;
+import com.google.api.client.testing.http.MockHttpTransport;
+import com.google.api.client.testing.http.MockLowLevelHttpRequest;
+import com.google.api.client.testing.http.MockLowLevelHttpResponse;
+import io.konik.sdk.ZinvoiceApiConfig;
+import io.konik.sdk.http.ZinvoiceHttpClient;
+import org.junit.Test;
+import org.unitils.thirdparty.org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -12,19 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.junit.Test;
-import org.unitils.thirdparty.org.apache.commons.io.IOUtils;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.api.client.http.HttpRequestFactory;
-import com.google.api.client.http.LowLevelHttpRequest;
-import com.google.api.client.http.LowLevelHttpResponse;
-import com.google.api.client.testing.http.MockHttpTransport;
-import com.google.api.client.testing.http.MockLowLevelHttpRequest;
-import com.google.api.client.testing.http.MockLowLevelHttpResponse;
-
-import io.konik.sdk.ZinvoiceApiConfig;
-import io.konik.sdk.http.ZinvoiceHttpClient;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RestInvoicesApiTest {
 

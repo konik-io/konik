@@ -1,21 +1,19 @@
 package io.konik.validation;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.groups.Default;
-
-import org.apache.bval.jsr.DefaultMessageInterpolator;
-import org.junit.Test;
-
 import io.konik.InvoiceTransformer;
 import io.konik.validator.annotation.Comfort;
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.Invoice;
+import org.apache.bval.jsr.DefaultMessageInterpolator;
+import org.junit.Test;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.groups.Default;
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.util.Set;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MonetarySummationValidatorTest {
 

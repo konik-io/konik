@@ -1,16 +1,16 @@
 package io.konik.csv.mapper;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.File;
-import java.text.ParseException;
-import java.util.Arrays;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
+
+import java.io.File;
+import java.text.ParseException;
+import java.util.Arrays;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Parameterized.class)
 public class CsvMapperBuilderCsvPreferenceRecognitionTest {

@@ -1,27 +1,20 @@
 package io.konik.sdk.http;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.IOException;
-import java.util.Map;
-import java.util.UUID;
-
-import org.junit.Test;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.api.client.http.HttpRequest;
-import com.google.api.client.http.HttpRequestFactory;
-import com.google.api.client.http.HttpRequestInitializer;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.http.LowLevelHttpRequest;
-import com.google.api.client.http.LowLevelHttpResponse;
+import com.google.api.client.http.*;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.testing.http.MockHttpTransport;
 import com.google.api.client.testing.http.MockLowLevelHttpRequest;
 import com.google.api.client.testing.http.MockLowLevelHttpResponse;
-
 import io.konik.sdk.ZinvoiceApiConfig;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.util.Map;
+import java.util.UUID;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ZinvoiceHttpClientTest {
 

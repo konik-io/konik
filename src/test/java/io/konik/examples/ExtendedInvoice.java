@@ -18,6 +18,23 @@
  */
 package io.konik.examples;
 
+import com.google.common.io.ByteSource;
+import io.konik.InvoiceTransformer;
+import io.konik.zugferd.Invoice;
+import io.konik.zugferd.entity.*;
+import io.konik.zugferd.entity.trade.*;
+import io.konik.zugferd.entity.trade.item.Item;
+import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
+import io.konik.zugferd.unqualified.*;
+import org.junit.Test;
+import org.xml.sax.SAXException;
+
+import javax.xml.transform.stream.StreamSource;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import static com.neovisionaries.i18n.CountryCode.DE;
 import static com.neovisionaries.i18n.CurrencyCode.EUR;
 import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
@@ -28,42 +45,6 @@ import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
 import static org.apache.commons.io.FileUtils.openOutputStream;
 import static org.apache.commons.lang3.time.DateUtils.addDays;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.xml.transform.stream.StreamSource;
-
-import org.junit.Test;
-import org.xml.sax.SAXException;
-
-import com.google.common.io.ByteSource;
-
-import io.konik.InvoiceTransformer;
-import io.konik.zugferd.Invoice;
-import io.konik.zugferd.entity.Address;
-import io.konik.zugferd.entity.DebtorFinancialAccount;
-import io.konik.zugferd.entity.FinancialInstitution;
-import io.konik.zugferd.entity.Header;
-import io.konik.zugferd.entity.PaymentMeans;
-import io.konik.zugferd.entity.Product;
-import io.konik.zugferd.entity.TaxRegistration;
-import io.konik.zugferd.entity.TradeParty;
-import io.konik.zugferd.entity.trade.Agreement;
-import io.konik.zugferd.entity.trade.Delivery;
-import io.konik.zugferd.entity.trade.MonetarySummation;
-import io.konik.zugferd.entity.trade.Settlement;
-import io.konik.zugferd.entity.trade.Trade;
-import io.konik.zugferd.entity.trade.item.Item;
-import io.konik.zugferd.entity.trade.item.SpecifiedDelivery;
-import io.konik.zugferd.unqualified.Amount;
-import io.konik.zugferd.unqualified.Quantity;
-import io.konik.zugferd.unqualified.ZfDate;
-import io.konik.zugferd.unqualified.ZfDateDay;
-import io.konik.zugferd.unqualified.ZfDateMonth;
-import io.konik.zugferd.unqualified.ZfDateWeek;
 
 /**
  * The example class shows how easy it is to create a compact invoice.

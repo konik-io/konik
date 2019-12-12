@@ -1,8 +1,8 @@
 package io.konik.validator;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings("javadoc")
 public class EmailValidatorTest {

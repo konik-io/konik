@@ -17,10 +17,10 @@
  */
 package io.konik.validator;
 
+import io.konik.validator.annotation.NotBlank;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
-import io.konik.validator.annotation.NotBlank;
 
 /**
  * = The Not Blank Validator.

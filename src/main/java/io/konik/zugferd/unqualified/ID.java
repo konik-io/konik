@@ -17,7 +17,7 @@
  */
 package io.konik.zugferd.unqualified;
 
-import java.io.Serializable;
+import io.konik.validator.annotation.NotBlank;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSchemaType;
@@ -25,8 +25,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import io.konik.validator.annotation.NotBlank;
+import java.io.Serializable;
 
 /**
  * = The Identifier.

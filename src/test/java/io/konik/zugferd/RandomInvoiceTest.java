@@ -18,23 +18,11 @@
  */
 package io.konik.zugferd;
 
-import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertNotNull;
-import static org.unitils.reflectionassert.ReflectionComparatorMode.IGNORE_DEFAULTS;
-import static org.unitils.reflectionassert.ReflectionComparatorMode.LENIENT_DATES;
-
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.nio.charset.Charset;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.xml.transform.stream.StreamSource;
-
+import com.google.common.io.Files;
+import io.konik.InvoiceTransformer;
+import io.konik.PrittyPrintInvoiceTransformer;
+import io.konik.utils.RandomInvoiceGenerator;
+import io.konik.validation.InvoiceValidator;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.custommonkey.xmlunit.Diff;
@@ -45,12 +33,21 @@ import org.junit.Test;
 import org.unitils.reflectionassert.ReflectionAssert;
 import org.xml.sax.SAXException;
 
-import com.google.common.io.Files;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.xml.transform.stream.StreamSource;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.nio.charset.Charset;
+import java.util.Set;
 
-import io.konik.InvoiceTransformer;
-import io.konik.PrittyPrintInvoiceTransformer;
-import io.konik.utils.RandomInvoiceGenerator;
-import io.konik.validation.InvoiceValidator;
+import static io.konik.utils.InvoiceLoaderUtils.getSchemaValidator;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNotNull;
+import static org.unitils.reflectionassert.ReflectionComparatorMode.IGNORE_DEFAULTS;
+import static org.unitils.reflectionassert.ReflectionComparatorMode.LENIENT_DATES;
 
 @SuppressWarnings("javadoc")
 public class RandomInvoiceTest {

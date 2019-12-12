@@ -18,17 +18,16 @@
 
 package io.konik.zugferd.entity;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
-
 import io.konik.validator.annotation.Extended;
 import io.konik.zugferd.unqualified.Amount;
 import io.konik.zugferd.unqualified.Measure;
 import io.konik.zugferd.unqualified.ZfDate;
+
+import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * = The payment penalty or discount terms and conditions of a trade

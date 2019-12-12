@@ -1,12 +1,12 @@
 package io.konik.utils;
 
-import static io.konik.util.Strings.isNotEmpty;
-
-import java.math.BigDecimal;
-
 import org.custommonkey.xmlunit.Difference;
 import org.custommonkey.xmlunit.DifferenceListener;
 import org.w3c.dom.Node;
+
+import java.math.BigDecimal;
+
+import static io.konik.util.Strings.isNotEmpty;
 
 @SuppressWarnings("javadoc")
 public class NumberDifferenceXmlComparison implements DifferenceListener {

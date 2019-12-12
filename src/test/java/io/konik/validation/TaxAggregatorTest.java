@@ -1,16 +1,15 @@
 package io.konik.validation;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.math.BigDecimal;
-
-import org.junit.Test;
-
 import io.konik.validation.AmountCalculator.TaxAggregator;
 import io.konik.zugferd.entity.Tax;
 import io.konik.zugferd.entity.trade.TradeTax;
 import io.konik.zugferd.unece.codes.TaxCategory;
 import io.konik.zugferd.unece.codes.TaxCode;
+import org.junit.Test;
+
+import java.math.BigDecimal;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class TaxAggregatorTest {
 

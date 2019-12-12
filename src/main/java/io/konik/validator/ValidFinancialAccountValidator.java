@@ -17,13 +17,13 @@
  */
 package io.konik.validator;
 
-import static io.konik.util.Strings.isNotEmpty;
+import io.konik.validator.annotation.ValidFinancialAccount;
+import io.konik.zugferd.entity.FinancialAccount;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import io.konik.validator.annotation.ValidFinancialAccount;
-import io.konik.zugferd.entity.FinancialAccount;
+import static io.konik.util.Strings.isNotEmpty;
 
 /**
  *  

@@ -17,13 +17,12 @@
  */
 package io.konik.zugferd.entity;
 
-import java.io.Serializable;
+import io.konik.zugferd.unqualified.ZfDate;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import io.konik.zugferd.unqualified.ZfDate;
+import java.io.Serializable;
 
 /**
  * = The period of time

@@ -18,10 +18,9 @@
 
 package io.konik.zugferd.unqualified;
 
-import java.io.Serializable;
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 
 /**
  * 

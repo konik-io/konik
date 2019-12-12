@@ -1,6 +1,13 @@
 package io.konik.validation;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import io.konik.InvoiceTransformer;
+import io.konik.util.Items;
+import io.konik.zugferd.Invoice;
+import io.konik.zugferd.entity.trade.item.Item;
+import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,15 +15,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-
-import io.konik.InvoiceTransformer;
-import io.konik.util.Items;
-import io.konik.zugferd.Invoice;
-import io.konik.zugferd.entity.trade.item.Item;
-import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Parameterized.class)
 public class AmountCalculatorCalculateSpecifiedMonetarySummationTest {

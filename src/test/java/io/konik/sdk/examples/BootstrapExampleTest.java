@@ -1,7 +1,6 @@
 package io.konik.sdk.examples;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import io.konik.sdk.ZinvoiceApiConfig;
 import io.konik.sdk.http.ZinvoiceHttpClient;
 import io.konik.sdk.invoice.InvoiceApi;

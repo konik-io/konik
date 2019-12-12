@@ -1,9 +1,9 @@
 package io.konik.zugferd.profile;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ProfileTest {
 

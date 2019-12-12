@@ -1,8 +1,7 @@
 package io.konik.util;
 
-import org.apache.commons.lang3.SerializationUtils;
-
 import io.konik.zugferd.Invoice;
+import org.apache.commons.lang3.SerializationUtils;
 
 /**
  * Helper functions for {@link Invoice} class.

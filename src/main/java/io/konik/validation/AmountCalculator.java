@@ -17,6 +17,24 @@
  */
 package io.konik.validation;
 
+import com.google.common.base.Function;
+import com.neovisionaries.i18n.CurrencyCode;
+import io.konik.util.Amounts;
+import io.konik.util.Items;
+import io.konik.util.MonetarySummations;
+import io.konik.zugferd.Invoice;
+import io.konik.zugferd.entity.*;
+import io.konik.zugferd.entity.trade.MonetarySummation;
+import io.konik.zugferd.entity.trade.Settlement;
+import io.konik.zugferd.entity.trade.TradeTax;
+import io.konik.zugferd.entity.trade.item.*;
+import io.konik.zugferd.unece.codes.TaxCategory;
+import io.konik.zugferd.unece.codes.TaxCode;
+import io.konik.zugferd.unqualified.Amount;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.annotation.Nullable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
@@ -25,36 +43,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-
-import javax.annotation.Nullable;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.common.base.Function;
-import com.neovisionaries.i18n.CurrencyCode;
-
-import io.konik.util.Amounts;
-import io.konik.util.Items;
-import io.konik.util.MonetarySummations;
-import io.konik.zugferd.Invoice;
-import io.konik.zugferd.entity.AllowanceCharge;
-import io.konik.zugferd.entity.AppliedTax;
-import io.konik.zugferd.entity.GrossPrice;
-import io.konik.zugferd.entity.LogisticsServiceCharge;
-import io.konik.zugferd.entity.SpecifiedAllowanceCharge;
-import io.konik.zugferd.entity.Tax;
-import io.konik.zugferd.entity.trade.MonetarySummation;
-import io.konik.zugferd.entity.trade.Settlement;
-import io.konik.zugferd.entity.trade.TradeTax;
-import io.konik.zugferd.entity.trade.item.Item;
-import io.konik.zugferd.entity.trade.item.ItemTax;
-import io.konik.zugferd.entity.trade.item.SpecifiedAgreement;
-import io.konik.zugferd.entity.trade.item.SpecifiedMonetarySummation;
-import io.konik.zugferd.entity.trade.item.SpecifiedSettlement;
-import io.konik.zugferd.unece.codes.TaxCategory;
-import io.konik.zugferd.unece.codes.TaxCode;
-import io.konik.zugferd.unqualified.Amount;
 
 /**
  * Calculate the missing amounts of the invoice.

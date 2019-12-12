@@ -1,8 +1,7 @@
 package io.konik.csv.converter;
 
-import org.dozer.DozerConverter;
-
 import com.neovisionaries.i18n.LanguageCode;
+import org.dozer.DozerConverter;
 
 /**
  * Intermediate converter used to convert {@link String} to {@link LanguageCode}

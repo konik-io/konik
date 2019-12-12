@@ -1,14 +1,12 @@
 package io.konik.util;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.neovisionaries.i18n.CurrencyCode;
+import io.konik.zugferd.unqualified.Amount;
+import org.junit.Test;
 
 import java.math.BigDecimal;
 
-import org.junit.Test;
-
-import com.neovisionaries.i18n.CurrencyCode;
-
-import io.konik.zugferd.unqualified.Amount;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class AmountsTest {
 

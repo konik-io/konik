@@ -1,19 +1,17 @@
 package io.konik.calculation;
 
-import static io.konik.validation.AmountCalculator.recalculate;
-
-import java.util.List;
-
-import javax.validation.constraints.NotNull;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import io.konik.validation.AmountCalculator.RecalculationResult;
 import io.konik.validation.AmountCalculator.TaxAggregator;
 import io.konik.zugferd.Invoice;
 import io.konik.zugferd.entity.trade.MonetarySummation;
 import io.konik.zugferd.entity.trade.TradeTax;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.validation.constraints.NotNull;
+import java.util.List;
+
+import static io.konik.validation.AmountCalculator.recalculate;
 
 /**
  * Recalculates invoice settlement {@link MonetarySummation} and replaces it in the {@link Invoice} object.

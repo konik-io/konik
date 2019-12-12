@@ -17,17 +17,16 @@
  */
 package io.konik.zugferd.entity;
 
-import java.io.Serializable;
+import io.konik.jaxb.bindable.entity.SupplyChainEventAdapter;
+import io.konik.validator.annotation.Basic;
+import io.konik.zugferd.entity.trade.item.ReferencedDocumentItem;
+import io.konik.zugferd.unqualified.ZfDate;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import io.konik.jaxb.bindable.entity.SupplyChainEventAdapter;
-import io.konik.validator.annotation.Basic;
-import io.konik.zugferd.entity.trade.item.ReferencedDocumentItem;
-import io.konik.zugferd.unqualified.ZfDate;
+import java.io.Serializable;
 
 /**
  * = The Common Delivery class.

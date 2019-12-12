@@ -18,12 +18,11 @@
  */
 package io.konik.jaxb.bindable.entity;
 
-import static io.konik.util.Strings.isNotEmpty;
-import static io.konik.util.Strings.isNullOrEmpty;
-
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 import java.util.regex.Pattern;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import static io.konik.util.Strings.isNotEmpty;
+import static io.konik.util.Strings.isNullOrEmpty;
 
 /**
  * = The Universal Communication Adapter

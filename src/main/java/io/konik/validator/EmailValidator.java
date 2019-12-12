@@ -17,12 +17,11 @@
  */
 package io.konik.validator;
 
-import java.util.regex.Pattern;
+import io.konik.validator.annotation.Email;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
-import io.konik.validator.annotation.Email;
+import java.util.regex.Pattern;
 
 /**
  *  

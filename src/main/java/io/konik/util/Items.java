@@ -1,18 +1,16 @@
 package io.konik.util;
 
-import static java.math.BigDecimal.ONE;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
+import io.konik.zugferd.entity.GrossPrice;
+import io.konik.zugferd.entity.trade.item.Item;
 
+import javax.annotation.Nullable;
 import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.annotation.Nullable;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
-
-import io.konik.zugferd.entity.GrossPrice;
-import io.konik.zugferd.entity.trade.item.Item;
+import static java.math.BigDecimal.ONE;
 
 /**
  * Helper functions for {@link Item} class.

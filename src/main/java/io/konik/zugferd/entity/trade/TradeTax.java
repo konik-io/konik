@@ -17,13 +17,6 @@
  */
 package io.konik.zugferd.entity.trade;
 
-import java.math.BigDecimal;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 import io.konik.jaxb.bindable.unqualified.PercentRoundingAdapter;
 import io.konik.validator.annotation.Basic;
 import io.konik.validator.annotation.Comfort;
@@ -32,6 +25,12 @@ import io.konik.zugferd.entity.trade.item.SpecifiedTax;
 import io.konik.zugferd.unece.codes.TaxCategory;
 import io.konik.zugferd.unece.codes.TaxCode;
 import io.konik.zugferd.unqualified.Amount;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.math.BigDecimal;
 
 /**
  * = The tax applied to a trade.

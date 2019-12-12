@@ -35,6 +35,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.xml.transform.stream.StreamSource;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.custommonkey.xmlunit.Diff;
 import org.custommonkey.xmlunit.XMLUnit;
@@ -87,7 +88,7 @@ public class RandomInvoiceTest {
    @Test
    public void writeRandomInvoiceToFileSystem() throws IOException {
       File xmlInvoiceOutputfile = new File(TARGET_RANDOM_ZF_INVOICE_XML);
-      Files.write(randomInvoiceAsXml, xmlInvoiceOutputfile, utf8);
+      FileUtils.writeStringToFile(xmlInvoiceOutputfile,randomInvoiceAsXml,utf8);
       String firstLine = Files.readFirstLine(xmlInvoiceOutputfile, utf8);
       assertThat(firstLine).startsWith("<?xml version=");
    }

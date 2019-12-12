@@ -1,11 +1,14 @@
 package io.konik;
 
+import static org.apache.commons.io.FileUtils.openOutputStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.FileOutputStream;
+import java.io.File;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ServiceLoader;
+
 
 import org.apache.pdfbox.io.IOUtils;
 import org.junit.Before;
@@ -54,7 +57,7 @@ public class PdfHandlerTest {
    public void appendInvoice() throws Exception {
       Invoice invoice = new RandomInvoiceGenerator().generate(Invoice.class);
       InputStream inputPdf = getClass().getResourceAsStream("/Musterrechnung_Einfach_Basic.pdf");
-      OutputStream resultingPdf = new FileOutputStream("target/appendInvoiceTestResult.pdf");
+      OutputStream resultingPdf = openOutputStream(new File("build/test-results/pdfs/appendInvoiceTestResult.pdf"));
       pdfHandler.appendInvoice(invoice, inputPdf, resultingPdf);
    }
 

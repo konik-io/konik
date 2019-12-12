@@ -25,13 +25,11 @@ import static io.konik.zugferd.profile.ConformanceLevel.BASIC;
 import static io.konik.zugferd.unece.codes.DocumentCode._380;
 import static io.konik.zugferd.unece.codes.Reference.FC;
 import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
+import static org.apache.commons.io.FileUtils.openOutputStream;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.math.BigDecimal;
 import java.util.Set;
 import java.util.logging.Level;
@@ -133,7 +131,7 @@ public class MinimalInvoice {
    // tag::transformInvoiceToXml[]
    public void transformInvoiceToXml(Invoice invoice) throws IOException {
       InvoiceTransformer transformer = new InvoiceTransformer(); // <1>
-      FileOutputStream outputStream = new FileOutputStream("target/minimal-invoice.xml");
+      FileOutputStream outputStream = openOutputStream(new File("build/test-results/pdfs/minimal-invoice.xml"));
       transformer.fromModel(invoice, outputStream); // <2>
    }
    // end::transformInvoiceToXml[]
@@ -182,7 +180,7 @@ public class MinimalInvoice {
       Invoice invoice = createInvoice();
       PdfHandler handler = new PdfHandler(); // <1>
       InputStream inputPdf = getClass().getResourceAsStream("/acme_invoice-42.pdf");
-      OutputStream resultingPdf = new FileOutputStream("target/acme_invoice-42_ZUGFeRD.pdf");
+      OutputStream resultingPdf = openOutputStream(new File("build/test-results/pdfs/acme_invoice-42_ZUGFeRD.pdf"));
       handler.appendInvoice(invoice, inputPdf, resultingPdf); // <2>
    }
    // end::appendInvoiceToPdf[]

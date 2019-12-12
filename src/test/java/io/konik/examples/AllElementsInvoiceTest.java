@@ -27,16 +27,13 @@ import static io.konik.zugferd.unece.codes.Reference.FC;
 import static io.konik.zugferd.unece.codes.TaxCode.VAT;
 import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
 import static java.math.BigDecimal.valueOf;
+import static org.apache.commons.io.FileUtils.openOutputStream;
 import static org.apache.commons.lang3.time.DateUtils.addDays;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.custommonkey.xmlunit.XMLUnit.compareXML;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -144,7 +141,7 @@ public class AllElementsInvoiceTest {
 
    public void transformModelAndWriteToDisk(Invoice invoice) throws IOException {
       PrittyPrintInvoiceTransformer transformer = new PrittyPrintInvoiceTransformer(); // <1>
-      FileOutputStream outputStream = new FileOutputStream("./target/all-element-invoice.xml");
+      FileOutputStream outputStream = openOutputStream(new File("build/test-results/zf-xml/all-element-invoice.xml"));
       transformer.fromModel(invoice, outputStream); // <2>
    }
 

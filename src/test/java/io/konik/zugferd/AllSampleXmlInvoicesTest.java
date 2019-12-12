@@ -34,6 +34,7 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import javax.xml.transform.stream.StreamSource;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.custommonkey.xmlunit.Diff;
@@ -173,7 +174,9 @@ public class AllSampleXmlInvoicesTest {
 
       //verify
       String remarshalledInvoice = new String(invoiceAsByteArray, UTF_8);
-      Files.write(remarshalledInvoice.getBytes(), new File("./target/test_" + testFileName));
+      File outFile = new File("build/test-results/zf-xml/","test_" + testFileName);
+      outFile.getParentFile().mkdir();
+      Files.write(remarshalledInvoice.getBytes(),outFile);
       //      System.out.println(remarshalledInvoice);
       Diff diff = new Diff(testFileContent, remarshalledInvoice);
       diff.overrideDifferenceListener(new NumberDifferenceXmlComparison());

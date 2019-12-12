@@ -25,9 +25,11 @@ import static io.konik.zugferd.profile.ConformanceLevel.EXTENDED;
 import static io.konik.zugferd.unece.codes.DocumentCode._380;
 import static io.konik.zugferd.unece.codes.Reference.FC;
 import static io.konik.zugferd.unece.codes.UnitOfMeasurement.UNIT;
+import static org.apache.commons.io.FileUtils.openOutputStream;
 import static org.apache.commons.lang3.time.DateUtils.addDays;
 import static org.apache.commons.lang3.time.DateUtils.addMonths;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -105,7 +107,7 @@ public class ExtendedInvoice {
 
    public void createXmlFromModel(Invoice invoice) throws IOException {
       InvoiceTransformer transformer = new InvoiceTransformer(); // <1>
-      FileOutputStream outputStream = new FileOutputStream("target/minimal-invoice.xml");
+      FileOutputStream outputStream = openOutputStream(new File("build/test-results/pdfs/minimal-invoice.xml"));
       transformer.fromModel(invoice, outputStream); // <2>
    }
 

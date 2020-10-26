@@ -57,7 +57,7 @@ public class InvoiceTransformer {
     */
    public InvoiceTransformer() {
       try {
-         this.jaxbContext = newInstance(KONIK_CONTEXT);
+         this.jaxbContext = newInstance(KONIK_CONTEXT, InvoiceTransformer.class.getClassLoader());
       } catch (JAXBException e) {
          throw new TransformationException("Could not instantiate JaxB Context", e);
       }

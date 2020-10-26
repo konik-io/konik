@@ -71,7 +71,7 @@ public class PdfHandler {
     * If error is thrown check you have a Konik PDF Carriage on the classpath.
     */
    public PdfHandler() {
-      Iterator iterator = ServiceLoader.load(FileAppender.class).iterator();
+      Iterator iterator = ServiceLoader.load(FileAppender.class, PdfHandler.class.getClassLoader()).iterator();
       List<FileAppender> appenders = Lists.<FileAppender> newArrayList(iterator);
 
       if (appenders.isEmpty()) {
@@ -81,7 +81,7 @@ public class PdfHandler {
       Collections.sort(appenders, new FileAppenderPriorityComparator(Order.DESC));
 
       this.fileAppender = appenders.get(0);
-      this.fileExtractor = ServiceLoader.load(FileExtractor.class).iterator().next();
+      this.fileExtractor = ServiceLoader.load(FileExtractor.class, PdfHandler.class.getClassLoader()).iterator().next();
       this.transformer = new InvoiceTransformer();
    }
 

@@ -8,3 +8,4 @@ infinitest.filters
 konik.iml
 build/
 .gradle/
+bin/

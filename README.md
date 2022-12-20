@@ -1,5 +1,8 @@
 # Konik ZUGFeRD Library
 
+> **Note**
+> This project reached its EOL. The Konik e-invoicing library was/is used by many ERP and DMS systems, at it high more than 100k companies used Konik.
+
 [![Join the chat at https://gitter.im/konik-io/konik](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/konik-io/konik?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Is an easy to use open source implementation of the ZUGFeRD data model including various enhancements. 
